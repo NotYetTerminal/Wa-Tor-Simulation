@@ -1,2 +1,2 @@
-# Wator-Simulation
- A GO simulation of the Wator world.
+# Wa-Tor-Simulation
+ A GO simulation of the Wa-Tor world.
