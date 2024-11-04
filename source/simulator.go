@@ -6,7 +6,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand/v2"
+	"sync"
+)
 
 // Swimming animal struct
 type swimmingAnimal struct {
@@ -18,7 +22,8 @@ type swimmingAnimal struct {
 	energy int
 }
 
-func newSwimmingAnimal(isFish bool, reproductionTime int, energy int) *swimmingAnimal {
+// Creates swimmingAnimals
+func newSwimmingAnimal(isFish bool, reproductionTime, energy int) *swimmingAnimal {
 	return &swimmingAnimal{isFish: isFish, reproductionTime: reproductionTime, energy: energy}
 }
 
@@ -41,7 +46,24 @@ func handleInput(inputVariable *int, outputString string) {
 	}
 }
 
+// Converts absolute index to X and Y positions
+func indexToPosition(index, sizeX int) (posX, posY int) {
+	return index % sizeX, index / sizeX
+}
+
+// Create chunks of the worldGrid along the X axis
+func createXChunk(xIndex, chunkSizeX int, worldGrid [][]*swimmingAnimal) [][]*swimmingAnimal {
+	var newSlice [][]*swimmingAnimal
+	for index := range worldGrid {
+		newSlice = append(newSlice, worldGrid[index][chunkSizeX*xIndex:(chunkSizeX*xIndex)+chunkSizeX])
+	}
+	return newSlice
+}
+
 func main() {
+	// Set seed for debugging
+	random := rand.New(rand.NewPCG(42, 1024))
+
 	// Declare variables
 	var NumShark int
 	var NumFish int
@@ -63,26 +85,89 @@ func main() {
 	handleInput(&GridSizeY, "Size of world, the Y dimension: ")
 	handleInput(&Threads, "Number of threads to use: ")
 
-	//fmt.Println(NumShark)
-	//fmt.Println(NumFish)
-	//fmt.Println(FishBreed)
-	//fmt.Println(SharkBreed)
-	//fmt.Println(Starve)
-	//fmt.Println(GridSizeX)
-	//fmt.Println(GridSizeY)
-	//fmt.Println(Threads)
+	// Cannot use any threads, terminate
+	if Threads == 0 {
+		fmt.Println("No threads available to be used.")
+		return
+	}
+
+	totalSize := GridSizeX * GridSizeY
+	// Check if there is enough space for all animals
+	if NumShark+NumFish > totalSize {
+		fmt.Println("Too many animals.")
+		return
+	}
 
 	// Create grid
-	worldGrid := make([][]swimmingAnimal, GridSizeX, GridSizeY)
-	fmt.Println(worldGrid)
+	worldGrid := make([][]*swimmingAnimal, GridSizeY)
+	for index := range worldGrid {
+		worldGrid[index] = make([]*swimmingAnimal, GridSizeX)
+	}
 
-	// Spawn fish on grid
+	// Create random spawn locations
+	positionsSlice := make([]int, totalSize)
+	for index := range totalSize {
+		positionsSlice[index] = index
+	}
+	random.Shuffle(totalSize, func(i, j int) {
+		positionsSlice[i], positionsSlice[j] = positionsSlice[j], positionsSlice[i]
+	})
 
 	// Spawn sharks on grid
+	for index := range NumShark {
+		newShark := newSwimmingAnimal(false, SharkBreed, Starve)
+		posX, posY := indexToPosition(positionsSlice[index], GridSizeX)
+		worldGrid[posY][posX] = newShark
+	}
+
+	// Spawn fish on grid
+	for index := range NumFish {
+		newFish := newSwimmingAnimal(true, FishBreed, 0)
+		posX, posY := indexToPosition(positionsSlice[index+NumShark], GridSizeX)
+		worldGrid[posY][posX] = newFish
+	}
+	fmt.Println(worldGrid)
 
 	// Split world into chunks for threads
+	// Each chunks 2 edges are duplicated
+	var chunksSlice [][][]*swimmingAnimal
+	if GridSizeX > GridSizeY {
+		chunkSizeX := GridSizeX / Threads
+		// Get equal sizes
+		for xIndex := range Threads - 1 {
+			var newSlice [][]*swimmingAnimal
+			for index := range worldGrid {
+				newSlice = append(newSlice, worldGrid[index][chunkSizeX*xIndex:(chunkSizeX*xIndex)+chunkSizeX])
+			}
+			chunksSlice = append(chunksSlice, newSlice)
+		}
+		var newSlice [][]*swimmingAnimal
+		// Get last one which is a little bigger
+		for index := range worldGrid {
+			newSlice = append(newSlice, worldGrid[index][chunkSizeX*(Threads-1):])
+		}
+		chunksSlice = append(chunksSlice, newSlice)
+	} else {
+		chunkSizeY := GridSizeY / Threads
+		// Get equal sizes
+		for index := range Threads - 1 {
+			chunksSlice = append(chunksSlice, worldGrid[chunkSizeY*index:(chunkSizeY*index)+chunkSizeY])
+		}
+		// Get last one which is a little bigger
+		chunksSlice = append(chunksSlice, worldGrid[chunkSizeY*(Threads-1):])
+	}
+	fmt.Println(chunksSlice)
 
 	// Create Atomic chunk border arrays
+	if Threads > 1 {
+		borderLocks := make([]sync.Mutex, Threads)
+		fmt.Println(borderLocks)
+		if GridSizeX > GridSizeY {
+
+		} else {
+
+		}
+	}
 
 	// Create simulation loop
 	for {
