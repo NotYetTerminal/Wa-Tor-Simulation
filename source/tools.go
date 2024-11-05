@@ -9,3 +9,13 @@ func mod(a, b int) int {
 func indexToPosition(index, gridSizeX int) (posX, posY int) {
 	return mod(index, gridSizeX), index / gridSizeX
 }
+
+// Right index with wrap around
+func getRightIndex(index, maxSize int) int {
+	return mod(index+1, maxSize)
+}
+
+// Left index with wrap around
+func getLeftIndex(index, maxSize int) int {
+	return mod(index-1, maxSize)
+}
