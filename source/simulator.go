@@ -9,6 +9,7 @@ package main
 import (
 	"fmt"
 	"math/rand/v2"
+	"sync"
 )
 
 // Handles taking in an integer from the user
@@ -64,8 +65,35 @@ func setUpStartingMap(NumShark, NumFish, FishBreed, SharkBreed, Starve, GridSize
 		posX, posY := indexToPosition(positionsSlice[index+NumShark], GridSizeX)
 		worldGrid[posY][posX] = newFish
 	}
-	fmt.Println(worldGrid)
+	fmt.Println(worldGrid[0])
 	return &worldGrid
+}
+
+// Function ran on all threads simultaneously
+func doSimulation(threadChunk *dataChunk, threadsWGLock *sync.Mutex, threadsWG, controlWG *sync.WaitGroup) {
+	// First run for sharks
+	for {
+		// Start each thread to run its chunk
+
+		// Each thread runs its border chunks
+
+		// Wait for all threads
+
+		// Stop on no sharks
+		break
+	}
+
+	// Second run for fish
+	for {
+		// Start each thread to run its chunk
+
+		// Each thread runs its border chunks
+
+		// Wait for all threads
+
+		// Stop on no fish
+		break
+	}
 }
 
 func main() {
@@ -104,7 +132,7 @@ func main() {
 		return
 	}
 
-	//worldGrid := setUpStartingMap(NumShark, NumFish, FishBreed, SharkBreed, Starve, GridSizeX, GridSizeY)
+	worldGrid := setUpStartingMap(NumShark, NumFish, FishBreed, SharkBreed, Starve, GridSizeX, GridSizeY)
 
 	// If the X size is bigger than the Y swap them to simplify chunking
 	// Save whether swapped to properly render later
@@ -115,49 +143,46 @@ func main() {
 	}
 	fmt.Println(swapped)
 
-	if Threads > 1 {
-		// Split world into chunks for threads
-		var threadChunksSlice []*dataChunk
-		//chunkSizeY := GridSizeY / Threads
-		// Get equal sized chunks
-		// They will be the (total rows / threads) - 2 sized because of the border chunks
-		for range Threads - 1 {
-			//threadChunksSlice = append(threadChunksSlice, &dataChunk{data: (*worldGrid)[(chunkSizeY*index)+1 : (chunkSizeY*index)+chunkSizeY-1]})
-			threadChunksSlice = append(threadChunksSlice, &dataChunk{})
-		}
-		// Get last one which is a little bigger
-		//threadChunksSlice = append(threadChunksSlice, &dataChunk{data: (*worldGrid)[chunkSizeY*(Threads-1):]})
-		threadChunksSlice = append(threadChunksSlice, &dataChunk{})
-		fmt.Println(threadChunksSlice)
+	// Split world into chunks for threads
+	var threadChunksSlice []*dataChunk
+	chunkSizeY := GridSizeY / Threads
+	// Get equal sized chunks
+	// They will be the (total rows / threads) - 2 sized because of the border chunks
+	for index := range Threads - 1 {
+		threadChunksSlice = append(threadChunksSlice, &dataChunk{data: (*worldGrid)[(chunkSizeY*index)+1 : (chunkSizeY*index)+chunkSizeY-1]})
+	}
+	// Get last one which is a little bigger
+	threadChunksSlice = append(threadChunksSlice, &dataChunk{data: (*worldGrid)[chunkSizeY*(Threads-1):]})
+	fmt.Println(threadChunksSlice)
 
-		// Create border chunks
-		// And connect chunks together
-		var borderChunksSlice []*borderChunk
-		for index := range Threads {
-			// New border chunk has reference to the previous thread chunk and current thread chunk
-			tempBorderChunk := newBorderChunk(threadChunksSlice[mod(index-1, len(threadChunksSlice))], threadChunksSlice[index])
-			borderChunksSlice = append(borderChunksSlice, tempBorderChunk)
-			// Update reference in thread chunks as well
-			threadChunksSlice[mod(index-1, len(threadChunksSlice))].belowDataChunk = &(tempBorderChunk.topDataChunk)
-			threadChunksSlice[index].aboveDataChunk = &(tempBorderChunk.bottomDataChunk)
-		}
-		fmt.Println(borderChunksSlice)
+	// Create border chunks
+	// And connect chunks together
+	var borderChunksSlice []*borderChunk
+	for index := range Threads {
+		// New border chunk has reference to the previous thread chunk and current thread chunk
+		tempBorderChunk := newBorderChunk((*worldGrid)[mod((chunkSizeY*index)-1, len(*worldGrid))], (*worldGrid)[chunkSizeY*index], threadChunksSlice[mod(index-1, len(threadChunksSlice))], threadChunksSlice[index])
+		borderChunksSlice = append(borderChunksSlice, tempBorderChunk)
+		// Update reference in thread chunks as well
+		threadChunksSlice[mod(index-1, len(threadChunksSlice))].belowDataChunk = &(tempBorderChunk.topDataChunk)
+		threadChunksSlice[index].aboveDataChunk = &(tempBorderChunk.bottomDataChunk)
+	}
+	fmt.Println(borderChunksSlice)
+	fmt.Println(borderChunksSlice[0].topDataChunk)
+	fmt.Println(borderChunksSlice[0].bottomDataChunk)
 
-	} else {
+	// WaitGroup for running until finished
+	controlWG := sync.WaitGroup{}
+	controlWG.Add(1)
 
+	// Create threads
+	threadsWG := sync.WaitGroup{}
+	threadsWG.Add(Threads)
+	threadsWGLock := sync.Mutex{}
+
+	for index := range Threads {
+		go doSimulation(threadChunksSlice[index], &threadsWGLock, &threadsWG, &controlWG)
 	}
 
-	// Create simulation loop
-	for {
-		// Start each thread to run its chunk
-
-		// Wait for all threads
-
-		// Stop on no sharks
-
-		// Stop on no fish
-
-		fmt.Println("Run")
-		break
-	}
+	controlWG.Wait()
+	fmt.Println("Simulation done.")
 }

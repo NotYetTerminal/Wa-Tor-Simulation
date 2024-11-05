@@ -10,9 +10,9 @@ type borderChunk struct {
 }
 
 // Constructor
-func newBorderChunk(topThreadDataChunk, bottomThreadDataChunk *dataChunk) *borderChunk {
-	topDataChunk := dataChunk{} // NEED DATA
-	bottomDataChunk := dataChunk{}
+func newBorderChunk(topData, bottomData []*swimmingAnimal, topThreadDataChunk, bottomThreadDataChunk *dataChunk) *borderChunk {
+	topDataChunk := dataChunk{data: [][]*swimmingAnimal{topData}}
+	bottomDataChunk := dataChunk{data: [][]*swimmingAnimal{bottomData}}
 
 	topDataChunk.aboveDataChunk = topThreadDataChunk
 	topDataChunk.belowDataChunk = &bottomDataChunk
