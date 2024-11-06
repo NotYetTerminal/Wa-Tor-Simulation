@@ -24,6 +24,15 @@ func newBorderChunk(topData, bottomData []*swimmingAnimal, aboveThreadChunk, bel
 	return &borderChunk{data: [][]*swimmingAnimal{topData, bottomData}, aboveThreadChunk: aboveThreadChunk, belowThreadChunk: belowThreadChunk, lock: sync.Mutex{}}
 }
 
+// Mutex locking
+func (bC *borderChunk) lockBorderChunk() {
+	bC.lock.Lock()
+}
+
+func (bC *borderChunk) unlockBorderChunk() {
+	bC.lock.Unlock()
+}
+
 // Get one row
 func (bC *borderChunk) getRow(indexY int) []*swimmingAnimal {
 	return bC.data[indexY]
@@ -51,7 +60,7 @@ func (bC *borderChunk) getAboveAnimal(indexX, indexY int) *swimmingAnimal {
 	}
 }
 
-func (bC *borderChunk) getBellowAnimal(indexX, indexY int) *swimmingAnimal {
+func (bC *borderChunk) getBelowAnimal(indexX, indexY int) *swimmingAnimal {
 	if indexY+1 >= len(bC.data) {
 		return bC.belowThreadChunk.getTopRowAnimal(indexX)
 	} else {
@@ -81,7 +90,7 @@ func (bC *borderChunk) setAboveAnimal(indexX, indexY int, animal *swimmingAnimal
 	}
 }
 
-func (bC *borderChunk) setBellowAnimal(indexX, indexY int, animal *swimmingAnimal) {
+func (bC *borderChunk) setBelowAnimal(indexX, indexY int, animal *swimmingAnimal) {
 	if indexY+1 >= len(bC.data) {
 		bC.belowThreadChunk.setTopRowAnimal(indexX, animal)
 	} else {
@@ -108,20 +117,79 @@ func (bC *borderChunk) setBottomRowAnimal(indexX int, animal *swimmingAnimal) {
 }
 
 // Used by the thread above the border
-func (bC *borderChunk) processTopRow(checkingShark bool) {
-	bC.lock.Lock()
+func (bC *borderChunk) processTopBorderRow(checkingShark bool) {
+	bC.processBorderRow(checkingShark, 0)
 }
 
 // Used by the thread below the border
-func (bC *borderChunk) processBottomRow(checkingShark bool) {
-	bC.lock.Lock()
-	//for index, animal := range bC.data[1] {
-	//	if animal != nil {
-	//		if checkingShark && animal.isShark {
-	//
-	//		} else if !checkingShark && !animal.isShark {
-	//
-	//		}
-	//	}
-	//}
+func (bC *borderChunk) processBottomBorderRow(checkingShark bool) {
+	bC.processBorderRow(checkingShark, 1)
+}
+
+// Runs through a single row and processes all animals signaled
+func (bC *borderChunk) processBorderRow(checkingShark bool, indexY int) {
+	for indexX, animal := range bC.getRow(indexY) {
+		// If checking states are the same it means that this animal has been already checked this iteration
+		if animal != nil && animal.checkingState != CurrentCheckingState {
+			// Check sharks
+			if checkingShark && animal.isShark {
+				animal.checkingState = CurrentCheckingState
+				// Get whether fish are nearby and valid movement directions
+				movingToFish, direction := getFishOrFreeSpace(bC.getLeftAnimal(indexX, indexY), bC.getRightAnimal(indexX, indexY), bC.getAboveAnimal(indexX, indexY), bC.getBelowAnimal(indexX, indexY))
+
+				// Shark eating fish while moving
+				if movingToFish {
+					animal.energy = Starve
+				} else {
+					animal.energy -= 1
+					// Shark died
+					if animal.energy == 0 {
+						bC.moveAnimal(nil, nil, indexX, indexY, 0)
+						continue
+					}
+				}
+
+				// Move and reproduce
+				animal.reproductionTime -= 1
+				if animal.reproductionTime == 0 {
+					bC.moveAnimal(animal, newSwimmingAnimal(true, CurrentCheckingState, SharkBreed, Starve), indexX, indexY, direction)
+					animal.reproductionTime = SharkBreed
+					continue
+				}
+
+				// Move to square
+				bC.moveAnimal(animal, nil, indexX, indexY, direction)
+			} else if !checkingShark && !animal.isShark {
+				animal.checkingState = CurrentCheckingState
+				// Get move direction
+				direction := getFreeSpace(bC.getLeftAnimal(indexX, indexY), bC.getRightAnimal(indexX, indexY), bC.getAboveAnimal(indexX, indexY), bC.getBelowAnimal(indexX, indexY))
+
+				// Move and reproduce
+				animal.reproductionTime -= 1
+				if animal.reproductionTime == 0 {
+					bC.moveAnimal(animal, newSwimmingAnimal(false, CurrentCheckingState, FishBreed, 0), indexX, indexY, direction)
+					animal.reproductionTime = FishBreed
+					continue
+				}
+
+				// Move to square
+				bC.moveAnimal(animal, nil, indexX, indexY, direction)
+			}
+		}
+	}
+}
+
+// Modify moving to and moving from square in dataChunk
+func (bC *borderChunk) moveAnimal(movingToSquare, movingFromSquare *swimmingAnimal, indexX, indexY, direction int) {
+	switch direction {
+	case 1:
+		bC.setLeftAnimal(indexX, indexY, movingToSquare)
+	case 2:
+		bC.setRightAnimal(indexX, indexY, movingToSquare)
+	case 3:
+		bC.setAboveAnimal(indexX, indexY, movingToSquare)
+	case 4:
+		bC.setBelowAnimal(indexX, indexY, movingToSquare)
+	}
+	bC.setAnimal(indexX, indexY, movingFromSquare)
 }

@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"math/rand/v2"
 	"sync"
+	"sync/atomic"
 )
 
 // Global variables
@@ -18,7 +19,12 @@ var SharkBreed int
 var Starve int
 var GridSizeX int
 var GridSizeY int
+var Threads int
 var CurrentCheckingState = false
+
+// Atomic shared variables for threads
+var sharkCount atomic.Int32
+var fishCount atomic.Int32
 
 // Handles taking in an integer from the user
 func handleInput(inputVariable *int, outputString string) {
@@ -78,29 +84,55 @@ func setUpStartingMap(NumShark, NumFish int) *[][]*swimmingAnimal {
 }
 
 // Function ran on all threads simultaneously
-func doSimulation(tC *threadChunk, threadsWGLock *sync.Mutex, threadsWG, finishedWG *sync.WaitGroup) {
-	// First run for sharks
+func doSimulation(tC *threadChunk, threadCount *atomic.Int32, sharkChan, fishChan chan bool, lock *sync.Mutex, finishedWG *sync.WaitGroup) {
 	for {
-		// Start each thread to run its chunk
-
-		// Each thread runs its border chunks
+		// First run for sharks
+		tC.processAllRows(true)
 
 		// Wait for all threads
+		lock.Lock()
+		threadCount.Add(1)
+		if threadCount.Load() == int32(Threads) {
+			lock.Unlock()
+			fmt.Println("Shark: ", sharkCount.Load())
+			for range Threads - 1 {
+				sharkChan <- true
+			}
+		} else {
+			lock.Unlock()
+			<-sharkChan
+		}
 
 		// Stop on no sharks
-		break
-	}
+		if sharkCount.Load() == 0 {
+			finishedWG.Done()
+			return
+		}
 
-	// Second run for fish
-	for {
-		// Start each thread to run its chunk
-
-		// Each thread runs its border chunks
+		// Second run for fish
+		tC.processAllRows(false)
 
 		// Wait for all threads
+		lock.Lock()
+		threadCount.Add(-1)
+		if threadCount.Load() == 0 {
+			lock.Unlock()
+			fmt.Println("Fish: ", fishCount.Load())
+			// Change checking state before starting a new iteration
+			CurrentCheckingState = !CurrentCheckingState
+			for range Threads - 1 {
+				fishChan <- true
+			}
+		} else {
+			lock.Unlock()
+			<-fishChan
+		}
 
 		// Stop on no fish
-		break
+		if fishCount.Load() == 0 {
+			finishedWG.Done()
+			return
+		}
 	}
 }
 
@@ -108,7 +140,6 @@ func main() {
 	// Declare variables
 	var NumShark int
 	var NumFish int
-	var Threads int
 
 	// Take in values for variables
 	fmt.Println("Type in the following variables:")
@@ -160,11 +191,10 @@ func main() {
 	// And connect chunks together
 	var borderChunksSlice []*borderChunk
 	for index := range Threads {
-		tempBorderChunk := newBorderChunk(
-			(*worldGrid)[mod((chunkSizeY*index)-1, GridSizeY)], // First row before current threadChunk
-			(*worldGrid)[chunkSizeY*index],                     // Last row after previous threadChunk
-			threadChunksSlice[mod(index-1, Threads)],           // Previous threadChunk
-			threadChunksSlice[index],                           // Current threadChunk
+		tempBorderChunk := newBorderChunk((*worldGrid)[mod((chunkSizeY*index)-1, GridSizeY)], // First row before current threadChunk
+			(*worldGrid)[chunkSizeY*index],           // Last row after previous threadChunk
+			threadChunksSlice[mod(index-1, Threads)], // Previous threadChunk
+			threadChunksSlice[index],                 // Current threadChunk
 		)
 
 		borderChunksSlice = append(borderChunksSlice, tempBorderChunk)
@@ -179,14 +209,21 @@ func main() {
 	finishedWG := sync.WaitGroup{}
 	finishedWG.Add(Threads)
 
-	// WaitGroup for thread synchronisation
-	threadsWG := sync.WaitGroup{}
-	threadsWG.Add(Threads)
-	threadsWGLock := sync.Mutex{}
+	// Channels for thread synchronisation
+	sharkChan := make(chan bool, Threads)
+	fishChan := make(chan bool, Threads)
+
+	// Set up atomic variables
+	sharkCount.Add(int32(NumShark))
+	fishCount.Add(int32(NumFish))
+	var threadCount atomic.Int32
+
+	// Mutex for threadCount
+	lock := sync.Mutex{}
 
 	// Create threads
 	for index := range Threads {
-		go doSimulation(threadChunksSlice[index], &threadsWGLock, &threadsWG, &finishedWG)
+		go doSimulation(threadChunksSlice[index], &threadCount, sharkChan, fishChan, &lock, &finishedWG)
 	}
 
 	finishedWG.Wait()
