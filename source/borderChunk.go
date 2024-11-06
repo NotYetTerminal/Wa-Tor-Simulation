@@ -1,6 +1,13 @@
+// Author: Gábor Major (c00271548@setu.ie)
+// Date creation: 2024-11-05
+// Description:
+// File for storing code related to the border chunks
+
 package main
 
-import "sync"
+import (
+	"sync"
+)
 
 // Border chunk is used for holding data between thread chunks
 // Pointers are to surrounding chunks
@@ -17,22 +24,87 @@ func newBorderChunk(topData, bottomData []*swimmingAnimal, aboveThreadChunk, bel
 	return &borderChunk{data: [][]*swimmingAnimal{topData, bottomData}, aboveThreadChunk: aboveThreadChunk, belowThreadChunk: belowThreadChunk, lock: sync.Mutex{}}
 }
 
-// Getters for 2 rows in data
-func (bC *borderChunk) getTopRowAnimal(index int) *swimmingAnimal {
-	return bC.data[0][index]
+// Get one row
+func (bC *borderChunk) getRow(indexY int) []*swimmingAnimal {
+	return bC.data[indexY]
 }
 
-func (bC *borderChunk) getBottomRowAnimal(index int) *swimmingAnimal {
-	return bC.data[1][index]
+// Getters for swimmingAnimal
+// May be set in a different chunk
+func (bC *borderChunk) getAnimal(indexX, indexY int) *swimmingAnimal {
+	return bC.data[indexY][indexX]
+}
+
+func (bC *borderChunk) getLeftAnimal(indexX, indexY int) *swimmingAnimal {
+	return bC.data[indexY][getLeftIndex(indexX)]
+}
+
+func (bC *borderChunk) getRightAnimal(indexX, indexY int) *swimmingAnimal {
+	return bC.data[indexY][getRightIndex(indexX)]
+}
+
+func (bC *borderChunk) getAboveAnimal(indexX, indexY int) *swimmingAnimal {
+	if indexY-1 < 0 {
+		return bC.aboveThreadChunk.getBottomRowAnimal(indexX)
+	} else {
+		return bC.data[indexY-1][indexX]
+	}
+}
+
+func (bC *borderChunk) getBellowAnimal(indexX, indexY int) *swimmingAnimal {
+	if indexY+1 >= len(bC.data) {
+		return bC.belowThreadChunk.getTopRowAnimal(indexX)
+	} else {
+		return bC.data[indexY+1][indexX]
+	}
+}
+
+// Setters for swimmingAnimal
+// May be set in a different chunk
+func (bC *borderChunk) setAnimal(indexX, indexY int, animal *swimmingAnimal) {
+	bC.data[indexY][indexX] = animal
+}
+
+func (bC *borderChunk) setLeftAnimal(indexX, indexY int, animal *swimmingAnimal) {
+	bC.data[indexY][getLeftIndex(indexX)] = animal
+}
+
+func (bC *borderChunk) setRightAnimal(indexX, indexY int, animal *swimmingAnimal) {
+	bC.data[indexY][getRightIndex(indexX)] = animal
+}
+
+func (bC *borderChunk) setAboveAnimal(indexX, indexY int, animal *swimmingAnimal) {
+	if indexY-1 < 0 {
+		bC.aboveThreadChunk.setBottomRowAnimal(indexX, animal)
+	} else {
+		bC.data[indexY-1][indexX] = animal
+	}
+}
+
+func (bC *borderChunk) setBellowAnimal(indexX, indexY int, animal *swimmingAnimal) {
+	if indexY+1 >= len(bC.data) {
+		bC.belowThreadChunk.setTopRowAnimal(indexX, animal)
+	} else {
+		bC.data[indexY+1][indexX] = animal
+	}
+}
+
+// Getters for 2 rows in data
+func (bC *borderChunk) getTopRowAnimal(indexX int) *swimmingAnimal {
+	return bC.data[0][indexX]
+}
+
+func (bC *borderChunk) getBottomRowAnimal(indexX int) *swimmingAnimal {
+	return bC.data[1][indexX]
 }
 
 // Setters for 2 rows in data
-func (bC *borderChunk) setTopRowAnimal(index int, animal *swimmingAnimal) {
-	bC.data[0][index] = animal
+func (bC *borderChunk) setTopRowAnimal(indexX int, animal *swimmingAnimal) {
+	bC.data[0][indexX] = animal
 }
 
-func (bC *borderChunk) setBottomRowAnimal(index int, animal *swimmingAnimal) {
-	bC.data[1][index] = animal
+func (bC *borderChunk) setBottomRowAnimal(indexX int, animal *swimmingAnimal) {
+	bC.data[1][indexX] = animal
 }
 
 // Used by the thread above the border
@@ -43,32 +115,13 @@ func (bC *borderChunk) processTopRow(checkingShark bool) {
 // Used by the thread below the border
 func (bC *borderChunk) processBottomRow(checkingShark bool) {
 	bC.lock.Lock()
-	for index, animal := range bC.data[1] {
-		if animal != nil {
-			if checkingShark && animal.isShark {
-
-			} else if !checkingShark && !animal.isShark {
-
-			}
-		}
-	}
+	//for index, animal := range bC.data[1] {
+	//	if animal != nil {
+	//		if checkingShark && animal.isShark {
+	//
+	//		} else if !checkingShark && !animal.isShark {
+	//
+	//		}
+	//	}
+	//}
 }
-
-// Runs through a single row and processes all animals signaled
-func processRow(checkingShark bool, data, aboveRow, belowRow []*swimmingAnimal) {
-	for index, animal := range data {
-		if animal != nil {
-			if checkingShark && animal.isShark {
-				leftAnimal := data[getLeftIndex(index, len(data))]
-				rightAnimal := data[getRightIndex(index, len(data))]
-				aboveAnimal := aboveRow[index]
-				bellowAnimal := belowRow[index]
-
-			} else if !checkingShark && !animal.isShark {
-
-			}
-		}
-	}
-}
-
-func createDirectionSlices() {}

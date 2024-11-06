@@ -12,6 +12,14 @@ import (
 	"sync"
 )
 
+// Global variables
+var FishBreed int
+var SharkBreed int
+var Starve int
+var GridSizeX int
+var GridSizeY int
+var CurrentCheckingState = false
+
 // Handles taking in an integer from the user
 func handleInput(inputVariable *int, outputString string) {
 	for {
@@ -32,7 +40,7 @@ func handleInput(inputVariable *int, outputString string) {
 }
 
 // Sets up the world map for assigning parts to threads
-func setUpStartingMap(NumShark, NumFish, FishBreed, SharkBreed, Starve, GridSizeX, GridSizeY int) *[][]*swimmingAnimal {
+func setUpStartingMap(NumShark, NumFish int) *[][]*swimmingAnimal {
 	// Set seed for debugging
 	random := rand.New(rand.NewPCG(42, 1024))
 	totalSize := GridSizeX * GridSizeY
@@ -54,15 +62,15 @@ func setUpStartingMap(NumShark, NumFish, FishBreed, SharkBreed, Starve, GridSize
 
 	// Spawn sharks on grid
 	for index := range NumShark {
-		newShark := newSwimmingAnimal(true, SharkBreed, Starve)
-		posX, posY := indexToPosition(positionsSlice[index], GridSizeX)
+		newShark := newSwimmingAnimal(true, CurrentCheckingState, SharkBreed, Starve)
+		posX, posY := indexToPosition(positionsSlice[index])
 		worldGrid[posY][posX] = newShark
 	}
 
 	// Spawn fish on grid
 	for index := range NumFish {
-		newFish := newSwimmingAnimal(false, FishBreed, 0)
-		posX, posY := indexToPosition(positionsSlice[index+NumShark], GridSizeX)
+		newFish := newSwimmingAnimal(false, CurrentCheckingState, FishBreed, 0)
+		posX, posY := indexToPosition(positionsSlice[index+NumShark])
 		worldGrid[posY][posX] = newFish
 	}
 	fmt.Println(worldGrid[0])
@@ -98,15 +106,8 @@ func doSimulation(tC *threadChunk, threadsWGLock *sync.Mutex, threadsWG, finishe
 
 func main() {
 	// Declare variables
-	//globalCheckingState := false
-
 	var NumShark int
 	var NumFish int
-	var FishBreed int
-	var SharkBreed int
-	var Starve int
-	var GridSizeX int
-	var GridSizeY int
 	var Threads int
 
 	// Take in values for variables
@@ -132,7 +133,7 @@ func main() {
 		return
 	}
 
-	worldGrid := setUpStartingMap(NumShark, NumFish, FishBreed, SharkBreed, Starve, GridSizeX, GridSizeY)
+	worldGrid := setUpStartingMap(NumShark, NumFish)
 
 	// If the X size is bigger than the Y swap them to simplify chunking
 	// Save whether swapped to properly render later
@@ -160,15 +161,15 @@ func main() {
 	var borderChunksSlice []*borderChunk
 	for index := range Threads {
 		tempBorderChunk := newBorderChunk(
-			(*worldGrid)[mod((chunkSizeY*index)-1, len(*worldGrid))], // First row before current threadChunk
-			(*worldGrid)[chunkSizeY*index],                           // Last row after previous threadChunk
-			threadChunksSlice[mod(index-1, len(threadChunksSlice))],  // Previous threadChunk
-			threadChunksSlice[index],                                 // Current threadChunk
+			(*worldGrid)[mod((chunkSizeY*index)-1, GridSizeY)], // First row before current threadChunk
+			(*worldGrid)[chunkSizeY*index],                     // Last row after previous threadChunk
+			threadChunksSlice[mod(index-1, Threads)],           // Previous threadChunk
+			threadChunksSlice[index],                           // Current threadChunk
 		)
 
 		borderChunksSlice = append(borderChunksSlice, tempBorderChunk)
 		// Update reference in thread chunks
-		threadChunksSlice[mod(index-1, len(threadChunksSlice))].belowBorderChunk = tempBorderChunk
+		threadChunksSlice[mod(index-1, Threads)].belowBorderChunk = tempBorderChunk
 		threadChunksSlice[index].aboveBorderChunk = tempBorderChunk
 	}
 	fmt.Println(borderChunksSlice)
