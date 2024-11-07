@@ -7,6 +7,82 @@ package main
 
 import "math/rand/v2"
 
+// Runs through a single row and processes all animals signaled
+func processRow[T dataChunk](checkingShark bool, indexY int, dC *T) {
+	for indexX, animal := range (*dC).getRow(indexY) {
+		// If checking states are the same it means that this animal has been already checked this iteration
+		if animal != nil && animal.checkingState != CurrentCheckingState {
+			// Check sharks
+			if checkingShark && animal.isShark {
+				animal.checkingState = CurrentCheckingState
+				// Get whether fish are nearby and valid movement directions
+				movingToFish, direction := getFishOrFreeSpace((*dC).getLeftAnimal(indexX, indexY), (*dC).getRightAnimal(indexX, indexY), (*dC).getAboveAnimal(indexX, indexY), (*dC).getBelowAnimal(indexX, indexY))
+
+				// Shark eating fish while moving
+				if movingToFish {
+					animal.energy = Starve
+					fishCount.Add(-1)
+				} else {
+					animal.energy -= 1
+					// Shark died
+					if animal.energy == 0 {
+						moveAnimal(nil, nil, indexX, indexY, 0, dC)
+						sharkCount.Add(-1)
+						continue
+					}
+				}
+
+				// Move and reproduce
+				animal.reproductionTime -= 1
+				if animal.reproductionTime == 0 {
+					if direction != 0 {
+						moveAnimal(animal, newSwimmingAnimal(true, CurrentCheckingState, SharkBreed, Starve), indexX, indexY, direction, dC)
+						sharkCount.Add(1)
+					}
+					animal.reproductionTime = SharkBreed
+					continue
+				}
+
+				// Move to square
+				moveAnimal(animal, nil, indexX, indexY, direction, dC)
+			} else if !checkingShark && !animal.isShark {
+				animal.checkingState = CurrentCheckingState
+				// Get move direction
+				direction := getFreeSpace((*dC).getLeftAnimal(indexX, indexY), (*dC).getRightAnimal(indexX, indexY), (*dC).getAboveAnimal(indexX, indexY), (*dC).getBelowAnimal(indexX, indexY))
+
+				// Move and reproduce
+				animal.reproductionTime -= 1
+				if animal.reproductionTime == 0 {
+					if direction != 0 {
+						moveAnimal(animal, newSwimmingAnimal(false, CurrentCheckingState, FishBreed, 0), indexX, indexY, direction, dC)
+						fishCount.Add(1)
+					}
+					animal.reproductionTime = FishBreed
+					continue
+				}
+
+				// Move to square
+				moveAnimal(animal, nil, indexX, indexY, direction, dC)
+			}
+		}
+	}
+}
+
+// Modify moving to and moving from square in dataChunk
+func moveAnimal[T dataChunk](movingToSquare, movingFromSquare *swimmingAnimal, indexX, indexY, direction int, dC *T) {
+	switch direction {
+	case 1:
+		(*dC).setLeftAnimal(indexX, indexY, movingToSquare)
+	case 2:
+		(*dC).setRightAnimal(indexX, indexY, movingToSquare)
+	case 3:
+		(*dC).setAboveAnimal(indexX, indexY, movingToSquare)
+	case 4:
+		(*dC).setBelowAnimal(indexX, indexY, movingToSquare)
+	}
+	(*dC).setAnimal(indexX, indexY, movingFromSquare)
+}
+
 // Gets a list of directions for fish or free spaces
 func getFishOrFreeSpace(leftAnimal, rightAnimal, aboveAnimal, belowAnimal *swimmingAnimal) (bool, int) {
 	movingToFish := false
