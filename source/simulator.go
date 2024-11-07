@@ -8,6 +8,10 @@ package main
 
 import (
 	"fmt"
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/canvas"
+	"image"
 	"math/rand/v2"
 	"sync"
 	"sync/atomic"
@@ -27,6 +31,8 @@ var sharkCount atomic.Int32
 var fishCount atomic.Int32
 var firstThreadChunk *threadChunk
 var iteration = 0
+var rgbaImage *image.RGBA
+var canvasToWrite fyne.CanvasObject
 
 // Handles taking in an integer from the user
 func handleInput(inputVariable *int, outputString string) {
@@ -150,13 +156,13 @@ func main() {
 	fmt.Println("Type in the following variables:")
 	testing := true
 	if testing {
-		NumShark = 2
-		NumFish = 4
+		NumShark = 200
+		NumFish = 400
 		FishBreed = 40
 		SharkBreed = 40
-		Starve = 40
-		GridSizeX = 5
-		GridSizeY = 10
+		Starve = 4000
+		GridSizeX = 1000
+		GridSizeY = 1000
 		Threads = 2
 	} else {
 		handleInput(&NumShark, "Number of sharks: ")
@@ -253,10 +259,25 @@ func main() {
 	// Set first chunk for rendering
 	firstThreadChunk = threadChunksSlice[0]
 
+	// Set up graphical window
+	mainApp := app.New()
+	imageWindow := mainApp.NewWindow("Wa-Tor")
+
+	topLeft := image.Point{}
+	bottomRight := image.Point{X: GridSizeX, Y: GridSizeY}
+
+	rgbaImage = image.NewRGBA(image.Rectangle{Min: topLeft, Max: bottomRight})
+	canvasToWrite = canvas.NewRasterFromImage(rgbaImage)
+	imageWindow.SetContent(canvasToWrite)
+	imageWindow.Resize(fyne.NewSize(float32(GridSizeX), float32(GridSizeY)))
+
 	// Create threads
 	for index := range Threads {
 		go doSimulation(threadChunksSlice[index], &threadCount, sharkChan, fishChan, &lock, &finishedWG)
 	}
+
+	imageWindow.ShowAndRun()
+	fmt.Println("Window")
 
 	finishedWG.Wait()
 	fmt.Println("Simulation done.")

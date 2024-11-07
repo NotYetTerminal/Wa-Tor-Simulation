@@ -6,36 +6,34 @@
 package main
 
 import (
-	"fmt"
+	"fyne.io/fyne/v2/canvas"
 	"image/color"
+	"time"
 )
 
 // Updates the graphical screen
 func updateScreen(tC *threadChunk) {
 	currentTC := tC
-	var allData [][]color.RGBA
+	var absoluteY int
 	for range Threads {
 		// Thread data
-		for _, row := range currentTC.data {
-			var rowColourSlice []color.RGBA
-			for _, animal := range row {
-				rowColourSlice = append(rowColourSlice, convertAnimalToColour(animal))
+		for indexY, row := range currentTC.data {
+			for indexX, animal := range row {
+				rgbaImage.Set(indexX, absoluteY+indexY, convertAnimalToColour(animal))
 			}
-			allData = append(allData, rowColourSlice)
 		}
+		absoluteY += len(currentTC.data)
 		// Border data
-		for _, row := range currentTC.belowBorderChunk.data {
-			var rowColourSlice []color.RGBA
-			for _, animal := range row {
-				rowColourSlice = append(rowColourSlice, convertAnimalToColour(animal))
+		for indexY, row := range currentTC.belowBorderChunk.data {
+			for indexX, animal := range row {
+				rgbaImage.Set(indexX, absoluteY+indexY, convertAnimalToColour(animal))
 			}
-			allData = append(allData, rowColourSlice)
 		}
+		absoluteY += len(currentTC.belowBorderChunk.data)
 		currentTC = currentTC.belowBorderChunk.belowThreadChunk
 	}
-	for _, colour := range allData {
-		fmt.Println(colour)
-	}
+	canvas.Refresh(canvasToWrite)
+	time.Sleep(time.Duration(1) * time.Millisecond)
 }
 
 // Converts swimmingAnimal to pixel colours
