@@ -25,6 +25,7 @@ var CurrentCheckingState = false
 // Atomic shared variables for threads
 var sharkCount atomic.Int32
 var fishCount atomic.Int32
+var firstThreadChunk *threadChunk
 
 // Handles taking in an integer from the user
 func handleInput(inputVariable *int, outputString string) {
@@ -95,6 +96,10 @@ func doSimulation(tC *threadChunk, threadCount *atomic.Int32, sharkChan, fishCha
 		if threadCount.Load() == int32(Threads) {
 			lock.Unlock()
 			fmt.Println("Shark: ", sharkCount.Load())
+			updateScreen(firstThreadChunk)
+			if CurrentCheckingState {
+				return
+			}
 			for range Threads - 1 {
 				sharkChan <- true
 			}
@@ -118,6 +123,7 @@ func doSimulation(tC *threadChunk, threadCount *atomic.Int32, sharkChan, fishCha
 		if threadCount.Load() == 0 {
 			lock.Unlock()
 			fmt.Println("Fish: ", fishCount.Load())
+			updateScreen(firstThreadChunk)
 			// Change checking state before starting a new iteration
 			CurrentCheckingState = !CurrentCheckingState
 			for range Threads - 1 {
@@ -220,6 +226,9 @@ func main() {
 
 	// Mutex for threadCount
 	lock := sync.Mutex{}
+
+	// Set first chunk for rendering
+	firstThreadChunk = threadChunksSlice[0]
 
 	// Create threads
 	for index := range Threads {
