@@ -149,14 +149,26 @@ func main() {
 
 	// Take in values for variables
 	fmt.Println("Type in the following variables:")
-	handleInput(&NumShark, "Number of sharks: ")
-	handleInput(&NumFish, "Number of fish: ")
-	handleInput(&FishBreed, "Number of time units for fish to reproduce: ")
-	handleInput(&SharkBreed, "Number of time units for shark to reproduce: ")
-	handleInput(&Starve, "Period of time shark can go without food: ")
-	handleInput(&GridSizeX, "Size of world, the X dimension: ")
-	handleInput(&GridSizeY, "Size of world, the Y dimension: ")
-	handleInput(&Threads, "Number of threads to use: ")
+	testing := true
+	if testing {
+		NumShark = 2
+		NumFish = 4
+		FishBreed = 40
+		SharkBreed = 40
+		Starve = 40
+		GridSizeX = 5
+		GridSizeY = 10
+		Threads = 2
+	} else {
+		handleInput(&NumShark, "Number of sharks: ")
+		handleInput(&NumFish, "Number of fish: ")
+		handleInput(&FishBreed, "Number of time units for fish to reproduce: ")
+		handleInput(&SharkBreed, "Number of time units for shark to reproduce: ")
+		handleInput(&Starve, "Period of time shark can go without food: ")
+		handleInput(&GridSizeX, "Size of world, the X dimension: ")
+		handleInput(&GridSizeY, "Size of world, the Y dimension: ")
+		handleInput(&Threads, "Number of threads to use: ")
+	}
 
 	// Cannot use any threads, terminate
 	if Threads == 0 {

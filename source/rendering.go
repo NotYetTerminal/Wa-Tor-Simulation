@@ -46,7 +46,7 @@ func convertAnimalToColour(animal *swimmingAnimal) color.RGBA {
 		return color.RGBA{A: 255} // Black
 	} else if animal.isShark {
 		return color.RGBA{R: 255, A: 255} // Red
-	} else if animal.isShark {
+	} else if !animal.isShark {
 		return color.RGBA{B: 255, A: 255} // Blue
 	} else {
 		return color.RGBA{A: 255} // Black
