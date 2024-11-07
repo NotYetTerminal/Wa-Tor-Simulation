@@ -140,11 +140,13 @@ func (bC *borderChunk) processBorderRow(checkingShark bool, indexY int) {
 				// Shark eating fish while moving
 				if movingToFish {
 					animal.energy = Starve
+					fishCount.Add(-1)
 				} else {
 					animal.energy -= 1
 					// Shark died
 					if animal.energy == 0 {
 						bC.moveAnimal(nil, nil, indexX, indexY, 0)
+						sharkCount.Add(-1)
 						continue
 					}
 				}
@@ -152,7 +154,10 @@ func (bC *borderChunk) processBorderRow(checkingShark bool, indexY int) {
 				// Move and reproduce
 				animal.reproductionTime -= 1
 				if animal.reproductionTime == 0 {
-					bC.moveAnimal(animal, newSwimmingAnimal(true, CurrentCheckingState, SharkBreed, Starve), indexX, indexY, direction)
+					if direction != 0 {
+						bC.moveAnimal(animal, newSwimmingAnimal(true, CurrentCheckingState, SharkBreed, Starve), indexX, indexY, direction)
+						sharkCount.Add(1)
+					}
 					animal.reproductionTime = SharkBreed
 					continue
 				}
@@ -167,7 +172,10 @@ func (bC *borderChunk) processBorderRow(checkingShark bool, indexY int) {
 				// Move and reproduce
 				animal.reproductionTime -= 1
 				if animal.reproductionTime == 0 {
-					bC.moveAnimal(animal, newSwimmingAnimal(false, CurrentCheckingState, FishBreed, 0), indexX, indexY, direction)
+					if direction != 0 {
+						bC.moveAnimal(animal, newSwimmingAnimal(false, CurrentCheckingState, FishBreed, 0), indexX, indexY, direction)
+						fishCount.Add(1)
+					}
 					animal.reproductionTime = FishBreed
 					continue
 				}
