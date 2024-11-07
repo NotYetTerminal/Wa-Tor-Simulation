@@ -1,3 +1,8 @@
+// Author: Gábor Major (c00271548@setu.ie)
+// Date creation: 2024-11-07
+// Description:
+// File for storing code related to an interface for the threadChunk and borderChunk structs
+
 package main
 
 type dataChunk interface {
