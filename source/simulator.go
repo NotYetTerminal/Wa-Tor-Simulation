@@ -26,6 +26,7 @@ var CurrentCheckingState = false
 var sharkCount atomic.Int32
 var fishCount atomic.Int32
 var firstThreadChunk *threadChunk
+var iteration = 0
 
 // Handles taking in an integer from the user
 func handleInput(inputVariable *int, outputString string) {
@@ -95,23 +96,14 @@ func doSimulation(tC *threadChunk, threadCount *atomic.Int32, sharkChan, fishCha
 		threadCount.Add(1)
 		if threadCount.Load() == int32(Threads) {
 			lock.Unlock()
-			fmt.Println("Shark: ", sharkCount.Load())
+			fmt.Println("Shark:", sharkCount.Load())
 			updateScreen(firstThreadChunk)
-			if CurrentCheckingState {
-				return
-			}
 			for range Threads - 1 {
 				sharkChan <- true
 			}
 		} else {
 			lock.Unlock()
 			<-sharkChan
-		}
-
-		// Stop on no sharks
-		if sharkCount.Load() == 0 {
-			finishedWG.Done()
-			return
 		}
 
 		// Second run for fish
@@ -122,10 +114,18 @@ func doSimulation(tC *threadChunk, threadCount *atomic.Int32, sharkChan, fishCha
 		threadCount.Add(-1)
 		if threadCount.Load() == 0 {
 			lock.Unlock()
-			fmt.Println("Fish: ", fishCount.Load())
+			fmt.Println("Fish:", fishCount.Load())
 			updateScreen(firstThreadChunk)
+			iteration += 1
 			// Change checking state before starting a new iteration
 			CurrentCheckingState = !CurrentCheckingState
+			// Check for simulation end
+			if sharkCount.Load() == 0 || fishCount.Load() == 0 {
+				fmt.Println("Final iteration:", iteration)
+				iteration = -1
+				finishedWG.Done()
+				return
+			}
 			for range Threads - 1 {
 				fishChan <- true
 			}
@@ -134,9 +134,8 @@ func doSimulation(tC *threadChunk, threadCount *atomic.Int32, sharkChan, fishCha
 			<-fishChan
 		}
 
-		// Stop on no fish
-		if fishCount.Load() == 0 {
-			finishedWG.Done()
+		// Return when simulation ends
+		if iteration == -1 {
 			return
 		}
 	}
@@ -182,8 +181,6 @@ func main() {
 		return
 	}
 
-	worldGrid := setUpStartingMap(NumShark, NumFish)
-
 	// If the X size is bigger than the Y swap them to simplify chunking
 	// Save whether swapped to properly render later
 	swapped := false
@@ -193,16 +190,30 @@ func main() {
 	}
 	fmt.Println(swapped)
 
+	// Must have at least 4 rows
+	if GridSizeY < 4 {
+		fmt.Println("Grid size must be greater than 3.")
+		return
+	}
+
+	worldGrid := setUpStartingMap(NumShark, NumFish)
+
 	// Split world into chunks for threads
 	var threadChunksSlice []*threadChunk
 	chunkSizeY := GridSizeY / Threads
+	// Decrease thread count to create correct chunk size
+	if chunkSizeY < 4 {
+		Threads = GridSizeY / 4
+		chunkSizeY = GridSizeY / Threads
+	}
+
 	// Get equal sized chunks
 	// They will be the (total rows / threads) - 2 sized because of the border chunks
 	for index := range Threads - 1 {
 		threadChunksSlice = append(threadChunksSlice, &threadChunk{data: (*worldGrid)[(chunkSizeY*index)+1 : (chunkSizeY*index)+chunkSizeY-1]})
 	}
 	// Get last one which is a little bigger
-	threadChunksSlice = append(threadChunksSlice, &threadChunk{data: (*worldGrid)[chunkSizeY*(Threads-1):]})
+	threadChunksSlice = append(threadChunksSlice, &threadChunk{data: (*worldGrid)[chunkSizeY*(Threads-1)+1 : len(*worldGrid)-1]})
 	fmt.Println(threadChunksSlice)
 
 	// Create border chunks
@@ -225,7 +236,7 @@ func main() {
 
 	// WaitGroup for running until finished
 	finishedWG := sync.WaitGroup{}
-	finishedWG.Add(Threads)
+	finishedWG.Add(1)
 
 	// Channels for thread synchronisation
 	sharkChan := make(chan bool, Threads)
@@ -249,4 +260,9 @@ func main() {
 
 	finishedWG.Wait()
 	fmt.Println("Simulation done.")
+	if sharkCount.Load() == 0 {
+		fmt.Println("All sharks dead.")
+	} else if fishCount.Load() == 0 {
+		fmt.Println("All fish dead.")
+	}
 }

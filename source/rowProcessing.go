@@ -5,7 +5,9 @@
 
 package main
 
-import "math/rand/v2"
+import (
+	"math/rand/v2"
+)
 
 // Runs through a single row and processes all animals signaled
 func processRow[T dataChunk](checkingShark bool, indexY int, dC *T) {

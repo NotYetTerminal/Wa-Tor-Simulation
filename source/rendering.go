@@ -23,7 +23,6 @@ func updateScreen(tC *threadChunk) {
 			}
 			allData = append(allData, rowColourSlice)
 		}
-		allData = append(allData, []color.RGBA{})
 		// Border data
 		for _, row := range currentTC.belowBorderChunk.data {
 			var rowColourSlice []color.RGBA
@@ -32,7 +31,6 @@ func updateScreen(tC *threadChunk) {
 			}
 			allData = append(allData, rowColourSlice)
 		}
-		allData = append(allData, []color.RGBA{})
 		currentTC = currentTC.belowBorderChunk.belowThreadChunk
 	}
 	for _, colour := range allData {

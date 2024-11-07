@@ -104,8 +104,10 @@ func (tC threadChunk) processAllRows(checkingShark bool) {
 	tC.processTopThreadRow(checkingShark)
 	tC.aboveBorderChunk.unlockBorderChunk()
 
-	// Process middle rows
-	tC.processMiddleThreadRow(checkingShark)
+	if len(tC.data) > 2 {
+		// Process middle rows
+		tC.processMiddleThreadRow(checkingShark)
+	}
 
 	// Process below border top row and bottom thread row
 	tC.belowBorderChunk.lockBorderChunk()
@@ -121,8 +123,8 @@ func (tC threadChunk) processTopThreadRow(checkingShark bool) {
 
 // Processes the middle rows
 func (tC threadChunk) processMiddleThreadRow(checkingShark bool) {
-	for indexY := range tC.data[1 : len(tC.data)-1] {
-		processRow(checkingShark, indexY, &tC)
+	for indexY := range len(tC.data) - 2 {
+		processRow(checkingShark, indexY+1, &tC)
 	}
 }
 
