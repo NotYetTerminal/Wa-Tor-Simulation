@@ -121,17 +121,24 @@ func doSimulation(tC *threadChunk, threadCount *atomic.Int32, sharkChan, fishCha
 		if threadCount.Load() == 0 {
 			lock.Unlock()
 			fmt.Println("Fish:", fishCount.Load())
+			fmt.Println("Final iteration:", iteration)
 			updateScreen(firstThreadChunk)
 			iteration += 1
+
 			// Change checking state before starting a new iteration
 			CurrentCheckingState = !CurrentCheckingState
+
 			// Check for simulation end
 			if sharkCount.Load() == 0 || fishCount.Load() == 0 {
 				fmt.Println("Final iteration:", iteration)
+				// Signal simulation ended
 				iteration = -1
-				finishedWG.Done()
-				return
+			} else {
+				// Zero counts
+				sharkCount.And(0)
+				fishCount.And(0)
 			}
+
 			for range Threads - 1 {
 				fishChan <- true
 			}
@@ -142,6 +149,7 @@ func doSimulation(tC *threadChunk, threadCount *atomic.Int32, sharkChan, fishCha
 
 		// Return when simulation ends
 		if iteration == -1 {
+			finishedWG.Done()
 			return
 		}
 	}
@@ -158,11 +166,11 @@ func main() {
 	if testing {
 		NumShark = 200
 		NumFish = 400
-		FishBreed = 40
-		SharkBreed = 40
-		Starve = 4000
-		GridSizeX = 1000
-		GridSizeY = 1000
+		FishBreed = 10
+		SharkBreed = 60
+		Starve = 40
+		GridSizeX = 100
+		GridSizeY = 100
 		Threads = 2
 	} else {
 		handleInput(&NumShark, "Number of sharks: ")
@@ -242,15 +250,13 @@ func main() {
 
 	// WaitGroup for running until finished
 	finishedWG := sync.WaitGroup{}
-	finishedWG.Add(1)
+	finishedWG.Add(Threads)
 
 	// Channels for thread synchronisation
 	sharkChan := make(chan bool, Threads)
 	fishChan := make(chan bool, Threads)
 
 	// Set up atomic variables
-	sharkCount.Add(int32(NumShark))
-	fishCount.Add(int32(NumFish))
 	var threadCount atomic.Int32
 
 	// Mutex for threadCount
