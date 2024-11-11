@@ -15,9 +15,20 @@ import (
 	"math/rand/v2"
 	"sync"
 	"sync/atomic"
+	"time"
 )
 
-// Global variables
+// Global and Atomic shared variables for threads
+var sharkCount atomic.Int32
+var fishCount atomic.Int32
+var firstThreadChunk *threadChunk
+var iteration = 0
+var rgbaImage *image.RGBA
+var canvasToWrite fyne.CanvasObject
+var graphical = true
+var maxIteration = -1
+var endTime int64
+
 var FishBreed int
 var SharkBreed int
 var Starve int
@@ -25,14 +36,6 @@ var GridSizeX int
 var GridSizeY int
 var Threads int
 var CurrentCheckingState = false
-
-// Atomic shared variables for threads
-var sharkCount atomic.Int32
-var fishCount atomic.Int32
-var firstThreadChunk *threadChunk
-var iteration = 0
-var rgbaImage *image.RGBA
-var canvasToWrite fyne.CanvasObject
 
 // Handles taking in an integer from the user
 func handleInput(inputVariable *int, outputString string) {
@@ -87,7 +90,6 @@ func setUpStartingMap(NumShark, NumFish int) *[][]*swimmingAnimal {
 		posX, posY := indexToPosition(positionsSlice[index+NumShark])
 		worldGrid[posY][posX] = newFish
 	}
-	fmt.Println(worldGrid[0])
 	return &worldGrid
 }
 
@@ -102,8 +104,10 @@ func doSimulation(tC *threadChunk, threadCount *atomic.Int32, sharkChan, fishCha
 		threadCount.Add(1)
 		if threadCount.Load() == int32(Threads) {
 			lock.Unlock()
-			fmt.Println("Shark:", sharkCount.Load())
-			updateScreen(firstThreadChunk)
+			if graphical {
+				fmt.Println("Shark:", sharkCount.Load())
+				updateScreen(firstThreadChunk)
+			}
 			for range Threads - 1 {
 				sharkChan <- true
 			}
@@ -120,16 +124,19 @@ func doSimulation(tC *threadChunk, threadCount *atomic.Int32, sharkChan, fishCha
 		threadCount.Add(-1)
 		if threadCount.Load() == 0 {
 			lock.Unlock()
-			fmt.Println("Fish:", fishCount.Load())
-			fmt.Println("Final iteration:", iteration)
-			updateScreen(firstThreadChunk)
+			if graphical {
+				fmt.Println("Fish:", fishCount.Load())
+				fmt.Println("Iteration:", iteration)
+				updateScreen(firstThreadChunk)
+			}
 			iteration += 1
 
 			// Change checking state before starting a new iteration
 			CurrentCheckingState = !CurrentCheckingState
 
 			// Check for simulation end
-			if sharkCount.Load() == 0 || fishCount.Load() == 0 {
+			if sharkCount.Load() == 0 || fishCount.Load() == 0 || iteration == maxIteration {
+				endTime = time.Now().UnixMilli()
 				fmt.Println("Final iteration:", iteration)
 				// Signal simulation ended
 				iteration = -1
@@ -156,14 +163,16 @@ func doSimulation(tC *threadChunk, threadCount *atomic.Int32, sharkChan, fishCha
 }
 
 func main() {
+	fmt.Println("Welcome to Wa-Tor simulation.")
+
 	// Declare variables
 	var NumShark int
 	var NumFish int
 
 	// Take in values for variables
-	fmt.Println("Type in the following variables:")
-	testing := true
-	if testing {
+	developerMode := true
+	if developerMode {
+		// Preset variables
 		NumShark = 200
 		NumFish = 400
 		FishBreed = 10
@@ -172,7 +181,14 @@ func main() {
 		GridSizeX = 100
 		GridSizeY = 100
 		Threads = 2
+
+		// Controls whether to show screen and statistical info
+		graphical = false
+
+		// Stops the simulation at the set iteration
+		maxIteration = 1000
 	} else {
+		fmt.Println("Type in the following variables:")
 		handleInput(&NumShark, "Number of sharks: ")
 		handleInput(&NumFish, "Number of fish: ")
 		handleInput(&FishBreed, "Number of time units for fish to reproduce: ")
@@ -182,6 +198,9 @@ func main() {
 		handleInput(&GridSizeY, "Size of world, the Y dimension: ")
 		handleInput(&Threads, "Number of threads to use: ")
 	}
+
+	// Start timer
+	startTime := time.Now().UnixMilli()
 
 	// Cannot use any threads, terminate
 	if Threads == 0 {
@@ -228,7 +247,6 @@ func main() {
 	}
 	// Get last one which is a little bigger
 	threadChunksSlice = append(threadChunksSlice, &threadChunk{data: (*worldGrid)[chunkSizeY*(Threads-1)+1 : len(*worldGrid)-1]})
-	fmt.Println(threadChunksSlice)
 
 	// Create border chunks
 	// And connect chunks together
@@ -245,8 +263,6 @@ func main() {
 		threadChunksSlice[mod(index-1, Threads)].belowBorderChunk = tempBorderChunk
 		threadChunksSlice[index].aboveBorderChunk = tempBorderChunk
 	}
-	fmt.Println(borderChunksSlice)
-	fmt.Println(borderChunksSlice[0].data)
 
 	// WaitGroup for running until finished
 	finishedWG := sync.WaitGroup{}
@@ -268,22 +284,24 @@ func main() {
 	// Set up graphical window
 	mainApp := app.New()
 	imageWindow := mainApp.NewWindow("Wa-Tor")
+	if graphical {
+		topLeft := image.Point{}
+		bottomRight := image.Point{X: GridSizeX, Y: GridSizeY}
 
-	topLeft := image.Point{}
-	bottomRight := image.Point{X: GridSizeX, Y: GridSizeY}
-
-	rgbaImage = image.NewRGBA(image.Rectangle{Min: topLeft, Max: bottomRight})
-	canvasToWrite = canvas.NewRasterFromImage(rgbaImage)
-	imageWindow.SetContent(canvasToWrite)
-	imageWindow.Resize(fyne.NewSize(float32(GridSizeX), float32(GridSizeY)))
+		rgbaImage = image.NewRGBA(image.Rectangle{Min: topLeft, Max: bottomRight})
+		canvasToWrite = canvas.NewRasterFromImage(rgbaImage)
+		imageWindow.SetContent(canvasToWrite)
+		imageWindow.Resize(fyne.NewSize(float32(GridSizeX), float32(GridSizeY)))
+	}
 
 	// Create threads
 	for index := range Threads {
 		go doSimulation(threadChunksSlice[index], &threadCount, sharkChan, fishChan, &lock, &finishedWG)
 	}
 
-	imageWindow.ShowAndRun()
-	fmt.Println("Window")
+	if graphical {
+		imageWindow.ShowAndRun()
+	}
 
 	finishedWG.Wait()
 	fmt.Println("Simulation done.")
@@ -292,4 +310,5 @@ func main() {
 	} else if fishCount.Load() == 0 {
 		fmt.Println("All fish dead.")
 	}
+	fmt.Println("Total time in milliseconds:", endTime-startTime)
 }
