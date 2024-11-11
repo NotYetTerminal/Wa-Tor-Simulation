@@ -11,6 +11,7 @@ import (
 
 // Runs through a single row and processes all animals signaled
 func processRow[T dataChunk](checkingShark bool, indexY int, dC *T) {
+	animalCount := 0
 	for indexX, animal := range (*dC).getRow(indexY) {
 		// If checking states are the same it means that this animal has been already checked this iteration
 		if animal != nil && animal.checkingState == CurrentCheckingState {
@@ -32,7 +33,7 @@ func processRow[T dataChunk](checkingShark bool, indexY int, dC *T) {
 					}
 				}
 				// Count processed shark
-				sharkCount.Add(1)
+				animalCount += 1
 
 				// Move and reproduce
 				animal.reproductionTime -= 1
@@ -52,7 +53,7 @@ func processRow[T dataChunk](checkingShark bool, indexY int, dC *T) {
 				direction := getFreeSpace((*dC).getLeftAnimal(indexX, indexY), (*dC).getRightAnimal(indexX, indexY), (*dC).getAboveAnimal(indexX, indexY), (*dC).getBelowAnimal(indexX, indexY))
 
 				// Count processed fish
-				fishCount.Add(1)
+				animalCount += 1
 
 				// Move and reproduce
 				animal.reproductionTime -= 1
@@ -68,6 +69,13 @@ func processRow[T dataChunk](checkingShark bool, indexY int, dC *T) {
 				moveAnimal(animal, nil, indexX, indexY, direction, dC)
 			}
 		}
+	}
+
+	// Add number of animals checked to global count
+	if checkingShark {
+		sharkCount.Add(int32(animalCount))
+	} else {
+		fishCount.Add(int32(animalCount))
 	}
 }
 
