@@ -165,6 +165,9 @@ func doSimulation(tC *threadChunk, threadCount *atomic.Int32, sharkChan, fishCha
 
 func main() {
 	fmt.Println("Welcome to Wa-Tor simulation.")
+	fmt.Println("Red represents sharks.")
+	fmt.Println("Blue represents fish.")
+	fmt.Println("Black represents empty square.")
 
 	// Declare variables
 	var NumShark int
