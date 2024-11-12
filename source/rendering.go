@@ -14,22 +14,39 @@ import (
 // Updates the graphical screen
 func updateScreen(tC *threadChunk) {
 	currentTC := tC
-	var absoluteY int
+	absoluteValue := 0
 	for range Threads {
-		// Thread data
-		for indexY, row := range currentTC.data {
-			for indexX, animal := range row {
-				rgbaImage.Set(indexX, absoluteY+indexY, convertAnimalToColour(animal))
+		if swapped {
+			// Thread data
+			for indexY, row := range currentTC.data {
+				for indexX, animal := range row {
+					rgbaImage.Set(absoluteValue+indexY, indexX, convertAnimalToColour(animal))
+				}
 			}
-		}
-		absoluteY += len(currentTC.data)
-		// Border data
-		for indexY, row := range currentTC.belowBorderChunk.data {
-			for indexX, animal := range row {
-				rgbaImage.Set(indexX, absoluteY+indexY, convertAnimalToColour(animal))
+			absoluteValue += len(currentTC.data)
+			// Border data
+			for indexY, row := range currentTC.belowBorderChunk.data {
+				for indexX, animal := range row {
+					rgbaImage.Set(absoluteValue+indexY, indexX, convertAnimalToColour(animal))
+				}
 			}
+			absoluteValue += len(currentTC.belowBorderChunk.data)
+		} else {
+			// Thread data
+			for indexY, row := range currentTC.data {
+				for indexX, animal := range row {
+					rgbaImage.Set(indexX, absoluteValue+indexY, convertAnimalToColour(animal))
+				}
+			}
+			absoluteValue += len(currentTC.data)
+			// Border data
+			for indexY, row := range currentTC.belowBorderChunk.data {
+				for indexX, animal := range row {
+					rgbaImage.Set(indexX, absoluteValue+indexY, convertAnimalToColour(animal))
+				}
+			}
+			absoluteValue += len(currentTC.belowBorderChunk.data)
 		}
-		absoluteY += len(currentTC.belowBorderChunk.data)
 		currentTC = currentTC.belowBorderChunk.belowThreadChunk
 	}
 	canvas.Refresh(canvasToWrite)

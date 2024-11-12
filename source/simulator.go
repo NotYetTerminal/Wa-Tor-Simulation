@@ -26,6 +26,7 @@ var iteration = 0
 var rgbaImage *image.RGBA
 var canvasToWrite fyne.CanvasObject
 var graphical = true
+var swapped = false
 var maxIteration = -1
 var endTime int64
 
@@ -58,8 +59,6 @@ func handleInput(inputVariable *int, outputString string) {
 
 // Sets up the world map for assigning parts to threads
 func setUpStartingMap(NumShark, NumFish int) *[][]*swimmingAnimal {
-	// Set seed for debugging
-	random := rand.New(rand.NewPCG(42, 1024))
 	totalSize := GridSizeX * GridSizeY
 
 	// Create grid
@@ -73,7 +72,7 @@ func setUpStartingMap(NumShark, NumFish int) *[][]*swimmingAnimal {
 	for index := range totalSize {
 		positionsSlice[index] = index
 	}
-	random.Shuffle(totalSize, func(i, j int) {
+	rand.Shuffle(totalSize, func(i, j int) {
 		positionsSlice[i], positionsSlice[j] = positionsSlice[j], positionsSlice[i]
 	})
 
@@ -135,9 +134,11 @@ func doSimulation(tC *threadChunk, threadCount *atomic.Int32, sharkChan, fishCha
 			CurrentCheckingState = !CurrentCheckingState
 
 			// Check for simulation end
-			if sharkCount.Load() == 0 || fishCount.Load() == 0 || iteration == maxIteration {
+			if sharkCount.Load() == 0 || fishCount.Load() == 0 || iteration == maxIteration+1 {
 				endTime = time.Now().UnixMilli()
-				fmt.Println("Final iteration:", iteration)
+				if iteration != maxIteration+1 {
+					fmt.Println("Final iteration:", iteration)
+				}
 				// Signal simulation ended
 				iteration = -1
 			} else {
@@ -216,12 +217,10 @@ func main() {
 
 	// If the X size is bigger than the Y swap them to simplify chunking
 	// Save whether swapped to properly render later
-	swapped := false
 	if GridSizeX > GridSizeY {
 		GridSizeY, GridSizeX = GridSizeX, GridSizeY
 		swapped = true
 	}
-	fmt.Println(swapped)
 
 	// Must have at least 4 rows
 	if GridSizeY < 4 {
@@ -286,12 +285,21 @@ func main() {
 	imageWindow := mainApp.NewWindow("Wa-Tor")
 	if graphical {
 		topLeft := image.Point{}
-		bottomRight := image.Point{X: GridSizeX, Y: GridSizeY}
+		var bottomRight image.Point
+		if swapped {
+			bottomRight = image.Point{X: GridSizeY, Y: GridSizeX}
+		} else {
+			bottomRight = image.Point{X: GridSizeX, Y: GridSizeY}
+		}
 
 		rgbaImage = image.NewRGBA(image.Rectangle{Min: topLeft, Max: bottomRight})
 		canvasToWrite = canvas.NewRasterFromImage(rgbaImage)
 		imageWindow.SetContent(canvasToWrite)
-		imageWindow.Resize(fyne.NewSize(float32(GridSizeX), float32(GridSizeY)))
+		if swapped {
+			imageWindow.Resize(fyne.NewSize(float32(GridSizeY), float32(GridSizeX)))
+		} else {
+			imageWindow.Resize(fyne.NewSize(float32(GridSizeX), float32(GridSizeY)))
+		}
 	}
 
 	// Create threads
@@ -310,5 +318,5 @@ func main() {
 	} else if fishCount.Load() == 0 {
 		fmt.Println("All fish dead.")
 	}
-	fmt.Println("Total time in milliseconds:", endTime-startTime)
+	fmt.Println("Total time in seconds:", float32(endTime-startTime)/1000)
 }
