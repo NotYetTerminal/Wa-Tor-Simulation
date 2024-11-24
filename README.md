@@ -6,11 +6,11 @@ A GO simulation of the Wa-Tor world.
 
 To run the simulation type in the following to a terminal in the **source** directory:
 
-`go run .`
+`make run`
 
-To build and run executable:
+To build and run Linux executable:
 
-`go build . && ./source`
+`make build && ./bin/main`
 
 To view documentation do one of the following steps:
 
