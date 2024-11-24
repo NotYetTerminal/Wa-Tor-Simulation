@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: image/png</title>
+<link href="../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>png</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../index.html#pkg-image/png">image/png</a><i> (on <a href="https://pkg.go.dev/image/png" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../dep/image/png.html">10 packages</a>, and imported by <a href="../../dep/image/png.html#imported-by">7 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../src/image/png/paeth.go.html">paeth.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-1-fold-content"><label for="file-1-fold-content">  <a href="../../src/image/png/reader.go.html#doc">d</a> <a href="../../src/image/png/reader.go.html">reader.go</a></label><span id='file-1-fold-content-items' class="fold-items">
+<span class="md-text">		Package png implements a PNG image decoder and encoder.
+		
+		The PNG specification is at https://www.w3.org/TR/PNG/.</span>
+</span>
+	<span class="nodocs">    <a href="../../src/image/png/writer.go.html">writer.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 10, in which 6 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-CompressionLevel" data-popularity="50">	<input type='checkbox' class="fold" id="CompressionLevel-fold-content"><label for="CompressionLevel-fold-content"> type <a href="../../src/image/png/writer.go.html#line-55">CompressionLevel</a> <a href="../builtin.html#name-int">int</a> <i>(basic type)</i></label><span id='CompressionLevel-fold-content-docs' class="fold-docs">
+<span class="md-text">		CompressionLevel indicates the compression level.</span>
+
+		<input type='checkbox' class="fold" id="CompressionLevel-fold-params"><label for="CompressionLevel-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='CompressionLevel-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="CompressionLevel-showhide-outputofs"><i><label for="CompressionLevel-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="CompressionLevel-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-levelToZlib">levelToZlib</a>(l <b>CompressionLevel</b>) <a href="../builtin.html#name-int">int</a></i></span></span>
+		<input type='checkbox' class="fold" id="CompressionLevel-fold-values"><label for="CompressionLevel-fold-values">As Types Of (<i>total 4, all are exported</i>)</label><span id='CompressionLevel-fold-values-items' class="fold-items"><span>
+			const <a href="#name-BestCompression">BestCompression</a></span><span>
+			const <a href="#name-BestSpeed">BestSpeed</a></span><span>
+			const <a href="#name-DefaultCompression">DefaultCompression</a></span><span>
+			const <a href="#name-NoCompression">NoCompression</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Encoder" data-popularity="50">	<input type='checkbox' class="fold" id="Encoder-fold-content"><label for="Encoder-fold-content"> type <a href="../../src/image/png/writer.go.html#line-19">Encoder</a> <i>(struct)</i></label><span id='Encoder-fold-content-docs' class="fold-docs">
+<span class="md-text">		Encoder configures encoding PNG images.</span>
+
+		<input type='checkbox' class="fold" id="Encoder-fold-fields"><label for="Encoder-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='Encoder-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Encoder-fold-field-BufferPool"><label for="Encoder-fold-field-BufferPool"><a href="../../src/image/png/writer.go.html#line-24">BufferPool</a> <i><a href="#name-EncoderBufferPool">EncoderBufferPool</a></i></label><span id='Encoder-fold-field-BufferPool-docs' class="fold-docs">
+<span class="md-text">				BufferPool optionally specifies a buffer pool to get temporary
+				EncoderBuffers when encoding an image.</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-20">CompressionLevel</a> <i><a href="#name-CompressionLevel">CompressionLevel</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Encoder-fold-methods"><label for="Encoder-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Encoder-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Encoder-fold-method-Encode"><label for="Encoder-fold-method-Encode">(*Encoder) <a href="../../src/image/png/writer.go.html#line-590">Encode</a>(w <a href="../io.html">io</a>.<a href="../io.html#name-Writer">Writer</a>, m <a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>) <a href="../builtin.html#name-error">error</a></label><span id='Encoder-fold-method-Encode-docs' class="fold-docs">
+<span class="md-text">				Encode writes the Image m to w in PNG format.</span>
+</span></span></span>
+
+</span></div><div class="anchor type-res" id="name-EncoderBuffer" data-popularity="110">	<input type='checkbox' class="fold" id="EncoderBuffer-fold-content"><label for="EncoderBuffer-fold-content"> type <a href="../../src/image/png/writer.go.html#line-36">EncoderBuffer</a> <a href="#name-encoder">encoder</a> <i>(struct)</i></label><span id='EncoderBuffer-fold-content-docs' class="fold-docs">
+<span class="md-text">		EncoderBuffer holds the buffers used for encoding PNG images.</span>
+
+		<input type='checkbox' class="fold" id="EncoderBuffer-fold-fields"><label for="EncoderBuffer-fold-fields">Fields (<i>total 13, none are exported</i>)</label><span id='EncoderBuffer-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="EncoderBuffer-showhide-fields"><i><label for="EncoderBuffer-showhide-fields" class="show-inline">/* 13 unexporteds ... */</label><label for="EncoderBuffer-showhide-fields" class="hide-inline">/* 13 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-51">bw</a> <i>*<a href="../bufio.html">bufio</a>.<a href="../bufio.html#name-Writer">Writer</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-42">cb</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-47">cr</a> <i>[5][]<a href="../builtin.html#name-uint8">uint8</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-39">enc</a> <i>*<a href="#name-Encoder">Encoder</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-43">err</a> <i><a href="../builtin.html#name-error">error</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-45">footer</a> <i>[4]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-44">header</a> <i>[8]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-41">m</a> <i><a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-48">pr</a> <i>[]<a href="../builtin.html#name-uint8">uint8</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-46">tmp</a> <i>[1024]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-40">w</a> <i><a href="../io.html">io</a>.<a href="../io.html#name-Writer">Writer</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-49">zw</a> <i>*<a href="../compress/zlib.html">zlib</a>.<a href="../compress/zlib.html#name-Writer">Writer</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-50">zwLevel</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="EncoderBuffer-fold-results"><label for="EncoderBuffer-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='EncoderBuffer-fold-results-items' class="fold-items"><span>
+			func <a href="#name-EncoderBufferPool">EncoderBufferPool</a>.<a href="../../src/image/png/writer.go.html#line-31">Get</a>() *<b>EncoderBuffer</b></span></span>
+		<input type='checkbox' class="fold" id="EncoderBuffer-fold-params"><label for="EncoderBuffer-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='EncoderBuffer-fold-params-items' class="fold-items"><span>
+			func <a href="#name-EncoderBufferPool">EncoderBufferPool</a>.<a href="../../src/image/png/writer.go.html#line-32">Put</a>(*<b>EncoderBuffer</b>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-EncoderBufferPool" data-popularity="100">	<input type='checkbox' class="fold" id="EncoderBufferPool-fold-content"><label for="EncoderBufferPool-fold-content"> type <a href="../../src/image/png/writer.go.html#line-30">EncoderBufferPool</a> <b><i>(interface)</i></b></label><span id='EncoderBufferPool-fold-content-docs' class="fold-docs">
+<span class="md-text">		EncoderBufferPool is an interface for getting and returning temporary
+		instances of the [EncoderBuffer] struct. This can be used to reuse buffers
+		when encoding multiple images.</span>
+
+		<input type='checkbox' class="fold" id="EncoderBufferPool-fold-methods"><label for="EncoderBufferPool-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='EncoderBufferPool-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( EncoderBufferPool) <a href="../../src/image/png/writer.go.html#line-31">Get</a>() *<a href="#name-EncoderBuffer">EncoderBuffer</a></span></span><span>
+			<span class="nodocs">( EncoderBufferPool) <a href="../../src/image/png/writer.go.html#line-32">Put</a>(*<a href="#name-EncoderBuffer">EncoderBuffer</a>)</span></span></span>
+
+</span></div><div class="anchor type-res" id="name-FormatError" data-popularity="155">	<input type='checkbox' class="fold" id="FormatError-fold-content"><label for="FormatError-fold-content"> type <a href="../../src/image/png/reader.go.html#line-128">FormatError</a> <a href="../builtin.html#name-string">string</a> <i>(basic type)</i></label><span id='FormatError-fold-content-docs' class="fold-docs">
+<span class="md-text">		A FormatError reports that the input is not a valid PNG.</span>
+
+		<input type='checkbox' class="fold" id="FormatError-fold-methods"><label for="FormatError-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='FormatError-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( FormatError) <a href="../../src/image/png/reader.go.html#line-130">Error</a>() <a href="../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="FormatError-fold-impls"><label for="FormatError-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='FormatError-fold-impls-items' class="fold-items"><span>
+			 FormatError : <a href="../builtin.html#name-error">error</a></span><span>
+			 FormatError : github.com/fredbi/uri.<a href="../github.com/fredbi/uri.html#name-Error">Error</a></span></span>
+		<input type='checkbox' class="fold" id="FormatError-fold-values"><label for="FormatError-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='FormatError-fold-values-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="FormatError-showhide-values"><i><label for="FormatError-showhide-values" class="show-inline">/* one unexported ... */</label><label for="FormatError-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var <a href="#name-chunkOrderError">chunkOrderError</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-UnsupportedError" data-popularity="150">	<input type='checkbox' class="fold" id="UnsupportedError-fold-content"><label for="UnsupportedError-fold-content"> type <a href="../../src/image/png/reader.go.html#line-135">UnsupportedError</a> <a href="../builtin.html#name-string">string</a> <i>(basic type)</i></label><span id='UnsupportedError-fold-content-docs' class="fold-docs">
+<span class="md-text">		An UnsupportedError reports that the input uses a valid but unimplemented PNG feature.</span>
+
+		<input type='checkbox' class="fold" id="UnsupportedError-fold-methods"><label for="UnsupportedError-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='UnsupportedError-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( UnsupportedError) <a href="../../src/image/png/reader.go.html#line-137">Error</a>() <a href="../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="UnsupportedError-fold-impls"><label for="UnsupportedError-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='UnsupportedError-fold-impls-items' class="fold-items"><span>
+			 UnsupportedError : <a href="../builtin.html#name-error">error</a></span><span>
+			 UnsupportedError : github.com/fredbi/uri.<a href="../github.com/fredbi/uri.html#name-Error">Error</a></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-decoder" data-popularity="650">	<input type='checkbox' class="fold" id="decoder-fold-content"><label for="decoder-fold-content"> type <a href="../../src/image/png/reader.go.html#line-108">decoder</a> <i>(struct)</i></label><span id='decoder-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="decoder-fold-fields"><label for="decoder-fold-fields">Fields (<i>total 14, none are exported</i>)</label><span id='decoder-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="decoder-showhide-fields"><i><label for="decoder-showhide-fields" class="show-inline">/* 14 unexporteds ... */</label><label for="decoder-showhide-fields" class="hide-inline">/* 14 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-115">cb</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-111">crc</a> <i><a href="../hash.html">hash</a>.<a href="../hash.html#name-Hash32">Hash32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-113">depth</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-112">height</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-117">idatLength</a> <i><a href="../builtin.html#name-uint32">uint32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-110">img</a> <i><a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-119">interlace</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-114">palette</a> <i><a href="color.html">color</a>.<a href="color.html#name-Palette">Palette</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-109">r</a> <i><a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-116">stage</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-118">tmp</a> <i>[768]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-124">transparent</a> <i>[6]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-field-useTransparent"><label for="decoder-fold-field-useTransparent"><a href="../../src/image/png/reader.go.html#line-123">useTransparent</a> <i><a href="../builtin.html#name-bool">bool</a></i></label><span id='decoder-fold-field-useTransparent-docs' class="fold-docs">
+<span class="md-text">				useTransparent and transparent are used for grayscale and truecolor
+				transparency, as opposed to palette transparency.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-112">width</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="decoder-fold-methods"><label for="decoder-fold-methods">Methods (<i>total 12, in which 1 is exported</i>)</label><span id='decoder-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="decoder-fold-method-Read"><label for="decoder-fold-method-Read">(*decoder) <a href="../../src/image/png/reader.go.html#line-332">Read</a>(p []<a href="../builtin.html#name-byte">byte</a>) (<a href="../builtin.html#name-int">int</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='decoder-fold-method-Read-docs' class="fold-docs">
+<span class="md-text">				Read presents one or more IDAT chunks as one continuous stream (minus the
+				intermediate chunk headers and footers). If the PNG data looked like:
+				
+					... len0 IDAT xxx crc0 len1 IDAT yy crc1 len2 IEND crc2
+				
+				then this reader presents xxxyy. For well-formed PNG data, the decoder state
+				immediately before the first Read call is that d.r is positioned between the
+				first IDAT and xxx, and the decoder state immediately after the last Read
+				call is that d.r is positioned between yy and crc1.</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="decoder-showhide-methods"><i><label for="decoder-showhide-methods" class="show-inline">/* 11 unexporteds ... */</label><label for="decoder-showhide-methods" class="hide-inline">/* 11 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/image/png/reader.go.html#line-956">checkHeader</a>() <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-method-decode"><label for="decoder-fold-method-decode">(*decoder) <a href="../../src/image/png/reader.go.html#line-363">decode</a>() (<a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='decoder-fold-method-decode-docs' class="fold-docs">
+<span class="md-text">				decode decodes the IDAT data into an image.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-method-mergePassInto"><label for="decoder-fold-method-mergePassInto">(*decoder) <a href="../../src/image/png/reader.go.html#line-788">mergePassInto</a>(dst <a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>, src <a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>, pass <a href="../builtin.html#name-int">int</a>)</label><span id='decoder-fold-method-mergePassInto-docs' class="fold-docs">
+<span class="md-text">				mergePassInto merges a single pass into a full sized image.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/image/png/reader.go.html#line-870">parseChunk</a>(configOnly <a href="../builtin.html#name-bool">bool</a>) <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/image/png/reader.go.html#line-854">parseIDAT</a>(length <a href="../builtin.html#name-uint32">uint32</a>) (err <a href="../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/image/png/reader.go.html#line-863">parseIEND</a>(length <a href="../builtin.html#name-uint32">uint32</a>) <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/image/png/reader.go.html#line-139">parseIHDR</a>(length <a href="../builtin.html#name-uint32">uint32</a>) <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/image/png/reader.go.html#line-229">parsePLTE</a>(length <a href="../builtin.html#name-uint32">uint32</a>) <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/image/png/reader.go.html#line-263">parsetRNS</a>(length <a href="../builtin.html#name-uint32">uint32</a>) <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-method-readImagePass"><label for="decoder-fold-method-readImagePass">(*decoder) <a href="../../src/image/png/reader.go.html#line-411">readImagePass</a>(r <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>, pass <a href="../builtin.html#name-int">int</a>, allocateOnly <a href="../builtin.html#name-bool">bool</a>) (<a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='decoder-fold-method-readImagePass-docs' class="fold-docs">
+<span class="md-text">				readImagePass reads a single image pass, sized according to the pass number.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/image/png/reader.go.html#line-946">verifyChecksum</a>() <a href="../builtin.html#name-error">error</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="decoder-fold-impls"><label for="decoder-fold-impls">Implements (<i>at least one exported</i>)</label><span id='decoder-fold-impls-items' class="fold-items"><span>
+			*decoder : io.<a href="../io.html#name-Reader">Reader</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-encoder" data-popularity="500">	<input type='checkbox' class="fold" id="encoder-fold-content"><label for="encoder-fold-content"> type <a href="../../src/image/png/writer.go.html#line-38">encoder</a> <i>(struct)</i></label><span id='encoder-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="encoder-fold-fields"><label for="encoder-fold-fields">Fields (<i>total 13, none are exported</i>)</label><span id='encoder-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="encoder-showhide-fields"><i><label for="encoder-showhide-fields" class="show-inline">/* 13 unexporteds ... */</label><label for="encoder-showhide-fields" class="hide-inline">/* 13 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-51">bw</a> <i>*<a href="../bufio.html">bufio</a>.<a href="../bufio.html#name-Writer">Writer</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-42">cb</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-47">cr</a> <i>[5][]<a href="../builtin.html#name-uint8">uint8</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-39">enc</a> <i>*<a href="#name-Encoder">Encoder</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-43">err</a> <i><a href="../builtin.html#name-error">error</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-45">footer</a> <i>[4]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-44">header</a> <i>[8]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-41">m</a> <i><a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-48">pr</a> <i>[]<a href="../builtin.html#name-uint8">uint8</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-46">tmp</a> <i>[1024]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-40">w</a> <i><a href="../io.html">io</a>.<a href="../io.html#name-Writer">Writer</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-49">zw</a> <i>*<a href="../compress/zlib.html">zlib</a>.<a href="../compress/zlib.html#name-Writer">Writer</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/writer.go.html#line-50">zwLevel</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="encoder-fold-methods"><label for="encoder-fold-methods">Methods (<i>total 7, in which 1 is exported</i>)</label><span id='encoder-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="encoder-fold-method-Write"><label for="encoder-fold-method-Write">(*encoder) <a href="../../src/image/png/writer.go.html#line-197">Write</a>(b []<a href="../builtin.html#name-byte">byte</a>) (<a href="../builtin.html#name-int">int</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='encoder-fold-method-Write-docs' class="fold-docs">
+<span class="md-text">				An encoder is an io.Writer that satisfies writes by writing PNG IDAT chunks,
+				including an 8-byte header and 4-byte CRC checksum per Write call. Such calls
+				should be relatively infrequent, since writeIDATs uses a [bufio.Writer].
+				
+				This method should only be called from writeIDATs (via writeImage).
+				No other code should treat an encoder as an io.Writer.</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="encoder-showhide-methods"><i><label for="encoder-showhide-methods" class="show-inline">/* 6 unexporteds ... */</label><label for="encoder-showhide-methods" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/image/png/writer.go.html#line-96">writeChunk</a>(b []<a href="../builtin.html#name-byte">byte</a>, name <a href="../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="encoder-fold-method-writeIDATs"><label for="encoder-fold-method-writeIDATs">(*encoder) <a href="../../src/image/png/writer.go.html#line-547">writeIDATs</a>()</label><span id='encoder-fold-method-writeIDATs-docs' class="fold-docs">
+<span class="md-text">				Write the actual image data to one or more IDAT chunks.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/image/png/writer.go.html#line-580">writeIEND</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/image/png/writer.go.html#line-126">writeIHDR</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/image/png/writer.go.html#line-298">writeImage</a>(w <a href="../io.html">io</a>.<a href="../io.html#name-Writer">Writer</a>, m <a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>, cb <a href="../builtin.html#name-int">int</a>, level <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/image/png/writer.go.html#line-169">writePLTEAndTRNS</a>(p <a href="color.html">color</a>.<a href="color.html#name-Palette">Palette</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="encoder-fold-impls"><label for="encoder-fold-impls">Implements (<i>at least 3, in which 2 are exported</i>)</label><span id='encoder-fold-impls-items' class="fold-items"><span>
+			*encoder : internal/bisect.<a href="../internal/bisect.html#name-Writer">Writer</a></span><span>
+			*encoder : io.<a href="../io.html#name-Writer">Writer</a></span>
+			<input type='checkbox' checked class="showhide" id="encoder-showhide-impls"><i><label for="encoder-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="encoder-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			*encoder : crypto/tls.<a href="../crypto/tls.html#name-transcriptHash">transcriptHash</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-interlaceScan" data-popularity="0">	<input type='checkbox' class="fold" id="interlaceScan-fold-content"><label for="interlaceScan-fold-content"> type <a href="../../src/image/png/reader.go.html#line-75">interlaceScan</a> <i>(struct)</i></label><span id='interlaceScan-fold-content-docs' class="fold-docs">
+<span class="md-text">		interlaceScan defines the placement and size of a pass for Adam7 interlacing.</span>
+
+		<input type='checkbox' class="fold" id="interlaceScan-fold-fields"><label for="interlaceScan-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='interlaceScan-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="interlaceScan-showhide-fields"><i><label for="interlaceScan-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="interlaceScan-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-76">xFactor</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-76">xOffset</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-76">yFactor</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/png/reader.go.html#line-76">yOffset</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-opaquer" data-popularity="2300">	<input type='checkbox' class="fold" id="opaquer-fold-content"><label for="opaquer-fold-content"> type <a href="../../src/image/png/writer.go.html#line-67">opaquer</a> <b><i>(interface)</i></b></label><span id='opaquer-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="opaquer-fold-methods"><label for="opaquer-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='opaquer-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( opaquer) <a href="../../src/image/png/writer.go.html#line-68">Opaque</a>() <a href="../builtin.html#name-bool">bool</a></span></span></span>
+		<input type='checkbox' class="fold" id="opaquer-fold-impledby"><label for="opaquer-fold-impledby">Implemented By (<i>at least 15, all are exported</i>)</label><span id='opaquer-fold-impledby-items' class="fold-items"><span>
+			*image.<a href="../image.html#name-Alpha">Alpha</a></span><span>
+			*image.<a href="../image.html#name-Alpha16">Alpha16</a></span><span>
+			*image.<a href="../image.html#name-CMYK">CMYK</a></span><span>
+			*image.<a href="../image.html#name-Gray">Gray</a></span><span>
+			*image.<a href="../image.html#name-Gray16">Gray16</a></span><span>
+			*image.<a href="../image.html#name-NRGBA">NRGBA</a></span><span>
+			*image.<a href="../image.html#name-NRGBA64">NRGBA64</a></span><span>
+			*image.<a href="../image.html#name-NYCbCrA">NYCbCrA</a></span><span>
+			*image.<a href="../image.html#name-Paletted">Paletted</a></span><span>
+			*image.<a href="../image.html#name-RGBA">RGBA</a></span><span>
+			*image.<a href="../image.html#name-RGBA64">RGBA64</a></span><span>
+			*image.<a href="../image.html#name-Uniform">Uniform</a></span><span>
+			*image.<a href="../image.html#name-YCbCr">YCbCr</a></span><span>
+			*github.com/srwiley/rasterx.<a href="../github.com/srwiley/rasterx.html#name-ClipImage">ClipImage</a></span><span>
+			*github.com/srwiley/rasterx.<a href="../github.com/srwiley/rasterx.html#name-ColorFuncImage">ColorFuncImage</a></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 13, in which 3 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Decode">	<input type='checkbox' class="fold" id="Decode-fold-content"><label for="Decode-fold-content"> func <a href="../../src/image/png/reader.go.html#line-969">Decode</a>(r <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>) (<a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='Decode-fold-content-docs' class="fold-docs">
+<span class="md-text">		Decode reads a PNG image from r and returns it as an [image.Image].
+		The type of Image returned depends on the PNG contents.</span>
+
+</span></div><div class="anchor value-res" id="name-DecodeConfig">	<input type='checkbox' class="fold" id="DecodeConfig-fold-content"><label for="DecodeConfig-fold-content"> func <a href="../../src/image/png/reader.go.html#line-993">DecodeConfig</a>(r <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>) (<a href="../image.html">image</a>.<a href="../image.html#name-Config">Config</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='DecodeConfig-fold-content-docs' class="fold-docs">
+<span class="md-text">		DecodeConfig returns the color model and dimensions of a PNG image without
+		decoding the entire image.</span>
+
+</span></div><div class="anchor value-res" id="name-Encode">	<input type='checkbox' class="fold" id="Encode-fold-content"><label for="Encode-fold-content"> func <a href="../../src/image/png/writer.go.html#line-584">Encode</a>(w <a href="../io.html">io</a>.<a href="../io.html#name-Writer">Writer</a>, m <a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>) <a href="../builtin.html#name-error">error</a></label><span id='Encode-fold-content-docs' class="fold-docs">
+<span class="md-text">		Encode writes the Image m to w in PNG format. Any Image may be
+		encoded, but images that are not [image.NRGBA] might be encoded lossily.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 10 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 10 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-abs"><i>	<span class="nodocs"> func <a href="../../src/image/png/paeth.go.html#line-10">abs</a>(x <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-int">int</a></span></i></div><div class="anchor value-res hidden" id="name-abs8"><i>	<input type='checkbox' class="fold" id="abs8-fold-content"><label for="abs8-fold-content"> func <a href="../../src/image/png/writer.go.html#line-89">abs8</a>(d <a href="../builtin.html#name-uint8">uint8</a>) <a href="../builtin.html#name-int">int</a></label><span id='abs8-fold-content-docs' class="fold-docs">
+<span class="md-text">		The absolute value of a byte interpreted as a signed int8.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbPaletted"><i>	<span class="nodocs"> func <a href="../../src/image/png/reader.go.html#line-50">cbPaletted</a>(cb <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-cbTrueColor"><i>	<span class="nodocs"> func <a href="../../src/image/png/reader.go.html#line-54">cbTrueColor</a>(cb <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-filter"><i>	<input type='checkbox' class="fold" id="filter-fold-content"><label for="filter-fold-content"> func <a href="../../src/image/png/writer.go.html#line-207">filter</a>(cr *[5][]<a href="../builtin.html#name-byte">byte</a>, pr []<a href="../builtin.html#name-byte">byte</a>, bpp <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-int">int</a></label><span id='filter-fold-content-docs' class="fold-docs">
+<span class="md-text">		Chooses the filter to use for encoding the current row, and applies it.
+		The return value is the index of the filter and also of the row in cr that has had it applied.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-filterPaeth"><i>	<input type='checkbox' class="fold" id="filterPaeth-fold-content"><label for="filterPaeth-fold-content"> func <a href="../../src/image/png/paeth.go.html#line-47">filterPaeth</a>(cdat, pdat []<a href="../builtin.html#name-byte">byte</a>, bytesPerPixel <a href="../builtin.html#name-int">int</a>)</label><span id='filterPaeth-fold-content-docs' class="fold-docs">
+<span class="md-text">		filterPaeth applies the Paeth filter to the cdat slice.
+		cdat is the current row's data, pdat is the previous row's data.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-init"><i>	<span class="nodocs"> func <a href="../../src/image/png/reader.go.html#line-1052">init</a>()</span></i></div><div class="anchor value-res hidden" id="name-levelToZlib"><i>	<input type='checkbox' class="fold" id="levelToZlib-fold-content"><label for="levelToZlib-fold-content"> func <a href="../../src/image/png/writer.go.html#line-565">levelToZlib</a>(l <a href="#name-CompressionLevel">CompressionLevel</a>) <a href="../builtin.html#name-int">int</a></label><span id='levelToZlib-fold-content-docs' class="fold-docs">
+<span class="md-text">		This function is required because we want the zero value of
+		Encoder.CompressionLevel to map to zlib.DefaultCompression.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-opaque"><i>	<input type='checkbox' class="fold" id="opaque-fold-content"><label for="opaque-fold-content"> func <a href="../../src/image/png/writer.go.html#line-72">opaque</a>(m <a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='opaque-fold-content-docs' class="fold-docs">
+<span class="md-text">		Returns whether or not the image is fully opaque.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-paeth"><i>	<input type='checkbox' class="fold" id="paeth-fold-content"><label for="paeth-fold-content"> func <a href="../../src/image/png/paeth.go.html#line-23">paeth</a>(a, b, c <a href="../builtin.html#name-uint8">uint8</a>) <a href="../builtin.html#name-uint8">uint8</a></label><span id='paeth-fold-content-docs' class="fold-docs">
+<span class="md-text">		paeth implements the Paeth filter function, as per the PNG specification.</span>
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 2, neither is exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-chunkOrderError"><i>	<span class="nodocs">  var <a href="../../src/image/png/reader.go.html#line-132">chunkOrderError</a> <a href="#name-FormatError">FormatError</a></span></i></div><div class="anchor value-res hidden" id="name-interlacing"><i>	<input type='checkbox' class="fold" id="interlacing-fold-content"><label for="interlacing-fold-content">  var <a href="../../src/image/png/reader.go.html#line-81">interlacing</a> []<a href="#name-interlaceScan">interlaceScan</a></label><span id='interlacing-fold-content-docs' class="fold-docs">
+<span class="md-text">		interlacing defines Adam7 interlacing, with 7 passes of reduced images.
+		See https://www.w3.org/TR/PNG/#8Interlace</span>
+
+</span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 41, in which 4 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-BestCompression">	<span class="nodocs">const <a href="../../src/image/png/writer.go.html#line-61">BestCompression</a> <a href="#name-CompressionLevel">CompressionLevel</a> = -3</span></div><div class="anchor value-res" id="name-BestSpeed">	<span class="nodocs">const <a href="../../src/image/png/writer.go.html#line-60">BestSpeed</a> <a href="#name-CompressionLevel">CompressionLevel</a> = -2</span></div><div class="anchor value-res" id="name-DefaultCompression">	<span class="nodocs">const <a href="../../src/image/png/writer.go.html#line-58">DefaultCompression</a> <a href="#name-CompressionLevel">CompressionLevel</a> = 0</span></div><div class="anchor value-res" id="name-NoCompression">	<span class="nodocs">const <a href="../../src/image/png/writer.go.html#line-59">NoCompression</a> <a href="#name-CompressionLevel">CompressionLevel</a> = -1</span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 37 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 37 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-cbG1"><i>	<input type='checkbox' class="fold" id="cbG1-fold-content"><label for="cbG1-fold-content">const <a href="../../src/image/png/reader.go.html#line-33">cbG1</a> = 1</label><span id='cbG1-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbG16"><i>	<input type='checkbox' class="fold" id="cbG16-fold-content"><label for="cbG16-fold-content">const <a href="../../src/image/png/reader.go.html#line-44">cbG16</a> = 12</label><span id='cbG16-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbG2"><i>	<input type='checkbox' class="fold" id="cbG2-fold-content"><label for="cbG2-fold-content">const <a href="../../src/image/png/reader.go.html#line-34">cbG2</a> = 2</label><span id='cbG2-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbG4"><i>	<input type='checkbox' class="fold" id="cbG4-fold-content"><label for="cbG4-fold-content">const <a href="../../src/image/png/reader.go.html#line-35">cbG4</a> = 3</label><span id='cbG4-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbG8"><i>	<input type='checkbox' class="fold" id="cbG8-fold-content"><label for="cbG8-fold-content">const <a href="../../src/image/png/reader.go.html#line-36">cbG8</a> = 4</label><span id='cbG8-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbGA16"><i>	<input type='checkbox' class="fold" id="cbGA16-fold-content"><label for="cbGA16-fold-content">const <a href="../../src/image/png/reader.go.html#line-45">cbGA16</a> = 13</label><span id='cbGA16-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbGA8"><i>	<input type='checkbox' class="fold" id="cbGA8-fold-content"><label for="cbGA8-fold-content">const <a href="../../src/image/png/reader.go.html#line-37">cbGA8</a> = 5</label><span id='cbGA8-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbInvalid"><i>	<input type='checkbox' class="fold" id="cbInvalid-fold-content"><label for="cbInvalid-fold-content">const <a href="../../src/image/png/reader.go.html#line-32">cbInvalid</a> = 0</label><span id='cbInvalid-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbP1"><i>	<input type='checkbox' class="fold" id="cbP1-fold-content"><label for="cbP1-fold-content">const <a href="../../src/image/png/reader.go.html#line-39">cbP1</a> = 7</label><span id='cbP1-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbP2"><i>	<input type='checkbox' class="fold" id="cbP2-fold-content"><label for="cbP2-fold-content">const <a href="../../src/image/png/reader.go.html#line-40">cbP2</a> = 8</label><span id='cbP2-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbP4"><i>	<input type='checkbox' class="fold" id="cbP4-fold-content"><label for="cbP4-fold-content">const <a href="../../src/image/png/reader.go.html#line-41">cbP4</a> = 9</label><span id='cbP4-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbP8"><i>	<input type='checkbox' class="fold" id="cbP8-fold-content"><label for="cbP8-fold-content">const <a href="../../src/image/png/reader.go.html#line-42">cbP8</a> = 10</label><span id='cbP8-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbTC16"><i>	<input type='checkbox' class="fold" id="cbTC16-fold-content"><label for="cbTC16-fold-content">const <a href="../../src/image/png/reader.go.html#line-46">cbTC16</a> = 14</label><span id='cbTC16-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbTC8"><i>	<input type='checkbox' class="fold" id="cbTC8-fold-content"><label for="cbTC8-fold-content">const <a href="../../src/image/png/reader.go.html#line-38">cbTC8</a> = 6</label><span id='cbTC8-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbTCA16"><i>	<input type='checkbox' class="fold" id="cbTCA16-fold-content"><label for="cbTCA16-fold-content">const <a href="../../src/image/png/reader.go.html#line-47">cbTCA16</a> = 15</label><span id='cbTCA16-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cbTCA8"><i>	<input type='checkbox' class="fold" id="cbTCA8-fold-content"><label for="cbTCA8-fold-content">const <a href="../../src/image/png/reader.go.html#line-43">cbTCA8</a> = 11</label><span id='cbTCA8-fold-content-docs' class="fold-docs">
+<span class="md-text">		A cb is a combination of color type and bit depth.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-ctGrayscale"><i>	<input type='checkbox' class="fold" id="ctGrayscale-fold-content"><label for="ctGrayscale-fold-content">const <a href="../../src/image/png/reader.go.html#line-23">ctGrayscale</a> = 0</label><span id='ctGrayscale-fold-content-docs' class="fold-docs">
+<span class="md-text">		Color type, as per the PNG spec.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-ctGrayscaleAlpha"><i>	<input type='checkbox' class="fold" id="ctGrayscaleAlpha-fold-content"><label for="ctGrayscaleAlpha-fold-content">const <a href="../../src/image/png/reader.go.html#line-26">ctGrayscaleAlpha</a> = 4</label><span id='ctGrayscaleAlpha-fold-content-docs' class="fold-docs">
+<span class="md-text">		Color type, as per the PNG spec.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-ctPaletted"><i>	<input type='checkbox' class="fold" id="ctPaletted-fold-content"><label for="ctPaletted-fold-content">const <a href="../../src/image/png/reader.go.html#line-25">ctPaletted</a> = 3</label><span id='ctPaletted-fold-content-docs' class="fold-docs">
+<span class="md-text">		Color type, as per the PNG spec.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-ctTrueColor"><i>	<input type='checkbox' class="fold" id="ctTrueColor-fold-content"><label for="ctTrueColor-fold-content">const <a href="../../src/image/png/reader.go.html#line-24">ctTrueColor</a> = 2</label><span id='ctTrueColor-fold-content-docs' class="fold-docs">
+<span class="md-text">		Color type, as per the PNG spec.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-ctTrueColorAlpha"><i>	<input type='checkbox' class="fold" id="ctTrueColorAlpha-fold-content"><label for="ctTrueColorAlpha-fold-content">const <a href="../../src/image/png/reader.go.html#line-27">ctTrueColorAlpha</a> = 6</label><span id='ctTrueColorAlpha-fold-content-docs' class="fold-docs">
+<span class="md-text">		Color type, as per the PNG spec.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-dsSeenIDAT"><i>	<input type='checkbox' class="fold" id="dsSeenIDAT-fold-content"><label for="dsSeenIDAT-fold-content">const <a href="../../src/image/png/reader.go.html#line-102">dsSeenIDAT</a> = 4</label><span id='dsSeenIDAT-fold-content-docs' class="fold-docs">
+<span class="md-text">		Decoding stage.
+		The PNG specification says that the IHDR, PLTE (if present), tRNS (if
+		present), IDAT and IEND chunks must appear in that order. There may be
+		multiple IDAT chunks, and IDAT chunks must be sequential (i.e. they may not
+		have any other chunks between them).
+		https://www.w3.org/TR/PNG/#5ChunkOrdering</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-dsSeenIEND"><i>	<input type='checkbox' class="fold" id="dsSeenIEND-fold-content"><label for="dsSeenIEND-fold-content">const <a href="../../src/image/png/reader.go.html#line-103">dsSeenIEND</a> = 5</label><span id='dsSeenIEND-fold-content-docs' class="fold-docs">
+<span class="md-text">		Decoding stage.
+		The PNG specification says that the IHDR, PLTE (if present), tRNS (if
+		present), IDAT and IEND chunks must appear in that order. There may be
+		multiple IDAT chunks, and IDAT chunks must be sequential (i.e. they may not
+		have any other chunks between them).
+		https://www.w3.org/TR/PNG/#5ChunkOrdering</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-dsSeenIHDR"><i>	<input type='checkbox' class="fold" id="dsSeenIHDR-fold-content"><label for="dsSeenIHDR-fold-content">const <a href="../../src/image/png/reader.go.html#line-99">dsSeenIHDR</a> = 1</label><span id='dsSeenIHDR-fold-content-docs' class="fold-docs">
+<span class="md-text">		Decoding stage.
+		The PNG specification says that the IHDR, PLTE (if present), tRNS (if
+		present), IDAT and IEND chunks must appear in that order. There may be
+		multiple IDAT chunks, and IDAT chunks must be sequential (i.e. they may not
+		have any other chunks between them).
+		https://www.w3.org/TR/PNG/#5ChunkOrdering</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-dsSeenPLTE"><i>	<input type='checkbox' class="fold" id="dsSeenPLTE-fold-content"><label for="dsSeenPLTE-fold-content">const <a href="../../src/image/png/reader.go.html#line-100">dsSeenPLTE</a> = 2</label><span id='dsSeenPLTE-fold-content-docs' class="fold-docs">
+<span class="md-text">		Decoding stage.
+		The PNG specification says that the IHDR, PLTE (if present), tRNS (if
+		present), IDAT and IEND chunks must appear in that order. There may be
+		multiple IDAT chunks, and IDAT chunks must be sequential (i.e. they may not
+		have any other chunks between them).
+		https://www.w3.org/TR/PNG/#5ChunkOrdering</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-dsSeentRNS"><i>	<input type='checkbox' class="fold" id="dsSeentRNS-fold-content"><label for="dsSeentRNS-fold-content">const <a href="../../src/image/png/reader.go.html#line-101">dsSeentRNS</a> = 3</label><span id='dsSeentRNS-fold-content-docs' class="fold-docs">
+<span class="md-text">		Decoding stage.
+		The PNG specification says that the IHDR, PLTE (if present), tRNS (if
+		present), IDAT and IEND chunks must appear in that order. There may be
+		multiple IDAT chunks, and IDAT chunks must be sequential (i.e. they may not
+		have any other chunks between them).
+		https://www.w3.org/TR/PNG/#5ChunkOrdering</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-dsStart"><i>	<input type='checkbox' class="fold" id="dsStart-fold-content"><label for="dsStart-fold-content">const <a href="../../src/image/png/reader.go.html#line-98">dsStart</a> = 0</label><span id='dsStart-fold-content-docs' class="fold-docs">
+<span class="md-text">		Decoding stage.
+		The PNG specification says that the IHDR, PLTE (if present), tRNS (if
+		present), IDAT and IEND chunks must appear in that order. There may be
+		multiple IDAT chunks, and IDAT chunks must be sequential (i.e. they may not
+		have any other chunks between them).
+		https://www.w3.org/TR/PNG/#5ChunkOrdering</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-ftAverage"><i>	<input type='checkbox' class="fold" id="ftAverage-fold-content"><label for="ftAverage-fold-content">const <a href="../../src/image/png/reader.go.html#line-63">ftAverage</a> = 3</label><span id='ftAverage-fold-content-docs' class="fold-docs">
+<span class="md-text">		Filter type, as per the PNG spec.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-ftNone"><i>	<input type='checkbox' class="fold" id="ftNone-fold-content"><label for="ftNone-fold-content">const <a href="../../src/image/png/reader.go.html#line-60">ftNone</a> = 0</label><span id='ftNone-fold-content-docs' class="fold-docs">
+<span class="md-text">		Filter type, as per the PNG spec.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-ftPaeth"><i>	<input type='checkbox' class="fold" id="ftPaeth-fold-content"><label for="ftPaeth-fold-content">const <a href="../../src/image/png/reader.go.html#line-64">ftPaeth</a> = 4</label><span id='ftPaeth-fold-content-docs' class="fold-docs">
+<span class="md-text">		Filter type, as per the PNG spec.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-ftSub"><i>	<input type='checkbox' class="fold" id="ftSub-fold-content"><label for="ftSub-fold-content">const <a href="../../src/image/png/reader.go.html#line-61">ftSub</a> = 1</label><span id='ftSub-fold-content-docs' class="fold-docs">
+<span class="md-text">		Filter type, as per the PNG spec.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-ftUp"><i>	<input type='checkbox' class="fold" id="ftUp-fold-content"><label for="ftUp-fold-content">const <a href="../../src/image/png/reader.go.html#line-62">ftUp</a> = 2</label><span id='ftUp-fold-content-docs' class="fold-docs">
+<span class="md-text">		Filter type, as per the PNG spec.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-intSize"><i>	<input type='checkbox' class="fold" id="intSize-fold-content"><label for="intSize-fold-content">const <a href="../../src/image/png/paeth.go.html#line-8">intSize</a> = 64</label><span id='intSize-fold-content-docs' class="fold-docs">
+<span class="md-text">		intSize is either 32 or 64.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-itAdam7"><i>	<input type='checkbox' class="fold" id="itAdam7-fold-content"><label for="itAdam7-fold-content">const <a href="../../src/image/png/reader.go.html#line-71">itAdam7</a> = 1</label><span id='itAdam7-fold-content-docs' class="fold-docs">
+<span class="md-text">		Interlace type.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-itNone"><i>	<input type='checkbox' class="fold" id="itNone-fold-content"><label for="itNone-fold-content">const <a href="../../src/image/png/reader.go.html#line-70">itNone</a> = 0</label><span id='itNone-fold-content-docs' class="fold-docs">
+<span class="md-text">		Interlace type.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-nFilter"><i>	<input type='checkbox' class="fold" id="nFilter-fold-content"><label for="nFilter-fold-content">const <a href="../../src/image/png/reader.go.html#line-65">nFilter</a> = 5</label><span id='nFilter-fold-content-docs' class="fold-docs">
+<span class="md-text">		Filter type, as per the PNG spec.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-pngHeader"><i>	<span class="nodocs">const <a href="../../src/image/png/reader.go.html#line-106">pngHeader</a> = "\x89PNG\r\n\x1a\n"</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

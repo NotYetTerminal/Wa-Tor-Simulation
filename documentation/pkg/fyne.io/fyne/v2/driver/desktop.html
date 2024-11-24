@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/fyne/v2/driver/desktop</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>desktop</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-fyne.io/fyne/v2/driver/desktop">fyne.io/fyne/v2/driver/desktop</a><i> (on <a href="https://pkg.go.dev/fyne.io/fyne/v2/driver/desktop" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/fyne.io/fyne/v2/driver/desktop.html">4 packages</a>, and imported by <a href="../../../../../dep/fyne.io/fyne/v2/driver/desktop.html#imported-by">4 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/app.go.html">app.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/canvas.go.html">canvas.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html">cursor.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-3-fold-content"><label for="file-3-fold-content">  <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/driver.go.html#doc">d</a> <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/driver.go.html">driver.go</a></label><span id='file-3-fold-content-items' class="fold-items">
+<span class="md-text">		Package desktop provides desktop specific driver functionality.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html">key.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html">mouse.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/shortcut.go.html">shortcut.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 13, all are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-App" data-popularity="600">	<input type='checkbox' class="fold" id="App-fold-content"><label for="App-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/app.go.html#line-8">App</a> <b><i>(interface)</i></b></label><span id='App-fold-content-docs' class="fold-docs">
+<span class="md-text">		App defines the desktop specific extensions to a fyne.App.
+		
+		Since: 2.2</span>
+
+		<input type='checkbox' class="fold" id="App-fold-methods"><label for="App-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='App-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="App-fold-method-SetSystemTrayIcon"><label for="App-fold-method-SetSystemTrayIcon">( App) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/app.go.html#line-12">SetSystemTrayIcon</a>(icon <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Resource">Resource</a>)</label><span id='App-fold-method-SetSystemTrayIcon-docs' class="fold-docs">
+<span class="md-text">				SetSystemTrayIcon sets the icon to be used in system tray.
+				If you pass a `ThemedResource` then any OS that adjusts look to match theme will adapt the icon.</span>
+</span></span><span>
+			<span class="nodocs">( App) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/app.go.html#line-9">SetSystemTrayMenu</a>(menu *<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Menu">Menu</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="App-fold-impledby"><label for="App-fold-impledby">Implemented By (<i>at least 3, none are exported</i>)</label><span id='App-fold-impledby-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="App-showhide-impedBys"><i><label for="App-showhide-impedBys" class="show-inline">/* 3+ unexporteds ... */</label><label for="App-showhide-impedBys" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			*fyne.io/fyne/v2/app.<a href="../app.html#name-fyneApp">fyneApp</a></i></span><span class="hidden"><i>
+			 fyne.io/fyne/v2/app.<a href="../app.html#name-systrayDriver">systrayDriver</a> <i>(interface)</i></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/internal/driver/glfw.<a href="../internal/driver/glfw.html#name-gLDriver">gLDriver</a></i></span></span>
+		<input type='checkbox' class="fold" id="App-fold-impls"><label for="App-fold-impls">Implements (<i>at least one unexported</i>)</label><span id='App-fold-impls-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="App-showhide-impls"><i><label for="App-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="App-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			 App : fyne.io/fyne/v2/app.<a href="../app.html#name-systrayDriver">systrayDriver</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Canvas" data-popularity="350">	<input type='checkbox' class="fold" id="Canvas-fold-content"><label for="Canvas-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/canvas.go.html#line-6">Canvas</a> <b><i>(interface)</i></b></label><span id='Canvas-fold-content-docs' class="fold-docs">
+<span class="md-text">		Canvas defines the desktop specific extensions to a fyne.Canvas.</span>
+
+		<input type='checkbox' class="fold" id="Canvas-fold-methods"><label for="Canvas-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='Canvas-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Canvas) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/canvas.go.html#line-7">OnKeyDown</a>() func(*<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyEvent">KeyEvent</a>)</span></span><span>
+			<span class="nodocs">( Canvas) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/canvas.go.html#line-9">OnKeyUp</a>() func(*<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyEvent">KeyEvent</a>)</span></span><span>
+			<span class="nodocs">( Canvas) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/canvas.go.html#line-8">SetOnKeyDown</a>(func(*<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyEvent">KeyEvent</a>))</span></span><span>
+			<span class="nodocs">( Canvas) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/canvas.go.html#line-10">SetOnKeyUp</a>(func(*<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyEvent">KeyEvent</a>))</span></span></span>
+		<input type='checkbox' class="fold" id="Canvas-fold-impledby"><label for="Canvas-fold-impledby">Implemented By (<i>at least one unexported</i>)</label><span id='Canvas-fold-impledby-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Canvas-showhide-impedBys"><i><label for="Canvas-showhide-impedBys" class="show-inline">/* at least one unexported ... */</label><label for="Canvas-showhide-impedBys" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			*fyne.io/fyne/v2/internal/driver/glfw.<a href="../internal/driver/glfw.html#name-glCanvas">glCanvas</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Cursor" data-popularity="610">	<input type='checkbox' class="fold" id="Cursor-fold-content"><label for="Cursor-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-8">Cursor</a> <b><i>(interface)</i></b></label><span id='Cursor-fold-content-docs' class="fold-docs">
+<span class="md-text">		Cursor interface is used for objects that desire a specific cursor.
+		
+		Since: 2.0</span>
+
+		<input type='checkbox' class="fold" id="Cursor-fold-methods"><label for="Cursor-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Cursor-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Cursor-fold-method-Image"><label for="Cursor-fold-method-Image">( Cursor) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-11">Image</a>() (<a href="../../../../image.html">image</a>.<a href="../../../../image.html#name-Image">Image</a>, <a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-int">int</a>)</label><span id='Cursor-fold-method-Image-docs' class="fold-docs">
+<span class="md-text">				Image returns the image for the given cursor, or nil if none should be shown.
+				It also returns the x and y pixels that should act as the hot-spot (measured from top left corner).</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Cursor-fold-impledby"><label for="Cursor-fold-impledby">Implemented By (<i>at least one exported</i>)</label><span id='Cursor-fold-impledby-items' class="fold-items"><span>
+			 <a href="#name-StandardCursor">StandardCursor</a></span></span>
+		<input type='checkbox' class="fold" id="Cursor-fold-results"><label for="Cursor-fold-results">As Outputs Of (<i>at least 5, all are exported</i>)</label><span id='Cursor-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Cursorable">Cursorable</a>.<a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-46">Cursor</a>() <b>Cursor</b></span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Button">Button</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/button.go.html#line-129">Cursor</a>() <b>Cursor</b></span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Entry">Entry</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/entry.go.html#line-217">Cursor</a>() <b>Cursor</b></span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Hyperlink">Hyperlink</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/hyperlink.go.html#line-82">Cursor</a>() <b>Cursor</b></span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Table">Table</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/table.go.html#line-173">Cursor</a>() <b>Cursor</b></span></span>
+		<input type='checkbox' class="fold" id="Cursor-fold-params"><label for="Cursor-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='Cursor-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Cursor-showhide-outputofs"><i><label for="Cursor-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Cursor-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/driver/glfw.<a href="../internal/driver/glfw.html#name-fyneToNativeCursor">fyneToNativeCursor</a>(cursor <b>Cursor</b>) (*<a href="../../../../github.com/go-gl/glfw/v3.3/glfw.html">glfw</a>.<a href="../../../../github.com/go-gl/glfw/v3.3/glfw.html#name-Cursor">Cursor</a>, <a href="../../../../builtin.html#name-bool">bool</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Cursorable" data-popularity="1250">	<input type='checkbox' class="fold" id="Cursorable-fold-content"><label for="Cursorable-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-45">Cursorable</a> <b><i>(interface)</i></b></label><span id='Cursorable-fold-content-docs' class="fold-docs">
+<span class="md-text">		Cursorable describes any CanvasObject that needs a cursor change</span>
+
+		<input type='checkbox' class="fold" id="Cursorable-fold-methods"><label for="Cursorable-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Cursorable-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Cursorable) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-46">Cursor</a>() <a href="#name-Cursor">Cursor</a></span></span></span>
+		<input type='checkbox' class="fold" id="Cursorable-fold-impledby"><label for="Cursorable-fold-impledby">Implemented By (<i>at least 8, in which 5 are exported</i>)</label><span id='Cursorable-fold-impledby-items' class="fold-items"><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-Button">Button</a></span><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-Entry">Entry</a></span><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-Hyperlink">Hyperlink</a></span><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-SelectEntry">SelectEntry</a></span><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-Table">Table</a></span>
+			<input type='checkbox' class="showhide" id="Cursorable-showhide-impedBys"><i><label for="Cursorable-showhide-impedBys" class="show-inline">/* 3+ unexporteds ... */</label><label for="Cursorable-showhide-impedBys" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			*fyne.io/fyne/v2/container.<a href="../container.html#name-divider">divider</a></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/internal/widget.<a href="../internal/widget.html#name-scrollBar">scrollBar</a></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-passwordRevealer">passwordRevealer</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-CustomShortcut" data-popularity="250">	<input type='checkbox' class="fold" id="CustomShortcut-fold-content"><label for="CustomShortcut-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/shortcut.go.html#line-15">CustomShortcut</a> <i>(struct)</i></label><span id='CustomShortcut-fold-content-docs' class="fold-docs">
+<span class="md-text">		CustomShortcut describes a shortcut desktop event.</span>
+
+		<input type='checkbox' class="fold" id="CustomShortcut-fold-fields"><label for="CustomShortcut-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='CustomShortcut-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/shortcut.go.html#line-16">KeyName</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/shortcut.go.html#line-17">Modifier</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyModifier">KeyModifier</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="CustomShortcut-fold-methods"><label for="CustomShortcut-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='CustomShortcut-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="CustomShortcut-fold-method-Key"><label for="CustomShortcut-fold-method-Key">(*CustomShortcut) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/shortcut.go.html#line-22">Key</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a></label><span id='CustomShortcut-fold-method-Key-docs' class="fold-docs">
+<span class="md-text">				Key returns the key name of this shortcut.
+				@implements KeyboardShortcut</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CustomShortcut-fold-method-Mod"><label for="CustomShortcut-fold-method-Mod">(*CustomShortcut) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/shortcut.go.html#line-28">Mod</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyModifier">KeyModifier</a></label><span id='CustomShortcut-fold-method-Mod-docs' class="fold-docs">
+<span class="md-text">				Mod returns the modifier of this shortcut.
+				@implements KeyboardShortcut</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CustomShortcut-fold-method-ShortcutName"><label for="CustomShortcut-fold-method-ShortcutName">(*CustomShortcut) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/shortcut.go.html#line-33">ShortcutName</a>() <a href="../../../../builtin.html#name-string">string</a></label><span id='CustomShortcut-fold-method-ShortcutName-docs' class="fold-docs">
+<span class="md-text">				ShortcutName returns the shortcut name associated to the event</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="CustomShortcut-fold-impls"><label for="CustomShortcut-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='CustomShortcut-fold-impls-items' class="fold-items"><span>
+			*CustomShortcut : fyne.io/fyne/v2.<a href="../../v2.html#name-KeyboardShortcut">KeyboardShortcut</a></span><span>
+			*CustomShortcut : fyne.io/fyne/v2.<a href="../../v2.html#name-Shortcut">Shortcut</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Driver" data-popularity="250">	<input type='checkbox' class="fold" id="Driver-fold-content"><label for="Driver-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/driver.go.html#line-7">Driver</a> <b><i>(interface)</i></b></label><span id='Driver-fold-content-docs' class="fold-docs">
+<span class="md-text">		Driver represents the extended capabilities of a desktop driver</span>
+
+		<input type='checkbox' class="fold" id="Driver-fold-methods"><label for="Driver-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='Driver-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Driver-fold-method-CreateSplashWindow"><label for="Driver-fold-method-CreateSplashWindow">( Driver) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/driver.go.html#line-9">CreateSplashWindow</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Window">Window</a></label><span id='Driver-fold-method-CreateSplashWindow-docs' class="fold-docs">
+<span class="md-text">				Create a new borderless window that is centered on screen</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Driver-fold-method-CurrentKeyModifiers"><label for="Driver-fold-method-CurrentKeyModifiers">( Driver) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/driver.go.html#line-14">CurrentKeyModifiers</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyModifier">KeyModifier</a></label><span id='Driver-fold-method-CurrentKeyModifiers-docs' class="fold-docs">
+<span class="md-text">				Gets the set of key modifiers that are currently active
+				
+				Since: 2.4</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Driver-fold-impledby"><label for="Driver-fold-impledby">Implemented By (<i>at least one unexported</i>)</label><span id='Driver-fold-impledby-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Driver-showhide-impedBys"><i><label for="Driver-showhide-impedBys" class="show-inline">/* at least one unexported ... */</label><label for="Driver-showhide-impedBys" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			*fyne.io/fyne/v2/internal/driver/glfw.<a href="../internal/driver/glfw.html#name-gLDriver">gLDriver</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Hoverable" data-popularity="3300">	<input type='checkbox' class="fold" id="Hoverable-fold-content"><label for="Hoverable-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-51">Hoverable</a> <b><i>(interface)</i></b></label><span id='Hoverable-fold-content-docs' class="fold-docs">
+<span class="md-text">		Hoverable is used when a canvas object wishes to know if a pointer device moves over it.</span>
+
+		<input type='checkbox' class="fold" id="Hoverable-fold-methods"><label for="Hoverable-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='Hoverable-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Hoverable-fold-method-MouseIn"><label for="Hoverable-fold-method-MouseIn">( Hoverable) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-53">MouseIn</a>(*<a href="#name-MouseEvent">MouseEvent</a>)</label><span id='Hoverable-fold-method-MouseIn-docs' class="fold-docs">
+<span class="md-text">				MouseIn is a hook that is called if the mouse pointer enters the element.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Hoverable-fold-method-MouseMoved"><label for="Hoverable-fold-method-MouseMoved">( Hoverable) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-55">MouseMoved</a>(*<a href="#name-MouseEvent">MouseEvent</a>)</label><span id='Hoverable-fold-method-MouseMoved-docs' class="fold-docs">
+<span class="md-text">				MouseMoved is a hook that is called if the mouse pointer moved over the element.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Hoverable-fold-method-MouseOut"><label for="Hoverable-fold-method-MouseOut">( Hoverable) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-57">MouseOut</a>()</label><span id='Hoverable-fold-method-MouseOut-docs' class="fold-docs">
+<span class="md-text">				MouseOut is a hook that is called if the mouse pointer leaves the element.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Hoverable-fold-impledby"><label for="Hoverable-fold-impledby">Implemented By (<i>at least 21, in which 7 are exported</i>)</label><span id='Hoverable-fold-impledby-items' class="fold-items"><span>
+			*fyne.io/fyne/v2/internal/widget.<a href="../internal/widget.html#name-OverlayContainer">OverlayContainer</a></span><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-Button">Button</a></span><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-Check">Check</a></span><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-Hyperlink">Hyperlink</a></span><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-Select">Select</a></span><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-Slider">Slider</a></span><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-Table">Table</a></span>
+			<input type='checkbox' class="showhide" id="Hoverable-showhide-impedBys"><i><label for="Hoverable-showhide-impedBys" class="show-inline">/* 14+ unexporteds ... */</label><label for="Hoverable-showhide-impedBys" class="hide-inline">/* 14+ unexporteds: */</label></i><span class="hidden"><i>
+			*fyne.io/fyne/v2/container.<a href="../container.html#name-divider">divider</a></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/container.<a href="../container.html#name-tabButton">tabButton</a></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/container.<a href="../container.html#name-tabCloseButton">tabCloseButton</a></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/internal/driver/glfw.<a href="../internal/driver/glfw.html#name-menuBarItem">menuBarItem</a></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/internal/driver/glfw.<a href="../internal/driver/glfw.html#name-menuBarUnderlay">menuBarUnderlay</a></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/internal/widget.<a href="../internal/widget.html#name-scrollBar">scrollBar</a></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/internal/widget.<a href="../internal/widget.html#name-scrollBarArea">scrollBarArea</a></i></span><span class="hidden"><i>
+			 fyne.io/fyne/v2/widget.<a href="../widget.html#name-branch">branch</a></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-gridWrapItem">gridWrapItem</a></i></span><span class="hidden"><i>
+			 fyne.io/fyne/v2/widget.<a href="../widget.html#name-leaf">leaf</a></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-listItem">listItem</a></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-menuItem">menuItem</a></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-radioItem">radioItem</a></i></span><span class="hidden"><i>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-treeNode">treeNode</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Keyable" data-popularity="650">	<input type='checkbox' class="fold" id="Keyable-fold-content"><label for="Keyable-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-61">Keyable</a> <b><i>(interface)</i></b></label><span id='Keyable-fold-content-docs' class="fold-docs">
+<span class="md-text">		Keyable describes any focusable canvas object that can accept desktop key events.
+		This is the traditional key down and up event that is not applicable to all devices.</span>
+
+		<input type='checkbox' class="fold" id="Keyable-fold-methods"><label for="Keyable-fold-methods">Methods (<i>total 6, all are exported</i>)</label><span id='Keyable-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Keyable-fold-method-FocusGained"><label for="Keyable-fold-method-FocusGained">( Keyable) <a href="../../../../../src/fyne.io/fyne/v2/canvasobject.go.html#line-68">FocusGained</a>()</label><span id='Keyable-fold-method-FocusGained-docs' class="fold-docs">
+<span class="md-text">				FocusGained is a hook called by the focus handling logic after this object gained the focus.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Keyable-fold-method-FocusLost"><label for="Keyable-fold-method-FocusLost">( Keyable) <a href="../../../../../src/fyne.io/fyne/v2/canvasobject.go.html#line-70">FocusLost</a>()</label><span id='Keyable-fold-method-FocusLost-docs' class="fold-docs">
+<span class="md-text">				FocusLost is a hook called by the focus handling logic after this object lost the focus.</span>
+</span></span><span>
+			<span class="nodocs">( Keyable) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-64">KeyDown</a>(*<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyEvent">KeyEvent</a>)</span></span><span>
+			<span class="nodocs">( Keyable) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-65">KeyUp</a>(*<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyEvent">KeyEvent</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="Keyable-fold-method-TypedKey"><label for="Keyable-fold-method-TypedKey">( Keyable) <a href="../../../../../src/fyne.io/fyne/v2/canvasobject.go.html#line-75">TypedKey</a>(*<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyEvent">KeyEvent</a>)</label><span id='Keyable-fold-method-TypedKey-docs' class="fold-docs">
+<span class="md-text">				TypedKey is a hook called by the input handling logic on key events if this object is focused.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Keyable-fold-method-TypedRune"><label for="Keyable-fold-method-TypedRune">( Keyable) <a href="../../../../../src/fyne.io/fyne/v2/canvasobject.go.html#line-73">TypedRune</a>(<a href="../../../../builtin.html#name-rune">rune</a>)</label><span id='Keyable-fold-method-TypedRune-docs' class="fold-docs">
+<span class="md-text">				TypedRune is a hook called by the input handling logic on text input events if this object is focused.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Keyable-fold-impledby"><label for="Keyable-fold-impledby">Implemented By (<i>at least 2, both are exported</i>)</label><span id='Keyable-fold-impledby-items' class="fold-items"><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-Entry">Entry</a></span><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-SelectEntry">SelectEntry</a></span></span>
+		<input type='checkbox' class="fold" id="Keyable-fold-impls"><label for="Keyable-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Keyable-fold-impls-items' class="fold-items"><span>
+			 Keyable : fyne.io/fyne/v2.<a href="../../v2.html#name-Focusable">Focusable</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Modifier" data-popularity="0">	<input type='checkbox' class="fold" id="Modifier-fold-content"><label for="Modifier-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-38">Modifier</a> = <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyModifier">KeyModifier</a> <i>(basic type)</i></label><span id='Modifier-fold-content-docs' class="fold-docs">
+<span class="md-text">		Modifier captures any key modifiers (shift etc.) pressed during a key event
+		
+		Deprecated: Use fyne.KeyModifier instead.</span>
+
+</span></div><div class="anchor type-res" id="name-Mouseable" data-popularity="550">	<input type='checkbox' class="fold" id="Mouseable-fold-content"><label for="Mouseable-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-45">Mouseable</a> <b><i>(interface)</i></b></label><span id='Mouseable-fold-content-docs' class="fold-docs">
+<span class="md-text">		Mouseable represents desktop mouse events that can be sent to CanvasObjects</span>
+
+		<input type='checkbox' class="fold" id="Mouseable-fold-methods"><label for="Mouseable-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='Mouseable-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Mouseable) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-46">MouseDown</a>(*<a href="#name-MouseEvent">MouseEvent</a>)</span></span><span>
+			<span class="nodocs">( Mouseable) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-47">MouseUp</a>(*<a href="#name-MouseEvent">MouseEvent</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="Mouseable-fold-impledby"><label for="Mouseable-fold-impledby">Implemented By (<i>at least 3, all are exported</i>)</label><span id='Mouseable-fold-impledby-items' class="fold-items"><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-Entry">Entry</a></span><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-SelectEntry">SelectEntry</a></span><span>
+			*fyne.io/fyne/v2/widget.<a href="../widget.html#name-Table">Table</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-MouseButton" data-popularity="90">	<input type='checkbox' class="fold" id="MouseButton-fold-content"><label for="MouseButton-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-6">MouseButton</a> <a href="../../../../builtin.html#name-int">int</a> <i>(basic type)</i></label><span id='MouseButton-fold-content-docs' class="fold-docs">
+<span class="md-text">		MouseButton represents a single button in a desktop MouseEvent</span>
+
+		<input type='checkbox' class="fold" id="MouseButton-fold-results"><label for="MouseButton-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='MouseButton-fold-results-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="MouseButton-showhide-inputofs"><i><label for="MouseButton-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="MouseButton-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/driver/glfw.<a href="../internal/driver/glfw.html#name-convertMouseButton">convertMouseButton</a>(btn <a href="../../../../github.com/go-gl/glfw/v3.3/glfw.html">glfw</a>.<a href="../../../../github.com/go-gl/glfw/v3.3/glfw.html#name-MouseButton">MouseButton</a>, mods <a href="../../../../github.com/go-gl/glfw/v3.3/glfw.html">glfw</a>.<a href="../../../../github.com/go-gl/glfw/v3.3/glfw.html#name-ModifierKey">ModifierKey</a>) (<b>MouseButton</b>, <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyModifier">KeyModifier</a>)</i></span></span>
+		<input type='checkbox' class="fold" id="MouseButton-fold-values"><label for="MouseButton-fold-values">As Types Of (<i>total 5, all are exported</i>)</label><span id='MouseButton-fold-values-items' class="fold-items"><span>
+			const <a href="#name-LeftMouseButton">LeftMouseButton</a></span><span>
+			const <a href="#name-MouseButtonPrimary">MouseButtonPrimary</a></span><span>
+			const <a href="#name-MouseButtonSecondary">MouseButtonSecondary</a></span><span>
+			const <a href="#name-MouseButtonTertiary">MouseButtonTertiary</a></span><span>
+			const <a href="#name-RightMouseButton">RightMouseButton</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-MouseEvent" data-popularity="770">	<input type='checkbox' class="fold" id="MouseEvent-fold-content"><label for="MouseEvent-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-38">MouseEvent</a> <i>(struct)</i></label><span id='MouseEvent-fold-content-docs' class="fold-docs">
+<span class="md-text">		MouseEvent contains data relating to desktop mouse events</span>
+
+		<input type='checkbox' class="fold" id="MouseEvent-fold-fields"><label for="MouseEvent-fold-fields">Fields (<i>total 5, all are exported</i>)</label><span id='MouseEvent-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-40">Button</a> <i><a href="#name-MouseButton">MouseButton</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-41">Modifier</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyModifier">KeyModifier</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-39">PointEvent</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-PointEvent">PointEvent</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="MouseEvent-fold-field-AbsolutePosition"><label for="MouseEvent-fold-field-AbsolutePosition"><a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-39" class="path-duplicate">PointEvent</a>.<a href="../../../../../src/fyne.io/fyne/v2/event.go.html#line-21">AbsolutePosition</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a></i></label><span id='MouseEvent-fold-field-AbsolutePosition-docs' class="fold-docs">
+<span class="md-text">				// The absolute position of the event</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MouseEvent-fold-field-Position"><label for="MouseEvent-fold-field-Position"><a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-39" class="path-duplicate">PointEvent</a>.<a href="../../../../../src/fyne.io/fyne/v2/event.go.html#line-22">Position</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a></i></label><span id='MouseEvent-fold-field-Position-docs' class="fold-docs">
+<span class="md-text">				// The relative position of the event</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="MouseEvent-fold-params"><label for="MouseEvent-fold-params">As Inputs Of (<i>at least 22, all are exported</i>)</label><span id='MouseEvent-fold-params-items' class="fold-items"><span>
+			func <a href="#name-Hoverable">Hoverable</a>.<a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-53">MouseIn</a>(*<b>MouseEvent</b>)</span><span>
+			func <a href="#name-Hoverable">Hoverable</a>.<a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-55">MouseMoved</a>(*<b>MouseEvent</b>)</span><span>
+			func <a href="#name-Mouseable">Mouseable</a>.<a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-46">MouseDown</a>(*<b>MouseEvent</b>)</span><span>
+			func <a href="#name-Mouseable">Mouseable</a>.<a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-47">MouseUp</a>(*<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/internal/widget.(*<a href="../internal/widget.html#name-OverlayContainer">OverlayContainer</a>).<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-49">MouseIn</a>(*<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/internal/widget.(*<a href="../internal/widget.html#name-OverlayContainer">OverlayContainer</a>).<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-55">MouseMoved</a>(*<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Button">Button</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/button.go.html#line-152">MouseIn</a>(*<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Button">Button</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/button.go.html#line-158">MouseMoved</a>(*<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Check">Check</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/check.go.html#line-100">MouseIn</a>(me *<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Check">Check</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/check.go.html#line-113">MouseMoved</a>(me *<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Entry">Entry</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/entry.go.html#line-425">MouseDown</a>(m *<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Entry">Entry</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/entry.go.html#line-451">MouseUp</a>(m *<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Hyperlink">Hyperlink</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/hyperlink.go.html#line-102">MouseIn</a>(e *<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Hyperlink">Hyperlink</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/hyperlink.go.html#line-107">MouseMoved</a>(e *<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Select">Select</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/select.go.html#line-124">MouseIn</a>(*<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Select">Select</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/select.go.html#line-130">MouseMoved</a>(*<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Slider">Slider</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/slider.go.html#line-166">MouseIn</a>(_ *<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Slider">Slider</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/slider.go.html#line-176">MouseMoved</a>(_ *<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Table">Table</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/table.go.html#line-235">MouseDown</a>(e *<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Table">Table</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/table.go.html#line-230">MouseIn</a>(ev *<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Table">Table</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/table.go.html#line-239">MouseMoved</a>(ev *<b>MouseEvent</b>)</span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../widget.html#name-Table">Table</a>).<a href="../../../../../src/fyne.io/fyne/v2/widget/table.go.html#line-248">MouseUp</a>(*<b>MouseEvent</b>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-StandardCursor" data-popularity="115">	<input type='checkbox' class="fold" id="StandardCursor-fold-content"><label for="StandardCursor-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-18">StandardCursor</a> <a href="../../../../builtin.html#name-int">int</a> <i>(basic type)</i></label><span id='StandardCursor-fold-content-docs' class="fold-docs">
+<span class="md-text">		StandardCursor represents a standard Fyne cursor.
+		These values were previously of type `fyne.Cursor`.
+		
+		Since: 2.0</span>
+
+		<input type='checkbox' class="fold" id="StandardCursor-fold-methods"><label for="StandardCursor-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='StandardCursor-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="StandardCursor-fold-method-Image"><label for="StandardCursor-fold-method-Image">( StandardCursor) <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-23">Image</a>() (<a href="../../../../image.html">image</a>.<a href="../../../../image.html#name-Image">Image</a>, <a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-int">int</a>)</label><span id='StandardCursor-fold-method-Image-docs' class="fold-docs">
+<span class="md-text">				Image is not used for any of the StandardCursor types.
+				
+				Since: 2.0</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="StandardCursor-fold-impls"><label for="StandardCursor-fold-impls">Implements (<i>at least one exported</i>)</label><span id='StandardCursor-fold-impls-items' class="fold-items"><span>
+			 StandardCursor : <a href="#name-Cursor">Cursor</a></span></span>
+		<input type='checkbox' class="fold" id="StandardCursor-fold-values"><label for="StandardCursor-fold-values">As Types Of (<i>total 7, all are exported</i>)</label><span id='StandardCursor-fold-values-items' class="fold-items"><span>
+			const <a href="#name-CrosshairCursor">CrosshairCursor</a></span><span>
+			const <a href="#name-DefaultCursor">DefaultCursor</a></span><span>
+			const <a href="#name-HiddenCursor">HiddenCursor</a></span><span>
+			const <a href="#name-HResizeCursor">HResizeCursor</a></span><span>
+			const <a href="#name-PointerCursor">PointerCursor</a></span><span>
+			const <a href="#name-TextCursor">TextCursor</a></span><span>
+			const <a href="#name-VResizeCursor">VResizeCursor</a></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (only one, which is unexported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-modifierToString"><i>	<span class="nodocs"> func <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/shortcut.go.html#line-42">modifierToString</a>(mods <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyModifier">KeyModifier</a>) <a href="../../../../builtin.html#name-string">string</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 28, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-AltModifier">	<input type='checkbox' class="fold" id="AltModifier-fold-content"><label for="AltModifier-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-52">AltModifier</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyModifier">KeyModifier</a> = 4</label><span id='AltModifier-fold-content-docs' class="fold-docs">
+<span class="md-text">		AltModifier represents either alt keys being held
+		
+		Deprecated: Use fyne.KeyModifierAlt instead.</span>
+
+</span></div><div class="anchor value-res" id="name-ControlModifier">	<input type='checkbox' class="fold" id="ControlModifier-fold-content"><label for="ControlModifier-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-48">ControlModifier</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyModifier">KeyModifier</a> = 2</label><span id='ControlModifier-fold-content-docs' class="fold-docs">
+<span class="md-text">		ControlModifier represents the ctrl key being held
+		
+		Deprecated: Use fyne.KeyModifierControl instead.</span>
+
+</span></div><div class="anchor value-res" id="name-CrosshairCursor">	<input type='checkbox' class="fold" id="CrosshairCursor-fold-content"><label for="CrosshairCursor-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-33">CrosshairCursor</a> <a href="#name-StandardCursor">StandardCursor</a> = 2</label><span id='CrosshairCursor-fold-content-docs' class="fold-docs">
+<span class="md-text">		CrosshairCursor is the cursor often used to indicate bitmaps</span>
+
+</span></div><div class="anchor value-res" id="name-DefaultCursor">	<input type='checkbox' class="fold" id="DefaultCursor-fold-content"><label for="DefaultCursor-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-29">DefaultCursor</a> <a href="#name-StandardCursor">StandardCursor</a> = 0</label><span id='DefaultCursor-fold-content-docs' class="fold-docs">
+<span class="md-text">		DefaultCursor is the default cursor typically an arrow</span>
+
+</span></div><div class="anchor value-res" id="name-HiddenCursor">	<input type='checkbox' class="fold" id="HiddenCursor-fold-content"><label for="HiddenCursor-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-41">HiddenCursor</a> <a href="#name-StandardCursor">StandardCursor</a> = 6</label><span id='HiddenCursor-fold-content-docs' class="fold-docs">
+<span class="md-text">		HiddenCursor will cause the cursor to not be shown</span>
+
+</span></div><div class="anchor value-res" id="name-HResizeCursor">	<input type='checkbox' class="fold" id="HResizeCursor-fold-content"><label for="HResizeCursor-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-37">HResizeCursor</a> <a href="#name-StandardCursor">StandardCursor</a> = 4</label><span id='HResizeCursor-fold-content-docs' class="fold-docs">
+<span class="md-text">		HResizeCursor is the cursor often used to indicate horizontal resize</span>
+
+</span></div><div class="anchor value-res" id="name-KeyAltLeft">	<input type='checkbox' class="fold" id="KeyAltLeft-fold-content"><label for="KeyAltLeft-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-19">KeyAltLeft</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a> = "LeftAlt"</label><span id='KeyAltLeft-fold-content-docs' class="fold-docs">
+<span class="md-text">		KeyAltLeft represents the left alt key</span>
+
+</span></div><div class="anchor value-res" id="name-KeyAltRight">	<input type='checkbox' class="fold" id="KeyAltRight-fold-content"><label for="KeyAltRight-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-21">KeyAltRight</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a> = "RightAlt"</label><span id='KeyAltRight-fold-content-docs' class="fold-docs">
+<span class="md-text">		KeyAltRight represents the right alt key</span>
+
+</span></div><div class="anchor value-res" id="name-KeyCapsLock">	<input type='checkbox' class="fold" id="KeyCapsLock-fold-content"><label for="KeyCapsLock-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-32">KeyCapsLock</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a> = "CapsLock"</label><span id='KeyCapsLock-fold-content-docs' class="fold-docs">
+<span class="md-text">		KeyCapsLock represents the caps lock key, tapping once is the down event then again is the up</span>
+
+</span></div><div class="anchor value-res" id="name-KeyControlLeft">	<input type='checkbox' class="fold" id="KeyControlLeft-fold-content"><label for="KeyControlLeft-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-15">KeyControlLeft</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a> = "LeftControl"</label><span id='KeyControlLeft-fold-content-docs' class="fold-docs">
+<span class="md-text">		KeyControlLeft represents the left control key</span>
+
+</span></div><div class="anchor value-res" id="name-KeyControlRight">	<input type='checkbox' class="fold" id="KeyControlRight-fold-content"><label for="KeyControlRight-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-17">KeyControlRight</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a> = "RightControl"</label><span id='KeyControlRight-fold-content-docs' class="fold-docs">
+<span class="md-text">		KeyControlRight represents the right control key</span>
+
+</span></div><div class="anchor value-res" id="name-KeyMenu">	<input type='checkbox' class="fold" id="KeyMenu-fold-content"><label for="KeyMenu-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-27">KeyMenu</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a> = "Menu"</label><span id='KeyMenu-fold-content-docs' class="fold-docs">
+<span class="md-text">		KeyMenu represents the left or right menu / application key</span>
+
+</span></div><div class="anchor value-res" id="name-KeyNone">	<input type='checkbox' class="fold" id="KeyNone-fold-content"><label for="KeyNone-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-9">KeyNone</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a> = ""</label><span id='KeyNone-fold-content-docs' class="fold-docs">
+<span class="md-text">		KeyNone represents no key</span>
+
+</span></div><div class="anchor value-res" id="name-KeyPrintScreen">	<input type='checkbox' class="fold" id="KeyPrintScreen-fold-content"><label for="KeyPrintScreen-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-29">KeyPrintScreen</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a> = "PrintScreen"</label><span id='KeyPrintScreen-fold-content-docs' class="fold-docs">
+<span class="md-text">		KeyPrintScreen represents the key used to cause a screen capture</span>
+
+</span></div><div class="anchor value-res" id="name-KeyShiftLeft">	<input type='checkbox' class="fold" id="KeyShiftLeft-fold-content"><label for="KeyShiftLeft-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-11">KeyShiftLeft</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a> = "LeftShift"</label><span id='KeyShiftLeft-fold-content-docs' class="fold-docs">
+<span class="md-text">		KeyShiftLeft represents the left shift key</span>
+
+</span></div><div class="anchor value-res" id="name-KeyShiftRight">	<input type='checkbox' class="fold" id="KeyShiftRight-fold-content"><label for="KeyShiftRight-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-13">KeyShiftRight</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a> = "RightShift"</label><span id='KeyShiftRight-fold-content-docs' class="fold-docs">
+<span class="md-text">		KeyShiftRight represents the right shift key</span>
+
+</span></div><div class="anchor value-res" id="name-KeySuperLeft">	<input type='checkbox' class="fold" id="KeySuperLeft-fold-content"><label for="KeySuperLeft-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-23">KeySuperLeft</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a> = "LeftSuper"</label><span id='KeySuperLeft-fold-content-docs' class="fold-docs">
+<span class="md-text">		KeySuperLeft represents the left "Windows" key (or "Command" key on macOS)</span>
+
+</span></div><div class="anchor value-res" id="name-KeySuperRight">	<input type='checkbox' class="fold" id="KeySuperRight-fold-content"><label for="KeySuperRight-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-25">KeySuperRight</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyName">KeyName</a> = "RightSuper"</label><span id='KeySuperRight-fold-content-docs' class="fold-docs">
+<span class="md-text">		KeySuperRight represents the right "Windows" key (or "Command" key on macOS)</span>
+
+</span></div><div class="anchor value-res" id="name-LeftMouseButton">	<input type='checkbox' class="fold" id="LeftMouseButton-fold-content"><label for="LeftMouseButton-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-29">LeftMouseButton</a> <a href="#name-MouseButton">MouseButton</a> = 1</label><span id='LeftMouseButton-fold-content-docs' class="fold-docs">
+<span class="md-text">		LeftMouseButton is the most common mouse button - on some systems the only one.
+		
+		Deprecated: use MouseButtonPrimary which will adapt to mouse configuration.</span>
+
+</span></div><div class="anchor value-res" id="name-MouseButtonPrimary">	<input type='checkbox' class="fold" id="MouseButtonPrimary-fold-content"><label for="MouseButtonPrimary-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-13">MouseButtonPrimary</a> <a href="#name-MouseButton">MouseButton</a> = 1</label><span id='MouseButtonPrimary-fold-content-docs' class="fold-docs">
+<span class="md-text">		MouseButtonPrimary is the most common mouse button - on some systems the only one.
+		This will normally be on the left side of a mouse.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-MouseButtonSecondary">	<input type='checkbox' class="fold" id="MouseButtonSecondary-fold-content"><label for="MouseButtonSecondary-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-19">MouseButtonSecondary</a> <a href="#name-MouseButton">MouseButton</a> = 2</label><span id='MouseButtonSecondary-fold-content-docs' class="fold-docs">
+<span class="md-text">		MouseButtonSecondary is the secondary button on most mouse input devices.
+		This will normally be on the right side of a mouse.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-MouseButtonTertiary">	<input type='checkbox' class="fold" id="MouseButtonTertiary-fold-content"><label for="MouseButtonTertiary-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-24">MouseButtonTertiary</a> <a href="#name-MouseButton">MouseButton</a> = 4</label><span id='MouseButtonTertiary-fold-content-docs' class="fold-docs">
+<span class="md-text">		MouseButtonTertiary is the middle button on the mouse, assuming it has one.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-PointerCursor">	<input type='checkbox' class="fold" id="PointerCursor-fold-content"><label for="PointerCursor-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-35">PointerCursor</a> <a href="#name-StandardCursor">StandardCursor</a> = 3</label><span id='PointerCursor-fold-content-docs' class="fold-docs">
+<span class="md-text">		PointerCursor is the cursor often used to indicate a link</span>
+
+</span></div><div class="anchor value-res" id="name-RightMouseButton">	<input type='checkbox' class="fold" id="RightMouseButton-fold-content"><label for="RightMouseButton-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/mouse.go.html#line-34">RightMouseButton</a> <a href="#name-MouseButton">MouseButton</a> = 2</label><span id='RightMouseButton-fold-content-docs' class="fold-docs">
+<span class="md-text">		RightMouseButton is the secondary button on most mouse input devices.
+		
+		Deprecated: use MouseButtonSecondary which will adapt to mouse configuration.</span>
+
+</span></div><div class="anchor value-res" id="name-ShiftModifier">	<input type='checkbox' class="fold" id="ShiftModifier-fold-content"><label for="ShiftModifier-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-44">ShiftModifier</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyModifier">KeyModifier</a> = 1</label><span id='ShiftModifier-fold-content-docs' class="fold-docs">
+<span class="md-text">		ShiftModifier represents a shift key being held
+		
+		Deprecated: Use fyne.KeyModifierShift instead.</span>
+
+</span></div><div class="anchor value-res" id="name-SuperModifier">	<input type='checkbox' class="fold" id="SuperModifier-fold-content"><label for="SuperModifier-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/key.go.html#line-56">SuperModifier</a> <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-KeyModifier">KeyModifier</a> = 8</label><span id='SuperModifier-fold-content-docs' class="fold-docs">
+<span class="md-text">		SuperModifier represents either super keys being held
+		
+		Deprecated: Use fyne.KeyModifierSuper instead.</span>
+
+</span></div><div class="anchor value-res" id="name-TextCursor">	<input type='checkbox' class="fold" id="TextCursor-fold-content"><label for="TextCursor-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-31">TextCursor</a> <a href="#name-StandardCursor">StandardCursor</a> = 1</label><span id='TextCursor-fold-content-docs' class="fold-docs">
+<span class="md-text">		TextCursor is the cursor often used to indicate text selection</span>
+
+</span></div><div class="anchor value-res" id="name-VResizeCursor">	<input type='checkbox' class="fold" id="VResizeCursor-fold-content"><label for="VResizeCursor-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/driver/desktop/cursor.go.html#line-39">VResizeCursor</a> <a href="#name-StandardCursor">StandardCursor</a> = 5</label><span id='VResizeCursor-fold-content-docs' class="fold-docs">
+<span class="md-text">		VResizeCursor is the cursor often used to indicate vertical resize</span>
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: theme.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	theme.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"image/color"</span></label></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// ThemeVariant indicates a variation of a theme, such as light or dark.</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-8"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-ThemeVariant" class="ident">ThemeVariant</a> <a href="../../../../pkg/builtin.html#name-uint" class="ident">uint</a></code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">// ThemeColorName is used to look up a colour based on its name.</span></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-ThemeColorName" class="ident">ThemeColorName</a> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// ThemeIconName is used to look up an icon based on its name.</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-18"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-ThemeIconName" class="ident">ThemeIconName</a> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-19"><code></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">// ThemeSizeName is used to look up a size based on its name.</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-23"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-ThemeSizeName" class="ident">ThemeSizeName</a> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-24"><code></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// Theme defines the method to look up colors, sizes and fonts that make up a Fyne theme.</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-28"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Theme" class="ident">Theme</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Theme.html#name-Color" class="ident">Color</a>(<a href="#line-13" class="ident">ThemeColorName</a>, <a href="#line-8" class="ident">ThemeVariant</a>) <a href="../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../image/color/color.go.html#line-10" class="ident">Color</a></code></span>
+<span class="codeline" id="line-30"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Theme.html#name-Font" class="ident">Font</a>(<a href="text.go.html#line-56" class="ident">TextStyle</a>) <a href="resource.go.html#line-14" class="ident">Resource</a></code></span>
+<span class="codeline" id="line-31"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Theme.html#name-Icon" class="ident">Icon</a>(<a href="#line-18" class="ident">ThemeIconName</a>) <a href="resource.go.html#line-14" class="ident">Resource</a></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Theme.html#name-Size" class="ident">Size</a>(<a href="#line-23" class="ident">ThemeSizeName</a>) <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-33"><code>}</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">// LegacyTheme defines the requirements of any Fyne theme.</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// This was previously called Theme and is kept for simpler transition of applications built before v2.0.0.</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-39"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-LegacyTheme" class="ident">LegacyTheme</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-40"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-BackgroundColor" class="ident">BackgroundColor</a>() <a href="../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../image/color/color.go.html#line-10" class="ident">Color</a></code></span>
+<span class="codeline" id="line-41"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-ButtonColor" class="ident">ButtonColor</a>() <a href="../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../image/color/color.go.html#line-10" class="ident">Color</a></code></span>
+<span class="codeline" id="line-42"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-DisabledButtonColor" class="ident">DisabledButtonColor</a>() <a href="../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../image/color/color.go.html#line-10" class="ident">Color</a></code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-TextColor" class="ident">TextColor</a>() <a href="../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../image/color/color.go.html#line-10" class="ident">Color</a></code></span>
+<span class="codeline" id="line-44"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-DisabledTextColor" class="ident">DisabledTextColor</a>() <a href="../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../image/color/color.go.html#line-10" class="ident">Color</a></code></span>
+<span class="codeline" id="line-45"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-PlaceHolderColor" class="ident">PlaceHolderColor</a>() <a href="../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../image/color/color.go.html#line-10" class="ident">Color</a></code></span>
+<span class="codeline" id="line-46"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-PrimaryColor" class="ident">PrimaryColor</a>() <a href="../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../image/color/color.go.html#line-10" class="ident">Color</a></code></span>
+<span class="codeline" id="line-47"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-HoverColor" class="ident">HoverColor</a>() <a href="../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../image/color/color.go.html#line-10" class="ident">Color</a></code></span>
+<span class="codeline" id="line-48"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-FocusColor" class="ident">FocusColor</a>() <a href="../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../image/color/color.go.html#line-10" class="ident">Color</a></code></span>
+<span class="codeline" id="line-49"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-ScrollBarColor" class="ident">ScrollBarColor</a>() <a href="../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../image/color/color.go.html#line-10" class="ident">Color</a></code></span>
+<span class="codeline" id="line-50"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-ShadowColor" class="ident">ShadowColor</a>() <a href="../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../image/color/color.go.html#line-10" class="ident">Color</a></code></span>
+<span class="codeline" id="line-51"><code></code></span>
+<span class="codeline" id="line-52"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-TextSize" class="ident">TextSize</a>() <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-53"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-TextFont" class="ident">TextFont</a>() <a href="resource.go.html#line-14" class="ident">Resource</a></code></span>
+<span class="codeline" id="line-54"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-TextBoldFont" class="ident">TextBoldFont</a>() <a href="resource.go.html#line-14" class="ident">Resource</a></code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-TextItalicFont" class="ident">TextItalicFont</a>() <a href="resource.go.html#line-14" class="ident">Resource</a></code></span>
+<span class="codeline" id="line-56"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-TextBoldItalicFont" class="ident">TextBoldItalicFont</a>() <a href="resource.go.html#line-14" class="ident">Resource</a></code></span>
+<span class="codeline" id="line-57"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-TextMonospaceFont" class="ident">TextMonospaceFont</a>() <a href="resource.go.html#line-14" class="ident">Resource</a></code></span>
+<span class="codeline" id="line-58"><code></code></span>
+<span class="codeline" id="line-59"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-Padding" class="ident">Padding</a>() <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-60"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-IconInlineSize" class="ident">IconInlineSize</a>() <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-61"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-ScrollBarSize" class="ident">ScrollBarSize</a>() <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-62"><code>	<a href="../../../../imp/fyne.io/fyne/v2.LegacyTheme.html#name-ScrollBarSmallSize" class="ident">ScrollBarSmallSize</a>() <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-63"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

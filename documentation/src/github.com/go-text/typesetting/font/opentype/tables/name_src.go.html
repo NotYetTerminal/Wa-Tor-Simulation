@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: name_src.go in package github.com/go-text/typesetting/font/opentype/tables</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	name_src.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html">github.com/go-text/typesetting/font/opentype/tables</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> tables</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<label for="i0"><span class="lit-string i0">"encoding/binary"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i1"><span class="lit-string i1">"unicode/utf16"</span></label></code></span>
+<span class="codeline" id="line-8"><code>)</code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-11"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PlatformUnicode" class="ident">PlatformUnicode</a> <a href="tables.go.html#line-45" class="ident">PlatformID</a> = <a href="../../../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-12"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PlatformMac" class="ident">PlatformMac</a></code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PlatformIso" class="ident">PlatformIso</a> <span class="comment">// deprecated</span></code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PlatformMicrosoft" class="ident">PlatformMicrosoft</a></code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PlatformCustom" class="ident">PlatformCustom</a></code></span>
+<span class="codeline" id="line-16"><code>	_</code></span>
+<span class="codeline" id="line-17"><code>	_</code></span>
+<span class="codeline" id="line-18"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PlatformAdobe" class="ident">PlatformAdobe</a> <span class="comment">// artificial</span></code></span>
+<span class="codeline" id="line-19"><code>)</code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-22"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PEUnicodeDefault" class="ident">PEUnicodeDefault</a>     = <a href="tables.go.html#line-49" class="ident">EncodingID</a>(<span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-23"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PEUnicodeBMP" class="ident">PEUnicodeBMP</a>         = <a href="tables.go.html#line-49" class="ident">EncodingID</a>(<span class="lit-number">3</span>)</code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PEUnicodeFull" class="ident">PEUnicodeFull</a>        = <a href="tables.go.html#line-49" class="ident">EncodingID</a>(<span class="lit-number">4</span>)</code></span>
+<span class="codeline" id="line-25"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PEUnicodeFull13" class="ident">PEUnicodeFull13</a>      = <a href="tables.go.html#line-49" class="ident">EncodingID</a>(<span class="lit-number">6</span>)</code></span>
+<span class="codeline" id="line-26"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PEMacRoman" class="ident">PEMacRoman</a>           = <a href="#line-22" class="ident">PEUnicodeDefault</a></code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PEMicrosoftSymbolCs" class="ident">PEMicrosoftSymbolCs</a>  = <a href="tables.go.html#line-49" class="ident">EncodingID</a>(<span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-28"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PEMicrosoftUnicodeCs" class="ident">PEMicrosoftUnicodeCs</a> = <a href="tables.go.html#line-49" class="ident">EncodingID</a>(<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PEMicrosoftUcs4" class="ident">PEMicrosoftUcs4</a>      = <a href="tables.go.html#line-49" class="ident">EncodingID</a>(<span class="lit-number">10</span>)</code></span>
+<span class="codeline" id="line-30"><code>)</code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-plMacEnglish" class="ident">plMacEnglish</a>       = <a href="tables.go.html#line-52" class="ident">LanguageID</a>(<span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-34"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-plUnicodeDefault" class="ident">plUnicodeDefault</a>   = <a href="tables.go.html#line-52" class="ident">LanguageID</a>(<span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-35"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-plMicrosoftEnglish" class="ident">plMicrosoftEnglish</a> = <a href="tables.go.html#line-52" class="ident">LanguageID</a>(<span class="lit-number">0x0409</span>)</code></span>
+<span class="codeline" id="line-36"><code>)</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">// Naming table</span></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">// See https://learn.microsoft.com/en-us/typography/opentype/spec/name</span></code></span>
+<span class="codeline" id="line-40"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-Name" class="ident">Name</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-41"><code>	version     <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-42"><code>	count       <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-43"><code>	stringData  []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>       <span class="lit-string">`offsetSize:"Offset16" arrayCount:"ToEnd"`</span></code></span>
+<span class="codeline" id="line-44"><code>	nameRecords []<a href="#line-47" class="ident">nameRecord</a> <span class="lit-string">`arrayCount:"ComputedField-count"`</span></code></span>
+<span class="codeline" id="line-45"><code>}</code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-nameRecord" class="ident">nameRecord</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-48"><code>	platformID   <a href="tables.go.html#line-45" class="ident">PlatformID</a></code></span>
+<span class="codeline" id="line-49"><code>	encodingID   <a href="tables.go.html#line-49" class="ident">EncodingID</a></code></span>
+<span class="codeline" id="line-50"><code>	languageID   <a href="tables.go.html#line-52" class="ident">LanguageID</a></code></span>
+<span class="codeline" id="line-51"><code>	nameID       <a href="tables.go.html#line-12" class="ident">NameID</a></code></span>
+<span class="codeline" id="line-52"><code>	length       <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-53"><code>	stringOffset <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-54"><code>}</code></span>
+<span class="codeline" id="line-55"><code></code></span>
+<span class="codeline" id="line-56"><code><span class="comment">// selectRecord return the entry for `name` or nil if not found.</span></code></span>
+<span class="codeline" id="line-57"><code><span class="keyword">func</span> (<label for="r0" class="ident">names</label> <a href="#line-40" class="ident">Name</a>) <label for="r1" class="ident">selectRecord</label>(<label for="r2" class="ident">name</label> <a href="tables.go.html#line-12" class="ident">NameID</a>) *<a href="#line-47" class="ident">nameRecord</a> {</code></span>
+<span class="codeline" id="line-58"><code>	<span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-59"><code>		<label for="r3" class="ident">foundAppleRoman</label>   = -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-60"><code>		<label for="r4" class="ident">foundAppleEnglish</label> = -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-61"><code>		<label for="r5" class="ident">foundWin</label>          = -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-62"><code>		<label for="r6" class="ident">foundUnicode</label>      = -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-63"><code>		<label for="r7" class="ident">isEnglish</label>         = <a href="../../../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-64"><code>	)</code></span>
+<span class="codeline" id="line-65"><code></code></span>
+<span class="codeline" id="line-66"><code>	<span class="keyword">for</span> <label for="r8" class="ident">n</label>, <label for="r9" class="ident">rec</label> := <span class="keyword">range</span> <label for="r0" class="ident">names</label>.<a href="#line-44" class="ident">nameRecords</a> {</code></span>
+<span class="codeline" id="line-67"><code>		<span class="comment">// According to the OpenType 1.3 specification, only Microsoft or</span></code></span>
+<span class="codeline" id="line-68"><code><span class="comment">		// Apple platform IDs might be used in the `name' table.  The</span></code></span>
+<span class="codeline" id="line-69"><code><span class="comment">		// `Unicode' platform is reserved for the `cmap' table, and the</span></code></span>
+<span class="codeline" id="line-70"><code><span class="comment">		// `ISO' one is deprecated.</span></code></span>
+<span class="codeline" id="line-71"><code><span class="comment">		//</span></code></span>
+<span class="codeline" id="line-72"><code><span class="comment">		// However, the Apple TrueType specification doesn't say the same</span></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">		// thing and goes to suggest that all Unicode `name' table entries</span></code></span>
+<span class="codeline" id="line-74"><code><span class="comment">		// should be coded in UTF-16.</span></code></span>
+<span class="codeline" id="line-75"><code>		<span class="keyword">if</span> <label for="r9" class="ident">rec</label>.<a href="#line-51" class="ident">nameID</a> == <label for="r2" class="ident">name</label> &amp;&amp; <label for="r9" class="ident">rec</label>.<a href="#line-52" class="ident">length</a> &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-76"><code>			<span class="keyword">switch</span> <label for="r9" class="ident">rec</label>.<a href="#line-48" class="ident">platformID</a> {</code></span>
+<span class="codeline" id="line-77"><code>			<span class="keyword">case</span> <a href="#line-11" class="ident">PlatformUnicode</a>, <a href="#line-13" class="ident">PlatformIso</a>:</code></span>
+<span class="codeline" id="line-78"><code>				<span class="comment">// there is `languageID' to check there.  We should use this</span></code></span>
+<span class="codeline" id="line-79"><code><span class="comment">				// field only as a last solution when nothing else is</span></code></span>
+<span class="codeline" id="line-80"><code><span class="comment">				// available.</span></code></span>
+<span class="codeline" id="line-81"><code>				<label for="r6" class="ident">foundUnicode</label> = <label for="r8" class="ident">n</label></code></span>
+<span class="codeline" id="line-82"><code>			<span class="keyword">case</span> <a href="#line-12" class="ident">PlatformMac</a>:</code></span>
+<span class="codeline" id="line-83"><code>				<span class="comment">// This is a bit special because some fonts will use either</span></code></span>
+<span class="codeline" id="line-84"><code><span class="comment">				// an English language id, or a Roman encoding id, to indicate</span></code></span>
+<span class="codeline" id="line-85"><code><span class="comment">				// the English version of its font name.</span></code></span>
+<span class="codeline" id="line-86"><code>				<span class="keyword">if</span> <label for="r9" class="ident">rec</label>.<a href="#line-50" class="ident">languageID</a> == <a href="#line-33" class="ident">plMacEnglish</a> {</code></span>
+<span class="codeline" id="line-87"><code>					<label for="r4" class="ident">foundAppleEnglish</label> = <label for="r8" class="ident">n</label></code></span>
+<span class="codeline" id="line-88"><code>				} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r9" class="ident">rec</label>.<a href="#line-49" class="ident">encodingID</a> == <a href="#line-26" class="ident">PEMacRoman</a> {</code></span>
+<span class="codeline" id="line-89"><code>					<label for="r3" class="ident">foundAppleRoman</label> = <label for="r8" class="ident">n</label></code></span>
+<span class="codeline" id="line-90"><code>				}</code></span>
+<span class="codeline" id="line-91"><code>			<span class="keyword">case</span> <a href="#line-14" class="ident">PlatformMicrosoft</a>:</code></span>
+<span class="codeline" id="line-92"><code>				<span class="comment">// we only take a non-English name when there is nothing</span></code></span>
+<span class="codeline" id="line-93"><code><span class="comment">				// else available in the font</span></code></span>
+<span class="codeline" id="line-94"><code>				<span class="keyword">if</span> <label for="r5" class="ident">foundWin</label> == -<span class="lit-number">1</span> || (<label for="r9" class="ident">rec</label>.<a href="#line-50" class="ident">languageID</a>&amp;<span class="lit-number">0x3FF</span>) == <span class="lit-number">0x009</span> {</code></span>
+<span class="codeline" id="line-95"><code>					<span class="keyword">switch</span> <label for="r9" class="ident">rec</label>.<a href="#line-49" class="ident">encodingID</a> {</code></span>
+<span class="codeline" id="line-96"><code>					<span class="keyword">case</span> <a href="#line-27" class="ident">PEMicrosoftSymbolCs</a>, <a href="#line-28" class="ident">PEMicrosoftUnicodeCs</a>, <a href="#line-29" class="ident">PEMicrosoftUcs4</a>:</code></span>
+<span class="codeline" id="line-97"><code>						<label for="r7" class="ident">isEnglish</label> = (<label for="r9" class="ident">rec</label>.<a href="#line-50" class="ident">languageID</a> &amp; <span class="lit-number">0x3FF</span>) == <span class="lit-number">0x009</span></code></span>
+<span class="codeline" id="line-98"><code>						<label for="r5" class="ident">foundWin</label> = <label for="r8" class="ident">n</label></code></span>
+<span class="codeline" id="line-99"><code>					}</code></span>
+<span class="codeline" id="line-100"><code>				}</code></span>
+<span class="codeline" id="line-101"><code>			}</code></span>
+<span class="codeline" id="line-102"><code>		}</code></span>
+<span class="codeline" id="line-103"><code>	}</code></span>
+<span class="codeline" id="line-104"><code></code></span>
+<span class="codeline" id="line-105"><code>	<label for="r10" class="ident">foundApple</label> := <label for="r3" class="ident">foundAppleRoman</label></code></span>
+<span class="codeline" id="line-106"><code>	<span class="keyword">if</span> <label for="r4" class="ident">foundAppleEnglish</label> &gt;= <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-107"><code>		<label for="r10" class="ident">foundApple</label> = <label for="r4" class="ident">foundAppleEnglish</label></code></span>
+<span class="codeline" id="line-108"><code>	}</code></span>
+<span class="codeline" id="line-109"><code></code></span>
+<span class="codeline" id="line-110"><code>	<span class="comment">// some fonts contain invalid Unicode or Macintosh formatted entries;</span></code></span>
+<span class="codeline" id="line-111"><code><span class="comment">	// we will thus favor names encoded in Windows formats if available</span></code></span>
+<span class="codeline" id="line-112"><code><span class="comment">	// (provided it is an English name)</span></code></span>
+<span class="codeline" id="line-113"><code>	<span class="keyword">if</span> <label for="r5" class="ident">foundWin</label> &gt;= <span class="lit-number">0</span> &amp;&amp; !(<label for="r10" class="ident">foundApple</label> &gt;= <span class="lit-number">0</span> &amp;&amp; !<label for="r7" class="ident">isEnglish</label>) {</code></span>
+<span class="codeline" id="line-114"><code>		<span class="keyword">return</span> &amp;<label for="r0" class="ident">names</label>.<a href="#line-44" class="ident">nameRecords</a>[<label for="r5" class="ident">foundWin</label>]</code></span>
+<span class="codeline" id="line-115"><code>	} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r10" class="ident">foundApple</label> &gt;= <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-116"><code>		<span class="keyword">return</span> &amp;<label for="r0" class="ident">names</label>.<a href="#line-44" class="ident">nameRecords</a>[<label for="r10" class="ident">foundApple</label>]</code></span>
+<span class="codeline" id="line-117"><code>	} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r6" class="ident">foundUnicode</label> &gt;= <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-118"><code>		<span class="keyword">return</span> &amp;<label for="r0" class="ident">names</label>.<a href="#line-44" class="ident">nameRecords</a>[<label for="r6" class="ident">foundUnicode</label>]</code></span>
+<span class="codeline" id="line-119"><code>	}</code></span>
+<span class="codeline" id="line-120"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-121"><code>}</code></span>
+<span class="codeline" id="line-122"><code></code></span>
+<span class="codeline" id="line-123"><code><span class="comment">// Name returns the entry at [name], encoded in UTF-8 when possible,</span></code></span>
+<span class="codeline" id="line-124"><code><span class="comment">// or an empty string if not found</span></code></span>
+<span class="codeline" id="line-125"><code><span class="keyword">func</span> (<label for="r11" class="ident">names</label> <a href="#line-40" class="ident">Name</a>) <label for="r12" class="ident">Name</label>(<label for="r13" class="ident">name</label> <a href="tables.go.html#line-12" class="ident">NameID</a>) <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-126"><code>	<span class="keyword">if</span> <label for="r14" class="ident">record</label> := <label for="r11" class="ident">names</label>.<a href="#line-57" class="ident">selectRecord</a>(<label for="r13" class="ident">name</label>); <label for="r14" class="ident">record</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-127"><code>		<span class="keyword">return</span> <label for="r11" class="ident">names</label>.<a href="#line-135" class="ident">decodeRecord</a>(*<label for="r14" class="ident">record</label>)</code></span>
+<span class="codeline" id="line-128"><code>	}</code></span>
+<span class="codeline" id="line-129"><code>	<span class="keyword">return</span> <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-130"><code>}</code></span>
+<span class="codeline" id="line-131"><code></code></span>
+<span class="codeline" id="line-132"><code><span class="comment">// decode is a best-effort attempt to get an UTF-8 encoded version of</span></code></span>
+<span class="codeline" id="line-133"><code><span class="comment">// Value. Only MicrosoftUnicode (3,1 ,X), MacRomain (1,0,X) and Unicode platform</span></code></span>
+<span class="codeline" id="line-134"><code><span class="comment">// strings are supported.</span></code></span>
+<span class="codeline" id="line-135"><code><span class="keyword">func</span> (<label for="r15" class="ident">names</label> <a href="#line-40" class="ident">Name</a>) <label for="r16" class="ident">decodeRecord</label>(<label for="r17" class="ident">n</label> <a href="#line-47" class="ident">nameRecord</a>) <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-136"><code>	<label for="r18" class="ident">end</label> := <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r17" class="ident">n</label>.<a href="#line-53" class="ident">stringOffset</a>) + <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r17" class="ident">n</label>.<a href="#line-52" class="ident">length</a>)</code></span>
+<span class="codeline" id="line-137"><code>	<span class="keyword">if</span> <label for="r18" class="ident">end</label> &gt; <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r15" class="ident">names</label>.<a href="#line-43" class="ident">stringData</a>) {</code></span>
+<span class="codeline" id="line-138"><code>		<span class="comment">// invalid record</span></code></span>
+<span class="codeline" id="line-139"><code>		<span class="keyword">return</span> <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-140"><code>	}</code></span>
+<span class="codeline" id="line-141"><code>	<label for="r19" class="ident">value</label> := <label for="r15" class="ident">names</label>.<a href="#line-43" class="ident">stringData</a>[<label for="r17" class="ident">n</label>.<a href="#line-53" class="ident">stringOffset</a>:<label for="r18" class="ident">end</label>]</code></span>
+<span class="codeline" id="line-142"><code></code></span>
+<span class="codeline" id="line-143"><code>	<span class="keyword">if</span> <label for="r17" class="ident">n</label>.<a href="#line-48" class="ident">platformID</a> == <a href="#line-11" class="ident">PlatformUnicode</a> || (<label for="r17" class="ident">n</label>.<a href="#line-48" class="ident">platformID</a> == <a href="#line-14" class="ident">PlatformMicrosoft</a> &amp;&amp;</code></span>
+<span class="codeline" id="line-144"><code>		<label for="r17" class="ident">n</label>.<a href="#line-49" class="ident">encodingID</a> == <a href="#line-28" class="ident">PEMicrosoftUnicodeCs</a>) {</code></span>
+<span class="codeline" id="line-145"><code>		<span class="keyword">return</span> <a href="#line-157" class="ident">decodeUtf16</a>(<label for="r19" class="ident">value</label>)</code></span>
+<span class="codeline" id="line-146"><code>	}</code></span>
+<span class="codeline" id="line-147"><code></code></span>
+<span class="codeline" id="line-148"><code>	<span class="keyword">if</span> <label for="r17" class="ident">n</label>.<a href="#line-48" class="ident">platformID</a> == <a href="#line-12" class="ident">PlatformMac</a> &amp;&amp; <label for="r17" class="ident">n</label>.<a href="#line-49" class="ident">encodingID</a> == <a href="#line-26" class="ident">PEMacRoman</a> {</code></span>
+<span class="codeline" id="line-149"><code>		<span class="keyword">return</span> <a href="#line-176" class="ident">DecodeMacintosh</a>(<label for="r19" class="ident">value</label>)</code></span>
+<span class="codeline" id="line-150"><code>	}</code></span>
+<span class="codeline" id="line-151"><code></code></span>
+<span class="codeline" id="line-152"><code>	<span class="comment">// no encoding detected, hope for utf8</span></code></span>
+<span class="codeline" id="line-153"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r19" class="ident">value</label>)</code></span>
+<span class="codeline" id="line-154"><code>}</code></span>
+<span class="codeline" id="line-155"><code></code></span>
+<span class="codeline" id="line-156"><code><span class="comment">// decode a big ending, no BOM utf16 string</span></code></span>
+<span class="codeline" id="line-157"><code><span class="keyword">func</span> <label for="r20" class="ident"><a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-decodeUtf16" class="ident">decodeUtf16</a></label>(<label for="r21" class="ident">b</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-158"><code>	<label for="r22" class="ident">ints</label> := <a href="../../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>, <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r21" class="ident">b</label>)/<span class="lit-number">2</span>)</code></span>
+<span class="codeline" id="line-159"><code>	<span class="keyword">for</span> <label for="r23" class="ident">i</label> := <span class="keyword">range</span> <label for="r22" class="ident">ints</label> {</code></span>
+<span class="codeline" id="line-160"><code>		<label for="r22" class="ident">ints</label>[<label for="r23" class="ident">i</label>] = <a href="../../../../../../../pkg/encoding/binary.html" class="ident i0">binary</a>.<a href="../../../../../../encoding/binary/binary.go.html#line-64" class="ident">BigEndian</a>.<a href="../../../../../../encoding/binary/binary.go.html#line-145" class="ident">Uint16</a>(<label for="r21" class="ident">b</label>[<span class="lit-number">2</span>*<label for="r23" class="ident">i</label>:])</code></span>
+<span class="codeline" id="line-161"><code>	}</code></span>
+<span class="codeline" id="line-162"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<a href="../../../../../../../pkg/unicode/utf16.html" class="ident i1">utf16</a>.<a href="../../../../../../unicode/utf16/utf16.go.html#line-116" class="ident">Decode</a>(<label for="r22" class="ident">ints</label>))</code></span>
+<span class="codeline" id="line-163"><code>}</code></span>
+<span class="codeline" id="line-164"><code></code></span>
+<span class="codeline" id="line-165"><code><span class="comment">// Support for the old macintosh encoding</span></code></span>
+<span class="codeline" id="line-166"><code></code></span>
+<span class="codeline" id="line-167"><code><span class="keyword">var</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-macintoshEncoding" class="ident">macintoshEncoding</a> = [<span class="lit-number">256</span>]<a href="../../../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>{</code></span>
+<span class="codeline" id="line-168"><code>	<span class="lit-number">0</span>, <span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">3</span>, <span class="lit-number">4</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">7</span>, <span class="lit-number">8</span>, <span class="lit-number">9</span>, <span class="lit-number">10</span>, <span class="lit-number">11</span>, <span class="lit-number">12</span>, <span class="lit-number">13</span>, <span class="lit-number">14</span>, <span class="lit-number">15</span>, <span class="lit-number">16</span>, <span class="lit-number">17</span>, <span class="lit-number">18</span>, <span class="lit-number">19</span>, <span class="lit-number">20</span>, <span class="lit-number">21</span>, <span class="lit-number">22</span>, <span class="lit-number">23</span>, <span class="lit-number">24</span>, <span class="lit-number">25</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">28</span>, <span class="lit-number">29</span>, <span class="lit-number">30</span>, <span class="lit-number">31</span>, <span class="lit-number">32</span>, <span class="lit-number">33</span>, <span class="lit-number">34</span>, <span class="lit-number">35</span>, <span class="lit-number">36</span>, <span class="lit-number">37</span>, <span class="lit-number">38</span>, <span class="lit-number">39</span>, <span class="lit-number">40</span>, <span class="lit-number">41</span>, <span class="lit-number">42</span>, <span class="lit-number">43</span>, <span class="lit-number">44</span>, <span class="lit-number">45</span>, <span class="lit-number">46</span>, <span class="lit-number">47</span>, <span class="lit-number">48</span>, <span class="lit-number">49</span>, <span class="lit-number">50</span>, <span class="lit-number">51</span>, <span class="lit-number">52</span>, <span class="lit-number">53</span>, <span class="lit-number">54</span>, <span class="lit-number">55</span>, <span class="lit-number">56</span>, <span class="lit-number">57</span>, <span class="lit-number">58</span>, <span class="lit-number">59</span>, <span class="lit-number">60</span>, <span class="lit-number">61</span>, <span class="lit-number">62</span>, <span class="lit-number">63</span>, <span class="lit-number">64</span>, <span class="lit-number">65</span>, <span class="lit-number">66</span>, <span class="lit-number">67</span>, <span class="lit-number">68</span>, <span class="lit-number">69</span>, <span class="lit-number">70</span>, <span class="lit-number">71</span>, <span class="lit-number">72</span>, <span class="lit-number">73</span>, <span class="lit-number">74</span>, <span class="lit-number">75</span>, <span class="lit-number">76</span>, <span class="lit-number">77</span>, <span class="lit-number">78</span>, <span class="lit-number">79</span>, <span class="lit-number">80</span>, <span class="lit-number">81</span>, <span class="lit-number">82</span>, <span class="lit-number">83</span>, <span class="lit-number">84</span>, <span class="lit-number">85</span>, <span class="lit-number">86</span>, <span class="lit-number">87</span>, <span class="lit-number">88</span>, <span class="lit-number">89</span>, <span class="lit-number">90</span>, <span class="lit-number">91</span>, <span class="lit-number">92</span>, <span class="lit-number">93</span>, <span class="lit-number">94</span>, <span class="lit-number">95</span>, <span class="lit-number">96</span>, <span class="lit-number">97</span>, <span class="lit-number">98</span>, <span class="lit-number">99</span>, <span class="lit-number">100</span>, <span class="lit-number">101</span>, <span class="lit-number">102</span>, <span class="lit-number">103</span>, <span class="lit-number">104</span>, <span class="lit-number">105</span>, <span class="lit-number">106</span>, <span class="lit-number">107</span>, <span class="lit-number">108</span>, <span class="lit-number">109</span>, <span class="lit-number">110</span>, <span class="lit-number">111</span>, <span class="lit-number">112</span>, <span class="lit-number">113</span>, <span class="lit-number">114</span>, <span class="lit-number">115</span>, <span class="lit-number">116</span>, <span class="lit-number">117</span>, <span class="lit-number">118</span>, <span class="lit-number">119</span>, <span class="lit-number">120</span>, <span class="lit-number">121</span>, <span class="lit-number">122</span>, <span class="lit-number">123</span>, <span class="lit-number">124</span>, <span class="lit-number">125</span>, <span class="lit-number">126</span>, <span class="lit-number">127</span>, <span class="lit-number">196</span>, <span class="lit-number">197</span>, <span class="lit-number">199</span>, <span class="lit-number">201</span>, <span class="lit-number">209</span>, <span class="lit-number">214</span>, <span class="lit-number">220</span>, <span class="lit-number">225</span>, <span class="lit-number">224</span>, <span class="lit-number">226</span>, <span class="lit-number">228</span>, <span class="lit-number">227</span>, <span class="lit-number">229</span>, <span class="lit-number">231</span>, <span class="lit-number">233</span>, <span class="lit-number">232</span>, <span class="lit-number">234</span>, <span class="lit-number">235</span>, <span class="lit-number">237</span>, <span class="lit-number">236</span>, <span class="lit-number">238</span>, <span class="lit-number">239</span>, <span class="lit-number">241</span>, <span class="lit-number">243</span>, <span class="lit-number">242</span>, <span class="lit-number">244</span>, <span class="lit-number">246</span>, <span class="lit-number">245</span>, <span class="lit-number">250</span>, <span class="lit-number">249</span>, <span class="lit-number">251</span>, <span class="lit-number">252</span>, <span class="lit-number">8224</span>, <span class="lit-number">176</span>, <span class="lit-number">162</span>, <span class="lit-number">163</span>, <span class="lit-number">167</span>, <span class="lit-number">8226</span>, <span class="lit-number">182</span>, <span class="lit-number">223</span>, <span class="lit-number">174</span>, <span class="lit-number">169</span>, <span class="lit-number">8482</span>, <span class="lit-number">180</span>, <span class="lit-number">168</span>, <span class="lit-number">8800</span>, <span class="lit-number">198</span>, <span class="lit-number">216</span>, <span class="lit-number">8734</span>, <span class="lit-number">177</span>, <span class="lit-number">8804</span>, <span class="lit-number">8805</span>, <span class="lit-number">165</span>, <span class="lit-number">181</span>, <span class="lit-number">8706</span>, <span class="lit-number">8721</span>, <span class="lit-number">8719</span>, <span class="lit-number">960</span>, <span class="lit-number">8747</span>, <span class="lit-number">170</span>, <span class="lit-number">186</span>, <span class="lit-number">937</span>, <span class="lit-number">230</span>, <span class="lit-number">248</span>, <span class="lit-number">191</span>, <span class="lit-number">161</span>, <span class="lit-number">172</span>, <span class="lit-number">8730</span>, <span class="lit-number">402</span>, <span class="lit-number">8776</span>, <span class="lit-number">8710</span>, <span class="lit-number">171</span>, <span class="lit-number">187</span>, <span class="lit-number">8230</span>, <span class="lit-number">160</span>, <span class="lit-number">192</span>, <span class="lit-number">195</span>, <span class="lit-number">213</span>, <span class="lit-number">338</span>, <span class="lit-number">339</span>, <span class="lit-number">8211</span>, <span class="lit-number">8212</span>, <span class="lit-number">8220</span>, <span class="lit-number">8221</span>, <span class="lit-number">8216</span>, <span class="lit-number">8217</span>, <span class="lit-number">247</span>, <span class="lit-number">9674</span>, <span class="lit-number">255</span>, <span class="lit-number">376</span>, <span class="lit-number">8260</span>, <span class="lit-number">8364</span>,</code></span>
+<span class="codeline" id="line-169"><code>	<span class="lit-number">8249</span>, <span class="lit-number">8250</span>, <span class="lit-number">64257</span>, <span class="lit-number">64258</span>, <span class="lit-number">8225</span>, <span class="lit-number">183</span>, <span class="lit-number">8218</span>, <span class="lit-number">8222</span>, <span class="lit-number">8240</span>, <span class="lit-number">194</span>, <span class="lit-number">202</span>, <span class="lit-number">193</span>, <span class="lit-number">203</span>, <span class="lit-number">200</span>, <span class="lit-number">205</span>, <span class="lit-number">206</span>, <span class="lit-number">207</span>, <span class="lit-number">204</span>, <span class="lit-number">211</span>, <span class="lit-number">212</span>, <span class="lit-number">63743</span>, <span class="lit-number">210</span>, <span class="lit-number">218</span>, <span class="lit-number">219</span>, <span class="lit-number">217</span>, <span class="lit-number">305</span>, <span class="lit-number">710</span>, <span class="lit-number">732</span>, <span class="lit-number">175</span>, <span class="lit-number">728</span>, <span class="lit-number">729</span>, <span class="lit-number">730</span>, <span class="lit-number">184</span>, <span class="lit-number">733</span>, <span class="lit-number">731</span>, <span class="lit-number">711</span>,</code></span>
+<span class="codeline" id="line-170"><code>}</code></span>
+<span class="codeline" id="line-171"><code></code></span>
+<span class="codeline" id="line-172"><code><span class="comment">// DecodeMacintoshByte returns the rune for the given byte</span></code></span>
+<span class="codeline" id="line-173"><code><span class="keyword">func</span> <label for="r24" class="ident"><a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-DecodeMacintoshByte" class="ident">DecodeMacintoshByte</a></label>(<label for="r25" class="ident">b</label> <a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../../../pkg/builtin.html#name-rune" class="ident">rune</a> { <span class="keyword">return</span> <a href="#line-167" class="ident">macintoshEncoding</a>[<label for="r25" class="ident">b</label>] }</code></span>
+<span class="codeline" id="line-174"><code></code></span>
+<span class="codeline" id="line-175"><code><span class="comment">// DecodeMacintosh decode a Macintosh encoded string</span></code></span>
+<span class="codeline" id="line-176"><code><span class="keyword">func</span> <label for="r26" class="ident"><a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-DecodeMacintosh" class="ident">DecodeMacintosh</a></label>(<label for="r27" class="ident">encoded</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-177"><code>	<label for="r28" class="ident">out</label> := <a href="../../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>, <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r27" class="ident">encoded</label>))</code></span>
+<span class="codeline" id="line-178"><code>	<span class="keyword">for</span> <label for="r29" class="ident">i</label>, <label for="r30" class="ident">b</label> := <span class="keyword">range</span> <label for="r27" class="ident">encoded</label> {</code></span>
+<span class="codeline" id="line-179"><code>		<label for="r28" class="ident">out</label>[<label for="r29" class="ident">i</label>] = <a href="#line-167" class="ident">macintoshEncoding</a>[<label for="r30" class="ident">b</label>]</code></span>
+<span class="codeline" id="line-180"><code>	}</code></span>
+<span class="codeline" id="line-181"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r28" class="ident">out</label>)</code></span>
+<span class="codeline" id="line-182"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

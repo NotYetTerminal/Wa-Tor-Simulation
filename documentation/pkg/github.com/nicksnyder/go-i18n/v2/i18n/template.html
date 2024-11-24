@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/nicksnyder/go-i18n/v2/i18n/template</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>template</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../../index.html#pkg-github.com/nicksnyder/go-i18n/v2/i18n/template">github.com/nicksnyder/go-i18n/v2/i18n/template</a><i> (on <a href="https://pkg.go.dev/github.com/nicksnyder/go-i18n/v2/i18n/template" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../../dep/github.com/nicksnyder/go-i18n/v2/i18n/template.html">3 packages</a>, and imported by <a href="../../../../../../dep/github.com/nicksnyder/go-i18n/v2/i18n/template.html#imported-by">2 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/identity_parser.go.html">identity_parser.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-1-fold-content"><label for="file-1-fold-content">  <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/parser.go.html#doc">d</a> <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/parser.go.html">parser.go</a></label><span id='file-1-fold-content-items' class="fold-items">
+<span class="md-text">		Package template defines a generic interface for template parsers and implementations of that interface.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/text_parser.go.html">text_parser.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 6, in which 4 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-IdentityParser" data-popularity="150">	<input type='checkbox' class="fold" id="IdentityParser-fold-content"><label for="IdentityParser-fold-content"> type <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/identity_parser.go.html#line-4">IdentityParser</a> <i>(struct)</i></label><span id='IdentityParser-fold-content-docs' class="fold-docs">
+<span class="md-text">		IdentityParser is an Parser that does no parsing and returns tempalte string unchanged.</span>
+
+		<input type='checkbox' class="fold" id="IdentityParser-fold-methods"><label for="IdentityParser-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='IdentityParser-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( IdentityParser) <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/identity_parser.go.html#line-6">Cacheable</a>() <a href="../../../../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( IdentityParser) <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/identity_parser.go.html#line-11">Parse</a>(src, leftDelim, rightDelim <a href="../../../../../builtin.html#name-string">string</a>) (<a href="#name-ParsedTemplate">ParsedTemplate</a>, <a href="../../../../../builtin.html#name-error">error</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="IdentityParser-fold-impls"><label for="IdentityParser-fold-impls">Implements (<i>at least one exported</i>)</label><span id='IdentityParser-fold-impls-items' class="fold-items"><span>
+			 IdentityParser : <a href="#name-Parser">Parser</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-ParsedTemplate" data-popularity="575">	<input type='checkbox' class="fold" id="ParsedTemplate-fold-content"><label for="ParsedTemplate-fold-content"> type <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/parser.go.html#line-14">ParsedTemplate</a> <b><i>(interface)</i></b></label><span id='ParsedTemplate-fold-content-docs' class="fold-docs">
+<span class="md-text">		ParsedTemplate is an executable template.</span>
+
+		<input type='checkbox' class="fold" id="ParsedTemplate-fold-methods"><label for="ParsedTemplate-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='ParsedTemplate-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ParsedTemplate-fold-method-Execute"><label for="ParsedTemplate-fold-method-Execute">( ParsedTemplate) <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/parser.go.html#line-16">Execute</a>(data <a href="../../../../../builtin.html#name-any">any</a>) (<a href="../../../../../builtin.html#name-string">string</a>, <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='ParsedTemplate-fold-method-Execute-docs' class="fold-docs">
+<span class="md-text">				Execute applies a parsed template to the specified data.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="ParsedTemplate-fold-impledby"><label for="ParsedTemplate-fold-impledby">Implemented By (<i>at least 2, neither is exported</i>)</label><span id='ParsedTemplate-fold-impledby-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="ParsedTemplate-showhide-impedBys"><i><label for="ParsedTemplate-showhide-impedBys" class="show-inline">/* 2+ unexporteds ... */</label><label for="ParsedTemplate-showhide-impedBys" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			*<a href="#name-identityParsedTemplate">identityParsedTemplate</a></i></span><span class="hidden"><i>
+			*<a href="#name-parsedTextTemplate">parsedTextTemplate</a></i></span></span>
+		<input type='checkbox' class="fold" id="ParsedTemplate-fold-results"><label for="ParsedTemplate-fold-results">As Outputs Of (<i>at least 3, all are exported</i>)</label><span id='ParsedTemplate-fold-results-items' class="fold-items"><span>
+			func <a href="#name-IdentityParser">IdentityParser</a>.<a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/identity_parser.go.html#line-11">Parse</a>(src, leftDelim, rightDelim <a href="../../../../../builtin.html#name-string">string</a>) (<b>ParsedTemplate</b>, <a href="../../../../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-Parser">Parser</a>.<a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/parser.go.html#line-7">Parse</a>(src, leftDelim, rightDelim <a href="../../../../../builtin.html#name-string">string</a>) (<b>ParsedTemplate</b>, <a href="../../../../../builtin.html#name-error">error</a>)</span><span>
+			func (*<a href="#name-TextParser">TextParser</a>).<a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/text_parser.go.html#line-21">Parse</a>(src, leftDelim, rightDelim <a href="../../../../../builtin.html#name-string">string</a>) (<b>ParsedTemplate</b>, <a href="../../../../../builtin.html#name-error">error</a>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-Parser" data-popularity="545">	<input type='checkbox' class="fold" id="Parser-fold-content"><label for="Parser-fold-content"> type <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/parser.go.html#line-5">Parser</a> <b><i>(interface)</i></b></label><span id='Parser-fold-content-docs' class="fold-docs">
+<span class="md-text">		Parser parses strings into executable templates.</span>
+
+		<input type='checkbox' class="fold" id="Parser-fold-methods"><label for="Parser-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='Parser-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Parser-fold-method-Cacheable"><label for="Parser-fold-method-Cacheable">( Parser) <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/parser.go.html#line-10">Cacheable</a>() <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='Parser-fold-method-Cacheable-docs' class="fold-docs">
+<span class="md-text">				Cacheable returns true if Parse returns ParsedTemplates that are always safe to cache.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Parser-fold-method-Parse"><label for="Parser-fold-method-Parse">( Parser) <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/parser.go.html#line-7">Parse</a>(src, leftDelim, rightDelim <a href="../../../../../builtin.html#name-string">string</a>) (<a href="#name-ParsedTemplate">ParsedTemplate</a>, <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='Parser-fold-method-Parse-docs' class="fold-docs">
+<span class="md-text">				Parse parses src and returns a ParsedTemplate.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Parser-fold-impledby"><label for="Parser-fold-impledby">Implemented By (<i>at least 2, both are exported</i>)</label><span id='Parser-fold-impledby-items' class="fold-items"><span>
+			 <a href="#name-IdentityParser">IdentityParser</a></span><span>
+			*<a href="#name-TextParser">TextParser</a></span></span>
+		<input type='checkbox' class="fold" id="Parser-fold-results"><label for="Parser-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='Parser-fold-results-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Parser-showhide-inputofs"><i><label for="Parser-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="Parser-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func github.com/nicksnyder/go-i18n/v2/i18n.(*<a href="../i18n.html#name-LocalizeConfig">LocalizeConfig</a>).<a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-80">getTemplateParser</a>() <b>Parser</b></i></span></span>
+		<input type='checkbox' class="fold" id="Parser-fold-params"><label for="Parser-fold-params">As Inputs Of (<i>at least 2, in which 1 is exported</i>)</label><span id='Parser-fold-params-items' class="fold-items"><span>
+			func github.com/nicksnyder/go-i18n/v2/internal.(*<a href="../internal.html#name-Template">Template</a>).<a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/internal/template.go.html#line-20">Execute</a>(parser <b>Parser</b>, data interface{}) (<a href="../../../../../builtin.html#name-string">string</a>, <a href="../../../../../builtin.html#name-error">error</a>)</span>
+			<input type='checkbox' class="showhide" id="Parser-showhide-outputofs"><i><label for="Parser-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Parser-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func github.com/nicksnyder/go-i18n/v2/i18n.(*<a href="../i18n.html#name-MessageTemplate">MessageTemplate</a>).<a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-73">execute</a>(pluralForm <a href="../internal/plural.html">plural</a>.<a href="../internal/plural.html#name-Form">Form</a>, data interface{}, parser <b>Parser</b>) (<a href="../../../../../builtin.html#name-string">string</a>, <a href="../../../../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-TextParser" data-popularity="155">	<input type='checkbox' class="fold" id="TextParser-fold-content"><label for="TextParser-fold-content"> type <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/text_parser.go.html#line-10">TextParser</a> <i>(struct)</i></label><span id='TextParser-fold-content-docs' class="fold-docs">
+<span class="md-text">		TextParser is a Parser that uses text/template.</span>
+
+		<input type='checkbox' class="fold" id="TextParser-fold-fields"><label for="TextParser-fold-fields">Fields (<i>total 4, all are exported</i>)</label><span id='TextParser-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/text_parser.go.html#line-13">Funcs</a> <i><a href="../../../../../text/template.html">template</a>.<a href="../../../../../text/template.html#name-FuncMap">FuncMap</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/text_parser.go.html#line-11">LeftDelim</a> <i><a href="../../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/text_parser.go.html#line-14">Option</a> <i><a href="../../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/text_parser.go.html#line-12">RightDelim</a> <i><a href="../../../../../builtin.html#name-string">string</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="TextParser-fold-methods"><label for="TextParser-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='TextParser-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*TextParser) <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/text_parser.go.html#line-17">Cacheable</a>() <a href="../../../../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">(*TextParser) <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/text_parser.go.html#line-21">Parse</a>(src, leftDelim, rightDelim <a href="../../../../../builtin.html#name-string">string</a>) (<a href="#name-ParsedTemplate">ParsedTemplate</a>, <a href="../../../../../builtin.html#name-error">error</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="TextParser-fold-impls"><label for="TextParser-fold-impls">Implements (<i>at least one exported</i>)</label><span id='TextParser-fold-impls-items' class="fold-items"><span>
+			*TextParser : <a href="#name-Parser">Parser</a></span></span>
+		<input type='checkbox' class="fold" id="TextParser-fold-values"><label for="TextParser-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='TextParser-fold-values-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="TextParser-showhide-values"><i><label for="TextParser-showhide-values" class="show-inline">/* one unexported ... */</label><label for="TextParser-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var github.com/nicksnyder/go-i18n/v2/i18n.<a href="../i18n.html#name-defaultTextParser">defaultTextParser</a> *TextParser</i></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-identityParsedTemplate" data-popularity="100">	<input type='checkbox' class="fold" id="identityParsedTemplate-fold-content"><label for="identityParsedTemplate-fold-content"> type <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/identity_parser.go.html#line-15">identityParsedTemplate</a> <i>(struct)</i></label><span id='identityParsedTemplate-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="identityParsedTemplate-fold-fields"><label for="identityParsedTemplate-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='identityParsedTemplate-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="identityParsedTemplate-showhide-fields"><i><label for="identityParsedTemplate-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="identityParsedTemplate-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/identity_parser.go.html#line-16">src</a> <i><a href="../../../../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="identityParsedTemplate-fold-methods"><label for="identityParsedTemplate-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='identityParsedTemplate-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*identityParsedTemplate) <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/identity_parser.go.html#line-19">Execute</a>(data <a href="../../../../../builtin.html#name-any">any</a>) (<a href="../../../../../builtin.html#name-string">string</a>, <a href="../../../../../builtin.html#name-error">error</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="identityParsedTemplate-fold-impls"><label for="identityParsedTemplate-fold-impls">Implements (<i>at least one exported</i>)</label><span id='identityParsedTemplate-fold-impls-items' class="fold-items"><span>
+			*identityParsedTemplate : <a href="#name-ParsedTemplate">ParsedTemplate</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-parsedTextTemplate" data-popularity="100">	<input type='checkbox' class="fold" id="parsedTextTemplate-fold-content"><label for="parsedTextTemplate-fold-content"> type <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/text_parser.go.html#line-47">parsedTextTemplate</a> <i>(struct)</i></label><span id='parsedTextTemplate-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="parsedTextTemplate-fold-fields"><label for="parsedTextTemplate-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='parsedTextTemplate-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="parsedTextTemplate-showhide-fields"><i><label for="parsedTextTemplate-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="parsedTextTemplate-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/text_parser.go.html#line-48">tmpl</a> <i>*<a href="../../../../../text/template.html">template</a>.<a href="../../../../../text/template.html#name-Template">Template</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="parsedTextTemplate-fold-methods"><label for="parsedTextTemplate-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='parsedTextTemplate-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*parsedTextTemplate) <a href="../../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/template/text_parser.go.html#line-51">Execute</a>(data <a href="../../../../../builtin.html#name-any">any</a>) (<a href="../../../../../builtin.html#name-string">string</a>, <a href="../../../../../builtin.html#name-error">error</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="parsedTextTemplate-fold-impls"><label for="parsedTextTemplate-fold-impls">Implements (<i>at least one exported</i>)</label><span id='parsedTextTemplate-fold-impls-items' class="fold-items"><span>
+			*parsedTextTemplate : <a href="#name-ParsedTemplate">ParsedTemplate</a></span></span>
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

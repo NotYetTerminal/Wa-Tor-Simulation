@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: native.go in package fyne.io/fyne/v2/driver</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	native.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/fyne.io/fyne/v2/driver.html">fyne.io/fyne/v2/driver</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> driver</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// NativeWindow is an extension interface for `fyne.Window` that gives access</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// to platform-native features of application windows.</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">// Since: 2.5</span></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/driver.html#name-NativeWindow" class="ident">NativeWindow</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-8"><code>	<span class="comment">// RunNative  provides a way to execute code within the platform-specific runtime context for a window.</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">	// The context types are defined in the `driver` package and the specific context passed will differ by platform.</span></code></span>
+<span class="codeline" id="line-10"><code>	<a href="../../../../../imp/fyne.io/fyne/v2/driver.NativeWindow.html#name-RunNative" class="ident">RunNative</a>(<span class="keyword">func</span>(context <a href="../../../../../pkg/builtin.html#name-any" class="ident">any</a>))</code></span>
+<span class="codeline" id="line-11"><code>}</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// AndroidContext is passed to the RunNative callback when it is executed on an Android device.</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">// The VM, Env and Ctx pointers are required to make various calls into JVM methods.</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// Since: 2.3</span></code></span>
+<span class="codeline" id="line-17"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/driver.html#name-AndroidContext" class="ident">AndroidContext</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-18"><code>	VM, Env, Ctx <a href="../../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a></code></span>
+<span class="codeline" id="line-19"><code>}</code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">// AndroidWindowContext is passed to the NativeWindow.RunNative callback when it is executed</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// on an Android device. The NativeWindow field is of type `*C.ANativeWindow`.</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">// The VM, Env and Ctx pointers are required to make various calls into JVM methods.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// Since: 2.5</span></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/driver.html#name-AndroidWindowContext" class="ident">AndroidWindowContext</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-27"><code>	<a href="#line-17" class="ident">AndroidContext</a></code></span>
+<span class="codeline" id="line-28"><code>	NativeWindow <a href="../../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a></code></span>
+<span class="codeline" id="line-29"><code>}</code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">// UnknownContext is passed to the RunNative callback when it is executed</span></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">// on devices or windows without special native context.</span></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">// Since: 2.3</span></code></span>
+<span class="codeline" id="line-35"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/driver.html#name-UnknownContext" class="ident">UnknownContext</a> <span class="keyword">struct</span>{}</code></span>
+<span class="codeline" id="line-36"><code></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">// WindowsWindowContext is passed to the NativeWindow.RunNative callback</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">// when it is executed on a Microsoft Windows device.</span></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-40"><code><span class="comment">// Since: 2.5</span></code></span>
+<span class="codeline" id="line-41"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/driver.html#name-WindowsWindowContext" class="ident">WindowsWindowContext</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-42"><code>	<span class="comment">// HWND is the window handle for the native window.</span></code></span>
+<span class="codeline" id="line-43"><code>	HWND <a href="../../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a></code></span>
+<span class="codeline" id="line-44"><code>}</code></span>
+<span class="codeline" id="line-45"><code></code></span>
+<span class="codeline" id="line-46"><code><span class="comment">// MacWindowContext is passed to the NativeWindow.RunNative callback</span></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">// when it is executed on a macOS device.</span></code></span>
+<span class="codeline" id="line-48"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-49"><code><span class="comment">// Since: 2.5</span></code></span>
+<span class="codeline" id="line-50"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/driver.html#name-MacWindowContext" class="ident">MacWindowContext</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-51"><code>	<span class="comment">// NSWindow is the window handle for the native window.</span></code></span>
+<span class="codeline" id="line-52"><code>	NSWindow <a href="../../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a></code></span>
+<span class="codeline" id="line-53"><code>}</code></span>
+<span class="codeline" id="line-54"><code></code></span>
+<span class="codeline" id="line-55"><code><span class="comment">// X11WindowContext is passed to the NativeWindow.RunNative callback</span></code></span>
+<span class="codeline" id="line-56"><code><span class="comment">// when it is executed on a device with the X11 windowing system.</span></code></span>
+<span class="codeline" id="line-57"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-58"><code><span class="comment">// Since: 2.5</span></code></span>
+<span class="codeline" id="line-59"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/driver.html#name-X11WindowContext" class="ident">X11WindowContext</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-60"><code>	<span class="comment">// WindowHandle is the window handle for the native X11 window.</span></code></span>
+<span class="codeline" id="line-61"><code>	WindowHandle <a href="../../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a></code></span>
+<span class="codeline" id="line-62"><code>}</code></span>
+<span class="codeline" id="line-63"><code></code></span>
+<span class="codeline" id="line-64"><code><span class="comment">// WaylandWindowContext is passed to the NativeWindow.RunNative callback</span></code></span>
+<span class="codeline" id="line-65"><code><span class="comment">// when it is executed on a device with the Wayland windowing system.</span></code></span>
+<span class="codeline" id="line-66"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-67"><code><span class="comment">// Since: 2.5</span></code></span>
+<span class="codeline" id="line-68"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/driver.html#name-WaylandWindowContext" class="ident">WaylandWindowContext</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-69"><code>	<span class="comment">// WaylandSurface is the handle to the native Wayland surface.</span></code></span>
+<span class="codeline" id="line-70"><code>	WaylandSurface <a href="../../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a></code></span>
+<span class="codeline" id="line-71"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

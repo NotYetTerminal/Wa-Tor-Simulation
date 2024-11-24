@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: errors.go in package fyne.io/fyne/v2/storage</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	errors.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/fyne.io/fyne/v2/storage.html">fyne.io/fyne/v2/storage</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> storage</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"errors"</span></label></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<span class="comment">// ErrAlreadyExists may be thrown by docs. E.g., save a document twice.</span></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">	// Since: 2.3</span></code></span>
+<span class="codeline" id="line-9"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2/storage.html#name-ErrAlreadyExists" class="ident">ErrAlreadyExists</a> = <a href="../../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"document already exists"</span>)</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code>	<span class="comment">// ErrNotExists may be thrown by docs. E.g., save an unknown document.</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">	// Since: 2.3</span></code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2/storage.html#name-ErrNotExists" class="ident">ErrNotExists</a> = <a href="../../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"document does not exist"</span>)</code></span>
+<span class="codeline" id="line-15"><code>)</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

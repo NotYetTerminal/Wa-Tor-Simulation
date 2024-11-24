@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: texture_desktop.go in package fyne.io/fyne/v2/internal/cache</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	texture_desktop.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/cache.html">fyne.io/fyne/v2/internal/cache</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1]
+{background: #226; color: #ff8;}
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">//go:build !android &amp;&amp; !ios &amp;&amp; !mobile &amp;&amp; !wasm &amp;&amp; !test_web_driver</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> cache</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// TextureType represents an uploaded GL texture</span></code></span>
+<span class="codeline" id="line-6"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/internal/cache.html#name-TextureType" class="ident">TextureType</a> = <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// NoTexture used when there is no valid texture</span></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">var</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/internal/cache.html#name-NoTexture" class="ident">NoTexture</a> = <a href="#line-6" class="ident">TextureType</a>(<span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/internal/cache.html#name-textureInfo" class="ident">textureInfo</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-12"><code>	<a href="texture_common.go.html#line-65" class="ident">textureCacheBase</a></code></span>
+<span class="codeline" id="line-13"><code>	texture <a href="#line-6" class="ident">TextureType</a></code></span>
+<span class="codeline" id="line-14"><code>}</code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// IsValid will return true if the passed texture is potentially a texture</span></code></span>
+<span class="codeline" id="line-17"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/internal/cache.html#name-IsValid" class="ident">IsValid</a></label>(<label for="r1" class="ident">texture</label> <a href="#line-6" class="ident">TextureType</a>) <a href="../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-18"><code>	<span class="keyword">return</span> <label for="r1" class="ident">texture</label> != <a href="#line-9" class="ident">NoTexture</a></code></span>
+<span class="codeline" id="line-19"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

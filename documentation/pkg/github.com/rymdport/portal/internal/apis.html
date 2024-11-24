@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/rymdport/portal/internal/apis</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>apis</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-github.com/rymdport/portal/internal/apis">github.com/rymdport/portal/internal/apis</a><i> (on <a href="https://pkg.go.dev/github.com/rymdport/portal/internal/apis" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/github.com/rymdport/portal/internal/apis.html">2 packages</a>, and imported by <a href="../../../../../dep/github.com/rymdport/portal/internal/apis.html#imported-by">3 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../../../../src/github.com/rymdport/portal/internal/apis/apis.go.html#doc">d</a> <a href="../../../../../src/github.com/rymdport/portal/internal/apis/apis.go.html">apis.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package apis contains dbus paths and call names for various portal apis.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/rymdport/portal/internal/apis/response.go.html">response.go</a></span></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (only one, which is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ReadResponse">	<input type='checkbox' class="fold" id="ReadResponse-fold-content"><label for="ReadResponse-fold-content"> func <a href="../../../../../src/github.com/rymdport/portal/internal/apis/response.go.html#line-10">ReadResponse</a>(conn *<a href="../../../godbus/dbus/v5.html">dbus</a>.<a href="../../../godbus/dbus/v5.html#name-Conn">Conn</a>, call *<a href="../../../godbus/dbus/v5.html">dbus</a>.<a href="../../../godbus/dbus/v5.html#name-Call">Call</a>) (map[<a href="../../../../builtin.html#name-string">string</a>]<a href="../../../godbus/dbus/v5.html">dbus</a>.<a href="../../../godbus/dbus/v5.html#name-Variant">Variant</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='ReadResponse-fold-content-docs' class="fold-docs">
+<span class="md-text">		ReadResponse takes the given dbus connection and tries to read the responce object.
+		This only works for dbus clals that have an associated response.</span>
+
+</span></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 5, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-CallBaseName">	<span class="nodocs">const <a href="../../../../../src/github.com/rymdport/portal/internal/apis/apis.go.html#line-8">CallBaseName</a> = "org.freedesktop.portal"</span></div><div class="anchor value-res" id="name-ObjectName">	<span class="nodocs">const <a href="../../../../../src/github.com/rymdport/portal/internal/apis/apis.go.html#line-5">ObjectName</a> = "org.freedesktop.portal.Desktop"</span></div><div class="anchor value-res" id="name-ObjectPath">	<span class="nodocs">const <a href="../../../../../src/github.com/rymdport/portal/internal/apis/apis.go.html#line-6">ObjectPath</a> = "/org/freedesktop/portal/desktop"</span></div><div class="anchor value-res" id="name-RequestInterface">	<span class="nodocs">const <a href="../../../../../src/github.com/rymdport/portal/internal/apis/apis.go.html#line-10">RequestInterface</a> = "org.freedesktop.portal.Request"</span></div><div class="anchor value-res" id="name-ResponseMember">	<span class="nodocs">const <a href="../../../../../src/github.com/rymdport/portal/internal/apis/apis.go.html#line-11">ResponseMember</a> = "Response"</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

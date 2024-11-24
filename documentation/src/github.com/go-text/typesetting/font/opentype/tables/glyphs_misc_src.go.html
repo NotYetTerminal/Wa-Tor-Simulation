@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: glyphs_misc_src.go in package github.com/go-text/typesetting/font/opentype/tables</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	glyphs_misc_src.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html">github.com/go-text/typesetting/font/opentype/tables</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6]
+{background: #226; color: #ff8;}
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> tables</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// SVG is the SVG (Scalable Vector Graphics) table.</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">// See - https://learn.microsoft.com/fr-fr/typography/opentype/spec/svg</span></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-SVG" class="ident">SVG</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-8"><code>	version         <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>          <span class="comment">// Table version (starting at 0). Set to 0.</span></code></span>
+<span class="codeline" id="line-9"><code>	SVGDocumentList <a href="#line-13" class="ident">SVGDocumentList</a> <span class="lit-string">`offsetSize:"Offset32"`</span> <span class="comment">// Offset to the SVG Document List, from the start of the SVG table. Must be non-zero.</span></code></span>
+<span class="codeline" id="line-10"><code>	reserved        <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>          <span class="comment">// Set to 0.</span></code></span>
+<span class="codeline" id="line-11"><code>}</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-SVGDocumentList" class="ident">SVGDocumentList</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-14"><code>	DocumentRecords []<a href="#line-19" class="ident">SVGDocumentRecord</a> <span class="lit-string">`arrayCount:"FirstUint16"`</span> <span class="comment">// [numEntries]	Array of SVG document records.</span></code></span>
+<span class="codeline" id="line-15"><code>	SVGRawData      []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>              <span class="lit-string">`subsliceStart:"AtStart" arrayCount:"ToEnd"`</span></code></span>
+<span class="codeline" id="line-16"><code>}</code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">// Each SVG document record specifies a range of glyph IDs (from startGlyphID to endGlyphID, inclusive), and the location of its associated SVG document in the SVG table.</span></code></span>
+<span class="codeline" id="line-19"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-SVGDocumentRecord" class="ident">SVGDocumentRecord</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-20"><code>	StartGlyphID <a href="tables.go.html#line-9" class="ident">GlyphID</a>  <span class="comment">// The first glyph ID for the range covered by this record.</span></code></span>
+<span class="codeline" id="line-21"><code>	EndGlyphID   <a href="tables.go.html#line-9" class="ident">GlyphID</a>  <span class="comment">// The last glyph ID for the range covered by this record.</span></code></span>
+<span class="codeline" id="line-22"><code>	SvgDocOffset <a href="tables.go.html#line-58" class="ident">Offset32</a> <span class="comment">// Offset from the beginning of the SVGDocumentList to an SVG document. Must be non-zero.</span></code></span>
+<span class="codeline" id="line-23"><code>	SvgDocLength <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>   <span class="comment">// Length of the SVG document data. Must be non-zero.</span></code></span>
+<span class="codeline" id="line-24"><code>}</code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">// CFF is the Compact Font Format Table.</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">// Since it used its own format, quite different from the regular Opentype format,</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">// its interpretation is handled externally (see font/cff).</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">// See also https://learn.microsoft.com/fr-fr/typography/opentype/spec/cff</span></code></span>
+<span class="codeline" id="line-30"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CFF" class="ident">CFF</a> = []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">// VORG is the Vertical Origin Table</span></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">// See - https://learn.microsoft.com/fr-fr/typography/opentype/spec/vorg</span></code></span>
+<span class="codeline" id="line-34"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-VORG" class="ident">VORG</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-35"><code>	majorVersion       <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>              <span class="comment">//	Major version (starting at 1). Set to 1.</span></code></span>
+<span class="codeline" id="line-36"><code>	minorVersion       <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>              <span class="comment">//	Minor version (starting at 0). Set to 0.</span></code></span>
+<span class="codeline" id="line-37"><code>	DefaultVertOriginY <a href="../../../../../../../pkg/builtin.html#name-int16" class="ident">int16</a>               <span class="comment">//	The y coordinate of a glyph’s vertical origin, in the font’s design coordinate system, to be used if no entry is present for the glyph in the vertOriginYMetrics array.</span></code></span>
+<span class="codeline" id="line-38"><code>	VertOriginYMetrics []<a href="#line-58" class="ident">VertOriginYMetric</a> <span class="lit-string">`arrayCount:"FirstUint16"`</span></code></span>
+<span class="codeline" id="line-39"><code>}</code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">// YOrigin returns the vertical origin for [glyph].</span></code></span>
+<span class="codeline" id="line-42"><code><span class="keyword">func</span> (<label for="r0" class="ident">t</label> *<a href="#line-34" class="ident">VORG</a>) <label for="r1" class="ident">YOrigin</label>(<label for="r2" class="ident">glyph</label> <a href="tables.go.html#line-9" class="ident">GlyphID</a>) <a href="../../../../../../../pkg/builtin.html#name-int16" class="ident">int16</a> {</code></span>
+<span class="codeline" id="line-43"><code>	<span class="comment">// binary search</span></code></span>
+<span class="codeline" id="line-44"><code>	<span class="keyword">for</span> <label for="r3" class="ident">i</label>, <label for="r4" class="ident">j</label> := <span class="lit-number">0</span>, <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r0" class="ident">t</label>.<a href="#line-38" class="ident">VertOriginYMetrics</a>); <label for="r3" class="ident">i</label> &lt; <label for="r4" class="ident">j</label>; {</code></span>
+<span class="codeline" id="line-45"><code>		<label for="r5" class="ident">h</label> := <label for="r3" class="ident">i</label> + (<label for="r4" class="ident">j</label>-<label for="r3" class="ident">i</label>)/<span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-46"><code>		<label for="r6" class="ident">entry</label> := <label for="r0" class="ident">t</label>.<a href="#line-38" class="ident">VertOriginYMetrics</a>[<label for="r5" class="ident">h</label>]</code></span>
+<span class="codeline" id="line-47"><code>		<span class="keyword">if</span> <label for="r2" class="ident">glyph</label> &lt; <label for="r6" class="ident">entry</label>.<a href="#line-59" class="ident">GlyphIndex</a> {</code></span>
+<span class="codeline" id="line-48"><code>			<label for="r4" class="ident">j</label> = <label for="r5" class="ident">h</label></code></span>
+<span class="codeline" id="line-49"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r6" class="ident">entry</label>.<a href="#line-59" class="ident">GlyphIndex</a> &lt; <label for="r2" class="ident">glyph</label> {</code></span>
+<span class="codeline" id="line-50"><code>			<label for="r3" class="ident">i</label> = <label for="r5" class="ident">h</label> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-51"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-52"><code>			<span class="keyword">return</span> <label for="r6" class="ident">entry</label>.<a href="#line-60" class="ident">VertOriginY</a></code></span>
+<span class="codeline" id="line-53"><code>		}</code></span>
+<span class="codeline" id="line-54"><code>	}</code></span>
+<span class="codeline" id="line-55"><code>	<span class="keyword">return</span> <label for="r0" class="ident">t</label>.<a href="#line-37" class="ident">DefaultVertOriginY</a></code></span>
+<span class="codeline" id="line-56"><code>}</code></span>
+<span class="codeline" id="line-57"><code></code></span>
+<span class="codeline" id="line-58"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-VertOriginYMetric" class="ident">VertOriginYMetric</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-59"><code>	GlyphIndex  <a href="tables.go.html#line-9" class="ident">GlyphID</a> <span class="comment">//  Glyph index.</span></code></span>
+<span class="codeline" id="line-60"><code>	VertOriginY <a href="../../../../../../../pkg/builtin.html#name-int16" class="ident">int16</a>   <span class="comment">//  Y coordinate, in the font’s design coordinate system, of the vertical origin of glyph with index glyphIndex.</span></code></span>
+<span class="codeline" id="line-61"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

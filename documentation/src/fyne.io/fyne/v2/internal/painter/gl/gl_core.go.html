@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: gl_core.go in package fyne.io/fyne/v2/internal/painter/gl</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	gl_core.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html">fyne.io/fyne/v2/internal/painter/gl</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72],
+input[id=r73]:checked ~pre label[for=r73],
+input[id=r74]:checked ~pre label[for=r74],
+input[id=r75]:checked ~pre label[for=r75],
+input[id=r76]:checked ~pre label[for=r76],
+input[id=r77]:checked ~pre label[for=r77],
+input[id=r78]:checked ~pre label[for=r78],
+input[id=r79]:checked ~pre label[for=r79],
+input[id=r80]:checked ~pre label[for=r80],
+input[id=r81]:checked ~pre label[for=r81],
+input[id=r82]:checked ~pre label[for=r82],
+input[id=r83]:checked ~pre label[for=r83],
+input[id=r84]:checked ~pre label[for=r84],
+input[id=r85]:checked ~pre label[for=r85],
+input[id=r86]:checked ~pre label[for=r86],
+input[id=r87]:checked ~pre label[for=r87],
+input[id=r88]:checked ~pre label[for=r88],
+input[id=r89]:checked ~pre label[for=r89],
+input[id=r90]:checked ~pre label[for=r90],
+input[id=r91]:checked ~pre label[for=r91],
+input[id=r92]:checked ~pre label[for=r92],
+input[id=r93]:checked ~pre label[for=r93],
+input[id=r94]:checked ~pre label[for=r94],
+input[id=r95]:checked ~pre label[for=r95],
+input[id=r96]:checked ~pre label[for=r96],
+input[id=r97]:checked ~pre label[for=r97],
+input[id=r98]:checked ~pre label[for=r98],
+input[id=r99]:checked ~pre label[for=r99],
+input[id=r100]:checked ~pre label[for=r100],
+input[id=r101]:checked ~pre label[for=r101],
+input[id=r102]:checked ~pre label[for=r102],
+input[id=r103]:checked ~pre label[for=r103],
+input[id=r104]:checked ~pre label[for=r104],
+input[id=r105]:checked ~pre label[for=r105],
+input[id=r106]:checked ~pre label[for=r106],
+input[id=r107]:checked ~pre label[for=r107],
+input[id=r108]:checked ~pre label[for=r108],
+input[id=r109]:checked ~pre label[for=r109],
+input[id=r110]:checked ~pre label[for=r110],
+input[id=r111]:checked ~pre label[for=r111],
+input[id=r112]:checked ~pre label[for=r112],
+input[id=r113]:checked ~pre label[for=r113],
+input[id=r114]:checked ~pre label[for=r114],
+input[id=r115]:checked ~pre label[for=r115],
+input[id=r116]:checked ~pre label[for=r116],
+input[id=r117]:checked ~pre label[for=r117],
+input[id=r118]:checked ~pre label[for=r118],
+input[id=r119]:checked ~pre label[for=r119],
+input[id=r120]:checked ~pre label[for=r120],
+input[id=r121]:checked ~pre label[for=r121],
+input[id=r122]:checked ~pre label[for=r122],
+input[id=r123]:checked ~pre label[for=r123],
+input[id=r124]:checked ~pre label[for=r124],
+input[id=r125]:checked ~pre label[for=r125],
+input[id=r126]:checked ~pre label[for=r126],
+input[id=r127]:checked ~pre label[for=r127],
+input[id=r128]:checked ~pre label[for=r128],
+input[id=r129]:checked ~pre label[for=r129],
+input[id=r130]:checked ~pre label[for=r130],
+input[id=r131]:checked ~pre label[for=r131],
+input[id=r132]:checked ~pre label[for=r132],
+input[id=r133]:checked ~pre label[for=r133],
+input[id=r134]:checked ~pre label[for=r134],
+input[id=r135]:checked ~pre label[for=r135],
+input[id=r136]:checked ~pre label[for=r136],
+input[id=r137]:checked ~pre label[for=r137],
+input[id=r138]:checked ~pre label[for=r138],
+input[id=r139]:checked ~pre label[for=r139],
+input[id=r140]:checked ~pre label[for=r140],
+input[id=r141]:checked ~pre label[for=r141],
+input[id=r142]:checked ~pre label[for=r142],
+input[id=r143]:checked ~pre label[for=r143],
+input[id=r144]:checked ~pre label[for=r144],
+input[id=r145]:checked ~pre label[for=r145],
+input[id=r146]:checked ~pre label[for=r146],
+input[id=r147]:checked ~pre label[for=r147],
+input[id=r148]:checked ~pre label[for=r148],
+input[id=r149]:checked ~pre label[for=r149],
+input[id=r150]:checked ~pre label[for=r150],
+input[id=r151]:checked ~pre label[for=r151],
+input[id=r152]:checked ~pre label[for=r152],
+input[id=r153]:checked ~pre label[for=r153],
+input[id=r154]:checked ~pre label[for=r154],
+input[id=r155]:checked ~pre label[for=r155],
+input[id=r156]:checked ~pre label[for=r156],
+input[id=r157]:checked ~pre label[for=r157],
+input[id=r158]:checked ~pre label[for=r158],
+input[id=r159]:checked ~pre label[for=r159],
+input[id=r160]:checked ~pre label[for=r160],
+input[id=r161]:checked ~pre label[for=r161],
+input[id=r162]:checked ~pre label[for=r162],
+input[id=r163]:checked ~pre label[for=r163],
+input[id=r164]:checked ~pre label[for=r164],
+input[id=r165]:checked ~pre label[for=r165],
+input[id=r166]:checked ~pre label[for=r166],
+input[id=r167]:checked ~pre label[for=r167],
+input[id=r168]:checked ~pre label[for=r168],
+input[id=r169]:checked ~pre label[for=r169],
+input[id=r170]:checked ~pre label[for=r170],
+input[id=r171]:checked ~pre label[for=r171],
+input[id=r172]:checked ~pre label[for=r172],
+input[id=r173]:checked ~pre label[for=r173],
+input[id=r174]:checked ~pre label[for=r174],
+input[id=r175]:checked ~pre label[for=r175],
+input[id=r176]:checked ~pre label[for=r176],
+input[id=r177]:checked ~pre label[for=r177],
+input[id=r178]:checked ~pre label[for=r178],
+input[id=r179]:checked ~pre label[for=r179],
+input[id=r180]:checked ~pre label[for=r180],
+input[id=r181]:checked ~pre label[for=r181]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="r73" type="radio" name="g"/>
+<input id="r74" type="radio" name="g"/>
+<input id="r75" type="radio" name="g"/>
+<input id="r76" type="radio" name="g"/>
+<input id="r77" type="radio" name="g"/>
+<input id="r78" type="radio" name="g"/>
+<input id="r79" type="radio" name="g"/>
+<input id="r80" type="radio" name="g"/>
+<input id="r81" type="radio" name="g"/>
+<input id="r82" type="radio" name="g"/>
+<input id="r83" type="radio" name="g"/>
+<input id="r84" type="radio" name="g"/>
+<input id="r85" type="radio" name="g"/>
+<input id="r86" type="radio" name="g"/>
+<input id="r87" type="radio" name="g"/>
+<input id="r88" type="radio" name="g"/>
+<input id="r89" type="radio" name="g"/>
+<input id="r90" type="radio" name="g"/>
+<input id="r91" type="radio" name="g"/>
+<input id="r92" type="radio" name="g"/>
+<input id="r93" type="radio" name="g"/>
+<input id="r94" type="radio" name="g"/>
+<input id="r95" type="radio" name="g"/>
+<input id="r96" type="radio" name="g"/>
+<input id="r97" type="radio" name="g"/>
+<input id="r98" type="radio" name="g"/>
+<input id="r99" type="radio" name="g"/>
+<input id="r100" type="radio" name="g"/>
+<input id="r101" type="radio" name="g"/>
+<input id="r102" type="radio" name="g"/>
+<input id="r103" type="radio" name="g"/>
+<input id="r104" type="radio" name="g"/>
+<input id="r105" type="radio" name="g"/>
+<input id="r106" type="radio" name="g"/>
+<input id="r107" type="radio" name="g"/>
+<input id="r108" type="radio" name="g"/>
+<input id="r109" type="radio" name="g"/>
+<input id="r110" type="radio" name="g"/>
+<input id="r111" type="radio" name="g"/>
+<input id="r112" type="radio" name="g"/>
+<input id="r113" type="radio" name="g"/>
+<input id="r114" type="radio" name="g"/>
+<input id="r115" type="radio" name="g"/>
+<input id="r116" type="radio" name="g"/>
+<input id="r117" type="radio" name="g"/>
+<input id="r118" type="radio" name="g"/>
+<input id="r119" type="radio" name="g"/>
+<input id="r120" type="radio" name="g"/>
+<input id="r121" type="radio" name="g"/>
+<input id="r122" type="radio" name="g"/>
+<input id="r123" type="radio" name="g"/>
+<input id="r124" type="radio" name="g"/>
+<input id="r125" type="radio" name="g"/>
+<input id="r126" type="radio" name="g"/>
+<input id="r127" type="radio" name="g"/>
+<input id="r128" type="radio" name="g"/>
+<input id="r129" type="radio" name="g"/>
+<input id="r130" type="radio" name="g"/>
+<input id="r131" type="radio" name="g"/>
+<input id="r132" type="radio" name="g"/>
+<input id="r133" type="radio" name="g"/>
+<input id="r134" type="radio" name="g"/>
+<input id="r135" type="radio" name="g"/>
+<input id="r136" type="radio" name="g"/>
+<input id="r137" type="radio" name="g"/>
+<input id="r138" type="radio" name="g"/>
+<input id="r139" type="radio" name="g"/>
+<input id="r140" type="radio" name="g"/>
+<input id="r141" type="radio" name="g"/>
+<input id="r142" type="radio" name="g"/>
+<input id="r143" type="radio" name="g"/>
+<input id="r144" type="radio" name="g"/>
+<input id="r145" type="radio" name="g"/>
+<input id="r146" type="radio" name="g"/>
+<input id="r147" type="radio" name="g"/>
+<input id="r148" type="radio" name="g"/>
+<input id="r149" type="radio" name="g"/>
+<input id="r150" type="radio" name="g"/>
+<input id="r151" type="radio" name="g"/>
+<input id="r152" type="radio" name="g"/>
+<input id="r153" type="radio" name="g"/>
+<input id="r154" type="radio" name="g"/>
+<input id="r155" type="radio" name="g"/>
+<input id="r156" type="radio" name="g"/>
+<input id="r157" type="radio" name="g"/>
+<input id="r158" type="radio" name="g"/>
+<input id="r159" type="radio" name="g"/>
+<input id="r160" type="radio" name="g"/>
+<input id="r161" type="radio" name="g"/>
+<input id="r162" type="radio" name="g"/>
+<input id="r163" type="radio" name="g"/>
+<input id="r164" type="radio" name="g"/>
+<input id="r165" type="radio" name="g"/>
+<input id="r166" type="radio" name="g"/>
+<input id="r167" type="radio" name="g"/>
+<input id="r168" type="radio" name="g"/>
+<input id="r169" type="radio" name="g"/>
+<input id="r170" type="radio" name="g"/>
+<input id="r171" type="radio" name="g"/>
+<input id="r172" type="radio" name="g"/>
+<input id="r173" type="radio" name="g"/>
+<input id="r174" type="radio" name="g"/>
+<input id="r175" type="radio" name="g"/>
+<input id="r176" type="radio" name="g"/>
+<input id="r177" type="radio" name="g"/>
+<input id="r178" type="radio" name="g"/>
+<input id="r179" type="radio" name="g"/>
+<input id="r180" type="radio" name="g"/>
+<input id="r181" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">//go:build (!gles &amp;&amp; !arm &amp;&amp; !arm64 &amp;&amp; !android &amp;&amp; !ios &amp;&amp; !mobile &amp;&amp; !test_web_driver &amp;&amp; !wasm) || (darwin &amp;&amp; !mobile &amp;&amp; !ios &amp;&amp; !wasm &amp;&amp; !test_web_driver)</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> gl</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<label for="i0"><span class="lit-string i0">"strings"</span></label></code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i1"><span class="lit-string i1">"github.com/go-gl/gl/v2.1/gl"</span></label></code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i2"><span class="lit-string i2">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-11"><code>)</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-arrayBuffer" class="ident">arrayBuffer</a>           = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-11575" class="ident">ARRAY_BUFFER</a></code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-bitColorBuffer" class="ident">bitColorBuffer</a>        = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-11834" class="ident">COLOR_BUFFER_BIT</a></code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-bitDepthBuffer" class="ident">bitDepthBuffer</a>        = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-12267" class="ident">DEPTH_BUFFER_BIT</a></code></span>
+<span class="codeline" id="line-17"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-clampToEdge" class="ident">clampToEdge</a>           = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-11742" class="ident">CLAMP_TO_EDGE</a></code></span>
+<span class="codeline" id="line-18"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-colorFormatRGBA" class="ident">colorFormatRGBA</a>       = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-14815" class="ident">RGBA</a></code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-compileStatus" class="ident">compileStatus</a>         = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-11909" class="ident">COMPILE_STATUS</a></code></span>
+<span class="codeline" id="line-20"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-constantAlpha" class="ident">constantAlpha</a>         = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-12023" class="ident">CONSTANT_ALPHA</a></code></span>
+<span class="codeline" id="line-21"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-float" class="ident">float</a>                 = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-12592" class="ident">FLOAT</a></code></span>
+<span class="codeline" id="line-22"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-fragmentShader" class="ident">fragmentShader</a>        = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-12733" class="ident">FRAGMENT_SHADER</a></code></span>
+<span class="codeline" id="line-23"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-front" class="ident">front</a>                 = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-12818" class="ident">FRONT</a></code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-glFalse" class="ident">glFalse</a>               = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-12568" class="ident">FALSE</a></code></span>
+<span class="codeline" id="line-25"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-linkStatus" class="ident">linkStatus</a>            = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-13254" class="ident">LINK_STATUS</a></code></span>
+<span class="codeline" id="line-26"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-one" class="ident">one</a>                   = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-14051" class="ident">ONE</a></code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-oneMinusConstantAlpha" class="ident">oneMinusConstantAlpha</a> = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-14053" class="ident">ONE_MINUS_CONSTANT_ALPHA</a></code></span>
+<span class="codeline" id="line-28"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-oneMinusSrcAlpha" class="ident">oneMinusSrcAlpha</a>      = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-14061" class="ident">ONE_MINUS_SRC_ALPHA</a></code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-scissorTest" class="ident">scissorTest</a>           = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-14965" class="ident">SCISSOR_TEST</a></code></span>
+<span class="codeline" id="line-30"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-srcAlpha" class="ident">srcAlpha</a>              = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-15161" class="ident">SRC_ALPHA</a></code></span>
+<span class="codeline" id="line-31"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-staticDraw" class="ident">staticDraw</a>            = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-15190" class="ident">STATIC_DRAW</a></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-texture0" class="ident">texture0</a>              = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-15347" class="ident">TEXTURE0</a></code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-texture2D" class="ident">texture2D</a>             = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-15417" class="ident">TEXTURE_2D</a></code></span>
+<span class="codeline" id="line-34"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-textureMinFilter" class="ident">textureMinFilter</a>      = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-15616" class="ident">TEXTURE_MIN_FILTER</a></code></span>
+<span class="codeline" id="line-35"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-textureMagFilter" class="ident">textureMagFilter</a>      = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-15601" class="ident">TEXTURE_MAG_FILTER</a></code></span>
+<span class="codeline" id="line-36"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-textureWrapS" class="ident">textureWrapS</a>          = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-15675" class="ident">TEXTURE_WRAP_S</a></code></span>
+<span class="codeline" id="line-37"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-textureWrapT" class="ident">textureWrapT</a>          = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-15676" class="ident">TEXTURE_WRAP_T</a></code></span>
+<span class="codeline" id="line-38"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-triangles" class="ident">triangles</a>             = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-15744" class="ident">TRIANGLES</a></code></span>
+<span class="codeline" id="line-39"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-triangleStrip" class="ident">triangleStrip</a>         = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-15750" class="ident">TRIANGLE_STRIP</a></code></span>
+<span class="codeline" id="line-40"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-unsignedByte" class="ident">unsignedByte</a>          = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-15823" class="ident">UNSIGNED_BYTE</a></code></span>
+<span class="codeline" id="line-41"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-vertexShader" class="ident">vertexShader</a>          = <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-16047" class="ident">VERTEX_SHADER</a></code></span>
+<span class="codeline" id="line-42"><code>)</code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code><span class="keyword">const</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-noBuffer" class="ident">noBuffer</a> = <a href="#line-51" class="ident">Buffer</a>(<span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-45"><code><span class="keyword">const</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-noShader" class="ident">noShader</a> = <a href="#line-55" class="ident">Shader</a>(<span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code><span class="keyword">type</span> (</code></span>
+<span class="codeline" id="line-48"><code>	<span class="comment">// Attribute represents a GL attribute</span></code></span>
+<span class="codeline" id="line-49"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-Attribute" class="ident">Attribute</a> <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-50"><code>	<span class="comment">// Buffer represents a GL buffer</span></code></span>
+<span class="codeline" id="line-51"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-Buffer" class="ident">Buffer</a> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-52"><code>	<span class="comment">// Program represents a compiled GL program</span></code></span>
+<span class="codeline" id="line-53"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-Program" class="ident">Program</a> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-54"><code>	<span class="comment">// Shader represents a GL shader</span></code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-Shader" class="ident">Shader</a> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-56"><code>	<span class="comment">// Uniform represents a GL uniform</span></code></span>
+<span class="codeline" id="line-57"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-Uniform" class="ident">Uniform</a> <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-58"><code>)</code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code><span class="keyword">var</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-textureFilterToGL" class="ident">textureFilterToGL</a> = []<a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>{<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-13218" class="ident">LINEAR</a>, <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-13936" class="ident">NEAREST</a>, <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-13218" class="ident">LINEAR</a>}</code></span>
+<span class="codeline" id="line-61"><code></code></span>
+<span class="codeline" id="line-62"><code><span class="keyword">func</span> (<label for="r0" class="ident">p</label> *<a href="painter.go.html#line-65" class="ident">painter</a>) <label for="r1" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.painter^7175d.html#name-.Init" class="ident">Init</a></label>() {</code></span>
+<span class="codeline" id="line-63"><code>	<label for="r0" class="ident">p</label>.<a href="painter.go.html#line-67" class="ident">ctx</a> = &amp;<a href="#line-79" class="ident">coreContext</a>{}</code></span>
+<span class="codeline" id="line-64"><code>	<label for="r2" class="ident">err</label> := <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-28668" class="ident">Init</a>()</code></span>
+<span class="codeline" id="line-65"><code>	<span class="keyword">if</span> <label for="r2" class="ident">err</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-66"><code>		<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../../log.go.html#line-11" class="ident">LogError</a>(<span class="lit-string">"failed to initialise OpenGL"</span>, <label for="r2" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-67"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-68"><code>	}</code></span>
+<span class="codeline" id="line-69"><code></code></span>
+<span class="codeline" id="line-70"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-20642" class="ident">Disable</a>(<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-12299" class="ident">DEPTH_TEST</a>)</code></span>
+<span class="codeline" id="line-71"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-20897" class="ident">Enable</a>(<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-11650" class="ident">BLEND</a>)</code></span>
+<span class="codeline" id="line-72"><code>	<label for="r0" class="ident">p</label>.<a href="painter.go.html#line-185" class="ident">logError</a>()</code></span>
+<span class="codeline" id="line-73"><code>	<label for="r0" class="ident">p</label>.<a href="painter.go.html#line-69" class="ident">program</a> = <label for="r0" class="ident">p</label>.<a href="painter.go.html#line-144" class="ident">createProgram</a>(<span class="lit-string">"simple"</span>)</code></span>
+<span class="codeline" id="line-74"><code>	<label for="r0" class="ident">p</label>.<a href="painter.go.html#line-70" class="ident">lineProgram</a> = <label for="r0" class="ident">p</label>.<a href="painter.go.html#line-144" class="ident">createProgram</a>(<span class="lit-string">"line"</span>)</code></span>
+<span class="codeline" id="line-75"><code>	<label for="r0" class="ident">p</label>.<a href="painter.go.html#line-71" class="ident">rectangleProgram</a> = <label for="r0" class="ident">p</label>.<a href="painter.go.html#line-144" class="ident">createProgram</a>(<span class="lit-string">"rectangle"</span>)</code></span>
+<span class="codeline" id="line-76"><code>	<label for="r0" class="ident">p</label>.<a href="painter.go.html#line-72" class="ident">roundRectangleProgram</a> = <label for="r0" class="ident">p</label>.<a href="painter.go.html#line-144" class="ident">createProgram</a>(<span class="lit-string">"round_rectangle"</span>)</code></span>
+<span class="codeline" id="line-77"><code>}</code></span>
+<span class="codeline" id="line-78"><code></code></span>
+<span class="codeline" id="line-79"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter/gl.html#name-coreContext" class="ident">coreContext</a> <span class="keyword">struct</span>{}</code></span>
+<span class="codeline" id="line-80"><code></code></span>
+<span class="codeline" id="line-81"><code><span class="keyword">var</span> _ <a href="context.go.html#line-3" class="ident">context</a> = (*<a href="#line-79" class="ident">coreContext</a>)(<a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-82"><code></code></span>
+<span class="codeline" id="line-83"><code><span class="keyword">func</span> (<label for="r3" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r4" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.ActiveTexture" class="ident">ActiveTexture</a></label>(<label for="r5" class="ident">textureUnit</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) {</code></span>
+<span class="codeline" id="line-84"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-19082" class="ident">ActiveTexture</a>(<label for="r5" class="ident">textureUnit</label>)</code></span>
+<span class="codeline" id="line-85"><code>}</code></span>
+<span class="codeline" id="line-86"><code></code></span>
+<span class="codeline" id="line-87"><code><span class="keyword">func</span> (<label for="r6" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r7" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.AttachShader" class="ident">AttachShader</a></label>(<label for="r8" class="ident">program</label> <a href="#line-53" class="ident">Program</a>, <label for="r9" class="ident">shader</label> <a href="#line-55" class="ident">Shader</a>) {</code></span>
+<span class="codeline" id="line-88"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-19158" class="ident">AttachShader</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r8" class="ident">program</label>), <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r9" class="ident">shader</label>))</code></span>
+<span class="codeline" id="line-89"><code>}</code></span>
+<span class="codeline" id="line-90"><code></code></span>
+<span class="codeline" id="line-91"><code><span class="keyword">func</span> (<label for="r10" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r11" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.BindBuffer" class="ident">BindBuffer</a></label>(<label for="r12" class="ident">target</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r13" class="ident">buf</label> <a href="#line-51" class="ident">Buffer</a>) {</code></span>
+<span class="codeline" id="line-92"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-19217" class="ident">BindBuffer</a>(<label for="r12" class="ident">target</label>, <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r13" class="ident">buf</label>))</code></span>
+<span class="codeline" id="line-93"><code>}</code></span>
+<span class="codeline" id="line-94"><code></code></span>
+<span class="codeline" id="line-95"><code><span class="keyword">func</span> (<label for="r14" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r15" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.BindTexture" class="ident">BindTexture</a></label>(<label for="r16" class="ident">target</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r17" class="ident">texture</label> <a href="texture.go.html#line-22" class="ident">Texture</a>) {</code></span>
+<span class="codeline" id="line-96"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-19349" class="ident">BindTexture</a>(<label for="r16" class="ident">target</label>, <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r17" class="ident">texture</label>))</code></span>
+<span class="codeline" id="line-97"><code>}</code></span>
+<span class="codeline" id="line-98"><code></code></span>
+<span class="codeline" id="line-99"><code><span class="keyword">func</span> (<label for="r18" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r19" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.BlendColor" class="ident">BlendColor</a></label>(<label for="r20" class="ident">r</label>, <label for="r21" class="ident">g</label>, <label for="r22" class="ident">b</label>, <label for="r23" class="ident">a</label> <a href="../../../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) {</code></span>
+<span class="codeline" id="line-100"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-19453" class="ident">BlendColor</a>(<label for="r20" class="ident">r</label>, <label for="r21" class="ident">g</label>, <label for="r22" class="ident">b</label>, <label for="r23" class="ident">a</label>)</code></span>
+<span class="codeline" id="line-101"><code>}</code></span>
+<span class="codeline" id="line-102"><code></code></span>
+<span class="codeline" id="line-103"><code><span class="keyword">func</span> (<label for="r24" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r25" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.BlendFunc" class="ident">BlendFunc</a></label>(<label for="r26" class="ident">srcFactor</label>, <label for="r27" class="ident">destFactor</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) {</code></span>
+<span class="codeline" id="line-104"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-19492" class="ident">BlendFunc</a>(<label for="r26" class="ident">srcFactor</label>, <label for="r27" class="ident">destFactor</label>)</code></span>
+<span class="codeline" id="line-105"><code>}</code></span>
+<span class="codeline" id="line-106"><code></code></span>
+<span class="codeline" id="line-107"><code><span class="keyword">func</span> (<label for="r28" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r29" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.BufferData" class="ident">BufferData</a></label>(<label for="r30" class="ident">target</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r31" class="ident">points</label> []<a href="../../../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>, <label for="r32" class="ident">usage</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) {</code></span>
+<span class="codeline" id="line-108"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-19542" class="ident">BufferData</a>(<label for="r30" class="ident">target</label>, <span class="lit-number">4</span>*<a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r31" class="ident">points</label>), <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/conversions.go.html#line-26" class="ident">Ptr</a>(<label for="r31" class="ident">points</label>), <label for="r32" class="ident">usage</label>)</code></span>
+<span class="codeline" id="line-109"><code>}</code></span>
+<span class="codeline" id="line-110"><code></code></span>
+<span class="codeline" id="line-111"><code><span class="keyword">func</span> (<label for="r33" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r34" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.Clear" class="ident">Clear</a></label>(<label for="r35" class="ident">mask</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) {</code></span>
+<span class="codeline" id="line-112"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-19616" class="ident">Clear</a>(<label for="r35" class="ident">mask</label>)</code></span>
+<span class="codeline" id="line-113"><code>}</code></span>
+<span class="codeline" id="line-114"><code></code></span>
+<span class="codeline" id="line-115"><code><span class="keyword">func</span> (<label for="r36" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r37" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.ClearColor" class="ident">ClearColor</a></label>(<label for="r38" class="ident">r</label>, <label for="r39" class="ident">g</label>, <label for="r40" class="ident">b</label>, <label for="r41" class="ident">a</label> <a href="../../../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) {</code></span>
+<span class="codeline" id="line-116"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-19639" class="ident">ClearColor</a>(<label for="r38" class="ident">r</label>, <label for="r39" class="ident">g</label>, <label for="r40" class="ident">b</label>, <label for="r41" class="ident">a</label>)</code></span>
+<span class="codeline" id="line-117"><code>}</code></span>
+<span class="codeline" id="line-118"><code></code></span>
+<span class="codeline" id="line-119"><code><span class="keyword">func</span> (<label for="r42" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r43" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.CompileShader" class="ident">CompileShader</a></label>(<label for="r44" class="ident">shader</label> <a href="#line-55" class="ident">Shader</a>) {</code></span>
+<span class="codeline" id="line-120"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-19982" class="ident">CompileShader</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r44" class="ident">shader</label>))</code></span>
+<span class="codeline" id="line-121"><code>}</code></span>
+<span class="codeline" id="line-122"><code></code></span>
+<span class="codeline" id="line-123"><code><span class="keyword">func</span> (<label for="r45" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r46" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.CreateBuffer" class="ident">CreateBuffer</a></label>() <a href="#line-51" class="ident">Buffer</a> {</code></span>
+<span class="codeline" id="line-124"><code>	<span class="keyword">var</span> <label for="r47" class="ident">vbo</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-125"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-21339" class="ident">GenBuffers</a>(<span class="lit-number">1</span>, &amp;<label for="r47" class="ident">vbo</label>)</code></span>
+<span class="codeline" id="line-126"><code>	<span class="keyword">return</span> <a href="#line-51" class="ident">Buffer</a>(<label for="r47" class="ident">vbo</label>)</code></span>
+<span class="codeline" id="line-127"><code>}</code></span>
+<span class="codeline" id="line-128"><code></code></span>
+<span class="codeline" id="line-129"><code><span class="keyword">func</span> (<label for="r48" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r49" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.CreateProgram" class="ident">CreateProgram</a></label>() <a href="#line-53" class="ident">Program</a> {</code></span>
+<span class="codeline" id="line-130"><code>	<span class="keyword">return</span> <a href="#line-53" class="ident">Program</a>(<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-20282" class="ident">CreateProgram</a>())</code></span>
+<span class="codeline" id="line-131"><code>}</code></span>
+<span class="codeline" id="line-132"><code></code></span>
+<span class="codeline" id="line-133"><code><span class="keyword">func</span> (<label for="r50" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r51" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.CreateShader" class="ident">CreateShader</a></label>(<label for="r52" class="ident">typ</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) <a href="#line-55" class="ident">Shader</a> {</code></span>
+<span class="codeline" id="line-134"><code>	<span class="keyword">return</span> <a href="#line-55" class="ident">Shader</a>(<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-20319" class="ident">CreateShader</a>(<label for="r52" class="ident">typ</label>))</code></span>
+<span class="codeline" id="line-135"><code>}</code></span>
+<span class="codeline" id="line-136"><code></code></span>
+<span class="codeline" id="line-137"><code><span class="keyword">func</span> (<label for="r53" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r54" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.CreateTexture" class="ident">CreateTexture</a></label>() (<label for="r55" class="ident">texture</label> <a href="texture.go.html#line-22" class="ident">Texture</a>) {</code></span>
+<span class="codeline" id="line-138"><code>	<span class="keyword">var</span> <label for="r56" class="ident">tex</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-139"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-21429" class="ident">GenTextures</a>(<span class="lit-number">1</span>, &amp;<label for="r56" class="ident">tex</label>)</code></span>
+<span class="codeline" id="line-140"><code>	<span class="keyword">return</span> <a href="texture.go.html#line-22" class="ident">Texture</a>(<label for="r56" class="ident">tex</label>)</code></span>
+<span class="codeline" id="line-141"><code>}</code></span>
+<span class="codeline" id="line-142"><code></code></span>
+<span class="codeline" id="line-143"><code><span class="keyword">func</span> (<label for="r57" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r58" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.DeleteBuffer" class="ident">DeleteBuffer</a></label>(<label for="r59" class="ident">buffer</label> <a href="#line-51" class="ident">Buffer</a>) {</code></span>
+<span class="codeline" id="line-144"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-20441" class="ident">DeleteBuffers</a>(<span class="lit-number">1</span>, (*<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>)(&amp;<label for="r59" class="ident">buffer</label>))</code></span>
+<span class="codeline" id="line-145"><code>}</code></span>
+<span class="codeline" id="line-146"><code></code></span>
+<span class="codeline" id="line-147"><code><span class="keyword">func</span> (<label for="r60" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r61" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.DeleteTexture" class="ident">DeleteTexture</a></label>(<label for="r62" class="ident">texture</label> <a href="texture.go.html#line-22" class="ident">Texture</a>) {</code></span>
+<span class="codeline" id="line-148"><code>	<label for="r63" class="ident">tex</label> := <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r62" class="ident">texture</label>)</code></span>
+<span class="codeline" id="line-149"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-20557" class="ident">DeleteTextures</a>(<span class="lit-number">1</span>, &amp;<label for="r63" class="ident">tex</label>)</code></span>
+<span class="codeline" id="line-150"><code>}</code></span>
+<span class="codeline" id="line-151"><code></code></span>
+<span class="codeline" id="line-152"><code><span class="keyword">func</span> (<label for="r64" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r65" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.Disable" class="ident">Disable</a></label>(<label for="r66" class="ident">capability</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) {</code></span>
+<span class="codeline" id="line-153"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-20642" class="ident">Disable</a>(<label for="r66" class="ident">capability</label>)</code></span>
+<span class="codeline" id="line-154"><code>}</code></span>
+<span class="codeline" id="line-155"><code></code></span>
+<span class="codeline" id="line-156"><code><span class="keyword">func</span> (<label for="r67" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r68" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.DrawArrays" class="ident">DrawArrays</a></label>(<label for="r69" class="ident">mode</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r70" class="ident">first</label>, <label for="r71" class="ident">count</label> <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-157"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-20697" class="ident">DrawArrays</a>(<label for="r69" class="ident">mode</label>, <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r70" class="ident">first</label>), <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r71" class="ident">count</label>))</code></span>
+<span class="codeline" id="line-158"><code>}</code></span>
+<span class="codeline" id="line-159"><code></code></span>
+<span class="codeline" id="line-160"><code><span class="keyword">func</span> (<label for="r72" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r73" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.Enable" class="ident">Enable</a></label>(<label for="r74" class="ident">capability</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) {</code></span>
+<span class="codeline" id="line-161"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-20897" class="ident">Enable</a>(<label for="r74" class="ident">capability</label>)</code></span>
+<span class="codeline" id="line-162"><code>}</code></span>
+<span class="codeline" id="line-163"><code></code></span>
+<span class="codeline" id="line-164"><code><span class="keyword">func</span> (<label for="r75" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r76" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.EnableVertexAttribArray" class="ident">EnableVertexAttribArray</a></label>(<label for="r77" class="ident">attribute</label> <a href="#line-49" class="ident">Attribute</a>) {</code></span>
+<span class="codeline" id="line-165"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-20933" class="ident">EnableVertexAttribArray</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r77" class="ident">attribute</label>))</code></span>
+<span class="codeline" id="line-166"><code>}</code></span>
+<span class="codeline" id="line-167"><code></code></span>
+<span class="codeline" id="line-168"><code><span class="keyword">func</span> (<label for="r78" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r79" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.GetAttribLocation" class="ident">GetAttribLocation</a></label>(<label for="r80" class="ident">program</label> <a href="#line-53" class="ident">Program</a>, <label for="r81" class="ident">name</label> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="#line-49" class="ident">Attribute</a> {</code></span>
+<span class="codeline" id="line-169"><code>	<span class="keyword">return</span> <a href="#line-49" class="ident">Attribute</a>(<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-21547" class="ident">GetAttribLocation</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r80" class="ident">program</label>), <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/conversions.go.html#line-72" class="ident">Str</a>(<label for="r81" class="ident">name</label>+<span class="lit-string">"\x00"</span>)))</code></span>
+<span class="codeline" id="line-170"><code>}</code></span>
+<span class="codeline" id="line-171"><code></code></span>
+<span class="codeline" id="line-172"><code><span class="keyword">func</span> (<label for="r82" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r83" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.GetError" class="ident">GetError</a></label>() <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a> {</code></span>
+<span class="codeline" id="line-173"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-21710" class="ident">GetError</a>()</code></span>
+<span class="codeline" id="line-174"><code>}</code></span>
+<span class="codeline" id="line-175"><code></code></span>
+<span class="codeline" id="line-176"><code><span class="keyword">func</span> (<label for="r84" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r85" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.GetProgrami" class="ident">GetProgrami</a></label>(<label for="r86" class="ident">program</label> <a href="#line-53" class="ident">Program</a>, <label for="r87" class="ident">param</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-177"><code>	<span class="keyword">var</span> <label for="r88" class="ident">value</label> <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-178"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-22338" class="ident">GetProgramiv</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r86" class="ident">program</label>), <label for="r87" class="ident">param</label>, &amp;<label for="r88" class="ident">value</label>)</code></span>
+<span class="codeline" id="line-179"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r88" class="ident">value</label>)</code></span>
+<span class="codeline" id="line-180"><code>}</code></span>
+<span class="codeline" id="line-181"><code></code></span>
+<span class="codeline" id="line-182"><code><span class="keyword">func</span> (<label for="r89" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r90" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.GetProgramInfoLog" class="ident">GetProgramInfoLog</a></label>(<label for="r91" class="ident">program</label> <a href="#line-53" class="ident">Program</a>) <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-183"><code>	<span class="keyword">var</span> <label for="r92" class="ident">logLength</label> <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-184"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-22338" class="ident">GetProgramiv</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r91" class="ident">program</label>), <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-13035" class="ident">INFO_LOG_LENGTH</a>, &amp;<label for="r92" class="ident">logLength</label>)</code></span>
+<span class="codeline" id="line-185"><code>	<label for="r93" class="ident">info</label> := <a href="../../../../../../../pkg/strings.html" class="ident i0">strings</a>.<a href="../../../../../../strings/strings.go.html#line-557" class="ident">Repeat</a>(<span class="lit-string">"\x00"</span>, <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r92" class="ident">logLength</label>+<span class="lit-number">1</span>))</code></span>
+<span class="codeline" id="line-186"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-22251" class="ident">GetProgramInfoLog</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r91" class="ident">program</label>), <label for="r92" class="ident">logLength</label>, <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/conversions.go.html#line-72" class="ident">Str</a>(<label for="r93" class="ident">info</label>))</code></span>
+<span class="codeline" id="line-187"><code>	<span class="keyword">return</span> <label for="r93" class="ident">info</label></code></span>
+<span class="codeline" id="line-188"><code>}</code></span>
+<span class="codeline" id="line-189"><code></code></span>
+<span class="codeline" id="line-190"><code><span class="keyword">func</span> (<label for="r94" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r95" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.GetShaderi" class="ident">GetShaderi</a></label>(<label for="r96" class="ident">shader</label> <a href="#line-55" class="ident">Shader</a>, <label for="r97" class="ident">param</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-191"><code>	<span class="keyword">var</span> <label for="r98" class="ident">value</label> <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-192"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-22447" class="ident">GetShaderiv</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r96" class="ident">shader</label>), <label for="r97" class="ident">param</label>, &amp;<label for="r98" class="ident">value</label>)</code></span>
+<span class="codeline" id="line-193"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r98" class="ident">value</label>)</code></span>
+<span class="codeline" id="line-194"><code>}</code></span>
+<span class="codeline" id="line-195"><code></code></span>
+<span class="codeline" id="line-196"><code><span class="keyword">func</span> (<label for="r99" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r100" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.GetShaderInfoLog" class="ident">GetShaderInfoLog</a></label>(<label for="r101" class="ident">shader</label> <a href="#line-55" class="ident">Shader</a>) <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-197"><code>	<span class="keyword">var</span> <label for="r102" class="ident">logLength</label> <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-198"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-22447" class="ident">GetShaderiv</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r101" class="ident">shader</label>), <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-13035" class="ident">INFO_LOG_LENGTH</a>, &amp;<label for="r102" class="ident">logLength</label>)</code></span>
+<span class="codeline" id="line-199"><code>	<label for="r103" class="ident">info</label> := <a href="../../../../../../../pkg/strings.html" class="ident i0">strings</a>.<a href="../../../../../../strings/strings.go.html#line-557" class="ident">Repeat</a>(<span class="lit-string">"\x00"</span>, <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r102" class="ident">logLength</label>+<span class="lit-number">1</span>))</code></span>
+<span class="codeline" id="line-200"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-22429" class="ident">GetShaderInfoLog</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r101" class="ident">shader</label>), <label for="r102" class="ident">logLength</label>, <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/conversions.go.html#line-72" class="ident">Str</a>(<label for="r103" class="ident">info</label>))</code></span>
+<span class="codeline" id="line-201"><code>	<span class="keyword">return</span> <label for="r103" class="ident">info</label></code></span>
+<span class="codeline" id="line-202"><code>}</code></span>
+<span class="codeline" id="line-203"><code></code></span>
+<span class="codeline" id="line-204"><code><span class="keyword">func</span> (<label for="r104" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r105" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.GetUniformLocation" class="ident">GetUniformLocation</a></label>(<label for="r106" class="ident">program</label> <a href="#line-53" class="ident">Program</a>, <label for="r107" class="ident">name</label> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="#line-57" class="ident">Uniform</a> {</code></span>
+<span class="codeline" id="line-205"><code>	<span class="keyword">return</span> <a href="#line-57" class="ident">Uniform</a>(<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-22650" class="ident">GetUniformLocation</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r106" class="ident">program</label>), <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/conversions.go.html#line-72" class="ident">Str</a>(<label for="r107" class="ident">name</label>+<span class="lit-string">"\x00"</span>)))</code></span>
+<span class="codeline" id="line-206"><code>}</code></span>
+<span class="codeline" id="line-207"><code></code></span>
+<span class="codeline" id="line-208"><code><span class="keyword">func</span> (<label for="r108" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r109" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.LinkProgram" class="ident">LinkProgram</a></label>(<label for="r110" class="ident">program</label> <a href="#line-53" class="ident">Program</a>) {</code></span>
+<span class="codeline" id="line-209"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-23373" class="ident">LinkProgram</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r110" class="ident">program</label>))</code></span>
+<span class="codeline" id="line-210"><code>}</code></span>
+<span class="codeline" id="line-211"><code></code></span>
+<span class="codeline" id="line-212"><code><span class="keyword">func</span> (<label for="r111" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r112" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.ReadBuffer" class="ident">ReadBuffer</a></label>(<label for="r113" class="ident">src</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) {</code></span>
+<span class="codeline" id="line-213"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-25580" class="ident">ReadBuffer</a>(<label for="r113" class="ident">src</label>)</code></span>
+<span class="codeline" id="line-214"><code>}</code></span>
+<span class="codeline" id="line-215"><code></code></span>
+<span class="codeline" id="line-216"><code><span class="keyword">func</span> (<label for="r114" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r115" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.ReadPixels" class="ident">ReadPixels</a></label>(<label for="r116" class="ident">x</label>, <label for="r117" class="ident">y</label>, <label for="r118" class="ident">width</label>, <label for="r119" class="ident">height</label> <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r120" class="ident">colorFormat</label>, <label for="r121" class="ident">typ</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r122" class="ident">pixels</label> []<a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>) {</code></span>
+<span class="codeline" id="line-217"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-25588" class="ident">ReadPixels</a>(<a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r116" class="ident">x</label>), <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r117" class="ident">y</label>), <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r118" class="ident">width</label>), <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r119" class="ident">height</label>), <label for="r120" class="ident">colorFormat</label>, <label for="r121" class="ident">typ</label>, <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/conversions.go.html#line-26" class="ident">Ptr</a>(<label for="r122" class="ident">pixels</label>))</code></span>
+<span class="codeline" id="line-218"><code>}</code></span>
+<span class="codeline" id="line-219"><code></code></span>
+<span class="codeline" id="line-220"><code><span class="keyword">func</span> (<label for="r123" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r124" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.Scissor" class="ident">Scissor</a></label>(<label for="r125" class="ident">x</label>, <label for="r126" class="ident">y</label>, <label for="r127" class="ident">w</label>, <label for="r128" class="ident">h</label> <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>) {</code></span>
+<span class="codeline" id="line-221"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-25842" class="ident">Scissor</a>(<label for="r125" class="ident">x</label>, <label for="r126" class="ident">y</label>, <label for="r127" class="ident">w</label>, <label for="r128" class="ident">h</label>)</code></span>
+<span class="codeline" id="line-222"><code>}</code></span>
+<span class="codeline" id="line-223"><code></code></span>
+<span class="codeline" id="line-224"><code><span class="keyword">func</span> (<label for="r129" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r130" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.ShaderSource" class="ident">ShaderSource</a></label>(<label for="r131" class="ident">shader</label> <a href="#line-55" class="ident">Shader</a>, <label for="r132" class="ident">source</label> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
+<span class="codeline" id="line-225"><code>	<label for="r133" class="ident">csources</label>, <label for="r134" class="ident">free</label> := <a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/conversions.go.html#line-93" class="ident">Strs</a>(<label for="r132" class="ident">source</label> + <span class="lit-string">"\x00"</span>)</code></span>
+<span class="codeline" id="line-226"><code>	<span class="keyword">defer</span> <label for="r134" class="ident">free</label>()</code></span>
+<span class="codeline" id="line-227"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-26034" class="ident">ShaderSource</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r131" class="ident">shader</label>), <span class="lit-number">1</span>, <label for="r133" class="ident">csources</label>, <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-228"><code>}</code></span>
+<span class="codeline" id="line-229"><code></code></span>
+<span class="codeline" id="line-230"><code><span class="keyword">func</span> (<label for="r135" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r136" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.TexImage2D" class="ident">TexImage2D</a></label>(<label for="r137" class="ident">target</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r138" class="ident">level</label>, <label for="r139" class="ident">width</label>, <label for="r140" class="ident">height</label> <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r141" class="ident">colorFormat</label>, <label for="r142" class="ident">typ</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r143" class="ident">data</label> []<a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>) {</code></span>
+<span class="codeline" id="line-231"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-26530" class="ident">TexImage2D</a>(</code></span>
+<span class="codeline" id="line-232"><code>		<label for="r137" class="ident">target</label>,</code></span>
+<span class="codeline" id="line-233"><code>		<a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r138" class="ident">level</label>),</code></span>
+<span class="codeline" id="line-234"><code>		<a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r141" class="ident">colorFormat</label>),</code></span>
+<span class="codeline" id="line-235"><code>		<a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r139" class="ident">width</label>),</code></span>
+<span class="codeline" id="line-236"><code>		<a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r140" class="ident">height</label>),</code></span>
+<span class="codeline" id="line-237"><code>		<span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-238"><code>		<label for="r141" class="ident">colorFormat</label>,</code></span>
+<span class="codeline" id="line-239"><code>		<label for="r142" class="ident">typ</label>,</code></span>
+<span class="codeline" id="line-240"><code>		<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/conversions.go.html#line-26" class="ident">Ptr</a>(<label for="r143" class="ident">data</label>),</code></span>
+<span class="codeline" id="line-241"><code>	)</code></span>
+<span class="codeline" id="line-242"><code>}</code></span>
+<span class="codeline" id="line-243"><code></code></span>
+<span class="codeline" id="line-244"><code><span class="keyword">func</span> (<label for="r144" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r145" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.TexParameteri" class="ident">TexParameteri</a></label>(<label for="r146" class="ident">target</label>, <label for="r147" class="ident">param</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r148" class="ident">value</label> <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>) {</code></span>
+<span class="codeline" id="line-245"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-26578" class="ident">TexParameteri</a>(<label for="r146" class="ident">target</label>, <label for="r147" class="ident">param</label>, <label for="r148" class="ident">value</label>)</code></span>
+<span class="codeline" id="line-246"><code>}</code></span>
+<span class="codeline" id="line-247"><code></code></span>
+<span class="codeline" id="line-248"><code><span class="keyword">func</span> (<label for="r149" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r150" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.Uniform1f" class="ident">Uniform1f</a></label>(<label for="r151" class="ident">uniform</label> <a href="#line-57" class="ident">Uniform</a>, <label for="r152" class="ident">v</label> <a href="../../../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) {</code></span>
+<span class="codeline" id="line-249"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-26903" class="ident">Uniform1f</a>(<a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r151" class="ident">uniform</label>), <label for="r152" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-250"><code>}</code></span>
+<span class="codeline" id="line-251"><code></code></span>
+<span class="codeline" id="line-252"><code><span class="keyword">func</span> (<label for="r153" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r154" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.Uniform2f" class="ident">Uniform2f</a></label>(<label for="r155" class="ident">uniform</label> <a href="#line-57" class="ident">Uniform</a>, <label for="r156" class="ident">v0</label>, <label for="r157" class="ident">v1</label> <a href="../../../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) {</code></span>
+<span class="codeline" id="line-253"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-26971" class="ident">Uniform2f</a>(<a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r155" class="ident">uniform</label>), <label for="r156" class="ident">v0</label>, <label for="r157" class="ident">v1</label>)</code></span>
+<span class="codeline" id="line-254"><code>}</code></span>
+<span class="codeline" id="line-255"><code></code></span>
+<span class="codeline" id="line-256"><code><span class="keyword">func</span> (<label for="r158" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r159" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.Uniform4f" class="ident">Uniform4f</a></label>(<label for="r160" class="ident">uniform</label> <a href="#line-57" class="ident">Uniform</a>, <label for="r161" class="ident">v0</label>, <label for="r162" class="ident">v1</label>, <label for="r163" class="ident">v2</label>, <label for="r164" class="ident">v3</label> <a href="../../../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) {</code></span>
+<span class="codeline" id="line-257"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-27107" class="ident">Uniform4f</a>(<a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r160" class="ident">uniform</label>), <label for="r161" class="ident">v0</label>, <label for="r162" class="ident">v1</label>, <label for="r163" class="ident">v2</label>, <label for="r164" class="ident">v3</label>)</code></span>
+<span class="codeline" id="line-258"><code>}</code></span>
+<span class="codeline" id="line-259"><code></code></span>
+<span class="codeline" id="line-260"><code><span class="keyword">func</span> (<label for="r165" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r166" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.UseProgram" class="ident">UseProgram</a></label>(<label for="r167" class="ident">program</label> <a href="#line-53" class="ident">Program</a>) {</code></span>
+<span class="codeline" id="line-261"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-27314" class="ident">UseProgram</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r167" class="ident">program</label>))</code></span>
+<span class="codeline" id="line-262"><code>}</code></span>
+<span class="codeline" id="line-263"><code></code></span>
+<span class="codeline" id="line-264"><code><span class="keyword">func</span> (<label for="r168" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r169" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.VertexAttribPointerWithOffset" class="ident">VertexAttribPointerWithOffset</a></label>(<label for="r170" class="ident">attribute</label> <a href="#line-49" class="ident">Attribute</a>, <label for="r171" class="ident">size</label> <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r172" class="ident">typ</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r173" class="ident">normalized</label> <a href="../../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>, <label for="r174" class="ident">stride</label>, <label for="r175" class="ident">offset</label> <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-265"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-28195" class="ident">VertexAttribPointerWithOffset</a>(<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r170" class="ident">attribute</label>), <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r171" class="ident">size</label>), <label for="r172" class="ident">typ</label>, <label for="r173" class="ident">normalized</label>, <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r174" class="ident">stride</label>), <a href="../../../../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<label for="r175" class="ident">offset</label>))</code></span>
+<span class="codeline" id="line-266"><code>}</code></span>
+<span class="codeline" id="line-267"><code></code></span>
+<span class="codeline" id="line-268"><code><span class="keyword">func</span> (<label for="r176" class="ident">c</label> *<a href="#line-79" class="ident">coreContext</a>) <label for="r177" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/painter/gl.coreContext^70443.html#name-.Viewport" class="ident">Viewport</a></label>(<label for="r178" class="ident">x</label>, <label for="r179" class="ident">y</label>, <label for="r180" class="ident">width</label>, <label for="r181" class="ident">height</label> <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-269"><code>	<a href="../../../../../../../pkg/github.com/go-gl/gl/v2.1/gl.html" class="ident i1">gl</a>.<a href="../../../../../../github.com/go-gl/gl/v2.1/gl/package.go.html#line-28412" class="ident">Viewport</a>(<a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r178" class="ident">x</label>), <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r179" class="ident">y</label>), <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r180" class="ident">width</label>), <a href="../../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r181" class="ident">height</label>))</code></span>
+<span class="codeline" id="line-270"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

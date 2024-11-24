@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: dbus_menu.go in package fyne.io/systray/internal/generated/menu</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	dbus_menu.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html">fyne.io/systray/internal/generated/menu</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72],
+input[id=r73]:checked ~pre label[for=r73],
+input[id=r74]:checked ~pre label[for=r74],
+input[id=r75]:checked ~pre label[for=r75],
+input[id=r76]:checked ~pre label[for=r76],
+input[id=r77]:checked ~pre label[for=r77],
+input[id=r78]:checked ~pre label[for=r78],
+input[id=r79]:checked ~pre label[for=r79],
+input[id=r80]:checked ~pre label[for=r80],
+input[id=r81]:checked ~pre label[for=r81],
+input[id=r82]:checked ~pre label[for=r82],
+input[id=r83]:checked ~pre label[for=r83],
+input[id=r84]:checked ~pre label[for=r84],
+input[id=r85]:checked ~pre label[for=r85],
+input[id=r86]:checked ~pre label[for=r86],
+input[id=r87]:checked ~pre label[for=r87],
+input[id=r88]:checked ~pre label[for=r88],
+input[id=r89]:checked ~pre label[for=r89],
+input[id=r90]:checked ~pre label[for=r90],
+input[id=r91]:checked ~pre label[for=r91],
+input[id=r92]:checked ~pre label[for=r92],
+input[id=r93]:checked ~pre label[for=r93],
+input[id=r94]:checked ~pre label[for=r94],
+input[id=r95]:checked ~pre label[for=r95],
+input[id=r96]:checked ~pre label[for=r96],
+input[id=r97]:checked ~pre label[for=r97],
+input[id=r98]:checked ~pre label[for=r98],
+input[id=r99]:checked ~pre label[for=r99],
+input[id=r100]:checked ~pre label[for=r100],
+input[id=r101]:checked ~pre label[for=r101],
+input[id=r102]:checked ~pre label[for=r102],
+input[id=r103]:checked ~pre label[for=r103],
+input[id=r104]:checked ~pre label[for=r104],
+input[id=r105]:checked ~pre label[for=r105],
+input[id=r106]:checked ~pre label[for=r106],
+input[id=r107]:checked ~pre label[for=r107],
+input[id=r108]:checked ~pre label[for=r108],
+input[id=r109]:checked ~pre label[for=r109],
+input[id=r110]:checked ~pre label[for=r110],
+input[id=r111]:checked ~pre label[for=r111],
+input[id=r112]:checked ~pre label[for=r112],
+input[id=r113]:checked ~pre label[for=r113],
+input[id=r114]:checked ~pre label[for=r114],
+input[id=r115]:checked ~pre label[for=r115],
+input[id=r116]:checked ~pre label[for=r116],
+input[id=r117]:checked ~pre label[for=r117],
+input[id=r118]:checked ~pre label[for=r118],
+input[id=r119]:checked ~pre label[for=r119],
+input[id=r120]:checked ~pre label[for=r120],
+input[id=r121]:checked ~pre label[for=r121],
+input[id=r122]:checked ~pre label[for=r122],
+input[id=r123]:checked ~pre label[for=r123],
+input[id=r124]:checked ~pre label[for=r124],
+input[id=r125]:checked ~pre label[for=r125],
+input[id=r126]:checked ~pre label[for=r126],
+input[id=r127]:checked ~pre label[for=r127],
+input[id=r128]:checked ~pre label[for=r128],
+input[id=r129]:checked ~pre label[for=r129],
+input[id=r130]:checked ~pre label[for=r130],
+input[id=r131]:checked ~pre label[for=r131],
+input[id=r132]:checked ~pre label[for=r132],
+input[id=r133]:checked ~pre label[for=r133],
+input[id=r134]:checked ~pre label[for=r134],
+input[id=r135]:checked ~pre label[for=r135],
+input[id=r136]:checked ~pre label[for=r136],
+input[id=r137]:checked ~pre label[for=r137],
+input[id=r138]:checked ~pre label[for=r138],
+input[id=r139]:checked ~pre label[for=r139],
+input[id=r140]:checked ~pre label[for=r140],
+input[id=r141]:checked ~pre label[for=r141],
+input[id=r142]:checked ~pre label[for=r142],
+input[id=r143]:checked ~pre label[for=r143],
+input[id=r144]:checked ~pre label[for=r144],
+input[id=r145]:checked ~pre label[for=r145],
+input[id=r146]:checked ~pre label[for=r146],
+input[id=r147]:checked ~pre label[for=r147],
+input[id=r148]:checked ~pre label[for=r148],
+input[id=r149]:checked ~pre label[for=r149],
+input[id=r150]:checked ~pre label[for=r150],
+input[id=r151]:checked ~pre label[for=r151],
+input[id=r152]:checked ~pre label[for=r152],
+input[id=r153]:checked ~pre label[for=r153],
+input[id=r154]:checked ~pre label[for=r154],
+input[id=r155]:checked ~pre label[for=r155],
+input[id=r156]:checked ~pre label[for=r156],
+input[id=r157]:checked ~pre label[for=r157],
+input[id=r158]:checked ~pre label[for=r158],
+input[id=r159]:checked ~pre label[for=r159],
+input[id=r160]:checked ~pre label[for=r160],
+input[id=r161]:checked ~pre label[for=r161],
+input[id=r162]:checked ~pre label[for=r162],
+input[id=r163]:checked ~pre label[for=r163],
+input[id=r164]:checked ~pre label[for=r164],
+input[id=r165]:checked ~pre label[for=r165],
+input[id=r166]:checked ~pre label[for=r166],
+input[id=r167]:checked ~pre label[for=r167],
+input[id=r168]:checked ~pre label[for=r168],
+input[id=r169]:checked ~pre label[for=r169],
+input[id=r170]:checked ~pre label[for=r170],
+input[id=r171]:checked ~pre label[for=r171],
+input[id=r172]:checked ~pre label[for=r172],
+input[id=r173]:checked ~pre label[for=r173],
+input[id=r174]:checked ~pre label[for=r174],
+input[id=r175]:checked ~pre label[for=r175],
+input[id=r176]:checked ~pre label[for=r176],
+input[id=r177]:checked ~pre label[for=r177],
+input[id=r178]:checked ~pre label[for=r178],
+input[id=r179]:checked ~pre label[for=r179],
+input[id=r180]:checked ~pre label[for=r180],
+input[id=r181]:checked ~pre label[for=r181],
+input[id=r182]:checked ~pre label[for=r182],
+input[id=r183]:checked ~pre label[for=r183],
+input[id=r184]:checked ~pre label[for=r184],
+input[id=r185]:checked ~pre label[for=r185],
+input[id=r186]:checked ~pre label[for=r186],
+input[id=r187]:checked ~pre label[for=r187],
+input[id=r188]:checked ~pre label[for=r188],
+input[id=r189]:checked ~pre label[for=r189]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="r73" type="radio" name="g"/>
+<input id="r74" type="radio" name="g"/>
+<input id="r75" type="radio" name="g"/>
+<input id="r76" type="radio" name="g"/>
+<input id="r77" type="radio" name="g"/>
+<input id="r78" type="radio" name="g"/>
+<input id="r79" type="radio" name="g"/>
+<input id="r80" type="radio" name="g"/>
+<input id="r81" type="radio" name="g"/>
+<input id="r82" type="radio" name="g"/>
+<input id="r83" type="radio" name="g"/>
+<input id="r84" type="radio" name="g"/>
+<input id="r85" type="radio" name="g"/>
+<input id="r86" type="radio" name="g"/>
+<input id="r87" type="radio" name="g"/>
+<input id="r88" type="radio" name="g"/>
+<input id="r89" type="radio" name="g"/>
+<input id="r90" type="radio" name="g"/>
+<input id="r91" type="radio" name="g"/>
+<input id="r92" type="radio" name="g"/>
+<input id="r93" type="radio" name="g"/>
+<input id="r94" type="radio" name="g"/>
+<input id="r95" type="radio" name="g"/>
+<input id="r96" type="radio" name="g"/>
+<input id="r97" type="radio" name="g"/>
+<input id="r98" type="radio" name="g"/>
+<input id="r99" type="radio" name="g"/>
+<input id="r100" type="radio" name="g"/>
+<input id="r101" type="radio" name="g"/>
+<input id="r102" type="radio" name="g"/>
+<input id="r103" type="radio" name="g"/>
+<input id="r104" type="radio" name="g"/>
+<input id="r105" type="radio" name="g"/>
+<input id="r106" type="radio" name="g"/>
+<input id="r107" type="radio" name="g"/>
+<input id="r108" type="radio" name="g"/>
+<input id="r109" type="radio" name="g"/>
+<input id="r110" type="radio" name="g"/>
+<input id="r111" type="radio" name="g"/>
+<input id="r112" type="radio" name="g"/>
+<input id="r113" type="radio" name="g"/>
+<input id="r114" type="radio" name="g"/>
+<input id="r115" type="radio" name="g"/>
+<input id="r116" type="radio" name="g"/>
+<input id="r117" type="radio" name="g"/>
+<input id="r118" type="radio" name="g"/>
+<input id="r119" type="radio" name="g"/>
+<input id="r120" type="radio" name="g"/>
+<input id="r121" type="radio" name="g"/>
+<input id="r122" type="radio" name="g"/>
+<input id="r123" type="radio" name="g"/>
+<input id="r124" type="radio" name="g"/>
+<input id="r125" type="radio" name="g"/>
+<input id="r126" type="radio" name="g"/>
+<input id="r127" type="radio" name="g"/>
+<input id="r128" type="radio" name="g"/>
+<input id="r129" type="radio" name="g"/>
+<input id="r130" type="radio" name="g"/>
+<input id="r131" type="radio" name="g"/>
+<input id="r132" type="radio" name="g"/>
+<input id="r133" type="radio" name="g"/>
+<input id="r134" type="radio" name="g"/>
+<input id="r135" type="radio" name="g"/>
+<input id="r136" type="radio" name="g"/>
+<input id="r137" type="radio" name="g"/>
+<input id="r138" type="radio" name="g"/>
+<input id="r139" type="radio" name="g"/>
+<input id="r140" type="radio" name="g"/>
+<input id="r141" type="radio" name="g"/>
+<input id="r142" type="radio" name="g"/>
+<input id="r143" type="radio" name="g"/>
+<input id="r144" type="radio" name="g"/>
+<input id="r145" type="radio" name="g"/>
+<input id="r146" type="radio" name="g"/>
+<input id="r147" type="radio" name="g"/>
+<input id="r148" type="radio" name="g"/>
+<input id="r149" type="radio" name="g"/>
+<input id="r150" type="radio" name="g"/>
+<input id="r151" type="radio" name="g"/>
+<input id="r152" type="radio" name="g"/>
+<input id="r153" type="radio" name="g"/>
+<input id="r154" type="radio" name="g"/>
+<input id="r155" type="radio" name="g"/>
+<input id="r156" type="radio" name="g"/>
+<input id="r157" type="radio" name="g"/>
+<input id="r158" type="radio" name="g"/>
+<input id="r159" type="radio" name="g"/>
+<input id="r160" type="radio" name="g"/>
+<input id="r161" type="radio" name="g"/>
+<input id="r162" type="radio" name="g"/>
+<input id="r163" type="radio" name="g"/>
+<input id="r164" type="radio" name="g"/>
+<input id="r165" type="radio" name="g"/>
+<input id="r166" type="radio" name="g"/>
+<input id="r167" type="radio" name="g"/>
+<input id="r168" type="radio" name="g"/>
+<input id="r169" type="radio" name="g"/>
+<input id="r170" type="radio" name="g"/>
+<input id="r171" type="radio" name="g"/>
+<input id="r172" type="radio" name="g"/>
+<input id="r173" type="radio" name="g"/>
+<input id="r174" type="radio" name="g"/>
+<input id="r175" type="radio" name="g"/>
+<input id="r176" type="radio" name="g"/>
+<input id="r177" type="radio" name="g"/>
+<input id="r178" type="radio" name="g"/>
+<input id="r179" type="radio" name="g"/>
+<input id="r180" type="radio" name="g"/>
+<input id="r181" type="radio" name="g"/>
+<input id="r182" type="radio" name="g"/>
+<input id="r183" type="radio" name="g"/>
+<input id="r184" type="radio" name="g"/>
+<input id="r185" type="radio" name="g"/>
+<input id="r186" type="radio" name="g"/>
+<input id="r187" type="radio" name="g"/>
+<input id="r188" type="radio" name="g"/>
+<input id="r189" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Code generated by dbus-codegen-go DO NOT EDIT.</span></code></span></div><span class="codeline" id="line-2"><code><span class="keyword">package</span> menu</code></span>
+<span class="codeline" id="line-3"><code></code></span>
+<span class="codeline" id="line-4"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-5"><code>	<label for="i0"><span class="lit-string i0">"context"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i1"><span class="lit-string i1">"errors"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i2"><span class="lit-string i2">"fmt"</span></label></code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i3"><span class="lit-string i3">"github.com/godbus/dbus/v5"</span></label></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i4"><span class="lit-string i4">"github.com/godbus/dbus/v5/introspect"</span></label></code></span>
+<span class="codeline" id="line-11"><code>)</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-14"><code>	<span class="comment">// Introspection for com.canonical.dbusmenu</span></code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-IntrospectDataDbusmenu" class="ident">IntrospectDataDbusmenu</a> = <a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-45" class="ident">Interface</a>{</code></span>
+<span class="codeline" id="line-16"><code>		<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-46" class="ident">Name</a>: <span class="lit-string">"com.canonical.dbusmenu"</span>,</code></span>
+<span class="codeline" id="line-17"><code>		<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-47" class="ident">Methods</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-54" class="ident">Method</a>{{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-55" class="ident">Name</a>: <span class="lit-string">"GetLayout"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-56" class="ident">Args</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-76" class="ident">Arg</a>{</code></span>
+<span class="codeline" id="line-18"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"parentId"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"i"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-19"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"recursionDepth"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"i"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-20"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"propertyNames"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"as"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-21"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"revision"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"u"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-22"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"layout"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"(ia{sv}av)"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-23"><code>		}},</code></span>
+<span class="codeline" id="line-24"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-55" class="ident">Name</a>: <span class="lit-string">"GetGroupProperties"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-56" class="ident">Args</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-76" class="ident">Arg</a>{</code></span>
+<span class="codeline" id="line-25"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"ids"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"ai"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-26"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"propertyNames"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"as"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-27"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"properties"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"a(ia{sv})"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-28"><code>			}},</code></span>
+<span class="codeline" id="line-29"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-55" class="ident">Name</a>: <span class="lit-string">"GetProperty"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-56" class="ident">Args</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-76" class="ident">Arg</a>{</code></span>
+<span class="codeline" id="line-30"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"id"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"i"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-31"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"name"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"s"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-32"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"value"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"v"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-33"><code>			}},</code></span>
+<span class="codeline" id="line-34"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-55" class="ident">Name</a>: <span class="lit-string">"Event"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-56" class="ident">Args</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-76" class="ident">Arg</a>{</code></span>
+<span class="codeline" id="line-35"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"id"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"i"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-36"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"eventId"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"s"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-37"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"data"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"v"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-38"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"timestamp"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"u"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-39"><code>			}},</code></span>
+<span class="codeline" id="line-40"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-55" class="ident">Name</a>: <span class="lit-string">"EventGroup"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-56" class="ident">Args</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-76" class="ident">Arg</a>{</code></span>
+<span class="codeline" id="line-41"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"events"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"a(isvu)"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-42"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"idErrors"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"ai"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-43"><code>			}},</code></span>
+<span class="codeline" id="line-44"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-55" class="ident">Name</a>: <span class="lit-string">"AboutToShow"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-56" class="ident">Args</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-76" class="ident">Arg</a>{</code></span>
+<span class="codeline" id="line-45"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"id"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"i"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-46"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"needUpdate"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"b"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-47"><code>			}},</code></span>
+<span class="codeline" id="line-48"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-55" class="ident">Name</a>: <span class="lit-string">"AboutToShowGroup"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-56" class="ident">Args</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-76" class="ident">Arg</a>{</code></span>
+<span class="codeline" id="line-49"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"ids"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"ai"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"in"</span>},</code></span>
+<span class="codeline" id="line-50"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"updatesNeeded"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"ai"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-51"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"idErrors"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"ai"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-52"><code>			}},</code></span>
+<span class="codeline" id="line-53"><code>		},</code></span>
+<span class="codeline" id="line-54"><code>		<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-48" class="ident">Signals</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-61" class="ident">Signal</a>{{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-62" class="ident">Name</a>: <span class="lit-string">"ItemsPropertiesUpdated"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-63" class="ident">Args</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-76" class="ident">Arg</a>{</code></span>
+<span class="codeline" id="line-55"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"updatedProps"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"a(ia{sv})"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-56"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"removedProps"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"a(ias)"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-57"><code>		}},</code></span>
+<span class="codeline" id="line-58"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-62" class="ident">Name</a>: <span class="lit-string">"LayoutUpdated"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-63" class="ident">Args</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-76" class="ident">Arg</a>{</code></span>
+<span class="codeline" id="line-59"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"revision"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"u"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-60"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"parent"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"i"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-61"><code>			}},</code></span>
+<span class="codeline" id="line-62"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-62" class="ident">Name</a>: <span class="lit-string">"ItemActivationRequested"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-63" class="ident">Args</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-76" class="ident">Arg</a>{</code></span>
+<span class="codeline" id="line-63"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"id"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"i"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-64"><code>				{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77" class="ident">Name</a>: <span class="lit-string">"timestamp"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78" class="ident">Type</a>: <span class="lit-string">"u"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79" class="ident">Direction</a>: <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-65"><code>			}},</code></span>
+<span class="codeline" id="line-66"><code>		},</code></span>
+<span class="codeline" id="line-67"><code>		<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-49" class="ident">Properties</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-68" class="ident">Property</a>{{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-69" class="ident">Name</a>: <span class="lit-string">"Version"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-70" class="ident">Type</a>: <span class="lit-string">"u"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-71" class="ident">Access</a>: <span class="lit-string">"read"</span>},</code></span>
+<span class="codeline" id="line-68"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-69" class="ident">Name</a>: <span class="lit-string">"TextDirection"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-70" class="ident">Type</a>: <span class="lit-string">"s"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-71" class="ident">Access</a>: <span class="lit-string">"read"</span>},</code></span>
+<span class="codeline" id="line-69"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-69" class="ident">Name</a>: <span class="lit-string">"Status"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-70" class="ident">Type</a>: <span class="lit-string">"s"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-71" class="ident">Access</a>: <span class="lit-string">"read"</span>},</code></span>
+<span class="codeline" id="line-70"><code>			{<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-69" class="ident">Name</a>: <span class="lit-string">"IconThemePath"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-70" class="ident">Type</a>: <span class="lit-string">"as"</span>, <a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-71" class="ident">Access</a>: <span class="lit-string">"read"</span>},</code></span>
+<span class="codeline" id="line-71"><code>		},</code></span>
+<span class="codeline" id="line-72"><code>		<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-50" class="ident">Annotations</a>: []<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html" class="ident i4">introspect</a>.<a href="../../../../../github.com/godbus/dbus/v5/introspect/introspect.go.html#line-83" class="ident">Annotation</a>{},</code></span>
+<span class="codeline" id="line-73"><code>	}</code></span>
+<span class="codeline" id="line-74"><code>)</code></span>
+<span class="codeline" id="line-75"><code></code></span>
+<span class="codeline" id="line-76"><code><span class="comment">// Signal is a common interface for all signals.</span></code></span>
+<span class="codeline" id="line-77"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-Signal" class="ident">Signal</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-78"><code>	<a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Signal.html#name-Name" class="ident">Name</a>() <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-79"><code>	<a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Signal.html#name-Interface" class="ident">Interface</a>() <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-80"><code>	<a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Signal.html#name-Sender" class="ident">Sender</a>() <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-81"><code></code></span>
+<span class="codeline" id="line-82"><code>	<a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Signal.html#name-fyne.io/systray/internal/generated/menu.path" class="ident">path</a>() <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/dbus.go.html#line-304" class="ident">ObjectPath</a></code></span>
+<span class="codeline" id="line-83"><code>	<a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Signal.html#name-fyne.io/systray/internal/generated/menu.values" class="ident">values</a>() []<span class="keyword">interface</span>{}</code></span>
+<span class="codeline" id="line-84"><code>}</code></span>
+<span class="codeline" id="line-85"><code></code></span>
+<span class="codeline" id="line-86"><code><span class="comment">// Emit sends the given signal to the bus.</span></code></span>
+<span class="codeline" id="line-87"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-Emit" class="ident">Emit</a></label>(<label for="r1" class="ident">conn</label> *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-30" class="ident">Conn</a>, <label for="r2" class="ident">s</label> <a href="#line-77" class="ident">Signal</a>) <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-88"><code>	<span class="keyword">return</span> <label for="r1" class="ident">conn</label>.<a href="../../../../../github.com/godbus/dbus/v5/export.go.html#line-223" class="ident">Emit</a>(<label for="r2" class="ident">s</label>.<a href="#line-82" class="ident">path</a>(), <label for="r2" class="ident">s</label>.<a href="#line-79" class="ident">Interface</a>()+<span class="lit-string">"."</span>+<label for="r2" class="ident">s</label>.<a href="#line-78" class="ident">Name</a>(), <label for="r2" class="ident">s</label>.<a href="#line-83" class="ident">values</a>()...)</code></span>
+<span class="codeline" id="line-89"><code>}</code></span>
+<span class="codeline" id="line-90"><code></code></span>
+<span class="codeline" id="line-91"><code><span class="comment">// ErrUnknownSignal is returned by LookupSignal when a signal cannot be resolved.</span></code></span>
+<span class="codeline" id="line-92"><code><span class="keyword">var</span> <a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-ErrUnknownSignal" class="ident">ErrUnknownSignal</a> = <a href="../../../../../../pkg/errors.html" class="ident i1">errors</a>.<a href="../../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"unknown signal"</span>)</code></span>
+<span class="codeline" id="line-93"><code></code></span>
+<span class="codeline" id="line-94"><code><span class="comment">// LookupSignal converts the given raw D-Bus signal with variable body</span></code></span>
+<span class="codeline" id="line-95"><code><span class="comment">// into one with typed structured body or returns ErrUnknownSignal error.</span></code></span>
+<span class="codeline" id="line-96"><code><span class="keyword">func</span> <label for="r3" class="ident"><a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-LookupSignal" class="ident">LookupSignal</a></label>(<label for="r4" class="ident">signal</label> *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-716" class="ident">Signal</a>) (<a href="#line-77" class="ident">Signal</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-97"><code>	<span class="keyword">switch</span> <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-719" class="ident">Name</a> {</code></span>
+<span class="codeline" id="line-98"><code>	<span class="keyword">case</span> <a href="#line-179" class="ident">InterfaceDbusmenu</a> + <span class="lit-string">"."</span> + <span class="lit-string">"ItemsPropertiesUpdated"</span>:</code></span>
+<span class="codeline" id="line-99"><code>		<label for="r5" class="ident">v0</label>, <label for="r6" class="ident">ok</label> := <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-720" class="ident">Body</a>[<span class="lit-number">0</span>].([]<span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-100"><code>			<label for="r7" class="ident">V0</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-101"><code>			<label for="r8" class="ident">V1</label> <span class="keyword">map</span>[<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-102"><code>		})</code></span>
+<span class="codeline" id="line-103"><code>		<span class="keyword">if</span> !<label for="r6" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-104"><code>			<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../../pkg/fmt.html" class="ident i2">fmt</a>.<a href="../../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"prop .UpdatedProps is %T, not []struct {V0 int32;V1 map[string]dbus.Variant}"</span>, <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-720" class="ident">Body</a>[<span class="lit-number">0</span>])</code></span>
+<span class="codeline" id="line-105"><code>		}</code></span>
+<span class="codeline" id="line-106"><code>		<label for="r9" class="ident">v1</label>, <label for="r6" class="ident">ok</label> := <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-720" class="ident">Body</a>[<span class="lit-number">1</span>].([]<span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-107"><code>			<label for="r10" class="ident">V0</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-108"><code>			<label for="r11" class="ident">V1</label> []<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-109"><code>		})</code></span>
+<span class="codeline" id="line-110"><code>		<span class="keyword">if</span> !<label for="r6" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-111"><code>			<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../../pkg/fmt.html" class="ident i2">fmt</a>.<a href="../../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"prop .RemovedProps is %T, not []struct {V0 int32;V1 []string}"</span>, <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-720" class="ident">Body</a>[<span class="lit-number">1</span>])</code></span>
+<span class="codeline" id="line-112"><code>		}</code></span>
+<span class="codeline" id="line-113"><code>		<span class="keyword">return</span> &amp;<a href="#line-373" class="ident">Dbusmenu_ItemsPropertiesUpdatedSignal</a>{</code></span>
+<span class="codeline" id="line-114"><code>			<a href="#line-374" class="ident">sender</a>: <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-717" class="ident">Sender</a>,</code></span>
+<span class="codeline" id="line-115"><code>			<a href="#line-375" class="ident">Path</a>:   <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-718" class="ident">Path</a>,</code></span>
+<span class="codeline" id="line-116"><code>			<a href="#line-376" class="ident">Body</a>: &amp;<a href="#line-403" class="ident">Dbusmenu_ItemsPropertiesUpdatedSignalBody</a>{</code></span>
+<span class="codeline" id="line-117"><code>				<a href="#line-404" class="ident">UpdatedProps</a>: <label for="r5" class="ident">v0</label>,</code></span>
+<span class="codeline" id="line-118"><code>				<a href="#line-408" class="ident">RemovedProps</a>: <label for="r9" class="ident">v1</label>,</code></span>
+<span class="codeline" id="line-119"><code>			},</code></span>
+<span class="codeline" id="line-120"><code>		}, <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-121"><code>	<span class="keyword">case</span> <a href="#line-179" class="ident">InterfaceDbusmenu</a> + <span class="lit-string">"."</span> + <span class="lit-string">"LayoutUpdated"</span>:</code></span>
+<span class="codeline" id="line-122"><code>		<label for="r12" class="ident">v0</label>, <label for="r13" class="ident">ok</label> := <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-720" class="ident">Body</a>[<span class="lit-number">0</span>].(<a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>)</code></span>
+<span class="codeline" id="line-123"><code>		<span class="keyword">if</span> !<label for="r13" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-124"><code>			<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../../pkg/fmt.html" class="ident i2">fmt</a>.<a href="../../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"prop .Revision is %T, not uint32"</span>, <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-720" class="ident">Body</a>[<span class="lit-number">0</span>])</code></span>
+<span class="codeline" id="line-125"><code>		}</code></span>
+<span class="codeline" id="line-126"><code>		<label for="r14" class="ident">v1</label>, <label for="r13" class="ident">ok</label> := <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-720" class="ident">Body</a>[<span class="lit-number">1</span>].(<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>)</code></span>
+<span class="codeline" id="line-127"><code>		<span class="keyword">if</span> !<label for="r13" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-128"><code>			<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../../pkg/fmt.html" class="ident i2">fmt</a>.<a href="../../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"prop .Parent is %T, not int32"</span>, <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-720" class="ident">Body</a>[<span class="lit-number">1</span>])</code></span>
+<span class="codeline" id="line-129"><code>		}</code></span>
+<span class="codeline" id="line-130"><code>		<span class="keyword">return</span> &amp;<a href="#line-415" class="ident">Dbusmenu_LayoutUpdatedSignal</a>{</code></span>
+<span class="codeline" id="line-131"><code>			<a href="#line-416" class="ident">sender</a>: <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-717" class="ident">Sender</a>,</code></span>
+<span class="codeline" id="line-132"><code>			<a href="#line-417" class="ident">Path</a>:   <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-718" class="ident">Path</a>,</code></span>
+<span class="codeline" id="line-133"><code>			<a href="#line-418" class="ident">Body</a>: &amp;<a href="#line-445" class="ident">Dbusmenu_LayoutUpdatedSignalBody</a>{</code></span>
+<span class="codeline" id="line-134"><code>				<a href="#line-446" class="ident">Revision</a>: <label for="r12" class="ident">v0</label>,</code></span>
+<span class="codeline" id="line-135"><code>				<a href="#line-447" class="ident">Parent</a>:   <label for="r14" class="ident">v1</label>,</code></span>
+<span class="codeline" id="line-136"><code>			},</code></span>
+<span class="codeline" id="line-137"><code>		}, <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-138"><code>	<span class="keyword">case</span> <a href="#line-179" class="ident">InterfaceDbusmenu</a> + <span class="lit-string">"."</span> + <span class="lit-string">"ItemActivationRequested"</span>:</code></span>
+<span class="codeline" id="line-139"><code>		<label for="r15" class="ident">v0</label>, <label for="r16" class="ident">ok</label> := <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-720" class="ident">Body</a>[<span class="lit-number">0</span>].(<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>)</code></span>
+<span class="codeline" id="line-140"><code>		<span class="keyword">if</span> !<label for="r16" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-141"><code>			<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../../pkg/fmt.html" class="ident i2">fmt</a>.<a href="../../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"prop .Id is %T, not int32"</span>, <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-720" class="ident">Body</a>[<span class="lit-number">0</span>])</code></span>
+<span class="codeline" id="line-142"><code>		}</code></span>
+<span class="codeline" id="line-143"><code>		<label for="r17" class="ident">v1</label>, <label for="r16" class="ident">ok</label> := <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-720" class="ident">Body</a>[<span class="lit-number">1</span>].(<a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>)</code></span>
+<span class="codeline" id="line-144"><code>		<span class="keyword">if</span> !<label for="r16" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-145"><code>			<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../../pkg/fmt.html" class="ident i2">fmt</a>.<a href="../../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"prop .Timestamp is %T, not uint32"</span>, <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-720" class="ident">Body</a>[<span class="lit-number">1</span>])</code></span>
+<span class="codeline" id="line-146"><code>		}</code></span>
+<span class="codeline" id="line-147"><code>		<span class="keyword">return</span> &amp;<a href="#line-451" class="ident">Dbusmenu_ItemActivationRequestedSignal</a>{</code></span>
+<span class="codeline" id="line-148"><code>			<a href="#line-452" class="ident">sender</a>: <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-717" class="ident">Sender</a>,</code></span>
+<span class="codeline" id="line-149"><code>			<a href="#line-453" class="ident">Path</a>:   <label for="r4" class="ident">signal</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-718" class="ident">Path</a>,</code></span>
+<span class="codeline" id="line-150"><code>			<a href="#line-454" class="ident">Body</a>: &amp;<a href="#line-481" class="ident">Dbusmenu_ItemActivationRequestedSignalBody</a>{</code></span>
+<span class="codeline" id="line-151"><code>				<a href="#line-482" class="ident">Id</a>:        <label for="r15" class="ident">v0</label>,</code></span>
+<span class="codeline" id="line-152"><code>				<a href="#line-483" class="ident">Timestamp</a>: <label for="r17" class="ident">v1</label>,</code></span>
+<span class="codeline" id="line-153"><code>			},</code></span>
+<span class="codeline" id="line-154"><code>		}, <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-155"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-156"><code>		<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="#line-92" class="ident">ErrUnknownSignal</a></code></span>
+<span class="codeline" id="line-157"><code>	}</code></span>
+<span class="codeline" id="line-158"><code>}</code></span>
+<span class="codeline" id="line-159"><code></code></span>
+<span class="codeline" id="line-160"><code><span class="comment">// AddMatchSignal registers a match rule for the given signal,</span></code></span>
+<span class="codeline" id="line-161"><code><span class="comment">// opts are appended to the automatically generated signal's rules.</span></code></span>
+<span class="codeline" id="line-162"><code><span class="keyword">func</span> <label for="r18" class="ident"><a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-AddMatchSignal" class="ident">AddMatchSignal</a></label>(<label for="r19" class="ident">conn</label> *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-30" class="ident">Conn</a>, <label for="r20" class="ident">s</label> <a href="#line-77" class="ident">Signal</a>, <label for="r21" class="ident">opts</label> ...<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/match.go.html#line-11" class="ident">MatchOption</a>) <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-163"><code>	<span class="keyword">return</span> <label for="r19" class="ident">conn</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-627" class="ident">AddMatchSignal</a>(<a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>([]<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/match.go.html#line-11" class="ident">MatchOption</a>{</code></span>
+<span class="codeline" id="line-164"><code>		<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/match.go.html#line-41" class="ident">WithMatchInterface</a>(<label for="r20" class="ident">s</label>.<a href="#line-79" class="ident">Interface</a>()),</code></span>
+<span class="codeline" id="line-165"><code>		<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/match.go.html#line-46" class="ident">WithMatchMember</a>(<label for="r20" class="ident">s</label>.<a href="#line-78" class="ident">Name</a>()),</code></span>
+<span class="codeline" id="line-166"><code>	}, <label for="r21" class="ident">opts</label>...)...)</code></span>
+<span class="codeline" id="line-167"><code>}</code></span>
+<span class="codeline" id="line-168"><code></code></span>
+<span class="codeline" id="line-169"><code><span class="comment">// RemoveMatchSignal unregisters the previously registered subscription.</span></code></span>
+<span class="codeline" id="line-170"><code><span class="keyword">func</span> <label for="r22" class="ident"><a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-RemoveMatchSignal" class="ident">RemoveMatchSignal</a></label>(<label for="r23" class="ident">conn</label> *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-30" class="ident">Conn</a>, <label for="r24" class="ident">s</label> <a href="#line-77" class="ident">Signal</a>, <label for="r25" class="ident">opts</label> ...<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/match.go.html#line-11" class="ident">MatchOption</a>) <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-171"><code>	<span class="keyword">return</span> <label for="r23" class="ident">conn</label>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-642" class="ident">RemoveMatchSignal</a>(<a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>([]<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/match.go.html#line-11" class="ident">MatchOption</a>{</code></span>
+<span class="codeline" id="line-172"><code>		<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/match.go.html#line-41" class="ident">WithMatchInterface</a>(<label for="r24" class="ident">s</label>.<a href="#line-79" class="ident">Interface</a>()),</code></span>
+<span class="codeline" id="line-173"><code>		<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/match.go.html#line-46" class="ident">WithMatchMember</a>(<label for="r24" class="ident">s</label>.<a href="#line-78" class="ident">Name</a>()),</code></span>
+<span class="codeline" id="line-174"><code>	}, <label for="r25" class="ident">opts</label>...)...)</code></span>
+<span class="codeline" id="line-175"><code>}</code></span>
+<span class="codeline" id="line-176"><code></code></span>
+<span class="codeline" id="line-177"><code><span class="comment">// Interface name constants.</span></code></span>
+<span class="codeline" id="line-178"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-179"><code>	<a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-InterfaceDbusmenu" class="ident">InterfaceDbusmenu</a> = <span class="lit-string">"com.canonical.dbusmenu"</span></code></span>
+<span class="codeline" id="line-180"><code>)</code></span>
+<span class="codeline" id="line-181"><code></code></span>
+<span class="codeline" id="line-182"><code><span class="comment">// Dbusmenuer is com.canonical.dbusmenu interface.</span></code></span>
+<span class="codeline" id="line-183"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-Dbusmenuer" class="ident">Dbusmenuer</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-184"><code>	<span class="comment">// GetLayout is com.canonical.dbusmenu.GetLayout method.</span></code></span>
+<span class="codeline" id="line-185"><code>	<a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenuer.html#name-GetLayout" class="ident">GetLayout</a>(parentId <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, recursionDepth <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, propertyNames []<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (revision <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, layout <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-186"><code>		V0 <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-187"><code>		V1 <span class="keyword">map</span>[<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-188"><code>		V2 []<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-189"><code>	}, err *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>)</code></span>
+<span class="codeline" id="line-190"><code>	<span class="comment">// GetGroupProperties is com.canonical.dbusmenu.GetGroupProperties method.</span></code></span>
+<span class="codeline" id="line-191"><code>	<a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenuer.html#name-GetGroupProperties" class="ident">GetGroupProperties</a>(ids []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, propertyNames []<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (properties []<span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-192"><code>		V0 <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-193"><code>		V1 <span class="keyword">map</span>[<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-194"><code>	}, err *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>)</code></span>
+<span class="codeline" id="line-195"><code>	<span class="comment">// GetProperty is com.canonical.dbusmenu.GetProperty method.</span></code></span>
+<span class="codeline" id="line-196"><code>	<a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenuer.html#name-GetProperty" class="ident">GetProperty</a>(id <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, name <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (value <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a>, err *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>)</code></span>
+<span class="codeline" id="line-197"><code>	<span class="comment">// Event is com.canonical.dbusmenu.Event method.</span></code></span>
+<span class="codeline" id="line-198"><code>	<a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenuer.html#name-Event" class="ident">Event</a>(id <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, eventId <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>, data <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a>, timestamp <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) (err *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>)</code></span>
+<span class="codeline" id="line-199"><code>	<span class="comment">// EventGroup is com.canonical.dbusmenu.EventGroup method.</span></code></span>
+<span class="codeline" id="line-200"><code>	<a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenuer.html#name-EventGroup" class="ident">EventGroup</a>(events []<span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-201"><code>		V0 <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-202"><code>		V1 <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-203"><code>		V2 <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-204"><code>		V3 <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-205"><code>	}) (idErrors []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, err *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>)</code></span>
+<span class="codeline" id="line-206"><code>	<span class="comment">// AboutToShow is com.canonical.dbusmenu.AboutToShow method.</span></code></span>
+<span class="codeline" id="line-207"><code>	<a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenuer.html#name-AboutToShow" class="ident">AboutToShow</a>(id <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>) (needUpdate <a href="../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>, err *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>)</code></span>
+<span class="codeline" id="line-208"><code>	<span class="comment">// AboutToShowGroup is com.canonical.dbusmenu.AboutToShowGroup method.</span></code></span>
+<span class="codeline" id="line-209"><code>	<a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenuer.html#name-AboutToShowGroup" class="ident">AboutToShowGroup</a>(ids []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>) (updatesNeeded []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, idErrors []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, err *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>)</code></span>
+<span class="codeline" id="line-210"><code>}</code></span>
+<span class="codeline" id="line-211"><code></code></span>
+<span class="codeline" id="line-212"><code><span class="comment">// ExportDbusmenu exports the given object that implements com.canonical.dbusmenu on the bus.</span></code></span>
+<span class="codeline" id="line-213"><code><span class="keyword">func</span> <label for="r26" class="ident"><a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-ExportDbusmenu" class="ident">ExportDbusmenu</a></label>(<label for="r27" class="ident">conn</label> *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-30" class="ident">Conn</a>, <label for="r28" class="ident">path</label> <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/dbus.go.html#line-304" class="ident">ObjectPath</a>, <label for="r29" class="ident">v</label> <a href="#line-183" class="ident">Dbusmenuer</a>) <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-214"><code>	<span class="keyword">return</span> <label for="r27" class="ident">conn</label>.<a href="../../../../../github.com/godbus/dbus/v5/export.go.html#line-345" class="ident">ExportSubtreeMethodTable</a>(<span class="keyword">map</span>[<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<span class="keyword">interface</span>{}{</code></span>
+<span class="codeline" id="line-215"><code>		<span class="lit-string">"GetLayout"</span>:          <label for="r29" class="ident">v</label>.<a href="#line-185" class="ident">GetLayout</a>,</code></span>
+<span class="codeline" id="line-216"><code>		<span class="lit-string">"GetGroupProperties"</span>: <label for="r29" class="ident">v</label>.<a href="#line-191" class="ident">GetGroupProperties</a>,</code></span>
+<span class="codeline" id="line-217"><code>		<span class="lit-string">"GetProperty"</span>:        <label for="r29" class="ident">v</label>.<a href="#line-196" class="ident">GetProperty</a>,</code></span>
+<span class="codeline" id="line-218"><code>		<span class="lit-string">"Event"</span>:              <label for="r29" class="ident">v</label>.<a href="#line-198" class="ident">Event</a>,</code></span>
+<span class="codeline" id="line-219"><code>		<span class="lit-string">"EventGroup"</span>:         <label for="r29" class="ident">v</label>.<a href="#line-200" class="ident">EventGroup</a>,</code></span>
+<span class="codeline" id="line-220"><code>		<span class="lit-string">"AboutToShow"</span>:        <label for="r29" class="ident">v</label>.<a href="#line-207" class="ident">AboutToShow</a>,</code></span>
+<span class="codeline" id="line-221"><code>		<span class="lit-string">"AboutToShowGroup"</span>:   <label for="r29" class="ident">v</label>.<a href="#line-209" class="ident">AboutToShowGroup</a>,</code></span>
+<span class="codeline" id="line-222"><code>	}, <label for="r28" class="ident">path</label>, <a href="#line-179" class="ident">InterfaceDbusmenu</a>)</code></span>
+<span class="codeline" id="line-223"><code>}</code></span>
+<span class="codeline" id="line-224"><code></code></span>
+<span class="codeline" id="line-225"><code><span class="comment">// UnexportDbusmenu unexports com.canonical.dbusmenu interface on the named path.</span></code></span>
+<span class="codeline" id="line-226"><code><span class="keyword">func</span> <label for="r30" class="ident"><a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-UnexportDbusmenu" class="ident">UnexportDbusmenu</a></label>(<label for="r31" class="ident">conn</label> *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-30" class="ident">Conn</a>, <label for="r32" class="ident">path</label> <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/dbus.go.html#line-304" class="ident">ObjectPath</a>) <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-227"><code>	<span class="keyword">return</span> <label for="r31" class="ident">conn</label>.<a href="../../../../../github.com/godbus/dbus/v5/export.go.html#line-282" class="ident">Export</a>(<a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r32" class="ident">path</label>, <a href="#line-179" class="ident">InterfaceDbusmenu</a>)</code></span>
+<span class="codeline" id="line-228"><code>}</code></span>
+<span class="codeline" id="line-229"><code></code></span>
+<span class="codeline" id="line-230"><code><span class="comment">// UnimplementedDbusmenu can be embedded to have forward compatible server implementations.</span></code></span>
+<span class="codeline" id="line-231"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-UnimplementedDbusmenu" class="ident">UnimplementedDbusmenu</a> <span class="keyword">struct</span>{}</code></span>
+<span class="codeline" id="line-232"><code></code></span>
+<span class="codeline" id="line-233"><code><span class="keyword">func</span> (*<a href="#line-231" class="ident">UnimplementedDbusmenu</a>) <label for="r33" class="ident">iface</label>() <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-234"><code>	<span class="keyword">return</span> <a href="#line-179" class="ident">InterfaceDbusmenu</a></code></span>
+<span class="codeline" id="line-235"><code>}</code></span>
+<span class="codeline" id="line-236"><code></code></span>
+<span class="codeline" id="line-237"><code><span class="keyword">func</span> (*<a href="#line-231" class="ident">UnimplementedDbusmenu</a>) <label for="r34" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.UnimplementedDbusmenu.html#name-.GetLayout" class="ident">GetLayout</a></label>(<label for="r35" class="ident">parentId</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r36" class="ident">recursionDepth</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r37" class="ident">propertyNames</label> []<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<label for="r38" class="ident">revision</label> <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r39" class="ident">layout</label> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-238"><code>	<label for="r40" class="ident">V0</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-239"><code>	<label for="r41" class="ident">V1</label> <span class="keyword">map</span>[<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-240"><code>	<label for="r42" class="ident">V2</label> []<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-241"><code>}, <label for="r43" class="ident">err</label> *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>) {</code></span>
+<span class="codeline" id="line-242"><code>	<label for="r43" class="ident">err</label> = &amp;<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/export.go.html#line-20" class="ident">ErrMsgUnknownMethod</a></code></span>
+<span class="codeline" id="line-243"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-244"><code>}</code></span>
+<span class="codeline" id="line-245"><code></code></span>
+<span class="codeline" id="line-246"><code><span class="keyword">func</span> (*<a href="#line-231" class="ident">UnimplementedDbusmenu</a>) <label for="r44" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.UnimplementedDbusmenu.html#name-.GetGroupProperties" class="ident">GetGroupProperties</a></label>(<label for="r45" class="ident">ids</label> []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r46" class="ident">propertyNames</label> []<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<label for="r47" class="ident">properties</label> []<span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-247"><code>	<label for="r48" class="ident">V0</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-248"><code>	<label for="r49" class="ident">V1</label> <span class="keyword">map</span>[<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-249"><code>}, <label for="r50" class="ident">err</label> *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>) {</code></span>
+<span class="codeline" id="line-250"><code>	<label for="r50" class="ident">err</label> = &amp;<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/export.go.html#line-20" class="ident">ErrMsgUnknownMethod</a></code></span>
+<span class="codeline" id="line-251"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-252"><code>}</code></span>
+<span class="codeline" id="line-253"><code></code></span>
+<span class="codeline" id="line-254"><code><span class="keyword">func</span> (*<a href="#line-231" class="ident">UnimplementedDbusmenu</a>) <label for="r51" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.UnimplementedDbusmenu.html#name-.GetProperty" class="ident">GetProperty</a></label>(<label for="r52" class="ident">id</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r53" class="ident">name</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<label for="r54" class="ident">value</label> <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a>, <label for="r55" class="ident">err</label> *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>) {</code></span>
+<span class="codeline" id="line-255"><code>	<label for="r55" class="ident">err</label> = &amp;<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/export.go.html#line-20" class="ident">ErrMsgUnknownMethod</a></code></span>
+<span class="codeline" id="line-256"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-257"><code>}</code></span>
+<span class="codeline" id="line-258"><code></code></span>
+<span class="codeline" id="line-259"><code><span class="keyword">func</span> (*<a href="#line-231" class="ident">UnimplementedDbusmenu</a>) <label for="r56" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.UnimplementedDbusmenu.html#name-.Event" class="ident">Event</a></label>(<label for="r57" class="ident">id</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r58" class="ident">eventId</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r59" class="ident">data</label> <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a>, <label for="r60" class="ident">timestamp</label> <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) (<label for="r61" class="ident">err</label> *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>) {</code></span>
+<span class="codeline" id="line-260"><code>	<label for="r61" class="ident">err</label> = &amp;<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/export.go.html#line-20" class="ident">ErrMsgUnknownMethod</a></code></span>
+<span class="codeline" id="line-261"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-262"><code>}</code></span>
+<span class="codeline" id="line-263"><code></code></span>
+<span class="codeline" id="line-264"><code><span class="keyword">func</span> (*<a href="#line-231" class="ident">UnimplementedDbusmenu</a>) <label for="r62" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.UnimplementedDbusmenu.html#name-.EventGroup" class="ident">EventGroup</a></label>(<label for="r63" class="ident">events</label> []<span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-265"><code>	<label for="r64" class="ident">V0</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-266"><code>	<label for="r65" class="ident">V1</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-267"><code>	<label for="r66" class="ident">V2</label> <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-268"><code>	<label for="r67" class="ident">V3</label> <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-269"><code>}) (<label for="r68" class="ident">idErrors</label> []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r69" class="ident">err</label> *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>) {</code></span>
+<span class="codeline" id="line-270"><code>	<label for="r69" class="ident">err</label> = &amp;<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/export.go.html#line-20" class="ident">ErrMsgUnknownMethod</a></code></span>
+<span class="codeline" id="line-271"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-272"><code>}</code></span>
+<span class="codeline" id="line-273"><code></code></span>
+<span class="codeline" id="line-274"><code><span class="keyword">func</span> (*<a href="#line-231" class="ident">UnimplementedDbusmenu</a>) <label for="r70" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.UnimplementedDbusmenu.html#name-.AboutToShow" class="ident">AboutToShow</a></label>(<label for="r71" class="ident">id</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>) (<label for="r72" class="ident">needUpdate</label> <a href="../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>, <label for="r73" class="ident">err</label> *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>) {</code></span>
+<span class="codeline" id="line-275"><code>	<label for="r73" class="ident">err</label> = &amp;<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/export.go.html#line-20" class="ident">ErrMsgUnknownMethod</a></code></span>
+<span class="codeline" id="line-276"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-277"><code>}</code></span>
+<span class="codeline" id="line-278"><code></code></span>
+<span class="codeline" id="line-279"><code><span class="keyword">func</span> (*<a href="#line-231" class="ident">UnimplementedDbusmenu</a>) <label for="r74" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.UnimplementedDbusmenu.html#name-.AboutToShowGroup" class="ident">AboutToShowGroup</a></label>(<label for="r75" class="ident">ids</label> []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>) (<label for="r76" class="ident">updatesNeeded</label> []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r77" class="ident">idErrors</label> []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r78" class="ident">err</label> *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/conn.go.html#line-695" class="ident">Error</a>) {</code></span>
+<span class="codeline" id="line-280"><code>	<label for="r78" class="ident">err</label> = &amp;<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/export.go.html#line-20" class="ident">ErrMsgUnknownMethod</a></code></span>
+<span class="codeline" id="line-281"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-282"><code>}</code></span>
+<span class="codeline" id="line-283"><code></code></span>
+<span class="codeline" id="line-284"><code><span class="comment">// NewDbusmenu creates and allocates com.canonical.dbusmenu.</span></code></span>
+<span class="codeline" id="line-285"><code><span class="keyword">func</span> <label for="r79" class="ident"><a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-NewDbusmenu" class="ident">NewDbusmenu</a></label>(<label for="r80" class="ident">object</label> <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/object.go.html#line-11" class="ident">BusObject</a>) *<a href="#line-290" class="ident">Dbusmenu</a> {</code></span>
+<span class="codeline" id="line-286"><code>	<span class="keyword">return</span> &amp;<a href="#line-290" class="ident">Dbusmenu</a>{<label for="r80" class="ident">object</label>}</code></span>
+<span class="codeline" id="line-287"><code>}</code></span>
+<span class="codeline" id="line-288"><code></code></span>
+<span class="codeline" id="line-289"><code><span class="comment">// Dbusmenu implements com.canonical.dbusmenu D-Bus interface.</span></code></span>
+<span class="codeline" id="line-290"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-Dbusmenu" class="ident">Dbusmenu</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-291"><code>	object <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/object.go.html#line-11" class="ident">BusObject</a></code></span>
+<span class="codeline" id="line-292"><code>}</code></span>
+<span class="codeline" id="line-293"><code></code></span>
+<span class="codeline" id="line-294"><code><span class="comment">// GetLayout calls com.canonical.dbusmenu.GetLayout method.</span></code></span>
+<span class="codeline" id="line-295"><code><span class="keyword">func</span> (<label for="r81" class="ident">o</label> *<a href="#line-290" class="ident">Dbusmenu</a>) <label for="r82" class="ident">GetLayout</label>(<label for="r83" class="ident">ctx</label> <a href="../../../../../../pkg/context.html" class="ident i0">context</a>.<a href="../../../../../context/context.go.html#line-68" class="ident">Context</a>, <label for="r84" class="ident">parentId</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r85" class="ident">recursionDepth</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r86" class="ident">propertyNames</label> []<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<label for="r87" class="ident">revision</label> <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r88" class="ident">layout</label> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-296"><code>	<label for="r89" class="ident">V0</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-297"><code>	<label for="r90" class="ident">V1</label> <span class="keyword">map</span>[<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-298"><code>	<label for="r91" class="ident">V2</label> []<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-299"><code>}, <label for="r92" class="ident">err</label> <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-300"><code>	<label for="r92" class="ident">err</label> = <label for="r81" class="ident">o</label>.<a href="#line-291" class="ident">object</a>.<a href="../../../../../github.com/godbus/dbus/v5/object.go.html#line-13" class="ident">CallWithContext</a>(<label for="r83" class="ident">ctx</label>, <a href="#line-179" class="ident">InterfaceDbusmenu</a>+<span class="lit-string">".GetLayout"</span>, <span class="lit-number">0</span>, <label for="r84" class="ident">parentId</label>, <label for="r85" class="ident">recursionDepth</label>, <label for="r86" class="ident">propertyNames</label>).<a href="../../../../../github.com/godbus/dbus/v5/call.go.html#line-58" class="ident">Store</a>(&amp;<label for="r87" class="ident">revision</label>, &amp;<label for="r88" class="ident">layout</label>)</code></span>
+<span class="codeline" id="line-301"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-302"><code>}</code></span>
+<span class="codeline" id="line-303"><code></code></span>
+<span class="codeline" id="line-304"><code><span class="comment">// GetGroupProperties calls com.canonical.dbusmenu.GetGroupProperties method.</span></code></span>
+<span class="codeline" id="line-305"><code><span class="keyword">func</span> (<label for="r93" class="ident">o</label> *<a href="#line-290" class="ident">Dbusmenu</a>) <label for="r94" class="ident">GetGroupProperties</label>(<label for="r95" class="ident">ctx</label> <a href="../../../../../../pkg/context.html" class="ident i0">context</a>.<a href="../../../../../context/context.go.html#line-68" class="ident">Context</a>, <label for="r96" class="ident">ids</label> []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r97" class="ident">propertyNames</label> []<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<label for="r98" class="ident">properties</label> []<span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-306"><code>	<label for="r99" class="ident">V0</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-307"><code>	<label for="r100" class="ident">V1</label> <span class="keyword">map</span>[<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-308"><code>}, <label for="r101" class="ident">err</label> <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-309"><code>	<label for="r101" class="ident">err</label> = <label for="r93" class="ident">o</label>.<a href="#line-291" class="ident">object</a>.<a href="../../../../../github.com/godbus/dbus/v5/object.go.html#line-13" class="ident">CallWithContext</a>(<label for="r95" class="ident">ctx</label>, <a href="#line-179" class="ident">InterfaceDbusmenu</a>+<span class="lit-string">".GetGroupProperties"</span>, <span class="lit-number">0</span>, <label for="r96" class="ident">ids</label>, <label for="r97" class="ident">propertyNames</label>).<a href="../../../../../github.com/godbus/dbus/v5/call.go.html#line-58" class="ident">Store</a>(&amp;<label for="r98" class="ident">properties</label>)</code></span>
+<span class="codeline" id="line-310"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-311"><code>}</code></span>
+<span class="codeline" id="line-312"><code></code></span>
+<span class="codeline" id="line-313"><code><span class="comment">// GetProperty calls com.canonical.dbusmenu.GetProperty method.</span></code></span>
+<span class="codeline" id="line-314"><code><span class="keyword">func</span> (<label for="r102" class="ident">o</label> *<a href="#line-290" class="ident">Dbusmenu</a>) <label for="r103" class="ident">GetProperty</label>(<label for="r104" class="ident">ctx</label> <a href="../../../../../../pkg/context.html" class="ident i0">context</a>.<a href="../../../../../context/context.go.html#line-68" class="ident">Context</a>, <label for="r105" class="ident">id</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r106" class="ident">name</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<label for="r107" class="ident">value</label> <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a>, <label for="r108" class="ident">err</label> <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-315"><code>	<label for="r108" class="ident">err</label> = <label for="r102" class="ident">o</label>.<a href="#line-291" class="ident">object</a>.<a href="../../../../../github.com/godbus/dbus/v5/object.go.html#line-13" class="ident">CallWithContext</a>(<label for="r104" class="ident">ctx</label>, <a href="#line-179" class="ident">InterfaceDbusmenu</a>+<span class="lit-string">".GetProperty"</span>, <span class="lit-number">0</span>, <label for="r105" class="ident">id</label>, <label for="r106" class="ident">name</label>).<a href="../../../../../github.com/godbus/dbus/v5/call.go.html#line-58" class="ident">Store</a>(&amp;<label for="r107" class="ident">value</label>)</code></span>
+<span class="codeline" id="line-316"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-317"><code>}</code></span>
+<span class="codeline" id="line-318"><code></code></span>
+<span class="codeline" id="line-319"><code><span class="comment">// Event calls com.canonical.dbusmenu.Event method.</span></code></span>
+<span class="codeline" id="line-320"><code><span class="keyword">func</span> (<label for="r109" class="ident">o</label> *<a href="#line-290" class="ident">Dbusmenu</a>) <label for="r110" class="ident">Event</label>(<label for="r111" class="ident">ctx</label> <a href="../../../../../../pkg/context.html" class="ident i0">context</a>.<a href="../../../../../context/context.go.html#line-68" class="ident">Context</a>, <label for="r112" class="ident">id</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r113" class="ident">eventId</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r114" class="ident">data</label> <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a>, <label for="r115" class="ident">timestamp</label> <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) (<label for="r116" class="ident">err</label> <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-321"><code>	<label for="r116" class="ident">err</label> = <label for="r109" class="ident">o</label>.<a href="#line-291" class="ident">object</a>.<a href="../../../../../github.com/godbus/dbus/v5/object.go.html#line-13" class="ident">CallWithContext</a>(<label for="r111" class="ident">ctx</label>, <a href="#line-179" class="ident">InterfaceDbusmenu</a>+<span class="lit-string">".Event"</span>, <span class="lit-number">0</span>, <label for="r112" class="ident">id</label>, <label for="r113" class="ident">eventId</label>, <label for="r114" class="ident">data</label>, <label for="r115" class="ident">timestamp</label>).<a href="../../../../../github.com/godbus/dbus/v5/call.go.html#line-58" class="ident">Store</a>()</code></span>
+<span class="codeline" id="line-322"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-323"><code>}</code></span>
+<span class="codeline" id="line-324"><code></code></span>
+<span class="codeline" id="line-325"><code><span class="comment">// EventGroup calls com.canonical.dbusmenu.EventGroup method.</span></code></span>
+<span class="codeline" id="line-326"><code><span class="keyword">func</span> (<label for="r117" class="ident">o</label> *<a href="#line-290" class="ident">Dbusmenu</a>) <label for="r118" class="ident">EventGroup</label>(<label for="r119" class="ident">ctx</label> <a href="../../../../../../pkg/context.html" class="ident i0">context</a>.<a href="../../../../../context/context.go.html#line-68" class="ident">Context</a>, <label for="r120" class="ident">events</label> []<span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-327"><code>	<label for="r121" class="ident">V0</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-328"><code>	<label for="r122" class="ident">V1</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-329"><code>	<label for="r123" class="ident">V2</label> <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-330"><code>	<label for="r124" class="ident">V3</label> <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-331"><code>}) (<label for="r125" class="ident">idErrors</label> []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r126" class="ident">err</label> <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-332"><code>	<label for="r126" class="ident">err</label> = <label for="r117" class="ident">o</label>.<a href="#line-291" class="ident">object</a>.<a href="../../../../../github.com/godbus/dbus/v5/object.go.html#line-13" class="ident">CallWithContext</a>(<label for="r119" class="ident">ctx</label>, <a href="#line-179" class="ident">InterfaceDbusmenu</a>+<span class="lit-string">".EventGroup"</span>, <span class="lit-number">0</span>, <label for="r120" class="ident">events</label>).<a href="../../../../../github.com/godbus/dbus/v5/call.go.html#line-58" class="ident">Store</a>(&amp;<label for="r125" class="ident">idErrors</label>)</code></span>
+<span class="codeline" id="line-333"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-334"><code>}</code></span>
+<span class="codeline" id="line-335"><code></code></span>
+<span class="codeline" id="line-336"><code><span class="comment">// AboutToShow calls com.canonical.dbusmenu.AboutToShow method.</span></code></span>
+<span class="codeline" id="line-337"><code><span class="keyword">func</span> (<label for="r127" class="ident">o</label> *<a href="#line-290" class="ident">Dbusmenu</a>) <label for="r128" class="ident">AboutToShow</label>(<label for="r129" class="ident">ctx</label> <a href="../../../../../../pkg/context.html" class="ident i0">context</a>.<a href="../../../../../context/context.go.html#line-68" class="ident">Context</a>, <label for="r130" class="ident">id</label> <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>) (<label for="r131" class="ident">needUpdate</label> <a href="../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>, <label for="r132" class="ident">err</label> <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-338"><code>	<label for="r132" class="ident">err</label> = <label for="r127" class="ident">o</label>.<a href="#line-291" class="ident">object</a>.<a href="../../../../../github.com/godbus/dbus/v5/object.go.html#line-13" class="ident">CallWithContext</a>(<label for="r129" class="ident">ctx</label>, <a href="#line-179" class="ident">InterfaceDbusmenu</a>+<span class="lit-string">".AboutToShow"</span>, <span class="lit-number">0</span>, <label for="r130" class="ident">id</label>).<a href="../../../../../github.com/godbus/dbus/v5/call.go.html#line-58" class="ident">Store</a>(&amp;<label for="r131" class="ident">needUpdate</label>)</code></span>
+<span class="codeline" id="line-339"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-340"><code>}</code></span>
+<span class="codeline" id="line-341"><code></code></span>
+<span class="codeline" id="line-342"><code><span class="comment">// AboutToShowGroup calls com.canonical.dbusmenu.AboutToShowGroup method.</span></code></span>
+<span class="codeline" id="line-343"><code><span class="keyword">func</span> (<label for="r133" class="ident">o</label> *<a href="#line-290" class="ident">Dbusmenu</a>) <label for="r134" class="ident">AboutToShowGroup</label>(<label for="r135" class="ident">ctx</label> <a href="../../../../../../pkg/context.html" class="ident i0">context</a>.<a href="../../../../../context/context.go.html#line-68" class="ident">Context</a>, <label for="r136" class="ident">ids</label> []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>) (<label for="r137" class="ident">updatesNeeded</label> []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r138" class="ident">idErrors</label> []<a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>, <label for="r139" class="ident">err</label> <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-344"><code>	<label for="r139" class="ident">err</label> = <label for="r133" class="ident">o</label>.<a href="#line-291" class="ident">object</a>.<a href="../../../../../github.com/godbus/dbus/v5/object.go.html#line-13" class="ident">CallWithContext</a>(<label for="r135" class="ident">ctx</label>, <a href="#line-179" class="ident">InterfaceDbusmenu</a>+<span class="lit-string">".AboutToShowGroup"</span>, <span class="lit-number">0</span>, <label for="r136" class="ident">ids</label>).<a href="../../../../../github.com/godbus/dbus/v5/call.go.html#line-58" class="ident">Store</a>(&amp;<label for="r137" class="ident">updatesNeeded</label>, &amp;<label for="r138" class="ident">idErrors</label>)</code></span>
+<span class="codeline" id="line-345"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-346"><code>}</code></span>
+<span class="codeline" id="line-347"><code></code></span>
+<span class="codeline" id="line-348"><code><span class="comment">// GetVersion gets com.canonical.dbusmenu.Version property.</span></code></span>
+<span class="codeline" id="line-349"><code><span class="keyword">func</span> (<label for="r140" class="ident">o</label> *<a href="#line-290" class="ident">Dbusmenu</a>) <label for="r141" class="ident">GetVersion</label>(<label for="r142" class="ident">ctx</label> <a href="../../../../../../pkg/context.html" class="ident i0">context</a>.<a href="../../../../../context/context.go.html#line-68" class="ident">Context</a>) (<label for="r143" class="ident">version</label> <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r144" class="ident">err</label> <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-350"><code>	<label for="r144" class="ident">err</label> = <label for="r140" class="ident">o</label>.<a href="#line-291" class="ident">object</a>.<a href="../../../../../github.com/godbus/dbus/v5/object.go.html#line-13" class="ident">CallWithContext</a>(<label for="r142" class="ident">ctx</label>, <span class="lit-string">"org.freedesktop.DBus.Properties.Get"</span>, <span class="lit-number">0</span>, <a href="#line-179" class="ident">InterfaceDbusmenu</a>, <span class="lit-string">"Version"</span>).<a href="../../../../../github.com/godbus/dbus/v5/call.go.html#line-58" class="ident">Store</a>(&amp;<label for="r143" class="ident">version</label>)</code></span>
+<span class="codeline" id="line-351"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-352"><code>}</code></span>
+<span class="codeline" id="line-353"><code></code></span>
+<span class="codeline" id="line-354"><code><span class="comment">// GetTextDirection gets com.canonical.dbusmenu.TextDirection property.</span></code></span>
+<span class="codeline" id="line-355"><code><span class="keyword">func</span> (<label for="r145" class="ident">o</label> *<a href="#line-290" class="ident">Dbusmenu</a>) <label for="r146" class="ident">GetTextDirection</label>(<label for="r147" class="ident">ctx</label> <a href="../../../../../../pkg/context.html" class="ident i0">context</a>.<a href="../../../../../context/context.go.html#line-68" class="ident">Context</a>) (<label for="r148" class="ident">textDirection</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r149" class="ident">err</label> <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-356"><code>	<label for="r149" class="ident">err</label> = <label for="r145" class="ident">o</label>.<a href="#line-291" class="ident">object</a>.<a href="../../../../../github.com/godbus/dbus/v5/object.go.html#line-13" class="ident">CallWithContext</a>(<label for="r147" class="ident">ctx</label>, <span class="lit-string">"org.freedesktop.DBus.Properties.Get"</span>, <span class="lit-number">0</span>, <a href="#line-179" class="ident">InterfaceDbusmenu</a>, <span class="lit-string">"TextDirection"</span>).<a href="../../../../../github.com/godbus/dbus/v5/call.go.html#line-58" class="ident">Store</a>(&amp;<label for="r148" class="ident">textDirection</label>)</code></span>
+<span class="codeline" id="line-357"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-358"><code>}</code></span>
+<span class="codeline" id="line-359"><code></code></span>
+<span class="codeline" id="line-360"><code><span class="comment">// GetStatus gets com.canonical.dbusmenu.Status property.</span></code></span>
+<span class="codeline" id="line-361"><code><span class="keyword">func</span> (<label for="r150" class="ident">o</label> *<a href="#line-290" class="ident">Dbusmenu</a>) <label for="r151" class="ident">GetStatus</label>(<label for="r152" class="ident">ctx</label> <a href="../../../../../../pkg/context.html" class="ident i0">context</a>.<a href="../../../../../context/context.go.html#line-68" class="ident">Context</a>) (<label for="r153" class="ident">status</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r154" class="ident">err</label> <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-362"><code>	<label for="r154" class="ident">err</label> = <label for="r150" class="ident">o</label>.<a href="#line-291" class="ident">object</a>.<a href="../../../../../github.com/godbus/dbus/v5/object.go.html#line-13" class="ident">CallWithContext</a>(<label for="r152" class="ident">ctx</label>, <span class="lit-string">"org.freedesktop.DBus.Properties.Get"</span>, <span class="lit-number">0</span>, <a href="#line-179" class="ident">InterfaceDbusmenu</a>, <span class="lit-string">"Status"</span>).<a href="../../../../../github.com/godbus/dbus/v5/call.go.html#line-58" class="ident">Store</a>(&amp;<label for="r153" class="ident">status</label>)</code></span>
+<span class="codeline" id="line-363"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-364"><code>}</code></span>
+<span class="codeline" id="line-365"><code></code></span>
+<span class="codeline" id="line-366"><code><span class="comment">// GetIconThemePath gets com.canonical.dbusmenu.IconThemePath property.</span></code></span>
+<span class="codeline" id="line-367"><code><span class="keyword">func</span> (<label for="r155" class="ident">o</label> *<a href="#line-290" class="ident">Dbusmenu</a>) <label for="r156" class="ident">GetIconThemePath</label>(<label for="r157" class="ident">ctx</label> <a href="../../../../../../pkg/context.html" class="ident i0">context</a>.<a href="../../../../../context/context.go.html#line-68" class="ident">Context</a>) (<label for="r158" class="ident">iconThemePath</label> []<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r159" class="ident">err</label> <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-368"><code>	<label for="r159" class="ident">err</label> = <label for="r155" class="ident">o</label>.<a href="#line-291" class="ident">object</a>.<a href="../../../../../github.com/godbus/dbus/v5/object.go.html#line-13" class="ident">CallWithContext</a>(<label for="r157" class="ident">ctx</label>, <span class="lit-string">"org.freedesktop.DBus.Properties.Get"</span>, <span class="lit-number">0</span>, <a href="#line-179" class="ident">InterfaceDbusmenu</a>, <span class="lit-string">"IconThemePath"</span>).<a href="../../../../../github.com/godbus/dbus/v5/call.go.html#line-58" class="ident">Store</a>(&amp;<label for="r158" class="ident">iconThemePath</label>)</code></span>
+<span class="codeline" id="line-369"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-370"><code>}</code></span>
+<span class="codeline" id="line-371"><code></code></span>
+<span class="codeline" id="line-372"><code><span class="comment">// Dbusmenu_ItemsPropertiesUpdatedSignal represents com.canonical.dbusmenu.ItemsPropertiesUpdated signal.</span></code></span>
+<span class="codeline" id="line-373"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-Dbusmenu_ItemsPropertiesUpdatedSignal" class="ident">Dbusmenu_ItemsPropertiesUpdatedSignal</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-374"><code>	sender <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-375"><code>	Path   <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/dbus.go.html#line-304" class="ident">ObjectPath</a></code></span>
+<span class="codeline" id="line-376"><code>	Body   *<a href="#line-403" class="ident">Dbusmenu_ItemsPropertiesUpdatedSignalBody</a></code></span>
+<span class="codeline" id="line-377"><code>}</code></span>
+<span class="codeline" id="line-378"><code></code></span>
+<span class="codeline" id="line-379"><code><span class="comment">// Name returns the signal's name.</span></code></span>
+<span class="codeline" id="line-380"><code><span class="keyword">func</span> (<label for="r160" class="ident">s</label> *<a href="#line-373" class="ident">Dbusmenu_ItemsPropertiesUpdatedSignal</a>) <label for="r161" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_ItemsPropertiesUpdatedSignal.html#name-.Name" class="ident">Name</a></label>() <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-381"><code>	<span class="keyword">return</span> <span class="lit-string">"ItemsPropertiesUpdated"</span></code></span>
+<span class="codeline" id="line-382"><code>}</code></span>
+<span class="codeline" id="line-383"><code></code></span>
+<span class="codeline" id="line-384"><code><span class="comment">// Interface returns the signal's interface.</span></code></span>
+<span class="codeline" id="line-385"><code><span class="keyword">func</span> (<label for="r162" class="ident">s</label> *<a href="#line-373" class="ident">Dbusmenu_ItemsPropertiesUpdatedSignal</a>) <label for="r163" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_ItemsPropertiesUpdatedSignal.html#name-.Interface" class="ident">Interface</a></label>() <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-386"><code>	<span class="keyword">return</span> <a href="#line-179" class="ident">InterfaceDbusmenu</a></code></span>
+<span class="codeline" id="line-387"><code>}</code></span>
+<span class="codeline" id="line-388"><code></code></span>
+<span class="codeline" id="line-389"><code><span class="comment">// Sender returns the signal's sender unique name.</span></code></span>
+<span class="codeline" id="line-390"><code><span class="keyword">func</span> (<label for="r164" class="ident">s</label> *<a href="#line-373" class="ident">Dbusmenu_ItemsPropertiesUpdatedSignal</a>) <label for="r165" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_ItemsPropertiesUpdatedSignal.html#name-.Sender" class="ident">Sender</a></label>() <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-391"><code>	<span class="keyword">return</span> <label for="r164" class="ident">s</label>.<a href="#line-374" class="ident">sender</a></code></span>
+<span class="codeline" id="line-392"><code>}</code></span>
+<span class="codeline" id="line-393"><code></code></span>
+<span class="codeline" id="line-394"><code><span class="keyword">func</span> (<label for="r166" class="ident">s</label> *<a href="#line-373" class="ident">Dbusmenu_ItemsPropertiesUpdatedSignal</a>) <label for="r167" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_ItemsPropertiesUpdatedSignal.html#name-path" class="ident">path</a></label>() <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/dbus.go.html#line-304" class="ident">ObjectPath</a> {</code></span>
+<span class="codeline" id="line-395"><code>	<span class="keyword">return</span> <label for="r166" class="ident">s</label>.<a href="#line-375" class="ident">Path</a></code></span>
+<span class="codeline" id="line-396"><code>}</code></span>
+<span class="codeline" id="line-397"><code></code></span>
+<span class="codeline" id="line-398"><code><span class="keyword">func</span> (<label for="r168" class="ident">s</label> *<a href="#line-373" class="ident">Dbusmenu_ItemsPropertiesUpdatedSignal</a>) <label for="r169" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_ItemsPropertiesUpdatedSignal.html#name-values" class="ident">values</a></label>() []<span class="keyword">interface</span>{} {</code></span>
+<span class="codeline" id="line-399"><code>	<span class="keyword">return</span> []<span class="keyword">interface</span>{}{<label for="r168" class="ident">s</label>.<a href="#line-376" class="ident">Body</a>.<a href="#line-404" class="ident">UpdatedProps</a>, <label for="r168" class="ident">s</label>.<a href="#line-376" class="ident">Body</a>.<a href="#line-408" class="ident">RemovedProps</a>}</code></span>
+<span class="codeline" id="line-400"><code>}</code></span>
+<span class="codeline" id="line-401"><code></code></span>
+<span class="codeline" id="line-402"><code><span class="comment">// Dbusmenu_ItemsPropertiesUpdatedSignalBody is body container.</span></code></span>
+<span class="codeline" id="line-403"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-Dbusmenu_ItemsPropertiesUpdatedSignalBody" class="ident">Dbusmenu_ItemsPropertiesUpdatedSignalBody</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-404"><code>	UpdatedProps []<span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-405"><code>		V0 <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-406"><code>		V1 <span class="keyword">map</span>[<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a></code></span>
+<span class="codeline" id="line-407"><code>	}</code></span>
+<span class="codeline" id="line-408"><code>	RemovedProps []<span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-409"><code>		V0 <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-410"><code>		V1 []<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-411"><code>	}</code></span>
+<span class="codeline" id="line-412"><code>}</code></span>
+<span class="codeline" id="line-413"><code></code></span>
+<span class="codeline" id="line-414"><code><span class="comment">// Dbusmenu_LayoutUpdatedSignal represents com.canonical.dbusmenu.LayoutUpdated signal.</span></code></span>
+<span class="codeline" id="line-415"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-Dbusmenu_LayoutUpdatedSignal" class="ident">Dbusmenu_LayoutUpdatedSignal</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-416"><code>	sender <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-417"><code>	Path   <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/dbus.go.html#line-304" class="ident">ObjectPath</a></code></span>
+<span class="codeline" id="line-418"><code>	Body   *<a href="#line-445" class="ident">Dbusmenu_LayoutUpdatedSignalBody</a></code></span>
+<span class="codeline" id="line-419"><code>}</code></span>
+<span class="codeline" id="line-420"><code></code></span>
+<span class="codeline" id="line-421"><code><span class="comment">// Name returns the signal's name.</span></code></span>
+<span class="codeline" id="line-422"><code><span class="keyword">func</span> (<label for="r170" class="ident">s</label> *<a href="#line-415" class="ident">Dbusmenu_LayoutUpdatedSignal</a>) <label for="r171" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_LayoutUpdatedSignal.html#name-.Name" class="ident">Name</a></label>() <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-423"><code>	<span class="keyword">return</span> <span class="lit-string">"LayoutUpdated"</span></code></span>
+<span class="codeline" id="line-424"><code>}</code></span>
+<span class="codeline" id="line-425"><code></code></span>
+<span class="codeline" id="line-426"><code><span class="comment">// Interface returns the signal's interface.</span></code></span>
+<span class="codeline" id="line-427"><code><span class="keyword">func</span> (<label for="r172" class="ident">s</label> *<a href="#line-415" class="ident">Dbusmenu_LayoutUpdatedSignal</a>) <label for="r173" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_LayoutUpdatedSignal.html#name-.Interface" class="ident">Interface</a></label>() <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-428"><code>	<span class="keyword">return</span> <a href="#line-179" class="ident">InterfaceDbusmenu</a></code></span>
+<span class="codeline" id="line-429"><code>}</code></span>
+<span class="codeline" id="line-430"><code></code></span>
+<span class="codeline" id="line-431"><code><span class="comment">// Sender returns the signal's sender unique name.</span></code></span>
+<span class="codeline" id="line-432"><code><span class="keyword">func</span> (<label for="r174" class="ident">s</label> *<a href="#line-415" class="ident">Dbusmenu_LayoutUpdatedSignal</a>) <label for="r175" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_LayoutUpdatedSignal.html#name-.Sender" class="ident">Sender</a></label>() <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-433"><code>	<span class="keyword">return</span> <label for="r174" class="ident">s</label>.<a href="#line-416" class="ident">sender</a></code></span>
+<span class="codeline" id="line-434"><code>}</code></span>
+<span class="codeline" id="line-435"><code></code></span>
+<span class="codeline" id="line-436"><code><span class="keyword">func</span> (<label for="r176" class="ident">s</label> *<a href="#line-415" class="ident">Dbusmenu_LayoutUpdatedSignal</a>) <label for="r177" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_LayoutUpdatedSignal.html#name-path" class="ident">path</a></label>() <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/dbus.go.html#line-304" class="ident">ObjectPath</a> {</code></span>
+<span class="codeline" id="line-437"><code>	<span class="keyword">return</span> <label for="r176" class="ident">s</label>.<a href="#line-417" class="ident">Path</a></code></span>
+<span class="codeline" id="line-438"><code>}</code></span>
+<span class="codeline" id="line-439"><code></code></span>
+<span class="codeline" id="line-440"><code><span class="keyword">func</span> (<label for="r178" class="ident">s</label> *<a href="#line-415" class="ident">Dbusmenu_LayoutUpdatedSignal</a>) <label for="r179" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_LayoutUpdatedSignal.html#name-values" class="ident">values</a></label>() []<span class="keyword">interface</span>{} {</code></span>
+<span class="codeline" id="line-441"><code>	<span class="keyword">return</span> []<span class="keyword">interface</span>{}{<label for="r178" class="ident">s</label>.<a href="#line-418" class="ident">Body</a>.<a href="#line-446" class="ident">Revision</a>, <label for="r178" class="ident">s</label>.<a href="#line-418" class="ident">Body</a>.<a href="#line-447" class="ident">Parent</a>}</code></span>
+<span class="codeline" id="line-442"><code>}</code></span>
+<span class="codeline" id="line-443"><code></code></span>
+<span class="codeline" id="line-444"><code><span class="comment">// Dbusmenu_LayoutUpdatedSignalBody is body container.</span></code></span>
+<span class="codeline" id="line-445"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-Dbusmenu_LayoutUpdatedSignalBody" class="ident">Dbusmenu_LayoutUpdatedSignalBody</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-446"><code>	Revision <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-447"><code>	Parent   <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-448"><code>}</code></span>
+<span class="codeline" id="line-449"><code></code></span>
+<span class="codeline" id="line-450"><code><span class="comment">// Dbusmenu_ItemActivationRequestedSignal represents com.canonical.dbusmenu.ItemActivationRequested signal.</span></code></span>
+<span class="codeline" id="line-451"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-Dbusmenu_ItemActivationRequestedSignal" class="ident">Dbusmenu_ItemActivationRequestedSignal</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-452"><code>	sender <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-453"><code>	Path   <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/dbus.go.html#line-304" class="ident">ObjectPath</a></code></span>
+<span class="codeline" id="line-454"><code>	Body   *<a href="#line-481" class="ident">Dbusmenu_ItemActivationRequestedSignalBody</a></code></span>
+<span class="codeline" id="line-455"><code>}</code></span>
+<span class="codeline" id="line-456"><code></code></span>
+<span class="codeline" id="line-457"><code><span class="comment">// Name returns the signal's name.</span></code></span>
+<span class="codeline" id="line-458"><code><span class="keyword">func</span> (<label for="r180" class="ident">s</label> *<a href="#line-451" class="ident">Dbusmenu_ItemActivationRequestedSignal</a>) <label for="r181" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_ItemActivationRequestedSignal.html#name-.Name" class="ident">Name</a></label>() <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-459"><code>	<span class="keyword">return</span> <span class="lit-string">"ItemActivationRequested"</span></code></span>
+<span class="codeline" id="line-460"><code>}</code></span>
+<span class="codeline" id="line-461"><code></code></span>
+<span class="codeline" id="line-462"><code><span class="comment">// Interface returns the signal's interface.</span></code></span>
+<span class="codeline" id="line-463"><code><span class="keyword">func</span> (<label for="r182" class="ident">s</label> *<a href="#line-451" class="ident">Dbusmenu_ItemActivationRequestedSignal</a>) <label for="r183" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_ItemActivationRequestedSignal.html#name-.Interface" class="ident">Interface</a></label>() <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-464"><code>	<span class="keyword">return</span> <a href="#line-179" class="ident">InterfaceDbusmenu</a></code></span>
+<span class="codeline" id="line-465"><code>}</code></span>
+<span class="codeline" id="line-466"><code></code></span>
+<span class="codeline" id="line-467"><code><span class="comment">// Sender returns the signal's sender unique name.</span></code></span>
+<span class="codeline" id="line-468"><code><span class="keyword">func</span> (<label for="r184" class="ident">s</label> *<a href="#line-451" class="ident">Dbusmenu_ItemActivationRequestedSignal</a>) <label for="r185" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_ItemActivationRequestedSignal.html#name-.Sender" class="ident">Sender</a></label>() <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-469"><code>	<span class="keyword">return</span> <label for="r184" class="ident">s</label>.<a href="#line-452" class="ident">sender</a></code></span>
+<span class="codeline" id="line-470"><code>}</code></span>
+<span class="codeline" id="line-471"><code></code></span>
+<span class="codeline" id="line-472"><code><span class="keyword">func</span> (<label for="r186" class="ident">s</label> *<a href="#line-451" class="ident">Dbusmenu_ItemActivationRequestedSignal</a>) <label for="r187" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_ItemActivationRequestedSignal.html#name-path" class="ident">path</a></label>() <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../../../../../github.com/godbus/dbus/v5/dbus.go.html#line-304" class="ident">ObjectPath</a> {</code></span>
+<span class="codeline" id="line-473"><code>	<span class="keyword">return</span> <label for="r186" class="ident">s</label>.<a href="#line-453" class="ident">Path</a></code></span>
+<span class="codeline" id="line-474"><code>}</code></span>
+<span class="codeline" id="line-475"><code></code></span>
+<span class="codeline" id="line-476"><code><span class="keyword">func</span> (<label for="r188" class="ident">s</label> *<a href="#line-451" class="ident">Dbusmenu_ItemActivationRequestedSignal</a>) <label for="r189" class="ident"><a href="../../../../../../imp/fyne.io/systray/internal/generated/menu.Dbusmenu_ItemActivationRequestedSignal.html#name-values" class="ident">values</a></label>() []<span class="keyword">interface</span>{} {</code></span>
+<span class="codeline" id="line-477"><code>	<span class="keyword">return</span> []<span class="keyword">interface</span>{}{<label for="r188" class="ident">s</label>.<a href="#line-454" class="ident">Body</a>.<a href="#line-482" class="ident">Id</a>, <label for="r188" class="ident">s</label>.<a href="#line-454" class="ident">Body</a>.<a href="#line-483" class="ident">Timestamp</a>}</code></span>
+<span class="codeline" id="line-478"><code>}</code></span>
+<span class="codeline" id="line-479"><code></code></span>
+<span class="codeline" id="line-480"><code><span class="comment">// Dbusmenu_ItemActivationRequestedSignalBody is body container.</span></code></span>
+<span class="codeline" id="line-481"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/systray/internal/generated/menu.html#name-Dbusmenu_ItemActivationRequestedSignalBody" class="ident">Dbusmenu_ItemActivationRequestedSignalBody</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-482"><code>	Id        <a href="../../../../../../pkg/builtin.html#name-int32" class="ident">int32</a></code></span>
+<span class="codeline" id="line-483"><code>	Timestamp <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-484"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

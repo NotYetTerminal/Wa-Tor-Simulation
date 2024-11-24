@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/fyne/v2/storage/repository</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>repository</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-fyne.io/fyne/v2/storage/repository">fyne.io/fyne/v2/storage/repository</a><i> (on <a href="https://pkg.go.dev/fyne.io/fyne/v2/storage/repository" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/fyne.io/fyne/v2/storage/repository.html">11 packages</a>, and imported by <a href="../../../../../dep/fyne.io/fyne/v2/storage/repository.html#imported-by">4 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/errors.go.html">errors.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/generic.go.html">generic.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/parse.go.html">parse.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-3-fold-content"><label for="file-3-fold-content">  <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#doc">d</a> <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html">repository.go</a></label><span id='file-3-fold-content-items' class="fold-items">
+<span class="md-text">		Package repository provides primitives for working with storage repositories.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html">uri.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 8, in which 7 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-CopyableRepository" data-popularity="600">	<input type='checkbox' class="fold" id="CopyableRepository-fold-content"><label for="CopyableRepository-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-182">CopyableRepository</a> <b><i>(interface)</i></b></label><span id='CopyableRepository-fold-content-docs' class="fold-docs">
+<span class="md-text">		CopyableRepository is an extension of the Repository interface which also
+		supports copying referenced resources from one URI to another.
+		
+		Since: 2.0</span>
+
+		<input type='checkbox' class="fold" id="CopyableRepository-fold-methods"><label for="CopyableRepository-fold-methods">Methods (<i>total 5, all are exported</i>)</label><span id='CopyableRepository-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="CopyableRepository-fold-method-CanRead"><label for="CopyableRepository-fold-method-CanRead">( CopyableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-67">CanRead</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='CopyableRepository-fold-method-CanRead-docs' class="fold-docs">
+<span class="md-text">				CanRead will be used to implement calls to storage.CanRead() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CopyableRepository-fold-method-Copy"><label for="CopyableRepository-fold-method-Copy">( CopyableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-199">Copy</a>(<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>, <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='CopyableRepository-fold-method-Copy-docs' class="fold-docs">
+<span class="md-text">				Copy will be used to implement calls to storage.Copy() for the
+				registered scheme of this repository.
+				
+				A generic implementation is provided by GenericCopy().
+				
+				NOTE: the first parameter is the source, the second is the
+				destination.
+				
+				NOTE: if storage.Copy() is given two URIs of different schemes, it
+				is possible that only the source URI will be of the type this
+				repository is registered to handle. In such cases, implementations
+				are suggested to fail-over to GenericCopy().
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CopyableRepository-fold-method-Destroy"><label for="CopyableRepository-fold-method-Destroy">( CopyableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-77">Destroy</a>(<a href="../../../../builtin.html#name-string">string</a>)</label><span id='CopyableRepository-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy is called when the repository is un-registered from a given
+				URI scheme.
+				
+				The string parameter will be the URI scheme that the repository was
+				registered for. This may be useful for repositories that need to
+				handle more than one URI scheme internally.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CopyableRepository-fold-method-Exists"><label for="CopyableRepository-fold-method-Exists">( CopyableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-55">Exists</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='CopyableRepository-fold-method-Exists-docs' class="fold-docs">
+<span class="md-text">				Exists will be used to implement calls to storage.Exists() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CopyableRepository-fold-method-Reader"><label for="CopyableRepository-fold-method-Reader">( CopyableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-61">Reader</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URIReadCloser">URIReadCloser</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='CopyableRepository-fold-method-Reader-docs' class="fold-docs">
+<span class="md-text">				Reader will be used to implement calls to storage.Reader()
+				for the registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="CopyableRepository-fold-impledby"><label for="CopyableRepository-fold-impledby">Implemented By (<i>at least 2, both are exported</i>)</label><span id='CopyableRepository-fold-impledby-items' class="fold-items"><span>
+			*fyne.io/fyne/v2/internal/repository.<a href="../internal/repository.html#name-FileRepository">FileRepository</a></span><span>
+			*fyne.io/fyne/v2/internal/repository.<a href="../internal/repository.html#name-InMemoryRepository">InMemoryRepository</a></span></span>
+		<input type='checkbox' class="fold" id="CopyableRepository-fold-impls"><label for="CopyableRepository-fold-impls">Implements (<i>at least one exported</i>)</label><span id='CopyableRepository-fold-impls-items' class="fold-items"><span>
+			 CopyableRepository : <a href="#name-Repository">Repository</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-CustomURIRepository" data-popularity="300">	<input type='checkbox' class="fold" id="CustomURIRepository-fold-content"><label for="CustomURIRepository-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-90">CustomURIRepository</a> <b><i>(interface)</i></b></label><span id='CustomURIRepository-fold-content-docs' class="fold-docs">
+<span class="md-text">		CustomURIRepository is an extension of the repository interface which
+		allows the behavior of storage.ParseURI to be overridden. This is only
+		needed if you wish to generate custom URI types, rather than using Fyne's
+		URI implementation and net/url based parsing.
+		
+		NOTE: even for URIs with non-RFC3986-compliant encoding, the URI MUST begin
+		with 'scheme:', or storage.ParseURI() will not be able to determine which
+		storage repository to delegate to for parsing.
+		
+		Since: 2.0</span>
+
+		<input type='checkbox' class="fold" id="CustomURIRepository-fold-methods"><label for="CustomURIRepository-fold-methods">Methods (<i>total 5, all are exported</i>)</label><span id='CustomURIRepository-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="CustomURIRepository-fold-method-CanRead"><label for="CustomURIRepository-fold-method-CanRead">( CustomURIRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-67">CanRead</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='CustomURIRepository-fold-method-CanRead-docs' class="fold-docs">
+<span class="md-text">				CanRead will be used to implement calls to storage.CanRead() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CustomURIRepository-fold-method-Destroy"><label for="CustomURIRepository-fold-method-Destroy">( CustomURIRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-77">Destroy</a>(<a href="../../../../builtin.html#name-string">string</a>)</label><span id='CustomURIRepository-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy is called when the repository is un-registered from a given
+				URI scheme.
+				
+				The string parameter will be the URI scheme that the repository was
+				registered for. This may be useful for repositories that need to
+				handle more than one URI scheme internally.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CustomURIRepository-fold-method-Exists"><label for="CustomURIRepository-fold-method-Exists">( CustomURIRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-55">Exists</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='CustomURIRepository-fold-method-Exists-docs' class="fold-docs">
+<span class="md-text">				Exists will be used to implement calls to storage.Exists() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CustomURIRepository-fold-method-ParseURI"><label for="CustomURIRepository-fold-method-ParseURI">( CustomURIRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-95">ParseURI</a>(<a href="../../../../builtin.html#name-string">string</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='CustomURIRepository-fold-method-ParseURI-docs' class="fold-docs">
+<span class="md-text">				ParseURI will be used to implement calls to storage.ParseURI()
+				for the registered scheme of this repository.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CustomURIRepository-fold-method-Reader"><label for="CustomURIRepository-fold-method-Reader">( CustomURIRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-61">Reader</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URIReadCloser">URIReadCloser</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='CustomURIRepository-fold-method-Reader-docs' class="fold-docs">
+<span class="md-text">				Reader will be used to implement calls to storage.Reader()
+				for the registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="CustomURIRepository-fold-impls"><label for="CustomURIRepository-fold-impls">Implements (<i>at least one exported</i>)</label><span id='CustomURIRepository-fold-impls-items' class="fold-items"><span>
+			 CustomURIRepository : <a href="#name-Repository">Repository</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-HierarchicalRepository" data-popularity="650">	<input type='checkbox' class="fold" id="HierarchicalRepository-fold-content"><label for="HierarchicalRepository-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-156">HierarchicalRepository</a> <b><i>(interface)</i></b></label><span id='HierarchicalRepository-fold-content-docs' class="fold-docs">
+<span class="md-text">		HierarchicalRepository is an extension of the Repository interface which
+		also supports determining the parent and child items of a URI.
+		
+		Since: 2.0</span>
+
+		<input type='checkbox' class="fold" id="HierarchicalRepository-fold-methods"><label for="HierarchicalRepository-fold-methods">Methods (<i>total 6, all are exported</i>)</label><span id='HierarchicalRepository-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="HierarchicalRepository-fold-method-CanRead"><label for="HierarchicalRepository-fold-method-CanRead">( HierarchicalRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-67">CanRead</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='HierarchicalRepository-fold-method-CanRead-docs' class="fold-docs">
+<span class="md-text">				CanRead will be used to implement calls to storage.CanRead() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="HierarchicalRepository-fold-method-Child"><label for="HierarchicalRepository-fold-method-Child">( HierarchicalRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-175">Child</a>(<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>, <a href="../../../../builtin.html#name-string">string</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='HierarchicalRepository-fold-method-Child-docs' class="fold-docs">
+<span class="md-text">				Child will be used to implement calls to storage.Child() for
+				the registered scheme of this repository.
+				
+				A generic implementation is provided in GenericParent(), which
+				is based on RFC3986.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="HierarchicalRepository-fold-method-Destroy"><label for="HierarchicalRepository-fold-method-Destroy">( HierarchicalRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-77">Destroy</a>(<a href="../../../../builtin.html#name-string">string</a>)</label><span id='HierarchicalRepository-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy is called when the repository is un-registered from a given
+				URI scheme.
+				
+				The string parameter will be the URI scheme that the repository was
+				registered for. This may be useful for repositories that need to
+				handle more than one URI scheme internally.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="HierarchicalRepository-fold-method-Exists"><label for="HierarchicalRepository-fold-method-Exists">( HierarchicalRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-55">Exists</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='HierarchicalRepository-fold-method-Exists-docs' class="fold-docs">
+<span class="md-text">				Exists will be used to implement calls to storage.Exists() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="HierarchicalRepository-fold-method-Parent"><label for="HierarchicalRepository-fold-method-Parent">( HierarchicalRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-166">Parent</a>(<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='HierarchicalRepository-fold-method-Parent-docs' class="fold-docs">
+<span class="md-text">				Parent will be used to implement calls to storage.Parent() for the
+				registered scheme of this repository.
+				
+				A generic implementation is provided in GenericParent(), which
+				is based on the RFC3986 definition of a URI parent.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="HierarchicalRepository-fold-method-Reader"><label for="HierarchicalRepository-fold-method-Reader">( HierarchicalRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-61">Reader</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URIReadCloser">URIReadCloser</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='HierarchicalRepository-fold-method-Reader-docs' class="fold-docs">
+<span class="md-text">				Reader will be used to implement calls to storage.Reader()
+				for the registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="HierarchicalRepository-fold-impledby"><label for="HierarchicalRepository-fold-impledby">Implemented By (<i>at least 2, both are exported</i>)</label><span id='HierarchicalRepository-fold-impledby-items' class="fold-items"><span>
+			*fyne.io/fyne/v2/internal/repository.<a href="../internal/repository.html#name-FileRepository">FileRepository</a></span><span>
+			*fyne.io/fyne/v2/internal/repository.<a href="../internal/repository.html#name-InMemoryRepository">InMemoryRepository</a></span></span>
+		<input type='checkbox' class="fold" id="HierarchicalRepository-fold-impls"><label for="HierarchicalRepository-fold-impls">Implements (<i>at least one exported</i>)</label><span id='HierarchicalRepository-fold-impls-items' class="fold-items"><span>
+			 HierarchicalRepository : <a href="#name-Repository">Repository</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-ListableRepository" data-popularity="700">	<input type='checkbox' class="fold" id="ListableRepository-fold-content"><label for="ListableRepository-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-129">ListableRepository</a> <b><i>(interface)</i></b></label><span id='ListableRepository-fold-content-docs' class="fold-docs">
+<span class="md-text">		ListableRepository is an extension of the Repository interface which also
+		supports obtaining directory listings (generally analogous to a directory
+		listing) for URIs of the scheme it is registered to.
+		
+		Since: 2.0</span>
+
+		<input type='checkbox' class="fold" id="ListableRepository-fold-methods"><label for="ListableRepository-fold-methods">Methods (<i>total 7, all are exported</i>)</label><span id='ListableRepository-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ListableRepository-fold-method-CanList"><label for="ListableRepository-fold-method-CanList">( ListableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-136">CanList</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='ListableRepository-fold-method-CanList-docs' class="fold-docs">
+<span class="md-text">				CanList will be used to implement calls to storage.Listable() for
+				the registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ListableRepository-fold-method-CanRead"><label for="ListableRepository-fold-method-CanRead">( ListableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-67">CanRead</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='ListableRepository-fold-method-CanRead-docs' class="fold-docs">
+<span class="md-text">				CanRead will be used to implement calls to storage.CanRead() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ListableRepository-fold-method-CreateListable"><label for="ListableRepository-fold-method-CreateListable">( ListableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-149">CreateListable</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='ListableRepository-fold-method-CreateListable-docs' class="fold-docs">
+<span class="md-text">				CreateListable will be used to implement calls to
+				storage.CreateListable() for the registered scheme of this
+				repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ListableRepository-fold-method-Destroy"><label for="ListableRepository-fold-method-Destroy">( ListableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-77">Destroy</a>(<a href="../../../../builtin.html#name-string">string</a>)</label><span id='ListableRepository-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy is called when the repository is un-registered from a given
+				URI scheme.
+				
+				The string parameter will be the URI scheme that the repository was
+				registered for. This may be useful for repositories that need to
+				handle more than one URI scheme internally.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ListableRepository-fold-method-Exists"><label for="ListableRepository-fold-method-Exists">( ListableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-55">Exists</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='ListableRepository-fold-method-Exists-docs' class="fold-docs">
+<span class="md-text">				Exists will be used to implement calls to storage.Exists() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ListableRepository-fold-method-List"><label for="ListableRepository-fold-method-List">( ListableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-142">List</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) ([]<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='ListableRepository-fold-method-List-docs' class="fold-docs">
+<span class="md-text">				List will be used to implement calls to storage.List() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ListableRepository-fold-method-Reader"><label for="ListableRepository-fold-method-Reader">( ListableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-61">Reader</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URIReadCloser">URIReadCloser</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='ListableRepository-fold-method-Reader-docs' class="fold-docs">
+<span class="md-text">				Reader will be used to implement calls to storage.Reader()
+				for the registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="ListableRepository-fold-impledby"><label for="ListableRepository-fold-impledby">Implemented By (<i>at least 2, both are exported</i>)</label><span id='ListableRepository-fold-impledby-items' class="fold-items"><span>
+			*fyne.io/fyne/v2/internal/repository.<a href="../internal/repository.html#name-FileRepository">FileRepository</a></span><span>
+			*fyne.io/fyne/v2/internal/repository.<a href="../internal/repository.html#name-InMemoryRepository">InMemoryRepository</a></span></span>
+		<input type='checkbox' class="fold" id="ListableRepository-fold-impls"><label for="ListableRepository-fold-impls">Implements (<i>at least one exported</i>)</label><span id='ListableRepository-fold-impls-items' class="fold-items"><span>
+			 ListableRepository : <a href="#name-Repository">Repository</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-MovableRepository" data-popularity="600">	<input type='checkbox' class="fold" id="MovableRepository-fold-content"><label for="MovableRepository-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-209">MovableRepository</a> <b><i>(interface)</i></b></label><span id='MovableRepository-fold-content-docs' class="fold-docs">
+<span class="md-text">		MovableRepository is an extension of the Repository interface which also
+		supports moving referenced resources from one URI to another.
+		
+		Note: both Moveable and Movable are correct spellings, but Movable is newer
+		and more accepted. Source: https://grammarist.com/spelling/movable-moveable/
+		
+		Since: 2.0</span>
+
+		<input type='checkbox' class="fold" id="MovableRepository-fold-methods"><label for="MovableRepository-fold-methods">Methods (<i>total 5, all are exported</i>)</label><span id='MovableRepository-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="MovableRepository-fold-method-CanRead"><label for="MovableRepository-fold-method-CanRead">( MovableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-67">CanRead</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='MovableRepository-fold-method-CanRead-docs' class="fold-docs">
+<span class="md-text">				CanRead will be used to implement calls to storage.CanRead() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MovableRepository-fold-method-Destroy"><label for="MovableRepository-fold-method-Destroy">( MovableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-77">Destroy</a>(<a href="../../../../builtin.html#name-string">string</a>)</label><span id='MovableRepository-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy is called when the repository is un-registered from a given
+				URI scheme.
+				
+				The string parameter will be the URI scheme that the repository was
+				registered for. This may be useful for repositories that need to
+				handle more than one URI scheme internally.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MovableRepository-fold-method-Exists"><label for="MovableRepository-fold-method-Exists">( MovableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-55">Exists</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='MovableRepository-fold-method-Exists-docs' class="fold-docs">
+<span class="md-text">				Exists will be used to implement calls to storage.Exists() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MovableRepository-fold-method-Move"><label for="MovableRepository-fold-method-Move">( MovableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-226">Move</a>(<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>, <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='MovableRepository-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move will be used to implement calls to storage.Move() for the
+				registered scheme of this repository.
+				
+				A generic implementation is provided by GenericMove().
+				
+				NOTE: the first parameter is the source, the second is the
+				destination.
+				
+				NOTE: if storage.Move() is given two URIs of different schemes, it
+				is possible that only the source URI will be of the type this
+				repository is registered to handle. In such cases, implementations
+				are suggested to fail-over to GenericMove().
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MovableRepository-fold-method-Reader"><label for="MovableRepository-fold-method-Reader">( MovableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-61">Reader</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URIReadCloser">URIReadCloser</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='MovableRepository-fold-method-Reader-docs' class="fold-docs">
+<span class="md-text">				Reader will be used to implement calls to storage.Reader()
+				for the registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="MovableRepository-fold-impledby"><label for="MovableRepository-fold-impledby">Implemented By (<i>at least 2, both are exported</i>)</label><span id='MovableRepository-fold-impledby-items' class="fold-items"><span>
+			*fyne.io/fyne/v2/internal/repository.<a href="../internal/repository.html#name-FileRepository">FileRepository</a></span><span>
+			*fyne.io/fyne/v2/internal/repository.<a href="../internal/repository.html#name-InMemoryRepository">InMemoryRepository</a></span></span>
+		<input type='checkbox' class="fold" id="MovableRepository-fold-impls"><label for="MovableRepository-fold-impls">Implements (<i>at least one exported</i>)</label><span id='MovableRepository-fold-impls-items' class="fold-items"><span>
+			 MovableRepository : <a href="#name-Repository">Repository</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Repository" data-popularity="1735">	<input type='checkbox' class="fold" id="Repository-fold-content"><label for="Repository-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-49">Repository</a> <b><i>(interface)</i></b></label><span id='Repository-fold-content-docs' class="fold-docs">
+<span class="md-text">		Repository represents a storage repository, which is a set of methods which
+		implement specific functions on a URI. Repositories are registered to handle
+		specific URI schemes, and the higher-level functions that operate on URIs
+		internally look up an appropriate method from the relevant Repository.
+		
+		The repository interface includes only methods which must be implemented at
+		a minimum. Without implementing all of the methods in this interface, a URI
+		would not be usable in a useful way. Additional functionality can be exposed
+		by using interfaces which extend Repository.
+		
+		Repositories are registered to handle a specific URI scheme (or schemes)
+		using the Register() method. When a higher-level URI function such as
+		storage.Copy() is called, the storage package will internally look up
+		the repository associated with the scheme of the URI, then it will use
+		a type assertion to check if the repository implements CopyableRepository.
+		If so, the Copy() function will be run from the repository, otherwise
+		storage.Copy() will return NotSupportedError. This works similarly for
+		all other methods in repository-related interfaces.
+		
+		Note that a repository can be registered for multiple URI schemes. In such
+		cases, the repository must internally select and implement the correct
+		behavior for each URI scheme.
+		
+		A repository will only ever need to handle URIs with schemes for which it
+		was registered, with the exception that functions with more than 1 operand
+		such as Copy() and Move(), in which cases only the first operand is
+		guaranteed to match a scheme for which the repository is registered.
+		
+		NOTE: most developers who use Fyne should *not* generally attempt to
+		call repository methods directly. You should use the methods in the storage
+		package, which will automatically detect the scheme of a URI and call into
+		the appropriate repository.
+		
+		Since: 2.0</span>
+
+		<input type='checkbox' class="fold" id="Repository-fold-methods"><label for="Repository-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='Repository-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Repository-fold-method-CanRead"><label for="Repository-fold-method-CanRead">( Repository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-67">CanRead</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Repository-fold-method-CanRead-docs' class="fold-docs">
+<span class="md-text">				CanRead will be used to implement calls to storage.CanRead() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Repository-fold-method-Destroy"><label for="Repository-fold-method-Destroy">( Repository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-77">Destroy</a>(<a href="../../../../builtin.html#name-string">string</a>)</label><span id='Repository-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy is called when the repository is un-registered from a given
+				URI scheme.
+				
+				The string parameter will be the URI scheme that the repository was
+				registered for. This may be useful for repositories that need to
+				handle more than one URI scheme internally.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Repository-fold-method-Exists"><label for="Repository-fold-method-Exists">( Repository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-55">Exists</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Repository-fold-method-Exists-docs' class="fold-docs">
+<span class="md-text">				Exists will be used to implement calls to storage.Exists() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Repository-fold-method-Reader"><label for="Repository-fold-method-Reader">( Repository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-61">Reader</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URIReadCloser">URIReadCloser</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Repository-fold-method-Reader-docs' class="fold-docs">
+<span class="md-text">				Reader will be used to implement calls to storage.Reader()
+				for the registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Repository-fold-impledby"><label for="Repository-fold-impledby">Implemented By (<i>at least 9, all are exported</i>)</label><span id='Repository-fold-impledby-items' class="fold-items"><span>
+			 <a href="#name-CopyableRepository">CopyableRepository</a> <i>(interface)</i></span><span>
+			 <a href="#name-CustomURIRepository">CustomURIRepository</a> <i>(interface)</i></span><span>
+			 <a href="#name-HierarchicalRepository">HierarchicalRepository</a> <i>(interface)</i></span><span>
+			 <a href="#name-ListableRepository">ListableRepository</a> <i>(interface)</i></span><span>
+			 <a href="#name-MovableRepository">MovableRepository</a> <i>(interface)</i></span><span>
+			 <a href="#name-WritableRepository">WritableRepository</a> <i>(interface)</i></span><span>
+			*fyne.io/fyne/v2/internal/repository.<a href="../internal/repository.html#name-FileRepository">FileRepository</a></span><span>
+			*fyne.io/fyne/v2/internal/repository.<a href="../internal/repository.html#name-HTTPRepository">HTTPRepository</a></span><span>
+			*fyne.io/fyne/v2/internal/repository.<a href="../internal/repository.html#name-InMemoryRepository">InMemoryRepository</a></span></span>
+		<input type='checkbox' class="fold" id="Repository-fold-results"><label for="Repository-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='Repository-fold-results-items' class="fold-items"><span>
+			func <a href="#name-ForScheme">ForScheme</a>(scheme <a href="../../../../builtin.html#name-string">string</a>) (<b>Repository</b>, <a href="../../../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-ForURI">ForURI</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<b>Repository</b>, <a href="../../../../builtin.html#name-error">error</a>)</span></span>
+		<input type='checkbox' class="fold" id="Repository-fold-params"><label for="Repository-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='Repository-fold-params-items' class="fold-items"><span>
+			func <a href="#name-Register">Register</a>(scheme <a href="../../../../builtin.html#name-string">string</a>, repository <b>Repository</b>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-WritableRepository" data-popularity="700">	<input type='checkbox' class="fold" id="WritableRepository-fold-content"><label for="WritableRepository-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-102">WritableRepository</a> <b><i>(interface)</i></b></label><span id='WritableRepository-fold-content-docs' class="fold-docs">
+<span class="md-text">		WritableRepository is an extension of the Repository interface which also
+		supports obtaining a writer for URIs of the scheme it is registered to.
+		
+		Since: 2.0</span>
+
+		<input type='checkbox' class="fold" id="WritableRepository-fold-methods"><label for="WritableRepository-fold-methods">Methods (<i>total 7, all are exported</i>)</label><span id='WritableRepository-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="WritableRepository-fold-method-CanRead"><label for="WritableRepository-fold-method-CanRead">( WritableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-67">CanRead</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='WritableRepository-fold-method-CanRead-docs' class="fold-docs">
+<span class="md-text">				CanRead will be used to implement calls to storage.CanRead() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="WritableRepository-fold-method-CanWrite"><label for="WritableRepository-fold-method-CanWrite">( WritableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-115">CanWrite</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='WritableRepository-fold-method-CanWrite-docs' class="fold-docs">
+<span class="md-text">				CanWrite will be used to implement calls to storage.CanWrite() for
+				the registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="WritableRepository-fold-method-Delete"><label for="WritableRepository-fold-method-Delete">( WritableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-121">Delete</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='WritableRepository-fold-method-Delete-docs' class="fold-docs">
+<span class="md-text">				Delete will be used to implement calls to storage.Delete() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="WritableRepository-fold-method-Destroy"><label for="WritableRepository-fold-method-Destroy">( WritableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-77">Destroy</a>(<a href="../../../../builtin.html#name-string">string</a>)</label><span id='WritableRepository-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy is called when the repository is un-registered from a given
+				URI scheme.
+				
+				The string parameter will be the URI scheme that the repository was
+				registered for. This may be useful for repositories that need to
+				handle more than one URI scheme internally.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="WritableRepository-fold-method-Exists"><label for="WritableRepository-fold-method-Exists">( WritableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-55">Exists</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../../../builtin.html#name-bool">bool</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='WritableRepository-fold-method-Exists-docs' class="fold-docs">
+<span class="md-text">				Exists will be used to implement calls to storage.Exists() for the
+				registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="WritableRepository-fold-method-Reader"><label for="WritableRepository-fold-method-Reader">( WritableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-61">Reader</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URIReadCloser">URIReadCloser</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='WritableRepository-fold-method-Reader-docs' class="fold-docs">
+<span class="md-text">				Reader will be used to implement calls to storage.Reader()
+				for the registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="WritableRepository-fold-method-Writer"><label for="WritableRepository-fold-method-Writer">( WritableRepository) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-109">Writer</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URIWriteCloser">URIWriteCloser</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='WritableRepository-fold-method-Writer-docs' class="fold-docs">
+<span class="md-text">				Writer will be used to implement calls to storage.WriterTo() for
+				the registered scheme of this repository.
+				
+				Since: 2.0</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="WritableRepository-fold-impledby"><label for="WritableRepository-fold-impledby">Implemented By (<i>at least 2, both are exported</i>)</label><span id='WritableRepository-fold-impledby-items' class="fold-items"><span>
+			*fyne.io/fyne/v2/internal/repository.<a href="../internal/repository.html#name-FileRepository">FileRepository</a></span><span>
+			*fyne.io/fyne/v2/internal/repository.<a href="../internal/repository.html#name-InMemoryRepository">InMemoryRepository</a></span></span>
+		<input type='checkbox' class="fold" id="WritableRepository-fold-impls"><label for="WritableRepository-fold-impls">Implements (<i>at least one exported</i>)</label><span id='WritableRepository-fold-impls-items' class="fold-items"><span>
+			 WritableRepository : <a href="#name-Repository">Repository</a></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor type-res hidden" id="name-uri" data-popularity="700">	<input type='checkbox' class="fold" id="uri-fold-content"><label for="uri-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-16">uri</a> <i>(struct)</i></label><span id='uri-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="uri-fold-fields"><label for="uri-fold-fields">Fields (<i>total 5, none are exported</i>)</label><span id='uri-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="uri-showhide-fields"><i><label for="uri-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="uri-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-18">authority</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-21">fragment</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-19">path</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-20">query</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-17">scheme</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="uri-fold-methods"><label for="uri-fold-methods">Methods (<i>total 9, all are exported</i>)</label><span id='uri-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*uri) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-74">Authority</a>() <a href="../../../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">(*uri) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-24">Extension</a>() <a href="../../../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">(*uri) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-86">Fragment</a>() <a href="../../../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">(*uri) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-32">MimeType</a>() <a href="../../../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">(*uri) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-28">Name</a>() <a href="../../../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">(*uri) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-78">Path</a>() <a href="../../../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">(*uri) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-82">Query</a>() <a href="../../../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">(*uri) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-56">Scheme</a>() <a href="../../../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">(*uri) <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/uri.go.html#line-60">String</a>() <a href="../../../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="uri-fold-impls"><label for="uri-fold-impls">Implements (<i>at least 5, in which 2 are exported</i>)</label><span id='uri-fold-impls-items' class="fold-items"><span>
+			*uri : fyne.io/fyne/v2.<a href="../../v2.html#name-URI">URI</a></span><span>
+			*uri : fmt.<a href="../../../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="uri-showhide-impls"><i><label for="uri-showhide-impls" class="show-inline">/* 3+ unexporteds ... */</label><label for="uri-showhide-impls" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			*uri : context.<a href="../../../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			*uri : os/signal.<a href="../../../../os/signal.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			*uri : runtime.<a href="../../../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 10, in which 9 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ForScheme">	<input type='checkbox' class="fold" id="ForScheme-fold-content"><label for="ForScheme-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-267">ForScheme</a>(scheme <a href="../../../../builtin.html#name-string">string</a>) (<a href="#name-Repository">Repository</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='ForScheme-fold-content-docs' class="fold-docs">
+<span class="md-text">		ForScheme returns the Repository instance which is registered to handle URIs
+		of the given scheme.
+		
+		NOTE: this function is intended to be used specifically by the storage
+		package. It generally should not be used outside of the fyne package -
+		instead you should use the methods in the storage package.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-ForURI">	<input type='checkbox' class="fold" id="ForURI-fold-content"><label for="ForURI-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-255">ForURI</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="#name-Repository">Repository</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='ForURI-fold-content-docs' class="fold-docs">
+<span class="md-text">		ForURI returns the Repository instance which is registered to handle URIs of
+		the given scheme. This is a helper method that calls ForScheme() on the
+		scheme of the given URI.
+		
+		NOTE: this function is intended to be used specifically by the storage
+		package. It generally should not be used outside of the fyne package -
+		instead you should use the methods in the storage package.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-GenericChild">	<input type='checkbox' class="fold" id="GenericChild-fold-content"><label for="GenericChild-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/generic.go.html#line-80">GenericChild</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>, component <a href="../../../../builtin.html#name-string">string</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='GenericChild-fold-content-docs' class="fold-docs">
+<span class="md-text">		GenericChild can be used as a common-case implementation of
+		HierarchicalRepository.Child(). It will create a child URI by separating the
+		URI into it's component parts as described in IETF RFC 3986, then appending
+		"/" + component to the path, then concatenating the result and parsing it as
+		a new URI.
+		
+		NOTE: this function should not be called except by an implementation of
+		the Repository interface - using this for unknown URIs may break.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-GenericCopy">	<input type='checkbox' class="fold" id="GenericCopy-fold-content"><label for="GenericCopy-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/generic.go.html#line-116">GenericCopy</a>(source <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>, destination <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='GenericCopy-fold-content-docs' class="fold-docs">
+<span class="md-text">		GenericCopy can be used a common-case implementation of
+		CopyableRepository.Copy(). It will perform the copy by obtaining a reader
+		for the source URI, a writer for the destination URI, then writing the
+		contents of the source to the destination.
+		
+		For obvious reasons, the destination URI must have a registered
+		WritableRepository.
+		
+		NOTE: this function should not be called except by an implementation of
+		the Repository interface - using this for unknown URIs may break.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-GenericMove">	<input type='checkbox' class="fold" id="GenericMove-fold-content"><label for="GenericMove-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/generic.go.html#line-164">GenericMove</a>(source <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>, destination <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='GenericMove-fold-content-docs' class="fold-docs">
+<span class="md-text">		GenericMove can be used a common-case implementation of
+		MovableRepository.Move(). It will perform the move by obtaining a reader
+		for the source URI, a writer for the destination URI, then writing the
+		contents of the source to the destination. Following this, the source
+		will be deleted using WritableRepository.Delete.
+		
+		For obvious reasons, the source and destination URIs must both be writable.
+		
+		NOTE: this function should not be called except by an implementation of
+		the Repository interface - using this for unknown URIs may break.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-GenericParent">	<input type='checkbox' class="fold" id="GenericParent-fold-content"><label for="GenericParent-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/generic.go.html#line-37">GenericParent</a>(u <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='GenericParent-fold-content-docs' class="fold-docs">
+<span class="md-text">		GenericParent can be used as a common-case implementation of
+		HierarchicalRepository.Parent(). It will create a parent URI based on
+		IETF RFC3986.
+		
+		In short, the URI is separated into it's component parts, the path component
+		is split along instances of '/', and the trailing element is removed. The
+		result is concatenated and parsed as a new URI.
+		
+		If the URI path is empty or '/', then a nil URI is returned, along with
+		ErrURIRoot.
+		
+		NOTE: this function should not be called except by an implementation of
+		the Repository interface - using this for unknown URIs may break.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-NewFileURI">	<input type='checkbox' class="fold" id="NewFileURI-fold-content"><label for="NewFileURI-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/parse.go.html#line-19">NewFileURI</a>(path <a href="../../../../builtin.html#name-string">string</a>) <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a></label><span id='NewFileURI-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewFileURI implements the back-end logic to storage.NewFileURI, which you
+		should use instead. This is only here because other functions in repository
+		need to call it, and it prevents a circular import.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-ParseURI">	<input type='checkbox' class="fold" id="ParseURI-fold-content"><label for="ParseURI-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/parse.go.html#line-41">ParseURI</a>(s <a href="../../../../builtin.html#name-string">string</a>) (<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-URI">URI</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='ParseURI-fold-content-docs' class="fold-docs">
+<span class="md-text">		ParseURI implements the back-end logic for storage.ParseURI, which you
+		should use instead. This is only here because other functions in repository
+		need to call it, and it prevents a circular import.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-Register">	<input type='checkbox' class="fold" id="Register-fold-content"><label for="Register-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-234">Register</a>(scheme <a href="../../../../builtin.html#name-string">string</a>, repository <a href="#name-Repository">Repository</a>)</label><span id='Register-fold-content-docs' class="fold-docs">
+<span class="md-text">		Register registers a storage repository so that operations on URIs of the
+		registered scheme will use methods implemented by the relevant repository
+		implementation.
+		
+		Since: 2.0</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-splitNonEmpty"><i>	<input type='checkbox' class="fold" id="splitNonEmpty-fold-content"><label for="splitNonEmpty-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/generic.go.html#line-12">splitNonEmpty</a>(str, sep <a href="../../../../builtin.html#name-string">string</a>) []<a href="../../../../builtin.html#name-string">string</a></label><span id='splitNonEmpty-fold-content-docs' class="fold-docs">
+<span class="md-text">		splitNonEmpty works exactly like strings.Split(), but only returns non-empty
+		components.</span>
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 3, in which 2 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ErrOperationNotSupported">	<input type='checkbox' class="fold" id="ErrOperationNotSupported-fold-content"><label for="ErrOperationNotSupported-fold-content">  var <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/errors.go.html#line-15">ErrOperationNotSupported</a> <a href="../../../../builtin.html#name-error">error</a></label><span id='ErrOperationNotSupported-fold-content-docs' class="fold-docs">
+<span class="md-text">		ErrOperationNotSupported may be thrown by certain functions in the storage
+		or repository packages which operate on URIs if an operation is attempted
+		that is not supported for the scheme relevant to the URI, normally because
+		the underlying repository has either not implemented the relevant function,
+		or has explicitly returned this error.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-ErrURIRoot">	<input type='checkbox' class="fold" id="ErrURIRoot-fold-content"><label for="ErrURIRoot-fold-content">  var <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/errors.go.html#line-23">ErrURIRoot</a> <a href="../../../../builtin.html#name-error">error</a></label><span id='ErrURIRoot-fold-content-docs' class="fold-docs">
+<span class="md-text">		ErrURIRoot should be thrown by fyne.URI implementations when the caller
+		attempts to take the parent of the root. This way, downstream code that
+		wants to programmatically walk up a URIs parent's will know when to stop
+		iterating.
+		
+		Since: 2.0</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-repositoryTable"><i>	<input type='checkbox' class="fold" id="repositoryTable-fold-content"><label for="repositoryTable-fold-content">  var <a href="../../../../../src/fyne.io/fyne/v2/storage/repository/repository.go.html#line-13">repositoryTable</a> map[<a href="../../../../builtin.html#name-string">string</a>]<a href="#name-Repository">Repository</a></label><span id='repositoryTable-fold-content-docs' class="fold-docs">
+<span class="md-text">		repositoryTable stores the mapping of schemes to Repository implementations.
+		It should only ever be used by ForURI() and Register().</span>
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: app.go in package fyne.io/fyne/v2/app</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	app.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/fyne.io/fyne/v2/app.html">fyne.io/fyne/v2/app</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5,
+input[id=i6]:checked ~pre .i6,
+input[id=i7]:checked ~pre .i7
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+<input id="i6" type="radio" name="i"/>
+<input id="i7" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Package app provides app implementations for working with Fyne graphical interfaces.</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// The fastest way to get started is to call app.New() which will normally load a new desktop application.</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// If the "ci" tag is passed to go (go run -tags ci myapp.go) it will run an in-memory application.</span></code></span></div><span class="codeline" id="line-4"><code><span class="keyword">package</span> app <span class="comment">// import "fyne.io/fyne/v2/app"</span></code></span>
+<span class="codeline" id="line-5"><code></code></span>
+<span class="codeline" id="line-6"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-7"><code>	<label for="i0"><span class="lit-string i0">"os"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i1"><span class="lit-string i1">"strconv"</span></label></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i2"><span class="lit-string i2">"time"</span></label></code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code>	<label for="i3"><span class="lit-string i3">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-12"><code>	<label for="i4"><span class="lit-string i4">"fyne.io/fyne/v2/internal"</span></label></code></span>
+<span class="codeline" id="line-13"><code>	<label for="i5"><span class="lit-string i5">"fyne.io/fyne/v2/internal/app"</span></label></code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2/internal/repository.html" class="ident i6">intRepo</a> <label for="i6"><span class="lit-string i6">"fyne.io/fyne/v2/internal/repository"</span></label></code></span>
+<span class="codeline" id="line-15"><code>	<label for="i7"><span class="lit-string i7">"fyne.io/fyne/v2/storage/repository"</span></label></code></span>
+<span class="codeline" id="line-16"><code>)</code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">// Declare conformity with App interface</span></code></span>
+<span class="codeline" id="line-19"><code><span class="keyword">var</span> _ <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../app.go.html#line-13" class="ident">App</a> = (*<a href="#line-21" class="ident">fyneApp</a>)(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/app.html#name-fyneApp" class="ident">fyneApp</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-22"><code>	driver   <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../driver.go.html#line-7" class="ident">Driver</a></code></span>
+<span class="codeline" id="line-23"><code>	icon     <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../resource.go.html#line-14" class="ident">Resource</a></code></span>
+<span class="codeline" id="line-24"><code>	uniqueID <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code>	cloud     <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../cloud.go.html#line-7" class="ident">CloudProvider</a></code></span>
+<span class="codeline" id="line-27"><code>	lifecycle <a href="../../../../../pkg/fyne.io/fyne/v2/internal/app.html" class="ident i5">app</a>.<a href="../internal/app/lifecycle.go.html#line-15" class="ident">Lifecycle</a></code></span>
+<span class="codeline" id="line-28"><code>	settings  *<a href="settings.go.html#line-36" class="ident">settings</a></code></span>
+<span class="codeline" id="line-29"><code>	storage   <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../storage.go.html#line-5" class="ident">Storage</a></code></span>
+<span class="codeline" id="line-30"><code>	prefs     <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../preferences.go.html#line-4" class="ident">Preferences</a></code></span>
+<span class="codeline" id="line-31"><code>}</code></span>
+<span class="codeline" id="line-32"><code></code></span>
+<span class="codeline" id="line-33"><code><span class="keyword">func</span> (<label for="r0" class="ident">a</label> *<a href="#line-21" class="ident">fyneApp</a>) <label for="r1" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/app.fyneApp^bc924.html#name-.CloudProvider" class="ident">CloudProvider</a></label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../cloud.go.html#line-7" class="ident">CloudProvider</a> {</code></span>
+<span class="codeline" id="line-34"><code>	<span class="keyword">return</span> <label for="r0" class="ident">a</label>.<a href="#line-26" class="ident">cloud</a></code></span>
+<span class="codeline" id="line-35"><code>}</code></span>
+<span class="codeline" id="line-36"><code></code></span>
+<span class="codeline" id="line-37"><code><span class="keyword">func</span> (<label for="r2" class="ident">a</label> *<a href="#line-21" class="ident">fyneApp</a>) <label for="r3" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/app.fyneApp^bc924.html#name-.Icon" class="ident">Icon</a></label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../resource.go.html#line-14" class="ident">Resource</a> {</code></span>
+<span class="codeline" id="line-38"><code>	<span class="keyword">if</span> <label for="r2" class="ident">a</label>.<a href="#line-23" class="ident">icon</a> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-39"><code>		<span class="keyword">return</span> <label for="r2" class="ident">a</label>.<a href="#line-23" class="ident">icon</a></code></span>
+<span class="codeline" id="line-40"><code>	}</code></span>
+<span class="codeline" id="line-41"><code></code></span>
+<span class="codeline" id="line-42"><code>	<span class="keyword">return</span> <label for="r2" class="ident">a</label>.<a href="meta.go.html#line-26" class="ident">Metadata</a>().<a href="../app.go.html#line-114" class="ident">Icon</a></code></span>
+<span class="codeline" id="line-43"><code>}</code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code><span class="keyword">func</span> (<label for="r4" class="ident">a</label> *<a href="#line-21" class="ident">fyneApp</a>) <label for="r5" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/app.fyneApp^bc924.html#name-.SetIcon" class="ident">SetIcon</a></label>(<label for="r6" class="ident">icon</label> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../resource.go.html#line-14" class="ident">Resource</a>) {</code></span>
+<span class="codeline" id="line-46"><code>	<label for="r4" class="ident">a</label>.<a href="#line-23" class="ident">icon</a> = <label for="r6" class="ident">icon</label></code></span>
+<span class="codeline" id="line-47"><code>}</code></span>
+<span class="codeline" id="line-48"><code></code></span>
+<span class="codeline" id="line-49"><code><span class="keyword">func</span> (<label for="r7" class="ident">a</label> *<a href="#line-21" class="ident">fyneApp</a>) <label for="r8" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/app.fyneApp^bc924.html#name-.UniqueID" class="ident">UniqueID</a></label>() <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-50"><code>	<span class="keyword">if</span> <label for="r7" class="ident">a</label>.<a href="#line-24" class="ident">uniqueID</a> != <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-51"><code>		<span class="keyword">return</span> <label for="r7" class="ident">a</label>.<a href="#line-24" class="ident">uniqueID</a></code></span>
+<span class="codeline" id="line-52"><code>	}</code></span>
+<span class="codeline" id="line-53"><code>	<span class="keyword">if</span> <label for="r7" class="ident">a</label>.<a href="meta.go.html#line-26" class="ident">Metadata</a>().<a href="../app.go.html#line-106" class="ident">ID</a> != <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-54"><code>		<span class="keyword">return</span> <label for="r7" class="ident">a</label>.<a href="meta.go.html#line-26" class="ident">Metadata</a>().<a href="../app.go.html#line-106" class="ident">ID</a></code></span>
+<span class="codeline" id="line-55"><code>	}</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../log.go.html#line-11" class="ident">LogError</a>(<span class="lit-string">"Preferences API requires a unique ID, use app.NewWithID() or the FyneApp.toml ID field"</span>, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-58"><code>	<label for="r7" class="ident">a</label>.<a href="#line-24" class="ident">uniqueID</a> = <span class="lit-string">"missing-id-"</span> + <a href="../../../../../pkg/strconv.html" class="ident i1">strconv</a>.<a href="../../../../strconv/itoa.go.html#line-25" class="ident">FormatInt</a>(<a href="../../../../../pkg/time.html" class="ident i2">time</a>.<a href="../../../../time/time.go.html#line-1159" class="ident">Now</a>().<a href="../../../../time/time.go.html#line-1241" class="ident">Unix</a>(), <span class="lit-number">10</span>) <span class="comment">// This is a fake unique - it just has to not be reused...</span></code></span>
+<span class="codeline" id="line-59"><code>	<span class="keyword">return</span> <label for="r7" class="ident">a</label>.<a href="#line-24" class="ident">uniqueID</a></code></span>
+<span class="codeline" id="line-60"><code>}</code></span>
+<span class="codeline" id="line-61"><code></code></span>
+<span class="codeline" id="line-62"><code><span class="keyword">func</span> (<label for="r9" class="ident">a</label> *<a href="#line-21" class="ident">fyneApp</a>) <label for="r10" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/app.fyneApp^bc924.html#name-.NewWindow" class="ident">NewWindow</a></label>(<label for="r11" class="ident">title</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../window.go.html#line-5" class="ident">Window</a> {</code></span>
+<span class="codeline" id="line-63"><code>	<span class="keyword">return</span> <label for="r9" class="ident">a</label>.<a href="#line-22" class="ident">driver</a>.<a href="../driver.go.html#line-9" class="ident">CreateWindow</a>(<label for="r11" class="ident">title</label>)</code></span>
+<span class="codeline" id="line-64"><code>}</code></span>
+<span class="codeline" id="line-65"><code></code></span>
+<span class="codeline" id="line-66"><code><span class="keyword">func</span> (<label for="r12" class="ident">a</label> *<a href="#line-21" class="ident">fyneApp</a>) <label for="r13" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/app.fyneApp^bc924.html#name-.Run" class="ident">Run</a></label>() {</code></span>
+<span class="codeline" id="line-67"><code>	<span class="keyword">go</span> <label for="r12" class="ident">a</label>.<a href="#line-27" class="ident">lifecycle</a>.<a href="../internal/app/lifecycle.go.html#line-126" class="ident">RunEventQueue</a>()</code></span>
+<span class="codeline" id="line-68"><code>	<label for="r12" class="ident">a</label>.<a href="#line-22" class="ident">driver</a>.<a href="../driver.go.html#line-26" class="ident">Run</a>()</code></span>
+<span class="codeline" id="line-69"><code>}</code></span>
+<span class="codeline" id="line-70"><code></code></span>
+<span class="codeline" id="line-71"><code><span class="keyword">func</span> (<label for="r14" class="ident">a</label> *<a href="#line-21" class="ident">fyneApp</a>) <label for="r15" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/app.fyneApp^bc924.html#name-.Quit" class="ident">Quit</a></label>() {</code></span>
+<span class="codeline" id="line-72"><code>	<span class="keyword">for</span> <label for="r16" class="ident">_</label>, <label for="r17" class="ident">window</label> := <span class="keyword">range</span> <label for="r14" class="ident">a</label>.<a href="#line-22" class="ident">driver</a>.<a href="../driver.go.html#line-11" class="ident">AllWindows</a>() {</code></span>
+<span class="codeline" id="line-73"><code>		<label for="r17" class="ident">window</label>.<a href="../window.go.html#line-89" class="ident">Close</a>()</code></span>
+<span class="codeline" id="line-74"><code>	}</code></span>
+<span class="codeline" id="line-75"><code></code></span>
+<span class="codeline" id="line-76"><code>	<label for="r14" class="ident">a</label>.<a href="#line-22" class="ident">driver</a>.<a href="../driver.go.html#line-29" class="ident">Quit</a>()</code></span>
+<span class="codeline" id="line-77"><code>	<label for="r14" class="ident">a</label>.<a href="#line-28" class="ident">settings</a>.<a href="settings_desktop.go.html#line-71" class="ident">stopWatching</a>()</code></span>
+<span class="codeline" id="line-78"><code>}</code></span>
+<span class="codeline" id="line-79"><code></code></span>
+<span class="codeline" id="line-80"><code><span class="keyword">func</span> (<label for="r18" class="ident">a</label> *<a href="#line-21" class="ident">fyneApp</a>) <label for="r19" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/app.fyneApp^bc924.html#name-.Driver" class="ident">Driver</a></label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../driver.go.html#line-7" class="ident">Driver</a> {</code></span>
+<span class="codeline" id="line-81"><code>	<span class="keyword">return</span> <label for="r18" class="ident">a</label>.<a href="#line-22" class="ident">driver</a></code></span>
+<span class="codeline" id="line-82"><code>}</code></span>
+<span class="codeline" id="line-83"><code></code></span>
+<span class="codeline" id="line-84"><code><span class="comment">// Settings returns the application settings currently configured.</span></code></span>
+<span class="codeline" id="line-85"><code><span class="keyword">func</span> (<label for="r20" class="ident">a</label> *<a href="#line-21" class="ident">fyneApp</a>) <label for="r21" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/app.fyneApp^bc924.html#name-.Settings" class="ident">Settings</a></label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../settings.go.html#line-17" class="ident">Settings</a> {</code></span>
+<span class="codeline" id="line-86"><code>	<span class="keyword">return</span> <label for="r20" class="ident">a</label>.<a href="#line-28" class="ident">settings</a></code></span>
+<span class="codeline" id="line-87"><code>}</code></span>
+<span class="codeline" id="line-88"><code></code></span>
+<span class="codeline" id="line-89"><code><span class="keyword">func</span> (<label for="r22" class="ident">a</label> *<a href="#line-21" class="ident">fyneApp</a>) <label for="r23" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/app.fyneApp^bc924.html#name-.Storage" class="ident">Storage</a></label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../storage.go.html#line-5" class="ident">Storage</a> {</code></span>
+<span class="codeline" id="line-90"><code>	<span class="keyword">return</span> <label for="r22" class="ident">a</label>.<a href="#line-29" class="ident">storage</a></code></span>
+<span class="codeline" id="line-91"><code>}</code></span>
+<span class="codeline" id="line-92"><code></code></span>
+<span class="codeline" id="line-93"><code><span class="keyword">func</span> (<label for="r24" class="ident">a</label> *<a href="#line-21" class="ident">fyneApp</a>) <label for="r25" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/app.fyneApp^bc924.html#name-.Preferences" class="ident">Preferences</a></label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../preferences.go.html#line-4" class="ident">Preferences</a> {</code></span>
+<span class="codeline" id="line-94"><code>	<span class="keyword">if</span> <label for="r24" class="ident">a</label>.<a href="#line-49" class="ident">UniqueID</a>() == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-95"><code>		<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../log.go.html#line-11" class="ident">LogError</a>(<span class="lit-string">"Preferences API requires a unique ID, use app.NewWithID() or the FyneApp.toml ID field"</span>, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-96"><code>	}</code></span>
+<span class="codeline" id="line-97"><code>	<span class="keyword">return</span> <label for="r24" class="ident">a</label>.<a href="#line-30" class="ident">prefs</a></code></span>
+<span class="codeline" id="line-98"><code>}</code></span>
+<span class="codeline" id="line-99"><code></code></span>
+<span class="codeline" id="line-100"><code><span class="keyword">func</span> (<label for="r26" class="ident">a</label> *<a href="#line-21" class="ident">fyneApp</a>) <label for="r27" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/app.fyneApp^bc924.html#name-.Lifecycle" class="ident">Lifecycle</a></label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../app.go.html#line-126" class="ident">Lifecycle</a> {</code></span>
+<span class="codeline" id="line-101"><code>	<span class="keyword">return</span> &amp;<label for="r26" class="ident">a</label>.<a href="#line-27" class="ident">lifecycle</a></code></span>
+<span class="codeline" id="line-102"><code>}</code></span>
+<span class="codeline" id="line-103"><code></code></span>
+<span class="codeline" id="line-104"><code><span class="keyword">func</span> (<label for="r28" class="ident">a</label> *<a href="#line-21" class="ident">fyneApp</a>) <label for="r29" class="ident">newDefaultPreferences</label>() *<a href="preferences.go.html#line-14" class="ident">preferences</a> {</code></span>
+<span class="codeline" id="line-105"><code>	<label for="r30" class="ident">p</label> := <a href="preferences.go.html#line-131" class="ident">newPreferences</a>(<label for="r28" class="ident">a</label>)</code></span>
+<span class="codeline" id="line-106"><code>	<span class="keyword">if</span> <label for="r28" class="ident">a</label>.<a href="#line-24" class="ident">uniqueID</a> != <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-107"><code>		<label for="r30" class="ident">p</label>.<a href="preferences.go.html#line-94" class="ident">load</a>()</code></span>
+<span class="codeline" id="line-108"><code>	}</code></span>
+<span class="codeline" id="line-109"><code>	<span class="keyword">return</span> <label for="r30" class="ident">p</label></code></span>
+<span class="codeline" id="line-110"><code>}</code></span>
+<span class="codeline" id="line-111"><code></code></span>
+<span class="codeline" id="line-112"><code><span class="comment">// New returns a new application instance with the default driver and no unique ID (unless specified in FyneApp.toml)</span></code></span>
+<span class="codeline" id="line-113"><code><span class="keyword">func</span> <label for="r31" class="ident"><a href="../../../../../pkg/fyne.io/fyne/v2/app.html#name-New" class="ident">New</a></label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../app.go.html#line-13" class="ident">App</a> {</code></span>
+<span class="codeline" id="line-114"><code>	<span class="keyword">if</span> <a href="meta.go.html#line-7" class="ident">meta</a>.<a href="../app.go.html#line-106" class="ident">ID</a> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-115"><code>		<a href="meta_development.go.html#line-13" class="ident">checkLocalMetadata</a>() <span class="comment">// if no ID passed, check if it was in toml</span></code></span>
+<span class="codeline" id="line-116"><code>		<span class="keyword">if</span> <a href="meta.go.html#line-7" class="ident">meta</a>.<a href="../app.go.html#line-106" class="ident">ID</a> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-117"><code>			<a href="../../../../../pkg/fyne.io/fyne/v2/internal.html" class="ident i4">internal</a>.<a href="../internal/hints_disabled.go.html#line-7" class="ident">LogHint</a>(<span class="lit-string">"Applications should be created with a unique ID using app.NewWithID()"</span>)</code></span>
+<span class="codeline" id="line-118"><code>		}</code></span>
+<span class="codeline" id="line-119"><code>	}</code></span>
+<span class="codeline" id="line-120"><code>	<span class="keyword">return</span> <a href="app_gl.go.html#line-12" class="ident">NewWithID</a>(<a href="meta.go.html#line-7" class="ident">meta</a>.<a href="../app.go.html#line-106" class="ident">ID</a>)</code></span>
+<span class="codeline" id="line-121"><code>}</code></span>
+<span class="codeline" id="line-122"><code></code></span>
+<span class="codeline" id="line-123"><code><span class="keyword">func</span> <label for="r32" class="ident"><a href="../../../../../pkg/fyne.io/fyne/v2/app.html#name-makeStoreDocs" class="ident">makeStoreDocs</a></label>(<label for="r33" class="ident">id</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r34" class="ident">s</label> *<a href="storage.go.html#line-11" class="ident">store</a>) *<a href="../../../../../pkg/fyne.io/fyne/v2/internal.html" class="ident i4">internal</a>.<a href="../internal/docs.go.html#line-14" class="ident">Docs</a> {</code></span>
+<span class="codeline" id="line-124"><code>	<span class="keyword">if</span> <label for="r33" class="ident">id</label> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-125"><code>		<span class="keyword">return</span> &amp;<a href="../../../../../pkg/fyne.io/fyne/v2/internal.html" class="ident i4">internal</a>.<a href="../internal/docs.go.html#line-14" class="ident">Docs</a>{} <span class="comment">// an empty impl to avoid crashes</span></code></span>
+<span class="codeline" id="line-126"><code>	}</code></span>
+<span class="codeline" id="line-127"><code>	<span class="keyword">if</span> <label for="r35" class="ident">root</label> := <label for="r34" class="ident">s</label>.<a href="storage.go.html#line-13" class="ident">a</a>.<a href="preferences_other.go.html#line-13" class="ident">storageRoot</a>(); <label for="r35" class="ident">root</label> != <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-128"><code>		<label for="r36" class="ident">err</label> := <a href="../../../../../pkg/os.html" class="ident i0">os</a>.<a href="../../../../os/path.go.html#line-19" class="ident">MkdirAll</a>(<label for="r35" class="ident">root</label>, <span class="lit-number">0755</span>) <span class="comment">// make the space before anyone can use it</span></code></span>
+<span class="codeline" id="line-129"><code>		<span class="keyword">if</span> <label for="r36" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-130"><code>			<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../log.go.html#line-11" class="ident">LogError</a>(<span class="lit-string">"Failed to create app storage space"</span>, <label for="r36" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-131"><code>		}</code></span>
+<span class="codeline" id="line-132"><code></code></span>
+<span class="codeline" id="line-133"><code>		<label for="r37" class="ident">root</label>, <label for="r38" class="ident">_</label> := <label for="r34" class="ident">s</label>.<a href="storage.go.html#line-25" class="ident">docRootURI</a>()</code></span>
+<span class="codeline" id="line-134"><code>		<span class="keyword">return</span> &amp;<a href="../../../../../pkg/fyne.io/fyne/v2/internal.html" class="ident i4">internal</a>.<a href="../internal/docs.go.html#line-14" class="ident">Docs</a>{<a href="../internal/docs.go.html#line-15" class="ident">RootDocURI</a>: <label for="r37" class="ident">root</label>}</code></span>
+<span class="codeline" id="line-135"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-136"><code>		<span class="keyword">return</span> &amp;<a href="../../../../../pkg/fyne.io/fyne/v2/internal.html" class="ident i4">internal</a>.<a href="../internal/docs.go.html#line-14" class="ident">Docs</a>{} <span class="comment">// an empty impl to avoid crashes</span></code></span>
+<span class="codeline" id="line-137"><code>	}</code></span>
+<span class="codeline" id="line-138"><code>}</code></span>
+<span class="codeline" id="line-139"><code></code></span>
+<span class="codeline" id="line-140"><code><span class="keyword">func</span> <label for="r39" class="ident"><a href="../../../../../pkg/fyne.io/fyne/v2/app.html#name-newAppWithDriver" class="ident">newAppWithDriver</a></label>(<label for="r40" class="ident">d</label> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../driver.go.html#line-7" class="ident">Driver</a>, <label for="r41" class="ident">id</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../app.go.html#line-13" class="ident">App</a> {</code></span>
+<span class="codeline" id="line-141"><code>	<label for="r42" class="ident">newApp</label> := &amp;<a href="#line-21" class="ident">fyneApp</a>{<a href="#line-24" class="ident">uniqueID</a>: <label for="r41" class="ident">id</label>, <a href="#line-22" class="ident">driver</a>: <label for="r40" class="ident">d</label>}</code></span>
+<span class="codeline" id="line-142"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../app.go.html#line-87" class="ident">SetCurrentApp</a>(<label for="r42" class="ident">newApp</label>)</code></span>
+<span class="codeline" id="line-143"><code></code></span>
+<span class="codeline" id="line-144"><code>	<label for="r42" class="ident">newApp</label>.<a href="#line-30" class="ident">prefs</a> = <label for="r42" class="ident">newApp</label>.<a href="#line-104" class="ident">newDefaultPreferences</a>()</code></span>
+<span class="codeline" id="line-145"><code>	<label for="r42" class="ident">newApp</label>.<a href="#line-27" class="ident">lifecycle</a>.<a href="../internal/app/lifecycle.go.html#line-113" class="ident">InitEventQueue</a>()</code></span>
+<span class="codeline" id="line-146"><code>	<label for="r42" class="ident">newApp</label>.<a href="#line-27" class="ident">lifecycle</a>.<a href="../internal/app/lifecycle.go.html#line-28" class="ident">SetOnStoppedHookExecuted</a>(<span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-147"><code>		<span class="keyword">if</span> <label for="r43" class="ident">prefs</label>, <label for="r44" class="ident">ok</label> := <label for="r42" class="ident">newApp</label>.<a href="#line-30" class="ident">prefs</a>.(*<a href="preferences.go.html#line-14" class="ident">preferences</a>); <label for="r44" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-148"><code>			<label for="r43" class="ident">prefs</label>.<a href="preferences.go.html#line-40" class="ident">forceImmediateSave</a>()</code></span>
+<span class="codeline" id="line-149"><code>		}</code></span>
+<span class="codeline" id="line-150"><code>	})</code></span>
+<span class="codeline" id="line-151"><code>	<label for="r42" class="ident">newApp</label>.<a href="#line-28" class="ident">settings</a> = <a href="settings.go.html#line-171" class="ident">loadSettings</a>()</code></span>
+<span class="codeline" id="line-152"><code>	<label for="r45" class="ident">store</label> := &amp;<a href="storage.go.html#line-11" class="ident">store</a>{<a href="storage.go.html#line-13" class="ident">a</a>: <label for="r42" class="ident">newApp</label>}</code></span>
+<span class="codeline" id="line-153"><code>	<label for="r45" class="ident">store</label>.<a href="storage.go.html#line-12" class="ident">Docs</a> = <a href="#line-123" class="ident">makeStoreDocs</a>(<label for="r41" class="ident">id</label>, <label for="r45" class="ident">store</label>)</code></span>
+<span class="codeline" id="line-154"><code>	<label for="r42" class="ident">newApp</label>.<a href="#line-29" class="ident">storage</a> = <label for="r45" class="ident">store</label></code></span>
+<span class="codeline" id="line-155"><code></code></span>
+<span class="codeline" id="line-156"><code>	<span class="keyword">if</span> !<label for="r40" class="ident">d</label>.<a href="../driver.go.html#line-24" class="ident">Device</a>().<a href="../device.go.html#line-30" class="ident">IsMobile</a>() {</code></span>
+<span class="codeline" id="line-157"><code>		<label for="r42" class="ident">newApp</label>.<a href="#line-28" class="ident">settings</a>.<a href="settings_desktop.go.html#line-62" class="ident">watchSettings</a>()</code></span>
+<span class="codeline" id="line-158"><code>	}</code></span>
+<span class="codeline" id="line-159"><code></code></span>
+<span class="codeline" id="line-160"><code>	<label for="r46" class="ident">httpHandler</label> := <a href="../../../../../pkg/fyne.io/fyne/v2/internal/repository.html" class="ident i6">intRepo</a>.<a href="../internal/repository/http.go.html#line-49" class="ident">NewHTTPRepository</a>()</code></span>
+<span class="codeline" id="line-161"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2/storage/repository.html" class="ident i7">repository</a>.<a href="../storage/repository/repository.go.html#line-234" class="ident">Register</a>(<span class="lit-string">"http"</span>, <label for="r46" class="ident">httpHandler</label>)</code></span>
+<span class="codeline" id="line-162"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2/storage/repository.html" class="ident i7">repository</a>.<a href="../storage/repository/repository.go.html#line-234" class="ident">Register</a>(<span class="lit-string">"https"</span>, <label for="r46" class="ident">httpHandler</label>)</code></span>
+<span class="codeline" id="line-163"><code></code></span>
+<span class="codeline" id="line-164"><code>	<span class="keyword">return</span> <label for="r42" class="ident">newApp</label></code></span>
+<span class="codeline" id="line-165"><code>}</code></span>
+<span class="codeline" id="line-166"><code></code></span>
+<span class="codeline" id="line-167"><code><span class="comment">// marker interface to pass system tray to supporting drivers</span></code></span>
+<span class="codeline" id="line-168"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/app.html#name-systrayDriver" class="ident">systrayDriver</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-169"><code>	<a href="../../../../../imp/fyne.io/fyne/v2/app.systrayDriver^44688.html#name-SetSystemTrayMenu" class="ident">SetSystemTrayMenu</a>(*<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../menu.go.html#line-11" class="ident">Menu</a>)</code></span>
+<span class="codeline" id="line-170"><code>	<a href="../../../../../imp/fyne.io/fyne/v2/app.systrayDriver^44688.html#name-SetSystemTrayIcon" class="ident">SetSystemTrayIcon</a>(resource <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../resource.go.html#line-14" class="ident">Resource</a>)</code></span>
+<span class="codeline" id="line-171"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: app.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	app.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"net/url"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"sync/atomic"</span></label></code></span>
+<span class="codeline" id="line-6"><code>)</code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// An App is the definition of a graphical application.</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// Apps can have multiple windows, by default they will exit when all windows</span></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">// have been closed. This can be modified using SetMaster or SetCloseIntercept.</span></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// To start an application you need to call Run somewhere in your main function.</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// Alternatively use the [fyne.io/fyne/v2.Window.ShowAndRun] function for your main window.</span></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-App" class="ident">App</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-14"><code>	<span class="comment">// Create a new window for the application.</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">	// The first window to open is considered the "master" and when closed</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">	// the application will exit.</span></code></span>
+<span class="codeline" id="line-17"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-NewWindow" class="ident">NewWindow</a>(title <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="window.go.html#line-5" class="ident">Window</a></code></span>
+<span class="codeline" id="line-18"><code></code></span>
+<span class="codeline" id="line-19"><code>	<span class="comment">// Open a URL in the default browser application.</span></code></span>
+<span class="codeline" id="line-20"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-OpenURL" class="ident">OpenURL</a>(url *<a href="../../../../pkg/net/url.html" class="ident i0">url</a>.<a href="../../../net/url/url.go.html#line-370" class="ident">URL</a>) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code>	<span class="comment">// Icon returns the application icon, this is used in various ways</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">	// depending on operating system.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">	// This is also the default icon for new windows.</span></code></span>
+<span class="codeline" id="line-25"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-Icon" class="ident">Icon</a>() <a href="resource.go.html#line-14" class="ident">Resource</a></code></span>
+<span class="codeline" id="line-26"><code></code></span>
+<span class="codeline" id="line-27"><code>	<span class="comment">// SetIcon sets the icon resource used for this application instance.</span></code></span>
+<span class="codeline" id="line-28"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-SetIcon" class="ident">SetIcon</a>(<a href="resource.go.html#line-14" class="ident">Resource</a>)</code></span>
+<span class="codeline" id="line-29"><code></code></span>
+<span class="codeline" id="line-30"><code>	<span class="comment">// Run the application - this starts the event loop and waits until [App.Quit]</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">	// is called or the last window closes.</span></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">	// This should be called near the end of a main() function as it will block.</span></code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-Run" class="ident">Run</a>()</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code>	<span class="comment">// Calling Quit on the application will cause the application to exit</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">	// cleanly, closing all open windows.</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">	// This function does no thing on a mobile device as the application lifecycle is</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">	// managed by the operating system.</span></code></span>
+<span class="codeline" id="line-39"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-Quit" class="ident">Quit</a>()</code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code>	<span class="comment">// Driver returns the driver that is rendering this application.</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">	// Typically not needed for day to day work, mostly internal functionality.</span></code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-Driver" class="ident">Driver</a>() <a href="driver.go.html#line-7" class="ident">Driver</a></code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code>	<span class="comment">// UniqueID returns the application unique identifier, if set.</span></code></span>
+<span class="codeline" id="line-46"><code><span class="comment">	// This must be set for use of the [App.Preferences]. see [NewWithID].</span></code></span>
+<span class="codeline" id="line-47"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-UniqueID" class="ident">UniqueID</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-48"><code></code></span>
+<span class="codeline" id="line-49"><code>	<span class="comment">// SendNotification sends a system notification that will be displayed in the operating system's notification area.</span></code></span>
+<span class="codeline" id="line-50"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-SendNotification" class="ident">SendNotification</a>(*<a href="notification.go.html#line-4" class="ident">Notification</a>)</code></span>
+<span class="codeline" id="line-51"><code></code></span>
+<span class="codeline" id="line-52"><code>	<span class="comment">// Settings return the globally set settings, determining theme and so on.</span></code></span>
+<span class="codeline" id="line-53"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-Settings" class="ident">Settings</a>() <a href="settings.go.html#line-17" class="ident">Settings</a></code></span>
+<span class="codeline" id="line-54"><code></code></span>
+<span class="codeline" id="line-55"><code>	<span class="comment">// Preferences returns the application preferences, used for storing configuration and state</span></code></span>
+<span class="codeline" id="line-56"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-Preferences" class="ident">Preferences</a>() <a href="preferences.go.html#line-4" class="ident">Preferences</a></code></span>
+<span class="codeline" id="line-57"><code></code></span>
+<span class="codeline" id="line-58"><code>	<span class="comment">// Storage returns a storage handler specific to this application.</span></code></span>
+<span class="codeline" id="line-59"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-Storage" class="ident">Storage</a>() <a href="storage.go.html#line-5" class="ident">Storage</a></code></span>
+<span class="codeline" id="line-60"><code></code></span>
+<span class="codeline" id="line-61"><code>	<span class="comment">// Lifecycle returns a type that allows apps to hook in to lifecycle events.</span></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-63"><code><span class="comment">	// Since: 2.1</span></code></span>
+<span class="codeline" id="line-64"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-Lifecycle" class="ident">Lifecycle</a>() <a href="#line-126" class="ident">Lifecycle</a></code></span>
+<span class="codeline" id="line-65"><code></code></span>
+<span class="codeline" id="line-66"><code>	<span class="comment">// Metadata returns the application metadata that was set at compile time.</span></code></span>
+<span class="codeline" id="line-67"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-68"><code><span class="comment">	// Since: 2.2</span></code></span>
+<span class="codeline" id="line-69"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-Metadata" class="ident">Metadata</a>() <a href="#line-104" class="ident">AppMetadata</a></code></span>
+<span class="codeline" id="line-70"><code></code></span>
+<span class="codeline" id="line-71"><code>	<span class="comment">// CloudProvider returns the current app cloud provider,</span></code></span>
+<span class="codeline" id="line-72"><code><span class="comment">	// if one has been registered by the developer or chosen by the user.</span></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-74"><code><span class="comment">	// Since: 2.3</span></code></span>
+<span class="codeline" id="line-75"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-CloudProvider" class="ident">CloudProvider</a>() <a href="cloud.go.html#line-7" class="ident">CloudProvider</a> <span class="comment">// get the (if any) configured provider</span></code></span>
+<span class="codeline" id="line-76"><code></code></span>
+<span class="codeline" id="line-77"><code>	<span class="comment">// SetCloudProvider allows developers to specify how this application should integrate with cloud services.</span></code></span>
+<span class="codeline" id="line-78"><code><span class="comment">	// See [fyne.io/cloud] package for implementation details.</span></code></span>
+<span class="codeline" id="line-79"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-80"><code><span class="comment">	// Since: 2.3</span></code></span>
+<span class="codeline" id="line-81"><code>	<a href="../../../../imp/fyne.io/fyne/v2.App.html#name-SetCloudProvider" class="ident">SetCloudProvider</a>(<a href="cloud.go.html#line-7" class="ident">CloudProvider</a>) <span class="comment">// configure cloud for this app</span></code></span>
+<span class="codeline" id="line-82"><code>}</code></span>
+<span class="codeline" id="line-83"><code></code></span>
+<span class="codeline" id="line-84"><code><span class="keyword">var</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-app" class="ident">app</a> <a href="../../../../pkg/sync/atomic.html" class="ident i1">atomic</a>.<a href="../../../sync/atomic/type.go.html#line-43" class="ident">Pointer</a>[<a href="#line-13" class="ident">App</a>]</code></span>
+<span class="codeline" id="line-85"><code></code></span>
+<span class="codeline" id="line-86"><code><span class="comment">// SetCurrentApp is an internal function to set the app instance currently running.</span></code></span>
+<span class="codeline" id="line-87"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-SetCurrentApp" class="ident">SetCurrentApp</a></label>(<label for="r1" class="ident">current</label> <a href="#line-13" class="ident">App</a>) {</code></span>
+<span class="codeline" id="line-88"><code>	<a href="#line-84" class="ident">app</a>.<a href="../../../sync/atomic/type.go.html#line-57" class="ident">Store</a>(&amp;<label for="r1" class="ident">current</label>)</code></span>
+<span class="codeline" id="line-89"><code>}</code></span>
+<span class="codeline" id="line-90"><code></code></span>
+<span class="codeline" id="line-91"><code><span class="comment">// CurrentApp returns the current application, for which there is only 1 per process.</span></code></span>
+<span class="codeline" id="line-92"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-CurrentApp" class="ident">CurrentApp</a></label>() <a href="#line-13" class="ident">App</a> {</code></span>
+<span class="codeline" id="line-93"><code>	<label for="r3" class="ident">val</label> := <a href="#line-84" class="ident">app</a>.<a href="../../../sync/atomic/type.go.html#line-54" class="ident">Load</a>()</code></span>
+<span class="codeline" id="line-94"><code>	<span class="keyword">if</span> <label for="r3" class="ident">val</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-95"><code>		<a href="log.go.html#line-11" class="ident">LogError</a>(<span class="lit-string">"Attempt to access current Fyne app when none is started"</span>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-96"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-97"><code>	}</code></span>
+<span class="codeline" id="line-98"><code>	<span class="keyword">return</span> *<label for="r3" class="ident">val</label></code></span>
+<span class="codeline" id="line-99"><code>}</code></span>
+<span class="codeline" id="line-100"><code></code></span>
+<span class="codeline" id="line-101"><code><span class="comment">// AppMetadata captures the build metadata for an application.</span></code></span>
+<span class="codeline" id="line-102"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-103"><code><span class="comment">// Since: 2.2</span></code></span>
+<span class="codeline" id="line-104"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-AppMetadata" class="ident">AppMetadata</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-105"><code>	<span class="comment">// ID is the unique ID of this application, used by many distribution platforms.</span></code></span>
+<span class="codeline" id="line-106"><code>	ID <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-107"><code>	<span class="comment">// Name is the human friendly name of this app.</span></code></span>
+<span class="codeline" id="line-108"><code>	Name <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-109"><code>	<span class="comment">// Version represents the version of this application, normally following semantic versioning.</span></code></span>
+<span class="codeline" id="line-110"><code>	Version <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-111"><code>	<span class="comment">// Build is the build number of this app, some times appended to the version number.</span></code></span>
+<span class="codeline" id="line-112"><code>	Build <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-113"><code>	<span class="comment">// Icon contains, if present, a resource of the icon that was bundled at build time.</span></code></span>
+<span class="codeline" id="line-114"><code>	Icon <a href="resource.go.html#line-14" class="ident">Resource</a></code></span>
+<span class="codeline" id="line-115"><code>	<span class="comment">// Release if true this binary was build in release mode</span></code></span>
+<span class="codeline" id="line-116"><code><span class="comment">	// Since 2.3</span></code></span>
+<span class="codeline" id="line-117"><code>	Release <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-118"><code>	<span class="comment">// Custom contain the custom metadata defined either in FyneApp.toml or on the compile command line</span></code></span>
+<span class="codeline" id="line-119"><code><span class="comment">	// Since 2.3</span></code></span>
+<span class="codeline" id="line-120"><code>	Custom <span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-121"><code>}</code></span>
+<span class="codeline" id="line-122"><code></code></span>
+<span class="codeline" id="line-123"><code><span class="comment">// Lifecycle represents the various phases that an app can transition through.</span></code></span>
+<span class="codeline" id="line-124"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-125"><code><span class="comment">// Since: 2.1</span></code></span>
+<span class="codeline" id="line-126"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Lifecycle" class="ident">Lifecycle</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-127"><code>	<span class="comment">// SetOnEnteredForeground hooks into the app becoming foreground and gaining focus.</span></code></span>
+<span class="codeline" id="line-128"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Lifecycle.html#name-SetOnEnteredForeground" class="ident">SetOnEnteredForeground</a>(<span class="keyword">func</span>())</code></span>
+<span class="codeline" id="line-129"><code>	<span class="comment">// SetOnExitedForeground hooks into the app losing input focus and going into the background.</span></code></span>
+<span class="codeline" id="line-130"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Lifecycle.html#name-SetOnExitedForeground" class="ident">SetOnExitedForeground</a>(<span class="keyword">func</span>())</code></span>
+<span class="codeline" id="line-131"><code>	<span class="comment">// SetOnStarted hooks into an event that says the app is now running.</span></code></span>
+<span class="codeline" id="line-132"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Lifecycle.html#name-SetOnStarted" class="ident">SetOnStarted</a>(<span class="keyword">func</span>())</code></span>
+<span class="codeline" id="line-133"><code>	<span class="comment">// SetOnStopped hooks into an event that says the app is no longer running.</span></code></span>
+<span class="codeline" id="line-134"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Lifecycle.html#name-SetOnStopped" class="ident">SetOnStopped</a>(<span class="keyword">func</span>())</code></span>
+<span class="codeline" id="line-135"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

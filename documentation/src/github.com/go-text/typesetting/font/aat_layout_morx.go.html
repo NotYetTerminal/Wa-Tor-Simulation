@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: aat_layout_morx.go in package github.com/go-text/typesetting/font</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	aat_layout_morx.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/go-text/typesetting/font.html">github.com/go-text/typesetting/font</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> font</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"github.com/go-text/typesetting/font/opentype/tables"</span></label></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-Morx" class="ident">Morx</a> []<a href="#line-20" class="ident">MorxChain</a></code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newMorx" class="ident">newMorx</a></label>(<label for="r1" class="ident">table</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/aat_mortx_src.go.html#line-13" class="ident">Morx</a>) <a href="#line-7" class="ident">Morx</a> {</code></span>
+<span class="codeline" id="line-10"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r1" class="ident">table</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-17" class="ident">Chains</a>) == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-11"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-12"><code>	}</code></span>
+<span class="codeline" id="line-13"><code>	<label for="r2" class="ident">out</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>(<a href="#line-7" class="ident">Morx</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r1" class="ident">table</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-17" class="ident">Chains</a>))</code></span>
+<span class="codeline" id="line-14"><code>	<span class="keyword">for</span> <label for="r3" class="ident">i</label>, <label for="r4" class="ident">c</label> := <span class="keyword">range</span> <label for="r1" class="ident">table</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-17" class="ident">Chains</a> {</code></span>
+<span class="codeline" id="line-15"><code>		<label for="r2" class="ident">out</label>[<label for="r3" class="ident">i</label>] = <a href="#line-26" class="ident">newMorxChain</a>(<label for="r4" class="ident">c</label>)</code></span>
+<span class="codeline" id="line-16"><code>	}</code></span>
+<span class="codeline" id="line-17"><code>	<span class="keyword">return</span> <label for="r2" class="ident">out</label></code></span>
+<span class="codeline" id="line-18"><code>}</code></span>
+<span class="codeline" id="line-19"><code></code></span>
+<span class="codeline" id="line-20"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-MorxChain" class="ident">MorxChain</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-21"><code>	Features     []<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/aat_mortx_src.go.html#line-30" class="ident">AATFeature</a></code></span>
+<span class="codeline" id="line-22"><code>	Subtables    []<a href="#line-36" class="ident">MorxSubtable</a></code></span>
+<span class="codeline" id="line-23"><code>	DefaultFlags <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-24"><code>}</code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">func</span> <label for="r5" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newMorxChain" class="ident">newMorxChain</a></label>(<label for="r6" class="ident">table</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/aat_mortx_src.go.html#line-21" class="ident">MorxChain</a>) (<label for="r7" class="ident">out</label> <a href="#line-20" class="ident">MorxChain</a>) {</code></span>
+<span class="codeline" id="line-27"><code>	<label for="r7" class="ident">out</label>.<a href="#line-23" class="ident">DefaultFlags</a> = <label for="r6" class="ident">table</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-22" class="ident">Flags</a></code></span>
+<span class="codeline" id="line-28"><code>	<label for="r7" class="ident">out</label>.<a href="#line-21" class="ident">Features</a> = <label for="r6" class="ident">table</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-26" class="ident">Features</a></code></span>
+<span class="codeline" id="line-29"><code>	<label for="r7" class="ident">out</label>.<a href="#line-22" class="ident">Subtables</a> = <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="#line-36" class="ident">MorxSubtable</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r6" class="ident">table</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-27" class="ident">Subtables</a>))</code></span>
+<span class="codeline" id="line-30"><code>	<span class="keyword">for</span> <label for="r8" class="ident">i</label>, <label for="r9" class="ident">s</label> := <span class="keyword">range</span> <label for="r6" class="ident">table</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-27" class="ident">Subtables</a> {</code></span>
+<span class="codeline" id="line-31"><code>		<label for="r7" class="ident">out</label>.<a href="#line-22" class="ident">Subtables</a>[<label for="r8" class="ident">i</label>] = <a href="#line-48" class="ident">newMorxSubtable</a>(<label for="r9" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-32"><code>	}</code></span>
+<span class="codeline" id="line-33"><code>	<span class="keyword">return</span> <label for="r7" class="ident">out</label></code></span>
+<span class="codeline" id="line-34"><code>}</code></span>
+<span class="codeline" id="line-35"><code></code></span>
+<span class="codeline" id="line-36"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-MorxSubtable" class="ident">MorxSubtable</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-37"><code>	Data     <span class="keyword">interface</span>{ isMorxSubtable() }</code></span>
+<span class="codeline" id="line-38"><code>	Coverage <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>  <span class="comment">// high byte of the coverage flag</span></code></span>
+<span class="codeline" id="line-39"><code>	Flags    <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a> <span class="comment">// Mask identifying which subtable this is.</span></code></span>
+<span class="codeline" id="line-40"><code>}</code></span>
+<span class="codeline" id="line-41"><code></code></span>
+<span class="codeline" id="line-42"><code><span class="keyword">func</span> (<a href="#line-85" class="ident">MorxRearrangementSubtable</a>) <label for="r10" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.MorxRearrangementSubtable.html#name-isMorxSubtable" class="ident">isMorxSubtable</a></label>() {}</code></span>
+<span class="codeline" id="line-43"><code><span class="keyword">func</span> (<a href="#line-87" class="ident">MorxContextualSubtable</a>) <label for="r11" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.MorxContextualSubtable.html#name-isMorxSubtable" class="ident">isMorxSubtable</a></label>()    {}</code></span>
+<span class="codeline" id="line-44"><code><span class="keyword">func</span> (<a href="#line-92" class="ident">MorxLigatureSubtable</a>) <label for="r12" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.MorxLigatureSubtable.html#name-isMorxSubtable" class="ident">isMorxSubtable</a></label>()      {}</code></span>
+<span class="codeline" id="line-45"><code><span class="keyword">func</span> (<a href="#line-99" class="ident">MorxNonContextualSubtable</a>) <label for="r13" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.MorxNonContextualSubtable.html#name-isMorxSubtable" class="ident">isMorxSubtable</a></label>() {}</code></span>
+<span class="codeline" id="line-46"><code><span class="keyword">func</span> (<a href="#line-103" class="ident">MorxInsertionSubtable</a>) <label for="r14" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.MorxInsertionSubtable.html#name-isMorxSubtable" class="ident">isMorxSubtable</a></label>()     {}</code></span>
+<span class="codeline" id="line-47"><code></code></span>
+<span class="codeline" id="line-48"><code><span class="keyword">func</span> <label for="r15" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newMorxSubtable" class="ident">newMorxSubtable</a></label>(<label for="r16" class="ident">table</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/aat_mortx_src.go.html#line-37" class="ident">MorxChainSubtable</a>) (<label for="r17" class="ident">out</label> <a href="#line-36" class="ident">MorxSubtable</a>) {</code></span>
+<span class="codeline" id="line-49"><code>	<label for="r17" class="ident">out</label>.<a href="#line-38" class="ident">Coverage</a> = <label for="r16" class="ident">table</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-41" class="ident">Coverage</a></code></span>
+<span class="codeline" id="line-50"><code>	<label for="r17" class="ident">out</label>.<a href="#line-39" class="ident">Flags</a> = <label for="r16" class="ident">table</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-45" class="ident">SubFeatureFlags</a></code></span>
+<span class="codeline" id="line-51"><code>	<span class="keyword">switch</span> data := <label for="r16" class="ident">table</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-47" class="ident">Data</a>.(<span class="keyword">type</span>) {</code></span>
+<span class="codeline" id="line-52"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/aat_mortx_src.go.html#line-82" class="ident">MorxSubtableRearrangement</a>:</code></span>
+<span class="codeline" id="line-53"><code>		<label for="r17" class="ident">out</label>.<a href="#line-37" class="ident">Data</a> = <a href="#line-85" class="ident">MorxRearrangementSubtable</a>(<a href="aat_layout_kern_kerx.go.html#line-290" class="ident">newAATStableTable</a>(<label for="r18" class="ident">data</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-83" class="ident">AATStateTableExt</a>))</code></span>
+<span class="codeline" id="line-54"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/aat_mortx_src.go.html#line-87" class="ident">MorxSubtableContextual</a>:</code></span>
+<span class="codeline" id="line-55"><code>		<label for="r17" class="ident">out</label>.<a href="#line-37" class="ident">Data</a> = <a href="#line-87" class="ident">MorxContextualSubtable</a>{</code></span>
+<span class="codeline" id="line-56"><code>			<a href="#line-89" class="ident">Machine</a>:       <a href="aat_layout_kern_kerx.go.html#line-290" class="ident">newAATStableTable</a>(<label for="r19" class="ident">data</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-88" class="ident">AATStateTableExt</a>),</code></span>
+<span class="codeline" id="line-57"><code>			<a href="#line-88" class="ident">Substitutions</a>: <label for="r19" class="ident">data</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-92" class="ident">Substitutions</a>.<a href="opentype/tables/aat_mortx_src.go.html#line-96" class="ident">Substitutions</a>,</code></span>
+<span class="codeline" id="line-58"><code>		}</code></span>
+<span class="codeline" id="line-59"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/aat_mortx_src.go.html#line-115" class="ident">MorxSubtableLigature</a>:</code></span>
+<span class="codeline" id="line-60"><code>		<label for="r20" class="ident">s</label> := <a href="#line-92" class="ident">MorxLigatureSubtable</a>{</code></span>
+<span class="codeline" id="line-61"><code>			<a href="#line-96" class="ident">Machine</a>:        <a href="aat_layout_kern_kerx.go.html#line-290" class="ident">newAATStableTable</a>(<label for="r21" class="ident">data</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-116" class="ident">AATStateTableExt</a>),</code></span>
+<span class="codeline" id="line-62"><code>			<a href="#line-93" class="ident">LigatureAction</a>: <label for="r21" class="ident">data</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-120" class="ident">LigActions</a>,</code></span>
+<span class="codeline" id="line-63"><code>			<a href="#line-94" class="ident">Components</a>:     <label for="r21" class="ident">data</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-121" class="ident">Components</a>,</code></span>
+<span class="codeline" id="line-64"><code>			<a href="#line-95" class="ident">Ligatures</a>:      <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="font.go.html#line-24" class="ident">GID</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r21" class="ident">data</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-122" class="ident">Ligatures</a>)),</code></span>
+<span class="codeline" id="line-65"><code>		}</code></span>
+<span class="codeline" id="line-66"><code>		<span class="keyword">for</span> <label for="r22" class="ident">i</label>, <label for="r23" class="ident">g</label> := <span class="keyword">range</span> <label for="r21" class="ident">data</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-122" class="ident">Ligatures</a> {</code></span>
+<span class="codeline" id="line-67"><code>			<label for="r20" class="ident">s</label>.<a href="#line-95" class="ident">Ligatures</a>[<label for="r22" class="ident">i</label>] = <a href="font.go.html#line-24" class="ident">GID</a>(<label for="r23" class="ident">g</label>)</code></span>
+<span class="codeline" id="line-68"><code>		}</code></span>
+<span class="codeline" id="line-69"><code>		<label for="r17" class="ident">out</label>.<a href="#line-37" class="ident">Data</a> = <label for="r20" class="ident">s</label></code></span>
+<span class="codeline" id="line-70"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/aat_mortx_src.go.html#line-215" class="ident">MorxSubtableNonContextual</a>:</code></span>
+<span class="codeline" id="line-71"><code>		<label for="r17" class="ident">out</label>.<a href="#line-37" class="ident">Data</a> = <a href="#line-99" class="ident">MorxNonContextualSubtable</a>{<a href="#line-100" class="ident">Class</a>: <label for="r24" class="ident">data</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-217" class="ident">Class</a>}</code></span>
+<span class="codeline" id="line-72"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/aat_mortx_src.go.html#line-221" class="ident">MorxSubtableInsertion</a>:</code></span>
+<span class="codeline" id="line-73"><code>		<label for="r25" class="ident">s</label> := <a href="#line-103" class="ident">MorxInsertionSubtable</a>{</code></span>
+<span class="codeline" id="line-74"><code>			<a href="#line-107" class="ident">Machine</a>:    <a href="aat_layout_kern_kerx.go.html#line-290" class="ident">newAATStableTable</a>(<label for="r26" class="ident">data</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-222" class="ident">AATStateTableExt</a>),</code></span>
+<span class="codeline" id="line-75"><code>			<a href="#line-106" class="ident">Insertions</a>: <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="font.go.html#line-24" class="ident">GID</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r26" class="ident">data</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-223" class="ident">Insertions</a>)),</code></span>
+<span class="codeline" id="line-76"><code>		}</code></span>
+<span class="codeline" id="line-77"><code>		<span class="keyword">for</span> <label for="r27" class="ident">i</label>, <label for="r28" class="ident">g</label> := <span class="keyword">range</span> <label for="r26" class="ident">data</label>.<a href="opentype/tables/aat_mortx_src.go.html#line-223" class="ident">Insertions</a> {</code></span>
+<span class="codeline" id="line-78"><code>			<label for="r25" class="ident">s</label>.<a href="#line-106" class="ident">Insertions</a>[<label for="r27" class="ident">i</label>] = <a href="font.go.html#line-24" class="ident">GID</a>(<label for="r28" class="ident">g</label>)</code></span>
+<span class="codeline" id="line-79"><code>		}</code></span>
+<span class="codeline" id="line-80"><code>		<label for="r17" class="ident">out</label>.<a href="#line-37" class="ident">Data</a> = <label for="r25" class="ident">s</label></code></span>
+<span class="codeline" id="line-81"><code>	}</code></span>
+<span class="codeline" id="line-82"><code>	<span class="keyword">return</span> <label for="r17" class="ident">out</label></code></span>
+<span class="codeline" id="line-83"><code>}</code></span>
+<span class="codeline" id="line-84"><code></code></span>
+<span class="codeline" id="line-85"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-MorxRearrangementSubtable" class="ident">MorxRearrangementSubtable</a> <a href="aat_layout_kern_kerx.go.html#line-283" class="ident">AATStateTable</a></code></span>
+<span class="codeline" id="line-86"><code></code></span>
+<span class="codeline" id="line-87"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-MorxContextualSubtable" class="ident">MorxContextualSubtable</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-88"><code>	Substitutions []<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/aat_common.go.html#line-201" class="ident">AATLookup</a></code></span>
+<span class="codeline" id="line-89"><code>	Machine       <a href="aat_layout_kern_kerx.go.html#line-283" class="ident">AATStateTable</a></code></span>
+<span class="codeline" id="line-90"><code>}</code></span>
+<span class="codeline" id="line-91"><code></code></span>
+<span class="codeline" id="line-92"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-MorxLigatureSubtable" class="ident">MorxLigatureSubtable</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-93"><code>	LigatureAction []<a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-94"><code>	Components     []<a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-95"><code>	Ligatures      []<a href="font.go.html#line-24" class="ident">GID</a></code></span>
+<span class="codeline" id="line-96"><code>	Machine        <a href="aat_layout_kern_kerx.go.html#line-283" class="ident">AATStateTable</a></code></span>
+<span class="codeline" id="line-97"><code>}</code></span>
+<span class="codeline" id="line-98"><code></code></span>
+<span class="codeline" id="line-99"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-MorxNonContextualSubtable" class="ident">MorxNonContextualSubtable</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-100"><code>	Class <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/aat_common.go.html#line-201" class="ident">AATLookup</a> <span class="comment">// the lookup value is interpreted as a GlyphIndex</span></code></span>
+<span class="codeline" id="line-101"><code>}</code></span>
+<span class="codeline" id="line-102"><code></code></span>
+<span class="codeline" id="line-103"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-MorxInsertionSubtable" class="ident">MorxInsertionSubtable</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-104"><code>	<span class="comment">// After successul parsing, this array may be safely</span></code></span>
+<span class="codeline" id="line-105"><code><span class="comment">	// indexed by the indexes and counts from Machine entries.</span></code></span>
+<span class="codeline" id="line-106"><code>	Insertions []<a href="font.go.html#line-24" class="ident">GID</a></code></span>
+<span class="codeline" id="line-107"><code>	Machine    <a href="aat_layout_kern_kerx.go.html#line-283" class="ident">AATStateTable</a></code></span>
+<span class="codeline" id="line-108"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

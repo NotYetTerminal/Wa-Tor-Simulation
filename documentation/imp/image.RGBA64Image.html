@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method Implmentations: image.RGBA64Image</title>
+<link href="../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+<pre><code><span style="font-size:x-large;">type <a href="../pkg/image.html">image</a>.<b><a href="../src/image/image.go.html#line-66">RGBA64Image</a></b></span><span style="font-size:large;"> <b><i>(interface)</i></b></span>
+
+<code><span class="title">Method Implmentations<span class="title-stat"><i></i></span></span>
+
+<div class="anchor" id="name-At">	<a href="../src/image/image.go.html#line-61">At</a>(x, y <a href="../pkg/builtin.html#name-int">int</a>) <a href="../pkg/image/color.html">color</a>.<a href="../pkg/image/color.html#name-Color">Color</a>
+		(*<a href="../pkg/image.html#name-Alpha">Alpha</a>).<b><a href="../src/image/image.go.html#line-638">At</a></b>
+		(*<a href="../pkg/image.html#name-Alpha16">Alpha16</a>).<b><a href="../src/image/image.go.html#line-746">At</a></b>
+		(*<a href="../pkg/image.html#name-CMYK">CMYK</a>).<b><a href="../src/image/image.go.html#line-1054">At</a></b>
+		(*<a href="../pkg/image.html#name-Gray">Gray</a>).<b><a href="../src/image/image.go.html#line-857">At</a></b>
+		(*<a href="../pkg/image.html#name-Gray16">Gray16</a>).<b><a href="../src/image/image.go.html#line-954">At</a></b>
+		(*<a href="../pkg/image.html#name-NRGBA">NRGBA</a>).<b><a href="../src/image/image.go.html#line-367">At</a></b>
+		(*<a href="../pkg/image.html#name-NRGBA64">NRGBA64</a>).<b><a href="../src/image/image.go.html#line-494">At</a></b>
+		(*<a href="../pkg/image.html#name-NYCbCrA">NYCbCrA</a>).<b><a href="../src/image/ycbcr.go.html#line-215">At</a></b>
+		(*<a href="../pkg/image.html#name-Paletted">Paletted</a>).<b><a href="../src/image/image.go.html#line-1165">At</a></b>
+		<a href="../pkg/image.html#name-Rectangle">Rectangle</a>.<b><a href="../src/image/geom.go.html#line-242">At</a></b>
+		(*<a href="../pkg/image.html#name-RGBA">RGBA</a>).<b><a href="../src/image/image.go.html#line-116">At</a></b>
+		(*<a href="../pkg/image.html#name-RGBA64">RGBA64</a>).<b><a href="../src/image/image.go.html#line-250">At</a></b>
+		(*<a href="../pkg/image.html#name-Uniform">Uniform</a>).<b><a href="../src/image/names.go.html#line-42">At</a></b>
+		(*<a href="../pkg/image.html#name-YCbCr">YCbCr</a>).<b><a href="../src/image/ycbcr.go.html#line-71">At</a></b>
+		image/draw.<a href="../pkg/image/draw.html#name-RGBA64Image">RGBA64Image</a>.<b><a href="../src/image/image.go.html#line-61">At</a></b>
+		*github.com/srwiley/rasterx.<a href="../pkg/github.com/srwiley/rasterx.html#name-ClipImage">ClipImage</a>.<b><a href="../src/github.com/srwiley/rasterx/scan.go.html#line-62">At</a></b>
+		*github.com/srwiley/rasterx.<a href="../pkg/github.com/srwiley/rasterx.html#name-ColorFuncImage">ColorFuncImage</a>.<b><a href="../src/github.com/srwiley/rasterx/scan.go.html#line-23">At</a></b></div>
+<div class="anchor" id="name-Bounds">	<a href="../src/image/image.go.html#line-57">Bounds</a>() <a href="../pkg/image.html#name-Rectangle">Rectangle</a>
+		(*<a href="../pkg/image.html#name-Alpha">Alpha</a>).<b><a href="../src/image/image.go.html#line-636">Bounds</a></b>
+		(*<a href="../pkg/image.html#name-Alpha16">Alpha16</a>).<b><a href="../src/image/image.go.html#line-744">Bounds</a></b>
+		(*<a href="../pkg/image.html#name-CMYK">CMYK</a>).<b><a href="../src/image/image.go.html#line-1052">Bounds</a></b>
+		(*<a href="../pkg/image.html#name-Gray">Gray</a>).<b><a href="../src/image/image.go.html#line-855">Bounds</a></b>
+		(*<a href="../pkg/image.html#name-Gray16">Gray16</a>).<b><a href="../src/image/image.go.html#line-952">Bounds</a></b>
+		(*<a href="../pkg/image.html#name-NRGBA">NRGBA</a>).<b><a href="../src/image/image.go.html#line-365">Bounds</a></b>
+		(*<a href="../pkg/image.html#name-NRGBA64">NRGBA64</a>).<b><a href="../src/image/image.go.html#line-492">Bounds</a></b>
+		(*<a href="../pkg/image.html#name-NYCbCrA">NYCbCrA</a>).<i><a href="../src/image/ycbcr.go.html#line-206">YCbCr</a></i>.<b><a href="../src/image/ycbcr.go.html#line-67">Bounds</a></b>
+		(*<a href="../pkg/image.html#name-Paletted">Paletted</a>).<b><a href="../src/image/image.go.html#line-1163">Bounds</a></b>
+		<a href="../pkg/image.html#name-Rectangle">Rectangle</a>.<b><a href="../src/image/geom.go.html#line-258">Bounds</a></b>
+		(*<a href="../pkg/image.html#name-RGBA">RGBA</a>).<b><a href="../src/image/image.go.html#line-114">Bounds</a></b>
+		(*<a href="../pkg/image.html#name-RGBA64">RGBA64</a>).<b><a href="../src/image/image.go.html#line-248">Bounds</a></b>
+		(*<a href="../pkg/image.html#name-Uniform">Uniform</a>).<b><a href="../src/image/names.go.html#line-40">Bounds</a></b>
+		(*<a href="../pkg/image.html#name-YCbCr">YCbCr</a>).<b><a href="../src/image/ycbcr.go.html#line-67">Bounds</a></b>
+		image/draw.<a href="../pkg/image/draw.html#name-RGBA64Image">RGBA64Image</a>.<b><a href="../src/image/image.go.html#line-57">Bounds</a></b>
+		*github.com/srwiley/rasterx.<a href="../pkg/github.com/srwiley/rasterx.html#name-ClipImage">ClipImage</a>.<i><a href="../src/github.com/srwiley/rasterx/scan.go.html#line-50">ColorFuncImage</a></i>.<i><a href="../src/github.com/srwiley/rasterx/scan.go.html#line-31">Uniform</a></i>.<b><a href="../src/image/names.go.html#line-40">Bounds</a></b>
+		*github.com/srwiley/rasterx.<a href="../pkg/github.com/srwiley/rasterx.html#name-ColorFuncImage">ColorFuncImage</a>.<i><a href="../src/github.com/srwiley/rasterx/scan.go.html#line-31">Uniform</a></i>.<b><a href="../src/image/names.go.html#line-40">Bounds</a></b></div>
+<div class="anchor" id="name-ColorModel">	<a href="../src/image/image.go.html#line-54">ColorModel</a>() <a href="../pkg/image/color.html">color</a>.<a href="../pkg/image/color.html#name-Model">Model</a>
+		(*<a href="../pkg/image.html#name-Alpha">Alpha</a>).<b><a href="../src/image/image.go.html#line-634">ColorModel</a></b>
+		(*<a href="../pkg/image.html#name-Alpha16">Alpha16</a>).<b><a href="../src/image/image.go.html#line-742">ColorModel</a></b>
+		(*<a href="../pkg/image.html#name-CMYK">CMYK</a>).<b><a href="../src/image/image.go.html#line-1050">ColorModel</a></b>
+		(*<a href="../pkg/image.html#name-Gray">Gray</a>).<b><a href="../src/image/image.go.html#line-853">ColorModel</a></b>
+		(*<a href="../pkg/image.html#name-Gray16">Gray16</a>).<b><a href="../src/image/image.go.html#line-950">ColorModel</a></b>
+		(*<a href="../pkg/image.html#name-NRGBA">NRGBA</a>).<b><a href="../src/image/image.go.html#line-363">ColorModel</a></b>
+		(*<a href="../pkg/image.html#name-NRGBA64">NRGBA64</a>).<b><a href="../src/image/image.go.html#line-490">ColorModel</a></b>
+		(*<a href="../pkg/image.html#name-NYCbCrA">NYCbCrA</a>).<b><a href="../src/image/ycbcr.go.html#line-211">ColorModel</a></b>
+		(*<a href="../pkg/image.html#name-Paletted">Paletted</a>).<b><a href="../src/image/image.go.html#line-1161">ColorModel</a></b>
+		<a href="../pkg/image.html#name-Rectangle">Rectangle</a>.<b><a href="../src/image/geom.go.html#line-263">ColorModel</a></b>
+		(*<a href="../pkg/image.html#name-RGBA">RGBA</a>).<b><a href="../src/image/image.go.html#line-112">ColorModel</a></b>
+		(*<a href="../pkg/image.html#name-RGBA64">RGBA64</a>).<b><a href="../src/image/image.go.html#line-246">ColorModel</a></b>
+		(*<a href="../pkg/image.html#name-Uniform">Uniform</a>).<b><a href="../src/image/names.go.html#line-32">ColorModel</a></b>
+		(*<a href="../pkg/image.html#name-YCbCr">YCbCr</a>).<b><a href="../src/image/ycbcr.go.html#line-63">ColorModel</a></b>
+		image/draw.<a href="../pkg/image/draw.html#name-RGBA64Image">RGBA64Image</a>.<b><a href="../src/image/image.go.html#line-54">ColorModel</a></b>
+		*github.com/srwiley/rasterx.<a href="../pkg/github.com/srwiley/rasterx.html#name-ClipImage">ClipImage</a>.<i><a href="../src/github.com/srwiley/rasterx/scan.go.html#line-50">ColorFuncImage</a></i>.<i><a href="../src/github.com/srwiley/rasterx/scan.go.html#line-31">Uniform</a></i>.<b><a href="../src/image/names.go.html#line-32">ColorModel</a></b>
+		*github.com/srwiley/rasterx.<a href="../pkg/github.com/srwiley/rasterx.html#name-ColorFuncImage">ColorFuncImage</a>.<i><a href="../src/github.com/srwiley/rasterx/scan.go.html#line-31">Uniform</a></i>.<b><a href="../src/image/names.go.html#line-32">ColorModel</a></b></div>
+<div class="anchor" id="name-RGBA64At">	<a href="../src/image/image.go.html#line-71">RGBA64At</a>(x, y <a href="../pkg/builtin.html#name-int">int</a>) <a href="../pkg/image/color.html">color</a>.<a href="../pkg/image/color.html#name-RGBA64">RGBA64</a>
+		(*<a href="../pkg/image.html#name-Alpha">Alpha</a>).<b><a href="../src/image/image.go.html#line-642">RGBA64At</a></b>
+		(*<a href="../pkg/image.html#name-Alpha16">Alpha16</a>).<b><a href="../src/image/image.go.html#line-750">RGBA64At</a></b>
+		(*<a href="../pkg/image.html#name-CMYK">CMYK</a>).<b><a href="../src/image/image.go.html#line-1058">RGBA64At</a></b>
+		(*<a href="../pkg/image.html#name-Gray">Gray</a>).<b><a href="../src/image/image.go.html#line-861">RGBA64At</a></b>
+		(*<a href="../pkg/image.html#name-Gray16">Gray16</a>).<b><a href="../src/image/image.go.html#line-958">RGBA64At</a></b>
+		(*<a href="../pkg/image.html#name-NRGBA">NRGBA</a>).<b><a href="../src/image/image.go.html#line-371">RGBA64At</a></b>
+		(*<a href="../pkg/image.html#name-NRGBA64">NRGBA64</a>).<b><a href="../src/image/image.go.html#line-498">RGBA64At</a></b>
+		(*<a href="../pkg/image.html#name-NYCbCrA">NYCbCrA</a>).<b><a href="../src/image/ycbcr.go.html#line-219">RGBA64At</a></b>
+		(*<a href="../pkg/image.html#name-Paletted">Paletted</a>).<b><a href="../src/image/image.go.html#line-1176">RGBA64At</a></b>
+		<a href="../pkg/image.html#name-Rectangle">Rectangle</a>.<b><a href="../src/image/geom.go.html#line-250">RGBA64At</a></b>
+		(*<a href="../pkg/image.html#name-RGBA">RGBA</a>).<b><a href="../src/image/image.go.html#line-120">RGBA64At</a></b>
+		(*<a href="../pkg/image.html#name-RGBA64">RGBA64</a>).<b><a href="../src/image/image.go.html#line-254">RGBA64At</a></b>
+		(*<a href="../pkg/image.html#name-Uniform">Uniform</a>).<b><a href="../src/image/names.go.html#line-44">RGBA64At</a></b>
+		(*<a href="../pkg/image.html#name-YCbCr">YCbCr</a>).<b><a href="../src/image/ycbcr.go.html#line-75">RGBA64At</a></b>
+		image/draw.<a href="../pkg/image/draw.html#name-RGBA64Image">RGBA64Image</a>.<b><a href="../src/image/image.go.html#line-71">RGBA64At</a></b>
+		*github.com/srwiley/rasterx.<a href="../pkg/github.com/srwiley/rasterx.html#name-ClipImage">ClipImage</a>.<i><a href="../src/github.com/srwiley/rasterx/scan.go.html#line-50">ColorFuncImage</a></i>.<i><a href="../src/github.com/srwiley/rasterx/scan.go.html#line-31">Uniform</a></i>.<b><a href="../src/image/names.go.html#line-44">RGBA64At</a></b>
+		*github.com/srwiley/rasterx.<a href="../pkg/github.com/srwiley/rasterx.html#name-ColorFuncImage">ColorFuncImage</a>.<i><a href="../src/github.com/srwiley/rasterx/scan.go.html#line-31">Uniform</a></i>.<b><a href="../src/image/names.go.html#line-44">RGBA64At</a></b></div></code></pre><pre id="footer">
+<table><tr><td><img src="../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

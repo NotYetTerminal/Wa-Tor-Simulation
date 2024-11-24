@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/srwiley/oksvg</title>
+<link href="../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>oksvg</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-github.com/srwiley/oksvg">github.com/srwiley/oksvg</a><i> (on <a href="https://pkg.go.dev/github.com/srwiley/oksvg" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../dep/github.com/srwiley/oksvg.html">17 packages</a>, and imported by <a href="../../../dep/github.com/srwiley/oksvg.html#imported-by">2 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/oksvg/definitions.go.html">definitions.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/oksvg/draw.go.html">draw.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html">icon_cursor.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html">path_cursor.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/oksvg/path_style.go.html">path_style.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/oksvg/public.go.html">public.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/oksvg/svg_icon.go.html">svg_icon.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html">svg_path.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/oksvg/utils.go.html">utils.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 9, in which 6 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-ErrorMode" data-popularity="120">	<input type='checkbox' class="fold" id="ErrorMode-fold-content"><label for="ErrorMode-fold-content"> type <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-21">ErrorMode</a> <a href="../../builtin.html#name-uint8">uint8</a> <i>(basic type)</i></label><span id='ErrorMode-fold-content-docs' class="fold-docs">
+<span class="md-text">		ErrorMode is the for setting how the parser reacts to unparsed elements</span>
+
+		<input type='checkbox' class="fold" id="ErrorMode-fold-params"><label for="ErrorMode-fold-params">As Inputs Of (<i>at least 3, all are exported</i>)</label><span id='ErrorMode-fold-params-items' class="fold-items"><span>
+			func <a href="#name-ReadIcon">ReadIcon</a>(iconFile <a href="../../builtin.html#name-string">string</a>, errMode ...<b>ErrorMode</b>) (*<a href="#name-SvgIcon">SvgIcon</a>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-ReadIconStream">ReadIconStream</a>(stream <a href="../../io.html">io</a>.<a href="../../io.html#name-Reader">Reader</a>, errMode ...<b>ErrorMode</b>) (*<a href="#name-SvgIcon">SvgIcon</a>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-ReadReplacingCurrentColor">ReadReplacingCurrentColor</a>(stream <a href="../../io.html">io</a>.<a href="../../io.html#name-Reader">Reader</a>, currentColor <a href="../../builtin.html#name-string">string</a>, errMode ...<b>ErrorMode</b>) (icon *<a href="#name-SvgIcon">SvgIcon</a>, err <a href="../../builtin.html#name-error">error</a>)</span></span>
+		<input type='checkbox' class="fold" id="ErrorMode-fold-values"><label for="ErrorMode-fold-values">As Types Of (<i>total 3, all are exported</i>)</label><span id='ErrorMode-fold-values-items' class="fold-items"><span>
+			const <a href="#name-IgnoreErrorMode">IgnoreErrorMode</a></span><span>
+			const <a href="#name-StrictErrorMode">StrictErrorMode</a></span><span>
+			const <a href="#name-WarnErrorMode">WarnErrorMode</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-IconCursor" data-popularity="1750">	<input type='checkbox' class="fold" id="IconCursor-fold-content"><label for="IconCursor-fold-content"> type <a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-21">IconCursor</a> <i>(struct)</i></label><span id='IconCursor-fold-content-docs' class="fold-docs">
+<span class="md-text">		IconCursor is used while parsing SVG files.</span>
+
+		<input type='checkbox' class="fold" id="IconCursor-fold-fields"><label for="IconCursor-fold-fields">Fields (<i>total 21, in which 4 are exported</i>)</label><span id='IconCursor-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-22">PathCursor</a> <i><a href="#name-PathCursor">PathCursor</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-22" class="path-duplicate">PathCursor</a>.<a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-30">ErrorMode</a> <i><a href="#name-ErrorMode">ErrorMode</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-22" class="path-duplicate">PathCursor</a>.<a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-24">Path</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Path">Path</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-24">StyleStack</a> <i>[]<a href="#name-PathStyle">PathStyle</a></i></span></span>
+			<input type='checkbox' class="showhide" id="IconCursor-showhide-fields"><i><label for="IconCursor-showhide-fields" class="show-inline">/* 17 unexporteds ... */</label><label for="IconCursor-showhide-fields" class="hide-inline">/* 17 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-27">currentDef</a> <i>[]<a href="#name-definition">definition</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-25">grad</a> <i>*<a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Gradient">Gradient</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-23">icon</a> <i>*<a href="#name-SvgIcon">SvgIcon</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-26">inDefs</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-26">inDefsStyle</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-26">inDescText</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-26">inGrad</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-26">inTitleText</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-22">PathCursor</a>.<a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-26">cntlPtX</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-22" class="path-duplicate">PathCursor</a>.<a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-26">cntlPtY</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-22" class="path-duplicate">PathCursor</a>.<a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-31">inPath</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-22" class="path-duplicate">PathCursor</a>.<a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-29">lastKey</a> <i><a href="../../builtin.html#name-uint8">uint8</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-22" class="path-duplicate">PathCursor</a>.<a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-27">pathStartX</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-22" class="path-duplicate">PathCursor</a>.<a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-27">pathStartY</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-22" class="path-duplicate">PathCursor</a>.<a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-25">placeX</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-22" class="path-duplicate">PathCursor</a>.<a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-25">placeY</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-22" class="path-duplicate">PathCursor</a>.<a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-28">points</a> <i>[]<a href="../../builtin.html#name-float64">float64</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="IconCursor-fold-methods"><label for="IconCursor-fold-methods">Methods (<i>total 30, in which 17 are exported</i>)</label><span id='IconCursor-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-AddArcFromA"><label for="IconCursor-fold-method-AddArcFromA">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-123">AddArcFromA</a>(points []<a href="../../builtin.html#name-float64">float64</a>)</label><span id='IconCursor-fold-method-AddArcFromA-docs' class="fold-docs">
+<span class="md-text">				AddArcFromA adds a path of an arc element to the cursor path to the PathCursor</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-AddTo"><label for="IconCursor-fold-method-AddTo">( IconCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-126">AddTo</a>(q <a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Adder">Adder</a>)</label><span id='IconCursor-fold-method-AddTo-docs' class="fold-docs">
+<span class="md-text">				AddTo adds the Path p to q.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-Clear"><label for="IconCursor-fold-method-Clear">(*IconCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-94">Clear</a>()</label><span id='IconCursor-fold-method-Clear-docs' class="fold-docs">
+<span class="md-text">				Clear zeros the path slice</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-CompilePath"><label for="IconCursor-fold-method-CompilePath">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-132">CompilePath</a>(svgPath <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='IconCursor-fold-method-CompilePath-docs' class="fold-docs">
+<span class="md-text">				CompilePath translates the svgPath description string into a rasterx path.
+				All valid SVG path elements are interpreted to rasterx equivalents.
+				The resulting path element is stored in the PathCursor.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-CubeBezier"><label for="IconCursor-fold-method-CubeBezier">(*IconCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-114">CubeBezier</a>(b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='IconCursor-fold-method-CubeBezier-docs' class="fold-docs">
+<span class="md-text">				CubeBezier adds a cubic segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-EllipseAt"><label for="IconCursor-fold-method-EllipseAt">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-111">EllipseAt</a>(cx, cy, rx, ry <a href="../../builtin.html#name-float64">float64</a>)</label><span id='IconCursor-fold-method-EllipseAt-docs' class="fold-docs">
+<span class="md-text">				EllipseAt adds a path of an elipse centered at cx, cy of radius rx and ry
+				to the PathCursor</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-GetPoints"><label for="IconCursor-fold-method-GetPoints">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-80">GetPoints</a>(dataPoints <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='IconCursor-fold-method-GetPoints-docs' class="fold-docs">
+<span class="md-text">				GetPoints reads a set of floating point values from the SVG format number string,
+				and add them to the cursor's points slice.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-Line"><label for="IconCursor-fold-method-Line">(*IconCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-104">Line</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='IconCursor-fold-method-Line-docs' class="fold-docs">
+<span class="md-text">				Line adds a linear segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-PushStyle"><label for="IconCursor-fold-method-PushStyle">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-76">PushStyle</a>(attrs []<a href="../../encoding/xml.html">xml</a>.<a href="../../encoding/xml.html#name-Attr">Attr</a>) <a href="../../builtin.html#name-error">error</a></label><span id='IconCursor-fold-method-PushStyle-docs' class="fold-docs">
+<span class="md-text">				PushStyle parses the style element, and push it on the style stack. Only color and opacity are supported
+				for fill. Note that this parses both the contents of a style attribute plus
+				direct fill and opacity attributes.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-QuadBezier"><label for="IconCursor-fold-method-QuadBezier">(*IconCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-109">QuadBezier</a>(b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='IconCursor-fold-method-QuadBezier-docs' class="fold-docs">
+<span class="md-text">				QuadBezier adds a quadratic segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-ReadFloat"><label for="IconCursor-fold-method-ReadFloat">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-53">ReadFloat</a>(numStr <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='IconCursor-fold-method-ReadFloat-docs' class="fold-docs">
+<span class="md-text">				ReadFloat reads a floating point value and adds it to the cursor's points slice.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-ReadGradAttr"><label for="IconCursor-fold-method-ReadGradAttr">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-49">ReadGradAttr</a>(attr <a href="../../encoding/xml.html">xml</a>.<a href="../../encoding/xml.html#name-Attr">Attr</a>) (err <a href="../../builtin.html#name-error">error</a>)</label><span id='IconCursor-fold-method-ReadGradAttr-docs' class="fold-docs">
+<span class="md-text">				ReadGradAttr reads an SVG gradient attribute</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-ReadGradURL"><label for="IconCursor-fold-method-ReadGradURL">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-34">ReadGradURL</a>(v <a href="../../builtin.html#name-string">string</a>, defaultColor interface{}) (grad <a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Gradient">Gradient</a>, ok <a href="../../builtin.html#name-bool">bool</a>)</label><span id='IconCursor-fold-method-ReadGradURL-docs' class="fold-docs">
+<span class="md-text">				ReadGradURL reads an SVG format gradient url
+				Since the context of the gradient can affect the colors
+				the current fill or line color is passed in and used in
+				the case of a nil stopClor value</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-Start"><label for="IconCursor-fold-method-Start">(*IconCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-99">Start</a>(a <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='IconCursor-fold-method-Start-docs' class="fold-docs">
+<span class="md-text">				Start starts a new curve at the given point.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-Stop"><label for="IconCursor-fold-method-Stop">(*IconCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-119">Stop</a>(closeLoop <a href="../../builtin.html#name-bool">bool</a>)</label><span id='IconCursor-fold-method-Stop-docs' class="fold-docs">
+<span class="md-text">				Stop joins the ends of the path</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-String"><label for="IconCursor-fold-method-String">( IconCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-89">String</a>() <a href="../../builtin.html#name-string">string</a></label><span id='IconCursor-fold-method-String-docs' class="fold-docs">
+<span class="md-text">				String returns a readable representation of a Path.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-ToSVGPath"><label for="IconCursor-fold-method-ToSVGPath">( IconCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-57">ToSVGPath</a>() <a href="../../builtin.html#name-string">string</a></label><span id='IconCursor-fold-method-ToSVGPath-docs' class="fold-docs">
+<span class="md-text">				ToSVGPath returns a string representation of the path</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="IconCursor-showhide-methods"><i><label for="IconCursor-showhide-methods" class="show-inline">/* 13 unexporteds ... */</label><label for="IconCursor-showhide-methods" class="hide-inline">/* 13 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-373">adaptClasses</a>(pathStyle *<a href="#name-PathStyle">PathStyle</a>, className <a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="IconCursor-fold-method-addSeg"><label for="IconCursor-fold-method-addSeg">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-207">addSeg</a>(segString <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='IconCursor-fold-method-addSeg-docs' class="fold-docs">
+<span class="md-text">				addSeg decodes an SVG seqment string into equivalent raster path commands saved
+				in the cursor's Path</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-177">hasSetsOrMore</a>(sz <a href="../../builtin.html#name-int">int</a>, rel <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-390">init</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-167">parseTransform</a>(v <a href="../../builtin.html#name-string">string</a>) (<a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Matrix2D">Matrix2D</a>, <a href="../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-164">pointsToAbs</a>(sz <a href="../../builtin.html#name-int">int</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-322">readStartElement</a>(se <a href="../../encoding/xml.html">xml</a>.<a href="../../encoding/xml.html#name-StartElement">StartElement</a>) (err <a href="../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-191">readStyleAttr</a>(curStyle *<a href="#name-PathStyle">PathStyle</a>, k, v <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-108">readTransformAttr</a>(m1 <a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Matrix2D">Matrix2D</a>, k <a href="../../builtin.html#name-string">string</a>) (<a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Matrix2D">Matrix2D</a>, <a href="../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-196">reflectControlCube</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-187">reflectControlQuad</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-382">returnError</a>(errMsg <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*IconCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-157">valsToAbs</a>(last <a href="../../builtin.html#name-float64">float64</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="IconCursor-fold-impls"><label for="IconCursor-fold-impls">Implements (<i>at least 5, in which 2 are exported</i>)</label><span id='IconCursor-fold-impls-items' class="fold-items"><span>
+			*IconCursor : github.com/srwiley/rasterx.<a href="rasterx.html#name-Adder">Adder</a></span><span>
+			 IconCursor : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="IconCursor-showhide-impls"><i><label for="IconCursor-showhide-impls" class="show-inline">/* 3+ unexporteds ... */</label><label for="IconCursor-showhide-impls" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			 IconCursor : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 IconCursor : os/signal.<a href="../../os/signal.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 IconCursor : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-PathCursor" data-popularity="1300">	<input type='checkbox' class="fold" id="PathCursor-fold-content"><label for="PathCursor-fold-content"> type <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-23">PathCursor</a> <i>(struct)</i></label><span id='PathCursor-fold-content-docs' class="fold-docs">
+<span class="md-text">		PathCursor is used to parse SVG format path strings into a rasterx Path</span>
+
+		<input type='checkbox' class="fold" id="PathCursor-fold-fields"><label for="PathCursor-fold-fields">Fields (<i>total 11, in which 2 are exported</i>)</label><span id='PathCursor-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-30">ErrorMode</a> <i><a href="#name-ErrorMode">ErrorMode</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-24">Path</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Path">Path</a></i></span></span>
+			<input type='checkbox' class="showhide" id="PathCursor-showhide-fields"><i><label for="PathCursor-showhide-fields" class="show-inline">/* 9 unexporteds ... */</label><label for="PathCursor-showhide-fields" class="hide-inline">/* 9 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-26">cntlPtX</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-26">cntlPtY</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-31">inPath</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-29">lastKey</a> <i><a href="../../builtin.html#name-uint8">uint8</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-27">pathStartX</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-27">pathStartY</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-25">placeX</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-25">placeY</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-28">points</a> <i>[]<a href="../../builtin.html#name-float64">float64</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="PathCursor-fold-methods"><label for="PathCursor-fold-methods">Methods (<i>total 21, in which 14 are exported</i>)</label><span id='PathCursor-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-AddArcFromA"><label for="PathCursor-fold-method-AddArcFromA">(*PathCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-123">AddArcFromA</a>(points []<a href="../../builtin.html#name-float64">float64</a>)</label><span id='PathCursor-fold-method-AddArcFromA-docs' class="fold-docs">
+<span class="md-text">				AddArcFromA adds a path of an arc element to the cursor path to the PathCursor</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-AddTo"><label for="PathCursor-fold-method-AddTo">( PathCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-126">AddTo</a>(q <a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Adder">Adder</a>)</label><span id='PathCursor-fold-method-AddTo-docs' class="fold-docs">
+<span class="md-text">				AddTo adds the Path p to q.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-Clear"><label for="PathCursor-fold-method-Clear">(*PathCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-94">Clear</a>()</label><span id='PathCursor-fold-method-Clear-docs' class="fold-docs">
+<span class="md-text">				Clear zeros the path slice</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-CompilePath"><label for="PathCursor-fold-method-CompilePath">(*PathCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-132">CompilePath</a>(svgPath <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='PathCursor-fold-method-CompilePath-docs' class="fold-docs">
+<span class="md-text">				CompilePath translates the svgPath description string into a rasterx path.
+				All valid SVG path elements are interpreted to rasterx equivalents.
+				The resulting path element is stored in the PathCursor.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-CubeBezier"><label for="PathCursor-fold-method-CubeBezier">(*PathCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-114">CubeBezier</a>(b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='PathCursor-fold-method-CubeBezier-docs' class="fold-docs">
+<span class="md-text">				CubeBezier adds a cubic segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-EllipseAt"><label for="PathCursor-fold-method-EllipseAt">(*PathCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-111">EllipseAt</a>(cx, cy, rx, ry <a href="../../builtin.html#name-float64">float64</a>)</label><span id='PathCursor-fold-method-EllipseAt-docs' class="fold-docs">
+<span class="md-text">				EllipseAt adds a path of an elipse centered at cx, cy of radius rx and ry
+				to the PathCursor</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-GetPoints"><label for="PathCursor-fold-method-GetPoints">(*PathCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-80">GetPoints</a>(dataPoints <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='PathCursor-fold-method-GetPoints-docs' class="fold-docs">
+<span class="md-text">				GetPoints reads a set of floating point values from the SVG format number string,
+				and add them to the cursor's points slice.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-Line"><label for="PathCursor-fold-method-Line">(*PathCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-104">Line</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='PathCursor-fold-method-Line-docs' class="fold-docs">
+<span class="md-text">				Line adds a linear segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-QuadBezier"><label for="PathCursor-fold-method-QuadBezier">(*PathCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-109">QuadBezier</a>(b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='PathCursor-fold-method-QuadBezier-docs' class="fold-docs">
+<span class="md-text">				QuadBezier adds a quadratic segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-ReadFloat"><label for="PathCursor-fold-method-ReadFloat">(*PathCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-53">ReadFloat</a>(numStr <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='PathCursor-fold-method-ReadFloat-docs' class="fold-docs">
+<span class="md-text">				ReadFloat reads a floating point value and adds it to the cursor's points slice.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-Start"><label for="PathCursor-fold-method-Start">(*PathCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-99">Start</a>(a <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='PathCursor-fold-method-Start-docs' class="fold-docs">
+<span class="md-text">				Start starts a new curve at the given point.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-Stop"><label for="PathCursor-fold-method-Stop">(*PathCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-119">Stop</a>(closeLoop <a href="../../builtin.html#name-bool">bool</a>)</label><span id='PathCursor-fold-method-Stop-docs' class="fold-docs">
+<span class="md-text">				Stop joins the ends of the path</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-String"><label for="PathCursor-fold-method-String">( PathCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-89">String</a>() <a href="../../builtin.html#name-string">string</a></label><span id='PathCursor-fold-method-String-docs' class="fold-docs">
+<span class="md-text">				String returns a readable representation of a Path.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-ToSVGPath"><label for="PathCursor-fold-method-ToSVGPath">( PathCursor) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-57">ToSVGPath</a>() <a href="../../builtin.html#name-string">string</a></label><span id='PathCursor-fold-method-ToSVGPath-docs' class="fold-docs">
+<span class="md-text">				ToSVGPath returns a string representation of the path</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="PathCursor-showhide-methods"><i><label for="PathCursor-showhide-methods" class="show-inline">/* 7 unexporteds ... */</label><label for="PathCursor-showhide-methods" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="PathCursor-fold-method-addSeg"><label for="PathCursor-fold-method-addSeg">(*PathCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-207">addSeg</a>(segString <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='PathCursor-fold-method-addSeg-docs' class="fold-docs">
+<span class="md-text">				addSeg decodes an SVG seqment string into equivalent raster path commands saved
+				in the cursor's Path</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*PathCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-177">hasSetsOrMore</a>(sz <a href="../../builtin.html#name-int">int</a>, rel <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*PathCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-390">init</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*PathCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-164">pointsToAbs</a>(sz <a href="../../builtin.html#name-int">int</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*PathCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-196">reflectControlCube</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*PathCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-187">reflectControlQuad</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*PathCursor) <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-157">valsToAbs</a>(last <a href="../../builtin.html#name-float64">float64</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="PathCursor-fold-impls"><label for="PathCursor-fold-impls">Implements (<i>at least 5, in which 2 are exported</i>)</label><span id='PathCursor-fold-impls-items' class="fold-items"><span>
+			*PathCursor : github.com/srwiley/rasterx.<a href="rasterx.html#name-Adder">Adder</a></span><span>
+			 PathCursor : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="PathCursor-showhide-impls"><i><label for="PathCursor-showhide-impls" class="show-inline">/* 3+ unexporteds ... */</label><label for="PathCursor-showhide-impls" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			 PathCursor : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 PathCursor : os/signal.<a href="../../os/signal.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 PathCursor : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-PathStyle" data-popularity="75">	<input type='checkbox' class="fold" id="PathStyle-fold-content"><label for="PathStyle-fold-content"> type <a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-15">PathStyle</a> <i>(struct)</i></label><span id='PathStyle-fold-content-docs' class="fold-docs">
+<span class="md-text">		PathStyle holds the state of the SVG style.</span>
+
+		<input type='checkbox' class="fold" id="PathStyle-fold-fields"><label for="PathStyle-fold-fields">Fields (<i>total 14, in which 11 are exported</i>)</label><span id='PathStyle-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-18">Dash</a> <i>[]<a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-17">DashOffset</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-16">FillOpacity</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="PathStyle-fold-field-LeadLineCap"><label for="PathStyle-fold-field-LeadLineCap"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-22">LeadLineCap</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-CapFunc">CapFunc</a></i></label><span id='PathStyle-fold-field-LeadLineCap-docs' class="fold-docs">
+<span class="md-text">				// This is used if different than LineCap</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-23">LineCap</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-CapFunc">CapFunc</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-21">LineGap</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-GapFunc">GapFunc</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-24">LineJoin</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-JoinMode">JoinMode</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-16">LineOpacity</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-17">LineWidth</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-17">MiterLimit</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-19">UseNonZeroWinding</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></span>
+			<input type='checkbox' class="showhide" id="PathStyle-showhide-fields"><i><label for="PathStyle-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="PathStyle-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="PathStyle-fold-field-fillerColor"><label for="PathStyle-fold-field-fillerColor"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-20">fillerColor</a> <i>interface{}</i></label><span id='PathStyle-fold-field-fillerColor-docs' class="fold-docs">
+<span class="md-text">				// either color.Color or rasterx.Gradient</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="PathStyle-fold-field-linerColor"><label for="PathStyle-fold-field-linerColor"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-20">linerColor</a> <i>interface{}</i></label><span id='PathStyle-fold-field-linerColor-docs' class="fold-docs">
+<span class="md-text">				// either color.Color or rasterx.Gradient</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="PathStyle-fold-field-mAdder"><label for="PathStyle-fold-field-mAdder"><a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-25">mAdder</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-MatrixAdder">MatrixAdder</a></i></label><span id='PathStyle-fold-field-mAdder-docs' class="fold-docs">
+<span class="md-text">				// current transform</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="PathStyle-fold-params"><label for="PathStyle-fold-params">As Inputs Of (<i>at least 2, neither is exported</i>)</label><span id='PathStyle-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="PathStyle-showhide-outputofs"><i><label for="PathStyle-showhide-outputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="PathStyle-showhide-outputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-IconCursor">IconCursor</a>).<a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-373">adaptClasses</a>(pathStyle *<b>PathStyle</b>, className <a href="../../builtin.html#name-string">string</a>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-IconCursor">IconCursor</a>).<a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-191">readStyleAttr</a>(curStyle *<b>PathStyle</b>, k, v <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></i></span></span>
+		<input type='checkbox' class="fold" id="PathStyle-fold-values"><label for="PathStyle-fold-values">As Types Of (<i>only one, which is exported</i>)</label><span id='PathStyle-fold-values-items' class="fold-items"><span>
+			  var <a href="#name-DefaultStyle">DefaultStyle</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-SvgIcon" data-popularity="360">	<input type='checkbox' class="fold" id="SvgIcon-fold-content"><label for="SvgIcon-fold-content"> type <a href="../../../src/github.com/srwiley/oksvg/svg_icon.go.html#line-13">SvgIcon</a> <i>(struct)</i></label><span id='SvgIcon-fold-content-docs' class="fold-docs">
+<span class="md-text">		SvgIcon holds data from parsed SVGs.</span>
+
+		<input type='checkbox' class="fold" id="SvgIcon-fold-fields"><label for="SvgIcon-fold-fields">Fields (<i>total 8, in which 7 are exported</i>)</label><span id='SvgIcon-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_icon.go.html#line-18">Defs</a> <i>map[<a href="../../builtin.html#name-string">string</a>][]<a href="#name-definition">definition</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="SvgIcon-fold-field-Descriptions"><label for="SvgIcon-fold-field-Descriptions"><a href="../../../src/github.com/srwiley/oksvg/svg_icon.go.html#line-16">Descriptions</a> <i>[]<a href="../../builtin.html#name-string">string</a></i></label><span id='SvgIcon-fold-field-Descriptions-docs' class="fold-docs">
+<span class="md-text">				// Description elements collect here</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_icon.go.html#line-17">Grads</a> <i>map[<a href="../../builtin.html#name-string">string</a>]*<a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Gradient">Gradient</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_icon.go.html#line-19">SVGPaths</a> <i>[]<a href="#name-SvgPath">SvgPath</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="SvgIcon-fold-field-Titles"><label for="SvgIcon-fold-field-Titles"><a href="../../../src/github.com/srwiley/oksvg/svg_icon.go.html#line-15">Titles</a> <i>[]<a href="../../builtin.html#name-string">string</a></i></label><span id='SvgIcon-fold-field-Titles-docs' class="fold-docs">
+<span class="md-text">				// Title elements collect here</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_icon.go.html#line-20">Transform</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Matrix2D">Matrix2D</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_icon.go.html#line-14">ViewBox</a> <i>struct{X, Y, W, H <a href="../../builtin.html#name-float64">float64</a>}</i></span></span>
+			<input type='checkbox' class="showhide" id="SvgIcon-showhide-fields"><i><label for="SvgIcon-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="SvgIcon-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_icon.go.html#line-21">classes</a> <i>map[<a href="../../builtin.html#name-string">string</a>]<a href="#name-styleAttribute">styleAttribute</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="SvgIcon-fold-methods"><label for="SvgIcon-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='SvgIcon-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="SvgIcon-fold-method-Draw"><label for="SvgIcon-fold-method-Draw">(*SvgIcon) <a href="../../../src/github.com/srwiley/oksvg/svg_icon.go.html#line-26">Draw</a>(r *<a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Dasher">Dasher</a>, opacity <a href="../../builtin.html#name-float64">float64</a>)</label><span id='SvgIcon-fold-method-Draw-docs' class="fold-docs">
+<span class="md-text">				Draw the compiled SVG icon into the GraphicContext.
+				All elements should be contained by the Bounds rectangle of the SvgIcon.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="SvgIcon-fold-method-SetTarget"><label for="SvgIcon-fold-method-SetTarget">(*SvgIcon) <a href="../../../src/github.com/srwiley/oksvg/svg_icon.go.html#line-33">SetTarget</a>(x, y, w, h <a href="../../builtin.html#name-float64">float64</a>)</label><span id='SvgIcon-fold-method-SetTarget-docs' class="fold-docs">
+<span class="md-text">				SetTarget sets the Transform matrix to draw within the bounds of the rectangle arguments</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="SvgIcon-fold-results"><label for="SvgIcon-fold-results">As Outputs Of (<i>at least 3, all are exported</i>)</label><span id='SvgIcon-fold-results-items' class="fold-items"><span>
+			func <a href="#name-ReadIcon">ReadIcon</a>(iconFile <a href="../../builtin.html#name-string">string</a>, errMode ...<a href="#name-ErrorMode">ErrorMode</a>) (*<b>SvgIcon</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-ReadIconStream">ReadIconStream</a>(stream <a href="../../io.html">io</a>.<a href="../../io.html#name-Reader">Reader</a>, errMode ...<a href="#name-ErrorMode">ErrorMode</a>) (*<b>SvgIcon</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-ReadReplacingCurrentColor">ReadReplacingCurrentColor</a>(stream <a href="../../io.html">io</a>.<a href="../../io.html#name-Reader">Reader</a>, currentColor <a href="../../builtin.html#name-string">string</a>, errMode ...<a href="#name-ErrorMode">ErrorMode</a>) (icon *<b>SvgIcon</b>, err <a href="../../builtin.html#name-error">error</a>)</span></span>
+		<input type='checkbox' class="fold" id="SvgIcon-fold-params"><label for="SvgIcon-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='SvgIcon-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="SvgIcon-showhide-outputofs"><i><label for="SvgIcon-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="SvgIcon-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/svg.<a href="../../fyne.io/fyne/v2/internal/svg.html#name-drawSVGSafely">drawSVGSafely</a>(icon *<b>SvgIcon</b>, raster *<a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Dasher">Dasher</a>) <a href="../../builtin.html#name-error">error</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-SvgPath" data-popularity="300">	<input type='checkbox' class="fold" id="SvgPath-fold-content"><label for="SvgPath-fold-content"> type <a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-16">SvgPath</a> <i>(struct)</i></label><span id='SvgPath-fold-content-docs' class="fold-docs">
+<span class="md-text">		SvgPath binds a style to a path.</span>
+
+		<input type='checkbox' class="fold" id="SvgPath-fold-fields"><label for="SvgPath-fold-fields">Fields (<i>total 16, in which 13 are exported</i>)</label><span id='SvgPath-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-18">Path</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Path">Path</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17">PathStyle</a> <i><a href="#name-PathStyle">PathStyle</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-18">Dash</a> <i>[]<a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-17">DashOffset</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-16">FillOpacity</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="SvgPath-fold-field-LeadLineCap"><label for="SvgPath-fold-field-LeadLineCap"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-22">LeadLineCap</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-CapFunc">CapFunc</a></i></label><span id='SvgPath-fold-field-LeadLineCap-docs' class="fold-docs">
+<span class="md-text">				// This is used if different than LineCap</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-23">LineCap</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-CapFunc">CapFunc</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-21">LineGap</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-GapFunc">GapFunc</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-24">LineJoin</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-JoinMode">JoinMode</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-16">LineOpacity</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-17">LineWidth</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-17">MiterLimit</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-19">UseNonZeroWinding</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></span>
+			<input type='checkbox' class="showhide" id="SvgPath-showhide-fields"><i><label for="SvgPath-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="SvgPath-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="SvgPath-fold-field-fillerColor"><label for="SvgPath-fold-field-fillerColor"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-20">fillerColor</a> <i>interface{}</i></label><span id='SvgPath-fold-field-fillerColor-docs' class="fold-docs">
+<span class="md-text">				// either color.Color or rasterx.Gradient</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="SvgPath-fold-field-linerColor"><label for="SvgPath-fold-field-linerColor"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-20">linerColor</a> <i>interface{}</i></label><span id='SvgPath-fold-field-linerColor-docs' class="fold-docs">
+<span class="md-text">				// either color.Color or rasterx.Gradient</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="SvgPath-fold-field-mAdder"><label for="SvgPath-fold-field-mAdder"><a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-17" class="path-duplicate">PathStyle</a>.<a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-25">mAdder</a> <i><a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-MatrixAdder">MatrixAdder</a></i></label><span id='SvgPath-fold-field-mAdder-docs' class="fold-docs">
+<span class="md-text">				// current transform</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="SvgPath-fold-methods"><label for="SvgPath-fold-methods">Methods (<i>total 6, all are exported</i>)</label><span id='SvgPath-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="SvgPath-fold-method-Draw"><label for="SvgPath-fold-method-Draw">(*SvgPath) <a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-22">Draw</a>(r *<a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Dasher">Dasher</a>, opacity <a href="../../builtin.html#name-float64">float64</a>)</label><span id='SvgPath-fold-method-Draw-docs' class="fold-docs">
+<span class="md-text">				Draw the compiled SvgPath into the Dasher.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="SvgPath-fold-method-DrawTransformed"><label for="SvgPath-fold-method-DrawTransformed">(*SvgPath) <a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-27">DrawTransformed</a>(r *<a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Dasher">Dasher</a>, opacity <a href="../../builtin.html#name-float64">float64</a>, t <a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Matrix2D">Matrix2D</a>)</label><span id='SvgPath-fold-method-DrawTransformed-docs' class="fold-docs">
+<span class="md-text">				DrawTransformed draws the compiled SvgPath into the Dasher while applying transform t.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="SvgPath-fold-method-GetFillColor"><label for="SvgPath-fold-method-GetFillColor">(*SvgPath) <a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-92">GetFillColor</a>() <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></label><span id='SvgPath-fold-method-GetFillColor-docs' class="fold-docs">
+<span class="md-text">				GetFillColor returns the fill color of the SvgPath if one is defined and otherwise returns colornames.Black</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="SvgPath-fold-method-GetLineColor"><label for="SvgPath-fold-method-GetLineColor">(*SvgPath) <a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-97">GetLineColor</a>() <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></label><span id='SvgPath-fold-method-GetLineColor-docs' class="fold-docs">
+<span class="md-text">				GetLineColor returns the stroke color of the SvgPath if one is defined and otherwise returns colornames.Black</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="SvgPath-fold-method-SetFillColor"><label for="SvgPath-fold-method-SetFillColor">(*SvgPath) <a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-102">SetFillColor</a>(clr <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a>)</label><span id='SvgPath-fold-method-SetFillColor-docs' class="fold-docs">
+<span class="md-text">				SetFillColor sets the fill color of the SvgPath</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="SvgPath-fold-method-SetLineColor"><label for="SvgPath-fold-method-SetLineColor">(*SvgPath) <a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-107">SetLineColor</a>(clr <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a>)</label><span id='SvgPath-fold-method-SetLineColor-docs' class="fold-docs">
+<span class="md-text">				SetLineColor sets the line color of the SvgPath</span>
+</span></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-definition" data-popularity="0">	<input type='checkbox' class="fold" id="definition-fold-content"><label for="definition-fold-content"> type <a href="../../../src/github.com/srwiley/oksvg/definitions.go.html#line-13">definition</a> <i>(struct)</i></label><span id='definition-fold-content-docs' class="fold-docs">
+<span class="md-text">		definition is used to store XML-tags of SVG source definitions data.</span>
+
+		<input type='checkbox' class="fold" id="definition-fold-fields"><label for="definition-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='definition-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/definitions.go.html#line-15">Attrs</a> <i>[]<a href="../../encoding/xml.html">xml</a>.<a href="../../encoding/xml.html#name-Attr">Attr</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/definitions.go.html#line-14">ID</a> <i><a href="../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/oksvg/definitions.go.html#line-14">Tag</a> <i><a href="../../builtin.html#name-string">string</a></i></span></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-styleAttribute" data-popularity="0">	<input type='checkbox' class="fold" id="styleAttribute-fold-content"><label for="styleAttribute-fold-content"> type <a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-29">styleAttribute</a> = <i>(map)</i></label><span id='styleAttribute-fold-content-docs' class="fold-docs">
+<span class="md-text">		styleAttribute describes draw options, such as {"fill":"black"; "stroke":"white"}.</span>
+
+</span></div><div class="anchor type-res hidden" id="name-svgFunc" data-popularity="15">	<input type='checkbox' class="fold" id="svgFunc-fold-content"><label for="svgFunc-fold-content"> type <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-19">svgFunc</a> <i>(func)</i></label><span id='svgFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		svgFunc defines function interface to use as drawing implementation.</span>
+
+		<input type='checkbox' class="fold" id="svgFunc-fold-values"><label for="svgFunc-fold-values">As Types Of (<i>total 16, none are exported</i>)</label><span id='svgFunc-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="svgFunc-showhide-values"><i><label for="svgFunc-showhide-values" class="show-inline">/* 16 unexporteds ... */</label><label for="svgFunc-showhide-values" class="hide-inline">/* 16 unexporteds: */</label></i><span class="hidden"><i>
+			  var <a href="#name-circleF">circleF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-defsF">defsF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-descF">descF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-gF">gF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-linearGradientF">linearGradientF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-lineF">lineF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-pathF">pathF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-polygonF">polygonF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-polylineF">polylineF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-radialGradientF">radialGradientF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-rectF">rectF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-stopF">stopF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-styleF">styleF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-svgF">svgF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-titleF">titleF</a></i></span><span class="hidden"><i>
+			  var <a href="#name-useF">useF</a></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 16, in which 5 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ParseSVGColor">	<input type='checkbox' class="fold" id="ParseSVGColor-fold-content"><label for="ParseSVGColor-fold-content"> func <a href="../../../src/github.com/srwiley/oksvg/public.go.html#line-179">ParseSVGColor</a>(colorStr <a href="../../builtin.html#name-string">string</a>) (<a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='ParseSVGColor-fold-content-docs' class="fold-docs">
+<span class="md-text">		ParseSVGColor parses an SVG color string in all forms
+		including all SVG1.1 names, obtained from the image.colornames package</span>
+
+</span></div><div class="anchor value-res" id="name-ParseSVGColorNum">	<input type='checkbox' class="fold" id="ParseSVGColorNum-fold-content"><label for="ParseSVGColorNum-fold-content"> func <a href="../../../src/github.com/srwiley/oksvg/public.go.html#line-148">ParseSVGColorNum</a>(colorStr <a href="../../builtin.html#name-string">string</a>) (r, g, b <a href="../../builtin.html#name-uint8">uint8</a>, err <a href="../../builtin.html#name-error">error</a>)</label><span id='ParseSVGColorNum-fold-content-docs' class="fold-docs">
+<span class="md-text">		ParseSVGColorNum reads the SFG color string e.g. #FBD9BD</span>
+
+</span></div><div class="anchor value-res" id="name-ReadIcon">	<input type='checkbox' class="fold" id="ReadIcon-fold-content"><label for="ReadIcon-fold-content"> func <a href="../../../src/github.com/srwiley/oksvg/public.go.html#line-138">ReadIcon</a>(iconFile <a href="../../builtin.html#name-string">string</a>, errMode ...<a href="#name-ErrorMode">ErrorMode</a>) (*<a href="#name-SvgIcon">SvgIcon</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='ReadIcon-fold-content-docs' class="fold-docs">
+<span class="md-text">		ReadIcon reads the Icon from the named file.
+		This only supports a sub-set of SVG, but is enough to draw many icons.
+		If errMode is provided, the first value determines if the icon ignores, errors out, or logs a warning
+		if it does not handle an element found in the icon file.
+		Ignore warnings is the default if no ErrorMode value is provided.</span>
+
+</span></div><div class="anchor value-res" id="name-ReadIconStream">	<input type='checkbox' class="fold" id="ReadIconStream-fold-content"><label for="ReadIconStream-fold-content"> func <a href="../../../src/github.com/srwiley/oksvg/public.go.html#line-31">ReadIconStream</a>(stream <a href="../../io.html">io</a>.<a href="../../io.html#name-Reader">Reader</a>, errMode ...<a href="#name-ErrorMode">ErrorMode</a>) (*<a href="#name-SvgIcon">SvgIcon</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='ReadIconStream-fold-content-docs' class="fold-docs">
+<span class="md-text">		ReadIconStream reads the Icon from the given io.Reader.
+		This only supports a sub-set of SVG, but
+		is enough to draw many icons. If errMode is provided,
+		the first value determines if the icon ignores, errors out, or logs a warning
+		if it does not handle an element found in the icon file. Ignore warnings is
+		the default if no ErrorMode value is provided.</span>
+
+</span></div><div class="anchor value-res" id="name-ReadReplacingCurrentColor">	<input type='checkbox' class="fold" id="ReadReplacingCurrentColor-fold-content"><label for="ReadReplacingCurrentColor-fold-content"> func <a href="../../../src/github.com/srwiley/oksvg/public.go.html#line-113">ReadReplacingCurrentColor</a>(stream <a href="../../io.html">io</a>.<a href="../../io.html#name-Reader">Reader</a>, currentColor <a href="../../builtin.html#name-string">string</a>, errMode ...<a href="#name-ErrorMode">ErrorMode</a>) (icon *<a href="#name-SvgIcon">SvgIcon</a>, err <a href="../../builtin.html#name-error">error</a>)</label><span id='ReadReplacingCurrentColor-fold-content-docs' class="fold-docs">
+<span class="md-text">		ReadReplacingCurrentColor replaces currentColor value with specified value and loads SvgIcon as ReadIconStream do.
+		currentColor value should be valid hex, rgb or named color value.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 11 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 11 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-getColor"><i>	<input type='checkbox' class="fold" id="getColor-fold-content"><label for="getColor-fold-content"> func <a href="../../../src/github.com/srwiley/oksvg/utils.go.html#line-137">getColor</a>(clr interface{}) <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></label><span id='getColor-fold-content-docs' class="fold-docs">
+<span class="md-text">		getColor is a helper function to get the background color
+		if ReadGradUrl needs it.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-init"><i>	<span class="nodocs"> func <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-388">init</a>()</span></i></div><div class="anchor value-res hidden" id="name-localizeGradIfStopClrNil"><i>	<span class="nodocs"> func <a href="../../../src/github.com/srwiley/oksvg/utils.go.html#line-151">localizeGradIfStopClrNil</a>(g *<a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Gradient">Gradient</a>, defaultColor interface{}) (grad <a href="rasterx.html">rasterx</a>.<a href="rasterx.html#name-Gradient">Gradient</a>)</span></i></div><div class="anchor value-res hidden" id="name-parseAttrs"><i>	<span class="nodocs"> func <a href="../../../src/github.com/srwiley/oksvg/utils.go.html#line-98">parseAttrs</a>(attrStr <a href="../../builtin.html#name-string">string</a>) (<a href="#name-styleAttribute">styleAttribute</a>, <a href="../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-parseClasses"><i>	<span class="nodocs"> func <a href="../../../src/github.com/srwiley/oksvg/utils.go.html#line-63">parseClasses</a>(data <a href="../../builtin.html#name-string">string</a>) (map[<a href="../../builtin.html#name-string">string</a>]<a href="#name-styleAttribute">styleAttribute</a>, <a href="../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-parseColorValue"><i>	<span class="nodocs"> func <a href="../../../src/github.com/srwiley/oksvg/utils.go.html#line-22">parseColorValue</a>(v <a href="../../builtin.html#name-string">string</a>) (<a href="../../builtin.html#name-uint8">uint8</a>, <a href="../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-parseFloat"><i>	<input type='checkbox' class="fold" id="parseFloat-fold-content"><label for="parseFloat-fold-content"> func <a href="../../../src/github.com/srwiley/oksvg/utils.go.html#line-50">parseFloat</a>(s <a href="../../builtin.html#name-string">string</a>, bitSize <a href="../../builtin.html#name-int">int</a>) (<a href="../../builtin.html#name-float64">float64</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='parseFloat-fold-content-docs' class="fold-docs">
+<span class="md-text">		parseFloat is a helper function that strips suffixes before passing to strconv.ParseFloat</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-readFraction"><i>	<span class="nodocs"> func <a href="../../../src/github.com/srwiley/oksvg/utils.go.html#line-117">readFraction</a>(v <a href="../../builtin.html#name-string">string</a>) (f <a href="../../builtin.html#name-float64">float64</a>, err <a href="../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-reflect"><i>	<span class="nodocs"> func <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-153">reflect</a>(px, py, rx, ry <a href="../../builtin.html#name-float64">float64</a>) (x, y <a href="../../builtin.html#name-float64">float64</a>)</span></i></div><div class="anchor value-res hidden" id="name-splitOnCommaOrSpace"><i>	<input type='checkbox' class="fold" id="splitOnCommaOrSpace-fold-content"><label for="splitOnCommaOrSpace-fold-content"> func <a href="../../../src/github.com/srwiley/oksvg/utils.go.html#line-56">splitOnCommaOrSpace</a>(s <a href="../../builtin.html#name-string">string</a>) []<a href="../../builtin.html#name-string">string</a></label><span id='splitOnCommaOrSpace-fold-content-docs' class="fold-docs">
+<span class="md-text">		splitOnCommaOrSpace returns a list of strings after splitting the input on comma and space delimiters</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-trimSuffixes"><i>	<input type='checkbox' class="fold" id="trimSuffixes-fold-content"><label for="trimSuffixes-fold-content"> func <a href="../../../src/github.com/srwiley/oksvg/utils.go.html#line-38">trimSuffixes</a>(a <a href="../../builtin.html#name-string">string</a>) (b <a href="../../builtin.html#name-string">string</a>)</label><span id='trimSuffixes-fold-content-docs' class="fold-docs">
+<span class="md-text">		trimSuffixes removes unitSuffixes from any number that is not just numeric</span>
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 22, in which 1 is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-DefaultStyle">	<input type='checkbox' class="fold" id="DefaultStyle-fold-content"><label for="DefaultStyle-fold-content">  var <a href="../../../src/github.com/srwiley/oksvg/path_style.go.html#line-33">DefaultStyle</a> <a href="#name-PathStyle">PathStyle</a></label><span id='DefaultStyle-fold-content-docs' class="fold-docs">
+<span class="md-text">		DefaultStyle sets the default PathStyle to fill black, winding rule,
+		full opacity, no stroke, ButtCap line end and Bevel line connect.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 21 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 21 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-circleF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-105">circleF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-defsF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-214">defsF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-descF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-204">descF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-drawFuncs"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-22">drawFuncs</a> map[<a href="../../builtin.html#name-string">string</a>]<a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-errCommandUnknown"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-48">errCommandUnknown</a> <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errParamMismatch"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-47">errParamMismatch</a> <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errZeroLengthID"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-49">errZeroLengthID</a> <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-gF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-76">gF</a> <a href="#name-svgFunc">svgFunc</a> // <span class="md-text">g does nothing but push the style</span></span></i></div><div class="anchor value-res hidden" id="name-linearGradientF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-222">linearGradientF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-lineF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-132">lineF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-pathF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-191">pathF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-polygonF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-184">polygonF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-polylineF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-158">polylineF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-radialGradientF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-253">radialGradientF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-rectF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-77">rectF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-stopF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-295">stopF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-styleF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-218">styleF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-svgF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-41">svgF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-titleF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-209">titleF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div><div class="anchor value-res hidden" id="name-unitSuffixes"><i>	<input type='checkbox' class="fold" id="unitSuffixes-fold-content"><label for="unitSuffixes-fold-content">  var <a href="../../../src/github.com/srwiley/oksvg/utils.go.html#line-20">unitSuffixes</a> []<a href="../../builtin.html#name-string">string</a></label><span id='unitSuffixes-fold-content-docs' class="fold-docs">
+<span class="md-text">		unitSuffixes are suffixes sometimes applied to the width and height attributes
+		of the svg element.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-useF"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/oksvg/draw.go.html#line-317">useF</a> <a href="#name-svgFunc">svgFunc</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 3, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-IgnoreErrorMode">	<input type='checkbox' class="fold" id="IgnoreErrorMode-fold-content"><label for="IgnoreErrorMode-fold-content">const <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-37">IgnoreErrorMode</a> <a href="#name-ErrorMode">ErrorMode</a> = 0</label><span id='IgnoreErrorMode-fold-content-docs' class="fold-docs">
+<span class="md-text">		IgnoreErrorMode skips un-parsed SVG elements.</span>
+
+</span></div><div class="anchor value-res" id="name-StrictErrorMode">	<input type='checkbox' class="fold" id="StrictErrorMode-fold-content"><label for="StrictErrorMode-fold-content">const <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-43">StrictErrorMode</a> <a href="#name-ErrorMode">ErrorMode</a> = 2</label><span id='StrictErrorMode-fold-content-docs' class="fold-docs">
+<span class="md-text">		StrictErrorMode causes an error when an un-parsed SVG element is found.</span>
+
+</span></div><div class="anchor value-res" id="name-WarnErrorMode">	<input type='checkbox' class="fold" id="WarnErrorMode-fold-content"><label for="WarnErrorMode-fold-content">const <a href="../../../src/github.com/srwiley/oksvg/path_cursor.go.html#line-40">WarnErrorMode</a> <a href="#name-ErrorMode">ErrorMode</a> = 1</label><span id='WarnErrorMode-fold-content-docs' class="fold-docs">
+<span class="md-text">		WarnErrorMode outputs a warning when an un-parsed SVG element is found.</span>
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

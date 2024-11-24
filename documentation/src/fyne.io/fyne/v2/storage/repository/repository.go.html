@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: repository.go in package fyne.io/fyne/v2/storage/repository</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	repository.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html">fyne.io/fyne/v2/storage/repository</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Package repository provides primitives for working with storage repositories.</span></code></span></div><span class="codeline" id="line-2"><code><span class="keyword">package</span> repository</code></span>
+<span class="codeline" id="line-3"><code></code></span>
+<span class="codeline" id="line-4"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-5"><code>	<label for="i0"><span class="lit-string i0">"fmt"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i1"><span class="lit-string i1">"strings"</span></label></code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i2"><span class="lit-string i2">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-9"><code>)</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// repositoryTable stores the mapping of schemes to Repository implementations.</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// It should only ever be used by ForURI() and Register().</span></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">var</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-repositoryTable" class="ident">repositoryTable</a> <span class="keyword">map</span>[<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="#line-49" class="ident">Repository</a> = <span class="keyword">map</span>[<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="#line-49" class="ident">Repository</a>{}</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// Repository represents a storage repository, which is a set of methods which</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// implement specific functions on a URI. Repositories are registered to handle</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// specific URI schemes, and the higher-level functions that operate on URIs</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">// internally look up an appropriate method from the relevant Repository.</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">// The repository interface includes only methods which must be implemented at</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">// a minimum. Without implementing all of the methods in this interface, a URI</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// would not be usable in a useful way. Additional functionality can be exposed</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">// by using interfaces which extend Repository.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// Repositories are registered to handle a specific URI scheme (or schemes)</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">// using the Register() method. When a higher-level URI function such as</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">// storage.Copy() is called, the storage package will internally look up</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">// the repository associated with the scheme of the URI, then it will use</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">// a type assertion to check if the repository implements CopyableRepository.</span></code></span>
+<span class="codeline" id="line-30"><code><span class="comment">// If so, the Copy() function will be run from the repository, otherwise</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">// storage.Copy() will return NotSupportedError. This works similarly for</span></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">// all other methods in repository-related interfaces.</span></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">// Note that a repository can be registered for multiple URI schemes. In such</span></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">// cases, the repository must internally select and implement the correct</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// behavior for each URI scheme.</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">// A repository will only ever need to handle URIs with schemes for which it</span></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">// was registered, with the exception that functions with more than 1 operand</span></code></span>
+<span class="codeline" id="line-40"><code><span class="comment">// such as Copy() and Move(), in which cases only the first operand is</span></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">// guaranteed to match a scheme for which the repository is registered.</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-43"><code><span class="comment">// NOTE: most developers who use Fyne should *not* generally attempt to</span></code></span>
+<span class="codeline" id="line-44"><code><span class="comment">// call repository methods directly. You should use the methods in the storage</span></code></span>
+<span class="codeline" id="line-45"><code><span class="comment">// package, which will automatically detect the scheme of a URI and call into</span></code></span>
+<span class="codeline" id="line-46"><code><span class="comment">// the appropriate repository.</span></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-48"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-49"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-Repository" class="ident">Repository</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-50"><code></code></span>
+<span class="codeline" id="line-51"><code>	<span class="comment">// Exists will be used to implement calls to storage.Exists() for the</span></code></span>
+<span class="codeline" id="line-52"><code><span class="comment">	// registered scheme of this repository.</span></code></span>
+<span class="codeline" id="line-53"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.Repository.html#name-Exists" class="ident">Exists</a>(u <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) (<a href="../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code>	<span class="comment">// Reader will be used to implement calls to storage.Reader()</span></code></span>
+<span class="codeline" id="line-58"><code><span class="comment">	// for the registered scheme of this repository.</span></code></span>
+<span class="codeline" id="line-59"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-60"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-61"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.Repository.html#name-Reader" class="ident">Reader</a>(u <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) (<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-10" class="ident">URIReadCloser</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-62"><code></code></span>
+<span class="codeline" id="line-63"><code>	<span class="comment">// CanRead will be used to implement calls to storage.CanRead() for the</span></code></span>
+<span class="codeline" id="line-64"><code><span class="comment">	// registered scheme of this repository.</span></code></span>
+<span class="codeline" id="line-65"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-66"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-67"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.Repository.html#name-CanRead" class="ident">CanRead</a>(u <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) (<a href="../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-68"><code></code></span>
+<span class="codeline" id="line-69"><code>	<span class="comment">// Destroy is called when the repository is un-registered from a given</span></code></span>
+<span class="codeline" id="line-70"><code><span class="comment">	// URI scheme.</span></code></span>
+<span class="codeline" id="line-71"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-72"><code><span class="comment">	// The string parameter will be the URI scheme that the repository was</span></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">	// registered for. This may be useful for repositories that need to</span></code></span>
+<span class="codeline" id="line-74"><code><span class="comment">	// handle more than one URI scheme internally.</span></code></span>
+<span class="codeline" id="line-75"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-76"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-77"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.Repository.html#name-Destroy" class="ident">Destroy</a>(<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>)</code></span>
+<span class="codeline" id="line-78"><code>}</code></span>
+<span class="codeline" id="line-79"><code></code></span>
+<span class="codeline" id="line-80"><code><span class="comment">// CustomURIRepository is an extension of the repository interface which</span></code></span>
+<span class="codeline" id="line-81"><code><span class="comment">// allows the behavior of storage.ParseURI to be overridden. This is only</span></code></span>
+<span class="codeline" id="line-82"><code><span class="comment">// needed if you wish to generate custom URI types, rather than using Fyne's</span></code></span>
+<span class="codeline" id="line-83"><code><span class="comment">// URI implementation and net/url based parsing.</span></code></span>
+<span class="codeline" id="line-84"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-85"><code><span class="comment">// NOTE: even for URIs with non-RFC3986-compliant encoding, the URI MUST begin</span></code></span>
+<span class="codeline" id="line-86"><code><span class="comment">// with 'scheme:', or storage.ParseURI() will not be able to determine which</span></code></span>
+<span class="codeline" id="line-87"><code><span class="comment">// storage repository to delegate to for parsing.</span></code></span>
+<span class="codeline" id="line-88"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-89"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-90"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-CustomURIRepository" class="ident">CustomURIRepository</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-91"><code>	<a href="#line-49" class="ident">Repository</a></code></span>
+<span class="codeline" id="line-92"><code></code></span>
+<span class="codeline" id="line-93"><code>	<span class="comment">// ParseURI will be used to implement calls to storage.ParseURI()</span></code></span>
+<span class="codeline" id="line-94"><code><span class="comment">	// for the registered scheme of this repository.</span></code></span>
+<span class="codeline" id="line-95"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.CustomURIRepository.html#name-ParseURI" class="ident">ParseURI</a>(<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-96"><code>}</code></span>
+<span class="codeline" id="line-97"><code></code></span>
+<span class="codeline" id="line-98"><code><span class="comment">// WritableRepository is an extension of the Repository interface which also</span></code></span>
+<span class="codeline" id="line-99"><code><span class="comment">// supports obtaining a writer for URIs of the scheme it is registered to.</span></code></span>
+<span class="codeline" id="line-100"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-101"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-102"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-WritableRepository" class="ident">WritableRepository</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-103"><code>	<a href="#line-49" class="ident">Repository</a></code></span>
+<span class="codeline" id="line-104"><code></code></span>
+<span class="codeline" id="line-105"><code>	<span class="comment">// Writer will be used to implement calls to storage.WriterTo() for</span></code></span>
+<span class="codeline" id="line-106"><code><span class="comment">	// the registered scheme of this repository.</span></code></span>
+<span class="codeline" id="line-107"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-108"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-109"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.WritableRepository.html#name-Writer" class="ident">Writer</a>(u <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) (<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-18" class="ident">URIWriteCloser</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-110"><code></code></span>
+<span class="codeline" id="line-111"><code>	<span class="comment">// CanWrite will be used to implement calls to storage.CanWrite() for</span></code></span>
+<span class="codeline" id="line-112"><code><span class="comment">	// the registered scheme of this repository.</span></code></span>
+<span class="codeline" id="line-113"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-114"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-115"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.WritableRepository.html#name-CanWrite" class="ident">CanWrite</a>(u <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) (<a href="../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-116"><code></code></span>
+<span class="codeline" id="line-117"><code>	<span class="comment">// Delete will be used to implement calls to storage.Delete() for the</span></code></span>
+<span class="codeline" id="line-118"><code><span class="comment">	// registered scheme of this repository.</span></code></span>
+<span class="codeline" id="line-119"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-120"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-121"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.WritableRepository.html#name-Delete" class="ident">Delete</a>(u <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-122"><code>}</code></span>
+<span class="codeline" id="line-123"><code></code></span>
+<span class="codeline" id="line-124"><code><span class="comment">// ListableRepository is an extension of the Repository interface which also</span></code></span>
+<span class="codeline" id="line-125"><code><span class="comment">// supports obtaining directory listings (generally analogous to a directory</span></code></span>
+<span class="codeline" id="line-126"><code><span class="comment">// listing) for URIs of the scheme it is registered to.</span></code></span>
+<span class="codeline" id="line-127"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-128"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-129"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-ListableRepository" class="ident">ListableRepository</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-130"><code>	<a href="#line-49" class="ident">Repository</a></code></span>
+<span class="codeline" id="line-131"><code></code></span>
+<span class="codeline" id="line-132"><code>	<span class="comment">// CanList will be used to implement calls to storage.Listable() for</span></code></span>
+<span class="codeline" id="line-133"><code><span class="comment">	// the registered scheme of this repository.</span></code></span>
+<span class="codeline" id="line-134"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-135"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-136"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.ListableRepository.html#name-CanList" class="ident">CanList</a>(u <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) (<a href="../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-137"><code></code></span>
+<span class="codeline" id="line-138"><code>	<span class="comment">// List will be used to implement calls to storage.List() for the</span></code></span>
+<span class="codeline" id="line-139"><code><span class="comment">	// registered scheme of this repository.</span></code></span>
+<span class="codeline" id="line-140"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-141"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-142"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.ListableRepository.html#name-List" class="ident">List</a>(u <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) ([]<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-143"><code></code></span>
+<span class="codeline" id="line-144"><code>	<span class="comment">// CreateListable will be used to implement calls to</span></code></span>
+<span class="codeline" id="line-145"><code><span class="comment">	// storage.CreateListable() for the registered scheme of this</span></code></span>
+<span class="codeline" id="line-146"><code><span class="comment">	// repository.</span></code></span>
+<span class="codeline" id="line-147"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-148"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-149"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.ListableRepository.html#name-CreateListable" class="ident">CreateListable</a>(u <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-150"><code>}</code></span>
+<span class="codeline" id="line-151"><code></code></span>
+<span class="codeline" id="line-152"><code><span class="comment">// HierarchicalRepository is an extension of the Repository interface which</span></code></span>
+<span class="codeline" id="line-153"><code><span class="comment">// also supports determining the parent and child items of a URI.</span></code></span>
+<span class="codeline" id="line-154"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-155"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-156"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-HierarchicalRepository" class="ident">HierarchicalRepository</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-157"><code>	<a href="#line-49" class="ident">Repository</a></code></span>
+<span class="codeline" id="line-158"><code></code></span>
+<span class="codeline" id="line-159"><code>	<span class="comment">// Parent will be used to implement calls to storage.Parent() for the</span></code></span>
+<span class="codeline" id="line-160"><code><span class="comment">	// registered scheme of this repository.</span></code></span>
+<span class="codeline" id="line-161"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-162"><code><span class="comment">	// A generic implementation is provided in GenericParent(), which</span></code></span>
+<span class="codeline" id="line-163"><code><span class="comment">	// is based on the RFC3986 definition of a URI parent.</span></code></span>
+<span class="codeline" id="line-164"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-165"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-166"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.HierarchicalRepository.html#name-Parent" class="ident">Parent</a>(<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) (<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-167"><code></code></span>
+<span class="codeline" id="line-168"><code>	<span class="comment">// Child will be used to implement calls to storage.Child() for</span></code></span>
+<span class="codeline" id="line-169"><code><span class="comment">	// the registered scheme of this repository.</span></code></span>
+<span class="codeline" id="line-170"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-171"><code><span class="comment">	// A generic implementation is provided in GenericParent(), which</span></code></span>
+<span class="codeline" id="line-172"><code><span class="comment">	// is based on RFC3986.</span></code></span>
+<span class="codeline" id="line-173"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-174"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-175"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.HierarchicalRepository.html#name-Child" class="ident">Child</a>(<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>, <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-176"><code>}</code></span>
+<span class="codeline" id="line-177"><code></code></span>
+<span class="codeline" id="line-178"><code><span class="comment">// CopyableRepository is an extension of the Repository interface which also</span></code></span>
+<span class="codeline" id="line-179"><code><span class="comment">// supports copying referenced resources from one URI to another.</span></code></span>
+<span class="codeline" id="line-180"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-181"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-182"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-CopyableRepository" class="ident">CopyableRepository</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-183"><code>	<a href="#line-49" class="ident">Repository</a></code></span>
+<span class="codeline" id="line-184"><code></code></span>
+<span class="codeline" id="line-185"><code>	<span class="comment">// Copy will be used to implement calls to storage.Copy() for the</span></code></span>
+<span class="codeline" id="line-186"><code><span class="comment">	// registered scheme of this repository.</span></code></span>
+<span class="codeline" id="line-187"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-188"><code><span class="comment">	// A generic implementation is provided by GenericCopy().</span></code></span>
+<span class="codeline" id="line-189"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-190"><code><span class="comment">	// NOTE: the first parameter is the source, the second is the</span></code></span>
+<span class="codeline" id="line-191"><code><span class="comment">	// destination.</span></code></span>
+<span class="codeline" id="line-192"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-193"><code><span class="comment">	// NOTE: if storage.Copy() is given two URIs of different schemes, it</span></code></span>
+<span class="codeline" id="line-194"><code><span class="comment">	// is possible that only the source URI will be of the type this</span></code></span>
+<span class="codeline" id="line-195"><code><span class="comment">	// repository is registered to handle. In such cases, implementations</span></code></span>
+<span class="codeline" id="line-196"><code><span class="comment">	// are suggested to fail-over to GenericCopy().</span></code></span>
+<span class="codeline" id="line-197"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-198"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-199"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.CopyableRepository.html#name-Copy" class="ident">Copy</a>(<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>, <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-200"><code>}</code></span>
+<span class="codeline" id="line-201"><code></code></span>
+<span class="codeline" id="line-202"><code><span class="comment">// MovableRepository is an extension of the Repository interface which also</span></code></span>
+<span class="codeline" id="line-203"><code><span class="comment">// supports moving referenced resources from one URI to another.</span></code></span>
+<span class="codeline" id="line-204"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-205"><code><span class="comment">// Note: both Moveable and Movable are correct spellings, but Movable is newer</span></code></span>
+<span class="codeline" id="line-206"><code><span class="comment">// and more accepted. Source: https://grammarist.com/spelling/movable-moveable/</span></code></span>
+<span class="codeline" id="line-207"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-208"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-209"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-MovableRepository" class="ident">MovableRepository</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-210"><code>	<a href="#line-49" class="ident">Repository</a></code></span>
+<span class="codeline" id="line-211"><code></code></span>
+<span class="codeline" id="line-212"><code>	<span class="comment">// Move will be used to implement calls to storage.Move() for the</span></code></span>
+<span class="codeline" id="line-213"><code><span class="comment">	// registered scheme of this repository.</span></code></span>
+<span class="codeline" id="line-214"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-215"><code><span class="comment">	// A generic implementation is provided by GenericMove().</span></code></span>
+<span class="codeline" id="line-216"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-217"><code><span class="comment">	// NOTE: the first parameter is the source, the second is the</span></code></span>
+<span class="codeline" id="line-218"><code><span class="comment">	// destination.</span></code></span>
+<span class="codeline" id="line-219"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-220"><code><span class="comment">	// NOTE: if storage.Move() is given two URIs of different schemes, it</span></code></span>
+<span class="codeline" id="line-221"><code><span class="comment">	// is possible that only the source URI will be of the type this</span></code></span>
+<span class="codeline" id="line-222"><code><span class="comment">	// repository is registered to handle. In such cases, implementations</span></code></span>
+<span class="codeline" id="line-223"><code><span class="comment">	// are suggested to fail-over to GenericMove().</span></code></span>
+<span class="codeline" id="line-224"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-225"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-226"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/storage/repository.MovableRepository.html#name-Move" class="ident">Move</a>(<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>, <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-227"><code>}</code></span>
+<span class="codeline" id="line-228"><code></code></span>
+<span class="codeline" id="line-229"><code><span class="comment">// Register registers a storage repository so that operations on URIs of the</span></code></span>
+<span class="codeline" id="line-230"><code><span class="comment">// registered scheme will use methods implemented by the relevant repository</span></code></span>
+<span class="codeline" id="line-231"><code><span class="comment">// implementation.</span></code></span>
+<span class="codeline" id="line-232"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-233"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-234"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-Register" class="ident">Register</a></label>(<label for="r1" class="ident">scheme</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r2" class="ident">repository</label> <a href="#line-49" class="ident">Repository</a>) {</code></span>
+<span class="codeline" id="line-235"><code>	<label for="r1" class="ident">scheme</label> = <a href="../../../../../../pkg/strings.html" class="ident i1">strings</a>.<a href="../../../../../strings/strings.go.html#line-673" class="ident">ToLower</a>(<label for="r1" class="ident">scheme</label>)</code></span>
+<span class="codeline" id="line-236"><code></code></span>
+<span class="codeline" id="line-237"><code>	<label for="r3" class="ident">prev</label>, <label for="r4" class="ident">ok</label> := <a href="#line-13" class="ident">repositoryTable</a>[<label for="r1" class="ident">scheme</label>]</code></span>
+<span class="codeline" id="line-238"><code></code></span>
+<span class="codeline" id="line-239"><code>	<span class="keyword">if</span> <label for="r4" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-240"><code>		<label for="r3" class="ident">prev</label>.<a href="#line-77" class="ident">Destroy</a>(<label for="r1" class="ident">scheme</label>)</code></span>
+<span class="codeline" id="line-241"><code>	}</code></span>
+<span class="codeline" id="line-242"><code></code></span>
+<span class="codeline" id="line-243"><code>	<a href="#line-13" class="ident">repositoryTable</a>[<label for="r1" class="ident">scheme</label>] = <label for="r2" class="ident">repository</label></code></span>
+<span class="codeline" id="line-244"><code>}</code></span>
+<span class="codeline" id="line-245"><code></code></span>
+<span class="codeline" id="line-246"><code><span class="comment">// ForURI returns the Repository instance which is registered to handle URIs of</span></code></span>
+<span class="codeline" id="line-247"><code><span class="comment">// the given scheme. This is a helper method that calls ForScheme() on the</span></code></span>
+<span class="codeline" id="line-248"><code><span class="comment">// scheme of the given URI.</span></code></span>
+<span class="codeline" id="line-249"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-250"><code><span class="comment">// NOTE: this function is intended to be used specifically by the storage</span></code></span>
+<span class="codeline" id="line-251"><code><span class="comment">// package. It generally should not be used outside of the fyne package -</span></code></span>
+<span class="codeline" id="line-252"><code><span class="comment">// instead you should use the methods in the storage package.</span></code></span>
+<span class="codeline" id="line-253"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-254"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-255"><code><span class="keyword">func</span> <label for="r5" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-ForURI" class="ident">ForURI</a></label>(<label for="r6" class="ident">u</label> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) (<a href="#line-49" class="ident">Repository</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-256"><code>	<span class="keyword">return</span> <a href="#line-267" class="ident">ForScheme</a>(<label for="r6" class="ident">u</label>.<a href="../../uri.go.html#line-55" class="ident">Scheme</a>())</code></span>
+<span class="codeline" id="line-257"><code>}</code></span>
+<span class="codeline" id="line-258"><code></code></span>
+<span class="codeline" id="line-259"><code><span class="comment">// ForScheme returns the Repository instance which is registered to handle URIs</span></code></span>
+<span class="codeline" id="line-260"><code><span class="comment">// of the given scheme.</span></code></span>
+<span class="codeline" id="line-261"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-262"><code><span class="comment">// NOTE: this function is intended to be used specifically by the storage</span></code></span>
+<span class="codeline" id="line-263"><code><span class="comment">// package. It generally should not be used outside of the fyne package -</span></code></span>
+<span class="codeline" id="line-264"><code><span class="comment">// instead you should use the methods in the storage package.</span></code></span>
+<span class="codeline" id="line-265"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-266"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-267"><code><span class="keyword">func</span> <label for="r7" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-ForScheme" class="ident">ForScheme</a></label>(<label for="r8" class="ident">scheme</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="#line-49" class="ident">Repository</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-268"><code>	<label for="r9" class="ident">repo</label>, <label for="r10" class="ident">ok</label> := <a href="#line-13" class="ident">repositoryTable</a>[<label for="r8" class="ident">scheme</label>]</code></span>
+<span class="codeline" id="line-269"><code></code></span>
+<span class="codeline" id="line-270"><code>	<span class="keyword">if</span> !<label for="r10" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-271"><code>		<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"no repository registered for scheme '%s'"</span>, <label for="r8" class="ident">scheme</label>)</code></span>
+<span class="codeline" id="line-272"><code>	}</code></span>
+<span class="codeline" id="line-273"><code></code></span>
+<span class="codeline" id="line-274"><code>	<span class="keyword">return</span> <label for="r9" class="ident">repo</label>, <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-275"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

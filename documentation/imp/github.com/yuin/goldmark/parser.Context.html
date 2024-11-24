@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method Implmentations: github.com/yuin/goldmark/parser.Context</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+<pre><code><span style="font-size:x-large;">type <a href="../../../../pkg/github.com/yuin/goldmark/parser.html">github.com/yuin/goldmark/parser</a>.<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-134">Context</a></b></span><span style="font-size:large;"> <b><i>(interface)</i></b></span>
+
+<code><span class="title">Method Implmentations<span class="title-stat"><i></i></span></span>
+
+<div class="anchor" id="name-AddReference">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-148">AddReference</a>(<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-Reference">Reference</a>)
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-352">AddReference</a></b></div>
+<div class="anchor" id="name-BlockIndent">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-172">BlockIndent</a>() <a href="../../../../pkg/builtin.html#name-int">int</a>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-283">BlockIndent</a></b></div>
+<div class="anchor" id="name-BlockOffset">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-163">BlockOffset</a>() <a href="../../../../pkg/builtin.html#name-int">int</a>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-275">BlockOffset</a></b></div>
+<div class="anchor" id="name-ClearDelimiters">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-192">ClearDelimiters</a>(bottom <a href="../../../../pkg/github.com/yuin/goldmark/ast.html">ast</a>.<a href="../../../../pkg/github.com/yuin/goldmark/ast.html#name-Node">Node</a>)
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-338">ClearDelimiters</a></b></div>
+<div class="anchor" id="name-ComputeIfAbsent">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-142">ComputeIfAbsent</a>(<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-ContextKey">ContextKey</a>, func() interface{}) interface{}
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-258">ComputeIfAbsent</a></b></div>
+<div class="anchor" id="name-FirstDelimiter">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-179">FirstDelimiter</a>() *<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-Delimiter">Delimiter</a>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-295">FirstDelimiter</a></b></div>
+<div class="anchor" id="name-Get">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-139">Get</a>(<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-ContextKey">ContextKey</a>) interface{}
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-254">Get</a></b></div>
+<div class="anchor" id="name-IDs">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-158">IDs</a>() <a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-IDs">IDs</a>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-271">IDs</a></b></div>
+<div class="anchor" id="name-IsInLinkLabel">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-204">IsInLinkLabel</a>() <a href="../../../../pkg/builtin.html#name-bool">bool</a>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-396">IsInLinkLabel</a></b></div>
+<div class="anchor" id="name-LastDelimiter">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-182">LastDelimiter</a>() *<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-Delimiter">Delimiter</a>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-291">LastDelimiter</a></b></div>
+<div class="anchor" id="name-LastOpenedBlock">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-201">LastOpenedBlock</a>() <a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-Block">Block</a>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-389">LastOpenedBlock</a></b></div>
+<div class="anchor" id="name-OpenedBlocks">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-195">OpenedBlocks</a>() []<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-Block">Block</a>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-381">OpenedBlocks</a></b></div>
+<div class="anchor" id="name-PushDelimiter">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-186">PushDelimiter</a>(delimiter *<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-Delimiter">Delimiter</a>)
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-299">PushDelimiter</a></b></div>
+<div class="anchor" id="name-Reference">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-152">Reference</a>(label <a href="../../../../pkg/builtin.html#name-string">string</a>) (<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-Reference">Reference</a>, <a href="../../../../pkg/builtin.html#name-bool">bool</a>)
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-359">Reference</a></b></div>
+<div class="anchor" id="name-References">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-155">References</a>() []<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-Reference">Reference</a>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-364">References</a></b></div>
+<div class="anchor" id="name-RemoveDelimiter">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-189">RemoveDelimiter</a>(d *<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-Delimiter">Delimiter</a>)
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-311">RemoveDelimiter</a></b></div>
+<div class="anchor" id="name-Set">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-145">Set</a>(<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-ContextKey">ContextKey</a>, interface{})
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-267">Set</a></b></div>
+<div class="anchor" id="name-SetBlockIndent">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-176">SetBlockIndent</a>(<a href="../../../../pkg/builtin.html#name-int">int</a>)
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-287">SetBlockIndent</a></b></div>
+<div class="anchor" id="name-SetBlockOffset">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-167">SetBlockOffset</a>(<a href="../../../../pkg/builtin.html#name-int">int</a>)
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-279">SetBlockOffset</a></b></div>
+<div class="anchor" id="name-SetOpenedBlocks">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-198">SetOpenedBlocks</a>([]<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-Block">Block</a>)
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-385">SetOpenedBlocks</a></b></div>
+<div class="anchor" id="name-String">	<a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-136">String</a>() <a href="../../../../pkg/builtin.html#name-string">string</a>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/parser.html#name-parseContext">parseContext</a>).<b><a href="../../../../src/github.com/yuin/goldmark/parser/parser.go.html#line-372">String</a></b></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

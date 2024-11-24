@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/srwiley/rasterx</title>
+<link href="../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>rasterx</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-github.com/srwiley/rasterx">github.com/srwiley/rasterx</a><i> (on <a href="https://pkg.go.dev/github.com/srwiley/rasterx" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../dep/github.com/srwiley/rasterx.html">8 packages</a>, and imported by <a href="../../../dep/github.com/srwiley/rasterx.html#imported-by">4 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/rasterx/dash.go.html">dash.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/rasterx/fill.go.html">fill.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html">geomx.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html">gradient.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html">matrix.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-5-fold-content"><label for="file-5-fold-content">  <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#doc">d</a> <a href="../../../src/github.com/srwiley/rasterx/scan.go.html">scan.go</a></label><span id='file-5-fold-content-items' class="fold-items">
+<span class="md-text">		Package rasterx implements a rasterizer in go.
+		By default rasterx uses ScannerGV to render images
+		which uses the rasterizer in the golang.org/x/image/vector package.
+		The freetype rasterizer under the GNU license can also be used, by
+		downloading the scanFT package.
+		
+		Copyright 2018 All rights reserved.
+		Created: 5/12/2018 by S.R.Wiley</span>
+</span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/rasterx/shapes.go.html">shapes.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html">stroke.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 23, in which 22 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Adder" data-popularity="1765">	<input type='checkbox' class="fold" id="Adder-fold-content"><label for="Adder-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-35">Adder</a> <b><i>(interface)</i></b></label><span id='Adder-fold-content-docs' class="fold-docs">
+<span class="md-text">		Adder interface for types that can accumlate path commands</span>
+
+		<input type='checkbox' class="fold" id="Adder-fold-methods"><label for="Adder-fold-methods">Methods (<i>total 5, all are exported</i>)</label><span id='Adder-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Adder-fold-method-CubeBezier"><label for="Adder-fold-method-CubeBezier">( Adder) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-43">CubeBezier</a>(b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Adder-fold-method-CubeBezier-docs' class="fold-docs">
+<span class="md-text">				CubeBezier adds a cubic bezier curve to the path</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Adder-fold-method-Line"><label for="Adder-fold-method-Line">( Adder) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-39">Line</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Adder-fold-method-Line-docs' class="fold-docs">
+<span class="md-text">				Line adds a line segment to the path</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Adder-fold-method-QuadBezier"><label for="Adder-fold-method-QuadBezier">( Adder) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-41">QuadBezier</a>(b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Adder-fold-method-QuadBezier-docs' class="fold-docs">
+<span class="md-text">				QuadBezier adds a quadratic bezier curve to the path</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Adder-fold-method-Start"><label for="Adder-fold-method-Start">( Adder) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-37">Start</a>(a <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Adder-fold-method-Start-docs' class="fold-docs">
+<span class="md-text">				Start starts a new curve at the given point.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Adder-fold-method-Stop"><label for="Adder-fold-method-Stop">( Adder) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-45">Stop</a>(closeLoop <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Adder-fold-method-Stop-docs' class="fold-docs">
+<span class="md-text">				Closes the path to the start point if closeLoop is true</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Adder-fold-impledby"><label for="Adder-fold-impledby">Implemented By (<i>at least 8, all are exported</i>)</label><span id='Adder-fold-impledby-items' class="fold-items"><span>
+			*<a href="#name-Dasher">Dasher</a></span><span>
+			*<a href="#name-Filler">Filler</a></span><span>
+			*<a href="#name-MatrixAdder">MatrixAdder</a></span><span>
+			*<a href="#name-Path">Path</a></span><span>
+			 <a href="#name-Rasterx">Rasterx</a> <i>(interface)</i></span><span>
+			*<a href="#name-Stroker">Stroker</a></span><span>
+			*github.com/srwiley/oksvg.<a href="oksvg.html#name-IconCursor">IconCursor</a></span><span>
+			*github.com/srwiley/oksvg.<a href="oksvg.html#name-PathCursor">PathCursor</a></span></span>
+		<input type='checkbox' class="fold" id="Adder-fold-params"><label for="Adder-fold-params">As Inputs Of (<i>at least 9, in which 7 are exported</i>)</label><span id='Adder-fold-params-items' class="fold-items"><span>
+			func <a href="#name-AddArc">AddArc</a>(points []<a href="../../builtin.html#name-float64">float64</a>, cx, cy, px, py <a href="../../builtin.html#name-float64">float64</a>, p <b>Adder</b>) (lx, ly <a href="../../builtin.html#name-float64">float64</a>)</span><span>
+			func <a href="#name-AddCircle">AddCircle</a>(cx, cy, r <a href="../../builtin.html#name-float64">float64</a>, p <b>Adder</b>)</span><span>
+			func <a href="#name-AddEllipse">AddEllipse</a>(cx, cy, rx, ry, rot <a href="../../builtin.html#name-float64">float64</a>, p <b>Adder</b>)</span><span>
+			func <a href="#name-AddRect">AddRect</a>(minX, minY, maxX, maxY, rot <a href="../../builtin.html#name-float64">float64</a>, p <b>Adder</b>)</span><span>
+			func <a href="#name-AddRoundRect">AddRoundRect</a>(minX, minY, maxX, maxY, rx, ry, rot <a href="../../builtin.html#name-float64">float64</a>, gf <a href="#name-GapFunc">GapFunc</a>, p <b>Adder</b>)</span><span>
+			func <a href="#name-GapToCap">GapToCap</a>(p <b>Adder</b>, a, eNorm <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, gf <a href="#name-GapFunc">GapFunc</a>)</span><span>
+			func <a href="#name-Path">Path</a>.<a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-126">AddTo</a>(q <b>Adder</b>)</span>
+			<input type='checkbox' class="showhide" id="Adder-showhide-outputofs"><i><label for="Adder-showhide-outputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="Adder-showhide-outputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-strokeArc">strokeArc</a>(p <b>Adder</b>, a, s1, s2 <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, clockwise <a href="../../builtin.html#name-bool">bool</a>, trimStart, trimEnd <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>, firstPoint func(p <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)) (ps1, ds1, ps2, ds2 <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-C2Point">C2Point</a>).<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-660">blackWidowMark</a>(ra <b>Adder</b>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-C2Point" data-popularity="120">	<input type='checkbox' class="fold" id="C2Point-fold-content"><label for="C2Point-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-33">C2Point</a> <i>(struct)</i></label><span id='C2Point-fold-content-docs' class="fold-docs">
+<span class="md-text">		C2Point represents a point that connects two stroke segments
+		and holds the tangent, normal and radius of curvature
+		of the trailing and leading segments in fixed point values.</span>
+
+		<input type='checkbox' class="fold" id="C2Point-fold-fields"><label for="C2Point-fold-fields">Fields (<i>total 7, all are exported</i>)</label><span id='C2Point-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-34">LNorm</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-34">LTan</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-34">P</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-35">RL</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-35">RT</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-34">TNorm</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-34">TTan</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="C2Point-fold-methods"><label for="C2Point-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='C2Point-fold-methods-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="C2Point-showhide-methods"><i><label for="C2Point-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="C2Point-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="C2Point-fold-method-blackWidowMark"><label for="C2Point-fold-method-blackWidowMark">(*C2Point) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-660">blackWidowMark</a>(ra <a href="#name-Adder">Adder</a>)</label><span id='C2Point-fold-method-blackWidowMark-docs' class="fold-docs">
+<span class="md-text">				blackWidowMark handles a gap in a stroke that can occur when a line end is too close
+				to a segment to segment join point. Although it is only required in those cases,
+				at this point, no code has been written to properly detect when it is needed,
+				so for now it just draws by default.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="C2Point-fold-params"><label for="C2Point-fold-params">As Inputs Of (<i>at least 2, in which 1 is exported</i>)</label><span id='C2Point-fold-params-items' class="fold-items"><span>
+			func (*<a href="#name-Stroker">Stroker</a>).<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-231">Joiner</a>(p <b>C2Point</b>)</span>
+			<input type='checkbox' class="showhide" id="C2Point-showhide-outputofs"><i><label for="C2Point-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="C2Point-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Stroker">Stroker</a>).<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-243">strokeEdge</a>(p <b>C2Point</b>, crossProd <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-CapFunc" data-popularity="85">	<input type='checkbox' class="fold" id="CapFunc-fold-content"><label for="CapFunc-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-25">CapFunc</a> <i>(func)</i></label><span id='CapFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		CapFunc defines a function that draws caps on the ends of lines</span>
+
+		<input type='checkbox' class="fold" id="CapFunc-fold-params"><label for="CapFunc-fold-params">As Inputs Of (<i>at least 2, both are exported</i>)</label><span id='CapFunc-fold-params-items' class="fold-items"><span>
+			func (*<a href="#name-Dasher">Dasher</a>).<a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-86">SetStroke</a>(width, miterLimit <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>, capL, capT <b>CapFunc</b>, gp <a href="#name-GapFunc">GapFunc</a>, jm <a href="#name-JoinMode">JoinMode</a>, dashes []<a href="../../builtin.html#name-float64">float64</a>, dashOffset <a href="../../builtin.html#name-float64">float64</a>)</span><span>
+			func (*<a href="#name-Stroker">Stroker</a>).<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-92">SetStroke</a>(width, miterLimit <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>, capL, capT <b>CapFunc</b>, gp <a href="#name-GapFunc">GapFunc</a>, jm <a href="#name-JoinMode">JoinMode</a>)</span></span>
+		<input type='checkbox' class="fold" id="CapFunc-fold-values"><label for="CapFunc-fold-values">As Types Of (<i>total 5, all are exported</i>)</label><span id='CapFunc-fold-values-items' class="fold-items"><span>
+			  var <a href="#name-ButtCap">ButtCap</a></span><span>
+			  var <a href="#name-CubicCap">CubicCap</a></span><span>
+			  var <a href="#name-QuadraticCap">QuadraticCap</a></span><span>
+			  var <a href="#name-RoundCap">RoundCap</a></span><span>
+			  var <a href="#name-SquareCap">SquareCap</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-ClipImage" data-popularity="600">	<input type='checkbox' class="fold" id="ClipImage-fold-content"><label for="ClipImage-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-49">ClipImage</a> <i>(struct)</i></label><span id='ClipImage-fold-content-docs' class="fold-docs">
+<span class="md-text">		ClipImage is a clipable ColorFuncImage</span>
+
+		<input type='checkbox' class="fold" id="ClipImage-fold-fields"><label for="ClipImage-fold-fields">Fields (<i>total 5, in which 3 are exported</i>)</label><span id='ClipImage-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-50">ColorFuncImage</a> <i><a href="#name-ColorFuncImage">ColorFuncImage</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-50" class="path-duplicate">ColorFuncImage</a>.<a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-31">Uniform</a> <i><a href="../../image.html">image</a>.<a href="../../image.html#name-Uniform">Uniform</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-50" class="path-duplicate">ColorFuncImage</a>.<a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-31" class="path-duplicate">Uniform</a>.<a href="../../../src/image/names.go.html#line-25">C</a> <i><a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></i></span></span>
+			<input type='checkbox' class="showhide" id="ClipImage-showhide-fields"><i><label for="ClipImage-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="ClipImage-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-51">clip</a> <i><a href="../../image.html">image</a>.<a href="../../image.html#name-Rectangle">Rectangle</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-50">ColorFuncImage</a>.<a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-32">colorFunc</a> <i><a href="#name-ColorFunc">ColorFunc</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="ClipImage-fold-methods"><label for="ClipImage-fold-methods">Methods (<i>total 7, all are exported</i>)</label><span id='ClipImage-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ClipImage-fold-method-At"><label for="ClipImage-fold-method-At">(*ClipImage) <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-62">At</a>(x, y <a href="../../builtin.html#name-int">int</a>) <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></label><span id='ClipImage-fold-method-At-docs' class="fold-docs">
+<span class="md-text">				At returns the color of the ClipImage at the point x,y</span>
+</span></span><span>
+			<span class="nodocs">(*ClipImage) <a href="../../../src/image/names.go.html#line-40">Bounds</a>() <a href="../../image.html">image</a>.<a href="../../image.html#name-Rectangle">Rectangle</a></span></span><span>
+			<span class="nodocs">(*ClipImage) <a href="../../../src/image/names.go.html#line-32">ColorModel</a>() <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Model">Model</a></span></span><span>
+			<span class="nodocs">(*ClipImage) <a href="../../../src/image/names.go.html#line-36">Convert</a>(<a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a>) <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></span></span><span>
+			<input type='checkbox' class="fold" id="ClipImage-fold-method-Opaque"><label for="ClipImage-fold-method-Opaque">(*ClipImage) <a href="../../../src/image/names.go.html#line-50">Opaque</a>() <a href="../../builtin.html#name-bool">bool</a></label><span id='ClipImage-fold-method-Opaque-docs' class="fold-docs">
+<span class="md-text">				Opaque scans the entire image and reports whether it is fully opaque.</span>
+</span></span><span>
+			<span class="nodocs">(*ClipImage) <a href="../../../src/image/names.go.html#line-28">RGBA</a>() (r, g, b, a <a href="../../builtin.html#name-uint32">uint32</a>)</span></span><span>
+			<span class="nodocs">(*ClipImage) <a href="../../../src/image/names.go.html#line-44">RGBA64At</a>(x, y <a href="../../builtin.html#name-int">int</a>) <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-RGBA64">RGBA64</a></span></span></span>
+		<input type='checkbox' class="fold" id="ClipImage-fold-impls"><label for="ClipImage-fold-impls">Implements (<i>at least 5, in which 4 are exported</i>)</label><span id='ClipImage-fold-impls-items' class="fold-items"><span>
+			*ClipImage : image.<a href="../../image.html#name-Image">Image</a></span><span>
+			*ClipImage : image.<a href="../../image.html#name-RGBA64Image">RGBA64Image</a></span><span>
+			*ClipImage : image/color.<a href="../../image/color.html#name-Color">Color</a></span><span>
+			*ClipImage : image/color.<a href="../../image/color.html#name-Model">Model</a></span>
+			<input type='checkbox' class="showhide" id="ClipImage-showhide-impls"><i><label for="ClipImage-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="ClipImage-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			*ClipImage : image/png.<a href="../../image/png.html#name-opaquer">opaquer</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-ColorFunc" data-popularity="0">	<input type='checkbox' class="fold" id="ColorFunc-fold-content"><label for="ColorFunc-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-17">ColorFunc</a> <i>(func)</i></label><span id='ColorFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		ColorFunc maps a color to x y coordinates</span>
+
+</span></div><div class="anchor type-res" id="name-ColorFuncImage" data-popularity="600">	<input type='checkbox' class="fold" id="ColorFuncImage-fold-content"><label for="ColorFuncImage-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-30">ColorFuncImage</a> <i>(struct)</i></label><span id='ColorFuncImage-fold-content-docs' class="fold-docs">
+<span class="md-text">		ColorFuncImage implements and image
+		using the provided colorFunc</span>
+
+		<input type='checkbox' class="fold" id="ColorFuncImage-fold-fields"><label for="ColorFuncImage-fold-fields">Fields (<i>total 3, in which 2 are exported</i>)</label><span id='ColorFuncImage-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-31">Uniform</a> <i><a href="../../image.html">image</a>.<a href="../../image.html#name-Uniform">Uniform</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-31" class="path-duplicate">Uniform</a>.<a href="../../../src/image/names.go.html#line-25">C</a> <i><a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></i></span></span>
+			<input type='checkbox' class="showhide" id="ColorFuncImage-showhide-fields"><i><label for="ColorFuncImage-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="ColorFuncImage-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-32">colorFunc</a> <i><a href="#name-ColorFunc">ColorFunc</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="ColorFuncImage-fold-methods"><label for="ColorFuncImage-fold-methods">Methods (<i>total 7, all are exported</i>)</label><span id='ColorFuncImage-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ColorFuncImage-fold-method-At"><label for="ColorFuncImage-fold-method-At">(*ColorFuncImage) <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-23">At</a>(x, y <a href="../../builtin.html#name-int">int</a>) <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></label><span id='ColorFuncImage-fold-method-At-docs' class="fold-docs">
+<span class="md-text">				At returns the color at the point x,y</span>
+</span></span><span>
+			<span class="nodocs">(*ColorFuncImage) <a href="../../../src/image/names.go.html#line-40">Bounds</a>() <a href="../../image.html">image</a>.<a href="../../image.html#name-Rectangle">Rectangle</a></span></span><span>
+			<span class="nodocs">(*ColorFuncImage) <a href="../../../src/image/names.go.html#line-32">ColorModel</a>() <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Model">Model</a></span></span><span>
+			<span class="nodocs">(*ColorFuncImage) <a href="../../../src/image/names.go.html#line-36">Convert</a>(<a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a>) <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></span></span><span>
+			<input type='checkbox' class="fold" id="ColorFuncImage-fold-method-Opaque"><label for="ColorFuncImage-fold-method-Opaque">(*ColorFuncImage) <a href="../../../src/image/names.go.html#line-50">Opaque</a>() <a href="../../builtin.html#name-bool">bool</a></label><span id='ColorFuncImage-fold-method-Opaque-docs' class="fold-docs">
+<span class="md-text">				Opaque scans the entire image and reports whether it is fully opaque.</span>
+</span></span><span>
+			<span class="nodocs">(*ColorFuncImage) <a href="../../../src/image/names.go.html#line-28">RGBA</a>() (r, g, b, a <a href="../../builtin.html#name-uint32">uint32</a>)</span></span><span>
+			<span class="nodocs">(*ColorFuncImage) <a href="../../../src/image/names.go.html#line-44">RGBA64At</a>(x, y <a href="../../builtin.html#name-int">int</a>) <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-RGBA64">RGBA64</a></span></span></span>
+		<input type='checkbox' class="fold" id="ColorFuncImage-fold-impls"><label for="ColorFuncImage-fold-impls">Implements (<i>at least 5, in which 4 are exported</i>)</label><span id='ColorFuncImage-fold-impls-items' class="fold-items"><span>
+			*ColorFuncImage : image.<a href="../../image.html#name-Image">Image</a></span><span>
+			*ColorFuncImage : image.<a href="../../image.html#name-RGBA64Image">RGBA64Image</a></span><span>
+			*ColorFuncImage : image/color.<a href="../../image/color.html#name-Color">Color</a></span><span>
+			*ColorFuncImage : image/color.<a href="../../image/color.html#name-Model">Model</a></span>
+			<input type='checkbox' class="showhide" id="ColorFuncImage-showhide-impls"><i><label for="ColorFuncImage-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="ColorFuncImage-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			*ColorFuncImage : image/png.<a href="../../image/png.html#name-opaquer">opaquer</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Dasher" data-popularity="1565">	<input type='checkbox' class="fold" id="Dasher-fold-content"><label for="Dasher-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-13">Dasher</a> <i>(struct)</i></label><span id='Dasher-fold-content-docs' class="fold-docs">
+<span class="md-text">		Dasher struct extends the Stroker and can draw
+		dashed lines with end capping</span>
+
+		<input type='checkbox' class="fold" id="Dasher-fold-fields"><label for="Dasher-fold-fields">Fields (<i>total 23, in which 9 are exported</i>)</label><span id='Dasher-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-18">DashOffset</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-15">Dashes</a> <i>[]<a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14">Stroker</a> <i><a href="#name-Stroker">Stroker</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-field-CapL"><label for="Dasher-fold-field-CapL"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-43">CapL</a> <i><a href="#name-CapFunc">CapFunc</a></i></label><span id='Dasher-fold-field-CapL-docs' class="fold-docs">
+<span class="md-text">				// Trailing and leading cap funcs may be set separately</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-field-CapT"><label for="Dasher-fold-field-CapT"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-43">CapT</a> <i><a href="#name-CapFunc">CapFunc</a></i></label><span id='Dasher-fold-field-CapT-docs' class="fold-docs">
+<span class="md-text">				// Trailing and leading cap funcs may be set separately</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-42">Filler</a> <i><a href="#name-Filler">Filler</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-42" class="path-duplicate">Filler</a>.<a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-56">Scanner</a> <i><a href="#name-Scanner">Scanner</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-field-JoinGap"><label for="Dasher-fold-field-JoinGap"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-44">JoinGap</a> <i><a href="#name-GapFunc">GapFunc</a></i></label><span id='Dasher-fold-field-JoinGap-docs' class="fold-docs">
+<span class="md-text">				// When gap appears between segments, this function is called</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-50">JoinMode</a> <i><a href="#name-JoinMode">JoinMode</a></i></span></span>
+			<input type='checkbox' class="showhide" id="Dasher-showhide-fields"><i><label for="Dasher-showhide-fields" class="show-inline">/* 14 unexporteds ... */</label><label for="Dasher-showhide-fields" class="hide-inline">/* 14 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-17">dashIsGap</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-16">dashPlace</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-18">deltaDash</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-17">firstDashIsGap</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-19">sgm</a> <i><a href="#name-Rasterx">Rasterx</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-42">Filler</a>.<a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-57">a</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-42" class="path-duplicate">Filler</a>.<a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-57">first</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Dasher-fold-field-firstP"><label for="Dasher-fold-field-firstP"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-46">firstP</a> <i><a href="#name-C2Point">C2Point</a></i></label><span id='Dasher-fold-field-firstP-docs' class="fold-docs">
+<span class="md-text">				// Tracks progress of the stroke</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-51">inStroke</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Dasher-fold-field-leadPoint"><label for="Dasher-fold-field-leadPoint"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-46">leadPoint</a> <i><a href="#name-C2Point">C2Point</a></i></label><span id='Dasher-fold-field-leadPoint-docs' class="fold-docs">
+<span class="md-text">				// Tracks progress of the stroke</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Dasher-fold-field-ln"><label for="Dasher-fold-field-ln"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-47">ln</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></i></label><span id='Dasher-fold-field-ln-docs' class="fold-docs">
+<span class="md-text">				// last normal of intra-seg connection.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Dasher-fold-field-mLimit"><label for="Dasher-fold-field-mLimit"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-48">mLimit</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></i></label><span id='Dasher-fold-field-mLimit-docs' class="fold-docs">
+<span class="md-text">				// u is the half-width of the stroke.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Dasher-fold-field-trailPoint"><label for="Dasher-fold-field-trailPoint"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-46">trailPoint</a> <i><a href="#name-C2Point">C2Point</a></i></label><span id='Dasher-fold-field-trailPoint-docs' class="fold-docs">
+<span class="md-text">				// Tracks progress of the stroke</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Dasher-fold-field-u"><label for="Dasher-fold-field-u"><a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-14" class="path-duplicate">Stroker</a>.<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-48">u</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></i></label><span id='Dasher-fold-field-u-docs' class="fold-docs">
+<span class="md-text">				// u is the half-width of the stroke.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Dasher-fold-methods"><label for="Dasher-fold-methods">Methods (<i>total 24, in which 18 are exported</i>)</label><span id='Dasher-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-CalcEndCurvature"><label for="Dasher-fold-method-CalcEndCurvature">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-617">CalcEndCurvature</a>(p0, p1, p2, q0, q1, q2 <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, dm <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int52_12">Int52_12</a>, calcRadCuve <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Dasher-fold-method-CalcEndCurvature-docs' class="fold-docs">
+<span class="md-text">				CalcEndCurvature calculates the radius of curvature given the control points
+				of a bezier curve.
+				It is a low level function exposed for the purposes of callbacks
+				and debugging.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-Clear"><label for="Dasher-fold-method-Clear">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-212">Clear</a>()</label><span id='Dasher-fold-method-Clear-docs' class="fold-docs">
+<span class="md-text">				Clear resets the filler</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-CubeBezier"><label for="Dasher-fold-method-CubeBezier">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-186">CubeBezier</a>(b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Dasher-fold-method-CubeBezier-docs' class="fold-docs">
+<span class="md-text">				CubeBezier starts a stroked cubic bezier.
+				It is a low level function exposed for the purposes of callbacks
+				and debugging.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-CubeBezierF"><label for="Dasher-fold-method-CubeBezierF">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-196">CubeBezierF</a>(sgm <a href="#name-Rasterx">Rasterx</a>, b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Dasher-fold-method-CubeBezierF-docs' class="fold-docs">
+<span class="md-text">				CubeBezierF adds a cubic bezier to the curve. sending the line calls the the
+				sgm Rasterizer</span>
+</span></span><span>
+			<span class="nodocs">( Dasher) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-22">Draw</a>()</span></span><span>
+			<span class="nodocs">( Dasher) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-23">GetPathExtent</a>() <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Rectangle26_6">Rectangle26_6</a></span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-Joiner"><label for="Dasher-fold-method-Joiner">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-231">Joiner</a>(p <a href="#name-C2Point">C2Point</a>)</label><span id='Dasher-fold-method-Joiner-docs' class="fold-docs">
+<span class="md-text">				Joiner is called when two segments of a stroke are joined. it is exposed
+				so that if can be wrapped to generate callbacks for the join points.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-Line"><label for="Dasher-fold-method-Line">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-174">Line</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Dasher-fold-method-Line-docs' class="fold-docs">
+<span class="md-text">				Line for Dasher is here to pass the dasher sgm to LineP</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-LineSeg"><label for="Dasher-fold-method-LineSeg">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-560">LineSeg</a>(sgm <a href="#name-Rasterx">Rasterx</a>, b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Dasher-fold-method-LineSeg-docs' class="fold-docs">
+<span class="md-text">				LineSeg is called by both the Stroker and Dasher</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-QuadBezier"><label for="Dasher-fold-method-QuadBezier">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-179">QuadBezier</a>(b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Dasher-fold-method-QuadBezier-docs' class="fold-docs">
+<span class="md-text">				QuadBezier for dashing</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-QuadBezierF"><label for="Dasher-fold-method-QuadBezierF">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-156">QuadBezierF</a>(sgm <a href="#name-Rasterx">Rasterx</a>, b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Dasher-fold-method-QuadBezierF-docs' class="fold-docs">
+<span class="md-text">				QuadBezierF adds a quadratic segment to the sgm Rasterizer.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-SetBounds"><label for="Dasher-fold-method-SetBounds">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-220">SetBounds</a>(width, height <a href="../../builtin.html#name-int">int</a>)</label><span id='Dasher-fold-method-SetBounds-docs' class="fold-docs">
+<span class="md-text">				SetBounds sets the maximum width and height of the rasterized image and
+				calls Clear. The width and height are in pixels, not fixed.Int26_6 units.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-SetClip"><label for="Dasher-fold-method-SetClip">( Dasher) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-32">SetClip</a>(rect <a href="../../image.html">image</a>.<a href="../../image.html#name-Rectangle">Rectangle</a>)</label><span id='Dasher-fold-method-SetClip-docs' class="fold-docs">
+<span class="md-text">				SetClip sets an optional clipping rectangle to restrict rendering
+				only to that region -- if size is 0 then ignored (set to image.ZR
+				to clear)</span>
+</span></span><span>
+			<span class="nodocs">( Dasher) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-25">SetColor</a>(color interface{})</span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-SetStroke"><label for="Dasher-fold-method-SetStroke">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-86">SetStroke</a>(width, miterLimit <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>, capL, capT <a href="#name-CapFunc">CapFunc</a>, gp <a href="#name-GapFunc">GapFunc</a>, jm <a href="#name-JoinMode">JoinMode</a>, dashes []<a href="../../builtin.html#name-float64">float64</a>, dashOffset <a href="../../builtin.html#name-float64">float64</a>)</label><span id='Dasher-fold-method-SetStroke-docs' class="fold-docs">
+<span class="md-text">				SetStroke set the parameters for stroking a line. width is the width of the line, miterlimit is the miter cutoff
+				value for miter, arc, miterclip and arcClip joinModes. CapL and CapT are the capping functions for leading and trailing
+				line ends. If one is nil, the other function is used at both ends. gp is the gap function that determines how a
+				gap on the convex side of two lines joining is filled. jm is the JoinMode for curve segments. Dashes is the values for
+				the dash pattern. Pass in nil or an empty slice for no dashes. dashoffset is the starting offset into the dash array.</span>
+</span></span><span>
+			<span class="nodocs">( Dasher) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-26">SetWinding</a>(useNonZeroWinding <a href="../../builtin.html#name-bool">bool</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-Start"><label for="Dasher-fold-method-Start">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-33">Start</a>(a <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Dasher-fold-method-Start-docs' class="fold-docs">
+<span class="md-text">				Start starts a dashed line</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-Stop"><label for="Dasher-fold-method-Stop">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-116">Stop</a>(isClosed <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Dasher-fold-method-Stop-docs' class="fold-docs">
+<span class="md-text">				Stop terminates a dashed line</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Dasher-showhide-methods"><i><label for="Dasher-showhide-methods" class="show-inline">/* 6 unexporteds ... */</label><label for="Dasher-showhide-methods" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-531">cubeBezierf</a>(sgm <a href="#name-Rasterx">Rasterx</a>, b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-dashLineStrokeBit"><label for="Dasher-fold-method-dashLineStrokeBit">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-152">dashLineStrokeBit</a>(b, bnorm <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, dontClose <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Dasher-fold-method-dashLineStrokeBit-docs' class="fold-docs">
+<span class="md-text">				dashLineStrokeBit is a helper function that reduces code redundancey in the
+				lineF function.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-joinF"><label for="Dasher-fold-method-joinF">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-26">joinF</a>()</label><span id='Dasher-fold-method-joinF-docs' class="fold-docs">
+<span class="md-text">				joinF overides stroker joinF during dashed stroking, because we need to slightly modify
+				the the call as below to handle the case of the join being in a dash gap.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-lineF"><label for="Dasher-fold-method-lineF">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-54">lineF</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Dasher-fold-method-lineF-docs' class="fold-docs">
+<span class="md-text">				lineF overides stroker lineF to modify the the call as below
+				while performing the join in a dashed stroke.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-quadBezierf"><label for="Dasher-fold-method-quadBezierf">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-509">quadBezierf</a>(s <a href="#name-Rasterx">Rasterx</a>, b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Dasher-fold-method-quadBezierf-docs' class="fold-docs">
+<span class="md-text">				quadBezierf calcs end curvature of beziers</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Dasher-fold-method-strokeEdge"><label for="Dasher-fold-method-strokeEdge">(*Dasher) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-243">strokeEdge</a>(p <a href="#name-C2Point">C2Point</a>, crossProd <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>)</label><span id='Dasher-fold-method-strokeEdge-docs' class="fold-docs">
+<span class="md-text">				strokeEdge reduces code redundancy in the Joiner function by 2x since it handles
+				the top and bottom edges. This function encodes most of the logic of how to
+				handle joins between the given C2Point point p, and the end of the line.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Dasher-fold-impls"><label for="Dasher-fold-impls">Implements (<i>at least 3, all are exported</i>)</label><span id='Dasher-fold-impls-items' class="fold-items"><span>
+			*Dasher : <a href="#name-Adder">Adder</a></span><span>
+			*Dasher : <a href="#name-Rasterx">Rasterx</a></span><span>
+			*Dasher : <a href="#name-Scanner">Scanner</a></span></span>
+		<input type='checkbox' class="fold" id="Dasher-fold-results"><label for="Dasher-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Dasher-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewDasher">NewDasher</a>(width, height <a href="../../builtin.html#name-int">int</a>, scanner <a href="#name-Scanner">Scanner</a>) *<b>Dasher</b></span></span>
+		<input type='checkbox' class="fold" id="Dasher-fold-params"><label for="Dasher-fold-params">As Inputs Of (<i>at least 4, in which 3 are exported</i>)</label><span id='Dasher-fold-params-items' class="fold-items"><span>
+			func github.com/srwiley/oksvg.(*<a href="oksvg.html#name-SvgIcon">SvgIcon</a>).<a href="../../../src/github.com/srwiley/oksvg/svg_icon.go.html#line-26">Draw</a>(r *<b>Dasher</b>, opacity <a href="../../builtin.html#name-float64">float64</a>)</span><span>
+			func github.com/srwiley/oksvg.(*<a href="oksvg.html#name-SvgPath">SvgPath</a>).<a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-22">Draw</a>(r *<b>Dasher</b>, opacity <a href="../../builtin.html#name-float64">float64</a>)</span><span>
+			func github.com/srwiley/oksvg.(*<a href="oksvg.html#name-SvgPath">SvgPath</a>).<a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-27">DrawTransformed</a>(r *<b>Dasher</b>, opacity <a href="../../builtin.html#name-float64">float64</a>, t <a href="#name-Matrix2D">Matrix2D</a>)</span>
+			<input type='checkbox' class="showhide" id="Dasher-showhide-outputofs"><i><label for="Dasher-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Dasher-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/svg.<a href="../../fyne.io/fyne/v2/internal/svg.html#name-drawSVGSafely">drawSVGSafely</a>(icon *<a href="oksvg.html">oksvg</a>.<a href="oksvg.html#name-SvgIcon">SvgIcon</a>, raster *<b>Dasher</b>) <a href="../../builtin.html#name-error">error</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Filler" data-popularity="1060">	<input type='checkbox' class="fold" id="Filler-fold-content"><label for="Filler-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-55">Filler</a> <i>(struct)</i></label><span id='Filler-fold-content-docs' class="fold-docs">
+<span class="md-text">		Filler satisfies Rasterx</span>
+
+		<input type='checkbox' class="fold" id="Filler-fold-fields"><label for="Filler-fold-fields">Fields (<i>total 3, in which 1 is exported</i>)</label><span id='Filler-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-56">Scanner</a> <i><a href="#name-Scanner">Scanner</a></i></span></span>
+			<input type='checkbox' class="showhide" id="Filler-showhide-fields"><i><label for="Filler-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="Filler-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-57">a</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-57">first</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Filler-fold-methods"><label for="Filler-fold-methods">Methods (<i>total 16, in which 14 are exported</i>)</label><span id='Filler-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Filler-fold-method-Clear"><label for="Filler-fold-method-Clear">(*Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-212">Clear</a>()</label><span id='Filler-fold-method-Clear-docs' class="fold-docs">
+<span class="md-text">				Clear resets the filler</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Filler-fold-method-CubeBezier"><label for="Filler-fold-method-CubeBezier">(*Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-173">CubeBezier</a>(b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Filler-fold-method-CubeBezier-docs' class="fold-docs">
+<span class="md-text">				CubeBezier adds a cubic bezier to the curve</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Filler-fold-method-CubeBezierF"><label for="Filler-fold-method-CubeBezierF">(*Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-196">CubeBezierF</a>(sgm <a href="#name-Rasterx">Rasterx</a>, b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Filler-fold-method-CubeBezierF-docs' class="fold-docs">
+<span class="md-text">				CubeBezierF adds a cubic bezier to the curve. sending the line calls the the
+				sgm Rasterizer</span>
+</span></span><span>
+			<span class="nodocs">( Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-22">Draw</a>()</span></span><span>
+			<span class="nodocs">( Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-23">GetPathExtent</a>() <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Rectangle26_6">Rectangle26_6</a></span></span><span>
+			<input type='checkbox' class="fold" id="Filler-fold-method-Line"><label for="Filler-fold-method-Line">(*Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-184">Line</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Filler-fold-method-Line-docs' class="fold-docs">
+<span class="md-text">				Line for a filling rasterizer is just the line call in scan</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Filler-fold-method-QuadBezier"><label for="Filler-fold-method-QuadBezier">(*Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-76">QuadBezier</a>(b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Filler-fold-method-QuadBezier-docs' class="fold-docs">
+<span class="md-text">				QuadBezier adds a quadratic segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Filler-fold-method-QuadBezierF"><label for="Filler-fold-method-QuadBezierF">(*Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-156">QuadBezierF</a>(sgm <a href="#name-Rasterx">Rasterx</a>, b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Filler-fold-method-QuadBezierF-docs' class="fold-docs">
+<span class="md-text">				QuadBezierF adds a quadratic segment to the sgm Rasterizer.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Filler-fold-method-SetBounds"><label for="Filler-fold-method-SetBounds">(*Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-220">SetBounds</a>(width, height <a href="../../builtin.html#name-int">int</a>)</label><span id='Filler-fold-method-SetBounds-docs' class="fold-docs">
+<span class="md-text">				SetBounds sets the maximum width and height of the rasterized image and
+				calls Clear. The width and height are in pixels, not fixed.Int26_6 units.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Filler-fold-method-SetClip"><label for="Filler-fold-method-SetClip">( Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-32">SetClip</a>(rect <a href="../../image.html">image</a>.<a href="../../image.html#name-Rectangle">Rectangle</a>)</label><span id='Filler-fold-method-SetClip-docs' class="fold-docs">
+<span class="md-text">				SetClip sets an optional clipping rectangle to restrict rendering
+				only to that region -- if size is 0 then ignored (set to image.ZR
+				to clear)</span>
+</span></span><span>
+			<span class="nodocs">( Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-25">SetColor</a>(color interface{})</span></span><span>
+			<span class="nodocs">( Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-26">SetWinding</a>(useNonZeroWinding <a href="../../builtin.html#name-bool">bool</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="Filler-fold-method-Start"><label for="Filler-fold-method-Start">(*Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-62">Start</a>(a <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Filler-fold-method-Start-docs' class="fold-docs">
+<span class="md-text">				Start starts a new path at the given point.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Filler-fold-method-Stop"><label for="Filler-fold-method-Stop">(*Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-69">Stop</a>(isClosed <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Filler-fold-method-Stop-docs' class="fold-docs">
+<span class="md-text">				Stop sends a path at the given point.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Filler-showhide-methods"><i><label for="Filler-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="Filler-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Filler-fold-method-joinF"><label for="Filler-fold-method-joinF">(*Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-179">joinF</a>()</label><span id='Filler-fold-method-joinF-docs' class="fold-docs">
+<span class="md-text">				joinF is a no-op for a filling rasterizer. This is used in stroking and dashed
+				stroking</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Filler-fold-method-lineF"><label for="Filler-fold-method-lineF">(*Filler) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-189">lineF</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Filler-fold-method-lineF-docs' class="fold-docs">
+<span class="md-text">				lineF for a filling rasterizer is just the line call in scan</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Filler-fold-impls"><label for="Filler-fold-impls">Implements (<i>at least 3, all are exported</i>)</label><span id='Filler-fold-impls-items' class="fold-items"><span>
+			*Filler : <a href="#name-Adder">Adder</a></span><span>
+			*Filler : <a href="#name-Rasterx">Rasterx</a></span><span>
+			*Filler : <a href="#name-Scanner">Scanner</a></span></span>
+		<input type='checkbox' class="fold" id="Filler-fold-results"><label for="Filler-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Filler-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewFiller">NewFiller</a>(width, height <a href="../../builtin.html#name-int">int</a>, scanner <a href="#name-Scanner">Scanner</a>) *<b>Filler</b></span></span>
+		<input type='checkbox' class="fold" id="Filler-fold-params"><label for="Filler-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='Filler-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Filler-showhide-outputofs"><i><label for="Filler-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Filler-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func github.com/go-text/render.(*<a href="../go-text/render.html#name-Renderer">Renderer</a>).<a href="../../../src/github.com/go-text/render/render.go.html#line-120">drawOutline</a>(g <a href="../go-text/typesetting/shaping.html">shaping</a>.<a href="../go-text/typesetting/shaping.html#name-Glyph">Glyph</a>, bitmap <a href="../go-text/typesetting/font.html">font</a>.<a href="../go-text/typesetting/font.html#name-GlyphOutline">GlyphOutline</a>, f *<b>Filler</b>, scale <a href="../../builtin.html#name-float32">float32</a>, x, y <a href="../../builtin.html#name-float32">float32</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-GapFunc" data-popularity="155">	<input type='checkbox' class="fold" id="GapFunc-fold-content"><label for="GapFunc-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-28">GapFunc</a> <i>(func)</i></label><span id='GapFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		GapFunc defines a function to bridge gaps when the miter limit is
+		exceeded</span>
+
+		<input type='checkbox' class="fold" id="GapFunc-fold-params"><label for="GapFunc-fold-params">As Inputs Of (<i>at least 4, all are exported</i>)</label><span id='GapFunc-fold-params-items' class="fold-items"><span>
+			func <a href="#name-AddRoundRect">AddRoundRect</a>(minX, minY, maxX, maxY, rx, ry, rot <a href="../../builtin.html#name-float64">float64</a>, gf <b>GapFunc</b>, p <a href="#name-Adder">Adder</a>)</span><span>
+			func <a href="#name-GapToCap">GapToCap</a>(p <a href="#name-Adder">Adder</a>, a, eNorm <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, gf <b>GapFunc</b>)</span><span>
+			func (*<a href="#name-Dasher">Dasher</a>).<a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-86">SetStroke</a>(width, miterLimit <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>, capL, capT <a href="#name-CapFunc">CapFunc</a>, gp <b>GapFunc</b>, jm <a href="#name-JoinMode">JoinMode</a>, dashes []<a href="../../builtin.html#name-float64">float64</a>, dashOffset <a href="../../builtin.html#name-float64">float64</a>)</span><span>
+			func (*<a href="#name-Stroker">Stroker</a>).<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-92">SetStroke</a>(width, miterLimit <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>, capL, capT <a href="#name-CapFunc">CapFunc</a>, gp <b>GapFunc</b>, jm <a href="#name-JoinMode">JoinMode</a>)</span></span>
+		<input type='checkbox' class="fold" id="GapFunc-fold-values"><label for="GapFunc-fold-values">As Types Of (<i>total 4, all are exported</i>)</label><span id='GapFunc-fold-values-items' class="fold-items"><span>
+			  var <a href="#name-CubicGap">CubicGap</a></span><span>
+			  var <a href="#name-FlatGap">FlatGap</a></span><span>
+			  var <a href="#name-QuadraticGap">QuadraticGap</a></span><span>
+			  var <a href="#name-RoundGap">RoundGap</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Gradient" data-popularity="385">	<input type='checkbox' class="fold" id="Gradient-fold-content"><label for="Gradient-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-40">Gradient</a> <i>(struct)</i></label><span id='Gradient-fold-content-docs' class="fold-docs">
+<span class="md-text">		Gradient holds a description of an SVG 2.0 gradient</span>
+
+		<input type='checkbox' class="fold" id="Gradient-fold-fields"><label for="Gradient-fold-fields">Fields (<i>total 7, all are exported</i>)</label><span id='Gradient-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-43">Bounds</a> <i>struct{X, Y, W, H <a href="../../builtin.html#name-float64">float64</a>}</i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-47">IsRadial</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-44">Matrix</a> <i><a href="#name-Matrix2D">Matrix2D</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-41">Points</a> <i>[5]<a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-45">Spread</a> <i><a href="#name-SpreadMethod">SpreadMethod</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-42">Stops</a> <i>[]<a href="#name-GradStop">GradStop</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-46">Units</a> <i><a href="#name-GradientUnits">GradientUnits</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Gradient-fold-methods"><label for="Gradient-fold-methods">Methods (<i>total 4, in which 2 are exported</i>)</label><span id='Gradient-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Gradient-fold-method-GetColorFunction"><label for="Gradient-fold-method-GetColorFunction">(*Gradient) <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-158">GetColorFunction</a>(opacity <a href="../../builtin.html#name-float64">float64</a>) interface{}</label><span id='Gradient-fold-method-GetColorFunction-docs' class="fold-docs">
+<span class="md-text">				GetColorFunction returns the color function</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Gradient-fold-method-GetColorFunctionUS"><label for="Gradient-fold-method-GetColorFunctionUS">(*Gradient) <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-163">GetColorFunctionUS</a>(opacity <a href="../../builtin.html#name-float64">float64</a>, objMatrix <a href="#name-Matrix2D">Matrix2D</a>) interface{}</label><span id='Gradient-fold-method-GetColorFunctionUS-docs' class="fold-docs">
+<span class="md-text">				GetColorFunctionUS returns the color function using the User Space objMatrix</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Gradient-showhide-methods"><i><label for="Gradient-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="Gradient-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Gradient) <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-132">blendStops</a>(t, opacity <a href="../../builtin.html#name-float64">float64</a>, s1, s2 <a href="#name-GradStop">GradStop</a>, flip <a href="../../builtin.html#name-bool">bool</a>) <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Gradient-fold-method-tColor"><label for="Gradient-fold-method-tColor">(*Gradient) <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-60">tColor</a>(t, opacity <a href="../../builtin.html#name-float64">float64</a>) <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></label><span id='Gradient-fold-method-tColor-docs' class="fold-docs">
+<span class="md-text">				tColor takes the paramaterized value along the gradient's stops and
+				returns a color depending on the spreadMethod value of the gradient and
+				the gradient's slice of stop values.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Gradient-fold-results"><label for="Gradient-fold-results">As Outputs Of (<i>at least 2, in which 1 is exported</i>)</label><span id='Gradient-fold-results-items' class="fold-items"><span>
+			func github.com/srwiley/oksvg.(*<a href="oksvg.html#name-IconCursor">IconCursor</a>).<a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-34">ReadGradURL</a>(v <a href="../../builtin.html#name-string">string</a>, defaultColor interface{}) (grad <b>Gradient</b>, ok <a href="../../builtin.html#name-bool">bool</a>)</span>
+			<input type='checkbox' class="showhide" id="Gradient-showhide-inputofs"><i><label for="Gradient-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="Gradient-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func github.com/srwiley/oksvg.<a href="oksvg.html#name-localizeGradIfStopClrNil">localizeGradIfStopClrNil</a>(g *<b>Gradient</b>, defaultColor interface{}) (grad <b>Gradient</b>)</i></span></span>
+		<input type='checkbox' class="fold" id="Gradient-fold-params"><label for="Gradient-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='Gradient-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Gradient-showhide-outputofs"><i><label for="Gradient-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Gradient-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func github.com/srwiley/oksvg.<a href="oksvg.html#name-localizeGradIfStopClrNil">localizeGradIfStopClrNil</a>(g *<b>Gradient</b>, defaultColor interface{}) (grad <b>Gradient</b>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-GradientUnits" data-popularity="10">	<input type='checkbox' class="fold" id="GradientUnits-fold-content"><label for="GradientUnits-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-32">GradientUnits</a> <a href="../../builtin.html#name-byte">byte</a> <i>(basic type)</i></label><span id='GradientUnits-fold-content-docs' class="fold-docs">
+<span class="md-text">		GradientUnits is the type for gradient units</span>
+
+		<input type='checkbox' class="fold" id="GradientUnits-fold-values"><label for="GradientUnits-fold-values">As Types Of (<i>total 2, both are exported</i>)</label><span id='GradientUnits-fold-values-items' class="fold-items"><span>
+			const <a href="#name-ObjectBoundingBox">ObjectBoundingBox</a></span><span>
+			const <a href="#name-UserSpaceOnUse">UserSpaceOnUse</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-GradStop" data-popularity="35">	<input type='checkbox' class="fold" id="GradStop-fold-content"><label for="GradStop-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-34">GradStop</a> <i>(struct)</i></label><span id='GradStop-fold-content-docs' class="fold-docs">
+<span class="md-text">		GradStop represents a stop in the SVG 2.0 gradient specification</span>
+
+		<input type='checkbox' class="fold" id="GradStop-fold-fields"><label for="GradStop-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='GradStop-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-36">Offset</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-37">Opacity</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-35">StopColor</a> <i><a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="GradStop-fold-params"><label for="GradStop-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='GradStop-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="GradStop-showhide-outputofs"><i><label for="GradStop-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="GradStop-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Gradient">Gradient</a>).<a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-132">blendStops</a>(t, opacity <a href="../../builtin.html#name-float64">float64</a>, s1, s2 <b>GradStop</b>, flip <a href="../../builtin.html#name-bool">bool</a>) <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-JoinMode" data-popularity="85">	<input type='checkbox' class="fold" id="JoinMode-fold-content"><label for="JoinMode-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-23">JoinMode</a> <a href="../../builtin.html#name-uint8">uint8</a> <i>(basic type)</i></label><span id='JoinMode-fold-content-docs' class="fold-docs">
+<span class="md-text">		JoinMode type to specify how segments join.</span>
+
+		<input type='checkbox' class="fold" id="JoinMode-fold-params"><label for="JoinMode-fold-params">As Inputs Of (<i>at least 2, both are exported</i>)</label><span id='JoinMode-fold-params-items' class="fold-items"><span>
+			func (*<a href="#name-Dasher">Dasher</a>).<a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-86">SetStroke</a>(width, miterLimit <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>, capL, capT <a href="#name-CapFunc">CapFunc</a>, gp <a href="#name-GapFunc">GapFunc</a>, jm <b>JoinMode</b>, dashes []<a href="../../builtin.html#name-float64">float64</a>, dashOffset <a href="../../builtin.html#name-float64">float64</a>)</span><span>
+			func (*<a href="#name-Stroker">Stroker</a>).<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-92">SetStroke</a>(width, miterLimit <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>, capL, capT <a href="#name-CapFunc">CapFunc</a>, gp <a href="#name-GapFunc">GapFunc</a>, jm <b>JoinMode</b>)</span></span>
+		<input type='checkbox' class="fold" id="JoinMode-fold-values"><label for="JoinMode-fold-values">As Types Of (<i>total 6, all are exported</i>)</label><span id='JoinMode-fold-values-items' class="fold-items"><span>
+			const <a href="#name-Arc">Arc</a></span><span>
+			const <a href="#name-ArcClip">ArcClip</a></span><span>
+			const <a href="#name-Bevel">Bevel</a></span><span>
+			const <a href="#name-Miter">Miter</a></span><span>
+			const <a href="#name-MiterClip">MiterClip</a></span><span>
+			const <a href="#name-Round">Round</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Matrix2D" data-popularity="1320">	<input type='checkbox' class="fold" id="Matrix2D-fold-content"><label for="Matrix2D-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-14">Matrix2D</a> <i>(struct)</i></label><span id='Matrix2D-fold-content-docs' class="fold-docs">
+<span class="md-text">		Matrix2D represents an SVG style matrix</span>
+
+		<input type='checkbox' class="fold" id="Matrix2D-fold-fields"><label for="Matrix2D-fold-fields">Fields (<i>total 6, all are exported</i>)</label><span id='Matrix2D-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-15">A</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-15">B</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-15">C</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-15">D</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-15">E</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-15">F</a> <i><a href="../../builtin.html#name-float64">float64</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Matrix2D-fold-methods"><label for="Matrix2D-fold-methods">Methods (<i>total 10, all are exported</i>)</label><span id='Matrix2D-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Matrix2D-fold-method-Invert"><label for="Matrix2D-fold-method-Invert">( Matrix2D) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-64">Invert</a>() <b>Matrix2D</b></label><span id='Matrix2D-fold-method-Invert-docs' class="fold-docs">
+<span class="md-text">				Invert returns the inverse matrix</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Matrix2D-fold-method-Mult"><label for="Matrix2D-fold-method-Mult">( Matrix2D) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-71">Mult</a>(b <b>Matrix2D</b>) <b>Matrix2D</b></label><span id='Matrix2D-fold-method-Mult-docs' class="fold-docs">
+<span class="md-text">				Mult returns a*b</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Matrix2D-fold-method-Rotate"><label for="Matrix2D-fold-method-Rotate">( Matrix2D) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-152">Rotate</a>(theta <a href="../../builtin.html#name-float64">float64</a>) <b>Matrix2D</b></label><span id='Matrix2D-fold-method-Rotate-docs' class="fold-docs">
+<span class="md-text">				Rotate rotate the matrix by theta</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Matrix2D-fold-method-Scale"><label for="Matrix2D-fold-method-Scale">( Matrix2D) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-108">Scale</a>(x, y <a href="../../builtin.html#name-float64">float64</a>) <b>Matrix2D</b></label><span id='Matrix2D-fold-method-Scale-docs' class="fold-docs">
+<span class="md-text">				Scale matrix in x and y dimensions</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Matrix2D-fold-method-SkewX"><label for="Matrix2D-fold-method-SkewX">( Matrix2D) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-130">SkewX</a>(theta <a href="../../builtin.html#name-float64">float64</a>) <b>Matrix2D</b></label><span id='Matrix2D-fold-method-SkewX-docs' class="fold-docs">
+<span class="md-text">				SkewX skews the matrix in the X dimension</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Matrix2D-fold-method-SkewY"><label for="Matrix2D-fold-method-SkewY">( Matrix2D) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-119">SkewY</a>(theta <a href="../../builtin.html#name-float64">float64</a>) <b>Matrix2D</b></label><span id='Matrix2D-fold-method-SkewY-docs' class="fold-docs">
+<span class="md-text">				SkewY skews the matrix in the Y dimension</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Matrix2D-fold-method-TFixed"><label for="Matrix2D-fold-method-TFixed">( Matrix2D) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-85">TFixed</a>(x <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>) (y <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Matrix2D-fold-method-TFixed-docs' class="fold-docs">
+<span class="md-text">				TFixed transforms a fixed.Point26_6 by the matrix</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Matrix2D-fold-method-Transform"><label for="Matrix2D-fold-method-Transform">( Matrix2D) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-93">Transform</a>(x1, y1 <a href="../../builtin.html#name-float64">float64</a>) (x2, y2 <a href="../../builtin.html#name-float64">float64</a>)</label><span id='Matrix2D-fold-method-Transform-docs' class="fold-docs">
+<span class="md-text">				Transform multiples the input vector by matrix m and outputs the results vector
+				components.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Matrix2D-fold-method-TransformVector"><label for="Matrix2D-fold-method-TransformVector">( Matrix2D) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-101">TransformVector</a>(x1, y1 <a href="../../builtin.html#name-float64">float64</a>) (x2, y2 <a href="../../builtin.html#name-float64">float64</a>)</label><span id='Matrix2D-fold-method-TransformVector-docs' class="fold-docs">
+<span class="md-text">				TransformVector is a modidifed version of Transform that ignores the
+				translation components.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Matrix2D-fold-method-Translate"><label for="Matrix2D-fold-method-Translate">( Matrix2D) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-141">Translate</a>(x, y <a href="../../builtin.html#name-float64">float64</a>) <b>Matrix2D</b></label><span id='Matrix2D-fold-method-Translate-docs' class="fold-docs">
+<span class="md-text">				Translate translates the matrix to the x , y point</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Matrix2D-fold-results"><label for="Matrix2D-fold-results">As Outputs Of (<i>at least 9, in which 7 are exported</i>)</label><span id='Matrix2D-fold-results-items' class="fold-items"><span>
+			func Matrix2D.<a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-64">Invert</a>() <b>Matrix2D</b></span><span>
+			func Matrix2D.<a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-71">Mult</a>(b <b>Matrix2D</b>) <b>Matrix2D</b></span><span>
+			func Matrix2D.<a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-152">Rotate</a>(theta <a href="../../builtin.html#name-float64">float64</a>) <b>Matrix2D</b></span><span>
+			func Matrix2D.<a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-108">Scale</a>(x, y <a href="../../builtin.html#name-float64">float64</a>) <b>Matrix2D</b></span><span>
+			func Matrix2D.<a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-130">SkewX</a>(theta <a href="../../builtin.html#name-float64">float64</a>) <b>Matrix2D</b></span><span>
+			func Matrix2D.<a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-119">SkewY</a>(theta <a href="../../builtin.html#name-float64">float64</a>) <b>Matrix2D</b></span><span>
+			func Matrix2D.<a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-141">Translate</a>(x, y <a href="../../builtin.html#name-float64">float64</a>) <b>Matrix2D</b></span>
+			<input type='checkbox' class="showhide" id="Matrix2D-showhide-inputofs"><i><label for="Matrix2D-showhide-inputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="Matrix2D-showhide-inputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func github.com/srwiley/oksvg.(*<a href="oksvg.html#name-IconCursor">IconCursor</a>).<a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-167">parseTransform</a>(v <a href="../../builtin.html#name-string">string</a>) (<b>Matrix2D</b>, <a href="../../builtin.html#name-error">error</a>)</i></span><span class="hidden"><i>
+			func github.com/srwiley/oksvg.(*<a href="oksvg.html#name-IconCursor">IconCursor</a>).<a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-108">readTransformAttr</a>(m1 <b>Matrix2D</b>, k <a href="../../builtin.html#name-string">string</a>) (<b>Matrix2D</b>, <a href="../../builtin.html#name-error">error</a>)</i></span></span>
+		<input type='checkbox' class="fold" id="Matrix2D-fold-params"><label for="Matrix2D-fold-params">As Inputs Of (<i>at least 4, in which 3 are exported</i>)</label><span id='Matrix2D-fold-params-items' class="fold-items"><span>
+			func (*<a href="#name-Gradient">Gradient</a>).<a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-163">GetColorFunctionUS</a>(opacity <a href="../../builtin.html#name-float64">float64</a>, objMatrix <b>Matrix2D</b>) interface{}</span><span>
+			func Matrix2D.<a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-71">Mult</a>(b <b>Matrix2D</b>) <b>Matrix2D</b></span><span>
+			func github.com/srwiley/oksvg.(*<a href="oksvg.html#name-SvgPath">SvgPath</a>).<a href="../../../src/github.com/srwiley/oksvg/svg_path.go.html#line-27">DrawTransformed</a>(r *<a href="#name-Dasher">Dasher</a>, opacity <a href="../../builtin.html#name-float64">float64</a>, t <b>Matrix2D</b>)</span>
+			<input type='checkbox' class="showhide" id="Matrix2D-showhide-outputofs"><i><label for="Matrix2D-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Matrix2D-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func github.com/srwiley/oksvg.(*<a href="oksvg.html#name-IconCursor">IconCursor</a>).<a href="../../../src/github.com/srwiley/oksvg/icon_cursor.go.html#line-108">readTransformAttr</a>(m1 <b>Matrix2D</b>, k <a href="../../builtin.html#name-string">string</a>) (<b>Matrix2D</b>, <a href="../../builtin.html#name-error">error</a>)</i></span></span>
+		<input type='checkbox' class="fold" id="Matrix2D-fold-values"><label for="Matrix2D-fold-values">As Types Of (<i>only one, which is exported</i>)</label><span id='Matrix2D-fold-values-items' class="fold-items"><span>
+			  var <a href="#name-Identity">Identity</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-MatrixAdder" data-popularity="350">	<input type='checkbox' class="fold" id="MatrixAdder-fold-content"><label for="MatrixAdder-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-163">MatrixAdder</a> <i>(struct)</i></label><span id='MatrixAdder-fold-content-docs' class="fold-docs">
+<span class="md-text">		MatrixAdder is an adder that applies matrix M to all points</span>
+
+		<input type='checkbox' class="fold" id="MatrixAdder-fold-fields"><label for="MatrixAdder-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='MatrixAdder-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-164">Adder</a> <i><a href="#name-Adder">Adder</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-165">M</a> <i><a href="#name-Matrix2D">Matrix2D</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="MatrixAdder-fold-methods"><label for="MatrixAdder-fold-methods">Methods (<i>total 6, all are exported</i>)</label><span id='MatrixAdder-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="MatrixAdder-fold-method-CubeBezier"><label for="MatrixAdder-fold-method-CubeBezier">(*MatrixAdder) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-189">CubeBezier</a>(b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='MatrixAdder-fold-method-CubeBezier-docs' class="fold-docs">
+<span class="md-text">				CubeBezier adds a cubic segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MatrixAdder-fold-method-Line"><label for="MatrixAdder-fold-method-Line">(*MatrixAdder) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-179">Line</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='MatrixAdder-fold-method-Line-docs' class="fold-docs">
+<span class="md-text">				Line adds a linear segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MatrixAdder-fold-method-QuadBezier"><label for="MatrixAdder-fold-method-QuadBezier">(*MatrixAdder) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-184">QuadBezier</a>(b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='MatrixAdder-fold-method-QuadBezier-docs' class="fold-docs">
+<span class="md-text">				QuadBezier adds a quadratic segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MatrixAdder-fold-method-Reset"><label for="MatrixAdder-fold-method-Reset">(*MatrixAdder) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-169">Reset</a>()</label><span id='MatrixAdder-fold-method-Reset-docs' class="fold-docs">
+<span class="md-text">				Reset sets the matrix M to identity</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MatrixAdder-fold-method-Start"><label for="MatrixAdder-fold-method-Start">(*MatrixAdder) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-174">Start</a>(a <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='MatrixAdder-fold-method-Start-docs' class="fold-docs">
+<span class="md-text">				Start starts a new path</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MatrixAdder-fold-method-Stop"><label for="MatrixAdder-fold-method-Stop">( MatrixAdder) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-45">Stop</a>(closeLoop <a href="../../builtin.html#name-bool">bool</a>)</label><span id='MatrixAdder-fold-method-Stop-docs' class="fold-docs">
+<span class="md-text">				Closes the path to the start point if closeLoop is true</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="MatrixAdder-fold-impls"><label for="MatrixAdder-fold-impls">Implements (<i>at least one exported</i>)</label><span id='MatrixAdder-fold-impls-items' class="fold-items"><span>
+			*MatrixAdder : <a href="#name-Adder">Adder</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Path" data-popularity="700">	<input type='checkbox' class="fold" id="Path-fold-content"><label for="Path-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-54">Path</a> <i>([])</i></label><span id='Path-fold-content-docs' class="fold-docs">
+<span class="md-text">		A Path starts with a PathCommand value followed by zero to three fixed
+		int points.</span>
+
+		<input type='checkbox' class="fold" id="Path-fold-methods"><label for="Path-fold-methods">Methods (<i>total 9, all are exported</i>)</label><span id='Path-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Path-fold-method-AddTo"><label for="Path-fold-method-AddTo">( Path) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-126">AddTo</a>(q <a href="#name-Adder">Adder</a>)</label><span id='Path-fold-method-AddTo-docs' class="fold-docs">
+<span class="md-text">				AddTo adds the Path p to q.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Path-fold-method-Clear"><label for="Path-fold-method-Clear">(*Path) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-94">Clear</a>()</label><span id='Path-fold-method-Clear-docs' class="fold-docs">
+<span class="md-text">				Clear zeros the path slice</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Path-fold-method-CubeBezier"><label for="Path-fold-method-CubeBezier">(*Path) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-114">CubeBezier</a>(b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Path-fold-method-CubeBezier-docs' class="fold-docs">
+<span class="md-text">				CubeBezier adds a cubic segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Path-fold-method-Line"><label for="Path-fold-method-Line">(*Path) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-104">Line</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Path-fold-method-Line-docs' class="fold-docs">
+<span class="md-text">				Line adds a linear segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Path-fold-method-QuadBezier"><label for="Path-fold-method-QuadBezier">(*Path) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-109">QuadBezier</a>(b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Path-fold-method-QuadBezier-docs' class="fold-docs">
+<span class="md-text">				QuadBezier adds a quadratic segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Path-fold-method-Start"><label for="Path-fold-method-Start">(*Path) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-99">Start</a>(a <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Path-fold-method-Start-docs' class="fold-docs">
+<span class="md-text">				Start starts a new curve at the given point.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Path-fold-method-Stop"><label for="Path-fold-method-Stop">(*Path) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-119">Stop</a>(closeLoop <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Path-fold-method-Stop-docs' class="fold-docs">
+<span class="md-text">				Stop joins the ends of the path</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Path-fold-method-String"><label for="Path-fold-method-String">( Path) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-89">String</a>() <a href="../../builtin.html#name-string">string</a></label><span id='Path-fold-method-String-docs' class="fold-docs">
+<span class="md-text">				String returns a readable representation of a Path.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Path-fold-method-ToSVGPath"><label for="Path-fold-method-ToSVGPath">( Path) <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-57">ToSVGPath</a>() <a href="../../builtin.html#name-string">string</a></label><span id='Path-fold-method-ToSVGPath-docs' class="fold-docs">
+<span class="md-text">				ToSVGPath returns a string representation of the path</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Path-fold-impls"><label for="Path-fold-impls">Implements (<i>at least 5, in which 2 are exported</i>)</label><span id='Path-fold-impls-items' class="fold-items"><span>
+			*Path : <a href="#name-Adder">Adder</a></span><span>
+			 Path : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="Path-showhide-impls"><i><label for="Path-showhide-impls" class="show-inline">/* 3+ unexporteds ... */</label><label for="Path-showhide-impls" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			 Path : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 Path : os/signal.<a href="../../os/signal.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 Path : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-PathCommand" data-popularity="15">	<input type='checkbox' class="fold" id="PathCommand-fold-content"><label for="PathCommand-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-41">PathCommand</a> <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a> <i>(basic type)</i></label><span id='PathCommand-fold-content-docs' class="fold-docs">
+<span class="md-text">		PathCommand is the type for the path command token</span>
+
+		<input type='checkbox' class="fold" id="PathCommand-fold-values"><label for="PathCommand-fold-values">As Types Of (<i>total 5, all are exported</i>)</label><span id='PathCommand-fold-values-items' class="fold-items"><span>
+			const <a href="#name-PathClose">PathClose</a></span><span>
+			const <a href="#name-PathCubicTo">PathCubicTo</a></span><span>
+			const <a href="#name-PathLineTo">PathLineTo</a></span><span>
+			const <a href="#name-PathMoveTo">PathMoveTo</a></span><span>
+			const <a href="#name-PathQuadTo">PathQuadTo</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Rasterx" data-popularity="1060">	<input type='checkbox' class="fold" id="Rasterx-fold-content"><label for="Rasterx-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-48">Rasterx</a> <b><i>(interface)</i></b></label><span id='Rasterx-fold-content-docs' class="fold-docs">
+<span class="md-text">		Rasterx extends the adder interface to include lineF and joinF functions</span>
+
+		<input type='checkbox' class="fold" id="Rasterx-fold-methods"><label for="Rasterx-fold-methods">Methods (<i>total 7, in which 5 are exported</i>)</label><span id='Rasterx-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Rasterx-fold-method-CubeBezier"><label for="Rasterx-fold-method-CubeBezier">( Rasterx) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-43">CubeBezier</a>(b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Rasterx-fold-method-CubeBezier-docs' class="fold-docs">
+<span class="md-text">				CubeBezier adds a cubic bezier curve to the path</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rasterx-fold-method-Line"><label for="Rasterx-fold-method-Line">( Rasterx) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-39">Line</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Rasterx-fold-method-Line-docs' class="fold-docs">
+<span class="md-text">				Line adds a line segment to the path</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rasterx-fold-method-QuadBezier"><label for="Rasterx-fold-method-QuadBezier">( Rasterx) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-41">QuadBezier</a>(b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Rasterx-fold-method-QuadBezier-docs' class="fold-docs">
+<span class="md-text">				QuadBezier adds a quadratic bezier curve to the path</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rasterx-fold-method-Start"><label for="Rasterx-fold-method-Start">( Rasterx) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-37">Start</a>(a <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Rasterx-fold-method-Start-docs' class="fold-docs">
+<span class="md-text">				Start starts a new curve at the given point.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rasterx-fold-method-Stop"><label for="Rasterx-fold-method-Stop">( Rasterx) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-45">Stop</a>(closeLoop <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Rasterx-fold-method-Stop-docs' class="fold-docs">
+<span class="md-text">				Closes the path to the start point if closeLoop is true</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Rasterx-showhide-methods"><i><label for="Rasterx-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="Rasterx-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( Rasterx) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-51">joinF</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( Rasterx) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-50">lineF</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="Rasterx-fold-impledby"><label for="Rasterx-fold-impledby">Implemented By (<i>at least 3, all are exported</i>)</label><span id='Rasterx-fold-impledby-items' class="fold-items"><span>
+			*<a href="#name-Dasher">Dasher</a></span><span>
+			*<a href="#name-Filler">Filler</a></span><span>
+			*<a href="#name-Stroker">Stroker</a></span></span>
+		<input type='checkbox' class="fold" id="Rasterx-fold-impls"><label for="Rasterx-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Rasterx-fold-impls-items' class="fold-items"><span>
+			 Rasterx : <a href="#name-Adder">Adder</a></span></span>
+		<input type='checkbox' class="fold" id="Rasterx-fold-params"><label for="Rasterx-fold-params">As Inputs Of (<i>at least 6, in which 3 are exported</i>)</label><span id='Rasterx-fold-params-items' class="fold-items"><span>
+			func (*<a href="#name-Filler">Filler</a>).<a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-196">CubeBezierF</a>(sgm <b>Rasterx</b>, b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</span><span>
+			func (*<a href="#name-Filler">Filler</a>).<a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-156">QuadBezierF</a>(sgm <b>Rasterx</b>, b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</span><span>
+			func (*<a href="#name-Stroker">Stroker</a>).<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-560">LineSeg</a>(sgm <b>Rasterx</b>, b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</span>
+			<input type='checkbox' class="showhide" id="Rasterx-showhide-outputofs"><i><label for="Rasterx-showhide-outputofs" class="show-inline">/* 3+ unexporteds ... */</label><label for="Rasterx-showhide-outputofs" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-doCalcCurvature">doCalcCurvature</a>(r <b>Rasterx</b>) <a href="../../builtin.html#name-bool">bool</a></i></span><span class="hidden"><i>
+			func (*<a href="#name-Stroker">Stroker</a>).<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-531">cubeBezierf</a>(sgm <b>Rasterx</b>, b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-Stroker">Stroker</a>).<a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-509">quadBezierf</a>(s <b>Rasterx</b>, b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Scanner" data-popularity="1155">	<input type='checkbox' class="fold" id="Scanner-fold-content"><label for="Scanner-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-19">Scanner</a> <b><i>(interface)</i></b></label><span id='Scanner-fold-content-docs' class="fold-docs">
+<span class="md-text">		Scanner interface for path generating types</span>
+
+		<input type='checkbox' class="fold" id="Scanner-fold-methods"><label for="Scanner-fold-methods">Methods (<i>total 9, all are exported</i>)</label><span id='Scanner-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Scanner) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-27">Clear</a>()</span></span><span>
+			<span class="nodocs">( Scanner) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-22">Draw</a>()</span></span><span>
+			<span class="nodocs">( Scanner) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-23">GetPathExtent</a>() <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Rectangle26_6">Rectangle26_6</a></span></span><span>
+			<span class="nodocs">( Scanner) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-21">Line</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</span></span><span>
+			<span class="nodocs">( Scanner) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-24">SetBounds</a>(w, h <a href="../../builtin.html#name-int">int</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="Scanner-fold-method-SetClip"><label for="Scanner-fold-method-SetClip">( Scanner) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-32">SetClip</a>(rect <a href="../../image.html">image</a>.<a href="../../image.html#name-Rectangle">Rectangle</a>)</label><span id='Scanner-fold-method-SetClip-docs' class="fold-docs">
+<span class="md-text">				SetClip sets an optional clipping rectangle to restrict rendering
+				only to that region -- if size is 0 then ignored (set to image.ZR
+				to clear)</span>
+</span></span><span>
+			<span class="nodocs">( Scanner) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-25">SetColor</a>(color interface{})</span></span><span>
+			<span class="nodocs">( Scanner) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-26">SetWinding</a>(useNonZeroWinding <a href="../../builtin.html#name-bool">bool</a>)</span></span><span>
+			<span class="nodocs">( Scanner) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-20">Start</a>(a <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="Scanner-fold-impledby"><label for="Scanner-fold-impledby">Implemented By (<i>at least 4, all are exported</i>)</label><span id='Scanner-fold-impledby-items' class="fold-items"><span>
+			*<a href="#name-Dasher">Dasher</a></span><span>
+			*<a href="#name-Filler">Filler</a></span><span>
+			*<a href="#name-ScannerGV">ScannerGV</a></span><span>
+			*<a href="#name-Stroker">Stroker</a></span></span>
+		<input type='checkbox' class="fold" id="Scanner-fold-params"><label for="Scanner-fold-params">As Inputs Of (<i>at least 3, all are exported</i>)</label><span id='Scanner-fold-params-items' class="fold-items"><span>
+			func <a href="#name-NewDasher">NewDasher</a>(width, height <a href="../../builtin.html#name-int">int</a>, scanner <b>Scanner</b>) *<a href="#name-Dasher">Dasher</a></span><span>
+			func <a href="#name-NewFiller">NewFiller</a>(width, height <a href="../../builtin.html#name-int">int</a>, scanner <b>Scanner</b>) *<a href="#name-Filler">Filler</a></span><span>
+			func <a href="#name-NewStroker">NewStroker</a>(width, height <a href="../../builtin.html#name-int">int</a>, scanner <b>Scanner</b>) *<a href="#name-Stroker">Stroker</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-ScannerGV" data-popularity="625">	<input type='checkbox' class="fold" id="ScannerGV-fold-content"><label for="ScannerGV-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-36">ScannerGV</a> <i>(struct)</i></label><span id='ScannerGV-fold-content-docs' class="fold-docs">
+<span class="md-text">		ScannerGV uses the google vector rasterizer</span>
+
+		<input type='checkbox' class="fold" id="ScannerGV-fold-fields"><label for="ScannerGV-fold-fields">Fields (<i>total 10, in which 4 are exported</i>)</label><span id='ScannerGV-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-field-Dest"><label for="ScannerGV-fold-field-Dest"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-39">Dest</a> <i><a href="../../image/draw.html">draw</a>.<a href="../../image/draw.html#name-Image">Image</a></i></label><span id='ScannerGV-fold-field-Dest-docs' class="fold-docs">
+<span class="md-text">				a, first fixed.Point26_6</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-43">Offset</a> <i><a href="../../image.html">image</a>.<a href="../../image.html#name-Point">Point</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-42">Source</a> <i><a href="../../image.html">image</a>.<a href="../../image.html#name-Image">Image</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-40">Targ</a> <i><a href="../../image.html">image</a>.<a href="../../image.html#name-Rectangle">Rectangle</a></i></span></span>
+			<input type='checkbox' class="showhide" id="ScannerGV-showhide-fields"><i><label for="ScannerGV-showhide-fields" class="show-inline">/* 6 unexporteds ... */</label><label for="ScannerGV-showhide-fields" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-41">clipImage</a> <i>*<a href="#name-ClipImage">ClipImage</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-field-maxX"><label for="ScannerGV-fold-field-maxX"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-44">maxX</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></i></label><span id='ScannerGV-fold-field-maxX-docs' class="fold-docs">
+<span class="md-text">				// keep track of bounds</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-field-maxY"><label for="ScannerGV-fold-field-maxY"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-44">maxY</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></i></label><span id='ScannerGV-fold-field-maxY-docs' class="fold-docs">
+<span class="md-text">				// keep track of bounds</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-field-minX"><label for="ScannerGV-fold-field-minX"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-44">minX</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></i></label><span id='ScannerGV-fold-field-minX-docs' class="fold-docs">
+<span class="md-text">				// keep track of bounds</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-field-minY"><label for="ScannerGV-fold-field-minY"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-44">minY</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></i></label><span id='ScannerGV-fold-field-minY-docs' class="fold-docs">
+<span class="md-text">				// keep track of bounds</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-37">r</a> <i><a href="../../golang.org/x/image/vector.html">vector</a>.<a href="../../golang.org/x/image/vector.html#name-Rasterizer">Rasterizer</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="ScannerGV-fold-methods"><label for="ScannerGV-fold-methods">Methods (<i>total 10, in which 9 are exported</i>)</label><span id='ScannerGV-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-method-Clear"><label for="ScannerGV-fold-method-Clear">(*ScannerGV) <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-156">Clear</a>()</label><span id='ScannerGV-fold-method-Clear-docs' class="fold-docs">
+<span class="md-text">				Clear cancels any previous accumulated scans</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-method-Draw"><label for="ScannerGV-fold-method-Draw">(*ScannerGV) <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-137">Draw</a>()</label><span id='ScannerGV-fold-method-Draw-docs' class="fold-docs">
+<span class="md-text">				Draw renders the accumulate scan to the desination</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-method-GetPathExtent"><label for="ScannerGV-fold-method-GetPathExtent">(*ScannerGV) <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-57">GetPathExtent</a>() <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Rectangle26_6">Rectangle26_6</a></label><span id='ScannerGV-fold-method-GetPathExtent-docs' class="fold-docs">
+<span class="md-text">				GetPathExtent returns the extent of the path</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-method-Line"><label for="ScannerGV-fold-method-Line">(*ScannerGV) <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-131">Line</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='ScannerGV-fold-method-Line-docs' class="fold-docs">
+<span class="md-text">				Line adds a linear segment to the current curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-method-SetBounds"><label for="ScannerGV-fold-method-SetBounds">(*ScannerGV) <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-165">SetBounds</a>(width, height <a href="../../builtin.html#name-int">int</a>)</label><span id='ScannerGV-fold-method-SetBounds-docs' class="fold-docs">
+<span class="md-text">				SetBounds sets the maximum width and height of the rasterized image and
+				calls Clear. The width and height are in pixels, not fixed.Int26_6 units.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-method-SetClip"><label for="ScannerGV-fold-method-SetClip">(*ScannerGV) <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-100">SetClip</a>(rect <a href="../../image.html">image</a>.<a href="../../image.html#name-Rectangle">Rectangle</a>)</label><span id='ScannerGV-fold-method-SetClip-docs' class="fold-docs">
+<span class="md-text">				SetClip sets an optional clipping rectangle to restrict rendering only to
+				that region -- if size is 0 then ignored (set to image.ZR to clear)</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-method-SetColor"><label for="ScannerGV-fold-method-SetColor">(*ScannerGV) <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-76">SetColor</a>(clr interface{})</label><span id='ScannerGV-fold-method-SetColor-docs' class="fold-docs">
+<span class="md-text">				SetColor set the color type for the scanner</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-method-SetWinding"><label for="ScannerGV-fold-method-SetWinding">(*ScannerGV) <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-71">SetWinding</a>(useNonZeroWinding <a href="../../builtin.html#name-bool">bool</a>)</label><span id='ScannerGV-fold-method-SetWinding-docs' class="fold-docs">
+<span class="md-text">				SetWinding set the winding rule for the scanner</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ScannerGV-fold-method-Start"><label for="ScannerGV-fold-method-Start">(*ScannerGV) <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-125">Start</a>(a <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='ScannerGV-fold-method-Start-docs' class="fold-docs">
+<span class="md-text">				Start starts a new path at the given point.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="ScannerGV-showhide-methods"><i><label for="ScannerGV-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="ScannerGV-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*ScannerGV) <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-109">set</a>(a <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="ScannerGV-fold-impls"><label for="ScannerGV-fold-impls">Implements (<i>at least one exported</i>)</label><span id='ScannerGV-fold-impls-items' class="fold-items"><span>
+			*ScannerGV : <a href="#name-Scanner">Scanner</a></span></span>
+		<input type='checkbox' class="fold" id="ScannerGV-fold-results"><label for="ScannerGV-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='ScannerGV-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewScannerGV">NewScannerGV</a>(width, height <a href="../../builtin.html#name-int">int</a>, dest <a href="../../image/draw.html">draw</a>.<a href="../../image/draw.html#name-Image">Image</a>, targ <a href="../../image.html">image</a>.<a href="../../image.html#name-Rectangle">Rectangle</a>) *<b>ScannerGV</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-SpreadMethod" data-popularity="15">	<input type='checkbox' class="fold" id="SpreadMethod-fold-content"><label for="SpreadMethod-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-30">SpreadMethod</a> <a href="../../builtin.html#name-byte">byte</a> <i>(basic type)</i></label><span id='SpreadMethod-fold-content-docs' class="fold-docs">
+<span class="md-text">		SpreadMethod is the type for spread parameters</span>
+
+		<input type='checkbox' class="fold" id="SpreadMethod-fold-values"><label for="SpreadMethod-fold-values">As Types Of (<i>total 3, all are exported</i>)</label><span id='SpreadMethod-fold-values-items' class="fold-items"><span>
+			const <a href="#name-PadSpread">PadSpread</a></span><span>
+			const <a href="#name-ReflectSpread">ReflectSpread</a></span><span>
+			const <a href="#name-RepeatSpread">RepeatSpread</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Stroker" data-popularity="1375">	<input type='checkbox' class="fold" id="Stroker-fold-content"><label for="Stroker-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-41">Stroker</a> <i>(struct)</i></label><span id='Stroker-fold-content-docs' class="fold-docs">
+<span class="md-text">		Stroker does everything a Filler does, but
+		also allows for stroking and dashed stroking in addition to
+		filling</span>
+
+		<input type='checkbox' class="fold" id="Stroker-fold-fields"><label for="Stroker-fold-fields">Fields (<i>total 15, in which 6 are exported</i>)</label><span id='Stroker-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-field-CapL"><label for="Stroker-fold-field-CapL"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-43">CapL</a> <i><a href="#name-CapFunc">CapFunc</a></i></label><span id='Stroker-fold-field-CapL-docs' class="fold-docs">
+<span class="md-text">				// Trailing and leading cap funcs may be set separately</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-field-CapT"><label for="Stroker-fold-field-CapT"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-43">CapT</a> <i><a href="#name-CapFunc">CapFunc</a></i></label><span id='Stroker-fold-field-CapT-docs' class="fold-docs">
+<span class="md-text">				// Trailing and leading cap funcs may be set separately</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-42">Filler</a> <i><a href="#name-Filler">Filler</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-42" class="path-duplicate">Filler</a>.<a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-56">Scanner</a> <i><a href="#name-Scanner">Scanner</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-field-JoinGap"><label for="Stroker-fold-field-JoinGap"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-44">JoinGap</a> <i><a href="#name-GapFunc">GapFunc</a></i></label><span id='Stroker-fold-field-JoinGap-docs' class="fold-docs">
+<span class="md-text">				// When gap appears between segments, this function is called</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-50">JoinMode</a> <i><a href="#name-JoinMode">JoinMode</a></i></span></span>
+			<input type='checkbox' class="showhide" id="Stroker-showhide-fields"><i><label for="Stroker-showhide-fields" class="show-inline">/* 9 unexporteds ... */</label><label for="Stroker-showhide-fields" class="hide-inline">/* 9 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-42">Filler</a>.<a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-57">a</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-42" class="path-duplicate">Filler</a>.<a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-57">first</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Stroker-fold-field-firstP"><label for="Stroker-fold-field-firstP"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-46">firstP</a> <i><a href="#name-C2Point">C2Point</a></i></label><span id='Stroker-fold-field-firstP-docs' class="fold-docs">
+<span class="md-text">				// Tracks progress of the stroke</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-51">inStroke</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Stroker-fold-field-leadPoint"><label for="Stroker-fold-field-leadPoint"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-46">leadPoint</a> <i><a href="#name-C2Point">C2Point</a></i></label><span id='Stroker-fold-field-leadPoint-docs' class="fold-docs">
+<span class="md-text">				// Tracks progress of the stroke</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Stroker-fold-field-ln"><label for="Stroker-fold-field-ln"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-47">ln</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></i></label><span id='Stroker-fold-field-ln-docs' class="fold-docs">
+<span class="md-text">				// last normal of intra-seg connection.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Stroker-fold-field-mLimit"><label for="Stroker-fold-field-mLimit"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-48">mLimit</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></i></label><span id='Stroker-fold-field-mLimit-docs' class="fold-docs">
+<span class="md-text">				// u is the half-width of the stroke.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Stroker-fold-field-trailPoint"><label for="Stroker-fold-field-trailPoint"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-46">trailPoint</a> <i><a href="#name-C2Point">C2Point</a></i></label><span id='Stroker-fold-field-trailPoint-docs' class="fold-docs">
+<span class="md-text">				// Tracks progress of the stroke</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Stroker-fold-field-u"><label for="Stroker-fold-field-u"><a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-48">u</a> <i><a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></i></label><span id='Stroker-fold-field-u-docs' class="fold-docs">
+<span class="md-text">				// u is the half-width of the stroke.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Stroker-fold-methods"><label for="Stroker-fold-methods">Methods (<i>total 23, in which 18 are exported</i>)</label><span id='Stroker-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-CalcEndCurvature"><label for="Stroker-fold-method-CalcEndCurvature">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-617">CalcEndCurvature</a>(p0, p1, p2, q0, q1, q2 <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, dm <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int52_12">Int52_12</a>, calcRadCuve <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Stroker-fold-method-CalcEndCurvature-docs' class="fold-docs">
+<span class="md-text">				CalcEndCurvature calculates the radius of curvature given the control points
+				of a bezier curve.
+				It is a low level function exposed for the purposes of callbacks
+				and debugging.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-Clear"><label for="Stroker-fold-method-Clear">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-212">Clear</a>()</label><span id='Stroker-fold-method-Clear-docs' class="fold-docs">
+<span class="md-text">				Clear resets the filler</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-CubeBezier"><label for="Stroker-fold-method-CubeBezier">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-504">CubeBezier</a>(b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Stroker-fold-method-CubeBezier-docs' class="fold-docs">
+<span class="md-text">				CubeBezier starts a stroked quadratic bezier.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-CubeBezierF"><label for="Stroker-fold-method-CubeBezierF">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-196">CubeBezierF</a>(sgm <a href="#name-Rasterx">Rasterx</a>, b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Stroker-fold-method-CubeBezierF-docs' class="fold-docs">
+<span class="md-text">				CubeBezierF adds a cubic bezier to the curve. sending the line calls the the
+				sgm Rasterizer</span>
+</span></span><span>
+			<span class="nodocs">( Stroker) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-22">Draw</a>()</span></span><span>
+			<span class="nodocs">( Stroker) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-23">GetPathExtent</a>() <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Rectangle26_6">Rectangle26_6</a></span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-Joiner"><label for="Stroker-fold-method-Joiner">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-231">Joiner</a>(p <a href="#name-C2Point">C2Point</a>)</label><span id='Stroker-fold-method-Joiner-docs' class="fold-docs">
+<span class="md-text">				Joiner is called when two segments of a stroke are joined. it is exposed
+				so that if can be wrapped to generate callbacks for the join points.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-Line"><label for="Stroker-fold-method-Line">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-555">Line</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Stroker-fold-method-Line-docs' class="fold-docs">
+<span class="md-text">				Line adds a line segment to the rasterizer</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-LineSeg"><label for="Stroker-fold-method-LineSeg">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-560">LineSeg</a>(sgm <a href="#name-Rasterx">Rasterx</a>, b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Stroker-fold-method-LineSeg-docs' class="fold-docs">
+<span class="md-text">				LineSeg is called by both the Stroker and Dasher</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-QuadBezier"><label for="Stroker-fold-method-QuadBezier">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-499">QuadBezier</a>(b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Stroker-fold-method-QuadBezier-docs' class="fold-docs">
+<span class="md-text">				QuadBezier starts a stroked quadratic bezier.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-QuadBezierF"><label for="Stroker-fold-method-QuadBezierF">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-156">QuadBezierF</a>(sgm <a href="#name-Rasterx">Rasterx</a>, b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Stroker-fold-method-QuadBezierF-docs' class="fold-docs">
+<span class="md-text">				QuadBezierF adds a quadratic segment to the sgm Rasterizer.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-SetBounds"><label for="Stroker-fold-method-SetBounds">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-220">SetBounds</a>(width, height <a href="../../builtin.html#name-int">int</a>)</label><span id='Stroker-fold-method-SetBounds-docs' class="fold-docs">
+<span class="md-text">				SetBounds sets the maximum width and height of the rasterized image and
+				calls Clear. The width and height are in pixels, not fixed.Int26_6 units.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-SetClip"><label for="Stroker-fold-method-SetClip">( Stroker) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-32">SetClip</a>(rect <a href="../../image.html">image</a>.<a href="../../image.html#name-Rectangle">Rectangle</a>)</label><span id='Stroker-fold-method-SetClip-docs' class="fold-docs">
+<span class="md-text">				SetClip sets an optional clipping rectangle to restrict rendering
+				only to that region -- if size is 0 then ignored (set to image.ZR
+				to clear)</span>
+</span></span><span>
+			<span class="nodocs">( Stroker) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-25">SetColor</a>(color interface{})</span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-SetStroke"><label for="Stroker-fold-method-SetStroke">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-92">SetStroke</a>(width, miterLimit <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>, capL, capT <a href="#name-CapFunc">CapFunc</a>, gp <a href="#name-GapFunc">GapFunc</a>, jm <a href="#name-JoinMode">JoinMode</a>)</label><span id='Stroker-fold-method-SetStroke-docs' class="fold-docs">
+<span class="md-text">				SetStroke set the parameters for stroking a line. width is the width of the line, miterlimit is the miter cutoff
+				value for miter, arc, miterclip and arcClip joinModes. CapL and CapT are the capping functions for leading and trailing
+				line ends. If one is nil, the other function is used at both ends. If both are nil, both ends are ButtCapped.
+				gp is the gap function that determines how a gap on the convex side of two joining lines is filled. jm is the JoinMode
+				for curve segments.</span>
+</span></span><span>
+			<span class="nodocs">( Stroker) <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-26">SetWinding</a>(useNonZeroWinding <a href="../../builtin.html#name-bool">bool</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-Start"><label for="Stroker-fold-method-Start">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-608">Start</a>(a <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Stroker-fold-method-Start-docs' class="fold-docs">
+<span class="md-text">				Start iniitates a stroked path</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-Stop"><label for="Stroker-fold-method-Stop">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-466">Stop</a>(isClosed <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Stroker-fold-method-Stop-docs' class="fold-docs">
+<span class="md-text">				Stop a stroked line. The line will close
+				is isClosed is true. Otherwise end caps will
+				be drawn at both ends.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Stroker-showhide-methods"><i><label for="Stroker-showhide-methods" class="show-inline">/* 5 unexporteds ... */</label><label for="Stroker-showhide-methods" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-531">cubeBezierf</a>(sgm <a href="#name-Rasterx">Rasterx</a>, b, c, d <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-634">joinF</a>()</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-lineF"><label for="Stroker-fold-method-lineF">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-588">lineF</a>(b <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Stroker-fold-method-lineF-docs' class="fold-docs">
+<span class="md-text">				lineF is for intra-curve lines. It is required for the Rasterizer interface
+				so that if the line is being stroked or dash stroked, different actions can be
+				taken.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-quadBezierf"><label for="Stroker-fold-method-quadBezierf">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-509">quadBezierf</a>(s <a href="#name-Rasterx">Rasterx</a>, b, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='Stroker-fold-method-quadBezierf-docs' class="fold-docs">
+<span class="md-text">				quadBezierf calcs end curvature of beziers</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Stroker-fold-method-strokeEdge"><label for="Stroker-fold-method-strokeEdge">(*Stroker) <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-243">strokeEdge</a>(p <a href="#name-C2Point">C2Point</a>, crossProd <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>)</label><span id='Stroker-fold-method-strokeEdge-docs' class="fold-docs">
+<span class="md-text">				strokeEdge reduces code redundancy in the Joiner function by 2x since it handles
+				the top and bottom edges. This function encodes most of the logic of how to
+				handle joins between the given C2Point point p, and the end of the line.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Stroker-fold-impls"><label for="Stroker-fold-impls">Implements (<i>at least 3, all are exported</i>)</label><span id='Stroker-fold-impls-items' class="fold-items"><span>
+			*Stroker : <a href="#name-Adder">Adder</a></span><span>
+			*Stroker : <a href="#name-Rasterx">Rasterx</a></span><span>
+			*Stroker : <a href="#name-Scanner">Scanner</a></span></span>
+		<input type='checkbox' class="fold" id="Stroker-fold-results"><label for="Stroker-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Stroker-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewStroker">NewStroker</a>(width, height <a href="../../builtin.html#name-int">int</a>, scanner <a href="#name-Scanner">Scanner</a>) *<b>Stroker</b></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor type-res hidden" id="name-matrix3" data-popularity="100">	<input type='checkbox' class="fold" id="matrix3-fold-content"><label for="matrix3-fold-content"> type <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-20">matrix3</a> <i>([...])</i></label><span id='matrix3-fold-content-docs' class="fold-docs">
+<span class="md-text">		matrix3 is a full 3x3 float64 matrix
+		used for inverting</span>
+
+		<input type='checkbox' class="fold" id="matrix3-fold-methods"><label for="matrix3-fold-methods">Methods (<i>total 2, in which 1 is exported</i>)</label><span id='matrix3-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*matrix3) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-41">Invert</a>() *<b>matrix3</b></span></span>
+			<input type='checkbox' checked class="showhide" id="matrix3-showhide-methods"><i><label for="matrix3-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="matrix3-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*matrix3) <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-34">coFact</a>(i, j <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-float64">float64</a></span></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 33, in which 25 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-AddArc">	<input type='checkbox' class="fold" id="AddArc-fold-content"><label for="AddArc-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/shapes.go.html#line-99">AddArc</a>(points []<a href="../../builtin.html#name-float64">float64</a>, cx, cy, px, py <a href="../../builtin.html#name-float64">float64</a>, p <a href="#name-Adder">Adder</a>) (lx, ly <a href="../../builtin.html#name-float64">float64</a>)</label><span id='AddArc-fold-content-docs' class="fold-docs">
+<span class="md-text">		AddArc adds an arc to the adder p</span>
+
+</span></div><div class="anchor value-res" id="name-AddCircle">	<input type='checkbox' class="fold" id="AddCircle-fold-content"><label for="AddCircle-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/shapes.go.html#line-26">AddCircle</a>(cx, cy, r <a href="../../builtin.html#name-float64">float64</a>, p <a href="#name-Adder">Adder</a>)</label><span id='AddCircle-fold-content-docs' class="fold-docs">
+<span class="md-text">		AddCircle adds a circle to the Adder p</span>
+
+</span></div><div class="anchor value-res" id="name-AddEllipse">	<input type='checkbox' class="fold" id="AddEllipse-fold-content"><label for="AddEllipse-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/shapes.go.html#line-32">AddEllipse</a>(cx, cy, rx, ry, rot <a href="../../builtin.html#name-float64">float64</a>, p <a href="#name-Adder">Adder</a>)</label><span id='AddEllipse-fold-content-docs' class="fold-docs">
+<span class="md-text">		AddEllipse adds an elipse with center at cx,cy, with the indicated
+		x and y radius, (rx, ry), rotated around the center by rot degrees.</span>
+
+</span></div><div class="anchor value-res" id="name-AddRect">	<input type='checkbox' class="fold" id="AddRect-fold-content"><label for="AddRect-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/shapes.go.html#line-44">AddRect</a>(minX, minY, maxX, maxY, rot <a href="../../builtin.html#name-float64">float64</a>, p <a href="#name-Adder">Adder</a>)</label><span id='AddRect-fold-content-docs' class="fold-docs">
+<span class="md-text">		AddRect adds a rectangle of the indicated size, rotated
+		around the center by rot degrees.</span>
+
+</span></div><div class="anchor value-res" id="name-AddRoundRect">	<input type='checkbox' class="fold" id="AddRoundRect-fold-content"><label for="AddRoundRect-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/shapes.go.html#line-61">AddRoundRect</a>(minX, minY, maxX, maxY, rx, ry, rot <a href="../../builtin.html#name-float64">float64</a>, gf <a href="#name-GapFunc">GapFunc</a>, p <a href="#name-Adder">Adder</a>)</label><span id='AddRoundRect-fold-content-docs' class="fold-docs">
+<span class="md-text">		AddRoundRect adds a rectangle of the indicated size, rotated
+		around the center by rot degrees with rounded corners of radius
+		rx in the x axis and ry in the y axis. gf specifes the shape of the
+		filleting function. Valid values are RoundGap, QuadraticGap, CubicGap,
+		FlatGap, or nil which defaults to a flat gap.</span>
+
+</span></div><div class="anchor value-res" id="name-ApplyOpacity">	<input type='checkbox' class="fold" id="ApplyOpacity-fold-content"><label for="ApplyOpacity-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-52">ApplyOpacity</a>(c <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a>, opacity <a href="../../builtin.html#name-float64">float64</a>) <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-NRGBA">NRGBA</a></label><span id='ApplyOpacity-fold-content-docs' class="fold-docs">
+<span class="md-text">		ApplyOpacity sets the color's alpha channel to the given value</span>
+
+</span></div><div class="anchor value-res" id="name-CalcIntersect">	<input type='checkbox' class="fold" id="CalcIntersect-fold-content"><label for="CalcIntersect-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-249">CalcIntersect</a>(a1, a2, b1, b2 <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>) (x <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='CalcIntersect-fold-content-docs' class="fold-docs">
+<span class="md-text">		CalcIntersect calculates the points of intersection of two fixed point lines
+		and panics if the determinate is zero. You have been warned.</span>
+
+</span></div><div class="anchor value-res" id="name-CircleCircleIntersection">	<input type='checkbox' class="fold" id="CircleCircleIntersection-fold-content"><label for="CircleCircleIntersection-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-220">CircleCircleIntersection</a>(ct, cl <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, rt, rl <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>) (xt1, xt2 <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, intersects <a href="../../builtin.html#name-bool">bool</a>)</label><span id='CircleCircleIntersection-fold-content-docs' class="fold-docs">
+<span class="md-text">		CircleCircleIntersection calculates the points of intersection of
+		two circles or returns with intersects == false if no such points exist.</span>
+
+</span></div><div class="anchor value-res" id="name-ClosestPortside">	<input type='checkbox' class="fold" id="ClosestPortside-fold-content"><label for="ClosestPortside-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-171">ClosestPortside</a>(bow, stern, p1, p2 <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, isIntersecting <a href="../../builtin.html#name-bool">bool</a>) (xt <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, intersects <a href="../../builtin.html#name-bool">bool</a>)</label><span id='ClosestPortside-fold-content-docs' class="fold-docs">
+<span class="md-text">		ClosestPortside returns the closest of p1 or p2 on the port side of the
+		line from the bow to the stern. (port means left side of the direction you are heading)
+		isIntersecting is just convienice to reduce code, and if false returns false, because p1 and p2 are not valid</span>
+
+</span></div><div class="anchor value-res" id="name-CubeTo">	<input type='checkbox' class="fold" id="CubeTo-fold-content"><label for="CubeTo-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-107">CubeTo</a>(ax, ay, bx, by, cx, cy, dx, dy <a href="../../builtin.html#name-float32">float32</a>, LineTo func(ex, ey <a href="../../builtin.html#name-float32">float32</a>))</label><span id='CubeTo-fold-content-docs' class="fold-docs">
+<span class="md-text">		CubeTo flattens the cubic Bezier curve into lines through the LineTo func
+		This functions is adapted from the version found in
+		golang.org/x/image/vector</span>
+
+</span></div><div class="anchor value-res" id="name-DotProd">	<input type='checkbox' class="fold" id="DotProd-fold-content"><label for="DotProd-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-30">DotProd</a>(p <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, q <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>) <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int52_12">Int52_12</a></label><span id='DotProd-fold-content-docs' class="fold-docs">
+<span class="md-text">		DotProd returns the inner product of p and q</span>
+
+</span></div><div class="anchor value-res" id="name-FindEllipseCenter">	<input type='checkbox' class="fold" id="FindEllipseCenter-fold-content"><label for="FindEllipseCenter-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/shapes.go.html#line-180">FindEllipseCenter</a>(ra, rb *<a href="../../builtin.html#name-float64">float64</a>, rotX, startX, startY, endX, endY <a href="../../builtin.html#name-float64">float64</a>, sweep, smallArc <a href="../../builtin.html#name-bool">bool</a>) (cx, cy <a href="../../builtin.html#name-float64">float64</a>)</label><span id='FindEllipseCenter-fold-content-docs' class="fold-docs">
+<span class="md-text">		FindEllipseCenter locates the center of the Ellipse if it exists. If it does not exist,
+		the radius values will be increased minimally for a solution to be possible
+		while preserving the ra to rb ratio.  ra and rb arguments are pointers that can be
+		checked after the call to see if the values changed. This method uses coordinate transformations
+		to reduce the problem to finding the center of a circle that includes the origin
+		and an arbitrary point. The center of the circle is then transformed
+		back to the original coordinates and returned.</span>
+
+</span></div><div class="anchor value-res" id="name-GapToCap">	<input type='checkbox' class="fold" id="GapToCap-fold-content"><label for="GapToCap-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-121">GapToCap</a>(p <a href="#name-Adder">Adder</a>, a, eNorm <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, gf <a href="#name-GapFunc">GapFunc</a>)</label><span id='GapToCap-fold-content-docs' class="fold-docs">
+<span class="md-text">		GapToCap is a utility that converts a CapFunc to GapFunc</span>
+
+</span></div><div class="anchor value-res" id="name-Invert">	<input type='checkbox' class="fold" id="Invert-fold-content"><label for="Invert-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-15">Invert</a>(v <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>) <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></label><span id='Invert-fold-content-docs' class="fold-docs">
+<span class="md-text">		Invert  returns the point inverted around the origin</span>
+
+</span></div><div class="anchor value-res" id="name-Length">	<input type='checkbox' class="fold" id="Length-fold-content"><label for="Length-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-35">Length</a>(v <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>) <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></label><span id='Length-fold-content-docs' class="fold-docs">
+<span class="md-text">		Length is the distance from the origin of the point</span>
+
+</span></div><div class="anchor value-res" id="name-NewDasher">	<input type='checkbox' class="fold" id="NewDasher-fold-content"><label for="NewDasher-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/dash.go.html#line-194">NewDasher</a>(width, height <a href="../../builtin.html#name-int">int</a>, scanner <a href="#name-Scanner">Scanner</a>) *<a href="#name-Dasher">Dasher</a></label><span id='NewDasher-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewDasher returns a Dasher ptr with default values.
+		A Dasher has all of the capabilities of a Stroker, Filler, and Scanner, plus the ability
+		to stroke curves with solid lines. Use SetStroke to configure with non-default
+		values.</span>
+
+</span></div><div class="anchor value-res" id="name-NewFiller">	<input type='checkbox' class="fold" id="NewFiller-fold-content"><label for="NewFiller-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-235">NewFiller</a>(width, height <a href="../../builtin.html#name-int">int</a>, scanner <a href="#name-Scanner">Scanner</a>) *<a href="#name-Filler">Filler</a></label><span id='NewFiller-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewFiller returns a Filler ptr with default values.
+		A Filler in addition to rasterizing lines like a Scann,
+		can also rasterize quadratic and cubic bezier curves.
+		If Scanner is nil default scanner ScannerGV is used</span>
+
+</span></div><div class="anchor value-res" id="name-NewScannerGV">	<input type='checkbox' class="fold" id="NewScannerGV-fold-content"><label for="NewScannerGV-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-170">NewScannerGV</a>(width, height <a href="../../builtin.html#name-int">int</a>, dest <a href="../../image/draw.html">draw</a>.<a href="../../image/draw.html#name-Image">Image</a>, targ <a href="../../image.html">image</a>.<a href="../../image.html#name-Rectangle">Rectangle</a>) *<a href="#name-ScannerGV">ScannerGV</a></label><span id='NewScannerGV-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewScannerGV creates a new Scanner with the given bounds.</span>
+
+</span></div><div class="anchor value-res" id="name-NewStroker">	<input type='checkbox' class="fold" id="NewStroker-fold-content"><label for="NewStroker-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-71">NewStroker</a>(width, height <a href="../../builtin.html#name-int">int</a>, scanner <a href="#name-Scanner">Scanner</a>) *<a href="#name-Stroker">Stroker</a></label><span id='NewStroker-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewStroker returns a ptr to a Stroker with default values.
+		A Stroker has all of the capabilities of a Filler and Scanner, plus the ability
+		to stroke curves with solid lines. Use SetStroke to configure with non-default
+		values.</span>
+
+</span></div><div class="anchor value-res" id="name-QuadTo">	<input type='checkbox' class="fold" id="QuadTo-fold-content"><label for="QuadTo-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-83">QuadTo</a>(ax, ay, bx, by, cx, cy <a href="../../builtin.html#name-float32">float32</a>, LineTo func(dx, dy <a href="../../builtin.html#name-float32">float32</a>))</label><span id='QuadTo-fold-content-docs' class="fold-docs">
+<span class="md-text">		QuadTo flattens the quadratic Bezier curve into lines through the LineTo func
+		This functions is adapted from the version found in
+		golang.org/x/image/vector</span>
+
+</span></div><div class="anchor value-res" id="name-RadCurvature">	<input type='checkbox' class="fold" id="RadCurvature-fold-content"><label for="RadCurvature-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-204">RadCurvature</a>(p0, p1, p2 <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, dm <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int52_12">Int52_12</a>) <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></label><span id='RadCurvature-fold-content-docs' class="fold-docs">
+<span class="md-text">		RadCurvature returns the curvature of a Bezier curve end point,
+		given an end point, the two adjacent control points and the degree.
+		The sign of the value indicates if the center of the osculating circle
+		is left or right (port or starboard) of the curve in the forward direction.</span>
+
+</span></div><div class="anchor value-res" id="name-RayCircleIntersection">	<input type='checkbox' class="fold" id="RayCircleIntersection-fold-content"><label for="RayCircleIntersection-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-261">RayCircleIntersection</a>(s1, s2, c <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, r <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>) (x <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, intersects <a href="../../builtin.html#name-bool">bool</a>)</label><span id='RayCircleIntersection-fold-content-docs' class="fold-docs">
+<span class="md-text">		RayCircleIntersection calculates the points of intersection of
+		a ray starting at s2 passing through s1 and a circle in fixed point.
+		Returns intersects == false if no solution is possible. If two
+		solutions are possible, the point closest to s2 is returned</span>
+
+</span></div><div class="anchor value-res" id="name-RayCircleIntersectionF">	<input type='checkbox' class="fold" id="RayCircleIntersectionF-fold-content"><label for="RayCircleIntersectionF-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-273">RayCircleIntersectionF</a>(s1X, s1Y, s2X, s2Y, cX, cY, r <a href="../../builtin.html#name-float64">float64</a>) (x, y <a href="../../builtin.html#name-float64">float64</a>, intersects <a href="../../builtin.html#name-bool">bool</a>)</label><span id='RayCircleIntersectionF-fold-content-docs' class="fold-docs">
+<span class="md-text">		RayCircleIntersectionF calculates in floating point the points of intersection of
+		a ray starting at s2 passing through s1 and a circle in fixed point.
+		Returns intersects == false if no solution is possible. If two
+		solutions are possible, the point closest to s2 is returned</span>
+
+</span></div><div class="anchor value-res" id="name-ToFixedP">	<input type='checkbox' class="fold" id="ToFixedP-fold-content"><label for="ToFixedP-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/shapes.go.html#line-19">ToFixedP</a>(x, y <a href="../../builtin.html#name-float64">float64</a>) (p <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='ToFixedP-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToFixedP converts two floats to a fixed point.</span>
+
+</span></div><div class="anchor value-res" id="name-ToLength">	<input type='checkbox' class="fold" id="ToLength-fold-content"><label for="ToLength-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-154">ToLength</a>(p <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, ln <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>) (q <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='ToLength-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToLength scales the point to the length indicated by ln</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 8 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 8 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-devSquared"><i>	<input type='checkbox' class="fold" id="devSquared-fold-content"><label for="devSquared-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/fill.go.html#line-149">devSquared</a>(ax, ay, bx, by, cx, cy <a href="../../builtin.html#name-float32">float32</a>) <a href="../../builtin.html#name-float32">float32</a></label><span id='devSquared-fold-content-docs' class="fold-docs">
+<span class="md-text">		devSquared returns a measure of how curvy the sequence (ax, ay) to (bx, by)
+		to (cx, cy) is. It determines how many line segments will approximate a
+		Bézier curve segment. This functions is copied from the version found in
+		golang.org/x/image/vector as are the below comments.
+		
+		http://lists.nongnu.org/archive/html/freetype-devel/2016-08/msg00080.html
+		gives the rationale for this evenly spaced heuristic instead of a recursive
+		de Casteljau approach:
+		
+		The reason for the subdivision by n is that I expect the "flatness"
+		computation to be semi-expensive (it's done once rather than on each
+		potential subdivision) and also because you'll often get fewer subdivisions.
+		Taking a circular arc as a simplifying assumption (ie a spherical cow),
+		where I get n, a recursive approach would get 2^⌈lg n⌉, which, if I haven't
+		made any horrible mistakes, is expected to be 33% more in the limit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-doCalcCurvature"><i>	<input type='checkbox' class="fold" id="doCalcCurvature-fold-content"><label for="doCalcCurvature-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-518">doCalcCurvature</a>(r <a href="#name-Rasterx">Rasterx</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='doCalcCurvature-fold-content-docs' class="fold-docs">
+<span class="md-text">		doCalcCurvature determines if calculation of the end curvature is required
+		depending on the raster type and JoinMode</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-ellipsePointAt"><i>	<input type='checkbox' class="fold" id="ellipsePointAt-fold-content"><label for="ellipsePointAt-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/shapes.go.html#line-165">ellipsePointAt</a>(a, b, sinTheta, cosTheta, eta, cx, cy <a href="../../builtin.html#name-float64">float64</a>) (px, py <a href="../../builtin.html#name-float64">float64</a>)</label><span id='ellipsePointAt-fold-content-docs' class="fold-docs">
+<span class="md-text">		ellipsePointAt gives points for parameterized elipse; a, b, radii, eta parameter, center cx, cy</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-ellipsePrime"><i>	<input type='checkbox' class="fold" id="ellipsePrime-fold-content"><label for="ellipsePrime-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/shapes.go.html#line-156">ellipsePrime</a>(a, b, sinTheta, cosTheta, eta, cx, cy <a href="../../builtin.html#name-float64">float64</a>) (px, py <a href="../../builtin.html#name-float64">float64</a>)</label><span id='ellipsePrime-fold-content-docs' class="fold-docs">
+<span class="md-text">		ellipsePrime gives tangent vectors for parameterized elipse; a, b, radii, eta parameter, center cx, cy</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-otherPair"><i>	<span class="nodocs"> func <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-22">otherPair</a>(i <a href="../../builtin.html#name-int">int</a>) (a, b <a href="../../builtin.html#name-int">int</a>)</span></i></div><div class="anchor value-res hidden" id="name-strokeArc"><i>	<input type='checkbox' class="fold" id="strokeArc-fold-content"><label for="strokeArc-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-178">strokeArc</a>(p <a href="#name-Adder">Adder</a>, a, s1, s2 <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>, clockwise <a href="../../builtin.html#name-bool">bool</a>, trimStart, trimEnd <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>, firstPoint func(p <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)) (ps1, ds1, ps2, ds2 <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>)</label><span id='strokeArc-fold-content-docs' class="fold-docs">
+<span class="md-text">		StrokeArc strokes a circular arc by approximation with bezier curves</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-turnPort90"><i>	<input type='checkbox' class="fold" id="turnPort90-fold-content"><label for="turnPort90-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-25">turnPort90</a>(v <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>) <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></label><span id='turnPort90-fold-content-docs' class="fold-docs">
+<span class="md-text">		turnPort90 returns the vector 90 degrees port (left in direction heading)</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-turnStarboard90"><i>	<input type='checkbox' class="fold" id="turnStarboard90-fold-content"><label for="turnStarboard90-fold-content"> func <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-20">turnStarboard90</a>(v <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a>) <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Point26_6">Point26_6</a></label><span id='turnStarboard90-fold-content-docs' class="fold-docs">
+<span class="md-text">		turnStarboard90 returns the vector 90 degrees starboard (right in direction heading)</span>
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 11, in which 10 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ButtCap">	<input type='checkbox' class="fold" id="ButtCap-fold-content"><label for="ButtCap-fold-content">  var <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-129">ButtCap</a> <a href="#name-CapFunc">CapFunc</a></label><span id='ButtCap-fold-content-docs' class="fold-docs">
+<span class="md-text">		ButtCap caps lines with a straight line</span>
+
+</span></div><div class="anchor value-res" id="name-CubicCap">	<input type='checkbox' class="fold" id="CubicCap-fold-content"><label for="CubicCap-fold-content">  var <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-146">CubicCap</a> <a href="#name-CapFunc">CapFunc</a></label><span id='CubicCap-fold-content-docs' class="fold-docs">
+<span class="md-text">		CubicCap caps lines with a cubic bezier</span>
+
+</span></div><div class="anchor value-res" id="name-CubicGap">	<input type='checkbox' class="fold" id="CubicGap-fold-content"><label for="CubicGap-fold-content">  var <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-166">CubicGap</a> <a href="#name-GapFunc">GapFunc</a></label><span id='CubicGap-fold-content-docs' class="fold-docs">
+<span class="md-text">		CubicGap bridges miter-limit gaps with a cubic bezier</span>
+
+</span></div><div class="anchor value-res" id="name-FlatGap">	<input type='checkbox' class="fold" id="FlatGap-fold-content"><label for="FlatGap-fold-content">  var <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-156">FlatGap</a> <a href="#name-GapFunc">GapFunc</a></label><span id='FlatGap-fold-content-docs' class="fold-docs">
+<span class="md-text">		FlatGap bridges miter-limit gaps with a straight line</span>
+
+</span></div><div class="anchor value-res" id="name-Identity">	<input type='checkbox' class="fold" id="Identity-fold-content"><label for="Identity-fold-content">  var <a href="../../../src/github.com/srwiley/rasterx/matrix.go.html#line-82">Identity</a> <a href="#name-Matrix2D">Matrix2D</a></label><span id='Identity-fold-content-docs' class="fold-docs">
+<span class="md-text">		Identity is the identity matrix</span>
+
+</span></div><div class="anchor value-res" id="name-QuadraticCap">	<input type='checkbox' class="fold" id="QuadraticCap-fold-content"><label for="QuadraticCap-fold-content">  var <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-150">QuadraticCap</a> <a href="#name-CapFunc">CapFunc</a></label><span id='QuadraticCap-fold-content-docs' class="fold-docs">
+<span class="md-text">		QuadraticCap caps lines with a quadratic bezier</span>
+
+</span></div><div class="anchor value-res" id="name-QuadraticGap">	<input type='checkbox' class="fold" id="QuadraticGap-fold-content"><label for="QuadraticGap-fold-content">  var <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-170">QuadraticGap</a> <a href="#name-GapFunc">GapFunc</a></label><span id='QuadraticGap-fold-content-docs' class="fold-docs">
+<span class="md-text">		QuadraticGap bridges miter-limit gaps with a quadratic bezier</span>
+
+</span></div><div class="anchor value-res" id="name-RoundCap">	<input type='checkbox' class="fold" id="RoundCap-fold-content"><label for="RoundCap-fold-content">  var <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-142">RoundCap</a> <a href="#name-CapFunc">CapFunc</a></label><span id='RoundCap-fold-content-docs' class="fold-docs">
+<span class="md-text">		RoundCap caps lines with a half-circle</span>
+
+</span></div><div class="anchor value-res" id="name-RoundGap">	<input type='checkbox' class="fold" id="RoundGap-fold-content"><label for="RoundGap-fold-content">  var <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-160">RoundGap</a> <a href="#name-GapFunc">GapFunc</a></label><span id='RoundGap-fold-content-docs' class="fold-docs">
+<span class="md-text">		RoundGap bridges miter-limit gaps with a circular arc</span>
+
+</span></div><div class="anchor value-res" id="name-SquareCap">	<input type='checkbox' class="fold" id="SquareCap-fold-content"><label for="SquareCap-fold-content">  var <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-134">SquareCap</a> <a href="#name-CapFunc">CapFunc</a></label><span id='SquareCap-fold-content-docs' class="fold-docs">
+<span class="md-text">		SquareCap caps lines with a square which is slightly longer than ButtCap</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-noApha"><i>	<span class="nodocs">  var <a href="../../../src/github.com/srwiley/rasterx/scan.go.html#line-54">noApha</a> <a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-RGBA">RGBA</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 21, in which 17 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Arc">	<input type='checkbox' class="fold" id="Arc-fold-content"><label for="Arc-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-59">Arc</a> <a href="#name-JoinMode">JoinMode</a> = 0</label><span id='Arc-fold-content-docs' class="fold-docs">
+<span class="md-text">		JoinMode constants determine how stroke segments bridge the gap at a join
+		ArcClip mode is like MiterClip applied to arcs, and is not part of the SVG2.0
+		standard.</span>
+
+</span></div><div class="anchor value-res" id="name-ArcClip">	<input type='checkbox' class="fold" id="ArcClip-fold-content"><label for="ArcClip-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-60">ArcClip</a> <a href="#name-JoinMode">JoinMode</a> = 1</label><span id='ArcClip-fold-content-docs' class="fold-docs">
+<span class="md-text">		JoinMode constants determine how stroke segments bridge the gap at a join
+		ArcClip mode is like MiterClip applied to arcs, and is not part of the SVG2.0
+		standard.</span>
+
+</span></div><div class="anchor value-res" id="name-Bevel">	<input type='checkbox' class="fold" id="Bevel-fold-content"><label for="Bevel-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-63">Bevel</a> <a href="#name-JoinMode">JoinMode</a> = 4</label><span id='Bevel-fold-content-docs' class="fold-docs">
+<span class="md-text">		JoinMode constants determine how stroke segments bridge the gap at a join
+		ArcClip mode is like MiterClip applied to arcs, and is not part of the SVG2.0
+		standard.</span>
+
+</span></div><div class="anchor value-res" id="name-MaxDx">	<input type='checkbox' class="fold" id="MaxDx-fold-content"><label for="MaxDx-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/shapes.go.html#line-16">MaxDx</a> <a href="../../builtin.html#name-float64">float64</a> = 0.392699</label><span id='MaxDx-fold-content-docs' class="fold-docs">
+<span class="md-text">		MaxDx is the Maximum radians a cubic splice is allowed to span
+		in ellipse parametric when approximating an off-axis ellipse.</span>
+
+</span></div><div class="anchor value-res" id="name-Miter">	<input type='checkbox' class="fold" id="Miter-fold-content"><label for="Miter-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-61">Miter</a> <a href="#name-JoinMode">JoinMode</a> = 2</label><span id='Miter-fold-content-docs' class="fold-docs">
+<span class="md-text">		JoinMode constants determine how stroke segments bridge the gap at a join
+		ArcClip mode is like MiterClip applied to arcs, and is not part of the SVG2.0
+		standard.</span>
+
+</span></div><div class="anchor value-res" id="name-MiterClip">	<input type='checkbox' class="fold" id="MiterClip-fold-content"><label for="MiterClip-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-62">MiterClip</a> <a href="#name-JoinMode">JoinMode</a> = 3</label><span id='MiterClip-fold-content-docs' class="fold-docs">
+<span class="md-text">		JoinMode constants determine how stroke segments bridge the gap at a join
+		ArcClip mode is like MiterClip applied to arcs, and is not part of the SVG2.0
+		standard.</span>
+
+</span></div><div class="anchor value-res" id="name-ObjectBoundingBox">	<input type='checkbox' class="fold" id="ObjectBoundingBox-fold-content"><label for="ObjectBoundingBox-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-15">ObjectBoundingBox</a> <a href="#name-GradientUnits">GradientUnits</a> = 0</label><span id='ObjectBoundingBox-fold-content-docs' class="fold-docs">
+<span class="md-text">		SVG bounds paremater constants</span>
+
+</span></div><div class="anchor value-res" id="name-PadSpread">	<input type='checkbox' class="fold" id="PadSpread-fold-content"><label for="PadSpread-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-21">PadSpread</a> <a href="#name-SpreadMethod">SpreadMethod</a> = 0</label><span id='PadSpread-fold-content-docs' class="fold-docs">
+<span class="md-text">		SVG spread parameter constants</span>
+
+</span></div><div class="anchor value-res" id="name-PathClose">	<input type='checkbox' class="fold" id="PathClose-fold-content"><label for="PathClose-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-49">PathClose</a> <a href="#name-PathCommand">PathCommand</a> = 4</label><span id='PathClose-fold-content-docs' class="fold-docs">
+<span class="md-text">		Human readable path constants</span>
+
+</span></div><div class="anchor value-res" id="name-PathCubicTo">	<input type='checkbox' class="fold" id="PathCubicTo-fold-content"><label for="PathCubicTo-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-48">PathCubicTo</a> <a href="#name-PathCommand">PathCommand</a> = 3</label><span id='PathCubicTo-fold-content-docs' class="fold-docs">
+<span class="md-text">		Human readable path constants</span>
+
+</span></div><div class="anchor value-res" id="name-PathLineTo">	<input type='checkbox' class="fold" id="PathLineTo-fold-content"><label for="PathLineTo-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-46">PathLineTo</a> <a href="#name-PathCommand">PathCommand</a> = 1</label><span id='PathLineTo-fold-content-docs' class="fold-docs">
+<span class="md-text">		Human readable path constants</span>
+
+</span></div><div class="anchor value-res" id="name-PathMoveTo">	<input type='checkbox' class="fold" id="PathMoveTo-fold-content"><label for="PathMoveTo-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-45">PathMoveTo</a> <a href="#name-PathCommand">PathCommand</a> = 0</label><span id='PathMoveTo-fold-content-docs' class="fold-docs">
+<span class="md-text">		Human readable path constants</span>
+
+</span></div><div class="anchor value-res" id="name-PathQuadTo">	<input type='checkbox' class="fold" id="PathQuadTo-fold-content"><label for="PathQuadTo-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/geomx.go.html#line-47">PathQuadTo</a> <a href="#name-PathCommand">PathCommand</a> = 2</label><span id='PathQuadTo-fold-content-docs' class="fold-docs">
+<span class="md-text">		Human readable path constants</span>
+
+</span></div><div class="anchor value-res" id="name-ReflectSpread">	<input type='checkbox' class="fold" id="ReflectSpread-fold-content"><label for="ReflectSpread-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-22">ReflectSpread</a> <a href="#name-SpreadMethod">SpreadMethod</a> = 1</label><span id='ReflectSpread-fold-content-docs' class="fold-docs">
+<span class="md-text">		SVG spread parameter constants</span>
+
+</span></div><div class="anchor value-res" id="name-RepeatSpread">	<input type='checkbox' class="fold" id="RepeatSpread-fold-content"><label for="RepeatSpread-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-23">RepeatSpread</a> <a href="#name-SpreadMethod">SpreadMethod</a> = 2</label><span id='RepeatSpread-fold-content-docs' class="fold-docs">
+<span class="md-text">		SVG spread parameter constants</span>
+
+</span></div><div class="anchor value-res" id="name-Round">	<input type='checkbox' class="fold" id="Round-fold-content"><label for="Round-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-64">Round</a> <a href="#name-JoinMode">JoinMode</a> = 5</label><span id='Round-fold-content-docs' class="fold-docs">
+<span class="md-text">		JoinMode constants determine how stroke segments bridge the gap at a join
+		ArcClip mode is like MiterClip applied to arcs, and is not part of the SVG2.0
+		standard.</span>
+
+</span></div><div class="anchor value-res" id="name-UserSpaceOnUse">	<input type='checkbox' class="fold" id="UserSpaceOnUse-fold-content"><label for="UserSpaceOnUse-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-16">UserSpaceOnUse</a> <a href="#name-GradientUnits">GradientUnits</a> = 1</label><span id='UserSpaceOnUse-fold-content-docs' class="fold-docs">
+<span class="md-text">		SVG bounds paremater constants</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-cubicsPerHalfCircle"><i>	<span class="nodocs">const <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-14">cubicsPerHalfCircle</a> = 8 // <span class="md-text">Number of cubic beziers to approx half a circle</span></span></i></div><div class="anchor value-res hidden" id="name-epsilonF"><i>	<span class="nodocs">const <a href="../../../src/github.com/srwiley/rasterx/gradient.go.html#line-26">epsilonF</a> = 1e-05</span></i></div><div class="anchor value-res hidden" id="name-epsilonFixed"><i>	<span class="nodocs">const <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-15">epsilonFixed</a> <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a> = 16 // <span class="md-text">1/4 in fixed point</span></span></i></div><div class="anchor value-res hidden" id="name-tStrokeShift"><i>	<input type='checkbox' class="fold" id="tStrokeShift-fold-content"><label for="tStrokeShift-fold-content">const <a href="../../../src/github.com/srwiley/rasterx/stroke.go.html#line-18">tStrokeShift</a> = 14</label><span id='tStrokeShift-fold-content-docs' class="fold-docs">
+<span class="md-text">		fixed point t paramaterization shift factor;
+		(2^this)/64 is the max length of t for fixed.Int26_6</span>
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

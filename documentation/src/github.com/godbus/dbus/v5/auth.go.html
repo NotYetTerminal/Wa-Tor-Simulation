@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: auth.go in package github.com/godbus/dbus/v5</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	auth.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/godbus/dbus/v5.html">github.com/godbus/dbus/v5</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> dbus</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"bufio"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"bytes"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"errors"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i3"><span class="lit-string i3">"io"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i4"><span class="lit-string i4">"os"</span></label></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i5"><span class="lit-string i5">"strconv"</span></label></code></span>
+<span class="codeline" id="line-10"><code>)</code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// AuthStatus represents the Status of an authentication mechanism.</span></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-AuthStatus" class="ident">AuthStatus</a> <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-16"><code>	<span class="comment">// AuthOk signals that authentication is finished; the next command</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">	// from the server should be an OK.</span></code></span>
+<span class="codeline" id="line-18"><code>	<a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-AuthOk" class="ident">AuthOk</a> <a href="#line-13" class="ident">AuthStatus</a> = <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-19"><code></code></span>
+<span class="codeline" id="line-20"><code>	<span class="comment">// AuthContinue signals that additional data is needed; the next command</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">	// from the server should be a DATA.</span></code></span>
+<span class="codeline" id="line-22"><code>	<a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-AuthContinue" class="ident">AuthContinue</a></code></span>
+<span class="codeline" id="line-23"><code></code></span>
+<span class="codeline" id="line-24"><code>	<span class="comment">// AuthError signals an error; the server sent invalid data or some</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">	// other unexpected thing happened and the current authentication</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">	// process should be aborted.</span></code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-AuthError" class="ident">AuthError</a></code></span>
+<span class="codeline" id="line-28"><code>)</code></span>
+<span class="codeline" id="line-29"><code></code></span>
+<span class="codeline" id="line-30"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-authState" class="ident">authState</a> <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-waitingForData" class="ident">waitingForData</a> <a href="#line-30" class="ident">authState</a> = <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-34"><code>	<a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-waitingForOk" class="ident">waitingForOk</a></code></span>
+<span class="codeline" id="line-35"><code>	<a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-waitingForReject" class="ident">waitingForReject</a></code></span>
+<span class="codeline" id="line-36"><code>)</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">// Auth defines the behaviour of an authentication mechanism.</span></code></span>
+<span class="codeline" id="line-39"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-Auth" class="ident">Auth</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-40"><code>	<span class="comment">// Return the name of the mechanism, the argument to the first AUTH command</span></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">	// and the next status.</span></code></span>
+<span class="codeline" id="line-42"><code>	<a href="../../../../../imp/github.com/godbus/dbus/v5.Auth.html#name-FirstData" class="ident">FirstData</a>() (name, resp []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, status <a href="#line-13" class="ident">AuthStatus</a>)</code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code>	<span class="comment">// Process the given DATA command, and return the argument to the DATA</span></code></span>
+<span class="codeline" id="line-45"><code><span class="comment">	// command and the next status. If len(resp) == 0, no DATA command is sent.</span></code></span>
+<span class="codeline" id="line-46"><code>	<a href="../../../../../imp/github.com/godbus/dbus/v5.Auth.html#name-HandleData" class="ident">HandleData</a>(data []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) (resp []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, status <a href="#line-13" class="ident">AuthStatus</a>)</code></span>
+<span class="codeline" id="line-47"><code>}</code></span>
+<span class="codeline" id="line-48"><code></code></span>
+<span class="codeline" id="line-49"><code><span class="comment">// Auth authenticates the connection, trying the given list of authentication</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">// mechanisms (in that order). If nil is passed, the EXTERNAL and</span></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">// DBUS_COOKIE_SHA1 mechanisms are tried for the current user. For private</span></code></span>
+<span class="codeline" id="line-52"><code><span class="comment">// connections, this method must be called before sending any messages to the</span></code></span>
+<span class="codeline" id="line-53"><code><span class="comment">// bus. Auth must not be called on shared connections.</span></code></span>
+<span class="codeline" id="line-54"><code><span class="keyword">func</span> (<label for="r0" class="ident">conn</label> *<a href="conn.go.html#line-30" class="ident">Conn</a>) <label for="r1" class="ident">Auth</label>(<label for="r2" class="ident">methods</label> []<a href="#line-39" class="ident">Auth</a>) <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-55"><code>	<span class="keyword">if</span> <label for="r2" class="ident">methods</label> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-56"><code>		<label for="r3" class="ident">uid</label> := <a href="../../../../../pkg/strconv.html" class="ident i5">strconv</a>.<a href="../../../../strconv/itoa.go.html#line-34" class="ident">Itoa</a>(<a href="../../../../../pkg/os.html" class="ident i4">os</a>.<a href="../../../../os/proc.go.html#line-36" class="ident">Geteuid</a>())</code></span>
+<span class="codeline" id="line-57"><code>		<label for="r2" class="ident">methods</label> = []<a href="#line-39" class="ident">Auth</a>{<a href="auth_external.go.html#line-9" class="ident">AuthExternal</a>(<label for="r3" class="ident">uid</label>), <a href="auth_sha1.go.html#line-15" class="ident">AuthCookieSha1</a>(<label for="r3" class="ident">uid</label>, <a href="homedir.go.html#line-16" class="ident">getHomeDir</a>())}</code></span>
+<span class="codeline" id="line-58"><code>	}</code></span>
+<span class="codeline" id="line-59"><code>	<label for="r4" class="ident">in</label> := <a href="../../../../../pkg/bufio.html" class="ident i0">bufio</a>.<a href="../../../../bufio/bufio.go.html#line-59" class="ident">NewReader</a>(<label for="r0" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>)</code></span>
+<span class="codeline" id="line-60"><code>	<label for="r5" class="ident">err</label> := <label for="r0" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>.<a href="conn.go.html#line-730" class="ident">SendNullByte</a>()</code></span>
+<span class="codeline" id="line-61"><code>	<span class="keyword">if</span> <label for="r5" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-62"><code>		<span class="keyword">return</span> <label for="r5" class="ident">err</label></code></span>
+<span class="codeline" id="line-63"><code>	}</code></span>
+<span class="codeline" id="line-64"><code>	<label for="r5" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r0" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"AUTH"</span>))</code></span>
+<span class="codeline" id="line-65"><code>	<span class="keyword">if</span> <label for="r5" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-66"><code>		<span class="keyword">return</span> <label for="r5" class="ident">err</label></code></span>
+<span class="codeline" id="line-67"><code>	}</code></span>
+<span class="codeline" id="line-68"><code>	<label for="r6" class="ident">s</label>, <label for="r5" class="ident">err</label> := <a href="#line-228" class="ident">authReadLine</a>(<label for="r4" class="ident">in</label>)</code></span>
+<span class="codeline" id="line-69"><code>	<span class="keyword">if</span> <label for="r5" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-70"><code>		<span class="keyword">return</span> <label for="r5" class="ident">err</label></code></span>
+<span class="codeline" id="line-71"><code>	}</code></span>
+<span class="codeline" id="line-72"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r6" class="ident">s</label>) &lt; <span class="lit-number">2</span> || !<a href="../../../../../pkg/bytes.html" class="ident i1">bytes</a>.<a href="../../../../bytes/bytes.go.html#line-19" class="ident">Equal</a>(<label for="r6" class="ident">s</label>[<span class="lit-number">0</span>], []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"REJECTED"</span>)) {</code></span>
+<span class="codeline" id="line-73"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/errors.html" class="ident i2">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"dbus: authentication protocol error"</span>)</code></span>
+<span class="codeline" id="line-74"><code>	}</code></span>
+<span class="codeline" id="line-75"><code>	<label for="r6" class="ident">s</label> = <label for="r6" class="ident">s</label>[<span class="lit-number">1</span>:]</code></span>
+<span class="codeline" id="line-76"><code>	<span class="keyword">for</span> <label for="r7" class="ident">_</label>, <label for="r8" class="ident">v</label> := <span class="keyword">range</span> <label for="r6" class="ident">s</label> {</code></span>
+<span class="codeline" id="line-77"><code>		<span class="keyword">for</span> <label for="r9" class="ident">_</label>, <label for="r10" class="ident">m</label> := <span class="keyword">range</span> <label for="r2" class="ident">methods</label> {</code></span>
+<span class="codeline" id="line-78"><code>			<span class="keyword">if</span> <label for="r11" class="ident">name</label>, <label for="r12" class="ident">_</label>, <label for="r13" class="ident">status</label> := <label for="r10" class="ident">m</label>.<a href="#line-42" class="ident">FirstData</a>(); <a href="../../../../../pkg/bytes.html" class="ident i1">bytes</a>.<a href="../../../../bytes/bytes.go.html#line-19" class="ident">Equal</a>(<label for="r8" class="ident">v</label>, <label for="r11" class="ident">name</label>) {</code></span>
+<span class="codeline" id="line-79"><code>				<span class="keyword">var</span> <label for="r14" class="ident">ok</label> <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-80"><code>				<label for="r5" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r0" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"AUTH"</span>), <label for="r8" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-81"><code>				<span class="keyword">if</span> <label for="r5" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-82"><code>					<span class="keyword">return</span> <label for="r5" class="ident">err</label></code></span>
+<span class="codeline" id="line-83"><code>				}</code></span>
+<span class="codeline" id="line-84"><code>				<span class="keyword">switch</span> <label for="r13" class="ident">status</label> {</code></span>
+<span class="codeline" id="line-85"><code>				<span class="keyword">case</span> <a href="#line-18" class="ident">AuthOk</a>:</code></span>
+<span class="codeline" id="line-86"><code>					<label for="r5" class="ident">err</label>, <label for="r14" class="ident">ok</label> = <label for="r0" class="ident">conn</label>.<a href="#line-131" class="ident">tryAuth</a>(<label for="r10" class="ident">m</label>, <a href="#line-34" class="ident">waitingForOk</a>, <label for="r4" class="ident">in</label>)</code></span>
+<span class="codeline" id="line-87"><code>				<span class="keyword">case</span> <a href="#line-22" class="ident">AuthContinue</a>:</code></span>
+<span class="codeline" id="line-88"><code>					<label for="r5" class="ident">err</label>, <label for="r14" class="ident">ok</label> = <label for="r0" class="ident">conn</label>.<a href="#line-131" class="ident">tryAuth</a>(<label for="r10" class="ident">m</label>, <a href="#line-33" class="ident">waitingForData</a>, <label for="r4" class="ident">in</label>)</code></span>
+<span class="codeline" id="line-89"><code>				<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-90"><code>					<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<span class="lit-string">"dbus: invalid authentication status"</span>)</code></span>
+<span class="codeline" id="line-91"><code>				}</code></span>
+<span class="codeline" id="line-92"><code>				<span class="keyword">if</span> <label for="r5" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-93"><code>					<span class="keyword">return</span> <label for="r5" class="ident">err</label></code></span>
+<span class="codeline" id="line-94"><code>				}</code></span>
+<span class="codeline" id="line-95"><code>				<span class="keyword">if</span> <label for="r14" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-96"><code>					<span class="keyword">if</span> <label for="r0" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>.<a href="conn.go.html#line-733" class="ident">SupportsUnixFDs</a>() {</code></span>
+<span class="codeline" id="line-97"><code>						<label for="r5" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r0" class="ident">conn</label>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"NEGOTIATE_UNIX_FD"</span>))</code></span>
+<span class="codeline" id="line-98"><code>						<span class="keyword">if</span> <label for="r5" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-99"><code>							<span class="keyword">return</span> <label for="r5" class="ident">err</label></code></span>
+<span class="codeline" id="line-100"><code>						}</code></span>
+<span class="codeline" id="line-101"><code>						<label for="r15" class="ident">line</label>, <label for="r16" class="ident">err</label> := <a href="#line-228" class="ident">authReadLine</a>(<label for="r4" class="ident">in</label>)</code></span>
+<span class="codeline" id="line-102"><code>						<span class="keyword">if</span> <label for="r16" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-103"><code>							<span class="keyword">return</span> <label for="r16" class="ident">err</label></code></span>
+<span class="codeline" id="line-104"><code>						}</code></span>
+<span class="codeline" id="line-105"><code>						<span class="keyword">switch</span> {</code></span>
+<span class="codeline" id="line-106"><code>						<span class="keyword">case</span> <a href="../../../../../pkg/bytes.html" class="ident i1">bytes</a>.<a href="../../../../bytes/bytes.go.html#line-19" class="ident">Equal</a>(<label for="r15" class="ident">line</label>[<span class="lit-number">0</span>], []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"AGREE_UNIX_FD"</span>)):</code></span>
+<span class="codeline" id="line-107"><code>							<label for="r0" class="ident">conn</label>.<a href="conn.go.html#line-736" class="ident">EnableUnixFDs</a>()</code></span>
+<span class="codeline" id="line-108"><code>							<label for="r0" class="ident">conn</label>.<a href="conn.go.html#line-40" class="ident">unixFD</a> = <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-109"><code>						<span class="keyword">case</span> <a href="../../../../../pkg/bytes.html" class="ident i1">bytes</a>.<a href="../../../../bytes/bytes.go.html#line-19" class="ident">Equal</a>(<label for="r15" class="ident">line</label>[<span class="lit-number">0</span>], []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"ERROR"</span>)):</code></span>
+<span class="codeline" id="line-110"><code>						<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-111"><code>							<span class="keyword">return</span> <a href="../../../../../pkg/errors.html" class="ident i2">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"dbus: authentication protocol error"</span>)</code></span>
+<span class="codeline" id="line-112"><code>						}</code></span>
+<span class="codeline" id="line-113"><code>					}</code></span>
+<span class="codeline" id="line-114"><code>					<label for="r5" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r0" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"BEGIN"</span>))</code></span>
+<span class="codeline" id="line-115"><code>					<span class="keyword">if</span> <label for="r5" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-116"><code>						<span class="keyword">return</span> <label for="r5" class="ident">err</label></code></span>
+<span class="codeline" id="line-117"><code>					}</code></span>
+<span class="codeline" id="line-118"><code>					<span class="keyword">go</span> <label for="r0" class="ident">conn</label>.<a href="conn.go.html#line-387" class="ident">inWorker</a>()</code></span>
+<span class="codeline" id="line-119"><code>					<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-120"><code>				}</code></span>
+<span class="codeline" id="line-121"><code>			}</code></span>
+<span class="codeline" id="line-122"><code>		}</code></span>
+<span class="codeline" id="line-123"><code>	}</code></span>
+<span class="codeline" id="line-124"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/errors.html" class="ident i2">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"dbus: authentication failed"</span>)</code></span>
+<span class="codeline" id="line-125"><code>}</code></span>
+<span class="codeline" id="line-126"><code></code></span>
+<span class="codeline" id="line-127"><code><span class="comment">// tryAuth tries to authenticate with m as the mechanism, using state as the</span></code></span>
+<span class="codeline" id="line-128"><code><span class="comment">// initial authState and in for reading input. It returns (nil, true) on</span></code></span>
+<span class="codeline" id="line-129"><code><span class="comment">// success, (nil, false) on a REJECTED and (someErr, false) if some other</span></code></span>
+<span class="codeline" id="line-130"><code><span class="comment">// error occurred.</span></code></span>
+<span class="codeline" id="line-131"><code><span class="keyword">func</span> (<label for="r17" class="ident">conn</label> *<a href="conn.go.html#line-30" class="ident">Conn</a>) <label for="r18" class="ident">tryAuth</label>(<label for="r19" class="ident">m</label> <a href="#line-39" class="ident">Auth</a>, <label for="r20" class="ident">state</label> <a href="#line-30" class="ident">authState</a>, <label for="r21" class="ident">in</label> *<a href="../../../../../pkg/bufio.html" class="ident i0">bufio</a>.<a href="../../../../bufio/bufio.go.html#line-32" class="ident">Reader</a>) (<a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-132"><code>	<span class="keyword">for</span> {</code></span>
+<span class="codeline" id="line-133"><code>		<label for="r22" class="ident">s</label>, <label for="r23" class="ident">err</label> := <a href="#line-228" class="ident">authReadLine</a>(<label for="r21" class="ident">in</label>)</code></span>
+<span class="codeline" id="line-134"><code>		<span class="keyword">if</span> <label for="r23" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-135"><code>			<span class="keyword">return</span> <label for="r23" class="ident">err</label>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-136"><code>		}</code></span>
+<span class="codeline" id="line-137"><code>		<span class="keyword">switch</span> {</code></span>
+<span class="codeline" id="line-138"><code>		<span class="keyword">case</span> <label for="r20" class="ident">state</label> == <a href="#line-33" class="ident">waitingForData</a> &amp;&amp; <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">s</label>[<span class="lit-number">0</span>]) == <span class="lit-string">"DATA"</span>:</code></span>
+<span class="codeline" id="line-139"><code>			<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r22" class="ident">s</label>) != <span class="lit-number">2</span> {</code></span>
+<span class="codeline" id="line-140"><code>				<label for="r23" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r17" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"ERROR"</span>))</code></span>
+<span class="codeline" id="line-141"><code>				<span class="keyword">if</span> <label for="r23" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-142"><code>					<span class="keyword">return</span> <label for="r23" class="ident">err</label>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-143"><code>				}</code></span>
+<span class="codeline" id="line-144"><code>				<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-145"><code>			}</code></span>
+<span class="codeline" id="line-146"><code>			<label for="r24" class="ident">data</label>, <label for="r25" class="ident">status</label> := <label for="r19" class="ident">m</label>.<a href="#line-46" class="ident">HandleData</a>(<label for="r22" class="ident">s</label>[<span class="lit-number">1</span>])</code></span>
+<span class="codeline" id="line-147"><code>			<span class="keyword">switch</span> <label for="r25" class="ident">status</label> {</code></span>
+<span class="codeline" id="line-148"><code>			<span class="keyword">case</span> <a href="#line-18" class="ident">AuthOk</a>, <a href="#line-22" class="ident">AuthContinue</a>:</code></span>
+<span class="codeline" id="line-149"><code>				<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r24" class="ident">data</label>) != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-150"><code>					<label for="r23" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r17" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"DATA"</span>), <label for="r24" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-151"><code>					<span class="keyword">if</span> <label for="r23" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-152"><code>						<span class="keyword">return</span> <label for="r23" class="ident">err</label>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-153"><code>					}</code></span>
+<span class="codeline" id="line-154"><code>				}</code></span>
+<span class="codeline" id="line-155"><code>				<span class="keyword">if</span> <label for="r25" class="ident">status</label> == <a href="#line-18" class="ident">AuthOk</a> {</code></span>
+<span class="codeline" id="line-156"><code>					<label for="r20" class="ident">state</label> = <a href="#line-34" class="ident">waitingForOk</a></code></span>
+<span class="codeline" id="line-157"><code>				}</code></span>
+<span class="codeline" id="line-158"><code>			<span class="keyword">case</span> <a href="#line-27" class="ident">AuthError</a>:</code></span>
+<span class="codeline" id="line-159"><code>				<label for="r23" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r17" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"ERROR"</span>))</code></span>
+<span class="codeline" id="line-160"><code>				<span class="keyword">if</span> <label for="r23" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-161"><code>					<span class="keyword">return</span> <label for="r23" class="ident">err</label>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-162"><code>				}</code></span>
+<span class="codeline" id="line-163"><code>			}</code></span>
+<span class="codeline" id="line-164"><code>		<span class="keyword">case</span> <label for="r20" class="ident">state</label> == <a href="#line-33" class="ident">waitingForData</a> &amp;&amp; <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">s</label>[<span class="lit-number">0</span>]) == <span class="lit-string">"REJECTED"</span>:</code></span>
+<span class="codeline" id="line-165"><code>			<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-166"><code>		<span class="keyword">case</span> <label for="r20" class="ident">state</label> == <a href="#line-33" class="ident">waitingForData</a> &amp;&amp; <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">s</label>[<span class="lit-number">0</span>]) == <span class="lit-string">"ERROR"</span>:</code></span>
+<span class="codeline" id="line-167"><code>			<label for="r23" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r17" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"CANCEL"</span>))</code></span>
+<span class="codeline" id="line-168"><code>			<span class="keyword">if</span> <label for="r23" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-169"><code>				<span class="keyword">return</span> <label for="r23" class="ident">err</label>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-170"><code>			}</code></span>
+<span class="codeline" id="line-171"><code>			<label for="r20" class="ident">state</label> = <a href="#line-35" class="ident">waitingForReject</a></code></span>
+<span class="codeline" id="line-172"><code>		<span class="keyword">case</span> <label for="r20" class="ident">state</label> == <a href="#line-33" class="ident">waitingForData</a> &amp;&amp; <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">s</label>[<span class="lit-number">0</span>]) == <span class="lit-string">"OK"</span>:</code></span>
+<span class="codeline" id="line-173"><code>			<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r22" class="ident">s</label>) != <span class="lit-number">2</span> {</code></span>
+<span class="codeline" id="line-174"><code>				<label for="r23" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r17" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"CANCEL"</span>))</code></span>
+<span class="codeline" id="line-175"><code>				<span class="keyword">if</span> <label for="r23" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-176"><code>					<span class="keyword">return</span> <label for="r23" class="ident">err</label>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-177"><code>				}</code></span>
+<span class="codeline" id="line-178"><code>				<label for="r20" class="ident">state</label> = <a href="#line-35" class="ident">waitingForReject</a></code></span>
+<span class="codeline" id="line-179"><code>			} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-180"><code>				<label for="r17" class="ident">conn</label>.<a href="conn.go.html#line-41" class="ident">uuid</a> = <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">s</label>[<span class="lit-number">1</span>])</code></span>
+<span class="codeline" id="line-181"><code>				<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-182"><code>			}</code></span>
+<span class="codeline" id="line-183"><code>		<span class="keyword">case</span> <label for="r20" class="ident">state</label> == <a href="#line-33" class="ident">waitingForData</a>:</code></span>
+<span class="codeline" id="line-184"><code>			<label for="r23" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r17" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"ERROR"</span>))</code></span>
+<span class="codeline" id="line-185"><code>			<span class="keyword">if</span> <label for="r23" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-186"><code>				<span class="keyword">return</span> <label for="r23" class="ident">err</label>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-187"><code>			}</code></span>
+<span class="codeline" id="line-188"><code>		<span class="keyword">case</span> <label for="r20" class="ident">state</label> == <a href="#line-34" class="ident">waitingForOk</a> &amp;&amp; <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">s</label>[<span class="lit-number">0</span>]) == <span class="lit-string">"OK"</span>:</code></span>
+<span class="codeline" id="line-189"><code>			<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r22" class="ident">s</label>) != <span class="lit-number">2</span> {</code></span>
+<span class="codeline" id="line-190"><code>				<label for="r23" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r17" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"CANCEL"</span>))</code></span>
+<span class="codeline" id="line-191"><code>				<span class="keyword">if</span> <label for="r23" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-192"><code>					<span class="keyword">return</span> <label for="r23" class="ident">err</label>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-193"><code>				}</code></span>
+<span class="codeline" id="line-194"><code>				<label for="r20" class="ident">state</label> = <a href="#line-35" class="ident">waitingForReject</a></code></span>
+<span class="codeline" id="line-195"><code>			} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-196"><code>				<label for="r17" class="ident">conn</label>.<a href="conn.go.html#line-41" class="ident">uuid</a> = <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">s</label>[<span class="lit-number">1</span>])</code></span>
+<span class="codeline" id="line-197"><code>				<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-198"><code>			}</code></span>
+<span class="codeline" id="line-199"><code>		<span class="keyword">case</span> <label for="r20" class="ident">state</label> == <a href="#line-34" class="ident">waitingForOk</a> &amp;&amp; <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">s</label>[<span class="lit-number">0</span>]) == <span class="lit-string">"DATA"</span>:</code></span>
+<span class="codeline" id="line-200"><code>			<label for="r23" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r17" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"DATA"</span>))</code></span>
+<span class="codeline" id="line-201"><code>			<span class="keyword">if</span> <label for="r23" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-202"><code>				<span class="keyword">return</span> <label for="r23" class="ident">err</label>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-203"><code>			}</code></span>
+<span class="codeline" id="line-204"><code>		<span class="keyword">case</span> <label for="r20" class="ident">state</label> == <a href="#line-34" class="ident">waitingForOk</a> &amp;&amp; <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">s</label>[<span class="lit-number">0</span>]) == <span class="lit-string">"REJECTED"</span>:</code></span>
+<span class="codeline" id="line-205"><code>			<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-206"><code>		<span class="keyword">case</span> <label for="r20" class="ident">state</label> == <a href="#line-34" class="ident">waitingForOk</a> &amp;&amp; <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">s</label>[<span class="lit-number">0</span>]) == <span class="lit-string">"ERROR"</span>:</code></span>
+<span class="codeline" id="line-207"><code>			<label for="r23" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r17" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"CANCEL"</span>))</code></span>
+<span class="codeline" id="line-208"><code>			<span class="keyword">if</span> <label for="r23" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-209"><code>				<span class="keyword">return</span> <label for="r23" class="ident">err</label>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-210"><code>			}</code></span>
+<span class="codeline" id="line-211"><code>			<label for="r20" class="ident">state</label> = <a href="#line-35" class="ident">waitingForReject</a></code></span>
+<span class="codeline" id="line-212"><code>		<span class="keyword">case</span> <label for="r20" class="ident">state</label> == <a href="#line-34" class="ident">waitingForOk</a>:</code></span>
+<span class="codeline" id="line-213"><code>			<label for="r23" class="ident">err</label> = <a href="#line-239" class="ident">authWriteLine</a>(<label for="r17" class="ident">conn</label>.<a href="conn.go.html#line-31" class="ident">transport</a>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"ERROR"</span>))</code></span>
+<span class="codeline" id="line-214"><code>			<span class="keyword">if</span> <label for="r23" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-215"><code>				<span class="keyword">return</span> <label for="r23" class="ident">err</label>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-216"><code>			}</code></span>
+<span class="codeline" id="line-217"><code>		<span class="keyword">case</span> <label for="r20" class="ident">state</label> == <a href="#line-35" class="ident">waitingForReject</a> &amp;&amp; <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">s</label>[<span class="lit-number">0</span>]) == <span class="lit-string">"REJECTED"</span>:</code></span>
+<span class="codeline" id="line-218"><code>			<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-219"><code>		<span class="keyword">case</span> <label for="r20" class="ident">state</label> == <a href="#line-35" class="ident">waitingForReject</a>:</code></span>
+<span class="codeline" id="line-220"><code>			<span class="keyword">return</span> <a href="../../../../../pkg/errors.html" class="ident i2">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"dbus: authentication protocol error"</span>), <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-221"><code>		<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-222"><code>			<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<span class="lit-string">"dbus: invalid auth state"</span>)</code></span>
+<span class="codeline" id="line-223"><code>		}</code></span>
+<span class="codeline" id="line-224"><code>	}</code></span>
+<span class="codeline" id="line-225"><code>}</code></span>
+<span class="codeline" id="line-226"><code></code></span>
+<span class="codeline" id="line-227"><code><span class="comment">// authReadLine reads a line and separates it into its fields.</span></code></span>
+<span class="codeline" id="line-228"><code><span class="keyword">func</span> <label for="r26" class="ident"><a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-authReadLine" class="ident">authReadLine</a></label>(<label for="r27" class="ident">in</label> *<a href="../../../../../pkg/bufio.html" class="ident i0">bufio</a>.<a href="../../../../bufio/bufio.go.html#line-32" class="ident">Reader</a>) ([][]<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-229"><code>	<label for="r28" class="ident">data</label>, <label for="r29" class="ident">err</label> := <label for="r27" class="ident">in</label>.<a href="../../../../bufio/bufio.go.html#line-477" class="ident">ReadBytes</a>(<span class="lit-number">'\n'</span>)</code></span>
+<span class="codeline" id="line-230"><code>	<span class="keyword">if</span> <label for="r29" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-231"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r29" class="ident">err</label></code></span>
+<span class="codeline" id="line-232"><code>	}</code></span>
+<span class="codeline" id="line-233"><code>	<label for="r28" class="ident">data</label> = <a href="../../../../../pkg/bytes.html" class="ident i1">bytes</a>.<a href="../../../../bytes/bytes.go.html#line-834" class="ident">TrimSuffix</a>(<label for="r28" class="ident">data</label>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-string">"\r\n"</span>))</code></span>
+<span class="codeline" id="line-234"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/bytes.html" class="ident i1">bytes</a>.<a href="../../../../bytes/bytes.go.html#line-382" class="ident">Split</a>(<label for="r28" class="ident">data</label>, []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{<span class="lit-number">' '</span>}), <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-235"><code>}</code></span>
+<span class="codeline" id="line-236"><code></code></span>
+<span class="codeline" id="line-237"><code><span class="comment">// authWriteLine writes the given line in the authentication protocol format</span></code></span>
+<span class="codeline" id="line-238"><code><span class="comment">// (elements of data separated by a " " and terminated by "\r\n").</span></code></span>
+<span class="codeline" id="line-239"><code><span class="keyword">func</span> <label for="r30" class="ident"><a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-authWriteLine" class="ident">authWriteLine</a></label>(<label for="r31" class="ident">out</label> <a href="../../../../../pkg/io.html" class="ident i3">io</a>.<a href="../../../../io/io.go.html#line-99" class="ident">Writer</a>, <label for="r32" class="ident">data</label> ...[]<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-240"><code>	<label for="r33" class="ident">buf</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-241"><code>	<span class="keyword">for</span> <label for="r34" class="ident">i</label>, <label for="r35" class="ident">v</label> := <span class="keyword">range</span> <label for="r32" class="ident">data</label> {</code></span>
+<span class="codeline" id="line-242"><code>		<label for="r33" class="ident">buf</label> = <a href="../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r33" class="ident">buf</label>, <label for="r35" class="ident">v</label>...)</code></span>
+<span class="codeline" id="line-243"><code>		<span class="keyword">if</span> <label for="r34" class="ident">i</label> != <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r32" class="ident">data</label>)-<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-244"><code>			<label for="r33" class="ident">buf</label> = <a href="../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r33" class="ident">buf</label>, <span class="lit-number">' '</span>)</code></span>
+<span class="codeline" id="line-245"><code>		}</code></span>
+<span class="codeline" id="line-246"><code>	}</code></span>
+<span class="codeline" id="line-247"><code>	<label for="r33" class="ident">buf</label> = <a href="../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r33" class="ident">buf</label>, <span class="lit-number">'\r'</span>)</code></span>
+<span class="codeline" id="line-248"><code>	<label for="r33" class="ident">buf</label> = <a href="../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r33" class="ident">buf</label>, <span class="lit-number">'\n'</span>)</code></span>
+<span class="codeline" id="line-249"><code>	<label for="r36" class="ident">n</label>, <label for="r37" class="ident">err</label> := <label for="r31" class="ident">out</label>.<a href="../../../../io/io.go.html#line-100" class="ident">Write</a>(<label for="r33" class="ident">buf</label>)</code></span>
+<span class="codeline" id="line-250"><code>	<span class="keyword">if</span> <label for="r37" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-251"><code>		<span class="keyword">return</span> <label for="r37" class="ident">err</label></code></span>
+<span class="codeline" id="line-252"><code>	}</code></span>
+<span class="codeline" id="line-253"><code>	<span class="keyword">if</span> <label for="r36" class="ident">n</label> != <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r33" class="ident">buf</label>) {</code></span>
+<span class="codeline" id="line-254"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/io.html" class="ident i3">io</a>.<a href="../../../../io/io.go.html#line-48" class="ident">ErrUnexpectedEOF</a></code></span>
+<span class="codeline" id="line-255"><code>	}</code></span>
+<span class="codeline" id="line-256"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-257"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

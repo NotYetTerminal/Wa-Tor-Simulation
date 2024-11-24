@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/fyne/v2/internal/widget</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>widget</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-fyne.io/fyne/v2/internal/widget">fyne.io/fyne/v2/internal/widget</a><i> (on <a href="https://pkg.go.dev/fyne.io/fyne/v2/internal/widget" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/fyne.io/fyne/v2/internal/widget.html">8 packages</a>, and imported by <a href="../../../../../dep/fyne.io/fyne/v2/internal/widget.html#imported-by">4 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html">base.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html">base_renderer.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html">overlay_container.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html">scroller.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html">shadow.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadowing_renderer.go.html">shadowing_renderer.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/simple_renderer.go.html">simple_renderer.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 18, in which 10 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Base" data-popularity="600">	<input type='checkbox' class="fold" id="Base-fold-content"><label for="Base-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-13">Base</a> <i>(struct)</i></label><span id='Base-fold-content-docs' class="fold-docs">
+<span class="md-text">		Base provides a helper that handles basic widget behaviours.</span>
+
+		<input type='checkbox' class="fold" id="Base-fold-fields"><label for="Base-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='Base-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Base-showhide-fields"><i><label for="Base-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="Base-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-14">hidden</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Bool">Bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-17">impl</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Pointer">Pointer</a>[<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a>]</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-15">position</a> <i><a href="async.html">async</a>.<a href="async.html#name-Position">Position</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-16">size</a> <i><a href="async.html">async</a>.<a href="async.html#name-Size">Size</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Base-fold-methods"><label for="Base-fold-methods">Methods (<i>total 11, in which 10 are exported</i>)</label><span id='Base-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Base-fold-method-ExtendBaseWidget"><label for="Base-fold-method-ExtendBaseWidget">(*Base) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-21">ExtendBaseWidget</a>(wid <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a>)</label><span id='Base-fold-method-ExtendBaseWidget-docs' class="fold-docs">
+<span class="md-text">				ExtendBaseWidget is used by an extending widget to make use of BaseWidget functionality.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Base-fold-method-Hide"><label for="Base-fold-method-Hide">(*Base) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-96">Hide</a>()</label><span id='Base-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide this widget so it is no longer visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Base-fold-method-MinSize"><label for="Base-fold-method-MinSize">(*Base) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-65">MinSize</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='Base-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize for the widget - it should never be resized below this value.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Base-fold-method-Move"><label for="Base-fold-method-Move">(*Base) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-58">Move</a>(pos <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a>)</label><span id='Base-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the widget to a new position, relative to its parent.
+				Note this should not be used if the widget is being managed by a Layout within a Container.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Base-fold-method-Position"><label for="Base-fold-method-Position">(*Base) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-52">Position</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a></label><span id='Base-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current position of this widget, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Base-fold-method-Refresh"><label for="Base-fold-method-Refresh">(*Base) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-109">Refresh</a>()</label><span id='Base-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this widget to be redrawn in it's current state</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Base-fold-method-Resize"><label for="Base-fold-method-Resize">(*Base) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-37">Resize</a>(size <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</label><span id='Base-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize sets a new size for a widget.
+				Note this should not be used if the widget is being managed by a Layout within a Container.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Base-fold-method-Show"><label for="Base-fold-method-Show">(*Base) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-83">Show</a>()</label><span id='Base-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show this widget so it becomes visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Base-fold-method-Size"><label for="Base-fold-method-Size">(*Base) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-31">Size</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='Base-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size gets the current size of this widget.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Base-fold-method-Visible"><label for="Base-fold-method-Visible">(*Base) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-78">Visible</a>() <a href="../../../../builtin.html#name-bool">bool</a></label><span id='Base-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns whether or not this widget should be visible.
+				Note that this may not mean it is currently visible if a parent has been hidden.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Base-showhide-methods"><i><label for="Base-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="Base-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Base-fold-method-super"><label for="Base-fold-method-super">(*Base) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-121">super</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a></label><span id='Base-fold-method-super-docs' class="fold-docs">
+<span class="md-text">				super will return the actual object that this represents.
+				If extended then this is the extending widget, otherwise it is nil.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Base-fold-impls"><label for="Base-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Base-fold-impls-items' class="fold-items"><span>
+			*Base : fyne.io/fyne/v2.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-BaseRenderer" data-popularity="225">	<input type='checkbox' class="fold" id="BaseRenderer-fold-content"><label for="BaseRenderer-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-7">BaseRenderer</a> <i>(struct)</i></label><span id='BaseRenderer-fold-content-docs' class="fold-docs">
+<span class="md-text">		BaseRenderer is a renderer base providing the most common implementations of a part of the
+		widget.Renderer interface.</span>
+
+		<input type='checkbox' class="fold" id="BaseRenderer-fold-fields"><label for="BaseRenderer-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='BaseRenderer-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="BaseRenderer-showhide-fields"><i><label for="BaseRenderer-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="BaseRenderer-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-8">objects</a> <i>[]<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="BaseRenderer-fold-methods"><label for="BaseRenderer-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='BaseRenderer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="BaseRenderer-fold-method-Destroy"><label for="BaseRenderer-fold-method-Destroy">(*BaseRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-19">Destroy</a>()</label><span id='BaseRenderer-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy does nothing in the base implementation.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="BaseRenderer-fold-method-Objects"><label for="BaseRenderer-fold-method-Objects">(*BaseRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-25">Objects</a>() []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></label><span id='BaseRenderer-fold-method-Objects-docs' class="fold-docs">
+<span class="md-text">				Objects returns the objects that should be rendered.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="BaseRenderer-fold-method-SetObjects"><label for="BaseRenderer-fold-method-SetObjects">(*BaseRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-30">SetObjects</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='BaseRenderer-fold-method-SetObjects-docs' class="fold-docs">
+<span class="md-text">				SetObjects updates the objects of the renderer.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="BaseRenderer-fold-results"><label for="BaseRenderer-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='BaseRenderer-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewBaseRenderer">NewBaseRenderer</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) <b>BaseRenderer</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-ElevationLevel" data-popularity="85">	<input type='checkbox' class="fold" id="ElevationLevel-fold-content"><label for="ElevationLevel-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-21">ElevationLevel</a> <a href="../../../../builtin.html#name-int">int</a> <i>(basic type)</i></label><span id='ElevationLevel-fold-content-docs' class="fold-docs">
+<span class="md-text">		ElevationLevel is the level of elevation of the shadow casting object.</span>
+
+		<input type='checkbox' class="fold" id="ElevationLevel-fold-params"><label for="ElevationLevel-fold-params">As Inputs Of (<i>at least 2, both are exported</i>)</label><span id='ElevationLevel-fold-params-items' class="fold-items"><span>
+			func <a href="#name-NewShadow">NewShadow</a>(typ <a href="#name-ShadowType">ShadowType</a>, level <b>ElevationLevel</b>) *<a href="#name-Shadow">Shadow</a></span><span>
+			func <a href="#name-NewShadowingRenderer">NewShadowingRenderer</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>, level <b>ElevationLevel</b>) *<a href="#name-ShadowingRenderer">ShadowingRenderer</a></span></span>
+		<input type='checkbox' class="fold" id="ElevationLevel-fold-values"><label for="ElevationLevel-fold-values">As Types Of (<i>total 7, all are exported</i>)</label><span id='ElevationLevel-fold-values-items' class="fold-items"><span>
+			const <a href="#name-BaseLevel">BaseLevel</a></span><span>
+			const <a href="#name-ButtonLevel">ButtonLevel</a></span><span>
+			const <a href="#name-CardLevel">CardLevel</a></span><span>
+			const <a href="#name-DialogLevel">DialogLevel</a></span><span>
+			const <a href="#name-MenuLevel">MenuLevel</a></span><span>
+			const <a href="#name-PopUpLevel">PopUpLevel</a></span><span>
+			const <a href="#name-SubmergedContentLevel">SubmergedContentLevel</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-OverlayContainer" data-popularity="1075">	<input type='checkbox' class="fold" id="OverlayContainer-fold-content"><label for="OverlayContainer-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-12">OverlayContainer</a> <i>(struct)</i></label><span id='OverlayContainer-fold-content-docs' class="fold-docs">
+<span class="md-text">		OverlayContainer is a transparent widget containing one fyne.CanvasObject and meant to be used as overlay.</span>
+
+		<input type='checkbox' class="fold" id="OverlayContainer-fold-fields"><label for="OverlayContainer-fold-fields">Fields (<i>total 9, in which 2 are exported</i>)</label><span id='OverlayContainer-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-13">Base</a> <i><a href="#name-Base">Base</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-14">Content</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></i></span></span>
+			<input type='checkbox' class="showhide" id="OverlayContainer-showhide-fields"><i><label for="OverlayContainer-showhide-fields" class="show-inline">/* 7 unexporteds ... */</label><label for="OverlayContainer-showhide-fields" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-13">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-14">hidden</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Bool">Bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-13" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-17">impl</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Pointer">Pointer</a>[<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a>]</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-13" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-15">position</a> <i><a href="async.html">async</a>.<a href="async.html#name-Position">Position</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-13" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-16">size</a> <i><a href="async.html">async</a>.<a href="async.html#name-Size">Size</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-16">canvas</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Canvas">Canvas</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-17">onDismiss</a> <i>func()</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-18">shown</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="OverlayContainer-fold-methods"><label for="OverlayContainer-fold-methods">Methods (<i>total 16, in which 15 are exported</i>)</label><span id='OverlayContainer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-CreateRenderer"><label for="OverlayContainer-fold-method-CreateRenderer">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-31">CreateRenderer</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-WidgetRenderer">WidgetRenderer</a></label><span id='OverlayContainer-fold-method-CreateRenderer-docs' class="fold-docs">
+<span class="md-text">				CreateRenderer returns a new renderer for the overlay container.
+				
+				Implements: fyne.Widget</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-ExtendBaseWidget"><label for="OverlayContainer-fold-method-ExtendBaseWidget">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-21">ExtendBaseWidget</a>(wid <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a>)</label><span id='OverlayContainer-fold-method-ExtendBaseWidget-docs' class="fold-docs">
+<span class="md-text">				ExtendBaseWidget is used by an extending widget to make use of BaseWidget functionality.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-Hide"><label for="OverlayContainer-fold-method-Hide">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-38">Hide</a>()</label><span id='OverlayContainer-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide hides the overlay container.
+				
+				Implements: fyne.Widget</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-MinSize"><label for="OverlayContainer-fold-method-MinSize">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-65">MinSize</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='OverlayContainer-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize for the widget - it should never be resized below this value.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-MouseIn"><label for="OverlayContainer-fold-method-MouseIn">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-49">MouseIn</a>(*<a href="../driver/desktop.html">desktop</a>.<a href="../driver/desktop.html#name-MouseEvent">MouseEvent</a>)</label><span id='OverlayContainer-fold-method-MouseIn-docs' class="fold-docs">
+<span class="md-text">				MouseIn catches mouse-in events not handled by the container’s content. It does nothing.
+				
+				Implements: desktop.Hoverable</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-MouseMoved"><label for="OverlayContainer-fold-method-MouseMoved">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-55">MouseMoved</a>(*<a href="../driver/desktop.html">desktop</a>.<a href="../driver/desktop.html#name-MouseEvent">MouseEvent</a>)</label><span id='OverlayContainer-fold-method-MouseMoved-docs' class="fold-docs">
+<span class="md-text">				MouseMoved catches mouse-moved events not handled by the container’s content. It does nothing.
+				
+				Implements: desktop.Hoverable</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-MouseOut"><label for="OverlayContainer-fold-method-MouseOut">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-61">MouseOut</a>()</label><span id='OverlayContainer-fold-method-MouseOut-docs' class="fold-docs">
+<span class="md-text">				MouseOut catches mouse-out events not handled by the container’s content. It does nothing.
+				
+				Implements: desktop.Hoverable</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-Move"><label for="OverlayContainer-fold-method-Move">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-58">Move</a>(pos <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a>)</label><span id='OverlayContainer-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the widget to a new position, relative to its parent.
+				Note this should not be used if the widget is being managed by a Layout within a Container.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-Position"><label for="OverlayContainer-fold-method-Position">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-52">Position</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a></label><span id='OverlayContainer-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current position of this widget, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-Refresh"><label for="OverlayContainer-fold-method-Refresh">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-109">Refresh</a>()</label><span id='OverlayContainer-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this widget to be redrawn in it's current state</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-Resize"><label for="OverlayContainer-fold-method-Resize">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-37">Resize</a>(size <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</label><span id='OverlayContainer-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize sets a new size for a widget.
+				Note this should not be used if the widget is being managed by a Layout within a Container.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-Show"><label for="OverlayContainer-fold-method-Show">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-67">Show</a>()</label><span id='OverlayContainer-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show makes the overlay container visible.
+				
+				Implements: fyne.Widget</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-Size"><label for="OverlayContainer-fold-method-Size">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-31">Size</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='OverlayContainer-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size gets the current size of this widget.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-Tapped"><label for="OverlayContainer-fold-method-Tapped">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-79">Tapped</a>(*<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-PointEvent">PointEvent</a>)</label><span id='OverlayContainer-fold-method-Tapped-docs' class="fold-docs">
+<span class="md-text">				Tapped catches tap events not handled by the container’s content.
+				It performs the overlay container’s dismiss action.
+				
+				Implements: fyne.Tappable</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-Visible"><label for="OverlayContainer-fold-method-Visible">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-78">Visible</a>() <a href="../../../../builtin.html#name-bool">bool</a></label><span id='OverlayContainer-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns whether or not this widget should be visible.
+				Note that this may not mean it is currently visible if a parent has been hidden.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="OverlayContainer-showhide-methods"><i><label for="OverlayContainer-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="OverlayContainer-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="OverlayContainer-fold-method-super"><label for="OverlayContainer-fold-method-super">(*OverlayContainer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-121">super</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a></label><span id='OverlayContainer-fold-method-super-docs' class="fold-docs">
+<span class="md-text">				super will return the actual object that this represents.
+				If extended then this is the extending widget, otherwise it is nil.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="OverlayContainer-fold-impls"><label for="OverlayContainer-fold-impls">Implements (<i>at least 4, all are exported</i>)</label><span id='OverlayContainer-fold-impls-items' class="fold-items"><span>
+			*OverlayContainer : fyne.io/fyne/v2.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></span><span>
+			*OverlayContainer : fyne.io/fyne/v2.<a href="../../v2.html#name-Tappable">Tappable</a></span><span>
+			*OverlayContainer : fyne.io/fyne/v2.<a href="../../v2.html#name-Widget">Widget</a></span><span>
+			*OverlayContainer : fyne.io/fyne/v2/driver/desktop.<a href="../driver/desktop.html#name-Hoverable">Hoverable</a></span></span>
+		<input type='checkbox' class="fold" id="OverlayContainer-fold-results"><label for="OverlayContainer-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='OverlayContainer-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewOverlayContainer">NewOverlayContainer</a>(c <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>, canvas <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Canvas">Canvas</a>, onDismiss func()) *<b>OverlayContainer</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-Scroll" data-popularity="1880">	<input type='checkbox' class="fold" id="Scroll-fold-content"><label for="Scroll-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-400">Scroll</a> <i>(struct)</i></label><span id='Scroll-fold-content-docs' class="fold-docs">
+<span class="md-text">		Scroll defines a container that is smaller than the Content.
+		The Offset is used to determine the position of the child widgets within the container.</span>
+
+		<input type='checkbox' class="fold" id="Scroll-fold-fields"><label for="Scroll-fold-fields">Fields (<i>total 10, in which 5 are exported</i>)</label><span id='Scroll-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-401">Base</a> <i><a href="#name-Base">Base</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-404">Content</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-403">Direction</a> <i><a href="#name-ScrollDirection">ScrollDirection</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-405">Offset</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-field-OnScrolled"><label for="Scroll-fold-field-OnScrolled"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-410">OnScrolled</a> <i>func(<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a>)</i></label><span id='Scroll-fold-field-OnScrolled-docs' class="fold-docs">
+<span class="md-text">				OnScrolled can be set to be notified when the Scroll has changed position.
+				You should not update the Scroll.Offset from this method.
+				
+				Since: 2.0</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Scroll-showhide-fields"><i><label for="Scroll-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="Scroll-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-401">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-14">hidden</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Bool">Bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-401" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-17">impl</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Pointer">Pointer</a>[<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a>]</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-401" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-15">position</a> <i><a href="async.html">async</a>.<a href="async.html#name-Position">Position</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-401" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-16">size</a> <i><a href="async.html">async</a>.<a href="async.html#name-Size">Size</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-402">minSize</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Scroll-fold-methods"><label for="Scroll-fold-methods">Methods (<i>total 21, in which 17 are exported</i>)</label><span id='Scroll-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-CreateRenderer"><label for="Scroll-fold-method-CreateRenderer">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-414">CreateRenderer</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-WidgetRenderer">WidgetRenderer</a></label><span id='Scroll-fold-method-CreateRenderer-docs' class="fold-docs">
+<span class="md-text">				CreateRenderer is a private method to Fyne which links this widget to its renderer</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-DragEnd"><label for="Scroll-fold-method-DragEnd">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-444">DragEnd</a>()</label><span id='Scroll-fold-method-DragEnd-docs' class="fold-docs">
+<span class="md-text">				DragEnd will stop scrolling on mobile has stopped</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-Dragged"><label for="Scroll-fold-method-Dragged">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-448">Dragged</a>(e *<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-DragEvent">DragEvent</a>)</label><span id='Scroll-fold-method-Dragged-docs' class="fold-docs">
+<span class="md-text">				Dragged will scroll on any drag - bar or otherwise - for mobile</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-ExtendBaseWidget"><label for="Scroll-fold-method-ExtendBaseWidget">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-21">ExtendBaseWidget</a>(wid <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a>)</label><span id='Scroll-fold-method-ExtendBaseWidget-docs' class="fold-docs">
+<span class="md-text">				ExtendBaseWidget is used by an extending widget to make use of BaseWidget functionality.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-Hide"><label for="Scroll-fold-method-Hide">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-96">Hide</a>()</label><span id='Scroll-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide this widget so it is no longer visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-MinSize"><label for="Scroll-fold-method-MinSize">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-459">MinSize</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='Scroll-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize returns the smallest size this widget can shrink to</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-Move"><label for="Scroll-fold-method-Move">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-58">Move</a>(pos <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a>)</label><span id='Scroll-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the widget to a new position, relative to its parent.
+				Note this should not be used if the widget is being managed by a Layout within a Container.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-Position"><label for="Scroll-fold-method-Position">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-52">Position</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a></label><span id='Scroll-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current position of this widget, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-Refresh"><label for="Scroll-fold-method-Refresh">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-480">Refresh</a>()</label><span id='Scroll-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this widget to be redrawn in it's current state</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-Resize"><label for="Scroll-fold-method-Resize">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-486">Resize</a>(sz <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</label><span id='Scroll-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize is called when this scroller should change size. We refresh to ensure the scroll bars are updated.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-ScrollToBottom"><label for="Scroll-fold-method-ScrollToBottom">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-433">ScrollToBottom</a>()</label><span id='Scroll-fold-method-ScrollToBottom-docs' class="fold-docs">
+<span class="md-text">				ScrollToBottom will scroll content to container bottom - to show latest info which end user just added</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-ScrollToTop"><label for="Scroll-fold-method-ScrollToTop">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-439">ScrollToTop</a>()</label><span id='Scroll-fold-method-ScrollToTop-docs' class="fold-docs">
+<span class="md-text">				ScrollToTop will scroll content to container top</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-Scrolled"><label for="Scroll-fold-method-Scrolled">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-500">Scrolled</a>(ev *<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-ScrollEvent">ScrollEvent</a>)</label><span id='Scroll-fold-method-Scrolled-docs' class="fold-docs">
+<span class="md-text">				Scrolled is called when an input device triggers a scroll event</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-SetMinSize"><label for="Scroll-fold-method-SetMinSize">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-475">SetMinSize</a>(size <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</label><span id='Scroll-fold-method-SetMinSize-docs' class="fold-docs">
+<span class="md-text">				SetMinSize specifies a minimum size for this scroll container.
+				If the specified size is larger than the content size then scrolling will not be enabled
+				This can be helpful to appear larger than default if the layout is collapsing this widget.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-Show"><label for="Scroll-fold-method-Show">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-83">Show</a>()</label><span id='Scroll-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show this widget so it becomes visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-Size"><label for="Scroll-fold-method-Size">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-31">Size</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='Scroll-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size gets the current size of this widget.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-Visible"><label for="Scroll-fold-method-Visible">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-78">Visible</a>() <a href="../../../../builtin.html#name-bool">bool</a></label><span id='Scroll-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns whether or not this widget should be visible.
+				Note that this may not mean it is currently visible if a parent has been hidden.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Scroll-showhide-methods"><i><label for="Scroll-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="Scroll-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-495">refreshWithoutOffsetUpdate</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-506">scrollBy</a>(dx, dy <a href="../../../../builtin.html#name-float32">float32</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Scroll-fold-method-super"><label for="Scroll-fold-method-super">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-121">super</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a></label><span id='Scroll-fold-method-super-docs' class="fold-docs">
+<span class="md-text">				super will return the actual object that this represents.
+				If extended then this is the extending widget, otherwise it is nil.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Scroll) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-517">updateOffset</a>(deltaX, deltaY <a href="../../../../builtin.html#name-float32">float32</a>) <a href="../../../../builtin.html#name-bool">bool</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="Scroll-fold-impls"><label for="Scroll-fold-impls">Implements (<i>at least 4, all are exported</i>)</label><span id='Scroll-fold-impls-items' class="fold-items"><span>
+			*Scroll : fyne.io/fyne/v2.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></span><span>
+			*Scroll : fyne.io/fyne/v2.<a href="../../v2.html#name-Draggable">Draggable</a></span><span>
+			*Scroll : fyne.io/fyne/v2.<a href="../../v2.html#name-Scrollable">Scrollable</a></span><span>
+			*Scroll : fyne.io/fyne/v2.<a href="../../v2.html#name-Widget">Widget</a></span></span>
+		<input type='checkbox' class="fold" id="Scroll-fold-results"><label for="Scroll-fold-results">As Outputs Of (<i>at least 7, in which 6 are exported</i>)</label><span id='Scroll-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewHScroll">NewHScroll</a>(content <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<b>Scroll</b></span><span>
+			func <a href="#name-NewScroll">NewScroll</a>(content <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<b>Scroll</b></span><span>
+			func <a href="#name-NewVScroll">NewVScroll</a>(content <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<b>Scroll</b></span><span>
+			func fyne.io/fyne/v2/container.<a href="../container.html#name-NewHScroll">NewHScroll</a>(content <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<a href="../container.html">container</a>.<b><a href="../container.html#name-Scroll">Scroll</a></b></span><span>
+			func fyne.io/fyne/v2/container.<a href="../container.html#name-NewScroll">NewScroll</a>(content <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<a href="../container.html">container</a>.<b><a href="../container.html#name-Scroll">Scroll</a></b></span><span>
+			func fyne.io/fyne/v2/container.<a href="../container.html#name-NewVScroll">NewVScroll</a>(content <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<a href="../container.html">container</a>.<b><a href="../container.html#name-Scroll">Scroll</a></b></span>
+			<input type='checkbox' class="showhide" id="Scroll-showhide-inputofs"><i><label for="Scroll-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="Scroll-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-newScrollContainerWithDirection">newScrollContainerWithDirection</a>(direction <a href="#name-ScrollDirection">ScrollDirection</a>, content <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<b>Scroll</b></i></span></span>
+		<input type='checkbox' class="fold" id="Scroll-fold-params"><label for="Scroll-fold-params">As Inputs Of (<i>at least 3, none are exported</i>)</label><span id='Scroll-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Scroll-showhide-outputofs"><i><label for="Scroll-showhide-outputofs" class="show-inline">/* 3+ unexporteds ... */</label><label for="Scroll-showhide-outputofs" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-newScrollBarArea">newScrollBarArea</a>(scroll *<b>Scroll</b>, orientation <a href="#name-scrollBarOrientation">scrollBarOrientation</a>) *<a href="#name-scrollBarArea">scrollBarArea</a></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/widget.<a href="../widget.html#name-newGridWrapRenderer">newGridWrapRenderer</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>, l *<a href="../widget.html">widget</a>.<a href="../widget.html#name-GridWrap">GridWrap</a>, scroller *<b>Scroll</b>, layout *<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Container">Container</a>) *<a href="../widget.html">widget</a>.<a href="../widget.html#name-gridWrapRenderer">gridWrapRenderer</a></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/widget.<a href="../widget.html#name-newListRenderer">newListRenderer</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>, l *<a href="../widget.html">widget</a>.<a href="../widget.html#name-List">List</a>, scroller *<b>Scroll</b>, layout *<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Container">Container</a>) *<a href="../widget.html">widget</a>.<a href="../widget.html#name-listRenderer">listRenderer</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-ScrollDirection" data-popularity="50">	<input type='checkbox' class="fold" id="ScrollDirection-fold-content"><label for="ScrollDirection-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-12">ScrollDirection</a> <a href="../../../../builtin.html#name-int">int</a> <i>(basic type)</i></label><span id='ScrollDirection-fold-content-docs' class="fold-docs">
+<span class="md-text">		ScrollDirection represents the directions in which a Scroll can scroll its child content.</span>
+
+		<input type='checkbox' class="fold" id="ScrollDirection-fold-params"><label for="ScrollDirection-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='ScrollDirection-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="ScrollDirection-showhide-outputofs"><i><label for="ScrollDirection-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="ScrollDirection-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-newScrollContainerWithDirection">newScrollContainerWithDirection</a>(direction <b>ScrollDirection</b>, content <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<a href="#name-Scroll">Scroll</a></i></span></span>
+		<input type='checkbox' class="fold" id="ScrollDirection-fold-values"><label for="ScrollDirection-fold-values">As Types Of (<i>total 8, all are exported</i>)</label><span id='ScrollDirection-fold-values-items' class="fold-items"><span>
+			const <a href="#name-ScrollBoth">ScrollBoth</a></span><span>
+			const <a href="#name-ScrollHorizontalOnly">ScrollHorizontalOnly</a></span><span>
+			const <a href="#name-ScrollNone">ScrollNone</a></span><span>
+			const <a href="#name-ScrollVerticalOnly">ScrollVerticalOnly</a></span><span>
+			const fyne.io/fyne/v2/container.<a href="../container.html#name-ScrollBoth">ScrollBoth</a></span><span>
+			const fyne.io/fyne/v2/container.<a href="../container.html#name-ScrollHorizontalOnly">ScrollHorizontalOnly</a></span><span>
+			const fyne.io/fyne/v2/container.<a href="../container.html#name-ScrollNone">ScrollNone</a></span><span>
+			const fyne.io/fyne/v2/container.<a href="../container.html#name-ScrollVerticalOnly">ScrollVerticalOnly</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Shadow" data-popularity="775">	<input type='checkbox' class="fold" id="Shadow-fold-content"><label for="Shadow-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-14">Shadow</a> <i>(struct)</i></label><span id='Shadow-fold-content-docs' class="fold-docs">
+<span class="md-text">		Shadow is a widget that renders a shadow.</span>
+
+		<input type='checkbox' class="fold" id="Shadow-fold-fields"><label for="Shadow-fold-fields">Fields (<i>total 7, in which 1 is exported</i>)</label><span id='Shadow-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-15">Base</a> <i><a href="#name-Base">Base</a></i></span></span>
+			<input type='checkbox' class="showhide" id="Shadow-showhide-fields"><i><label for="Shadow-showhide-fields" class="show-inline">/* 6 unexporteds ... */</label><label for="Shadow-showhide-fields" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-15" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-14">hidden</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Bool">Bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-15" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-17">impl</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Pointer">Pointer</a>[<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a>]</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-15" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-15">position</a> <i><a href="async.html">async</a>.<a href="async.html#name-Position">Position</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-15" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-16">size</a> <i><a href="async.html">async</a>.<a href="async.html#name-Size">Size</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-16">level</a> <i><a href="#name-ElevationLevel">ElevationLevel</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-17">typ</a> <i><a href="#name-ShadowType">ShadowType</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Shadow-fold-methods"><label for="Shadow-fold-methods">Methods (<i>total 12, in which 11 are exported</i>)</label><span id='Shadow-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Shadow-fold-method-CreateRenderer"><label for="Shadow-fold-method-CreateRenderer">(*Shadow) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-57">CreateRenderer</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-WidgetRenderer">WidgetRenderer</a></label><span id='Shadow-fold-method-CreateRenderer-docs' class="fold-docs">
+<span class="md-text">				CreateRenderer returns a new renderer for the shadow.
+				
+				Implements: fyne.Widget</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Shadow-fold-method-ExtendBaseWidget"><label for="Shadow-fold-method-ExtendBaseWidget">(*Shadow) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-21">ExtendBaseWidget</a>(wid <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a>)</label><span id='Shadow-fold-method-ExtendBaseWidget-docs' class="fold-docs">
+<span class="md-text">				ExtendBaseWidget is used by an extending widget to make use of BaseWidget functionality.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Shadow-fold-method-Hide"><label for="Shadow-fold-method-Hide">(*Shadow) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-96">Hide</a>()</label><span id='Shadow-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide this widget so it is no longer visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Shadow-fold-method-MinSize"><label for="Shadow-fold-method-MinSize">(*Shadow) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-65">MinSize</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='Shadow-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize for the widget - it should never be resized below this value.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Shadow-fold-method-Move"><label for="Shadow-fold-method-Move">(*Shadow) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-58">Move</a>(pos <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a>)</label><span id='Shadow-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the widget to a new position, relative to its parent.
+				Note this should not be used if the widget is being managed by a Layout within a Container.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Shadow-fold-method-Position"><label for="Shadow-fold-method-Position">(*Shadow) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-52">Position</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a></label><span id='Shadow-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current position of this widget, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Shadow-fold-method-Refresh"><label for="Shadow-fold-method-Refresh">(*Shadow) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-109">Refresh</a>()</label><span id='Shadow-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this widget to be redrawn in it's current state</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Shadow-fold-method-Resize"><label for="Shadow-fold-method-Resize">(*Shadow) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-37">Resize</a>(size <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</label><span id='Shadow-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize sets a new size for a widget.
+				Note this should not be used if the widget is being managed by a Layout within a Container.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Shadow-fold-method-Show"><label for="Shadow-fold-method-Show">(*Shadow) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-83">Show</a>()</label><span id='Shadow-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show this widget so it becomes visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Shadow-fold-method-Size"><label for="Shadow-fold-method-Size">(*Shadow) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-31">Size</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='Shadow-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size gets the current size of this widget.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Shadow-fold-method-Visible"><label for="Shadow-fold-method-Visible">(*Shadow) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-78">Visible</a>() <a href="../../../../builtin.html#name-bool">bool</a></label><span id='Shadow-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns whether or not this widget should be visible.
+				Note that this may not mean it is currently visible if a parent has been hidden.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Shadow-showhide-methods"><i><label for="Shadow-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="Shadow-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Shadow-fold-method-super"><label for="Shadow-fold-method-super">(*Shadow) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-121">super</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a></label><span id='Shadow-fold-method-super-docs' class="fold-docs">
+<span class="md-text">				super will return the actual object that this represents.
+				If extended then this is the extending widget, otherwise it is nil.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Shadow-fold-impls"><label for="Shadow-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='Shadow-fold-impls-items' class="fold-items"><span>
+			*Shadow : fyne.io/fyne/v2.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></span><span>
+			*Shadow : fyne.io/fyne/v2.<a href="../../v2.html#name-Widget">Widget</a></span></span>
+		<input type='checkbox' class="fold" id="Shadow-fold-results"><label for="Shadow-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Shadow-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewShadow">NewShadow</a>(typ <a href="#name-ShadowType">ShadowType</a>, level <a href="#name-ElevationLevel">ElevationLevel</a>) *<b>Shadow</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-ShadowingRenderer" data-popularity="325">	<input type='checkbox' class="fold" id="ShadowingRenderer-fold-content"><label for="ShadowingRenderer-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadowing_renderer.go.html#line-10">ShadowingRenderer</a> <i>(struct)</i></label><span id='ShadowingRenderer-fold-content-docs' class="fold-docs">
+<span class="md-text">		ShadowingRenderer is a renderer that adds a shadow arount the rendered content.
+		When using the ShadowingRenderer the embedding renderer should call
+		LayoutShadow(contentSize, contentPos) to lay out the shadow.</span>
+
+		<input type='checkbox' class="fold" id="ShadowingRenderer-fold-fields"><label for="ShadowingRenderer-fold-fields">Fields (<i>total 3, in which 1 is exported</i>)</label><span id='ShadowingRenderer-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadowing_renderer.go.html#line-11">BaseRenderer</a> <i><a href="#name-BaseRenderer">BaseRenderer</a></i></span></span>
+			<input type='checkbox' class="showhide" id="ShadowingRenderer-showhide-fields"><i><label for="ShadowingRenderer-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="ShadowingRenderer-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadowing_renderer.go.html#line-11" class="path-duplicate">BaseRenderer</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-8">objects</a> <i>[]<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadowing_renderer.go.html#line-12">shadow</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="ShadowingRenderer-fold-methods"><label for="ShadowingRenderer-fold-methods">Methods (<i>total 5, all are exported</i>)</label><span id='ShadowingRenderer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ShadowingRenderer-fold-method-Destroy"><label for="ShadowingRenderer-fold-method-Destroy">(*ShadowingRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-19">Destroy</a>()</label><span id='ShadowingRenderer-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy does nothing in the base implementation.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ShadowingRenderer-fold-method-LayoutShadow"><label for="ShadowingRenderer-fold-method-LayoutShadow">(*ShadowingRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadowing_renderer.go.html#line-27">LayoutShadow</a>(size <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>, pos <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a>)</label><span id='ShadowingRenderer-fold-method-LayoutShadow-docs' class="fold-docs">
+<span class="md-text">				LayoutShadow adjusts the size and position of the shadow if necessary.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ShadowingRenderer-fold-method-Objects"><label for="ShadowingRenderer-fold-method-Objects">(*ShadowingRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-25">Objects</a>() []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></label><span id='ShadowingRenderer-fold-method-Objects-docs' class="fold-docs">
+<span class="md-text">				Objects returns the objects that should be rendered.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ShadowingRenderer-fold-method-RefreshShadow"><label for="ShadowingRenderer-fold-method-RefreshShadow">(*ShadowingRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadowing_renderer.go.html#line-44">RefreshShadow</a>()</label><span id='ShadowingRenderer-fold-method-RefreshShadow-docs' class="fold-docs">
+<span class="md-text">				RefreshShadow asks the shadow graphical element to update to current theme</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ShadowingRenderer-fold-method-SetObjects"><label for="ShadowingRenderer-fold-method-SetObjects">(*ShadowingRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadowing_renderer.go.html#line-36">SetObjects</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='ShadowingRenderer-fold-method-SetObjects-docs' class="fold-docs">
+<span class="md-text">				SetObjects updates the renderer's objects including the shadow if necessary.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="ShadowingRenderer-fold-results"><label for="ShadowingRenderer-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='ShadowingRenderer-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewShadowingRenderer">NewShadowingRenderer</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>, level <a href="#name-ElevationLevel">ElevationLevel</a>) *<b>ShadowingRenderer</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-ShadowType" data-popularity="50">	<input type='checkbox' class="fold" id="ShadowType-fold-content"><label for="ShadowType-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-36">ShadowType</a> <a href="../../../../builtin.html#name-int">int</a> <i>(basic type)</i></label><span id='ShadowType-fold-content-docs' class="fold-docs">
+<span class="md-text">		ShadowType specifies the type of the shadow.</span>
+
+		<input type='checkbox' class="fold" id="ShadowType-fold-params"><label for="ShadowType-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='ShadowType-fold-params-items' class="fold-items"><span>
+			func <a href="#name-NewShadow">NewShadow</a>(typ <b>ShadowType</b>, level <a href="#name-ElevationLevel">ElevationLevel</a>) *<a href="#name-Shadow">Shadow</a></span></span>
+		<input type='checkbox' class="fold" id="ShadowType-fold-values"><label for="ShadowType-fold-values">As Types Of (<i>total 5, all are exported</i>)</label><span id='ShadowType-fold-values-items' class="fold-items"><span>
+			const <a href="#name-ShadowAround">ShadowAround</a></span><span>
+			const <a href="#name-ShadowBottom">ShadowBottom</a></span><span>
+			const <a href="#name-ShadowLeft">ShadowLeft</a></span><span>
+			const <a href="#name-ShadowRight">ShadowRight</a></span><span>
+			const <a href="#name-ShadowTop">ShadowTop</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-SimpleRenderer" data-popularity="375">	<input type='checkbox' class="fold" id="SimpleRenderer-fold-content"><label for="SimpleRenderer-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/simple_renderer.go.html#line-11">SimpleRenderer</a> <i>(struct)</i></label><span id='SimpleRenderer-fold-content-docs' class="fold-docs">
+<span class="md-text">		SimpleRenderer is a basic renderer that satisfies widget.Renderer interface by wrapping
+		a single fyne.CanvasObject.
+		
+		Since: 2.1</span>
+
+		<input type='checkbox' class="fold" id="SimpleRenderer-fold-fields"><label for="SimpleRenderer-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='SimpleRenderer-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="SimpleRenderer-showhide-fields"><i><label for="SimpleRenderer-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="SimpleRenderer-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-8">objects</a> <i>[]<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="SimpleRenderer-fold-methods"><label for="SimpleRenderer-fold-methods">Methods (<i>total 5, all are exported</i>)</label><span id='SimpleRenderer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="SimpleRenderer-fold-method-Destroy"><label for="SimpleRenderer-fold-method-Destroy">(*SimpleRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/simple_renderer.go.html#line-28">Destroy</a>()</label><span id='SimpleRenderer-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy does nothing in this implementation.
+				
+				Implements: fyne.WidgetRenderer
+				
+				Since: 2.1</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="SimpleRenderer-fold-method-Layout"><label for="SimpleRenderer-fold-method-Layout">(*SimpleRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/simple_renderer.go.html#line-36">Layout</a>(s <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</label><span id='SimpleRenderer-fold-method-Layout-docs' class="fold-docs">
+<span class="md-text">				Layout updates the contained object to be the requested size.
+				
+				Implements: fyne.WidgetRenderer
+				
+				Since: 2.1</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="SimpleRenderer-fold-method-MinSize"><label for="SimpleRenderer-fold-method-MinSize">(*SimpleRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/simple_renderer.go.html#line-45">MinSize</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='SimpleRenderer-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize returns the smallest size that this render can use, returned from the underlying object.
+				
+				Implements: fyne.WidgetRenderer
+				
+				Since: 2.1</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="SimpleRenderer-fold-method-Objects"><label for="SimpleRenderer-fold-method-Objects">(*SimpleRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/simple_renderer.go.html#line-54">Objects</a>() []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></label><span id='SimpleRenderer-fold-method-Objects-docs' class="fold-docs">
+<span class="md-text">				Objects returns the objects that should be rendered.
+				
+				Implements: fyne.WidgetRenderer
+				
+				Since: 2.1</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="SimpleRenderer-fold-method-Refresh"><label for="SimpleRenderer-fold-method-Refresh">(*SimpleRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/simple_renderer.go.html#line-63">Refresh</a>()</label><span id='SimpleRenderer-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh requests the underlying object to redraw.
+				
+				Implements: fyne.WidgetRenderer
+				
+				Since: 2.1</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="SimpleRenderer-fold-impls"><label for="SimpleRenderer-fold-impls">Implements (<i>at least one exported</i>)</label><span id='SimpleRenderer-fold-impls-items' class="fold-items"><span>
+			*SimpleRenderer : fyne.io/fyne/v2.<a href="../../v2.html#name-WidgetRenderer">WidgetRenderer</a></span></span>
+		<input type='checkbox' class="fold" id="SimpleRenderer-fold-results"><label for="SimpleRenderer-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='SimpleRenderer-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewSimpleRenderer">NewSimpleRenderer</a>(object <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<b>SimpleRenderer</b></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 8 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 8 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-overlayRenderer" data-popularity="350">	<input type='checkbox' class="fold" id="overlayRenderer-fold-content"><label for="overlayRenderer-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-85">overlayRenderer</a> <i>(struct)</i></label><span id='overlayRenderer-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="overlayRenderer-fold-fields"><label for="overlayRenderer-fold-fields">Fields (<i>total 3, in which 1 is exported</i>)</label><span id='overlayRenderer-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-86">BaseRenderer</a> <i><a href="#name-BaseRenderer">BaseRenderer</a></i></span></span>
+			<input type='checkbox' checked class="showhide" id="overlayRenderer-showhide-fields"><i><label for="overlayRenderer-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="overlayRenderer-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-86" class="path-duplicate">BaseRenderer</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-8">objects</a> <i>[]<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-87">o</a> <i>*<a href="#name-OverlayContainer">OverlayContainer</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="overlayRenderer-fold-methods"><label for="overlayRenderer-fold-methods">Methods (<i>total 6, all are exported</i>)</label><span id='overlayRenderer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="overlayRenderer-fold-method-Destroy"><label for="overlayRenderer-fold-method-Destroy">(*overlayRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-19">Destroy</a>()</label><span id='overlayRenderer-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy does nothing in the base implementation.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<span class="nodocs">(*overlayRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-92">Layout</a>(<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</span></span><span>
+			<span class="nodocs">(*overlayRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-95">MinSize</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></span></span><span>
+			<input type='checkbox' class="fold" id="overlayRenderer-fold-method-Objects"><label for="overlayRenderer-fold-method-Objects">(*overlayRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-25">Objects</a>() []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></label><span id='overlayRenderer-fold-method-Objects-docs' class="fold-docs">
+<span class="md-text">				Objects returns the objects that should be rendered.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<span class="nodocs">(*overlayRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-99">Refresh</a>()</span></span><span>
+			<input type='checkbox' class="fold" id="overlayRenderer-fold-method-SetObjects"><label for="overlayRenderer-fold-method-SetObjects">(*overlayRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-30">SetObjects</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='overlayRenderer-fold-method-SetObjects-docs' class="fold-docs">
+<span class="md-text">				SetObjects updates the objects of the renderer.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="overlayRenderer-fold-impls"><label for="overlayRenderer-fold-impls">Implements (<i>at least one exported</i>)</label><span id='overlayRenderer-fold-impls-items' class="fold-items"><span>
+			*overlayRenderer : fyne.io/fyne/v2.<a href="../../v2.html#name-WidgetRenderer">WidgetRenderer</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-scrollBar" data-popularity="1225">	<input type='checkbox' class="fold" id="scrollBar-fold-content"><label for="scrollBar-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-64">scrollBar</a> <i>(struct)</i></label><span id='scrollBar-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="scrollBar-fold-fields"><label for="scrollBar-fold-fields">Fields (<i>total 9, in which 1 is exported</i>)</label><span id='scrollBar-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-65">Base</a> <i><a href="#name-Base">Base</a></i></span></span>
+			<input type='checkbox' checked class="showhide" id="scrollBar-showhide-fields"><i><label for="scrollBar-showhide-fields" class="show-inline">/* 8 unexporteds ... */</label><label for="scrollBar-showhide-fields" class="hide-inline">/* 8 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-66">area</a> <i>*<a href="#name-scrollBarArea">scrollBarArea</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-65">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-14">hidden</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Bool">Bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-65" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-17">impl</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Pointer">Pointer</a>[<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a>]</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-65" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-15">position</a> <i><a href="async.html">async</a>.<a href="async.html#name-Position">Position</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-65" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-16">size</a> <i><a href="async.html">async</a>.<a href="async.html#name-Size">Size</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-68">dragStart</a> <i><a href="../../../../builtin.html#name-float32">float32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-67">draggedDistance</a> <i><a href="../../../../builtin.html#name-float32">float32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-69">orientation</a> <i><a href="#name-scrollBarOrientation">scrollBarOrientation</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="scrollBar-fold-methods"><label for="scrollBar-fold-methods">Methods (<i>total 18, in which 17 are exported</i>)</label><span id='scrollBar-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-72">CreateRenderer</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-WidgetRenderer">WidgetRenderer</a></span></span><span>
+			<span class="nodocs">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-86">Cursor</a>() <a href="../driver/desktop.html">desktop</a>.<a href="../driver/desktop.html#name-Cursor">Cursor</a></span></span><span>
+			<span class="nodocs">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-90">DragEnd</a>()</span></span><span>
+			<span class="nodocs">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-100">Dragged</a>(e *<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-DragEvent">DragEvent</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBar-fold-method-ExtendBaseWidget"><label for="scrollBar-fold-method-ExtendBaseWidget">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-21">ExtendBaseWidget</a>(wid <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a>)</label><span id='scrollBar-fold-method-ExtendBaseWidget-docs' class="fold-docs">
+<span class="md-text">				ExtendBaseWidget is used by an extending widget to make use of BaseWidget functionality.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBar-fold-method-Hide"><label for="scrollBar-fold-method-Hide">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-96">Hide</a>()</label><span id='scrollBar-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide this widget so it is no longer visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBar-fold-method-MinSize"><label for="scrollBar-fold-method-MinSize">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-65">MinSize</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='scrollBar-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize for the widget - it should never be resized below this value.</span>
+</span></span><span>
+			<span class="nodocs">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-123">MouseIn</a>(e *<a href="../driver/desktop.html">desktop</a>.<a href="../driver/desktop.html#name-MouseEvent">MouseEvent</a>)</span></span><span>
+			<span class="nodocs">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-127">MouseMoved</a>(*<a href="../driver/desktop.html">desktop</a>.<a href="../driver/desktop.html#name-MouseEvent">MouseEvent</a>)</span></span><span>
+			<span class="nodocs">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-130">MouseOut</a>()</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBar-fold-method-Move"><label for="scrollBar-fold-method-Move">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-58">Move</a>(pos <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a>)</label><span id='scrollBar-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the widget to a new position, relative to its parent.
+				Note this should not be used if the widget is being managed by a Layout within a Container.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBar-fold-method-Position"><label for="scrollBar-fold-method-Position">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-52">Position</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a></label><span id='scrollBar-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current position of this widget, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBar-fold-method-Refresh"><label for="scrollBar-fold-method-Refresh">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-109">Refresh</a>()</label><span id='scrollBar-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this widget to be redrawn in it's current state</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBar-fold-method-Resize"><label for="scrollBar-fold-method-Resize">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-37">Resize</a>(size <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</label><span id='scrollBar-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize sets a new size for a widget.
+				Note this should not be used if the widget is being managed by a Layout within a Container.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBar-fold-method-Show"><label for="scrollBar-fold-method-Show">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-83">Show</a>()</label><span id='scrollBar-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show this widget so it becomes visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBar-fold-method-Size"><label for="scrollBar-fold-method-Size">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-31">Size</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='scrollBar-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size gets the current size of this widget.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBar-fold-method-Visible"><label for="scrollBar-fold-method-Visible">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-78">Visible</a>() <a href="../../../../builtin.html#name-bool">bool</a></label><span id='scrollBar-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns whether or not this widget should be visible.
+				Note that this may not mean it is currently visible if a parent has been hidden.</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="scrollBar-showhide-methods"><i><label for="scrollBar-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="scrollBar-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="scrollBar-fold-method-super"><label for="scrollBar-fold-method-super">(*scrollBar) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-121">super</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a></label><span id='scrollBar-fold-method-super-docs' class="fold-docs">
+<span class="md-text">				super will return the actual object that this represents.
+				If extended then this is the extending widget, otherwise it is nil.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="scrollBar-fold-impls"><label for="scrollBar-fold-impls">Implements (<i>at least 5, all are exported</i>)</label><span id='scrollBar-fold-impls-items' class="fold-items"><span>
+			*scrollBar : fyne.io/fyne/v2.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></span><span>
+			*scrollBar : fyne.io/fyne/v2.<a href="../../v2.html#name-Draggable">Draggable</a></span><span>
+			*scrollBar : fyne.io/fyne/v2.<a href="../../v2.html#name-Widget">Widget</a></span><span>
+			*scrollBar : fyne.io/fyne/v2/driver/desktop.<a href="../driver/desktop.html#name-Cursorable">Cursorable</a></span><span>
+			*scrollBar : fyne.io/fyne/v2/driver/desktop.<a href="../driver/desktop.html#name-Hoverable">Hoverable</a></span></span>
+		<input type='checkbox' class="fold" id="scrollBar-fold-results"><label for="scrollBar-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='scrollBar-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="scrollBar-showhide-inputofs"><i><label for="scrollBar-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="scrollBar-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-newScrollBar">newScrollBar</a>(area *<a href="#name-scrollBarArea">scrollBarArea</a>) *<b>scrollBar</b></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-scrollBarArea" data-popularity="1160">	<input type='checkbox' class="fold" id="scrollBarArea-fold-content"><label for="scrollBarArea-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-209">scrollBarArea</a> <i>(struct)</i></label><span id='scrollBarArea-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="scrollBarArea-fold-fields"><label for="scrollBarArea-fold-fields">Fields (<i>total 9, in which 1 is exported</i>)</label><span id='scrollBarArea-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-210">Base</a> <i><a href="#name-Base">Base</a></i></span></span>
+			<input type='checkbox' checked class="showhide" id="scrollBarArea-showhide-fields"><i><label for="scrollBarArea-showhide-fields" class="show-inline">/* 8 unexporteds ... */</label><label for="scrollBarArea-showhide-fields" class="hide-inline">/* 8 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-210" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-14">hidden</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Bool">Bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-210" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-17">impl</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Pointer">Pointer</a>[<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a>]</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-210" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-15">position</a> <i><a href="async.html">async</a>.<a href="async.html#name-Position">Position</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-210" class="path-duplicate">Base</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-16">size</a> <i><a href="async.html">async</a>.<a href="async.html#name-Size">Size</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-212">isDragging</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-213">isMouseIn</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-215">orientation</a> <i><a href="#name-scrollBarOrientation">scrollBarOrientation</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-214">scroll</a> <i>*<a href="#name-Scroll">Scroll</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="scrollBarArea-fold-methods"><label for="scrollBarArea-fold-methods">Methods (<i>total 18, in which 14 are exported</i>)</label><span id='scrollBarArea-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-218">CreateRenderer</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-WidgetRenderer">WidgetRenderer</a></span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarArea-fold-method-ExtendBaseWidget"><label for="scrollBarArea-fold-method-ExtendBaseWidget">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-21">ExtendBaseWidget</a>(wid <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a>)</label><span id='scrollBarArea-fold-method-ExtendBaseWidget-docs' class="fold-docs">
+<span class="md-text">				ExtendBaseWidget is used by an extending widget to make use of BaseWidget functionality.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarArea-fold-method-Hide"><label for="scrollBarArea-fold-method-Hide">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-96">Hide</a>()</label><span id='scrollBarArea-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide this widget so it is no longer visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarArea-fold-method-MinSize"><label for="scrollBarArea-fold-method-MinSize">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-65">MinSize</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='scrollBarArea-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize for the widget - it should never be resized below this value.</span>
+</span></span><span>
+			<span class="nodocs">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-223">MouseIn</a>(*<a href="../driver/desktop.html">desktop</a>.<a href="../driver/desktop.html#name-MouseEvent">MouseEvent</a>)</span></span><span>
+			<span class="nodocs">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-228">MouseMoved</a>(*<a href="../driver/desktop.html">desktop</a>.<a href="../driver/desktop.html#name-MouseEvent">MouseEvent</a>)</span></span><span>
+			<span class="nodocs">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-231">MouseOut</a>()</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarArea-fold-method-Move"><label for="scrollBarArea-fold-method-Move">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-58">Move</a>(pos <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a>)</label><span id='scrollBarArea-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the widget to a new position, relative to its parent.
+				Note this should not be used if the widget is being managed by a Layout within a Container.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarArea-fold-method-Position"><label for="scrollBarArea-fold-method-Position">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-52">Position</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a></label><span id='scrollBarArea-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current position of this widget, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarArea-fold-method-Refresh"><label for="scrollBarArea-fold-method-Refresh">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-109">Refresh</a>()</label><span id='scrollBarArea-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this widget to be redrawn in it's current state</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarArea-fold-method-Resize"><label for="scrollBarArea-fold-method-Resize">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-37">Resize</a>(size <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</label><span id='scrollBarArea-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize sets a new size for a widget.
+				Note this should not be used if the widget is being managed by a Layout within a Container.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarArea-fold-method-Show"><label for="scrollBarArea-fold-method-Show">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-83">Show</a>()</label><span id='scrollBarArea-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show this widget so it becomes visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarArea-fold-method-Size"><label for="scrollBarArea-fold-method-Size">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-31">Size</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='scrollBarArea-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size gets the current size of this widget.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarArea-fold-method-Visible"><label for="scrollBarArea-fold-method-Visible">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-78">Visible</a>() <a href="../../../../builtin.html#name-bool">bool</a></label><span id='scrollBarArea-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns whether or not this widget should be visible.
+				Note that this may not mean it is currently visible if a parent has been hidden.</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="scrollBarArea-showhide-methods"><i><label for="scrollBarArea-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="scrollBarArea-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-255">computeScrollOffset</a>(length, offset, scrollLength, contentLength <a href="../../../../builtin.html#name-float32">float32</a>) <a href="../../../../builtin.html#name-float32">float32</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-140">isLarge</a>() <a href="../../../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-240">moveBar</a>(offset <a href="../../../../builtin.html#name-float32">float32</a>, barSize <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="scrollBarArea-fold-method-super"><label for="scrollBarArea-fold-method-super">(*scrollBarArea) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-121">super</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Widget">Widget</a></label><span id='scrollBarArea-fold-method-super-docs' class="fold-docs">
+<span class="md-text">				super will return the actual object that this represents.
+				If extended then this is the extending widget, otherwise it is nil.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="scrollBarArea-fold-impls"><label for="scrollBarArea-fold-impls">Implements (<i>at least 3, all are exported</i>)</label><span id='scrollBarArea-fold-impls-items' class="fold-items"><span>
+			*scrollBarArea : fyne.io/fyne/v2.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></span><span>
+			*scrollBarArea : fyne.io/fyne/v2.<a href="../../v2.html#name-Widget">Widget</a></span><span>
+			*scrollBarArea : fyne.io/fyne/v2/driver/desktop.<a href="../driver/desktop.html#name-Hoverable">Hoverable</a></span></span>
+		<input type='checkbox' class="fold" id="scrollBarArea-fold-results"><label for="scrollBarArea-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='scrollBarArea-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="scrollBarArea-showhide-inputofs"><i><label for="scrollBarArea-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="scrollBarArea-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-newScrollBarArea">newScrollBarArea</a>(scroll *<a href="#name-Scroll">Scroll</a>, orientation <a href="#name-scrollBarOrientation">scrollBarOrientation</a>) *<b>scrollBarArea</b></i></span></span>
+		<input type='checkbox' class="fold" id="scrollBarArea-fold-params"><label for="scrollBarArea-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='scrollBarArea-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="scrollBarArea-showhide-outputofs"><i><label for="scrollBarArea-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="scrollBarArea-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-newScrollBar">newScrollBar</a>(area *<b>scrollBarArea</b>) *<a href="#name-scrollBar">scrollBar</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-scrollBarAreaRenderer" data-popularity="400">	<input type='checkbox' class="fold" id="scrollBarAreaRenderer-fold-content"><label for="scrollBarAreaRenderer-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-144">scrollBarAreaRenderer</a> <i>(struct)</i></label><span id='scrollBarAreaRenderer-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="scrollBarAreaRenderer-fold-fields"><label for="scrollBarAreaRenderer-fold-fields">Fields (<i>total 4, in which 1 is exported</i>)</label><span id='scrollBarAreaRenderer-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-145">BaseRenderer</a> <i><a href="#name-BaseRenderer">BaseRenderer</a></i></span></span>
+			<input type='checkbox' checked class="showhide" id="scrollBarAreaRenderer-showhide-fields"><i><label for="scrollBarAreaRenderer-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="scrollBarAreaRenderer-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-146">area</a> <i>*<a href="#name-scrollBarArea">scrollBarArea</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-147">bar</a> <i>*<a href="#name-scrollBar">scrollBar</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-145">BaseRenderer</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-8">objects</a> <i>[]<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="scrollBarAreaRenderer-fold-methods"><label for="scrollBarAreaRenderer-fold-methods">Methods (<i>total 7, in which 6 are exported</i>)</label><span id='scrollBarAreaRenderer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="scrollBarAreaRenderer-fold-method-Destroy"><label for="scrollBarAreaRenderer-fold-method-Destroy">(*scrollBarAreaRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-19">Destroy</a>()</label><span id='scrollBarAreaRenderer-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy does nothing in the base implementation.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<span class="nodocs">(*scrollBarAreaRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-150">Layout</a>(_ <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</span></span><span>
+			<span class="nodocs">(*scrollBarAreaRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-162">MinSize</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarAreaRenderer-fold-method-Objects"><label for="scrollBarAreaRenderer-fold-method-Objects">(*scrollBarAreaRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-25">Objects</a>() []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></label><span id='scrollBarAreaRenderer-fold-method-Objects-docs' class="fold-docs">
+<span class="md-text">				Objects returns the objects that should be rendered.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<span class="nodocs">(*scrollBarAreaRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-178">Refresh</a>()</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarAreaRenderer-fold-method-SetObjects"><label for="scrollBarAreaRenderer-fold-method-SetObjects">(*scrollBarAreaRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-30">SetObjects</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='scrollBarAreaRenderer-fold-method-SetObjects-docs' class="fold-docs">
+<span class="md-text">				SetObjects updates the objects of the renderer.</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="scrollBarAreaRenderer-showhide-methods"><i><label for="scrollBarAreaRenderer-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="scrollBarAreaRenderer-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*scrollBarAreaRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-184">barSizeAndOffset</a>(contentOffset, contentLength, scrollLength <a href="../../../../builtin.html#name-float32">float32</a>) (length, width, lengthOffset, widthOffset <a href="../../../../builtin.html#name-float32">float32</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="scrollBarAreaRenderer-fold-impls"><label for="scrollBarAreaRenderer-fold-impls">Implements (<i>at least one exported</i>)</label><span id='scrollBarAreaRenderer-fold-impls-items' class="fold-items"><span>
+			*scrollBarAreaRenderer : fyne.io/fyne/v2.<a href="../../v2.html#name-WidgetRenderer">WidgetRenderer</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-scrollBarOrientation" data-popularity="45">	<input type='checkbox' class="fold" id="scrollBarOrientation-fold-content"><label for="scrollBarOrientation-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-28">scrollBarOrientation</a> <a href="../../../../builtin.html#name-int">int</a> <i>(basic type)</i></label><span id='scrollBarOrientation-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="scrollBarOrientation-fold-params"><label for="scrollBarOrientation-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='scrollBarOrientation-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="scrollBarOrientation-showhide-outputofs"><i><label for="scrollBarOrientation-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="scrollBarOrientation-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-newScrollBarArea">newScrollBarArea</a>(scroll *<a href="#name-Scroll">Scroll</a>, orientation <b>scrollBarOrientation</b>) *<a href="#name-scrollBarArea">scrollBarArea</a></i></span></span>
+		<input type='checkbox' class="fold" id="scrollBarOrientation-fold-values"><label for="scrollBarOrientation-fold-values">As Types Of (<i>total 2, neither is exported</i>)</label><span id='scrollBarOrientation-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="scrollBarOrientation-showhide-values"><i><label for="scrollBarOrientation-showhide-values" class="show-inline">/* 2 unexporteds ... */</label><label for="scrollBarOrientation-showhide-values" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			const <a href="#name-scrollBarOrientationHorizontal">scrollBarOrientationHorizontal</a></i></span><span class="hidden"><i>
+			const <a href="#name-scrollBarOrientationVertical">scrollBarOrientationVertical</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-scrollBarRenderer" data-popularity="350">	<input type='checkbox' class="fold" id="scrollBarRenderer-fold-content"><label for="scrollBarRenderer-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-37">scrollBarRenderer</a> <i>(struct)</i></label><span id='scrollBarRenderer-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="scrollBarRenderer-fold-fields"><label for="scrollBarRenderer-fold-fields">Fields (<i>total 5, in which 1 is exported</i>)</label><span id='scrollBarRenderer-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-38">BaseRenderer</a> <i><a href="#name-BaseRenderer">BaseRenderer</a></i></span></span>
+			<input type='checkbox' checked class="showhide" id="scrollBarRenderer-showhide-fields"><i><label for="scrollBarRenderer-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="scrollBarRenderer-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-40">background</a> <i>*<a href="../canvas.html">canvas</a>.<a href="../canvas.html#name-Rectangle">Rectangle</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-38">BaseRenderer</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-8">objects</a> <i>[]<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-41">minSize</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-39">scrollBar</a> <i>*<a href="#name-scrollBar">scrollBar</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="scrollBarRenderer-fold-methods"><label for="scrollBarRenderer-fold-methods">Methods (<i>total 6, all are exported</i>)</label><span id='scrollBarRenderer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="scrollBarRenderer-fold-method-Destroy"><label for="scrollBarRenderer-fold-method-Destroy">(*scrollBarRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-19">Destroy</a>()</label><span id='scrollBarRenderer-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy does nothing in the base implementation.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<span class="nodocs">(*scrollBarRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-44">Layout</a>(size <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</span></span><span>
+			<span class="nodocs">(*scrollBarRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-48">MinSize</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarRenderer-fold-method-Objects"><label for="scrollBarRenderer-fold-method-Objects">(*scrollBarRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-25">Objects</a>() []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></label><span id='scrollBarRenderer-fold-method-Objects-docs' class="fold-docs">
+<span class="md-text">				Objects returns the objects that should be rendered.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<span class="nodocs">(*scrollBarRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-52">Refresh</a>()</span></span><span>
+			<input type='checkbox' class="fold" id="scrollBarRenderer-fold-method-SetObjects"><label for="scrollBarRenderer-fold-method-SetObjects">(*scrollBarRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-30">SetObjects</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='scrollBarRenderer-fold-method-SetObjects-docs' class="fold-docs">
+<span class="md-text">				SetObjects updates the objects of the renderer.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="scrollBarRenderer-fold-impls"><label for="scrollBarRenderer-fold-impls">Implements (<i>at least one exported</i>)</label><span id='scrollBarRenderer-fold-impls-items' class="fold-items"><span>
+			*scrollBarRenderer : fyne.io/fyne/v2.<a href="../../v2.html#name-WidgetRenderer">WidgetRenderer</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-scrollContainerRenderer" data-popularity="550">	<input type='checkbox' class="fold" id="scrollContainerRenderer-fold-content"><label for="scrollContainerRenderer-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-273">scrollContainerRenderer</a> <i>(struct)</i></label><span id='scrollContainerRenderer-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="scrollContainerRenderer-fold-fields"><label for="scrollContainerRenderer-fold-fields">Fields (<i>total 10, in which 1 is exported</i>)</label><span id='scrollContainerRenderer-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-274">BaseRenderer</a> <i><a href="#name-BaseRenderer">BaseRenderer</a></i></span></span>
+			<input type='checkbox' checked class="showhide" id="scrollContainerRenderer-showhide-fields"><i><label for="scrollContainerRenderer-showhide-fields" class="show-inline">/* 9 unexporteds ... */</label><label for="scrollContainerRenderer-showhide-fields" class="hide-inline">/* 9 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-274" class="path-duplicate">BaseRenderer</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-8">objects</a> <i>[]<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-279">bottomShadow</a> <i>*<a href="#name-Shadow">Shadow</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-277">horizArea</a> <i>*<a href="#name-scrollBarArea">scrollBarArea</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-278">leftShadow</a> <i>*<a href="#name-Shadow">Shadow</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-280">oldMinSize</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-278">rightShadow</a> <i>*<a href="#name-Shadow">Shadow</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-275">scroll</a> <i>*<a href="#name-Scroll">Scroll</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-279">topShadow</a> <i>*<a href="#name-Shadow">Shadow</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-276">vertArea</a> <i>*<a href="#name-scrollBarArea">scrollBarArea</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="scrollContainerRenderer-fold-methods"><label for="scrollContainerRenderer-fold-methods">Methods (<i>total 10, in which 6 are exported</i>)</label><span id='scrollContainerRenderer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="scrollContainerRenderer-fold-method-Destroy"><label for="scrollContainerRenderer-fold-method-Destroy">(*scrollContainerRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-19">Destroy</a>()</label><span id='scrollContainerRenderer-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy does nothing in the base implementation.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<span class="nodocs">(*scrollContainerRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-304">Layout</a>(size <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</span></span><span>
+			<span class="nodocs">(*scrollContainerRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-311">MinSize</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></span></span><span>
+			<input type='checkbox' class="fold" id="scrollContainerRenderer-fold-method-Objects"><label for="scrollContainerRenderer-fold-method-Objects">(*scrollContainerRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-25">Objects</a>() []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></label><span id='scrollContainerRenderer-fold-method-Objects-docs' class="fold-docs">
+<span class="md-text">				Objects returns the objects that should be rendered.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<span class="nodocs">(*scrollContainerRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-315">Refresh</a>()</span></span><span>
+			<input type='checkbox' class="fold" id="scrollContainerRenderer-fold-method-SetObjects"><label for="scrollContainerRenderer-fold-method-SetObjects">(*scrollContainerRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-30">SetObjects</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='scrollContainerRenderer-fold-method-SetObjects-docs' class="fold-docs">
+<span class="md-text">				SetObjects updates the objects of the renderer.</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="scrollContainerRenderer-showhide-methods"><i><label for="scrollContainerRenderer-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="scrollContainerRenderer-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*scrollContainerRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-339">handleAreaVisibility</a>(contentSize, scrollSize <a href="../../../../builtin.html#name-float32">float32</a>, area *<a href="#name-scrollBarArea">scrollBarArea</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*scrollContainerRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-347">handleShadowVisibility</a>(offset, contentSize, scrollSize <a href="../../../../builtin.html#name-float32">float32</a>, shadowStart <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>, shadowEnd <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*scrollContainerRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-283">layoutBars</a>(size <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*scrollContainerRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-363">updatePosition</a>()</span></i></span></span>
+		<input type='checkbox' class="fold" id="scrollContainerRenderer-fold-impls"><label for="scrollContainerRenderer-fold-impls">Implements (<i>at least one exported</i>)</label><span id='scrollContainerRenderer-fold-impls-items' class="fold-items"><span>
+			*scrollContainerRenderer : fyne.io/fyne/v2.<a href="../../v2.html#name-WidgetRenderer">WidgetRenderer</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-shadowRenderer" data-popularity="450">	<input type='checkbox' class="fold" id="shadowRenderer-fold-content"><label for="shadowRenderer-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-63">shadowRenderer</a> <i>(struct)</i></label><span id='shadowRenderer-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="shadowRenderer-fold-fields"><label for="shadowRenderer-fold-fields">Fields (<i>total 12, in which 1 is exported</i>)</label><span id='shadowRenderer-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-64">BaseRenderer</a> <i><a href="#name-BaseRenderer">BaseRenderer</a></i></span></span>
+			<input type='checkbox' checked class="showhide" id="shadowRenderer-showhide-fields"><i><label for="shadowRenderer-showhide-fields" class="show-inline">/* 11 unexporteds ... */</label><label for="shadowRenderer-showhide-fields" class="hide-inline">/* 11 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-65">b</a> <i>*<a href="../canvas.html">canvas</a>.<a href="../canvas.html#name-LinearGradient">LinearGradient</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-64">BaseRenderer</a>.<a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-8">objects</a> <i>[]<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-66">bl</a> <i>*<a href="../canvas.html">canvas</a>.<a href="../canvas.html#name-RadialGradient">RadialGradient</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-66">br</a> <i>*<a href="../canvas.html">canvas</a>.<a href="../canvas.html#name-RadialGradient">RadialGradient</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-65">l</a> <i>*<a href="../canvas.html">canvas</a>.<a href="../canvas.html#name-LinearGradient">LinearGradient</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-67">minSize</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-65">r</a> <i>*<a href="../canvas.html">canvas</a>.<a href="../canvas.html#name-LinearGradient">LinearGradient</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-68">s</a> <i>*<a href="#name-Shadow">Shadow</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-65">t</a> <i>*<a href="../canvas.html">canvas</a>.<a href="../canvas.html#name-LinearGradient">LinearGradient</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-66">tl</a> <i>*<a href="../canvas.html">canvas</a>.<a href="../canvas.html#name-RadialGradient">RadialGradient</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-66">tr</a> <i>*<a href="../canvas.html">canvas</a>.<a href="../canvas.html#name-RadialGradient">RadialGradient</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="shadowRenderer-fold-methods"><label for="shadowRenderer-fold-methods">Methods (<i>total 8, in which 6 are exported</i>)</label><span id='shadowRenderer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="shadowRenderer-fold-method-Destroy"><label for="shadowRenderer-fold-method-Destroy">(*shadowRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-19">Destroy</a>()</label><span id='shadowRenderer-fold-method-Destroy-docs' class="fold-docs">
+<span class="md-text">				Destroy does nothing in the base implementation.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<span class="nodocs">(*shadowRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-71">Layout</a>(size <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</span></span><span>
+			<span class="nodocs">(*shadowRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-107">MinSize</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></span></span><span>
+			<input type='checkbox' class="fold" id="shadowRenderer-fold-method-Objects"><label for="shadowRenderer-fold-method-Objects">(*shadowRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-25">Objects</a>() []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></label><span id='shadowRenderer-fold-method-Objects-docs' class="fold-docs">
+<span class="md-text">				Objects returns the objects that should be rendered.
+				
+				Implements: fyne.WidgetRenderer</span>
+</span></span><span>
+			<span class="nodocs">(*shadowRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-111">Refresh</a>()</span></span><span>
+			<input type='checkbox' class="fold" id="shadowRenderer-fold-method-SetObjects"><label for="shadowRenderer-fold-method-SetObjects">(*shadowRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-30">SetObjects</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='shadowRenderer-fold-method-SetObjects-docs' class="fold-docs">
+<span class="md-text">				SetObjects updates the objects of the renderer.</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="shadowRenderer-showhide-methods"><i><label for="shadowRenderer-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="shadowRenderer-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*shadowRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-117">createShadows</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*shadowRenderer) <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-156">refreshShadows</a>()</span></i></span></span>
+		<input type='checkbox' class="fold" id="shadowRenderer-fold-impls"><label for="shadowRenderer-fold-impls">Implements (<i>at least one exported</i>)</label><span id='shadowRenderer-fold-impls-items' class="fold-items"><span>
+			*shadowRenderer : fyne.io/fyne/v2.<a href="../../v2.html#name-WidgetRenderer">WidgetRenderer</a></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 16, in which 9 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-NewBaseRenderer">	<input type='checkbox' class="fold" id="NewBaseRenderer-fold-content"><label for="NewBaseRenderer-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base_renderer.go.html#line-12">NewBaseRenderer</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) <a href="#name-BaseRenderer">BaseRenderer</a></label><span id='NewBaseRenderer-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewBaseRenderer creates a new BaseRenderer.</span>
+
+</span></div><div class="anchor value-res" id="name-NewHScroll">	<input type='checkbox' class="fold" id="NewHScroll-fold-content"><label for="NewHScroll-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-558">NewHScroll</a>(content <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<a href="#name-Scroll">Scroll</a></label><span id='NewHScroll-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewHScroll create a scrollable parent wrapping the specified content.
+		Note that this may cause the MinSize.Width to be smaller than that of the passed object.</span>
+
+</span></div><div class="anchor value-res" id="name-NewOverlayContainer">	<input type='checkbox' class="fold" id="NewOverlayContainer-fold-content"><label for="NewOverlayContainer-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/overlay_container.go.html#line-22">NewOverlayContainer</a>(c <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>, canvas <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Canvas">Canvas</a>, onDismiss func()) *<a href="#name-OverlayContainer">OverlayContainer</a></label><span id='NewOverlayContainer-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewOverlayContainer creates an OverlayContainer.</span>
+
+</span></div><div class="anchor value-res" id="name-NewScroll">	<input type='checkbox' class="fold" id="NewScroll-fold-content"><label for="NewScroll-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-550">NewScroll</a>(content <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<a href="#name-Scroll">Scroll</a></label><span id='NewScroll-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewScroll creates a scrollable parent wrapping the specified content.
+		Note that this may cause the MinSize to be smaller than that of the passed object.</span>
+
+</span></div><div class="anchor value-res" id="name-NewShadow">	<input type='checkbox' class="fold" id="NewShadow-fold-content"><label for="NewShadow-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-48">NewShadow</a>(typ <a href="#name-ShadowType">ShadowType</a>, level <a href="#name-ElevationLevel">ElevationLevel</a>) *<a href="#name-Shadow">Shadow</a></label><span id='NewShadow-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewShadow create a new Shadow.</span>
+
+</span></div><div class="anchor value-res" id="name-NewShadowingRenderer">	<input type='checkbox' class="fold" id="NewShadowingRenderer-fold-content"><label for="NewShadowingRenderer-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadowing_renderer.go.html#line-16">NewShadowingRenderer</a>(objects []<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>, level <a href="#name-ElevationLevel">ElevationLevel</a>) *<a href="#name-ShadowingRenderer">ShadowingRenderer</a></label><span id='NewShadowingRenderer-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewShadowingRenderer creates a ShadowingRenderer.</span>
+
+</span></div><div class="anchor value-res" id="name-NewSimpleRenderer">	<input type='checkbox' class="fold" id="NewSimpleRenderer-fold-content"><label for="NewSimpleRenderer-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/simple_renderer.go.html#line-19">NewSimpleRenderer</a>(object <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<a href="#name-SimpleRenderer">SimpleRenderer</a></label><span id='NewSimpleRenderer-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewSimpleRenderer creates a new SimpleRenderer to render a widget using a
+		single CanvasObject.
+		
+		Since: 2.1</span>
+
+</span></div><div class="anchor value-res" id="name-NewVScroll">	<input type='checkbox' class="fold" id="NewVScroll-fold-content"><label for="NewVScroll-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-566">NewVScroll</a>(content <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<a href="#name-Scroll">Scroll</a></label><span id='NewVScroll-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewVScroll create a scrollable parent wrapping the specified content.
+		Note that this may cause the MinSize.Height to be smaller than that of the passed object.</span>
+
+</span></div><div class="anchor value-res" id="name-Repaint">	<input type='checkbox' class="fold" id="Repaint-fold-content"><label for="Repaint-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/base.go.html#line-132">Repaint</a>(obj <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='Repaint-fold-content-docs' class="fold-docs">
+<span class="md-text">		Repaint instructs the containing canvas to redraw, even if nothing changed.
+		This method is a duplicate of what is in `canvas/canvas.go` to avoid a dependency loop or public API.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 7 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 7 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-computeOffset"><i>	<span class="nodocs"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-539">computeOffset</a>(start, delta, outerWidth, innerWidth <a href="../../../../builtin.html#name-float32">float32</a>) <a href="../../../../builtin.html#name-float32">float32</a></span></i></div><div class="anchor value-res hidden" id="name-newScrollBar"><i>	<span class="nodocs"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-134">newScrollBar</a>(area *<a href="#name-scrollBarArea">scrollBarArea</a>) *<a href="#name-scrollBar">scrollBar</a></span></i></div><div class="anchor value-res hidden" id="name-newScrollBarArea"><i>	<span class="nodocs"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-267">newScrollBarArea</a>(scroll *<a href="#name-Scroll">Scroll</a>, orientation <a href="#name-scrollBarOrientation">scrollBarOrientation</a>) *<a href="#name-scrollBarArea">scrollBarArea</a></span></i></div><div class="anchor value-res hidden" id="name-newScrollContainerWithDirection"><i>	<span class="nodocs"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-572">newScrollContainerWithDirection</a>(direction <a href="#name-ScrollDirection">ScrollDirection</a>, content <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>) *<a href="#name-Scroll">Scroll</a></span></i></div><div class="anchor value-res hidden" id="name-updateShadowEnd"><i>	<span class="nodocs"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-172">updateShadowEnd</a>(g *<a href="../canvas.html">canvas</a>.<a href="../canvas.html#name-LinearGradient">LinearGradient</a>, fg <a href="../../../../image/color.html">color</a>.<a href="../../../../image/color.html#name-Color">Color</a>)</span></i></div><div class="anchor value-res hidden" id="name-updateShadowRadial"><i>	<span class="nodocs"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-181">updateShadowRadial</a>(g *<a href="../canvas.html">canvas</a>.<a href="../canvas.html#name-RadialGradient">RadialGradient</a>, fg <a href="../../../../image/color.html">color</a>.<a href="../../../../image/color.html#name-Color">Color</a>)</span></i></div><div class="anchor value-res hidden" id="name-updateShadowStart"><i>	<span class="nodocs"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-190">updateShadowStart</a>(g *<a href="../canvas.html">canvas</a>.<a href="../canvas.html#name-LinearGradient">LinearGradient</a>, fg <a href="../../../../image/color.html">color</a>.<a href="../../../../image/color.html#name-Color">Color</a>)</span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 19, in which 16 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-BaseLevel">	<input type='checkbox' class="fold" id="BaseLevel-fold-content"><label for="BaseLevel-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-26">BaseLevel</a> <a href="#name-ElevationLevel">ElevationLevel</a> = 0</label><span id='BaseLevel-fold-content-docs' class="fold-docs">
+<span class="md-text">		ElevationLevel constants inspired by:
+		https://storage.googleapis.com/spec-host/mio-staging%2Fmio-design%2F1584058305895%2Fassets%2F0B6xUSjjSulxceF9udnA4Sk5tdU0%2Fbaselineelevation-chart.png</span>
+
+</span></div><div class="anchor value-res" id="name-ButtonLevel">	<input type='checkbox' class="fold" id="ButtonLevel-fold-content"><label for="ButtonLevel-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-28">ButtonLevel</a> <a href="#name-ElevationLevel">ElevationLevel</a> = 2</label><span id='ButtonLevel-fold-content-docs' class="fold-docs">
+<span class="md-text">		ElevationLevel constants inspired by:
+		https://storage.googleapis.com/spec-host/mio-staging%2Fmio-design%2F1584058305895%2Fassets%2F0B6xUSjjSulxceF9udnA4Sk5tdU0%2Fbaselineelevation-chart.png</span>
+
+</span></div><div class="anchor value-res" id="name-CardLevel">	<input type='checkbox' class="fold" id="CardLevel-fold-content"><label for="CardLevel-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-27">CardLevel</a> <a href="#name-ElevationLevel">ElevationLevel</a> = 1</label><span id='CardLevel-fold-content-docs' class="fold-docs">
+<span class="md-text">		ElevationLevel constants inspired by:
+		https://storage.googleapis.com/spec-host/mio-staging%2Fmio-design%2F1584058305895%2Fassets%2F0B6xUSjjSulxceF9udnA4Sk5tdU0%2Fbaselineelevation-chart.png</span>
+
+</span></div><div class="anchor value-res" id="name-DialogLevel">	<input type='checkbox' class="fold" id="DialogLevel-fold-content"><label for="DialogLevel-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-32">DialogLevel</a> <a href="#name-ElevationLevel">ElevationLevel</a> = 24</label><span id='DialogLevel-fold-content-docs' class="fold-docs">
+<span class="md-text">		ElevationLevel constants inspired by:
+		https://storage.googleapis.com/spec-host/mio-staging%2Fmio-design%2F1584058305895%2Fassets%2F0B6xUSjjSulxceF9udnA4Sk5tdU0%2Fbaselineelevation-chart.png</span>
+
+</span></div><div class="anchor value-res" id="name-MenuLevel">	<input type='checkbox' class="fold" id="MenuLevel-fold-content"><label for="MenuLevel-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-29">MenuLevel</a> <a href="#name-ElevationLevel">ElevationLevel</a> = 4</label><span id='MenuLevel-fold-content-docs' class="fold-docs">
+<span class="md-text">		ElevationLevel constants inspired by:
+		https://storage.googleapis.com/spec-host/mio-staging%2Fmio-design%2F1584058305895%2Fassets%2F0B6xUSjjSulxceF9udnA4Sk5tdU0%2Fbaselineelevation-chart.png</span>
+
+</span></div><div class="anchor value-res" id="name-PopUpLevel">	<input type='checkbox' class="fold" id="PopUpLevel-fold-content"><label for="PopUpLevel-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-30">PopUpLevel</a> <a href="#name-ElevationLevel">ElevationLevel</a> = 8</label><span id='PopUpLevel-fold-content-docs' class="fold-docs">
+<span class="md-text">		ElevationLevel constants inspired by:
+		https://storage.googleapis.com/spec-host/mio-staging%2Fmio-design%2F1584058305895%2Fassets%2F0B6xUSjjSulxceF9udnA4Sk5tdU0%2Fbaselineelevation-chart.png</span>
+
+</span></div><div class="anchor value-res" id="name-ScrollBoth">	<input type='checkbox' class="fold" id="ScrollBoth-fold-content"><label for="ScrollBoth-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-17">ScrollBoth</a> <a href="#name-ScrollDirection">ScrollDirection</a> = 0</label><span id='ScrollBoth-fold-content-docs' class="fold-docs">
+<span class="md-text">		ScrollBoth supports horizontal and vertical scrolling.</span>
+
+</span></div><div class="anchor value-res" id="name-ScrollHorizontalOnly">	<input type='checkbox' class="fold" id="ScrollHorizontalOnly-fold-content"><label for="ScrollHorizontalOnly-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-19">ScrollHorizontalOnly</a> <a href="#name-ScrollDirection">ScrollDirection</a> = 1</label><span id='ScrollHorizontalOnly-fold-content-docs' class="fold-docs">
+<span class="md-text">		ScrollHorizontalOnly specifies the scrolling should only happen left to right.</span>
+
+</span></div><div class="anchor value-res" id="name-ScrollNone">	<input type='checkbox' class="fold" id="ScrollNone-fold-content"><label for="ScrollNone-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-25">ScrollNone</a> <a href="#name-ScrollDirection">ScrollDirection</a> = 3</label><span id='ScrollNone-fold-content-docs' class="fold-docs">
+<span class="md-text">		ScrollNone turns off scrolling for this container.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-ScrollVerticalOnly">	<input type='checkbox' class="fold" id="ScrollVerticalOnly-fold-content"><label for="ScrollVerticalOnly-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-21">ScrollVerticalOnly</a> <a href="#name-ScrollDirection">ScrollDirection</a> = 2</label><span id='ScrollVerticalOnly-fold-content-docs' class="fold-docs">
+<span class="md-text">		ScrollVerticalOnly specifies the scrolling should only happen top to bottom.</span>
+
+</span></div><div class="anchor value-res" id="name-ShadowAround">	<input type='checkbox' class="fold" id="ShadowAround-fold-content"><label for="ShadowAround-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-40">ShadowAround</a> <a href="#name-ShadowType">ShadowType</a> = 0</label><span id='ShadowAround-fold-content-docs' class="fold-docs">
+<span class="md-text">		ShadowType constants</span>
+
+</span></div><div class="anchor value-res" id="name-ShadowBottom">	<input type='checkbox' class="fold" id="ShadowBottom-fold-content"><label for="ShadowBottom-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-43">ShadowBottom</a> <a href="#name-ShadowType">ShadowType</a> = 3</label><span id='ShadowBottom-fold-content-docs' class="fold-docs">
+<span class="md-text">		ShadowType constants</span>
+
+</span></div><div class="anchor value-res" id="name-ShadowLeft">	<input type='checkbox' class="fold" id="ShadowLeft-fold-content"><label for="ShadowLeft-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-41">ShadowLeft</a> <a href="#name-ShadowType">ShadowType</a> = 1</label><span id='ShadowLeft-fold-content-docs' class="fold-docs">
+<span class="md-text">		ShadowType constants</span>
+
+</span></div><div class="anchor value-res" id="name-ShadowRight">	<input type='checkbox' class="fold" id="ShadowRight-fold-content"><label for="ShadowRight-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-42">ShadowRight</a> <a href="#name-ShadowType">ShadowType</a> = 2</label><span id='ShadowRight-fold-content-docs' class="fold-docs">
+<span class="md-text">		ShadowType constants</span>
+
+</span></div><div class="anchor value-res" id="name-ShadowTop">	<input type='checkbox' class="fold" id="ShadowTop-fold-content"><label for="ShadowTop-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-44">ShadowTop</a> <a href="#name-ShadowType">ShadowType</a> = 4</label><span id='ShadowTop-fold-content-docs' class="fold-docs">
+<span class="md-text">		ShadowType constants</span>
+
+</span></div><div class="anchor value-res" id="name-SubmergedContentLevel">	<input type='checkbox' class="fold" id="SubmergedContentLevel-fold-content"><label for="SubmergedContentLevel-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/shadow.go.html#line-31">SubmergedContentLevel</a> <a href="#name-ElevationLevel">ElevationLevel</a> = 8</label><span id='SubmergedContentLevel-fold-content-docs' class="fold-docs">
+<span class="md-text">		ElevationLevel constants inspired by:
+		https://storage.googleapis.com/spec-host/mio-staging%2Fmio-design%2F1584058305895%2Fassets%2F0B6xUSjjSulxceF9udnA4Sk5tdU0%2Fbaselineelevation-chart.png</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-scrollBarOrientationHorizontal"><i>	<input type='checkbox' class="fold" id="scrollBarOrientationHorizontal-fold-content"><label for="scrollBarOrientationHorizontal-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-33">scrollBarOrientationHorizontal</a> <a href="#name-scrollBarOrientation">scrollBarOrientation</a> = 1</label><span id='scrollBarOrientationHorizontal-fold-content-docs' class="fold-docs">
+<span class="md-text">		We default to vertical as 0 due to that being the original orientation offered</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-scrollBarOrientationVertical"><i>	<input type='checkbox' class="fold" id="scrollBarOrientationVertical-fold-content"><label for="scrollBarOrientationVertical-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-32">scrollBarOrientationVertical</a> <a href="#name-scrollBarOrientation">scrollBarOrientation</a> = 0</label><span id='scrollBarOrientationVertical-fold-content-docs' class="fold-docs">
+<span class="md-text">		We default to vertical as 0 due to that being the original orientation offered</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-scrollContainerMinSize"><i>	<input type='checkbox' class="fold" id="scrollContainerMinSize-fold-content"><label for="scrollContainerMinSize-fold-content">const <a href="../../../../../src/fyne.io/fyne/v2/internal/widget/scroller.go.html#line-34">scrollContainerMinSize</a> <a href="../../../../builtin.html#name-float32">float32</a> = 32 // <span class="md-text">TODO consider the smallest useful scroll view?</span></label><span id='scrollContainerMinSize-fold-content-docs' class="fold-docs">
+<span class="md-text">		We default to vertical as 0 due to that being the original orientation offered</span>
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

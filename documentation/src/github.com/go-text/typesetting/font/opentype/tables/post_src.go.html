@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: post_src.go in package github.com/go-text/typesetting/font/opentype/tables</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	post_src.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html">github.com/go-text/typesetting/font/opentype/tables</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2]
+{background: #226; color: #ff8;}
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> tables</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// PostScript table</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">// See https://learn.microsoft.com/en-us/typography/opentype/spec/post</span></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-Post" class="ident">Post</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-8"><code>	version     <a href="#line-30" class="ident">postVersion</a></code></span>
+<span class="codeline" id="line-9"><code>	italicAngle <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-10"><code>	<span class="comment">// UnderlinePosition is the suggested distance of the top of the</span></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">	// underline from the baseline (negative values indicate below baseline).</span></code></span>
+<span class="codeline" id="line-12"><code>	UnderlinePosition <a href="../../../../../../../pkg/builtin.html#name-int16" class="ident">int16</a></code></span>
+<span class="codeline" id="line-13"><code>	<span class="comment">// Suggested values for the underline thickness.</span></code></span>
+<span class="codeline" id="line-14"><code>	UnderlineThickness <a href="../../../../../../../pkg/builtin.html#name-int16" class="ident">int16</a></code></span>
+<span class="codeline" id="line-15"><code>	<span class="comment">// IsFixedPitch indicates that the font is not proportionally spaced</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">	// (i.e. monospaced).</span></code></span>
+<span class="codeline" id="line-17"><code>	IsFixedPitch <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-18"><code>	memoryUsage  [<span class="lit-number">4</span>]<a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-19"><code>	Names        <a href="#line-22" class="ident">PostNames</a> <span class="lit-string">`unionField:"version"`</span></code></span>
+<span class="codeline" id="line-20"><code>}</code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PostNames" class="ident">PostNames</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-23"><code>	<a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.PostNames.html#name-github.com/go-text/typesetting/font/opentype/tables.isPostNames" class="ident">isPostNames</a>()</code></span>
+<span class="codeline" id="line-24"><code>}</code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">func</span> (<a href="#line-38" class="ident">PostNames10</a>) <label for="r0" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.PostNames10.html#name-isPostNames" class="ident">isPostNames</a></label>() {}</code></span>
+<span class="codeline" id="line-27"><code><span class="keyword">func</span> (<a href="#line-40" class="ident">PostNames20</a>) <label for="r1" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.PostNames20.html#name-isPostNames" class="ident">isPostNames</a></label>() {}</code></span>
+<span class="codeline" id="line-28"><code><span class="keyword">func</span> (<a href="#line-45" class="ident">PostNames30</a>) <label for="r2" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.PostNames30.html#name-isPostNames" class="ident">isPostNames</a></label>() {}</code></span>
+<span class="codeline" id="line-29"><code></code></span>
+<span class="codeline" id="line-30"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-postVersion" class="ident">postVersion</a> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-postVersion10" class="ident">postVersion10</a> <a href="#line-30" class="ident">postVersion</a> = <span class="lit-number">0x00010000</span></code></span>
+<span class="codeline" id="line-34"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-postVersion20" class="ident">postVersion20</a> <a href="#line-30" class="ident">postVersion</a> = <span class="lit-number">0x00020000</span></code></span>
+<span class="codeline" id="line-35"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-postVersion30" class="ident">postVersion30</a> <a href="#line-30" class="ident">postVersion</a> = <span class="lit-number">0x00030000</span></code></span>
+<span class="codeline" id="line-36"><code>)</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PostNames10" class="ident">PostNames10</a> <span class="keyword">struct</span>{}</code></span>
+<span class="codeline" id="line-39"><code></code></span>
+<span class="codeline" id="line-40"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PostNames20" class="ident">PostNames20</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-41"><code>	GlyphNameIndexes []<a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="lit-string">`arrayCount:"FirstUint16"`</span> <span class="comment">// size numGlyph</span></code></span>
+<span class="codeline" id="line-42"><code>	StringData       []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>   <span class="lit-string">`arrayCount:"ToEnd"`</span></code></span>
+<span class="codeline" id="line-43"><code>}</code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-PostNames30" class="ident">PostNames30</a> <a href="#line-38" class="ident">PostNames10</a></code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

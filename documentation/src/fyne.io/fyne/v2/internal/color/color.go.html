@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: color.go in package fyne.io/fyne/v2/internal/color</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	color.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/color.html">fyne.io/fyne/v2/internal/color</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> color</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"image/color"</span></label></code></span>
+<span class="codeline" id="line-5"><code>)</code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// ToNRGBA converts a color to RGBA values which are not premultiplied, unlike color.RGBA().</span></code></span>
+<span class="codeline" id="line-8"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/internal/color.html#name-ToNRGBA" class="ident">ToNRGBA</a></label>(<label for="r1" class="ident">c</label> <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-10" class="ident">Color</a>) (<label for="r2" class="ident">r</label>, <label for="r3" class="ident">g</label>, <label for="r4" class="ident">b</label>, <label for="r5" class="ident">a</label> <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-9"><code>	<span class="comment">// We use UnmultiplyAlpha with RGBA, RGBA64, and unrecognized implementations of Color.</span></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">	// It works for all Colors whose RGBA() method is implemented according to spec, but is only necessary for those.</span></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">	// Only RGBA and RGBA64 have components which are already premultiplied.</span></code></span>
+<span class="codeline" id="line-12"><code>	<span class="keyword">switch</span> col := <label for="r1" class="ident">c</label>.(<span class="keyword">type</span>) {</code></span>
+<span class="codeline" id="line-13"><code>	<span class="comment">// NRGBA and NRGBA64 are not premultiplied</span></code></span>
+<span class="codeline" id="line-14"><code>	<span class="keyword">case</span> <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>:</code></span>
+<span class="codeline" id="line-15"><code>		<label for="r2" class="ident">r</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r6" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>)</code></span>
+<span class="codeline" id="line-16"><code>		<label for="r3" class="ident">g</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r6" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>)</code></span>
+<span class="codeline" id="line-17"><code>		<label for="r4" class="ident">b</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r6" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>)</code></span>
+<span class="codeline" id="line-18"><code>		<label for="r5" class="ident">a</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r6" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>)</code></span>
+<span class="codeline" id="line-19"><code>	<span class="keyword">case</span> *<a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>:</code></span>
+<span class="codeline" id="line-20"><code>		<label for="r2" class="ident">r</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r7" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>)</code></span>
+<span class="codeline" id="line-21"><code>		<label for="r3" class="ident">g</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r7" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>)</code></span>
+<span class="codeline" id="line-22"><code>		<label for="r4" class="ident">b</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r7" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>)</code></span>
+<span class="codeline" id="line-23"><code>		<label for="r5" class="ident">a</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r7" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>)</code></span>
+<span class="codeline" id="line-24"><code>	<span class="keyword">case</span> <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-80" class="ident">NRGBA64</a>:</code></span>
+<span class="codeline" id="line-25"><code>		<label for="r2" class="ident">r</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r8" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-81" class="ident">R</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-26"><code>		<label for="r3" class="ident">g</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r8" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-81" class="ident">G</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-27"><code>		<label for="r4" class="ident">b</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r8" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-81" class="ident">B</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-28"><code>		<label for="r5" class="ident">a</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r8" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-81" class="ident">A</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-29"><code>	<span class="keyword">case</span> *<a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-80" class="ident">NRGBA64</a>:</code></span>
+<span class="codeline" id="line-30"><code>		<label for="r2" class="ident">r</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r9" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-81" class="ident">R</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-31"><code>		<label for="r3" class="ident">g</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r9" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-81" class="ident">G</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-32"><code>		<label for="r4" class="ident">b</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r9" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-81" class="ident">B</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-33"><code>		<label for="r5" class="ident">a</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r9" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-81" class="ident">A</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-34"><code>	<span class="comment">// Gray and Gray16 have no alpha component</span></code></span>
+<span class="codeline" id="line-35"><code>	<span class="keyword">case</span> *<a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-120" class="ident">Gray</a>:</code></span>
+<span class="codeline" id="line-36"><code>		<label for="r2" class="ident">r</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r10" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-121" class="ident">Y</a>)</code></span>
+<span class="codeline" id="line-37"><code>		<label for="r3" class="ident">g</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r10" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-121" class="ident">Y</a>)</code></span>
+<span class="codeline" id="line-38"><code>		<label for="r4" class="ident">b</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r10" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-121" class="ident">Y</a>)</code></span>
+<span class="codeline" id="line-39"><code>		<label for="r5" class="ident">a</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-40"><code>	<span class="keyword">case</span> <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-120" class="ident">Gray</a>:</code></span>
+<span class="codeline" id="line-41"><code>		<label for="r2" class="ident">r</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r11" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-121" class="ident">Y</a>)</code></span>
+<span class="codeline" id="line-42"><code>		<label for="r3" class="ident">g</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r11" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-121" class="ident">Y</a>)</code></span>
+<span class="codeline" id="line-43"><code>		<label for="r4" class="ident">b</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r11" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-121" class="ident">Y</a>)</code></span>
+<span class="codeline" id="line-44"><code>		<label for="r5" class="ident">a</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-45"><code>	<span class="keyword">case</span> *<a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-131" class="ident">Gray16</a>:</code></span>
+<span class="codeline" id="line-46"><code>		<label for="r2" class="ident">r</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r12" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-132" class="ident">Y</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-47"><code>		<label for="r3" class="ident">g</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r12" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-132" class="ident">Y</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-48"><code>		<label for="r4" class="ident">b</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r12" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-132" class="ident">Y</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-49"><code>		<label for="r5" class="ident">a</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-50"><code>	<span class="keyword">case</span> <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-131" class="ident">Gray16</a>:</code></span>
+<span class="codeline" id="line-51"><code>		<label for="r2" class="ident">r</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r13" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-132" class="ident">Y</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-52"><code>		<label for="r3" class="ident">g</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r13" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-132" class="ident">Y</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-53"><code>		<label for="r4" class="ident">b</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r13" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-132" class="ident">Y</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-54"><code>		<label for="r5" class="ident">a</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-55"><code>	<span class="comment">// Alpha and Alpha16 contain only an alpha component.</span></code></span>
+<span class="codeline" id="line-56"><code>	<span class="keyword">case</span> <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-99" class="ident">Alpha</a>:</code></span>
+<span class="codeline" id="line-57"><code>		<label for="r2" class="ident">r</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-58"><code>		<label for="r3" class="ident">g</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-59"><code>		<label for="r4" class="ident">b</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-60"><code>		<label for="r5" class="ident">a</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r14" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-100" class="ident">A</a>)</code></span>
+<span class="codeline" id="line-61"><code>	<span class="keyword">case</span> *<a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-99" class="ident">Alpha</a>:</code></span>
+<span class="codeline" id="line-62"><code>		<label for="r2" class="ident">r</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-63"><code>		<label for="r3" class="ident">g</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-64"><code>		<label for="r4" class="ident">b</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-65"><code>		<label for="r5" class="ident">a</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r15" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-100" class="ident">A</a>)</code></span>
+<span class="codeline" id="line-66"><code>	<span class="keyword">case</span> <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-110" class="ident">Alpha16</a>:</code></span>
+<span class="codeline" id="line-67"><code>		<label for="r2" class="ident">r</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-68"><code>		<label for="r3" class="ident">g</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-69"><code>		<label for="r4" class="ident">b</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-70"><code>		<label for="r5" class="ident">a</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r16" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-111" class="ident">A</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-71"><code>	<span class="keyword">case</span> *<a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-110" class="ident">Alpha16</a>:</code></span>
+<span class="codeline" id="line-72"><code>		<label for="r2" class="ident">r</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-73"><code>		<label for="r3" class="ident">g</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-74"><code>		<label for="r4" class="ident">b</label> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-75"><code>		<label for="r5" class="ident">a</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r17" class="ident">col</label>.<a href="../../../../../image/color/color.go.html#line-111" class="ident">A</a>) &gt;&gt; <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-76"><code>	<span class="keyword">default</span>: <span class="comment">// RGBA, RGBA64, and unknown implementations of Color</span></code></span>
+<span class="codeline" id="line-77"><code>		<label for="r2" class="ident">r</label>, <label for="r3" class="ident">g</label>, <label for="r4" class="ident">b</label>, <label for="r5" class="ident">a</label> = <a href="#line-84" class="ident">unmultiplyAlpha</a>(<label for="r1" class="ident">c</label>)</code></span>
+<span class="codeline" id="line-78"><code>	}</code></span>
+<span class="codeline" id="line-79"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-80"><code>}</code></span>
+<span class="codeline" id="line-81"><code></code></span>
+<span class="codeline" id="line-82"><code><span class="comment">// unmultiplyAlpha returns a color's RGBA components as 8-bit integers by calling c.RGBA() and then removing the alpha premultiplication.</span></code></span>
+<span class="codeline" id="line-83"><code><span class="comment">// It is only used by ToRGBA.</span></code></span>
+<span class="codeline" id="line-84"><code><span class="keyword">func</span> <label for="r18" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/internal/color.html#name-unmultiplyAlpha" class="ident">unmultiplyAlpha</a></label>(<label for="r19" class="ident">c</label> <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-10" class="ident">Color</a>) (<label for="r20" class="ident">r</label>, <label for="r21" class="ident">g</label>, <label for="r22" class="ident">b</label>, <label for="r23" class="ident">a</label> <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-85"><code>	<label for="r24" class="ident">red</label>, <label for="r25" class="ident">green</label>, <label for="r26" class="ident">blue</label>, <label for="r27" class="ident">alpha</label> := <label for="r19" class="ident">c</label>.<a href="../../../../../image/color/color.go.html#line-18" class="ident">RGBA</a>()</code></span>
+<span class="codeline" id="line-86"><code>	<span class="keyword">if</span> <label for="r27" class="ident">alpha</label> != <span class="lit-number">0</span> &amp;&amp; <label for="r27" class="ident">alpha</label> != <span class="lit-number">0xffff</span> {</code></span>
+<span class="codeline" id="line-87"><code>		<label for="r24" class="ident">red</label> = (<label for="r24" class="ident">red</label> * <span class="lit-number">0xffff</span>) / <label for="r27" class="ident">alpha</label></code></span>
+<span class="codeline" id="line-88"><code>		<label for="r25" class="ident">green</label> = (<label for="r25" class="ident">green</label> * <span class="lit-number">0xffff</span>) / <label for="r27" class="ident">alpha</label></code></span>
+<span class="codeline" id="line-89"><code>		<label for="r26" class="ident">blue</label> = (<label for="r26" class="ident">blue</label> * <span class="lit-number">0xffff</span>) / <label for="r27" class="ident">alpha</label></code></span>
+<span class="codeline" id="line-90"><code>	}</code></span>
+<span class="codeline" id="line-91"><code>	<span class="comment">// Convert from range 0-65535 to range 0-255</span></code></span>
+<span class="codeline" id="line-92"><code>	<label for="r20" class="ident">r</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r24" class="ident">red</label> &gt;&gt; <span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-93"><code>	<label for="r21" class="ident">g</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r25" class="ident">green</label> &gt;&gt; <span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-94"><code>	<label for="r22" class="ident">b</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r26" class="ident">blue</label> &gt;&gt; <span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-95"><code>	<label for="r23" class="ident">a</label> = <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r27" class="ident">alpha</label> &gt;&gt; <span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-96"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-97"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

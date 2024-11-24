@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: dns.go in package github.com/fredbi/uri</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	dns.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/fredbi/uri.html">github.com/fredbi/uri</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0]
+{background: #226; color: #ff8;}
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> uri</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// UsesDNSHostValidation returns true if the provided scheme has host validation</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// that does not follow RFC3986 (which is quite generic), and assumes a valid</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// DNS hostname instead.</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// This function is declared as a global variable that may be overridden at the package level,</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// in case you need specific schemes to validate the host as a DNS name.</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">// See: https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml</span></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/fredbi/uri.html#name-UsesDNSHostValidation" class="ident">UsesDNSHostValidation</a> = <span class="keyword">func</span>(<label for="r0" class="ident">scheme</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-12"><code>	<span class="keyword">switch</span> <label for="r0" class="ident">scheme</label> {</code></span>
+<span class="codeline" id="line-13"><code>	<span class="keyword">case</span> <span class="lit-string">"dns"</span>:</code></span>
+<span class="codeline" id="line-14"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-15"><code>	<span class="keyword">case</span> <span class="lit-string">"dntp"</span>:</code></span>
+<span class="codeline" id="line-16"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-17"><code>	<span class="keyword">case</span> <span class="lit-string">"finger"</span>:</code></span>
+<span class="codeline" id="line-18"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-19"><code>	<span class="keyword">case</span> <span class="lit-string">"ftp"</span>:</code></span>
+<span class="codeline" id="line-20"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-21"><code>	<span class="keyword">case</span> <span class="lit-string">"git"</span>:</code></span>
+<span class="codeline" id="line-22"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-23"><code>	<span class="keyword">case</span> <span class="lit-string">"http"</span>:</code></span>
+<span class="codeline" id="line-24"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-25"><code>	<span class="keyword">case</span> <span class="lit-string">"https"</span>:</code></span>
+<span class="codeline" id="line-26"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-27"><code>	<span class="keyword">case</span> <span class="lit-string">"imap"</span>:</code></span>
+<span class="codeline" id="line-28"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-29"><code>	<span class="keyword">case</span> <span class="lit-string">"irc"</span>:</code></span>
+<span class="codeline" id="line-30"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-31"><code>	<span class="keyword">case</span> <span class="lit-string">"jms"</span>:</code></span>
+<span class="codeline" id="line-32"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-33"><code>	<span class="keyword">case</span> <span class="lit-string">"mailto"</span>:</code></span>
+<span class="codeline" id="line-34"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-35"><code>	<span class="keyword">case</span> <span class="lit-string">"nfs"</span>:</code></span>
+<span class="codeline" id="line-36"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-37"><code>	<span class="keyword">case</span> <span class="lit-string">"nntp"</span>:</code></span>
+<span class="codeline" id="line-38"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-39"><code>	<span class="keyword">case</span> <span class="lit-string">"ntp"</span>:</code></span>
+<span class="codeline" id="line-40"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-41"><code>	<span class="keyword">case</span> <span class="lit-string">"postgres"</span>:</code></span>
+<span class="codeline" id="line-42"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-43"><code>	<span class="keyword">case</span> <span class="lit-string">"redis"</span>:</code></span>
+<span class="codeline" id="line-44"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-45"><code>	<span class="keyword">case</span> <span class="lit-string">"rmi"</span>:</code></span>
+<span class="codeline" id="line-46"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-47"><code>	<span class="keyword">case</span> <span class="lit-string">"rtsp"</span>:</code></span>
+<span class="codeline" id="line-48"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-49"><code>	<span class="keyword">case</span> <span class="lit-string">"rsync"</span>:</code></span>
+<span class="codeline" id="line-50"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-51"><code>	<span class="keyword">case</span> <span class="lit-string">"sftp"</span>:</code></span>
+<span class="codeline" id="line-52"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-53"><code>	<span class="keyword">case</span> <span class="lit-string">"skype"</span>:</code></span>
+<span class="codeline" id="line-54"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-55"><code>	<span class="keyword">case</span> <span class="lit-string">"smtp"</span>:</code></span>
+<span class="codeline" id="line-56"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-57"><code>	<span class="keyword">case</span> <span class="lit-string">"snmp"</span>:</code></span>
+<span class="codeline" id="line-58"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-59"><code>	<span class="keyword">case</span> <span class="lit-string">"soap"</span>:</code></span>
+<span class="codeline" id="line-60"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-61"><code>	<span class="keyword">case</span> <span class="lit-string">"ssh"</span>:</code></span>
+<span class="codeline" id="line-62"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-63"><code>	<span class="keyword">case</span> <span class="lit-string">"steam"</span>:</code></span>
+<span class="codeline" id="line-64"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-65"><code>	<span class="keyword">case</span> <span class="lit-string">"svn"</span>:</code></span>
+<span class="codeline" id="line-66"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-67"><code>	<span class="keyword">case</span> <span class="lit-string">"tcp"</span>:</code></span>
+<span class="codeline" id="line-68"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-69"><code>	<span class="keyword">case</span> <span class="lit-string">"telnet"</span>:</code></span>
+<span class="codeline" id="line-70"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-71"><code>	<span class="keyword">case</span> <span class="lit-string">"udp"</span>:</code></span>
+<span class="codeline" id="line-72"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-73"><code>	<span class="keyword">case</span> <span class="lit-string">"vnc"</span>:</code></span>
+<span class="codeline" id="line-74"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-75"><code>	<span class="keyword">case</span> <span class="lit-string">"wais"</span>:</code></span>
+<span class="codeline" id="line-76"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-77"><code>	<span class="keyword">case</span> <span class="lit-string">"ws"</span>:</code></span>
+<span class="codeline" id="line-78"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-79"><code>	<span class="keyword">case</span> <span class="lit-string">"wss"</span>:</code></span>
+<span class="codeline" id="line-80"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-81"><code>	}</code></span>
+<span class="codeline" id="line-82"><code></code></span>
+<span class="codeline" id="line-83"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-84"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: key.go in package fyne.io/fyne/v2/driver/desktop</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	key.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html">fyne.io/fyne/v2/driver/desktop</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> desktop</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-5"><code>)</code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-8"><code>	<span class="comment">// KeyNone represents no key</span></code></span>
+<span class="codeline" id="line-9"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-KeyNone" class="ident">KeyNone</a> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-4" class="ident">KeyName</a> = <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-10"><code>	<span class="comment">// KeyShiftLeft represents the left shift key</span></code></span>
+<span class="codeline" id="line-11"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-KeyShiftLeft" class="ident">KeyShiftLeft</a> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-4" class="ident">KeyName</a> = <span class="lit-string">"LeftShift"</span></code></span>
+<span class="codeline" id="line-12"><code>	<span class="comment">// KeyShiftRight represents the right shift key</span></code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-KeyShiftRight" class="ident">KeyShiftRight</a> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-4" class="ident">KeyName</a> = <span class="lit-string">"RightShift"</span></code></span>
+<span class="codeline" id="line-14"><code>	<span class="comment">// KeyControlLeft represents the left control key</span></code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-KeyControlLeft" class="ident">KeyControlLeft</a> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-4" class="ident">KeyName</a> = <span class="lit-string">"LeftControl"</span></code></span>
+<span class="codeline" id="line-16"><code>	<span class="comment">// KeyControlRight represents the right control key</span></code></span>
+<span class="codeline" id="line-17"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-KeyControlRight" class="ident">KeyControlRight</a> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-4" class="ident">KeyName</a> = <span class="lit-string">"RightControl"</span></code></span>
+<span class="codeline" id="line-18"><code>	<span class="comment">// KeyAltLeft represents the left alt key</span></code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-KeyAltLeft" class="ident">KeyAltLeft</a> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-4" class="ident">KeyName</a> = <span class="lit-string">"LeftAlt"</span></code></span>
+<span class="codeline" id="line-20"><code>	<span class="comment">// KeyAltRight represents the right alt key</span></code></span>
+<span class="codeline" id="line-21"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-KeyAltRight" class="ident">KeyAltRight</a> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-4" class="ident">KeyName</a> = <span class="lit-string">"RightAlt"</span></code></span>
+<span class="codeline" id="line-22"><code>	<span class="comment">// KeySuperLeft represents the left "Windows" key (or "Command" key on macOS)</span></code></span>
+<span class="codeline" id="line-23"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-KeySuperLeft" class="ident">KeySuperLeft</a> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-4" class="ident">KeyName</a> = <span class="lit-string">"LeftSuper"</span></code></span>
+<span class="codeline" id="line-24"><code>	<span class="comment">// KeySuperRight represents the right "Windows" key (or "Command" key on macOS)</span></code></span>
+<span class="codeline" id="line-25"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-KeySuperRight" class="ident">KeySuperRight</a> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-4" class="ident">KeyName</a> = <span class="lit-string">"RightSuper"</span></code></span>
+<span class="codeline" id="line-26"><code>	<span class="comment">// KeyMenu represents the left or right menu / application key</span></code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-KeyMenu" class="ident">KeyMenu</a> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-4" class="ident">KeyName</a> = <span class="lit-string">"Menu"</span></code></span>
+<span class="codeline" id="line-28"><code>	<span class="comment">// KeyPrintScreen represents the key used to cause a screen capture</span></code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-KeyPrintScreen" class="ident">KeyPrintScreen</a> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-4" class="ident">KeyName</a> = <span class="lit-string">"PrintScreen"</span></code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code>	<span class="comment">// KeyCapsLock represents the caps lock key, tapping once is the down event then again is the up</span></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-KeyCapsLock" class="ident">KeyCapsLock</a> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-4" class="ident">KeyName</a> = <span class="lit-string">"CapsLock"</span></code></span>
+<span class="codeline" id="line-33"><code>)</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">// Modifier captures any key modifiers (shift etc.) pressed during a key event</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">// Deprecated: Use fyne.KeyModifier instead.</span></code></span>
+<span class="codeline" id="line-38"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-Modifier" class="ident">Modifier</a> = <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-181" class="ident">KeyModifier</a></code></span>
+<span class="codeline" id="line-39"><code></code></span>
+<span class="codeline" id="line-40"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-41"><code>	<span class="comment">// ShiftModifier represents a shift key being held</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-43"><code><span class="comment">	// Deprecated: Use fyne.KeyModifierShift instead.</span></code></span>
+<span class="codeline" id="line-44"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-ShiftModifier" class="ident">ShiftModifier</a> = <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-187" class="ident">KeyModifierShift</a></code></span>
+<span class="codeline" id="line-45"><code>	<span class="comment">// ControlModifier represents the ctrl key being held</span></code></span>
+<span class="codeline" id="line-46"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">	// Deprecated: Use fyne.KeyModifierControl instead.</span></code></span>
+<span class="codeline" id="line-48"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-ControlModifier" class="ident">ControlModifier</a> = <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-191" class="ident">KeyModifierControl</a></code></span>
+<span class="codeline" id="line-49"><code>	<span class="comment">// AltModifier represents either alt keys being held</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">	// Deprecated: Use fyne.KeyModifierAlt instead.</span></code></span>
+<span class="codeline" id="line-52"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-AltModifier" class="ident">AltModifier</a> = <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-195" class="ident">KeyModifierAlt</a></code></span>
+<span class="codeline" id="line-53"><code>	<span class="comment">// SuperModifier represents either super keys being held</span></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-55"><code><span class="comment">	// Deprecated: Use fyne.KeyModifierSuper instead.</span></code></span>
+<span class="codeline" id="line-56"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-SuperModifier" class="ident">SuperModifier</a> = <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-199" class="ident">KeyModifierSuper</a></code></span>
+<span class="codeline" id="line-57"><code>)</code></span>
+<span class="codeline" id="line-58"><code></code></span>
+<span class="codeline" id="line-59"><code><span class="comment">// Keyable describes any focusable canvas object that can accept desktop key events.</span></code></span>
+<span class="codeline" id="line-60"><code><span class="comment">// This is the traditional key down and up event that is not applicable to all devices.</span></code></span>
+<span class="codeline" id="line-61"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-Keyable" class="ident">Keyable</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-62"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../canvasobject.go.html#line-66" class="ident">Focusable</a></code></span>
+<span class="codeline" id="line-63"><code></code></span>
+<span class="codeline" id="line-64"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/driver/desktop.Keyable.html#name-KeyDown" class="ident">KeyDown</a>(*<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../event.go.html#line-11" class="ident">KeyEvent</a>)</code></span>
+<span class="codeline" id="line-65"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/driver/desktop.Keyable.html#name-KeyUp" class="ident">KeyUp</a>(*<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../event.go.html#line-11" class="ident">KeyEvent</a>)</code></span>
+<span class="codeline" id="line-66"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

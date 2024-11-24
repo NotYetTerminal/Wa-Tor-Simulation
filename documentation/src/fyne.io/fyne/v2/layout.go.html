@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: layout.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	layout.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// Layout defines how [CanvasObject]s may be laid out in a specified Size.</span></code></span>
+<span class="codeline" id="line-4"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Layout" class="ident">Layout</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-5"><code>	<span class="comment">// Layout will manipulate the listed [CanvasObject]s Size and Position</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">	// to fit within the specified size.</span></code></span>
+<span class="codeline" id="line-7"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Layout.html#name-Layout" class="ident">Layout</a>([]<a href="canvasobject.go.html#line-10" class="ident">CanvasObject</a>, <a href="geometry.go.html#line-91" class="ident">Size</a>)</code></span>
+<span class="codeline" id="line-8"><code>	<span class="comment">// MinSize calculates the smallest size that will fit the listed</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">	// [CanvasObject]s using this Layout algorithm.</span></code></span>
+<span class="codeline" id="line-10"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Layout.html#name-MinSize" class="ident">MinSize</a>(objects []<a href="canvasobject.go.html#line-10" class="ident">CanvasObject</a>) <a href="geometry.go.html#line-91" class="ident">Size</a></code></span>
+<span class="codeline" id="line-11"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

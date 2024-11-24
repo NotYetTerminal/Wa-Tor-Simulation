@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: theme_xdg.go in package fyne.io/fyne/v2/internal/app</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	theme_xdg.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/app.html">fyne.io/fyne/v2/internal/app</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">//go:build !wasm &amp;&amp; !test_web_driver &amp;&amp; !android &amp;&amp; !ios &amp;&amp; !mobile &amp;&amp; (linux || openbsd || freebsd || netbsd)</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> app</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<label for="i0"><span class="lit-string i0">"sync/atomic"</span></label></code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i1"><span class="lit-string i1">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-9"><code>)</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// CurrentVariant contains the system’s theme variant.</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// It is intended for internal use, only!</span></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">var</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/internal/app.html#name-CurrentVariant" class="ident">CurrentVariant</a> <a href="../../../../../../pkg/sync/atomic.html" class="ident i0">atomic</a>.<a href="../../../../../sync/atomic/type.go.html#line-162" class="ident">Uint64</a></code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// DefaultVariant returns the systems default fyne.ThemeVariant.</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// Normally, you should not need this. It is extracted out of the root app package to give the</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// settings app access to it.</span></code></span>
+<span class="codeline" id="line-18"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/internal/app.html#name-DefaultVariant" class="ident">DefaultVariant</a></label>() <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i1">fyne</a>.<a href="../../theme.go.html#line-8" class="ident">ThemeVariant</a> {</code></span>
+<span class="codeline" id="line-19"><code>	<span class="keyword">return</span> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i1">fyne</a>.<a href="../../theme.go.html#line-8" class="ident">ThemeVariant</a>(<a href="#line-13" class="ident">CurrentVariant</a>.<a href="../../../../../sync/atomic/type.go.html#line-169" class="ident">Load</a>())</code></span>
+<span class="codeline" id="line-20"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

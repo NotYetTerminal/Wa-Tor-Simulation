@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: preferences.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	preferences.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// Preferences describes the ways that an app can save and load user preferences</span></code></span>
+<span class="codeline" id="line-4"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Preferences" class="ident">Preferences</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-5"><code>	<span class="comment">// Bool looks up a bool value for the key</span></code></span>
+<span class="codeline" id="line-6"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-Bool" class="ident">Bool</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-7"><code>	<span class="comment">// BoolWithFallback looks up a bool value and returns the given fallback if not found</span></code></span>
+<span class="codeline" id="line-8"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-BoolWithFallback" class="ident">BoolWithFallback</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, fallback <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-9"><code>	<span class="comment">// SetBool saves a bool value for the given key</span></code></span>
+<span class="codeline" id="line-10"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-SetBool" class="ident">SetBool</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, value <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>)</code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code>	<span class="comment">// BoolList looks up a list of bool values for the key</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">	// Since: 2.4</span></code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-BoolList" class="ident">BoolList</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) []<a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-16"><code>	<span class="comment">// BoolListWithFallback looks up a list of bool values and returns the given fallback if not found</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">	// Since: 2.4</span></code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-BoolListWithFallback" class="ident">BoolListWithFallback</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, fallback []<a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) []<a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-20"><code>	<span class="comment">// SetBoolList saves a list of bool values for the given key</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">	// Since: 2.4</span></code></span>
+<span class="codeline" id="line-23"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-SetBoolList" class="ident">SetBoolList</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, value []<a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>)</code></span>
+<span class="codeline" id="line-24"><code></code></span>
+<span class="codeline" id="line-25"><code>	<span class="comment">// Float looks up a float64 value for the key</span></code></span>
+<span class="codeline" id="line-26"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-Float" class="ident">Float</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a></code></span>
+<span class="codeline" id="line-27"><code>	<span class="comment">// FloatWithFallback looks up a float64 value and returns the given fallback if not found</span></code></span>
+<span class="codeline" id="line-28"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-FloatWithFallback" class="ident">FloatWithFallback</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, fallback <a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a>) <a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a></code></span>
+<span class="codeline" id="line-29"><code>	<span class="comment">// SetFloat saves a float64 value for the given key</span></code></span>
+<span class="codeline" id="line-30"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-SetFloat" class="ident">SetFloat</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, value <a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a>)</code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code>	<span class="comment">// FloatList looks up a list of float64 values for the key</span></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">	// Since: 2.4</span></code></span>
+<span class="codeline" id="line-35"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-FloatList" class="ident">FloatList</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) []<a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a></code></span>
+<span class="codeline" id="line-36"><code>	<span class="comment">// FloatListWithFallback looks up a list of float64 values and returns the given fallback if not found</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">	// Since: 2.4</span></code></span>
+<span class="codeline" id="line-39"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-FloatListWithFallback" class="ident">FloatListWithFallback</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, fallback []<a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a>) []<a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a></code></span>
+<span class="codeline" id="line-40"><code>	<span class="comment">// SetFloatList saves a list of float64 values for the given key</span></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">	// Since: 2.4</span></code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-SetFloatList" class="ident">SetFloatList</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, value []<a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a>)</code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code>	<span class="comment">// Int looks up an integer value for the key</span></code></span>
+<span class="codeline" id="line-46"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-Int" class="ident">Int</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-47"><code>	<span class="comment">// IntWithFallback looks up an integer value and returns the given fallback if not found</span></code></span>
+<span class="codeline" id="line-48"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-IntWithFallback" class="ident">IntWithFallback</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, fallback <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-49"><code>	<span class="comment">// SetInt saves an integer value for the given key</span></code></span>
+<span class="codeline" id="line-50"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-SetInt" class="ident">SetInt</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, value <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>)</code></span>
+<span class="codeline" id="line-51"><code></code></span>
+<span class="codeline" id="line-52"><code>	<span class="comment">// IntList looks up a list of int values for the key</span></code></span>
+<span class="codeline" id="line-53"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">	// Since: 2.4</span></code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-IntList" class="ident">IntList</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) []<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-56"><code>	<span class="comment">// IntListWithFallback looks up a list of int values and returns the given fallback if not found</span></code></span>
+<span class="codeline" id="line-57"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-58"><code><span class="comment">	// Since: 2.4</span></code></span>
+<span class="codeline" id="line-59"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-IntListWithFallback" class="ident">IntListWithFallback</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, fallback []<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) []<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-60"><code>	<span class="comment">// SetIntList saves a list of string values for the given key</span></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">	// Since: 2.4</span></code></span>
+<span class="codeline" id="line-63"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-SetIntList" class="ident">SetIntList</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, value []<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>)</code></span>
+<span class="codeline" id="line-64"><code></code></span>
+<span class="codeline" id="line-65"><code>	<span class="comment">// String looks up a string value for the key</span></code></span>
+<span class="codeline" id="line-66"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-String" class="ident">String</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-67"><code>	<span class="comment">// StringWithFallback looks up a string value and returns the given fallback if not found</span></code></span>
+<span class="codeline" id="line-68"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-StringWithFallback" class="ident">StringWithFallback</a>(key, fallback <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-69"><code>	<span class="comment">// SetString saves a string value for the given key</span></code></span>
+<span class="codeline" id="line-70"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-SetString" class="ident">SetString</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, value <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>)</code></span>
+<span class="codeline" id="line-71"><code></code></span>
+<span class="codeline" id="line-72"><code>	<span class="comment">// StringList looks up a list of string values for the key</span></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-74"><code><span class="comment">	// Since: 2.4</span></code></span>
+<span class="codeline" id="line-75"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-StringList" class="ident">StringList</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) []<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-76"><code>	<span class="comment">// StringListWithFallback looks up a list of string values and returns the given fallback if not found</span></code></span>
+<span class="codeline" id="line-77"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-78"><code><span class="comment">	// Since: 2.4</span></code></span>
+<span class="codeline" id="line-79"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-StringListWithFallback" class="ident">StringListWithFallback</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, fallback []<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) []<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-80"><code>	<span class="comment">// SetStringList saves a list of string values for the given key</span></code></span>
+<span class="codeline" id="line-81"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-82"><code><span class="comment">	// Since: 2.4</span></code></span>
+<span class="codeline" id="line-83"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-SetStringList" class="ident">SetStringList</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, value []<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>)</code></span>
+<span class="codeline" id="line-84"><code></code></span>
+<span class="codeline" id="line-85"><code>	<span class="comment">// RemoveValue removes a value for the given key (not currently supported on iOS)</span></code></span>
+<span class="codeline" id="line-86"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-RemoveValue" class="ident">RemoveValue</a>(key <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>)</code></span>
+<span class="codeline" id="line-87"><code></code></span>
+<span class="codeline" id="line-88"><code>	<span class="comment">// AddChangeListener allows code to be notified when some preferences change. This will fire on any update.</span></code></span>
+<span class="codeline" id="line-89"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-AddChangeListener" class="ident">AddChangeListener</a>(<span class="keyword">func</span>())</code></span>
+<span class="codeline" id="line-90"><code></code></span>
+<span class="codeline" id="line-91"><code>	<span class="comment">// ChangeListeners returns a list of the known change listeners for this preference set.</span></code></span>
+<span class="codeline" id="line-92"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-93"><code><span class="comment">	// Since: 2.3</span></code></span>
+<span class="codeline" id="line-94"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Preferences.html#name-ChangeListeners" class="ident">ChangeListeners</a>() []<span class="keyword">func</span>()</code></span>
+<span class="codeline" id="line-95"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

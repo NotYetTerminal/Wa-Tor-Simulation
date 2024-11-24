@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: ot_gdef_src.go in package github.com/go-text/typesetting/font/opentype/tables</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	ot_gdef_src.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html">github.com/go-text/typesetting/font/opentype/tables</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> tables</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<label for="i0"><span class="lit-string i0">"encoding/binary"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i1"><span class="lit-string i1">"fmt"</span></label></code></span>
+<span class="codeline" id="line-8"><code>)</code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-GDEF" class="ident">GDEF</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-11"><code>	majorVersion    <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>       <span class="comment">// Major version of the GDEF table, = 1</span></code></span>
+<span class="codeline" id="line-12"><code>	minorVersion    <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>       <span class="comment">// Minor version of the GDEF table, = 0, 2, 3</span></code></span>
+<span class="codeline" id="line-13"><code>	GlyphClassDef   <a href="ot_layout.go.html#line-56" class="ident">ClassDef</a>     <span class="lit-string">`offsetSize:"Offset16"`</span> <span class="comment">// Offset to class definition table for glyph type, from beginning of GDEF header (may be NULL)</span></code></span>
+<span class="codeline" id="line-14"><code>	AttachList      <a href="#line-60" class="ident">AttachList</a>   <span class="lit-string">`offsetSize:"Offset16"`</span> <span class="comment">// Offset to attachment point list table, from beginning of GDEF header (may be NULL)</span></code></span>
+<span class="codeline" id="line-15"><code>	LigCaretList    <a href="#line-69" class="ident">LigCaretList</a> <span class="lit-string">`offsetSize:"Offset16"`</span> <span class="comment">// Offset to ligature caret list table, from beginning of GDEF header (may be NULL)</span></code></span>
+<span class="codeline" id="line-16"><code>	MarkAttachClass <a href="ot_layout.go.html#line-56" class="ident">ClassDef</a>     <span class="lit-string">`offsetSize:"Offset16"`</span> <span class="comment">// Offset to class definition table for mark attachment type, from beginning of GDEF header (may be NULL)</span></code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code>	MarkGlyphSetsDef <a href="#line-108" class="ident">MarkGlyphSets</a> <span class="lit-string">`isOpaque:""`</span> <span class="comment">// Offset to the table of mark glyph set definitions, from beginning of GDEF header (may be NULL)</span></code></span>
+<span class="codeline" id="line-19"><code>	ItemVarStore     <a href="xvar_src.go.html#line-81" class="ident">ItemVarStore</a>  <span class="lit-string">`isOpaque:""`</span> <span class="comment">// Offset to the Item Variation Store table, from beginning of GDEF header (may be NULL)</span></code></span>
+<span class="codeline" id="line-20"><code>}</code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code><span class="keyword">func</span> (<label for="r0" class="ident">gdef</label> *<a href="#line-10" class="ident">GDEF</a>) <label for="r1" class="ident">parseMarkGlyphSetsDef</label>(<label for="r2" class="ident">src</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-23"><code>	<span class="keyword">const</span> <label for="r3" class="ident">headerSize</label> = <span class="lit-number">12</span></code></span>
+<span class="codeline" id="line-24"><code>	<span class="keyword">if</span> <label for="r0" class="ident">gdef</label>.<a href="#line-12" class="ident">minorVersion</a> &lt; <span class="lit-number">2</span> {</code></span>
+<span class="codeline" id="line-25"><code>		<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-26"><code>	}</code></span>
+<span class="codeline" id="line-27"><code>	<span class="keyword">if</span> <label for="r4" class="ident">L</label> := <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r2" class="ident">src</label>); <label for="r4" class="ident">L</label> &lt; <label for="r3" class="ident">headerSize</label>+<span class="lit-number">2</span> {</code></span>
+<span class="codeline" id="line-28"><code>		<span class="keyword">return</span> <a href="../../../../../../../pkg/fmt.html" class="ident i1">fmt</a>.<a href="../../../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"EOF: expected length: %d, got %d"</span>, <label for="r3" class="ident">headerSize</label>+<span class="lit-number">2</span>, <label for="r4" class="ident">L</label>)</code></span>
+<span class="codeline" id="line-29"><code>	}</code></span>
+<span class="codeline" id="line-30"><code>	<label for="r5" class="ident">offset</label> := <a href="../../../../../../../pkg/encoding/binary.html" class="ident i0">binary</a>.<a href="../../../../../../encoding/binary/binary.go.html#line-64" class="ident">BigEndian</a>.<a href="../../../../../../encoding/binary/binary.go.html#line-145" class="ident">Uint16</a>(<label for="r2" class="ident">src</label>[<label for="r3" class="ident">headerSize</label>:])</code></span>
+<span class="codeline" id="line-31"><code>	<span class="keyword">if</span> <label for="r5" class="ident">offset</label> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-32"><code>		<span class="keyword">var</span> <label for="r6" class="ident">err</label> <a href="../../../../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-33"><code>		<label for="r0" class="ident">gdef</label>.<a href="#line-18" class="ident">MarkGlyphSetsDef</a>, _, <label for="r6" class="ident">err</label> = <a href="ot_gdef_gen.go.html#line-537" class="ident">ParseMarkGlyphSets</a>(<label for="r2" class="ident">src</label>[<label for="r5" class="ident">offset</label>:])</code></span>
+<span class="codeline" id="line-34"><code>		<span class="keyword">if</span> <label for="r6" class="ident">err</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-35"><code>			<span class="keyword">return</span> <label for="r6" class="ident">err</label></code></span>
+<span class="codeline" id="line-36"><code>		}</code></span>
+<span class="codeline" id="line-37"><code>	}</code></span>
+<span class="codeline" id="line-38"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-39"><code>}</code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code><span class="keyword">func</span> (<label for="r7" class="ident">gdef</label> *<a href="#line-10" class="ident">GDEF</a>) <label for="r8" class="ident">parseItemVarStore</label>(<label for="r9" class="ident">src</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) (<a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>, <a href="../../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-42"><code>	<span class="keyword">const</span> <label for="r10" class="ident">headerSize</label> = <span class="lit-number">12</span> + <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-43"><code>	<span class="keyword">if</span> <label for="r7" class="ident">gdef</label>.<a href="#line-12" class="ident">minorVersion</a> &lt; <span class="lit-number">3</span> {</code></span>
+<span class="codeline" id="line-44"><code>		<span class="keyword">return</span> <span class="lit-number">0</span>, <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-45"><code>	}</code></span>
+<span class="codeline" id="line-46"><code>	<span class="keyword">if</span> <label for="r11" class="ident">L</label> := <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r9" class="ident">src</label>); <label for="r11" class="ident">L</label> &lt; <label for="r10" class="ident">headerSize</label>+<span class="lit-number">4</span> {</code></span>
+<span class="codeline" id="line-47"><code>		<span class="keyword">return</span> <span class="lit-number">0</span>, <a href="../../../../../../../pkg/fmt.html" class="ident i1">fmt</a>.<a href="../../../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"EOF: expected length: %d, got %d"</span>, <label for="r10" class="ident">headerSize</label>+<span class="lit-number">4</span>, <label for="r11" class="ident">L</label>)</code></span>
+<span class="codeline" id="line-48"><code>	}</code></span>
+<span class="codeline" id="line-49"><code>	<label for="r12" class="ident">offset</label> := <a href="../../../../../../../pkg/encoding/binary.html" class="ident i0">binary</a>.<a href="../../../../../../encoding/binary/binary.go.html#line-64" class="ident">BigEndian</a>.<a href="../../../../../../encoding/binary/binary.go.html#line-163" class="ident">Uint32</a>(<label for="r9" class="ident">src</label>[<label for="r10" class="ident">headerSize</label>:])</code></span>
+<span class="codeline" id="line-50"><code>	<span class="keyword">if</span> <label for="r12" class="ident">offset</label> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-51"><code>		<span class="keyword">var</span> <label for="r13" class="ident">err</label> <a href="../../../../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-52"><code>		<label for="r7" class="ident">gdef</label>.<a href="#line-19" class="ident">ItemVarStore</a>, _, <label for="r13" class="ident">err</label> = <a href="xvar_gen.go.html#line-323" class="ident">ParseItemVarStore</a>(<label for="r9" class="ident">src</label>[<label for="r12" class="ident">offset</label>:])</code></span>
+<span class="codeline" id="line-53"><code>		<span class="keyword">if</span> <label for="r13" class="ident">err</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-54"><code>			<span class="keyword">return</span> <span class="lit-number">0</span>, <label for="r13" class="ident">err</label></code></span>
+<span class="codeline" id="line-55"><code>		}</code></span>
+<span class="codeline" id="line-56"><code>	}</code></span>
+<span class="codeline" id="line-57"><code>	<span class="keyword">return</span> <label for="r10" class="ident">headerSize</label> + <span class="lit-number">4</span>, <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-58"><code>}</code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-AttachList" class="ident">AttachList</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-61"><code>	Coverage     <a href="ot_layout.go.html#line-19" class="ident">Coverage</a>      <span class="lit-string">`offsetSize:"Offset16"`</span>                            <span class="comment">// Offset to Coverage table - from beginning of AttachList table</span></code></span>
+<span class="codeline" id="line-62"><code>	AttachPoints []<a href="#line-65" class="ident">AttachPoint</a> <span class="lit-string">`arrayCount:"FirstUint16" offsetsArray:"Offset16"`</span> <span class="comment">// [glyphCount] Array of offsets to AttachPoint tables-from beginning of AttachList table-in Coverage Index order</span></code></span>
+<span class="codeline" id="line-63"><code>}</code></span>
+<span class="codeline" id="line-64"><code></code></span>
+<span class="codeline" id="line-65"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-AttachPoint" class="ident">AttachPoint</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-66"><code>	PointIndices []<a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="lit-string">`arrayCount:"FirstUint16"`</span> <span class="comment">// [pointCount]	Array of contour point indices -in increasing numerical order</span></code></span>
+<span class="codeline" id="line-67"><code>}</code></span>
+<span class="codeline" id="line-68"><code></code></span>
+<span class="codeline" id="line-69"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-LigCaretList" class="ident">LigCaretList</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-70"><code>	Coverage  <a href="ot_layout.go.html#line-19" class="ident">Coverage</a>   <span class="lit-string">`offsetSize:"Offset16"`</span>                            <span class="comment">// Offset to Coverage table - from beginning of LigCaretList table</span></code></span>
+<span class="codeline" id="line-71"><code>	LigGlyphs []<a href="#line-74" class="ident">LigGlyph</a> <span class="lit-string">`arrayCount:"FirstUint16" offsetsArray:"Offset16"`</span> <span class="comment">// [ligGlyphCount]	Array of offsets to LigGlyph tables, from beginning of LigCaretList table —in Coverage Index order</span></code></span>
+<span class="codeline" id="line-72"><code>}</code></span>
+<span class="codeline" id="line-73"><code></code></span>
+<span class="codeline" id="line-74"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-LigGlyph" class="ident">LigGlyph</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-75"><code>	CaretValues []<a href="#line-78" class="ident">CaretValue</a> <span class="lit-string">`arrayCount:"FirstUint16" offsetsArray:"Offset16"`</span> <span class="comment">// [caretCount] Array of offsets to CaretValue tables, from beginning of LigGlyph table — in increasing coordinate order</span></code></span>
+<span class="codeline" id="line-76"><code>}</code></span>
+<span class="codeline" id="line-77"><code></code></span>
+<span class="codeline" id="line-78"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CaretValue" class="ident">CaretValue</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-79"><code>	<a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.CaretValue.html#name-github.com/go-text/typesetting/font/opentype/tables.isCaretValue" class="ident">isCaretValue</a>()</code></span>
+<span class="codeline" id="line-80"><code>}</code></span>
+<span class="codeline" id="line-81"><code></code></span>
+<span class="codeline" id="line-82"><code><span class="keyword">func</span> (<a href="#line-86" class="ident">CaretValue1</a>) <label for="r14" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.CaretValue1.html#name-isCaretValue" class="ident">isCaretValue</a></label>() {}</code></span>
+<span class="codeline" id="line-83"><code><span class="keyword">func</span> (<a href="#line-91" class="ident">CaretValue2</a>) <label for="r15" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.CaretValue2.html#name-isCaretValue" class="ident">isCaretValue</a></label>() {}</code></span>
+<span class="codeline" id="line-84"><code><span class="keyword">func</span> (<a href="#line-96" class="ident">CaretValue3</a>) <label for="r16" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.CaretValue3.html#name-isCaretValue" class="ident">isCaretValue</a></label>() {}</code></span>
+<span class="codeline" id="line-85"><code></code></span>
+<span class="codeline" id="line-86"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CaretValue1" class="ident">CaretValue1</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-87"><code>	caretValueFormat <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="lit-string">`unionTag:"1"`</span> <span class="comment">// Format identifier: format = 1</span></code></span>
+<span class="codeline" id="line-88"><code>	Coordinate       <a href="../../../../../../../pkg/builtin.html#name-int16" class="ident">int16</a>  <span class="comment">//	X or Y value, in design units</span></code></span>
+<span class="codeline" id="line-89"><code>}</code></span>
+<span class="codeline" id="line-90"><code></code></span>
+<span class="codeline" id="line-91"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CaretValue2" class="ident">CaretValue2</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-92"><code>	caretValueFormat     <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="lit-string">`unionTag:"2"`</span> <span class="comment">// Format identifier: format = 2</span></code></span>
+<span class="codeline" id="line-93"><code>	CaretValuePointIndex <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="comment">// Contour point index on glyph</span></code></span>
+<span class="codeline" id="line-94"><code>}</code></span>
+<span class="codeline" id="line-95"><code></code></span>
+<span class="codeline" id="line-96"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CaretValue3" class="ident">CaretValue3</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-97"><code>	caretValueFormat <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>      <span class="lit-string">`unionTag:"3"`</span> <span class="comment">// Format identifier: format = 3</span></code></span>
+<span class="codeline" id="line-98"><code>	Coordinate       <a href="../../../../../../../pkg/builtin.html#name-int16" class="ident">int16</a>       <span class="comment">// X or Y value, in design units</span></code></span>
+<span class="codeline" id="line-99"><code>	deviceOffset     <a href="tables.go.html#line-55" class="ident">Offset16</a>    <span class="comment">// Offset to Device table (non-variable font) / Variation Index table (variable font) for X or Y value-from beginning of CaretValue table</span></code></span>
+<span class="codeline" id="line-100"><code>	Device           <a href="ot_layout.go.html#line-582" class="ident">DeviceTable</a> <span class="lit-string">`isOpaque:""`</span></code></span>
+<span class="codeline" id="line-101"><code>}</code></span>
+<span class="codeline" id="line-102"><code></code></span>
+<span class="codeline" id="line-103"><code><span class="keyword">func</span> (<label for="r17" class="ident">cv</label> *<a href="#line-96" class="ident">CaretValue3</a>) <label for="r18" class="ident">parseDevice</label>(<label for="r19" class="ident">src</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) (<label for="r20" class="ident">err</label> <a href="../../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-104"><code>	<label for="r17" class="ident">cv</label>.<a href="#line-100" class="ident">Device</a>, <label for="r20" class="ident">err</label> = <a href="ot_layout.go.html#line-598" class="ident">parseDeviceTable</a>(<label for="r19" class="ident">src</label>, <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<label for="r17" class="ident">cv</label>.<a href="#line-99" class="ident">deviceOffset</a>))</code></span>
+<span class="codeline" id="line-105"><code>	<span class="keyword">return</span> <label for="r20" class="ident">err</label></code></span>
+<span class="codeline" id="line-106"><code>}</code></span>
+<span class="codeline" id="line-107"><code></code></span>
+<span class="codeline" id="line-108"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-MarkGlyphSets" class="ident">MarkGlyphSets</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-109"><code>	format    <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>     <span class="comment">// Format identifier == 1</span></code></span>
+<span class="codeline" id="line-110"><code>	Coverages []<a href="ot_layout.go.html#line-19" class="ident">Coverage</a> <span class="lit-string">`arrayCount:"FirstUint16" offsetsArray:"Offset32"`</span> <span class="comment">// [markGlyphSetCount] Array of offsets to mark glyph set coverage tables, from the start of the MarkGlyphSets table.</span></code></span>
+<span class="codeline" id="line-111"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

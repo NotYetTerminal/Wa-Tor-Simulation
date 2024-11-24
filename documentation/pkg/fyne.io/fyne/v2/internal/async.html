@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/fyne/v2/internal/async</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>async</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-fyne.io/fyne/v2/internal/async">fyne.io/fyne/v2/internal/async</a><i> (on <a href="https://pkg.go.dev/fyne.io/fyne/v2/internal/async" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/fyne.io/fyne/v2/internal/async.html">4 packages</a>, and imported by <a href="../../../../../dep/fyne.io/fyne/v2/internal/async.html#imported-by">6 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html">chan_go1.21.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_struct.go.html">chan_struct.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-2-fold-content"><label for="file-2-fold-content">  <a href="../../../../../src/fyne.io/fyne/v2/internal/async/doc.go.html#doc">d</a> <a href="../../../../../src/fyne.io/fyne/v2/internal/async/doc.go.html">doc.go</a></label><span id='file-2-fold-content-items' class="fold-items">
+<span class="md-text">		Package async provides unbounded channel and queue structures that are
+		designed for caching unlimited number of a concrete type. For better
+		performance, a given type should be less or euqal than 16 bytes.
+		
+		The difference of an unbounded channel or queue is that unbounde channels
+		can utilize select and channel semantics, whereas queue cannot. A user of
+		this package should balance this tradeoff. For instance, an unbounded
+		channel can provide zero waiting cost when trying to receiving an object
+		when the receiving select statement has a default case, and a queue can
+		only receive the object with a time amount of time, but depending on the
+		number of queue item producer, the receiving time may increase accordingly.
+		
+		Delicate dance: One must aware that an unbounded channel may lead to
+		OOM when the consuming speed of the buffer is lower than the producing
+		speed constantly. However, such a channel may be fairly used for event
+		delivering if the consumer of the channel consumes the incoming
+		forever, such as even processing.
+		
+		This package involves code generators, see gen.go for more details.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/async/queue_canvasobject.go.html">queue_canvasobject.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/async/vector.go.html">vector.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 9, in which 8 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-CanvasObjectQueue" data-popularity="225">	<input type='checkbox' class="fold" id="CanvasObjectQueue-fold-content"><label for="CanvasObjectQueue-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/async/queue_canvasobject.go.html#line-13">CanvasObjectQueue</a> <i>(struct)</i></label><span id='CanvasObjectQueue-fold-content-docs' class="fold-docs">
+<span class="md-text">		CanvasObjectQueue implements lock-free FIFO freelist based queue.
+		
+		Reference: https://dl.acm.org/citation.cfm?doid=248052.248106</span>
+
+		<input type='checkbox' class="fold" id="CanvasObjectQueue-fold-fields"><label for="CanvasObjectQueue-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='CanvasObjectQueue-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="CanvasObjectQueue-showhide-fields"><i><label for="CanvasObjectQueue-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="CanvasObjectQueue-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/queue_canvasobject.go.html#line-14">head</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Pointer">Pointer</a>[<a href="#name-itemCanvasObject">itemCanvasObject</a>]</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/queue_canvasobject.go.html#line-16">len</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Uint64">Uint64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/queue_canvasobject.go.html#line-15">tail</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Pointer">Pointer</a>[<a href="#name-itemCanvasObject">itemCanvasObject</a>]</i></span></i></span></span>
+		<input type='checkbox' class="fold" id="CanvasObjectQueue-fold-methods"><label for="CanvasObjectQueue-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='CanvasObjectQueue-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="CanvasObjectQueue-fold-method-In"><label for="CanvasObjectQueue-fold-method-In">(*CanvasObjectQueue) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/queue_canvasobject.go.html#line-38">In</a>(v <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='CanvasObjectQueue-fold-method-In-docs' class="fold-docs">
+<span class="md-text">				In puts the given value at the tail of the queue.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CanvasObjectQueue-fold-method-Len"><label for="CanvasObjectQueue-fold-method-Len">(*CanvasObjectQueue) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/queue_canvasobject.go.html#line-89">Len</a>() <a href="../../../../builtin.html#name-uint64">uint64</a></label><span id='CanvasObjectQueue-fold-method-Len-docs' class="fold-docs">
+<span class="md-text">				Len returns the length of the queue.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CanvasObjectQueue-fold-method-Out"><label for="CanvasObjectQueue-fold-method-Out">(*CanvasObjectQueue) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/queue_canvasobject.go.html#line-63">Out</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></label><span id='CanvasObjectQueue-fold-method-Out-docs' class="fold-docs">
+<span class="md-text">				Out removes and returns the value at the head of the queue.
+				It returns nil if the queue is empty.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="CanvasObjectQueue-fold-results"><label for="CanvasObjectQueue-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='CanvasObjectQueue-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewCanvasObjectQueue">NewCanvasObjectQueue</a>() *<b>CanvasObjectQueue</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-Position" data-popularity="100">	<input type='checkbox' class="fold" id="Position-fold-content"><label for="Position-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/async/vector.go.html#line-12">Position</a> <i>(struct)</i></label><span id='Position-fold-content-docs' class="fold-docs">
+<span class="md-text">		Position is an atomic version of fyne.Position.
+		Loads and stores are guaranteed to happen using a single atomic operation.</span>
+
+		<input type='checkbox' class="fold" id="Position-fold-fields"><label for="Position-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='Position-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Position-showhide-fields"><i><label for="Position-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="Position-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/vector.go.html#line-13">pos</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Uint64">Uint64</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Position-fold-methods"><label for="Position-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='Position-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Position-fold-method-Load"><label for="Position-fold-method-Load">(*Position) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/vector.go.html#line-17">Load</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a></label><span id='Position-fold-method-Load-docs' class="fold-docs">
+<span class="md-text">				Load performs an atomic load on the fyne.Position value.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Position-fold-method-Store"><label for="Position-fold-method-Store">(*Position) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/vector.go.html#line-22">Store</a>(pos <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Position">Position</a>)</label><span id='Position-fold-method-Store-docs' class="fold-docs">
+<span class="md-text">				Store performs an atomic store on the fyne.Position value.</span>
+</span></span></span>
+
+</span></div><div class="anchor type-res" id="name-Size" data-popularity="100">	<input type='checkbox' class="fold" id="Size-fold-content"><label for="Size-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/async/vector.go.html#line-28">Size</a> <i>(struct)</i></label><span id='Size-fold-content-docs' class="fold-docs">
+<span class="md-text">		Size is an atomic version of fyne.Size.
+		Loads and stores are guaranteed to happen using a single atomic operation.</span>
+
+		<input type='checkbox' class="fold" id="Size-fold-fields"><label for="Size-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='Size-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Size-showhide-fields"><i><label for="Size-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="Size-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/vector.go.html#line-29">size</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Uint64">Uint64</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Size-fold-methods"><label for="Size-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='Size-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Size-fold-method-Load"><label for="Size-fold-method-Load">(*Size) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/vector.go.html#line-33">Load</a>() <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='Size-fold-method-Load-docs' class="fold-docs">
+<span class="md-text">				Load performs an atomic load on the fyne.Size value.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Size-fold-method-Store"><label for="Size-fold-method-Store">(*Size) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/vector.go.html#line-38">Store</a>(size <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a>)</label><span id='Size-fold-method-Store-docs' class="fold-docs">
+<span class="md-text">				Store performs an atomic store on the fyne.Size value.</span>
+</span></span></span>
+
+</span></div><div class="anchor type-res" id="name-UnboundedCanvasObjectChan" data-popularity="0">	<input type='checkbox' class="fold" id="UnboundedCanvasObjectChan-fold-content"><label for="UnboundedCanvasObjectChan-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-27">UnboundedCanvasObjectChan</a> = <i>(struct)</i></label><span id='UnboundedCanvasObjectChan-fold-content-docs' class="fold-docs">
+<span class="md-text">		UnboundedCanvasObjectChan is a channel with an unbounded buffer for caching
+		CanvasObject objects. A channel must be closed via Close method.</span>
+
+</span></div><div class="anchor type-res" id="name-UnboundedChan" data-popularity="555">	<input type='checkbox' class="fold" id="UnboundedChan-fold-content"><label for="UnboundedChan-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-36">UnboundedChan</a>[T] <i>(struct)</i></label><span id='UnboundedChan-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="../../../../builtin.html#name-any">any</a>
+
+<span class="md-text">		UnboundedChan is a channel with an unbounded buffer for caching
+		Func objects. A channel must be closed via Close method.</span>
+
+		<input type='checkbox' class="fold" id="UnboundedChan-fold-fields"><label for="UnboundedChan-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='UnboundedChan-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="UnboundedChan-showhide-fields"><i><label for="UnboundedChan-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="UnboundedChan-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-38">close</a> <i>chan struct{}</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-37">in</a> <i>chan T</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-37">out</a> <i>chan T</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-39">q</a> <i>[]T</i></span></i></span></span>
+		<input type='checkbox' class="fold" id="UnboundedChan-fold-methods"><label for="UnboundedChan-fold-methods">Methods (<i>total 5, in which 3 are exported</i>)</label><span id='UnboundedChan-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="UnboundedChan-fold-method-Close"><label for="UnboundedChan-fold-method-Close">(*UnboundedChan[T]) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-64">Close</a>()</label><span id='UnboundedChan-fold-method-Close-docs' class="fold-docs">
+<span class="md-text">				Close closes the channel.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="UnboundedChan-fold-method-In"><label for="UnboundedChan-fold-method-In">(*UnboundedChan[T]) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-57">In</a>() chan&lt;- T</label><span id='UnboundedChan-fold-method-In-docs' class="fold-docs">
+<span class="md-text">				In returns the send channel of the given channel, which can be used to
+				send values to the channel.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="UnboundedChan-fold-method-Out"><label for="UnboundedChan-fold-method-Out">(*UnboundedChan[T]) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-61">Out</a>() &lt;-chan T</label><span id='UnboundedChan-fold-method-Out-docs' class="fold-docs">
+<span class="md-text">				Out returns the receive channel of the given channel, which can be used
+				to receive values from the channel.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="UnboundedChan-showhide-methods"><i><label for="UnboundedChan-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="UnboundedChan-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*UnboundedChan[T]) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-113">closed</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*UnboundedChan[T]) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-66">processing</a>()</span></i></span></span>
+		<input type='checkbox' class="fold" id="UnboundedChan-fold-results"><label for="UnboundedChan-fold-results">As Outputs Of (<i>at least 4, all are exported</i>)</label><span id='UnboundedChan-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewUnboundedCanvasObjectChan">NewUnboundedCanvasObjectChan</a>() *<b>UnboundedChan</b>[<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>]</span><span>
+			func <a href="#name-NewUnboundedChan">NewUnboundedChan</a>[T]() *<b>UnboundedChan</b>[T]</span><span>
+			func <a href="#name-NewUnboundedFuncChan">NewUnboundedFuncChan</a>() *<a href="#name-UnboundedFuncChan">UnboundedFuncChan</a></span><span>
+			func <a href="#name-NewUnboundedInterfaceChan">NewUnboundedInterfaceChan</a>() *<a href="#name-UnboundedInterfaceChan">UnboundedInterfaceChan</a></span></span>
+		<input type='checkbox' class="fold" id="UnboundedChan-fold-values"><label for="UnboundedChan-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='UnboundedChan-fold-values-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="UnboundedChan-showhide-values"><i><label for="UnboundedChan-showhide-values" class="show-inline">/* one unexported ... */</label><label for="UnboundedChan-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var fyne.io/fyne/v2/data/binding.<a href="../data/binding.html#name-queue">queue</a> *<a href="">async</a>.<a href="#name-UnboundedFuncChan">UnboundedFuncChan</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-UnboundedFuncChan" data-popularity="0">	<input type='checkbox' class="fold" id="UnboundedFuncChan-fold-content"><label for="UnboundedFuncChan-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-9">UnboundedFuncChan</a> = <i>(struct)</i></label><span id='UnboundedFuncChan-fold-content-docs' class="fold-docs">
+<span class="md-text">		UnboundedFuncChan is a channel with an unbounded buffer for caching
+		Func objects. A channel must be closed via Close method</span>
+
+</span></div><div class="anchor type-res" id="name-UnboundedInterfaceChan" data-popularity="0">	<input type='checkbox' class="fold" id="UnboundedInterfaceChan-fold-content"><label for="UnboundedInterfaceChan-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-18">UnboundedInterfaceChan</a> = <i>(struct)</i></label><span id='UnboundedInterfaceChan-fold-content-docs' class="fold-docs">
+<span class="md-text">		UnboundedInterfaceChan is a channel with an unbounded buffer for caching
+		Interface objects. A channel must be closed via Close method.</span>
+
+</span></div><div class="anchor type-res" id="name-UnboundedStructChan" data-popularity="325">	<input type='checkbox' class="fold" id="UnboundedStructChan-fold-content"><label for="UnboundedStructChan-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_struct.go.html#line-7">UnboundedStructChan</a> <i>(struct)</i></label><span id='UnboundedStructChan-fold-content-docs' class="fold-docs">
+<span class="md-text">		UnboundedStructChan is a channel with an unbounded buffer for caching
+		struct{} objects. This implementation is a specialized version that
+		optimizes for struct{} objects than other types. A channel must be
+		closed via Close method.</span>
+
+		<input type='checkbox' class="fold" id="UnboundedStructChan-fold-fields"><label for="UnboundedStructChan-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='UnboundedStructChan-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="UnboundedStructChan-showhide-fields"><i><label for="UnboundedStructChan-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="UnboundedStructChan-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_struct.go.html#line-8">close</a> <i>chan struct{}</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_struct.go.html#line-8">in</a> <i>chan struct{}</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_struct.go.html#line-9">n</a> <i><a href="../../../../builtin.html#name-uint64">uint64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_struct.go.html#line-8">out</a> <i>chan struct{}</i></span></i></span></span>
+		<input type='checkbox' class="fold" id="UnboundedStructChan-fold-methods"><label for="UnboundedStructChan-fold-methods">Methods (<i>total 5, in which 3 are exported</i>)</label><span id='UnboundedStructChan-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="UnboundedStructChan-fold-method-Close"><label for="UnboundedStructChan-fold-method-Close">(*UnboundedStructChan) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_struct.go.html#line-34">Close</a>()</label><span id='UnboundedStructChan-fold-method-Close-docs' class="fold-docs">
+<span class="md-text">				Close closes the channel.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="UnboundedStructChan-fold-method-In"><label for="UnboundedStructChan-fold-method-In">(*UnboundedStructChan) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_struct.go.html#line-27">In</a>() chan&lt;- struct{}</label><span id='UnboundedStructChan-fold-method-In-docs' class="fold-docs">
+<span class="md-text">				In returns a send-only channel that can be used to send values
+				to the channel.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="UnboundedStructChan-fold-method-Out"><label for="UnboundedStructChan-fold-method-Out">(*UnboundedStructChan) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_struct.go.html#line-31">Out</a>() &lt;-chan struct{}</label><span id='UnboundedStructChan-fold-method-Out-docs' class="fold-docs">
+<span class="md-text">				Out returns a receive-only channel that can be used to receive
+				values from the channel.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="UnboundedStructChan-showhide-methods"><i><label for="UnboundedStructChan-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="UnboundedStructChan-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*UnboundedStructChan) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_struct.go.html#line-71">closed</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*UnboundedStructChan) <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_struct.go.html#line-36">processing</a>()</span></i></span></span>
+		<input type='checkbox' class="fold" id="UnboundedStructChan-fold-results"><label for="UnboundedStructChan-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='UnboundedStructChan-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewUnboundedStructChan">NewUnboundedStructChan</a>() *<b>UnboundedStructChan</b></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor type-res hidden" id="name-itemCanvasObject" data-popularity="0">	<input type='checkbox' class="fold" id="itemCanvasObject-fold-content"><label for="itemCanvasObject-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/async/queue_canvasobject.go.html#line-28">itemCanvasObject</a> <i>(struct)</i></label><span id='itemCanvasObject-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="itemCanvasObject-fold-fields"><label for="itemCanvasObject-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='itemCanvasObject-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="itemCanvasObject-showhide-fields"><i><label for="itemCanvasObject-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="itemCanvasObject-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/queue_canvasobject.go.html#line-29">next</a> <i><a href="../../../../sync/atomic.html">atomic</a>.<a href="../../../../sync/atomic.html#name-Pointer">Pointer</a>[<b>itemCanvasObject</b>]</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/async/queue_canvasobject.go.html#line-30">v</a> <i><a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 8, in which 6 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-NewCanvasObjectQueue">	<input type='checkbox' class="fold" id="NewCanvasObjectQueue-fold-content"><label for="NewCanvasObjectQueue-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/async/queue_canvasobject.go.html#line-20">NewCanvasObjectQueue</a>() *<a href="#name-CanvasObjectQueue">CanvasObjectQueue</a></label><span id='NewCanvasObjectQueue-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewCanvasObjectQueue returns a queue for caching values.</span>
+
+</span></div><div class="anchor value-res" id="name-NewUnboundedCanvasObjectChan">	<input type='checkbox' class="fold" id="NewUnboundedCanvasObjectChan-fold-content"><label for="NewUnboundedCanvasObjectChan-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-30">NewUnboundedCanvasObjectChan</a>() *<a href="#name-UnboundedChan">UnboundedChan</a>[<a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>]</label><span id='NewUnboundedCanvasObjectChan-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewUnboundedCanvasObjectChan returns a unbounded channel, of canvas objects, with unlimited capacity.</span>
+
+</span></div><div class="anchor value-res" id="name-NewUnboundedChan">	<input type='checkbox' class="fold" id="NewUnboundedChan-fold-content"><label for="NewUnboundedChan-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-43">NewUnboundedChan</a>[T]() *<a href="#name-UnboundedChan">UnboundedChan</a>[T]</label><span id='NewUnboundedChan-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="../../../../builtin.html#name-any">any</a>
+
+<span class="md-text">		NewUnboundedChan returns a unbounded channel with unlimited capacity.</span>
+
+</span></div><div class="anchor value-res" id="name-NewUnboundedFuncChan">	<input type='checkbox' class="fold" id="NewUnboundedFuncChan-fold-content"><label for="NewUnboundedFuncChan-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-12">NewUnboundedFuncChan</a>() *<a href="#name-UnboundedFuncChan">UnboundedFuncChan</a></label><span id='NewUnboundedFuncChan-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewUnboundedFuncChan returns a unbounded channel, of func(), with unlimited capacity.</span>
+
+</span></div><div class="anchor value-res" id="name-NewUnboundedInterfaceChan">	<input type='checkbox' class="fold" id="NewUnboundedInterfaceChan-fold-content"><label for="NewUnboundedInterfaceChan-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_go1.21.go.html#line-21">NewUnboundedInterfaceChan</a>() *<a href="#name-UnboundedInterfaceChan">UnboundedInterfaceChan</a></label><span id='NewUnboundedInterfaceChan-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewUnboundedInterfaceChan returns a unbounded channel, of any type, with unlimited capacity.</span>
+
+</span></div><div class="anchor value-res" id="name-NewUnboundedStructChan">	<input type='checkbox' class="fold" id="NewUnboundedStructChan-fold-content"><label for="NewUnboundedStructChan-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/async/chan_struct.go.html#line-13">NewUnboundedStructChan</a>() *<a href="#name-UnboundedStructChan">UnboundedStructChan</a></label><span id='NewUnboundedStructChan-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewUnboundedStructChan returns a unbounded channel with unlimited capacity.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-twoFloat32FromUint64"><i>	<span class="nodocs"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/async/vector.go.html#line-48">twoFloat32FromUint64</a>(combined <a href="../../../../builtin.html#name-uint64">uint64</a>) (<a href="../../../../builtin.html#name-float32">float32</a>, <a href="../../../../builtin.html#name-float32">float32</a>)</span></i></div><div class="anchor value-res hidden" id="name-uint64fromTwoFloat32"><i>	<span class="nodocs"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/async/vector.go.html#line-42">uint64fromTwoFloat32</a>(a, b <a href="../../../../builtin.html#name-float32">float32</a>) <a href="../../../../builtin.html#name-uint64">uint64</a></span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (only one, which is unexported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-itemCanvasObjectPool"><i>	<span class="nodocs">  var <a href="../../../../../src/fyne.io/fyne/v2/internal/async/queue_canvasobject.go.html#line-33">itemCanvasObjectPool</a> <a href="../../../../sync.html">sync</a>.<a href="../../../../sync.html#name-Pool">Pool</a></span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

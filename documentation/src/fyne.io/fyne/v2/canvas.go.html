@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: canvas.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	canvas.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"image"</span></label></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// Canvas defines a graphical canvas to which a [CanvasObject] or Container can be added.</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">// Each canvas has a scale which is automatically applied during the render process.</span></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Canvas" class="ident">Canvas</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-8"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-Content" class="ident">Content</a>() <a href="canvasobject.go.html#line-10" class="ident">CanvasObject</a></code></span>
+<span class="codeline" id="line-9"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-SetContent" class="ident">SetContent</a>(<a href="canvasobject.go.html#line-10" class="ident">CanvasObject</a>)</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-Refresh" class="ident">Refresh</a>(<a href="canvasobject.go.html#line-10" class="ident">CanvasObject</a>)</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code>	<span class="comment">// Focus makes the provided item focused.</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">	// The item has to be added to the contents of the canvas before calling this.</span></code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-Focus" class="ident">Focus</a>(<a href="canvasobject.go.html#line-66" class="ident">Focusable</a>)</code></span>
+<span class="codeline" id="line-16"><code>	<span class="comment">// FocusNext focuses the next focusable item.</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">	// If no item is currently focused, the first focusable item is focused.</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">	// If the last focusable item is currently focused, the first focusable item is focused.</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-21"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-FocusNext" class="ident">FocusNext</a>()</code></span>
+<span class="codeline" id="line-22"><code>	<span class="comment">// FocusPrevious focuses the previous focusable item.</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">	// If no item is currently focused, the last focusable item is focused.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">	// If the first focusable item is currently focused, the last focusable item is focused.</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-FocusPrevious" class="ident">FocusPrevious</a>()</code></span>
+<span class="codeline" id="line-28"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-Unfocus" class="ident">Unfocus</a>()</code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-Focused" class="ident">Focused</a>() <a href="canvasobject.go.html#line-66" class="ident">Focusable</a></code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code>	<span class="comment">// Size returns the current size of this canvas</span></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-Size" class="ident">Size</a>() <a href="geometry.go.html#line-91" class="ident">Size</a></code></span>
+<span class="codeline" id="line-33"><code>	<span class="comment">// Scale returns the current scale (multiplication factor) this canvas uses to render</span></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">	// The pixel size of a [CanvasObject] can be found by multiplying by this value.</span></code></span>
+<span class="codeline" id="line-35"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-Scale" class="ident">Scale</a>() <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-36"><code></code></span>
+<span class="codeline" id="line-37"><code>	<span class="comment">// Overlays returns the overlay stack.</span></code></span>
+<span class="codeline" id="line-38"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-Overlays" class="ident">Overlays</a>() <a href="overlay_stack.go.html#line-4" class="ident">OverlayStack</a></code></span>
+<span class="codeline" id="line-39"><code></code></span>
+<span class="codeline" id="line-40"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-OnTypedRune" class="ident">OnTypedRune</a>() <span class="keyword">func</span>(<a href="../../../../pkg/builtin.html#name-rune" class="ident">rune</a>)</code></span>
+<span class="codeline" id="line-41"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-SetOnTypedRune" class="ident">SetOnTypedRune</a>(<span class="keyword">func</span>(<a href="../../../../pkg/builtin.html#name-rune" class="ident">rune</a>))</code></span>
+<span class="codeline" id="line-42"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-OnTypedKey" class="ident">OnTypedKey</a>() <span class="keyword">func</span>(*<a href="event.go.html#line-11" class="ident">KeyEvent</a>)</code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-SetOnTypedKey" class="ident">SetOnTypedKey</a>(<span class="keyword">func</span>(*<a href="event.go.html#line-11" class="ident">KeyEvent</a>))</code></span>
+<span class="codeline" id="line-44"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-AddShortcut" class="ident">AddShortcut</a>(shortcut <a href="shortcut.go.html#line-35" class="ident">Shortcut</a>, handler <span class="keyword">func</span>(shortcut <a href="shortcut.go.html#line-35" class="ident">Shortcut</a>))</code></span>
+<span class="codeline" id="line-45"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-RemoveShortcut" class="ident">RemoveShortcut</a>(shortcut <a href="shortcut.go.html#line-35" class="ident">Shortcut</a>)</code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-Capture" class="ident">Capture</a>() <a href="../../../../pkg/image.html" class="ident i0">image</a>.<a href="../../../image/image.go.html#line-52" class="ident">Image</a></code></span>
+<span class="codeline" id="line-48"><code></code></span>
+<span class="codeline" id="line-49"><code>	<span class="comment">// PixelCoordinateForPosition returns the x and y pixel coordinate for a given position on this canvas.</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">	// This can be used to find absolute pixel positions or pixel offsets relative to an object top left.</span></code></span>
+<span class="codeline" id="line-51"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-PixelCoordinateForPosition" class="ident">PixelCoordinateForPosition</a>(<a href="geometry.go.html#line-37" class="ident">Position</a>) (<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>, <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>)</code></span>
+<span class="codeline" id="line-52"><code></code></span>
+<span class="codeline" id="line-53"><code>	<span class="comment">// InteractiveArea returns the position and size of the central interactive area.</span></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">	// Operating system elements may overlap the portions outside this area and widgets should avoid being outside.</span></code></span>
+<span class="codeline" id="line-55"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-56"><code><span class="comment">	// Since: 1.4</span></code></span>
+<span class="codeline" id="line-57"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Canvas.html#name-InteractiveArea" class="ident">InteractiveArea</a>() (<a href="geometry.go.html#line-37" class="ident">Position</a>, <a href="geometry.go.html#line-91" class="ident">Size</a>)</code></span>
+<span class="codeline" id="line-58"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

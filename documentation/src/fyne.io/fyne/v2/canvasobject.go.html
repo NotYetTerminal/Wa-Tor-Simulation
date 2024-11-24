@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: canvasobject.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	canvasobject.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// CanvasObject describes any graphical object that can be added to a canvas.</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// Objects have a size and position that can be controlled through this API.</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// MinSize is used to determine the minimum size which this object should be displayed.</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">// An object will be visible by default but can be hidden with Hide() and re-shown with Show().</span></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// Note: If this object is controlled as part of a Layout you should not call</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// Resize(Size) or Move(Position).</span></code></span>
+<span class="codeline" id="line-10"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-CanvasObject" class="ident">CanvasObject</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-11"><code>	<span class="comment">// geometry</span></code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code>	<span class="comment">// MinSize returns the minimum size this object needs to be drawn.</span></code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../imp/fyne.io/fyne/v2.CanvasObject.html#name-MinSize" class="ident">MinSize</a>() <a href="geometry.go.html#line-91" class="ident">Size</a></code></span>
+<span class="codeline" id="line-15"><code>	<span class="comment">// Move moves this object to the given position relative to its parent.</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">	// This should only be called if your object is not in a container with a layout manager.</span></code></span>
+<span class="codeline" id="line-17"><code>	<a href="../../../../imp/fyne.io/fyne/v2.CanvasObject.html#name-Move" class="ident">Move</a>(<a href="geometry.go.html#line-37" class="ident">Position</a>)</code></span>
+<span class="codeline" id="line-18"><code>	<span class="comment">// Position returns the current position of the object relative to its parent.</span></code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../../imp/fyne.io/fyne/v2.CanvasObject.html#name-Position" class="ident">Position</a>() <a href="geometry.go.html#line-37" class="ident">Position</a></code></span>
+<span class="codeline" id="line-20"><code>	<span class="comment">// Resize resizes this object to the given size.</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">	// This should only be called if your object is not in a container with a layout manager.</span></code></span>
+<span class="codeline" id="line-22"><code>	<a href="../../../../imp/fyne.io/fyne/v2.CanvasObject.html#name-Resize" class="ident">Resize</a>(<a href="geometry.go.html#line-91" class="ident">Size</a>)</code></span>
+<span class="codeline" id="line-23"><code>	<span class="comment">// Size returns the current size of this object.</span></code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../../../imp/fyne.io/fyne/v2.CanvasObject.html#name-Size" class="ident">Size</a>() <a href="geometry.go.html#line-91" class="ident">Size</a></code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code>	<span class="comment">// visibility</span></code></span>
+<span class="codeline" id="line-27"><code></code></span>
+<span class="codeline" id="line-28"><code>	<span class="comment">// Hide hides this object.</span></code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../imp/fyne.io/fyne/v2.CanvasObject.html#name-Hide" class="ident">Hide</a>()</code></span>
+<span class="codeline" id="line-30"><code>	<span class="comment">// Visible returns whether this object is visible or not.</span></code></span>
+<span class="codeline" id="line-31"><code>	<a href="../../../../imp/fyne.io/fyne/v2.CanvasObject.html#name-Visible" class="ident">Visible</a>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-32"><code>	<span class="comment">// Show shows this object.</span></code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../../../imp/fyne.io/fyne/v2.CanvasObject.html#name-Show" class="ident">Show</a>()</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code>	<span class="comment">// Refresh must be called if this object should be redrawn because its inner state changed.</span></code></span>
+<span class="codeline" id="line-36"><code>	<a href="../../../../imp/fyne.io/fyne/v2.CanvasObject.html#name-Refresh" class="ident">Refresh</a>()</code></span>
+<span class="codeline" id="line-37"><code>}</code></span>
+<span class="codeline" id="line-38"><code></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">// Disableable describes any [CanvasObject] that can be disabled.</span></code></span>
+<span class="codeline" id="line-40"><code><span class="comment">// This is primarily used with objects that also implement the Tappable interface.</span></code></span>
+<span class="codeline" id="line-41"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Disableable" class="ident">Disableable</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-42"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Disableable.html#name-Enable" class="ident">Enable</a>()</code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Disableable.html#name-Disable" class="ident">Disable</a>()</code></span>
+<span class="codeline" id="line-44"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Disableable.html#name-Disabled" class="ident">Disabled</a>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-45"><code>}</code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">// DoubleTappable describes any [CanvasObject] that can also be double tapped.</span></code></span>
+<span class="codeline" id="line-48"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-DoubleTappable" class="ident">DoubleTappable</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-49"><code>	<a href="../../../../imp/fyne.io/fyne/v2.DoubleTappable.html#name-DoubleTapped" class="ident">DoubleTapped</a>(*<a href="event.go.html#line-20" class="ident">PointEvent</a>)</code></span>
+<span class="codeline" id="line-50"><code>}</code></span>
+<span class="codeline" id="line-51"><code></code></span>
+<span class="codeline" id="line-52"><code><span class="comment">// Draggable indicates that a [CanvasObject] can be dragged.</span></code></span>
+<span class="codeline" id="line-53"><code><span class="comment">// This is used for any item that the user has indicated should be moved across the screen.</span></code></span>
+<span class="codeline" id="line-54"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Draggable" class="ident">Draggable</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Draggable.html#name-Dragged" class="ident">Dragged</a>(*<a href="event.go.html#line-34" class="ident">DragEvent</a>)</code></span>
+<span class="codeline" id="line-56"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Draggable.html#name-DragEnd" class="ident">DragEnd</a>()</code></span>
+<span class="codeline" id="line-57"><code>}</code></span>
+<span class="codeline" id="line-58"><code></code></span>
+<span class="codeline" id="line-59"><code><span class="comment">// Focusable describes any [CanvasObject] that can respond to being focused.</span></code></span>
+<span class="codeline" id="line-60"><code><span class="comment">// It will receive the FocusGained and FocusLost events appropriately.</span></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">// When focused it will also have TypedRune called as text is input and</span></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">// TypedKey called when other keys are pressed.</span></code></span>
+<span class="codeline" id="line-63"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-64"><code><span class="comment">// Note: You must not change canvas state (including overlays or focus) in FocusGained or FocusLost</span></code></span>
+<span class="codeline" id="line-65"><code><span class="comment">// or you would end up with a dead-lock.</span></code></span>
+<span class="codeline" id="line-66"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Focusable" class="ident">Focusable</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-67"><code>	<span class="comment">// FocusGained is a hook called by the focus handling logic after this object gained the focus.</span></code></span>
+<span class="codeline" id="line-68"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Focusable.html#name-FocusGained" class="ident">FocusGained</a>()</code></span>
+<span class="codeline" id="line-69"><code>	<span class="comment">// FocusLost is a hook called by the focus handling logic after this object lost the focus.</span></code></span>
+<span class="codeline" id="line-70"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Focusable.html#name-FocusLost" class="ident">FocusLost</a>()</code></span>
+<span class="codeline" id="line-71"><code></code></span>
+<span class="codeline" id="line-72"><code>	<span class="comment">// TypedRune is a hook called by the input handling logic on text input events if this object is focused.</span></code></span>
+<span class="codeline" id="line-73"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Focusable.html#name-TypedRune" class="ident">TypedRune</a>(<a href="../../../../pkg/builtin.html#name-rune" class="ident">rune</a>)</code></span>
+<span class="codeline" id="line-74"><code>	<span class="comment">// TypedKey is a hook called by the input handling logic on key events if this object is focused.</span></code></span>
+<span class="codeline" id="line-75"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Focusable.html#name-TypedKey" class="ident">TypedKey</a>(*<a href="event.go.html#line-11" class="ident">KeyEvent</a>)</code></span>
+<span class="codeline" id="line-76"><code>}</code></span>
+<span class="codeline" id="line-77"><code></code></span>
+<span class="codeline" id="line-78"><code><span class="comment">// Scrollable describes any [CanvasObject] that can also be scrolled.</span></code></span>
+<span class="codeline" id="line-79"><code><span class="comment">// This is mostly used to implement the widget.ScrollContainer.</span></code></span>
+<span class="codeline" id="line-80"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Scrollable" class="ident">Scrollable</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-81"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Scrollable.html#name-Scrolled" class="ident">Scrolled</a>(*<a href="event.go.html#line-27" class="ident">ScrollEvent</a>)</code></span>
+<span class="codeline" id="line-82"><code>}</code></span>
+<span class="codeline" id="line-83"><code></code></span>
+<span class="codeline" id="line-84"><code><span class="comment">// SecondaryTappable describes a [CanvasObject] that can be right-clicked or long-tapped.</span></code></span>
+<span class="codeline" id="line-85"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-SecondaryTappable" class="ident">SecondaryTappable</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-86"><code>	<a href="../../../../imp/fyne.io/fyne/v2.SecondaryTappable.html#name-TappedSecondary" class="ident">TappedSecondary</a>(*<a href="event.go.html#line-20" class="ident">PointEvent</a>)</code></span>
+<span class="codeline" id="line-87"><code>}</code></span>
+<span class="codeline" id="line-88"><code></code></span>
+<span class="codeline" id="line-89"><code><span class="comment">// Shortcutable describes any [CanvasObject] that can respond to shortcut commands (quit, cut, copy, and paste).</span></code></span>
+<span class="codeline" id="line-90"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Shortcutable" class="ident">Shortcutable</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-91"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Shortcutable.html#name-TypedShortcut" class="ident">TypedShortcut</a>(<a href="shortcut.go.html#line-35" class="ident">Shortcut</a>)</code></span>
+<span class="codeline" id="line-92"><code>}</code></span>
+<span class="codeline" id="line-93"><code></code></span>
+<span class="codeline" id="line-94"><code><span class="comment">// Tabbable describes any object that needs to accept the Tab key presses.</span></code></span>
+<span class="codeline" id="line-95"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-96"><code><span class="comment">// Since: 2.1</span></code></span>
+<span class="codeline" id="line-97"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Tabbable" class="ident">Tabbable</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-98"><code>	<span class="comment">// AcceptsTab is a hook called by the key press handling logic.</span></code></span>
+<span class="codeline" id="line-99"><code><span class="comment">	// If it returns true then the Tab key events will be sent using TypedKey.</span></code></span>
+<span class="codeline" id="line-100"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Tabbable.html#name-AcceptsTab" class="ident">AcceptsTab</a>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-101"><code>}</code></span>
+<span class="codeline" id="line-102"><code></code></span>
+<span class="codeline" id="line-103"><code><span class="comment">// Tappable describes any [CanvasObject] that can also be tapped.</span></code></span>
+<span class="codeline" id="line-104"><code><span class="comment">// This should be implemented by buttons etc that wish to handle pointer interactions.</span></code></span>
+<span class="codeline" id="line-105"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Tappable" class="ident">Tappable</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-106"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Tappable.html#name-Tapped" class="ident">Tapped</a>(*<a href="event.go.html#line-20" class="ident">PointEvent</a>)</code></span>
+<span class="codeline" id="line-107"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

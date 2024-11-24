@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/go-text/typesetting/unicodedata</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>unicodedata</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-github.com/go-text/typesetting/unicodedata">github.com/go-text/typesetting/unicodedata</a><i> (on <a href="https://pkg.go.dev/github.com/go-text/typesetting/unicodedata" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/github.com/go-text/typesetting/unicodedata.html">2 packages</a>, and imported by <a href="../../../../dep/github.com/go-text/typesetting/unicodedata.html#imported-by">3 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/unicodedata/combining_classes.go.html">combining_classes.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/unicodedata/decomposition.go.html">decomposition.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/unicodedata/east_asian_width.go.html">east_asian_width.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/unicodedata/emojis.go.html">emojis.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html">general_category.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html">grapheme_break.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/unicodedata/indic.go.html">indic.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html">linebreak.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/unicodedata/mirroring.go.html">mirroring.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/unicodedata/sentence_break.go.html">sentence_break.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-10-fold-content"><label for="file-10-fold-content">  <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#doc">d</a> <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html">unicode.go</a></label><span id='file-10-fold-content-items' class="fold-items">
+<span class="md-text">		Package unicodedata provides additional lookup functions for unicode
+		properties, not covered by the standard package unicode.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/unicodedata/vertical_orientation.go.html">vertical_orientation.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html">word_break.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 2, both are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-ArabicJoining" data-popularity="15">	<input type='checkbox' class="fold" id="ArabicJoining-fold-content"><label for="ArabicJoining-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-182">ArabicJoining</a> <a href="../../../builtin.html#name-byte">byte</a> <i>(basic type)</i></label><span id='ArabicJoining-fold-content-docs' class="fold-docs">
+<span class="md-text">		ArabicJoining is a property used to shape Arabic runes.
+		See the table ArabicJoinings.</span>
+
+		<input type='checkbox' class="fold" id="ArabicJoining-fold-values"><label for="ArabicJoining-fold-values">As Types Of (<i>total 9, all are exported</i>)</label><span id='ArabicJoining-fold-values-items' class="fold-items"><span>
+			const <a href="#name-Alaph">Alaph</a></span><span>
+			const <a href="#name-C">C</a></span><span>
+			const <a href="#name-D">D</a></span><span>
+			const <a href="#name-DalathRish">DalathRish</a></span><span>
+			const <a href="#name-G">G</a></span><span>
+			const <a href="#name-L">L</a></span><span>
+			const <a href="#name-R">R</a></span><span>
+			const <a href="#name-T">T</a></span><span>
+			const <a href="#name-U">U</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-ScriptVerticalOrientation" data-popularity="125">	<input type='checkbox' class="fold" id="ScriptVerticalOrientation-fold-content"><label for="ScriptVerticalOrientation-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/unicodedata/vertical_orientation.go.html#line-15">ScriptVerticalOrientation</a> <i>(struct)</i></label><span id='ScriptVerticalOrientation-fold-content-docs' class="fold-docs">
+<span class="md-text">		ScriptVerticalOrientation provides the glyph oriention
+		to use for vertical text.</span>
+
+		<input type='checkbox' class="fold" id="ScriptVerticalOrientation-fold-fields"><label for="ScriptVerticalOrientation-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='ScriptVerticalOrientation-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="ScriptVerticalOrientation-showhide-fields"><i><label for="ScriptVerticalOrientation-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="ScriptVerticalOrientation-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/go-text/typesetting/unicodedata/vertical_orientation.go.html#line-16">exceptions</a> <i>*<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/go-text/typesetting/unicodedata/vertical_orientation.go.html#line-18">isMainSideways</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/go-text/typesetting/unicodedata/vertical_orientation.go.html#line-17">script</a> <i><a href="language.html">language</a>.<a href="language.html#name-Script">Script</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="ScriptVerticalOrientation-fold-methods"><label for="ScriptVerticalOrientation-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='ScriptVerticalOrientation-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ScriptVerticalOrientation-fold-method-Orientation"><label for="ScriptVerticalOrientation-fold-method-Orientation">( ScriptVerticalOrientation) <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-213">Orientation</a>(r <a href="../../../builtin.html#name-rune">rune</a>) (isSideways <a href="../../../builtin.html#name-bool">bool</a>)</label><span id='ScriptVerticalOrientation-fold-method-Orientation-docs' class="fold-docs">
+<span class="md-text">				Orientation returns the prefered orientation
+				for the given rune.
+				If the rune does not belong to this script, the default orientation of this script
+				is returned (regardless of the actual script of the given rune).</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="ScriptVerticalOrientation-fold-results"><label for="ScriptVerticalOrientation-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='ScriptVerticalOrientation-fold-results-items' class="fold-items"><span>
+			func <a href="#name-LookupVerticalOrientation">LookupVerticalOrientation</a>(s <a href="language.html">language</a>.<a href="language.html#name-Script">Script</a>) <b>ScriptVerticalOrientation</b></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 12, in which 9 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Compose">	<input type='checkbox' class="fold" id="Compose-fold-content"><label for="Compose-fold-content"> func <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-171">Compose</a>(a, b <a href="../../../builtin.html#name-rune">rune</a>) (<a href="../../../builtin.html#name-rune">rune</a>, <a href="../../../builtin.html#name-bool">bool</a>)</label><span id='Compose-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compose composes a sequence of two input Unicode code
+		points by canonical equivalence, returning the composed code, if successful.
+		It returns `false` otherwise</span>
+
+</span></div><div class="anchor value-res" id="name-Decompose">	<input type='checkbox' class="fold" id="Decompose-fold-content"><label for="Decompose-fold-content"> func <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-153">Decompose</a>(ab <a href="../../../builtin.html#name-rune">rune</a>) (a, b <a href="../../../builtin.html#name-rune">rune</a>, ok <a href="../../../builtin.html#name-bool">bool</a>)</label><span id='Decompose-fold-content-docs' class="fold-docs">
+<span class="md-text">		Decompose decompose an input Unicode code point,
+		returning the two decomposed code points, if successful.
+		It returns `false` otherwise.</span>
+
+</span></div><div class="anchor value-res" id="name-LookupCombiningClass">	<input type='checkbox' class="fold" id="LookupCombiningClass-fold-content"><label for="LookupCombiningClass-fold-content"> func <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-40">LookupCombiningClass</a>(ch <a href="../../../builtin.html#name-rune">rune</a>) <a href="../../../builtin.html#name-uint8">uint8</a></label><span id='LookupCombiningClass-fold-content-docs' class="fold-docs">
+<span class="md-text">		LookupCombiningClass returns the class used for the Canonical Ordering Algorithm in the Unicode Standard,
+		defaulting to 0.
+		
+		From http://www.unicode.org/reports/tr44/#Canonical_Combining_Class:
+		"This property could be considered either an enumerated property or a numeric property:
+		the principal use of the property is in terms of the numeric values.
+		For the property value names associated with different numeric values,
+		see DerivedCombiningClass.txt and Canonical Combining Class Values."</span>
+
+</span></div><div class="anchor value-res" id="name-LookupGraphemeBreakClass">	<input type='checkbox' class="fold" id="LookupGraphemeBreakClass-fold-content"><label for="LookupGraphemeBreakClass-fold-content"> func <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-64">LookupGraphemeBreakClass</a>(ch <a href="../../../builtin.html#name-rune">rune</a>) *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='LookupGraphemeBreakClass-fold-content-docs' class="fold-docs">
+<span class="md-text">		LookupGraphemeBreakClass returns the grapheme break property for the rune (see the constants GraphemeBreakXXX),
+		or nil</span>
+
+</span></div><div class="anchor value-res" id="name-LookupLineBreakClass">	<input type='checkbox' class="fold" id="LookupLineBreakClass-fold-content"><label for="LookupLineBreakClass-fold-content"> func <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-53">LookupLineBreakClass</a>(ch <a href="../../../builtin.html#name-rune">rune</a>) *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='LookupLineBreakClass-fold-content-docs' class="fold-docs">
+<span class="md-text">		LookupLineBreakClass returns the break class for the rune (see the constants BreakXXX)</span>
+
+</span></div><div class="anchor value-res" id="name-LookupMirrorChar">	<input type='checkbox' class="fold" id="LookupMirrorChar-fold-content"><label for="LookupMirrorChar-fold-content"> func <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-101">LookupMirrorChar</a>(ch <a href="../../../builtin.html#name-rune">rune</a>) (<a href="../../../builtin.html#name-rune">rune</a>, <a href="../../../builtin.html#name-bool">bool</a>)</label><span id='LookupMirrorChar-fold-content-docs' class="fold-docs">
+<span class="md-text">		LookupMirrorChar finds the mirrored equivalent of a character as defined in
+		the file BidiMirroring.txt of the Unicode Character Database available at
+		http://www.unicode.org/Public/UNIDATA/BidiMirroring.txt.
+		
+		If the input character is declared as a mirroring character in the
+		Unicode standard and has a mirrored equivalent, it is returned with `true`.
+		Otherwise the input character itself returned with `false`.</span>
+
+</span></div><div class="anchor value-res" id="name-LookupType">	<input type='checkbox' class="fold" id="LookupType-fold-content"><label for="LookupType-fold-content"> func <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-23">LookupType</a>(r <a href="../../../builtin.html#name-rune">rune</a>) *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='LookupType-fold-content-docs' class="fold-docs">
+<span class="md-text">		LookupType returns the unicode general categorie of the rune,
+		or nil if not found.</span>
+
+</span></div><div class="anchor value-res" id="name-LookupVerticalOrientation">	<input type='checkbox' class="fold" id="LookupVerticalOrientation-fold-content"><label for="LookupVerticalOrientation-fold-content"> func <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-198">LookupVerticalOrientation</a>(s <a href="language.html">language</a>.<a href="language.html#name-Script">Script</a>) <a href="#name-ScriptVerticalOrientation">ScriptVerticalOrientation</a></label><span id='LookupVerticalOrientation-fold-content-docs' class="fold-docs">
+<span class="md-text">		LookupVerticalOrientation returns the prefered orientation
+		for the given script.</span>
+
+</span></div><div class="anchor value-res" id="name-LookupWordBreakClass">	<input type='checkbox' class="fold" id="LookupWordBreakClass-fold-content"><label for="LookupWordBreakClass-fold-content"> func <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-80">LookupWordBreakClass</a>(ch <a href="../../../builtin.html#name-rune">rune</a>) *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='LookupWordBreakClass-fold-content-docs' class="fold-docs">
+<span class="md-text">		LookupordBreakClass returns the word break property for the rune (see the constants ordBreakXXX),
+		or nil</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-composeHangul"><i>	<span class="nodocs"> func <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-137">composeHangul</a>(a, b <a href="../../../builtin.html#name-rune">rune</a>) (<a href="../../../builtin.html#name-rune">rune</a>, <a href="../../../builtin.html#name-bool">bool</a>)</span></i></div><div class="anchor value-res hidden" id="name-decomposeHangul"><i>	<span class="nodocs"> func <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-124">decomposeHangul</a>(ab <a href="../../../builtin.html#name-rune">rune</a>) (a, b <a href="../../../builtin.html#name-rune">rune</a>, ok <a href="../../../builtin.html#name-bool">bool</a>)</span></i></div><div class="anchor value-res hidden" id="name-init"><i>	<span class="nodocs"> func <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-13">init</a>()</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 117, in which 105 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-BreakAI">	<input type='checkbox' class="fold" id="BreakAI-fold-content"><label for="BreakAI-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-2275">BreakAI</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakAI-fold-content-docs' class="fold-docs">
+<span class="md-text">		Ambiguous (Alphabetic or Ideographic)</span>
+
+</span></div><div class="anchor value-res" id="name-BreakAL">	<input type='checkbox' class="fold" id="BreakAL-fold-content"><label for="BreakAL-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-123">BreakAL</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakAL-fold-content-docs' class="fold-docs">
+<span class="md-text">		Alphabetic</span>
+
+</span></div><div class="anchor value-res" id="name-BreakB2">	<input type='checkbox' class="fold" id="BreakB2-fold-content"><label for="BreakB2-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1449">BreakB2</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakB2-fold-content-docs' class="fold-docs">
+<span class="md-text">		Break Opportunity Before and After</span>
+
+</span></div><div class="anchor value-res" id="name-BreakBA">	<input type='checkbox' class="fold" id="BreakBA-fold-content"><label for="BreakBA-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1323">BreakBA</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakBA-fold-content-docs' class="fold-docs">
+<span class="md-text">		Break After</span>
+
+</span></div><div class="anchor value-res" id="name-BreakBB">	<input type='checkbox' class="fold" id="BreakBB-fold-content"><label for="BreakBB-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1423">BreakBB</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakBB-fold-content-docs' class="fold-docs">
+<span class="md-text">		Break Before</span>
+
+</span></div><div class="anchor value-res" id="name-BreakBK">	<input type='checkbox' class="fold" id="BreakBK-fold-content"><label for="BreakBK-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-10">BreakBK</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakBK-fold-content-docs' class="fold-docs">
+<span class="md-text">		Mandatory Break</span>
+
+</span></div><div class="anchor value-res" id="name-BreakCB">	<input type='checkbox' class="fold" id="BreakCB-fold-content"><label for="BreakCB-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-2268">BreakCB</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakCB-fold-content-docs' class="fold-docs">
+<span class="md-text">		Contingent Break Opportunity</span>
+
+</span></div><div class="anchor value-res" id="name-BreakCJ">	<input type='checkbox' class="fold" id="BreakCJ-fold-content"><label for="BreakCJ-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-2374">BreakCJ</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakCJ-fold-content-docs' class="fold-docs">
+<span class="md-text">		Conditional Japanese Starter</span>
+
+</span></div><div class="anchor value-res" id="name-BreakCL">	<input type='checkbox' class="fold" id="BreakCL-fold-content"><label for="BreakCL-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-957">BreakCL</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakCL-fold-content-docs' class="fold-docs">
+<span class="md-text">		Close Punctuation</span>
+
+</span></div><div class="anchor value-res" id="name-BreakCM">	<input type='checkbox' class="fold" id="BreakCM-fold-content"><label for="BreakCM-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1464">BreakCM</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakCM-fold-content-docs' class="fold-docs">
+<span class="md-text">		Combining Mark</span>
+
+</span></div><div class="anchor value-res" id="name-BreakCP">	<input type='checkbox' class="fold" id="BreakCP-fold-content"><label for="BreakCP-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-999">BreakCP</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakCP-fold-content-docs' class="fold-docs">
+<span class="md-text">		Close Parenthesis</span>
+
+</span></div><div class="anchor value-res" id="name-BreakCR">	<input type='checkbox' class="fold" id="BreakCR-fold-content"><label for="BreakCR-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-19">BreakCR</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakCR-fold-content-docs' class="fold-docs">
+<span class="md-text">		Carriage Return</span>
+
+</span></div><div class="anchor value-res" id="name-BreakEB">	<input type='checkbox' class="fold" id="BreakEB-fold-content"><label for="BreakEB-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1762">BreakEB</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakEB-fold-content-docs' class="fold-docs">
+<span class="md-text">		Emoji Base</span>
+
+</span></div><div class="anchor value-res" id="name-BreakEM">	<input type='checkbox' class="fold" id="BreakEM-fold-content"><label for="BreakEM-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1804">BreakEM</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakEM-fold-content-docs' class="fold-docs">
+<span class="md-text">		Emoji Modifier</span>
+
+</span></div><div class="anchor value-res" id="name-BreakEX">	<input type='checkbox' class="fold" id="BreakEX-fold-content"><label for="BreakEX-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1084">BreakEX</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakEX-fold-content-docs' class="fold-docs">
+<span class="md-text">		Exclamation/Interrogation</span>
+
+</span></div><div class="anchor value-res" id="name-BreakGL">	<input type='checkbox' class="fold" id="BreakGL-fold-content"><label for="BreakGL-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1042">BreakGL</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakGL-fold-content-docs' class="fold-docs">
+<span class="md-text">		Non-breaking ("Glue")</span>
+
+</span></div><div class="anchor value-res" id="name-BreakH2">	<input type='checkbox' class="fold" id="BreakH2-fold-content"><label for="BreakH2-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1825">BreakH2</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakH2-fold-content-docs' class="fold-docs">
+<span class="md-text">		Hangul LV Syllable</span>
+
+</span></div><div class="anchor value-res" id="name-BreakH3">	<input type='checkbox' class="fold" id="BreakH3-fold-content"><label for="BreakH3-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1832">BreakH3</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakH3-fold-content-docs' class="fold-docs">
+<span class="md-text">		Hangul LVT Syllable</span>
+
+</span></div><div class="anchor value-res" id="name-BreakHL">	<input type='checkbox' class="fold" id="BreakHL-fold-content"><label for="BreakHL-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1120">BreakHL</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakHL-fold-content-docs' class="fold-docs">
+<span class="md-text">		Hebrew Letter</span>
+
+</span></div><div class="anchor value-res" id="name-BreakHY">	<input type='checkbox' class="fold" id="BreakHY-fold-content"><label for="BreakHY-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1027">BreakHY</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakHY-fold-content-docs' class="fold-docs">
+<span class="md-text">		Hyphen</span>
+
+</span></div><div class="anchor value-res" id="name-BreakID">	<input type='checkbox' class="fold" id="BreakID-fold-content"><label for="BreakID-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1136">BreakID</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakID-fold-content-docs' class="fold-docs">
+<span class="md-text">		Ideographic</span>
+
+</span></div><div class="anchor value-res" id="name-BreakIN">	<input type='checkbox' class="fold" id="BreakIN-fold-content"><label for="BreakIN-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1312">BreakIN</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakIN-fold-content-docs' class="fold-docs">
+<span class="md-text">		Inseparable</span>
+
+</span></div><div class="anchor value-res" id="name-BreakIS">	<input type='checkbox' class="fold" id="BreakIS-fold-content"><label for="BreakIS-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-848">BreakIS</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakIS-fold-content-docs' class="fold-docs">
+<span class="md-text">		Infix Numeric Separator</span>
+
+</span></div><div class="anchor value-res" id="name-BreakJL">	<input type='checkbox' class="fold" id="BreakJL-fold-content"><label for="BreakJL-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-2237">BreakJL</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakJL-fold-content-docs' class="fold-docs">
+<span class="md-text">		Hangul L Jamo</span>
+
+</span></div><div class="anchor value-res" id="name-BreakJT">	<input type='checkbox' class="fold" id="BreakJT-fold-content"><label for="BreakJT-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-2253">BreakJT</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakJT-fold-content-docs' class="fold-docs">
+<span class="md-text">		Hangul T Jamo</span>
+
+</span></div><div class="anchor value-res" id="name-BreakJV">	<input type='checkbox' class="fold" id="BreakJV-fold-content"><label for="BreakJV-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-2245">BreakJV</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakJV-fold-content-docs' class="fold-docs">
+<span class="md-text">		Hangul V Jamo</span>
+
+</span></div><div class="anchor value-res" id="name-BreakLF">	<input type='checkbox' class="fold" id="BreakLF-fold-content"><label for="BreakLF-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-27">BreakLF</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakLF-fold-content-docs' class="fold-docs">
+<span class="md-text">		Line Feed</span>
+
+</span></div><div class="anchor value-res" id="name-BreakNL">	<input type='checkbox' class="fold" id="BreakNL-fold-content"><label for="BreakNL-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-35">BreakNL</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakNL-fold-content-docs' class="fold-docs">
+<span class="md-text">		Next Line</span>
+
+</span></div><div class="anchor value-res" id="name-BreakNS">	<input type='checkbox' class="fold" id="BreakNS-fold-content"><label for="BreakNS-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1062">BreakNS</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakNS-fold-content-docs' class="fold-docs">
+<span class="md-text">		Nonstarter</span>
+
+</span></div><div class="anchor value-res" id="name-BreakNU">	<input type='checkbox' class="fold" id="BreakNU-fold-content"><label for="BreakNU-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-51">BreakNU</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakNU-fold-content-docs' class="fold-docs">
+<span class="md-text">		Numeric</span>
+
+</span></div><div class="anchor value-res" id="name-BreakOP">	<input type='checkbox' class="fold" id="BreakOP-fold-content"><label for="BreakOP-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-915">BreakOP</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakOP-fold-content-docs' class="fold-docs">
+<span class="md-text">		Open Punctuation</span>
+
+</span></div><div class="anchor value-res" id="name-BreakPO">	<input type='checkbox' class="fold" id="BreakPO-fold-content"><label for="BreakPO-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-890">BreakPO</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakPO-fold-content-docs' class="fold-docs">
+<span class="md-text">		Postfix Numeric</span>
+
+</span></div><div class="anchor value-res" id="name-BreakPR">	<input type='checkbox' class="fold" id="BreakPR-fold-content"><label for="BreakPR-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-862">BreakPR</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakPR-fold-content-docs' class="fold-docs">
+<span class="md-text">		Prefix Numeric</span>
+
+</span></div><div class="anchor value-res" id="name-BreakQU">	<input type='checkbox' class="fold" id="BreakQU-fold-content"><label for="BreakQU-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1007">BreakQU</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakQU-fold-content-docs' class="fold-docs">
+<span class="md-text">		Quotation</span>
+
+</span></div><div class="anchor value-res" id="name-BreakRI">	<input type='checkbox' class="fold" id="BreakRI-fold-content"><label for="BreakRI-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-2261">BreakRI</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakRI-fold-content-docs' class="fold-docs">
+<span class="md-text">		Regional Indicator</span>
+
+</span></div><div class="anchor value-res" id="name-BreakSA">	<input type='checkbox' class="fold" id="BreakSA-fold-content"><label for="BreakSA-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-2398">BreakSA</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakSA-fold-content-docs' class="fold-docs">
+<span class="md-text">		Complex Context Dependent (South East Asian)</span>
+
+</span></div><div class="anchor value-res" id="name-BreakSG">	<input type='checkbox' class="fold" id="BreakSG-fold-content"><label for="BreakSG-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1035">BreakSG</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakSG-fold-content-docs' class="fold-docs">
+<span class="md-text">		Surrogate</span>
+
+</span></div><div class="anchor value-res" id="name-BreakSP">	<input type='checkbox' class="fold" id="BreakSP-fold-content"><label for="BreakSP-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-43">BreakSP</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakSP-fold-content-docs' class="fold-docs">
+<span class="md-text">		Space</span>
+
+</span></div><div class="anchor value-res" id="name-BreakSY">	<input type='checkbox' class="fold" id="BreakSY-fold-content"><label for="BreakSY-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1112">BreakSY</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakSY-fold-content-docs' class="fold-docs">
+<span class="md-text">		Symbols Allowing Break After</span>
+
+</span></div><div class="anchor value-res" id="name-BreakWJ">	<input type='checkbox' class="fold" id="BreakWJ-fold-content"><label for="BreakWJ-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1811">BreakWJ</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakWJ-fold-content-docs' class="fold-docs">
+<span class="md-text">		Word Joiner</span>
+
+</span></div><div class="anchor value-res" id="name-BreakXX">	<input type='checkbox' class="fold" id="BreakXX-fold-content"><label for="BreakXX-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-2441">BreakXX</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakXX-fold-content-docs' class="fold-docs">
+<span class="md-text">		Unknown</span>
+
+</span></div><div class="anchor value-res" id="name-BreakZW">	<input type='checkbox' class="fold" id="BreakZW-fold-content"><label for="BreakZW-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1457">BreakZW</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakZW-fold-content-docs' class="fold-docs">
+<span class="md-text">		Zero Width Space</span>
+
+</span></div><div class="anchor value-res" id="name-BreakZWJ">	<input type='checkbox' class="fold" id="BreakZWJ-fold-content"><label for="BreakZWJ-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-1818">BreakZWJ</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='BreakZWJ-fold-content-docs' class="fold-docs">
+<span class="md-text">		Zero width joiner</span>
+
+</span></div><div class="anchor value-res" id="name-Cc">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-9">Cc</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Cf">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-17">Cf</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Co">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-42">Co</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Cs">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-52">Cs</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Extended_Pictographic">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/emojis.go.html#line-9">Extended_Pictographic</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-GraphemeBreakControl">	<input type='checkbox' class="fold" id="GraphemeBreakControl-fold-content"><label for="GraphemeBreakControl-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-18">GraphemeBreakControl</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='GraphemeBreakControl-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeBreakProperty: Control</span>
+
+</span></div><div class="anchor value-res" id="name-GraphemeBreakCR">	<input type='checkbox' class="fold" id="GraphemeBreakCR-fold-content"><label for="GraphemeBreakCR-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-10">GraphemeBreakCR</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='GraphemeBreakCR-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeBreakProperty: CR</span>
+
+</span></div><div class="anchor value-res" id="name-GraphemeBreakExtend">	<input type='checkbox' class="fold" id="GraphemeBreakExtend-fold-content"><label for="GraphemeBreakExtend-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-44">GraphemeBreakExtend</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='GraphemeBreakExtend-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeBreakProperty: Extend</span>
+
+</span></div><div class="anchor value-res" id="name-GraphemeBreakL">	<input type='checkbox' class="fold" id="GraphemeBreakL-fold-content"><label for="GraphemeBreakL-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-372">GraphemeBreakL</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='GraphemeBreakL-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeBreakProperty: L</span>
+
+</span></div><div class="anchor value-res" id="name-GraphemeBreakLF">	<input type='checkbox' class="fold" id="GraphemeBreakLF-fold-content"><label for="GraphemeBreakLF-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-380">GraphemeBreakLF</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='GraphemeBreakLF-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeBreakProperty: LF</span>
+
+</span></div><div class="anchor value-res" id="name-GraphemeBreakLV">	<input type='checkbox' class="fold" id="GraphemeBreakLV-fold-content"><label for="GraphemeBreakLV-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-388">GraphemeBreakLV</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='GraphemeBreakLV-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeBreakProperty: LV</span>
+
+</span></div><div class="anchor value-res" id="name-GraphemeBreakLVT">	<input type='checkbox' class="fold" id="GraphemeBreakLVT-fold-content"><label for="GraphemeBreakLVT-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-395">GraphemeBreakLVT</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='GraphemeBreakLVT-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeBreakProperty: LVT</span>
+
+</span></div><div class="anchor value-res" id="name-GraphemeBreakPrepend">	<input type='checkbox' class="fold" id="GraphemeBreakPrepend-fold-content"><label for="GraphemeBreakPrepend-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-800">GraphemeBreakPrepend</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='GraphemeBreakPrepend-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeBreakProperty: Prepend</span>
+
+</span></div><div class="anchor value-res" id="name-GraphemeBreakRegional_Indicator">	<input type='checkbox' class="fold" id="GraphemeBreakRegional_Indicator-fold-content"><label for="GraphemeBreakRegional_Indicator-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-818">GraphemeBreakRegional_Indicator</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='GraphemeBreakRegional_Indicator-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeBreakProperty: Regional_Indicator</span>
+
+</span></div><div class="anchor value-res" id="name-GraphemeBreakSpacingMark">	<input type='checkbox' class="fold" id="GraphemeBreakSpacingMark-fold-content"><label for="GraphemeBreakSpacingMark-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-825">GraphemeBreakSpacingMark</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='GraphemeBreakSpacingMark-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeBreakProperty: SpacingMark</span>
+
+</span></div><div class="anchor value-res" id="name-GraphemeBreakT">	<input type='checkbox' class="fold" id="GraphemeBreakT-fold-content"><label for="GraphemeBreakT-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-971">GraphemeBreakT</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='GraphemeBreakT-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeBreakProperty: T</span>
+
+</span></div><div class="anchor value-res" id="name-GraphemeBreakV">	<input type='checkbox' class="fold" id="GraphemeBreakV-fold-content"><label for="GraphemeBreakV-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-979">GraphemeBreakV</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='GraphemeBreakV-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeBreakProperty: V</span>
+
+</span></div><div class="anchor value-res" id="name-GraphemeBreakZWJ">	<input type='checkbox' class="fold" id="GraphemeBreakZWJ-fold-content"><label for="GraphemeBreakZWJ-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-987">GraphemeBreakZWJ</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='GraphemeBreakZWJ-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeBreakProperty: ZWJ</span>
+
+</span></div><div class="anchor value-res" id="name-IndicVirama">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/indic.go.html#line-9">IndicVirama</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-IndicVowel_Dependent">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/indic.go.html#line-27">IndicVowel_Dependent</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-LargeEastAsian">	<input type='checkbox' class="fold" id="LargeEastAsian-fold-content"><label for="LargeEastAsian-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/east_asian_width.go.html#line-11">LargeEastAsian</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='LargeEastAsian-fold-content-docs' class="fold-docs">
+<span class="md-text">		LargeEastAsian matches runes with East_Asian_Width property of
+		F, W or H, and is used for UAX14, rule LB30.</span>
+
+</span></div><div class="anchor value-res" id="name-Ll">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-60">Ll</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Lm">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-231">Lm</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Lo">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-292">Lo</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Lt">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-786">Lt</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Lu">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-798">Lu</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Mc">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-955">Mc</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Me">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1120">Me</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Mn">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1130">Mn</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Nd">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1445">Nd</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Nl">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1517">Nl</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-No">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1535">No</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Pc">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1614">Pc</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Pd">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1624">Pd</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Pe">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1643">Pe</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Pf">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1672">Pf</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Pi">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1682">Pi</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Po">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1693">Po</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Ps">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1865">Ps</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Sc">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1897">Sc</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Sk">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1920">Sk</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Sm">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-1954">Sm</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-So">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-2011">So</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-STerm">	<input type='checkbox' class="fold" id="STerm-fold-content"><label for="STerm-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/sentence_break.go.html#line-10">STerm</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='STerm-fold-content-docs' class="fold-docs">
+<span class="md-text">		SentenceBreakProperty: STerm</span>
+
+</span></div><div class="anchor value-res" id="name-Word">	<input type='checkbox' class="fold" id="Word-fold-content"><label for="Word-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-1862">Word</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='Word-fold-content-docs' class="fold-docs">
+<span class="md-text">		Word contains all the runes we may found in a word,
+		that is either a Number (Nd, Nl, No) or a rune with the Alphabetic property</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakALetter">	<input type='checkbox' class="fold" id="WordBreakALetter-fold-content"><label for="WordBreakALetter-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-10">WordBreakALetter</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakALetter-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: ALetter</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakDouble_Quote">	<input type='checkbox' class="fold" id="WordBreakDouble_Quote-fold-content"><label for="WordBreakDouble_Quote-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-563">WordBreakDouble_Quote</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakDouble_Quote-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: Double_Quote</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakExtendFormat">	<input type='checkbox' class="fold" id="WordBreakExtendFormat-fold-content"><label for="WordBreakExtendFormat-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-571">WordBreakExtendFormat</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakExtendFormat-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: ExtendFormat</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakExtendNumLet">	<input type='checkbox' class="fold" id="WordBreakExtendNumLet-fold-content"><label for="WordBreakExtendNumLet-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-890">WordBreakExtendNumLet</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakExtendNumLet-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: ExtendNumLet</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakHebrew_Letter">	<input type='checkbox' class="fold" id="WordBreakHebrew_Letter-fold-content"><label for="WordBreakHebrew_Letter-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-902">WordBreakHebrew_Letter</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakHebrew_Letter-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: Hebrew_Letter</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakKatakana">	<input type='checkbox' class="fold" id="WordBreakKatakana-fold-content"><label for="WordBreakKatakana-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-918">WordBreakKatakana</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakKatakana-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: Katakana</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakMidLetter">	<input type='checkbox' class="fold" id="WordBreakMidLetter-fold-content"><label for="WordBreakMidLetter-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-941">WordBreakMidLetter</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakMidLetter-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: MidLetter</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakMidNum">	<input type='checkbox' class="fold" id="WordBreakMidNum-fold-content"><label for="WordBreakMidNum-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-953">WordBreakMidNum</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakMidNum-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: MidNum</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakMidNumLet">	<input type='checkbox' class="fold" id="WordBreakMidNumLet-fold-content"><label for="WordBreakMidNumLet-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-968">WordBreakMidNumLet</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakMidNumLet-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: MidNumLet</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakNewlineCRLF">	<input type='checkbox' class="fold" id="WordBreakNewlineCRLF-fold-content"><label for="WordBreakNewlineCRLF-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-978">WordBreakNewlineCRLF</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakNewlineCRLF-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: NewlineCRLF</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakNumeric">	<input type='checkbox' class="fold" id="WordBreakNumeric-fold-content"><label for="WordBreakNumeric-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-988">WordBreakNumeric</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakNumeric-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: Numeric</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakRegional_Indicator">	<input type='checkbox' class="fold" id="WordBreakRegional_Indicator-fold-content"><label for="WordBreakRegional_Indicator-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-1066">WordBreakRegional_Indicator</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakRegional_Indicator-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: Regional_Indicator</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakSingle_Quote">	<input type='checkbox' class="fold" id="WordBreakSingle_Quote-fold-content"><label for="WordBreakSingle_Quote-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-1073">WordBreakSingle_Quote</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakSingle_Quote-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: Single_Quote</span>
+
+</span></div><div class="anchor value-res" id="name-WordBreakWSegSpace">	<input type='checkbox' class="fold" id="WordBreakWSegSpace-fold-content"><label for="WordBreakWSegSpace-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-1081">WordBreakWSegSpace</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='WordBreakWSegSpace-fold-content-docs' class="fold-docs">
+<span class="md-text">		WordBreakProperty: WSegSpace</span>
+
+</span></div><div class="anchor value-res" id="name-Zl">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-2186">Zl</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Zp">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-2192">Zp</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div><div class="anchor value-res" id="name-Zs">	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/general_category.go.html#line-2198">Zs</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 12 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 12 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-categories"><i>	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-11">categories</a> []*<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></i></div><div class="anchor value-res hidden" id="name-combiningClasses"><i>	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/combining_classes.go.html#line-9">combiningClasses</a> [256]*<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></i></div><div class="anchor value-res hidden" id="name-compose"><i>	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/decomposition.go.html#line-2072">compose</a> map[[2]<a href="../../../builtin.html#name-rune">rune</a>]<a href="../../../builtin.html#name-rune">rune</a></span></i></div><div class="anchor value-res hidden" id="name-decompose1"><i>	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/decomposition.go.html#line-7">decompose1</a> map[<a href="../../../builtin.html#name-rune">rune</a>]<a href="../../../builtin.html#name-rune">rune</a></span></i></div><div class="anchor value-res hidden" id="name-decompose2"><i>	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/decomposition.go.html#line-1044">decompose2</a> map[<a href="../../../builtin.html#name-rune">rune</a>][2]<a href="../../../builtin.html#name-rune">rune</a></span></i></div><div class="anchor value-res hidden" id="name-graphemeBreakAll"><i>	<input type='checkbox' class="fold" id="graphemeBreakAll-fold-content"><label for="graphemeBreakAll-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-994">graphemeBreakAll</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='graphemeBreakAll-fold-content-docs' class="fold-docs">
+<span class="md-text">		contains all the runes having a non nil grapheme break property</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-graphemeBreaks"><i>	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/grapheme_break.go.html#line-1320">graphemeBreaks</a> [13]*<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></i></div><div class="anchor value-res hidden" id="name-lineBreaks"><i>	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/linebreak.go.html#line-2451">lineBreaks</a> [43]*<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></i></div><div class="anchor value-res hidden" id="name-mirroring"><i>	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/mirroring.go.html#line-7">mirroring</a> map[<a href="../../../builtin.html#name-rune">rune</a>]<a href="../../../builtin.html#name-rune">rune</a></span></i></div><div class="anchor value-res hidden" id="name-uprightOrMixedScripts"><i>	<input type='checkbox' class="fold" id="uprightOrMixedScripts-fold-content"><label for="uprightOrMixedScripts-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/vertical_orientation.go.html#line-23">uprightOrMixedScripts</a> [18]<a href="#name-ScriptVerticalOrientation">ScriptVerticalOrientation</a></label><span id='uprightOrMixedScripts-fold-content-docs' class="fold-docs">
+<span class="md-text">		uprightOrMixedScripts is the list of scripts
+		which may use both mode ("upright" or "sideways") for vertical text orientation</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-wordBreakAll"><i>	<input type='checkbox' class="fold" id="wordBreakAll-fold-content"><label for="wordBreakAll-fold-content">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-1091">wordBreakAll</a> *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></label><span id='wordBreakAll-fold-content-docs' class="fold-docs">
+<span class="md-text">		contains all the runes having a non nil word break property</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-wordBreaks"><i>	<span class="nodocs">  var <a href="../../../../src/github.com/go-text/typesetting/unicodedata/word_break.go.html#line-1843">wordBreaks</a> [14]*<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 18, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Alaph">	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-187">Alaph</a> <a href="#name-ArabicJoining">ArabicJoining</a> = 97 // <span class="md-text">Alaph group (included in kind R)</span></span></div><div class="anchor value-res" id="name-C">	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-190">C</a> <a href="#name-ArabicJoining">ArabicJoining</a> = 67 // <span class="md-text">Join-Causing, e.g. Tatweel, ZWJ</span></span></div><div class="anchor value-res" id="name-D">	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-189">D</a> <a href="#name-ArabicJoining">ArabicJoining</a> = 68 // <span class="md-text">Dual-joining, e.g. Arabic Letter Ain</span></span></div><div class="anchor value-res" id="name-DalathRish">	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-188">DalathRish</a> <a href="#name-ArabicJoining">ArabicJoining</a> = 100 // <span class="md-text">Dalat Rish group (included in kind R)</span></span></div><div class="anchor value-res" id="name-G">	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-193">G</a> <a href="#name-ArabicJoining">ArabicJoining</a> = 71 // <span class="md-text">Ignored, e.g. LRE, RLE, ZWNBSP</span></span></div><div class="anchor value-res" id="name-HangulLBase">	<input type='checkbox' class="fold" id="HangulLBase-fold-content"><label for="HangulLBase-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-114">HangulLBase</a> = 4352</label><span id='HangulLBase-fold-content-docs' class="fold-docs">
+<span class="md-text">		Algorithmic hangul syllables [de]composition, used
+		in Compose and Decompose, but also exported for additional shaper
+		processing.</span>
+
+</span></div><div class="anchor value-res" id="name-HangulLCount">	<input type='checkbox' class="fold" id="HangulLCount-fold-content"><label for="HangulLCount-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-118">HangulLCount</a> = 19</label><span id='HangulLCount-fold-content-docs' class="fold-docs">
+<span class="md-text">		Algorithmic hangul syllables [de]composition, used
+		in Compose and Decompose, but also exported for additional shaper
+		processing.</span>
+
+</span></div><div class="anchor value-res" id="name-HangulNCount">	<input type='checkbox' class="fold" id="HangulNCount-fold-content"><label for="HangulNCount-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-121">HangulNCount</a> = 588</label><span id='HangulNCount-fold-content-docs' class="fold-docs">
+<span class="md-text">		Algorithmic hangul syllables [de]composition, used
+		in Compose and Decompose, but also exported for additional shaper
+		processing.</span>
+
+</span></div><div class="anchor value-res" id="name-HangulSBase">	<input type='checkbox' class="fold" id="HangulSBase-fold-content"><label for="HangulSBase-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-113">HangulSBase</a> = 44032</label><span id='HangulSBase-fold-content-docs' class="fold-docs">
+<span class="md-text">		Algorithmic hangul syllables [de]composition, used
+		in Compose and Decompose, but also exported for additional shaper
+		processing.</span>
+
+</span></div><div class="anchor value-res" id="name-HangulSCount">	<input type='checkbox' class="fold" id="HangulSCount-fold-content"><label for="HangulSCount-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-117">HangulSCount</a> = 11172</label><span id='HangulSCount-fold-content-docs' class="fold-docs">
+<span class="md-text">		Algorithmic hangul syllables [de]composition, used
+		in Compose and Decompose, but also exported for additional shaper
+		processing.</span>
+
+</span></div><div class="anchor value-res" id="name-HangulTBase">	<input type='checkbox' class="fold" id="HangulTBase-fold-content"><label for="HangulTBase-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-116">HangulTBase</a> = 4519</label><span id='HangulTBase-fold-content-docs' class="fold-docs">
+<span class="md-text">		Algorithmic hangul syllables [de]composition, used
+		in Compose and Decompose, but also exported for additional shaper
+		processing.</span>
+
+</span></div><div class="anchor value-res" id="name-HangulTCount">	<input type='checkbox' class="fold" id="HangulTCount-fold-content"><label for="HangulTCount-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-120">HangulTCount</a> = 28</label><span id='HangulTCount-fold-content-docs' class="fold-docs">
+<span class="md-text">		Algorithmic hangul syllables [de]composition, used
+		in Compose and Decompose, but also exported for additional shaper
+		processing.</span>
+
+</span></div><div class="anchor value-res" id="name-HangulVBase">	<input type='checkbox' class="fold" id="HangulVBase-fold-content"><label for="HangulVBase-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-115">HangulVBase</a> = 4449</label><span id='HangulVBase-fold-content-docs' class="fold-docs">
+<span class="md-text">		Algorithmic hangul syllables [de]composition, used
+		in Compose and Decompose, but also exported for additional shaper
+		processing.</span>
+
+</span></div><div class="anchor value-res" id="name-HangulVCount">	<input type='checkbox' class="fold" id="HangulVCount-fold-content"><label for="HangulVCount-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-119">HangulVCount</a> = 21</label><span id='HangulVCount-fold-content-docs' class="fold-docs">
+<span class="md-text">		Algorithmic hangul syllables [de]composition, used
+		in Compose and Decompose, but also exported for additional shaper
+		processing.</span>
+
+</span></div><div class="anchor value-res" id="name-L">	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-191">L</a> <a href="#name-ArabicJoining">ArabicJoining</a> = 76 // <span class="md-text">Left-joining, i.e. fictional</span></span></div><div class="anchor value-res" id="name-R">	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-186">R</a> <a href="#name-ArabicJoining">ArabicJoining</a> = 82 // <span class="md-text">Right-joining, e.g. Arabic Letter Dal</span></span></div><div class="anchor value-res" id="name-T">	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-192">T</a> <a href="#name-ArabicJoining">ArabicJoining</a> = 84 // <span class="md-text">Transparent, e.g. Arabic Fatha</span></span></div><div class="anchor value-res" id="name-U">	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/unicodedata/unicode.go.html#line-185">U</a> <a href="#name-ArabicJoining">ArabicJoining</a> = 85 // <span class="md-text">Un-joining, e.g. Full Stop</span></span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

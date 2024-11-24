@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/jeandeaual/go-locale</title>
+<link href="../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>locale</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-github.com/jeandeaual/go-locale">github.com/jeandeaual/go-locale</a><i> (on <a href="https://pkg.go.dev/github.com/jeandeaual/go-locale" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../dep/github.com/jeandeaual/go-locale.html">2 packages</a>, and imported by <a href="../../../dep/github.com/jeandeaual/go-locale.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../src/github.com/jeandeaual/go-locale/locale_unix.go.html">locale_unix.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/jeandeaual/go-locale/util.go.html">util.go</a></span></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 9, in which 5 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-GetLanguage">	<input type='checkbox' class="fold" id="GetLanguage-fold-content"><label for="GetLanguage-fold-content"> func <a href="../../../src/github.com/jeandeaual/go-locale/locale_unix.go.html#line-91">GetLanguage</a>() (<a href="../../builtin.html#name-string">string</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='GetLanguage-fold-content-docs' class="fold-docs">
+<span class="md-text">		GetLanguage retrieves the IETF BCP 47 language tag set on the system and
+		returns the language part of the tag.</span>
+
+</span></div><div class="anchor value-res" id="name-GetLocale">	<input type='checkbox' class="fold" id="GetLocale-fold-content"><label for="GetLocale-fold-content"> func <a href="../../../src/github.com/jeandeaual/go-locale/locale_unix.go.html#line-53">GetLocale</a>() (<a href="../../builtin.html#name-string">string</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='GetLocale-fold-content-docs' class="fold-docs">
+<span class="md-text">		GetLocale retrieves the IETF BCP 47 language tag set on the system.</span>
+
+</span></div><div class="anchor value-res" id="name-GetLocales">	<input type='checkbox' class="fold" id="GetLocales-fold-content"><label for="GetLocales-fold-content"> func <a href="../../../src/github.com/jeandeaual/go-locale/locale_unix.go.html#line-69">GetLocales</a>() ([]<a href="../../builtin.html#name-string">string</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='GetLocales-fold-content-docs' class="fold-docs">
+<span class="md-text">		GetLocales retrieves the IETF BCP 47 language tags set on the system.</span>
+
+</span></div><div class="anchor value-res" id="name-GetRegion">	<input type='checkbox' class="fold" id="GetRegion-fold-content"><label for="GetRegion-fold-content"> func <a href="../../../src/github.com/jeandeaual/go-locale/locale_unix.go.html#line-106">GetRegion</a>() (<a href="../../builtin.html#name-string">string</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='GetRegion-fold-content-docs' class="fold-docs">
+<span class="md-text">		GetRegion retrieves the IETF BCP 47 language tag set on the system and
+		returns the region part of the tag.</span>
+
+</span></div><div class="anchor value-res" id="name-SetRunOnJVM">	<input type='checkbox' class="fold" id="SetRunOnJVM-fold-content"><label for="SetRunOnJVM-fold-content"> func <a href="../../../src/github.com/jeandeaual/go-locale/util.go.html#line-11">SetRunOnJVM</a>(_ func(fn func(vm, env, ctx <a href="../../builtin.html#name-uintptr">uintptr</a>) <a href="../../builtin.html#name-error">error</a>) <a href="../../builtin.html#name-error">error</a>)</label><span id='SetRunOnJVM-fold-content-docs' class="fold-docs">
+<span class="md-text">		SetRunOnJVM is a noop, this function is only valid on Android</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-getLangFromEnv"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jeandeaual/go-locale/locale_unix.go.html#line-17">getLangFromEnv</a>() <a href="../../builtin.html#name-string">string</a></span></i></div><div class="anchor value-res hidden" id="name-getUnixLocales"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jeandeaual/go-locale/locale_unix.go.html#line-43">getUnixLocales</a>() []<a href="../../builtin.html#name-string">string</a></span></i></div><div class="anchor value-res hidden" id="name-splitLocale"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jeandeaual/go-locale/util.go.html#line-13">splitLocale</a>(locale <a href="../../builtin.html#name-string">string</a>) (<a href="../../builtin.html#name-string">string</a>, <a href="../../builtin.html#name-string">string</a>)</span></i></div><div class="anchor value-res hidden" id="name-splitLocales"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jeandeaual/go-locale/locale_unix.go.html#line-11">splitLocales</a>(locales <a href="../../builtin.html#name-string">string</a>) []<a href="../../builtin.html#name-string">string</a></span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

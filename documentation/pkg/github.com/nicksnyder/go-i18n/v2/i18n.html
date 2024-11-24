@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/nicksnyder/go-i18n/v2/i18n</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>i18n</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-github.com/nicksnyder/go-i18n/v2/i18n">github.com/nicksnyder/go-i18n/v2/i18n</a><i> (on <a href="https://pkg.go.dev/github.com/nicksnyder/go-i18n/v2/i18n" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/github.com/nicksnyder/go-i18n/v2/i18n.html">11 packages</a>, and imported by <a href="../../../../../dep/github.com/nicksnyder/go-i18n/v2/i18n.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html">bundle.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundlefs.go.html">bundlefs.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-2-fold-content"><label for="file-2-fold-content">  <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/doc.go.html#doc">d</a> <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/doc.go.html">doc.go</a></label><span id='file-2-fold-content-items' class="fold-items">
+<span class="md-text">		Package i18n provides support for looking up messages
+		according to a set of locale preferences.
+		
+		Create a Bundle to use for the lifetime of your application.
+		
+			bundle := i18n.NewBundle(language.English)
+		
+		Load translations into your bundle during initialization.
+		
+			bundle.LoadMessageFile("en-US.yaml")
+		
+		Create a Localizer to use for a set of language preferences.
+		
+			func(w http.ResponseWriter, r *http.Request) {
+			    lang := r.FormValue("lang")
+			    accept := r.Header.Get("Accept-Language")
+			    localizer := i18n.NewLocalizer(bundle, lang, accept)
+			}
+		
+		Use the Localizer to lookup messages.
+		
+			    localizer.MustLocalize(&amp;i18n.LocalizeConfig{
+				        DefaultMessage: &amp;i18n.Message{
+				            ID: "HelloWorld",
+				            Other: "Hello World!",
+				        },
+			    })</span>
+</span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html">localizer.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html">message.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html">message_template.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/parse.go.html">parse.go</a></span></div>
+<div id="examples"><span class="title">Code Examples</span>
+
+	<input type='checkbox' class="fold" id="example-0-fold-content"><label for="example-0-fold-content">Localizer_MustLocalize</label><span id='example-0-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+		
+			"github.com/nicksnyder/go-i18n/v2/i18n"
+			"golang.org/x/text/language"
+		)
+		
+		func main() {
+			bundle := i18n.NewBundle(language.English)
+			localizer := i18n.NewLocalizer(bundle, "en")
+			fmt.Println(localizer.MustLocalize(&amp;i18n.LocalizeConfig{
+				DefaultMessage: &amp;i18n.Message{
+					ID:    "HelloWorld",
+					Other: "Hello World!",
+				},
+			}))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-1-fold-content"><label for="example-1-fold-content">Localizer_MustLocalize_customTemplateDelims</label><span id='example-1-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+		
+			"github.com/nicksnyder/go-i18n/v2/i18n"
+			"golang.org/x/text/language"
+		)
+		
+		func main() {
+			bundle := i18n.NewBundle(language.English)
+			localizer := i18n.NewLocalizer(bundle, "en")
+			helloPersonMessage := &amp;i18n.Message{
+				ID:         "HelloPerson",
+				Other:      "Hello &lt;&lt;.Name&gt;&gt;!",
+				LeftDelim:  "&lt;&lt;",
+				RightDelim: "&gt;&gt;",
+			}
+			fmt.Println(localizer.MustLocalize(&amp;i18n.LocalizeConfig{
+				DefaultMessage: helloPersonMessage,
+				TemplateData:   map[string]string{"Name": "Nick"},
+			}))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-2-fold-content"><label for="example-2-fold-content">Localizer_MustLocalize_noDefaultMessage</label><span id='example-2-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+		
+			"github.com/BurntSushi/toml"
+			"github.com/nicksnyder/go-i18n/v2/i18n"
+			"golang.org/x/text/language"
+		)
+		
+		func main() {
+			bundle := i18n.NewBundle(language.English)
+			bundle.RegisterUnmarshalFunc("toml", toml.Unmarshal)
+			bundle.MustParseMessageFileBytes([]byte(`
+		HelloWorld = "Hello World!"
+		`), "en.toml")
+			bundle.MustParseMessageFileBytes([]byte(`
+		HelloWorld = "Hola Mundo!"
+		`), "es.toml")
+		
+			{
+				localizer := i18n.NewLocalizer(bundle, "en-US")
+				fmt.Println(localizer.MustLocalize(&amp;i18n.LocalizeConfig{MessageID: "HelloWorld"}))
+			}
+			{
+				localizer := i18n.NewLocalizer(bundle, "es-ES")
+				fmt.Println(localizer.MustLocalize(&amp;i18n.LocalizeConfig{MessageID: "HelloWorld"}))
+			}
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-3-fold-content"><label for="example-3-fold-content">Localizer_MustLocalize_plural</label><span id='example-3-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+		
+			"github.com/nicksnyder/go-i18n/v2/i18n"
+			"golang.org/x/text/language"
+		)
+		
+		func main() {
+			bundle := i18n.NewBundle(language.English)
+			localizer := i18n.NewLocalizer(bundle, "en")
+			catsMessage := &amp;i18n.Message{
+				ID:    "Cats",
+				One:   "I have {{.PluralCount}} cat.",
+				Other: "I have {{.PluralCount}} cats.",
+			}
+			fmt.Println(localizer.MustLocalize(&amp;i18n.LocalizeConfig{
+				DefaultMessage: catsMessage,
+				PluralCount:    1,
+			}))
+			fmt.Println(localizer.MustLocalize(&amp;i18n.LocalizeConfig{
+				DefaultMessage: catsMessage,
+				PluralCount:    2,
+			}))
+			fmt.Println(localizer.MustLocalize(&amp;i18n.LocalizeConfig{
+				DefaultMessage: catsMessage,
+				PluralCount:    "2.5",
+			}))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-4-fold-content"><label for="example-4-fold-content">Localizer_MustLocalize_plural_template</label><span id='example-4-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+		
+			"github.com/nicksnyder/go-i18n/v2/i18n"
+			"golang.org/x/text/language"
+		)
+		
+		func main() {
+			bundle := i18n.NewBundle(language.English)
+			localizer := i18n.NewLocalizer(bundle, "en")
+			personCatsMessage := &amp;i18n.Message{
+				ID:    "PersonCats",
+				One:   "{{.Name}} has {{.Count}} cat.",
+				Other: "{{.Name}} has {{.Count}} cats.",
+			}
+			fmt.Println(localizer.MustLocalize(&amp;i18n.LocalizeConfig{
+				DefaultMessage: personCatsMessage,
+				PluralCount:    1,
+				TemplateData: map[string]interface{}{
+					"Name":  "Nick",
+					"Count": 1,
+				},
+			}))
+			fmt.Println(localizer.MustLocalize(&amp;i18n.LocalizeConfig{
+				DefaultMessage: personCatsMessage,
+				PluralCount:    2,
+				TemplateData: map[string]interface{}{
+					"Name":  "Nick",
+					"Count": 2,
+				},
+			}))
+			fmt.Println(localizer.MustLocalize(&amp;i18n.LocalizeConfig{
+				DefaultMessage: personCatsMessage,
+				PluralCount:    "2.5",
+				TemplateData: map[string]interface{}{
+					"Name":  "Nick",
+					"Count": "2.5",
+				},
+			}))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-5-fold-content"><label for="example-5-fold-content">Localizer_MustLocalize_template</label><span id='example-5-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+		
+			"github.com/nicksnyder/go-i18n/v2/i18n"
+			"golang.org/x/text/language"
+		)
+		
+		func main() {
+			bundle := i18n.NewBundle(language.English)
+			localizer := i18n.NewLocalizer(bundle, "en")
+			helloPersonMessage := &amp;i18n.Message{
+				ID:    "HelloPerson",
+				Other: "Hello {{.Name}}!",
+			}
+			fmt.Println(localizer.MustLocalize(&amp;i18n.LocalizeConfig{
+				DefaultMessage: helloPersonMessage,
+				TemplateData:   map[string]string{"Name": "Nick"},
+			}))
+		}
+</span>
+</div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 13, in which 8 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Bundle" data-popularity="665">	<input type='checkbox' class="fold" id="Bundle-fold-content"><label for="Bundle-fold-content"> type <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-20">Bundle</a> <i>(struct)</i></label><span id='Bundle-fold-content-docs' class="fold-docs">
+<span class="md-text">		Bundle stores a set of messages and pluralization rules.
+		Most applications only need a single bundle
+		that is initialized early in the application's lifecycle.
+		It is not goroutine safe to modify the bundle while Localizers
+		are reading from it.</span>
+
+		<input type='checkbox' class="fold" id="Bundle-fold-fields"><label for="Bundle-fold-fields">Fields (<i>total 6, none are exported</i>)</label><span id='Bundle-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Bundle-showhide-fields"><i><label for="Bundle-showhide-fields" class="show-inline">/* 6 unexporteds ... */</label><label for="Bundle-showhide-fields" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-21">defaultLanguage</a> <i><a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-26">matcher</a> <i><a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Matcher">Matcher</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-23">messageTemplates</a> <i>map[<a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>]map[<a href="../../../../builtin.html#name-string">string</a>]*<a href="#name-MessageTemplate">MessageTemplate</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-24">pluralRules</a> <i><a href="internal/plural.html">plural</a>.<a href="internal/plural.html#name-Rules">Rules</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-25">tags</a> <i>[]<a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-22">unmarshalFuncs</a> <i>map[<a href="../../../../builtin.html#name-string">string</a>]<a href="#name-UnmarshalFunc">UnmarshalFunc</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Bundle-fold-methods"><label for="Bundle-fold-methods">Methods (<i>total 11, in which 9 are exported</i>)</label><span id='Bundle-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Bundle-fold-method-AddMessages"><label for="Bundle-fold-method-AddMessages">(*Bundle) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-96">AddMessages</a>(tag <a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>, messages ...*<a href="#name-Message">Message</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='Bundle-fold-method-AddMessages-docs' class="fold-docs">
+<span class="md-text">				AddMessages adds messages for a language.
+				It is useful if your messages are in a format not supported by ParseMessageFileBytes.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Bundle-fold-method-LanguageTags"><label for="Bundle-fold-method-LanguageTags">(*Bundle) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-134">LanguageTags</a>() []<a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a></label><span id='Bundle-fold-method-LanguageTags-docs' class="fold-docs">
+<span class="md-text">				LanguageTags returns the list of language tags
+				of all the translations loaded into the bundle</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Bundle-fold-method-LoadMessageFile"><label for="Bundle-fold-method-LoadMessageFile">(*Bundle) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-54">LoadMessageFile</a>(path <a href="../../../../builtin.html#name-string">string</a>) (*<a href="#name-MessageFile">MessageFile</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Bundle-fold-method-LoadMessageFile-docs' class="fold-docs">
+<span class="md-text">				LoadMessageFile loads the bytes from path
+				and then calls ParseMessageFileBytes.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Bundle-fold-method-LoadMessageFileFS"><label for="Bundle-fold-method-LoadMessageFileFS">(*Bundle) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundlefs.go.html#line-9">LoadMessageFileFS</a>(fsys <a href="../../../../io/fs.html">fs</a>.<a href="../../../../io/fs.html#name-FS">FS</a>, path <a href="../../../../builtin.html#name-string">string</a>) (*<a href="#name-MessageFile">MessageFile</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Bundle-fold-method-LoadMessageFileFS-docs' class="fold-docs">
+<span class="md-text">				LoadMessageFileFS is like LoadMessageFile but instead of reading from the
+				hosts operating system's file system it reads from the fs file system.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Bundle-fold-method-MustAddMessages"><label for="Bundle-fold-method-MustAddMessages">(*Bundle) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-115">MustAddMessages</a>(tag <a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>, messages ...*<a href="#name-Message">Message</a>)</label><span id='Bundle-fold-method-MustAddMessages-docs' class="fold-docs">
+<span class="md-text">				MustAddMessages is similar to AddMessages except it panics if an error happens.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Bundle-fold-method-MustLoadMessageFile"><label for="Bundle-fold-method-MustLoadMessageFile">(*Bundle) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-64">MustLoadMessageFile</a>(path <a href="../../../../builtin.html#name-string">string</a>)</label><span id='Bundle-fold-method-MustLoadMessageFile-docs' class="fold-docs">
+<span class="md-text">				MustLoadMessageFile is similar to LoadMessageFile
+				except it panics if an error happens.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Bundle-fold-method-MustParseMessageFileBytes"><label for="Bundle-fold-method-MustParseMessageFileBytes">(*Bundle) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-88">MustParseMessageFileBytes</a>(buf []<a href="../../../../builtin.html#name-byte">byte</a>, path <a href="../../../../builtin.html#name-string">string</a>)</label><span id='Bundle-fold-method-MustParseMessageFileBytes-docs' class="fold-docs">
+<span class="md-text">				MustParseMessageFileBytes is similar to ParseMessageFileBytes
+				except it panics if an error happens.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Bundle-fold-method-ParseMessageFileBytes"><label for="Bundle-fold-method-ParseMessageFileBytes">(*Bundle) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-75">ParseMessageFileBytes</a>(buf []<a href="../../../../builtin.html#name-byte">byte</a>, path <a href="../../../../builtin.html#name-string">string</a>) (*<a href="#name-MessageFile">MessageFile</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Bundle-fold-method-ParseMessageFileBytes-docs' class="fold-docs">
+<span class="md-text">				ParseMessageFileBytes parses the bytes in buf to add translations to the bundle.
+				
+				The format of the file is everything after the last ".".
+				
+				The language tag of the file is everything after the second to last "." or after the last path separator, but before the format.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Bundle-fold-method-RegisterUnmarshalFunc"><label for="Bundle-fold-method-RegisterUnmarshalFunc">(*Bundle) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-45">RegisterUnmarshalFunc</a>(format <a href="../../../../builtin.html#name-string">string</a>, unmarshalFunc <a href="#name-UnmarshalFunc">UnmarshalFunc</a>)</label><span id='Bundle-fold-method-RegisterUnmarshalFunc-docs' class="fold-docs">
+<span class="md-text">				RegisterUnmarshalFunc registers an UnmarshalFunc for format.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Bundle-showhide-methods"><i><label for="Bundle-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="Bundle-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Bundle) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-121">addTag</a>(tag <a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Bundle) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-138">getMessageTemplate</a>(tag <a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>, id <a href="../../../../builtin.html#name-string">string</a>) *<a href="#name-MessageTemplate">MessageTemplate</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="Bundle-fold-results"><label for="Bundle-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Bundle-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewBundle">NewBundle</a>(defaultLanguage <a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>) *<b>Bundle</b></span></span>
+		<input type='checkbox' class="fold" id="Bundle-fold-params"><label for="Bundle-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='Bundle-fold-params-items' class="fold-items"><span>
+			func <a href="#name-NewLocalizer">NewLocalizer</a>(bundle *<b>Bundle</b>, langs ...<a href="../../../../builtin.html#name-string">string</a>) *<a href="#name-Localizer">Localizer</a></span></span>
+		<input type='checkbox' class="fold" id="Bundle-fold-values"><label for="Bundle-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='Bundle-fold-values-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Bundle-showhide-values"><i><label for="Bundle-showhide-values" class="show-inline">/* one unexported ... */</label><label for="Bundle-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var fyne.io/fyne/v2/lang.<a href="../../../../fyne.io/fyne/v2/lang.html#name-bundle">bundle</a> *<a href="">i18n</a>.<b><a href="#name-Bundle">Bundle</a></b></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-LocalizeConfig" data-popularity="155">	<input type='checkbox' class="fold" id="LocalizeConfig-fold-content"><label for="LocalizeConfig-fold-content"> type <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-54">LocalizeConfig</a> <i>(struct)</i></label><span id='LocalizeConfig-fold-content-docs' class="fold-docs">
+<span class="md-text">		LocalizeConfig configures a call to the Localize method on Localizer.</span>
+
+		<input type='checkbox' class="fold" id="LocalizeConfig-fold-fields"><label for="LocalizeConfig-fold-fields">Fields (<i>total 6, all are exported</i>)</label><span id='LocalizeConfig-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="LocalizeConfig-fold-field-DefaultMessage"><label for="LocalizeConfig-fold-field-DefaultMessage"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-68">DefaultMessage</a> <i>*<a href="#name-Message">Message</a></i></label><span id='LocalizeConfig-fold-field-DefaultMessage-docs' class="fold-docs">
+<span class="md-text">				DefaultMessage is used if the message is not found in any message files.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LocalizeConfig-fold-field-Funcs"><label for="LocalizeConfig-fold-field-Funcs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-71">Funcs</a> <i><a href="../../../../text/template.html">texttemplate</a>.<a href="../../../../text/template.html#name-FuncMap">FuncMap</a></i></label><span id='LocalizeConfig-fold-field-Funcs-docs' class="fold-docs">
+<span class="md-text">				Funcs is used to configure a template.TextParser if TemplateParser is not set.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LocalizeConfig-fold-field-MessageID"><label for="LocalizeConfig-fold-field-MessageID"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-57">MessageID</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='LocalizeConfig-fold-field-MessageID-docs' class="fold-docs">
+<span class="md-text">				MessageID is the id of the message to lookup.
+				This field is ignored if DefaultMessage is set.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LocalizeConfig-fold-field-PluralCount"><label for="LocalizeConfig-fold-field-PluralCount"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-65">PluralCount</a> <i>interface{}</i></label><span id='LocalizeConfig-fold-field-PluralCount-docs' class="fold-docs">
+<span class="md-text">				PluralCount determines which plural form of the message is used.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LocalizeConfig-fold-field-TemplateData"><label for="LocalizeConfig-fold-field-TemplateData"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-62">TemplateData</a> <i>interface{}</i></label><span id='LocalizeConfig-fold-field-TemplateData-docs' class="fold-docs">
+<span class="md-text">				TemplateData is the data passed when executing the message's template.
+				If TemplateData is nil and PluralCount is not nil, then the message template
+				will be executed with data that contains the plural count.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LocalizeConfig-fold-field-TemplateParser"><label for="LocalizeConfig-fold-field-TemplateParser"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-75">TemplateParser</a> <i><a href="i18n/template.html">template</a>.<a href="i18n/template.html#name-Parser">Parser</a></i></label><span id='LocalizeConfig-fold-field-TemplateParser-docs' class="fold-docs">
+<span class="md-text">				The TemplateParser to use for parsing templates.
+				If one is not set, a template.TextParser is used (configured with Funcs if it is set).</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="LocalizeConfig-fold-methods"><label for="LocalizeConfig-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='LocalizeConfig-fold-methods-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="LocalizeConfig-showhide-methods"><i><label for="LocalizeConfig-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="LocalizeConfig-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*LocalizeConfig) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-80">getTemplateParser</a>() <a href="i18n/template.html">template</a>.<a href="i18n/template.html#name-Parser">Parser</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="LocalizeConfig-fold-params"><label for="LocalizeConfig-fold-params">As Inputs Of (<i>at least 3, all are exported</i>)</label><span id='LocalizeConfig-fold-params-items' class="fold-items"><span>
+			func (*<a href="#name-Localizer">Localizer</a>).<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-122">Localize</a>(lc *<b>LocalizeConfig</b>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</span><span>
+			func (*<a href="#name-Localizer">Localizer</a>).<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-144">LocalizeWithTag</a>(lc *<b>LocalizeConfig</b>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>, <a href="../../../../builtin.html#name-error">error</a>)</span><span>
+			func (*<a href="#name-Localizer">Localizer</a>).<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-232">MustLocalize</a>(lc *<b>LocalizeConfig</b>) <a href="../../../../builtin.html#name-string">string</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Localizer" data-popularity="380">	<input type='checkbox' class="fold" id="Localizer-fold-content"><label for="Localizer-fold-content"> type <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-22">Localizer</a> <i>(struct)</i></label><span id='Localizer-fold-content-docs' class="fold-docs">
+<span class="md-text">		Localizer provides Localize and MustLocalize methods that return localized messages.
+		Localize and MustLocalize methods use a language.Tag matching algorithm based
+		on the best possible value. This algorithm may cause an unexpected language.Tag returned
+		value depending on the order of the tags stored in memory. For example, if the bundle
+		used to create a Localizer instance ingested locales following this order
+		["en-US", "en-GB", "en-IE", "en"] and the locale "en" is asked, the underlying matching
+		algorithm will return "en-US" thinking it is the best match possible. More information
+		about the algorithm in this Github issue: https://github.com/golang/go/issues/49176.
+		There is additionnal informations inside the Go code base:
+		https://github.com/golang/text/blob/master/language/match.go#L142</span>
+
+		<input type='checkbox' class="fold" id="Localizer-fold-fields"><label for="Localizer-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='Localizer-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Localizer-showhide-fields"><i><label for="Localizer-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="Localizer-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Localizer-fold-field-bundle"><label for="Localizer-fold-field-bundle"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-24">bundle</a> <i>*<a href="#name-Bundle">Bundle</a></i></label><span id='Localizer-fold-field-bundle-docs' class="fold-docs">
+<span class="md-text">				bundle contains the messages that can be returned by the Localizer.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Localizer-fold-field-tags"><label for="Localizer-fold-field-tags"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-28">tags</a> <i>[]<a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a></i></label><span id='Localizer-fold-field-tags-docs' class="fold-docs">
+<span class="md-text">				tags is the list of language tags that the Localizer checks
+				in order when localizing a message.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Localizer-fold-methods"><label for="Localizer-fold-methods">Methods (<i>total 6, in which 4 are exported</i>)</label><span id='Localizer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Localizer-fold-method-Localize"><label for="Localizer-fold-method-Localize">(*Localizer) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-122">Localize</a>(lc *<a href="#name-LocalizeConfig">LocalizeConfig</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Localizer-fold-method-Localize-docs' class="fold-docs">
+<span class="md-text">				Localize returns a localized message.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Localizer-fold-method-LocalizeMessage"><label for="Localizer-fold-method-LocalizeMessage">(*Localizer) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-128">LocalizeMessage</a>(msg *<a href="#name-Message">Message</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Localizer-fold-method-LocalizeMessage-docs' class="fold-docs">
+<span class="md-text">				Localize returns a localized message.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Localizer-fold-method-LocalizeWithTag"><label for="Localizer-fold-method-LocalizeWithTag">(*Localizer) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-144">LocalizeWithTag</a>(lc *<a href="#name-LocalizeConfig">LocalizeConfig</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Localizer-fold-method-LocalizeWithTag-docs' class="fold-docs">
+<span class="md-text">				LocalizeWithTag returns a localized message and the language tag.
+				It may return a best effort localized message even if an error happens.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Localizer-fold-method-MustLocalize"><label for="Localizer-fold-method-MustLocalize">(*Localizer) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-232">MustLocalize</a>(lc *<a href="#name-LocalizeConfig">LocalizeConfig</a>) <a href="../../../../builtin.html#name-string">string</a></label><span id='Localizer-fold-method-MustLocalize-docs' class="fold-docs">
+<span class="md-text">				MustLocalize is similar to Localize, except it panics if an error happens.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Localizer-showhide-methods"><i><label for="Localizer-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="Localizer-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Localizer) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-192">getMessageTemplate</a>(id <a href="../../../../builtin.html#name-string">string</a>, defaultMessage *<a href="#name-Message">Message</a>) (<a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>, *<a href="#name-MessageTemplate">MessageTemplate</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Localizer) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-224">pluralForm</a>(tag <a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>, operands *<a href="internal/plural.html">plural</a>.<a href="internal/plural.html#name-Operands">Operands</a>) <a href="internal/plural.html">plural</a>.<a href="internal/plural.html#name-Form">Form</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="Localizer-fold-results"><label for="Localizer-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Localizer-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewLocalizer">NewLocalizer</a>(bundle *<a href="#name-Bundle">Bundle</a>, langs ...<a href="../../../../builtin.html#name-string">string</a>) *<b>Localizer</b></span></span>
+		<input type='checkbox' class="fold" id="Localizer-fold-values"><label for="Localizer-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='Localizer-fold-values-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Localizer-showhide-values"><i><label for="Localizer-showhide-values" class="show-inline">/* one unexported ... */</label><label for="Localizer-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var fyne.io/fyne/v2/lang.<a href="../../../../fyne.io/fyne/v2/lang.html#name-localizer">localizer</a> *<a href="">i18n</a>.<b><a href="#name-Localizer">Localizer</a></b></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Message" data-popularity="560">	<input type='checkbox' class="fold" id="Message-fold-content"><label for="Message-fold-content"> type <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-9">Message</a> <i>(struct)</i></label><span id='Message-fold-content-docs' class="fold-docs">
+<span class="md-text">		Message is a string that can be localized.</span>
+
+		<input type='checkbox' class="fold" id="Message-fold-fields"><label for="Message-fold-fields">Fields (<i>total 11, all are exported</i>)</label><span id='Message-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Message-fold-field-Description"><label for="Message-fold-field-Description"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-19">Description</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='Message-fold-field-Description-docs' class="fold-docs">
+<span class="md-text">				Description describes the message to give additional
+				context to translators that may be relevant for translation.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Message-fold-field-Few"><label for="Message-fold-field-Few"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-37">Few</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='Message-fold-field-Few-docs' class="fold-docs">
+<span class="md-text">				Few is the content of the message for the CLDR plural form "few".</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Message-fold-field-Hash"><label for="Message-fold-field-Hash"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-15">Hash</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='Message-fold-field-Hash-docs' class="fold-docs">
+<span class="md-text">				Hash uniquely identifies the content of the message
+				that this message was translated from.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Message-fold-field-ID"><label for="Message-fold-field-ID"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-11">ID</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='Message-fold-field-ID-docs' class="fold-docs">
+<span class="md-text">				ID uniquely identifies the message.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Message-fold-field-LeftDelim"><label for="Message-fold-field-LeftDelim"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-22">LeftDelim</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='Message-fold-field-LeftDelim-docs' class="fold-docs">
+<span class="md-text">				LeftDelim is the left Go template delimiter.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Message-fold-field-Many"><label for="Message-fold-field-Many"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-40">Many</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='Message-fold-field-Many-docs' class="fold-docs">
+<span class="md-text">				Many is the content of the message for the CLDR plural form "many".</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Message-fold-field-One"><label for="Message-fold-field-One"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-31">One</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='Message-fold-field-One-docs' class="fold-docs">
+<span class="md-text">				One is the content of the message for the CLDR plural form "one".</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Message-fold-field-Other"><label for="Message-fold-field-Other"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-43">Other</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='Message-fold-field-Other-docs' class="fold-docs">
+<span class="md-text">				Other is the content of the message for the CLDR plural form "other".</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Message-fold-field-RightDelim"><label for="Message-fold-field-RightDelim"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-25">RightDelim</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='Message-fold-field-RightDelim-docs' class="fold-docs">
+<span class="md-text">				RightDelim is the right Go template delimiter.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Message-fold-field-Two"><label for="Message-fold-field-Two"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-34">Two</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='Message-fold-field-Two-docs' class="fold-docs">
+<span class="md-text">				Two is the content of the message for the CLDR plural form "two".</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Message-fold-field-Zero"><label for="Message-fold-field-Zero"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-28">Zero</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='Message-fold-field-Zero-docs' class="fold-docs">
+<span class="md-text">				Zero is the content of the message for the CLDR plural form "zero".</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Message-fold-methods"><label for="Message-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='Message-fold-methods-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Message-showhide-methods"><i><label for="Message-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="Message-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Message-fold-method-unmarshalInterface"><label for="Message-fold-method-unmarshalInterface">(*Message) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-65">unmarshalInterface</a>(v interface{}) <a href="../../../../builtin.html#name-error">error</a></label><span id='Message-fold-method-unmarshalInterface-docs' class="fold-docs">
+<span class="md-text">				unmarshalInterface unmarshals a message from data.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Message-fold-results"><label for="Message-fold-results">As Outputs Of (<i>at least 4, in which 2 are exported</i>)</label><span id='Message-fold-results-items' class="fold-items"><span>
+			func <a href="#name-MustNewMessage">MustNewMessage</a>(data interface{}) *<b>Message</b></span><span>
+			func <a href="#name-NewMessage">NewMessage</a>(data interface{}) (*<b>Message</b>, <a href="../../../../builtin.html#name-error">error</a>)</span>
+			<input type='checkbox' class="showhide" id="Message-showhide-inputofs"><i><label for="Message-showhide-inputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="Message-showhide-inputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-addChildMessages">addChildMessages</a>(id <a href="../../../../builtin.html#name-string">string</a>, data interface{}, messages []*<b>Message</b>) ([]*<b>Message</b>, <a href="../../../../builtin.html#name-error">error</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-recGetMessages">recGetMessages</a>(raw interface{}, isMapMessage, isInitialCall <a href="../../../../builtin.html#name-bool">bool</a>) ([]*<b>Message</b>, <a href="../../../../builtin.html#name-error">error</a>)</i></span></span>
+		<input type='checkbox' class="fold" id="Message-fold-params"><label for="Message-fold-params">As Inputs Of (<i>at least 6, in which 4 are exported</i>)</label><span id='Message-fold-params-items' class="fold-items"><span>
+			func <a href="#name-NewMessageTemplate">NewMessageTemplate</a>(m *<b>Message</b>) *<a href="#name-MessageTemplate">MessageTemplate</a></span><span>
+			func (*<a href="#name-Bundle">Bundle</a>).<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-96">AddMessages</a>(tag <a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>, messages ...*<b>Message</b>) <a href="../../../../builtin.html#name-error">error</a></span><span>
+			func (*<a href="#name-Bundle">Bundle</a>).<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-115">MustAddMessages</a>(tag <a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>, messages ...*<b>Message</b>)</span><span>
+			func (*<a href="#name-Localizer">Localizer</a>).<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-128">LocalizeMessage</a>(msg *<b>Message</b>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</span>
+			<input type='checkbox' class="showhide" id="Message-showhide-outputofs"><i><label for="Message-showhide-outputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="Message-showhide-outputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-addChildMessages">addChildMessages</a>(id <a href="../../../../builtin.html#name-string">string</a>, data interface{}, messages []*<b>Message</b>) ([]*<b>Message</b>, <a href="../../../../builtin.html#name-error">error</a>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-Localizer">Localizer</a>).<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-192">getMessageTemplate</a>(id <a href="../../../../builtin.html#name-string">string</a>, defaultMessage *<b>Message</b>) (<a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>, *<a href="#name-MessageTemplate">MessageTemplate</a>, <a href="../../../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-MessageFile" data-popularity="300">	<input type='checkbox' class="fold" id="MessageFile-fold-content"><label for="MessageFile-fold-content"> type <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/parse.go.html#line-13">MessageFile</a> <i>(struct)</i></label><span id='MessageFile-fold-content-docs' class="fold-docs">
+<span class="md-text">		MessageFile represents a parsed message file.</span>
+
+		<input type='checkbox' class="fold" id="MessageFile-fold-fields"><label for="MessageFile-fold-fields">Fields (<i>total 4, all are exported</i>)</label><span id='MessageFile-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/parse.go.html#line-16">Format</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/parse.go.html#line-17">Messages</a> <i>[]*<a href="#name-Message">Message</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/parse.go.html#line-14">Path</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/parse.go.html#line-15">Tag</a> <i><a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="MessageFile-fold-results"><label for="MessageFile-fold-results">As Outputs Of (<i>at least 4, all are exported</i>)</label><span id='MessageFile-fold-results-items' class="fold-items"><span>
+			func <a href="#name-ParseMessageFileBytes">ParseMessageFileBytes</a>(buf []<a href="../../../../builtin.html#name-byte">byte</a>, path <a href="../../../../builtin.html#name-string">string</a>, unmarshalFuncs map[<a href="../../../../builtin.html#name-string">string</a>]<a href="#name-UnmarshalFunc">UnmarshalFunc</a>) (*<b>MessageFile</b>, <a href="../../../../builtin.html#name-error">error</a>)</span><span>
+			func (*<a href="#name-Bundle">Bundle</a>).<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-54">LoadMessageFile</a>(path <a href="../../../../builtin.html#name-string">string</a>) (*<b>MessageFile</b>, <a href="../../../../builtin.html#name-error">error</a>)</span><span>
+			func (*<a href="#name-Bundle">Bundle</a>).<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundlefs.go.html#line-9">LoadMessageFileFS</a>(fsys <a href="../../../../io/fs.html">fs</a>.<a href="../../../../io/fs.html#name-FS">FS</a>, path <a href="../../../../builtin.html#name-string">string</a>) (*<b>MessageFile</b>, <a href="../../../../builtin.html#name-error">error</a>)</span><span>
+			func (*<a href="#name-Bundle">Bundle</a>).<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-75">ParseMessageFileBytes</a>(buf []<a href="../../../../builtin.html#name-byte">byte</a>, path <a href="../../../../builtin.html#name-string">string</a>) (*<b>MessageFile</b>, <a href="../../../../builtin.html#name-error">error</a>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-MessageNotFoundErr" data-popularity="150">	<input type='checkbox' class="fold" id="MessageNotFoundErr-fold-content"><label for="MessageNotFoundErr-fold-content"> type <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-103">MessageNotFoundErr</a> <i>(struct)</i></label><span id='MessageNotFoundErr-fold-content-docs' class="fold-docs">
+<span class="md-text">		MessageNotFoundErr is returned from Localize when a message could not be found.</span>
+
+		<input type='checkbox' class="fold" id="MessageNotFoundErr-fold-fields"><label for="MessageNotFoundErr-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='MessageNotFoundErr-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-105">MessageID</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-104">Tag</a> <i><a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="MessageNotFoundErr-fold-methods"><label for="MessageNotFoundErr-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='MessageNotFoundErr-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*MessageNotFoundErr) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-108">Error</a>() <a href="../../../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="MessageNotFoundErr-fold-impls"><label for="MessageNotFoundErr-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='MessageNotFoundErr-fold-impls-items' class="fold-items"><span>
+			*MessageNotFoundErr : github.com/fredbi/uri.<a href="../../../fredbi/uri.html#name-Error">Error</a></span><span>
+			*MessageNotFoundErr : <a href="../../../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-MessageTemplate" data-popularity="375">	<input type='checkbox' class="fold" id="MessageTemplate-fold-content"><label for="MessageTemplate-fold-content"> type <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-13">MessageTemplate</a> <i>(struct)</i></label><span id='MessageTemplate-fold-content-docs' class="fold-docs">
+<span class="md-text">		MessageTemplate is an executable template for a message.</span>
+
+		<input type='checkbox' class="fold" id="MessageTemplate-fold-fields"><label for="MessageTemplate-fold-fields">Fields (<i>total 13, all are exported</i>)</label><span id='MessageTemplate-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-14">Message</a> <i>*<a href="#name-Message">Message</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="MessageTemplate-fold-field-Description"><label for="MessageTemplate-fold-field-Description"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-14" class="path-duplicate">Message</a>.<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-19">Description</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='MessageTemplate-fold-field-Description-docs' class="fold-docs">
+<span class="md-text">				Description describes the message to give additional
+				context to translators that may be relevant for translation.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MessageTemplate-fold-field-Few"><label for="MessageTemplate-fold-field-Few"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-14" class="path-duplicate">Message</a>.<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-37">Few</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='MessageTemplate-fold-field-Few-docs' class="fold-docs">
+<span class="md-text">				Few is the content of the message for the CLDR plural form "few".</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MessageTemplate-fold-field-Hash"><label for="MessageTemplate-fold-field-Hash"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-14" class="path-duplicate">Message</a>.<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-15">Hash</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='MessageTemplate-fold-field-Hash-docs' class="fold-docs">
+<span class="md-text">				Hash uniquely identifies the content of the message
+				that this message was translated from.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MessageTemplate-fold-field-ID"><label for="MessageTemplate-fold-field-ID"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-14" class="path-duplicate">Message</a>.<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-11">ID</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='MessageTemplate-fold-field-ID-docs' class="fold-docs">
+<span class="md-text">				ID uniquely identifies the message.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MessageTemplate-fold-field-LeftDelim"><label for="MessageTemplate-fold-field-LeftDelim"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-14" class="path-duplicate">Message</a>.<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-22">LeftDelim</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='MessageTemplate-fold-field-LeftDelim-docs' class="fold-docs">
+<span class="md-text">				LeftDelim is the left Go template delimiter.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MessageTemplate-fold-field-Many"><label for="MessageTemplate-fold-field-Many"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-14" class="path-duplicate">Message</a>.<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-40">Many</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='MessageTemplate-fold-field-Many-docs' class="fold-docs">
+<span class="md-text">				Many is the content of the message for the CLDR plural form "many".</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MessageTemplate-fold-field-One"><label for="MessageTemplate-fold-field-One"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-14" class="path-duplicate">Message</a>.<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-31">One</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='MessageTemplate-fold-field-One-docs' class="fold-docs">
+<span class="md-text">				One is the content of the message for the CLDR plural form "one".</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MessageTemplate-fold-field-Other"><label for="MessageTemplate-fold-field-Other"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-14" class="path-duplicate">Message</a>.<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-43">Other</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='MessageTemplate-fold-field-Other-docs' class="fold-docs">
+<span class="md-text">				Other is the content of the message for the CLDR plural form "other".</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MessageTemplate-fold-field-RightDelim"><label for="MessageTemplate-fold-field-RightDelim"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-14" class="path-duplicate">Message</a>.<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-25">RightDelim</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='MessageTemplate-fold-field-RightDelim-docs' class="fold-docs">
+<span class="md-text">				RightDelim is the right Go template delimiter.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MessageTemplate-fold-field-Two"><label for="MessageTemplate-fold-field-Two"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-14" class="path-duplicate">Message</a>.<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-34">Two</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='MessageTemplate-fold-field-Two-docs' class="fold-docs">
+<span class="md-text">				Two is the content of the message for the CLDR plural form "two".</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MessageTemplate-fold-field-Zero"><label for="MessageTemplate-fold-field-Zero"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-14" class="path-duplicate">Message</a>.<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-28">Zero</a> <i><a href="../../../../builtin.html#name-string">string</a></i></label><span id='MessageTemplate-fold-field-Zero-docs' class="fold-docs">
+<span class="md-text">				Zero is the content of the message for the CLDR plural form "zero".</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-15">PluralTemplates</a> <i>map[<a href="internal/plural.html">plural</a>.<a href="internal/plural.html#name-Form">Form</a>]*<a href="internal.html">internal</a>.<a href="internal.html#name-Template">Template</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="MessageTemplate-fold-methods"><label for="MessageTemplate-fold-methods">Methods (<i>total 3, in which 1 is exported</i>)</label><span id='MessageTemplate-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="MessageTemplate-fold-method-Execute"><label for="MessageTemplate-fold-method-Execute">(*MessageTemplate) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-59">Execute</a>(pluralForm <a href="internal/plural.html">plural</a>.<a href="internal/plural.html#name-Form">Form</a>, data interface{}, funcs <a href="../../../../text/template.html">texttemplate</a>.<a href="../../../../text/template.html#name-FuncMap">FuncMap</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='MessageTemplate-fold-method-Execute-docs' class="fold-docs">
+<span class="md-text">				Execute executes the template for the plural form and template data.
+				Deprecated: This message is no longer used internally by go-i18n and it probably should not have been exported to
+				begin with. Its replacement is not exported. If you depend on this method for some reason and/or have
+				a use case for exporting execute, please file an issue.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="MessageTemplate-showhide-methods"><i><label for="MessageTemplate-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="MessageTemplate-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*MessageTemplate) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-73">execute</a>(pluralForm <a href="internal/plural.html">plural</a>.<a href="internal/plural.html#name-Form">Form</a>, data interface{}, parser <a href="i18n/template.html">template</a>.<a href="i18n/template.html#name-Parser">Parser</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="MessageTemplate-fold-method-unmarshalInterface"><label for="MessageTemplate-fold-method-unmarshalInterface">( MessageTemplate) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-65">unmarshalInterface</a>(v interface{}) <a href="../../../../builtin.html#name-error">error</a></label><span id='MessageTemplate-fold-method-unmarshalInterface-docs' class="fold-docs">
+<span class="md-text">				unmarshalInterface unmarshals a message from data.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="MessageTemplate-fold-results"><label for="MessageTemplate-fold-results">As Outputs Of (<i>at least 3, in which 1 is exported</i>)</label><span id='MessageTemplate-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewMessageTemplate">NewMessageTemplate</a>(m *<a href="#name-Message">Message</a>) *<b>MessageTemplate</b></span>
+			<input type='checkbox' class="showhide" id="MessageTemplate-showhide-inputofs"><i><label for="MessageTemplate-showhide-inputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="MessageTemplate-showhide-inputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Bundle">Bundle</a>).<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-138">getMessageTemplate</a>(tag <a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>, id <a href="../../../../builtin.html#name-string">string</a>) *<b>MessageTemplate</b></i></span><span class="hidden"><i>
+			func (*<a href="#name-Localizer">Localizer</a>).<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-192">getMessageTemplate</a>(id <a href="../../../../builtin.html#name-string">string</a>, defaultMessage *<a href="#name-Message">Message</a>) (<a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>, *<b>MessageTemplate</b>, <a href="../../../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-UnmarshalFunc" data-popularity="70">	<input type='checkbox' class="fold" id="UnmarshalFunc-fold-content"><label for="UnmarshalFunc-fold-content"> type <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-13">UnmarshalFunc</a> <i>(func)</i></label><span id='UnmarshalFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		UnmarshalFunc unmarshals data into v.</span>
+
+		<input type='checkbox' class="fold" id="UnmarshalFunc-fold-params"><label for="UnmarshalFunc-fold-params">As Inputs Of (<i>at least 2, both are exported</i>)</label><span id='UnmarshalFunc-fold-params-items' class="fold-items"><span>
+			func <a href="#name-ParseMessageFileBytes">ParseMessageFileBytes</a>(buf []<a href="../../../../builtin.html#name-byte">byte</a>, path <a href="../../../../builtin.html#name-string">string</a>, unmarshalFuncs map[<a href="../../../../builtin.html#name-string">string</a>]<b>UnmarshalFunc</b>) (*<a href="#name-MessageFile">MessageFile</a>, <a href="../../../../builtin.html#name-error">error</a>)</span><span>
+			func (*<a href="#name-Bundle">Bundle</a>).<a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-45">RegisterUnmarshalFunc</a>(format <a href="../../../../builtin.html#name-string">string</a>, unmarshalFunc <b>UnmarshalFunc</b>)</span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 5 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 5 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-invalidPluralCountErr" data-popularity="150">	<input type='checkbox' class="fold" id="invalidPluralCountErr-fold-content"><label for="invalidPluralCountErr-fold-content"> type <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-92">invalidPluralCountErr</a> <i>(struct)</i></label><span id='invalidPluralCountErr-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="invalidPluralCountErr-fold-fields"><label for="invalidPluralCountErr-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='invalidPluralCountErr-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="invalidPluralCountErr-showhide-fields"><i><label for="invalidPluralCountErr-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="invalidPluralCountErr-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-95">err</a> <i><a href="../../../../builtin.html#name-error">error</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-93">messageID</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-94">pluralCount</a> <i>interface{}</i></span></i></span></span>
+		<input type='checkbox' class="fold" id="invalidPluralCountErr-fold-methods"><label for="invalidPluralCountErr-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='invalidPluralCountErr-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*invalidPluralCountErr) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-98">Error</a>() <a href="../../../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="invalidPluralCountErr-fold-impls"><label for="invalidPluralCountErr-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='invalidPluralCountErr-fold-impls-items' class="fold-items"><span>
+			*invalidPluralCountErr : github.com/fredbi/uri.<a href="../../../fredbi/uri.html#name-Error">Error</a></span><span>
+			*invalidPluralCountErr : <a href="../../../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-keyTypeErr" data-popularity="150">	<input type='checkbox' class="fold" id="keyTypeErr-fold-content"><label for="keyTypeErr-fold-content"> type <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-99">keyTypeErr</a> <i>(struct)</i></label><span id='keyTypeErr-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="keyTypeErr-fold-fields"><label for="keyTypeErr-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='keyTypeErr-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="keyTypeErr-showhide-fields"><i><label for="keyTypeErr-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="keyTypeErr-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-100">key</a> <i>interface{}</i></span></i></span></span>
+		<input type='checkbox' class="fold" id="keyTypeErr-fold-methods"><label for="keyTypeErr-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='keyTypeErr-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*keyTypeErr) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-103">Error</a>() <a href="../../../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="keyTypeErr-fold-impls"><label for="keyTypeErr-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='keyTypeErr-fold-impls-items' class="fold-items"><span>
+			*keyTypeErr : github.com/fredbi/uri.<a href="../../../fredbi/uri.html#name-Error">Error</a></span><span>
+			*keyTypeErr : <a href="../../../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-messageIDMismatchErr" data-popularity="150">	<input type='checkbox' class="fold" id="messageIDMismatchErr-fold-content"><label for="messageIDMismatchErr-fold-content"> type <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-112">messageIDMismatchErr</a> <i>(struct)</i></label><span id='messageIDMismatchErr-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="messageIDMismatchErr-fold-fields"><label for="messageIDMismatchErr-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='messageIDMismatchErr-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="messageIDMismatchErr-showhide-fields"><i><label for="messageIDMismatchErr-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="messageIDMismatchErr-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-114">defaultMessageID</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-113">messageID</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="messageIDMismatchErr-fold-methods"><label for="messageIDMismatchErr-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='messageIDMismatchErr-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*messageIDMismatchErr) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-117">Error</a>() <a href="../../../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="messageIDMismatchErr-fold-impls"><label for="messageIDMismatchErr-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='messageIDMismatchErr-fold-impls-items' class="fold-items"><span>
+			*messageIDMismatchErr : github.com/fredbi/uri.<a href="../../../fredbi/uri.html#name-Error">Error</a></span><span>
+			*messageIDMismatchErr : <a href="../../../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-pluralFormNotFoundError" data-popularity="150">	<input type='checkbox' class="fold" id="pluralFormNotFoundError-fold-content"><label for="pluralFormNotFoundError-fold-content"> type <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-46">pluralFormNotFoundError</a> <i>(struct)</i></label><span id='pluralFormNotFoundError-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="pluralFormNotFoundError-fold-fields"><label for="pluralFormNotFoundError-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='pluralFormNotFoundError-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="pluralFormNotFoundError-showhide-fields"><i><label for="pluralFormNotFoundError-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="pluralFormNotFoundError-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-48">messageID</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-47">pluralForm</a> <i><a href="internal/plural.html">plural</a>.<a href="internal/plural.html#name-Form">Form</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="pluralFormNotFoundError-fold-methods"><label for="pluralFormNotFoundError-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='pluralFormNotFoundError-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( pluralFormNotFoundError) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-51">Error</a>() <a href="../../../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="pluralFormNotFoundError-fold-impls"><label for="pluralFormNotFoundError-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='pluralFormNotFoundError-fold-impls-items' class="fold-items"><span>
+			 pluralFormNotFoundError : github.com/fredbi/uri.<a href="../../../fredbi/uri.html#name-Error">Error</a></span><span>
+			 pluralFormNotFoundError : <a href="../../../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-valueTypeErr" data-popularity="150">	<input type='checkbox' class="fold" id="valueTypeErr-fold-content"><label for="valueTypeErr-fold-content"> type <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-107">valueTypeErr</a> <i>(struct)</i></label><span id='valueTypeErr-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="valueTypeErr-fold-fields"><label for="valueTypeErr-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='valueTypeErr-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="valueTypeErr-showhide-fields"><i><label for="valueTypeErr-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="valueTypeErr-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-108">value</a> <i>interface{}</i></span></i></span></span>
+		<input type='checkbox' class="fold" id="valueTypeErr-fold-methods"><label for="valueTypeErr-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='valueTypeErr-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*valueTypeErr) <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-111">Error</a>() <a href="../../../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="valueTypeErr-fold-impls"><label for="valueTypeErr-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='valueTypeErr-fold-impls-items' class="fold-items"><span>
+			*valueTypeErr : github.com/fredbi/uri.<a href="../../../fredbi/uri.html#name-Error">Error</a></span><span>
+			*valueTypeErr : <a href="../../../../builtin.html#name-error">error</a></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 14, in which 6 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-MustNewMessage">	<input type='checkbox' class="fold" id="MustNewMessage-fold-content"><label for="MustNewMessage-fold-content"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-56">MustNewMessage</a>(data interface{}) *<a href="#name-Message">Message</a></label><span id='MustNewMessage-fold-content-docs' class="fold-docs">
+<span class="md-text">		MustNewMessage is similar to NewMessage except it panics if an error happens.</span>
+
+</span></div><div class="anchor value-res" id="name-NewBundle">	<input type='checkbox' class="fold" id="NewBundle-fold-content"><label for="NewBundle-fold-content"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-34">NewBundle</a>(defaultLanguage <a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a>) *<a href="#name-Bundle">Bundle</a></label><span id='NewBundle-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewBundle returns a bundle with a default language and a default set of plural rules.</span>
+
+</span></div><div class="anchor value-res" id="name-NewLocalizer">	<input type='checkbox' class="fold" id="NewLocalizer-fold-content"><label for="NewLocalizer-fold-content"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-34">NewLocalizer</a>(bundle *<a href="#name-Bundle">Bundle</a>, langs ...<a href="../../../../builtin.html#name-string">string</a>) *<a href="#name-Localizer">Localizer</a></label><span id='NewLocalizer-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewLocalizer returns a new Localizer that looks up messages
+		in the bundle according to the language preferences in langs.
+		It can parse Accept-Language headers as defined in http://www.ietf.org/rfc/rfc2616.txt.</span>
+
+</span></div><div class="anchor value-res" id="name-NewMessage">	<input type='checkbox' class="fold" id="NewMessage-fold-content"><label for="NewMessage-fold-content"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-47">NewMessage</a>(data interface{}) (*<a href="#name-Message">Message</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='NewMessage-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewMessage parses data and returns a new message.</span>
+
+</span></div><div class="anchor value-res" id="name-NewMessageTemplate">	<input type='checkbox' class="fold" id="NewMessageTemplate-fold-content"><label for="NewMessageTemplate-fold-content"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-19">NewMessageTemplate</a>(m *<a href="#name-Message">Message</a>) *<a href="#name-MessageTemplate">MessageTemplate</a></label><span id='NewMessageTemplate-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewMessageTemplate returns a new message template.</span>
+
+</span></div><div class="anchor value-res" id="name-ParseMessageFileBytes">	<input type='checkbox' class="fold" id="ParseMessageFileBytes-fold-content"><label for="ParseMessageFileBytes-fold-content"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/parse.go.html#line-21">ParseMessageFileBytes</a>(buf []<a href="../../../../builtin.html#name-byte">byte</a>, path <a href="../../../../builtin.html#name-string">string</a>, unmarshalFuncs map[<a href="../../../../builtin.html#name-string">string</a>]<a href="#name-UnmarshalFunc">UnmarshalFunc</a>) (*<a href="#name-MessageFile">MessageFile</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='ParseMessageFileBytes-fold-content-docs' class="fold-docs">
+<span class="md-text">		ParseMessageFileBytes returns the messages parsed from file.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 8 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 8 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-addChildMessages"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/parse.go.html#line-122">addChildMessages</a>(id <a href="../../../../builtin.html#name-string">string</a>, data interface{}, messages []*<a href="#name-Message">Message</a>) ([]*<a href="#name-Message">Message</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-isMessage"><i>	<input type='checkbox' class="fold" id="isMessage-fold-content"><label for="isMessage-fold-content"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-188">isMessage</a>(v interface{}) <a href="../../../../builtin.html#name-bool">bool</a></label><span id='isMessage-fold-content-docs' class="fold-docs">
+<span class="md-text">		isMessage tells whether the given data is a message, or a map containing
+		nested messages.
+		A map is assumed to be a message if it contains any of the "reserved" keys:
+		"id", "description", "hash", "leftdelim", "rightdelim", "zero", "one", "two", "few", "many", "other"
+		with a string value.
+		e.g.,
+		- {"message": {"description": "world"}} is a message
+		- {"message": {"description": "world", "foo": "bar"}} is a message ("foo" key is ignored)
+		- {"notmessage": {"description": {"hello": "world"}}} is not
+		- {"notmessage": {"foo": "bar"}} is not</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-parsePath"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/parse.go.html#line-141">parsePath</a>(path <a href="../../../../builtin.html#name-string">string</a>) (langTag, format <a href="../../../../builtin.html#name-string">string</a>)</span></i></div><div class="anchor value-res hidden" id="name-parseTags"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-41">parseTags</a>(langs []<a href="../../../../builtin.html#name-string">string</a>) []<a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a></span></i></div><div class="anchor value-res hidden" id="name-recGetMessages"><i>	<input type='checkbox' class="fold" id="recGetMessages-fold-content"><label for="recGetMessages-fold-content"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/parse.go.html#line-59">recGetMessages</a>(raw interface{}, isMapMessage, isInitialCall <a href="../../../../builtin.html#name-bool">bool</a>) ([]*<a href="#name-Message">Message</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='recGetMessages-fold-content-docs' class="fold-docs">
+<span class="md-text">		recGetMessages looks for translation messages inside "raw" parameter,
+		scanning nested maps using recursion.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-setPluralTemplate"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message_template.go.html#line-36">setPluralTemplate</a>(pluralTemplates map[<a href="internal/plural.html">plural</a>.<a href="internal/plural.html#name-Form">Form</a>]*<a href="internal.html">internal</a>.<a href="internal.html#name-Template">Template</a>, pluralForm <a href="internal/plural.html">plural</a>.<a href="internal/plural.html#name-Form">Form</a>, src, leftDelim, rightDelim <a href="../../../../builtin.html#name-string">string</a>)</span></i></div><div class="anchor value-res hidden" id="name-stringMap"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-115">stringMap</a>(v interface{}) (map[<a href="../../../../builtin.html#name-string">string</a>]<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-stringSubmap"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/message.go.html#line-150">stringSubmap</a>(k <a href="../../../../builtin.html#name-string">string</a>, v interface{}, strdata map[<a href="../../../../builtin.html#name-string">string</a>]<a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 3, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-artTag"><i>	<input type='checkbox' class="fold" id="artTag-fold-content"><label for="artTag-fold-content">  var <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/bundle.go.html#line-31">artTag</a> <a href="../../../../golang.org/x/text/language.html">language</a>.<a href="../../../../golang.org/x/text/language.html#name-Tag">Tag</a></label><span id='artTag-fold-content-docs' class="fold-docs">
+<span class="md-text">		artTag is the language tag used for artificial languages
+		https://en.wikipedia.org/wiki/Codes_for_constructed_languages</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-defaultTextParser"><i>	<span class="nodocs">  var <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/localizer.go.html#line-78">defaultTextParser</a> *<a href="i18n/template.html">template</a>.<a href="i18n/template.html#name-TextParser">TextParser</a></span></i></div><div class="anchor value-res hidden" id="name-errInvalidTranslationFile"><i>	<span class="nodocs">  var <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/parse.go.html#line-55">errInvalidTranslationFile</a> <a href="../../../../builtin.html#name-error">error</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (only one, which is unexported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-nestedSeparator"><i>	<span class="nodocs">const <a href="../../../../../src/github.com/nicksnyder/go-i18n/v2/i18n/parse.go.html#line-53">nestedSeparator</a> = "."</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

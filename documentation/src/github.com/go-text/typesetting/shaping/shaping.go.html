@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: shaping.go in package github.com/go-text/typesetting/shaping</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	shaping.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/go-text/typesetting/shaping.html">github.com/go-text/typesetting/shaping</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> shaping</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<label for="i0"><span class="lit-string i0">"github.com/go-text/typesetting/di"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i1"><span class="lit-string i1">"github.com/go-text/typesetting/harfbuzz"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i2"><span class="lit-string i2">"golang.org/x/image/math/fixed"</span></label></code></span>
+<span class="codeline" id="line-9"><code>)</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// HarfbuzzShaper implements the Shaper interface using harfbuzz.</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// Reusing this shaper type across multiple shaping operations is</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// faster and more memory-efficient than creating a new shaper</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">// for each operation.</span></code></span>
+<span class="codeline" id="line-15"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/shaping.html#name-HarfbuzzShaper" class="ident">HarfbuzzShaper</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-16"><code>	buf *<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html" class="ident i1">harfbuzz</a>.<a href="../harfbuzz/buffer.go.html#line-56" class="ident">Buffer</a></code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code>	fonts <a href="lru.go.html#line-18" class="ident">fontLRU</a></code></span>
+<span class="codeline" id="line-19"><code></code></span>
+<span class="codeline" id="line-20"><code>	features []<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html" class="ident i1">harfbuzz</a>.<a href="../harfbuzz/harfbuzz.go.html#line-194" class="ident">Feature</a></code></span>
+<span class="codeline" id="line-21"><code>}</code></span>
+<span class="codeline" id="line-22"><code></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">// SetFontCacheSize adjusts the size of the font cache within the shaper.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">// It is safe to adjust the size after using the shaper, though shrinking</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// it may result in many evictions on the next shaping.</span></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">func</span> (<label for="r0" class="ident">h</label> *<a href="#line-15" class="ident">HarfbuzzShaper</a>) <label for="r1" class="ident">SetFontCacheSize</label>(<label for="r2" class="ident">size</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-27"><code>	<label for="r0" class="ident">h</label>.<a href="#line-18" class="ident">fonts</a>.<a href="lru.go.html#line-24" class="ident">maxSize</a> = <label for="r2" class="ident">size</label></code></span>
+<span class="codeline" id="line-28"><code>}</code></span>
+<span class="codeline" id="line-29"><code></code></span>
+<span class="codeline" id="line-30"><code><span class="keyword">var</span> _ <a href="#line-33" class="ident">Shaper</a> = (*<a href="#line-15" class="ident">HarfbuzzShaper</a>)(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">// Shaper describes the signature of a font shaping operation.</span></code></span>
+<span class="codeline" id="line-33"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/shaping.html#name-Shaper" class="ident">Shaper</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-34"><code>	<span class="comment">// Shape takes an Input and shapes it into the Output.</span></code></span>
+<span class="codeline" id="line-35"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/shaping.Shaper.html#name-Shape" class="ident">Shape</a>(<a href="input.go.html#line-18" class="ident">Input</a>) <a href="output.go.html#line-120" class="ident">Output</a></code></span>
+<span class="codeline" id="line-36"><code>}</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-39"><code>	<span class="comment">// scaleShift is the power of 2 with which to automatically scale</span></code></span>
+<span class="codeline" id="line-40"><code><span class="comment">	// up the input coordinate space of the shaper. This factor will</span></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">	// be removed prior to returning dimensions. This ensures that the</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">	// returned glyph dimensions take advantage of all of the precision</span></code></span>
+<span class="codeline" id="line-43"><code><span class="comment">	// that a fixed.Int26_6 can provide.</span></code></span>
+<span class="codeline" id="line-44"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/shaping.html#name-scaleShift" class="ident">scaleShift</a> = <span class="lit-number">6</span></code></span>
+<span class="codeline" id="line-45"><code>)</code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">// clamp ensures val is in the inclusive range [low,high].</span></code></span>
+<span class="codeline" id="line-48"><code><span class="keyword">func</span> <label for="r3" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/shaping.html#name-clamp" class="ident">clamp</a></label>(<label for="r4" class="ident">val</label>, <label for="r5" class="ident">low</label>, <label for="r6" class="ident">high</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-49"><code>	<span class="keyword">if</span> <label for="r4" class="ident">val</label> &lt; <label for="r5" class="ident">low</label> {</code></span>
+<span class="codeline" id="line-50"><code>		<span class="keyword">return</span> <label for="r5" class="ident">low</label></code></span>
+<span class="codeline" id="line-51"><code>	}</code></span>
+<span class="codeline" id="line-52"><code>	<span class="keyword">if</span> <label for="r4" class="ident">val</label> &gt; <label for="r6" class="ident">high</label> {</code></span>
+<span class="codeline" id="line-53"><code>		<span class="keyword">return</span> <label for="r6" class="ident">high</label></code></span>
+<span class="codeline" id="line-54"><code>	}</code></span>
+<span class="codeline" id="line-55"><code>	<span class="keyword">return</span> <label for="r4" class="ident">val</label></code></span>
+<span class="codeline" id="line-56"><code>}</code></span>
+<span class="codeline" id="line-57"><code></code></span>
+<span class="codeline" id="line-58"><code><span class="comment">// Shape turns an input into an output.</span></code></span>
+<span class="codeline" id="line-59"><code><span class="keyword">func</span> (<label for="r7" class="ident">t</label> *<a href="#line-15" class="ident">HarfbuzzShaper</a>) <label for="r8" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/shaping.HarfbuzzShaper.html#name-.Shape" class="ident">Shape</a></label>(<label for="r9" class="ident">input</label> <a href="input.go.html#line-18" class="ident">Input</a>) <a href="output.go.html#line-120" class="ident">Output</a> {</code></span>
+<span class="codeline" id="line-60"><code>	<span class="comment">// Prepare to shape the text.</span></code></span>
+<span class="codeline" id="line-61"><code>	<span class="keyword">if</span> <label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-62"><code>		<label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a> = <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html" class="ident i1">harfbuzz</a>.<a href="../harfbuzz/buffer.go.html#line-113" class="ident">NewBuffer</a>()</code></span>
+<span class="codeline" id="line-63"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-64"><code>		<label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/buffer.go.html#line-221" class="ident">Clear</a>()</code></span>
+<span class="codeline" id="line-65"><code>	}</code></span>
+<span class="codeline" id="line-66"><code></code></span>
+<span class="codeline" id="line-67"><code>	<label for="r10" class="ident">runes</label>, <label for="r11" class="ident">start</label>, <label for="r12" class="ident">end</label> := <label for="r9" class="ident">input</label>.<a href="input.go.html#line-22" class="ident">Text</a>, <label for="r9" class="ident">input</label>.<a href="input.go.html#line-24" class="ident">RunStart</a>, <label for="r9" class="ident">input</label>.<a href="input.go.html#line-24" class="ident">RunEnd</a></code></span>
+<span class="codeline" id="line-68"><code>	<span class="keyword">if</span> <label for="r12" class="ident">end</label> &lt; <label for="r11" class="ident">start</label> {</code></span>
+<span class="codeline" id="line-69"><code>		<span class="comment">// Try to guess what the caller actually wanted.</span></code></span>
+<span class="codeline" id="line-70"><code>		<label for="r12" class="ident">end</label>, <label for="r11" class="ident">start</label> = <label for="r11" class="ident">start</label>, <label for="r12" class="ident">end</label></code></span>
+<span class="codeline" id="line-71"><code>	}</code></span>
+<span class="codeline" id="line-72"><code>	<label for="r11" class="ident">start</label> = <a href="#line-48" class="ident">clamp</a>(<label for="r11" class="ident">start</label>, <span class="lit-number">0</span>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r10" class="ident">runes</label>))</code></span>
+<span class="codeline" id="line-73"><code>	<label for="r12" class="ident">end</label> = <a href="#line-48" class="ident">clamp</a>(<label for="r12" class="ident">end</label>, <span class="lit-number">0</span>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r10" class="ident">runes</label>))</code></span>
+<span class="codeline" id="line-74"><code>	<label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/buffer.go.html#line-148" class="ident">AddRunes</a>(<label for="r10" class="ident">runes</label>, <label for="r11" class="ident">start</label>, <label for="r12" class="ident">end</label>-<label for="r11" class="ident">start</label>)</code></span>
+<span class="codeline" id="line-75"><code></code></span>
+<span class="codeline" id="line-76"><code>	<span class="comment">// handle vertical sideways text</span></code></span>
+<span class="codeline" id="line-77"><code>	<label for="r13" class="ident">isSideways</label> := <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-78"><code>	<span class="keyword">if</span> <label for="r9" class="ident">input</label>.<a href="input.go.html#line-26" class="ident">Direction</a>.<a href="../di/direction.go.html#line-105" class="ident">IsSideways</a>() {</code></span>
+<span class="codeline" id="line-79"><code>		<span class="comment">// temporarily switch to horizontal</span></code></span>
+<span class="codeline" id="line-80"><code>		<label for="r9" class="ident">input</label>.<a href="input.go.html#line-26" class="ident">Direction</a> = <label for="r9" class="ident">input</label>.<a href="input.go.html#line-26" class="ident">Direction</a>.<a href="../di/direction.go.html#line-51" class="ident">SwitchAxis</a>()</code></span>
+<span class="codeline" id="line-81"><code>		<label for="r13" class="ident">isSideways</label> = <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-82"><code>	}</code></span>
+<span class="codeline" id="line-83"><code></code></span>
+<span class="codeline" id="line-84"><code>	<label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/buffer.go.html#line-77" class="ident">Props</a>.<a href="../harfbuzz/harfbuzz.go.html#line-116" class="ident">Direction</a> = <label for="r9" class="ident">input</label>.<a href="input.go.html#line-26" class="ident">Direction</a>.<a href="../di/direction.go.html#line-119" class="ident">Harfbuzz</a>()</code></span>
+<span class="codeline" id="line-85"><code>	<label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/buffer.go.html#line-77" class="ident">Props</a>.<a href="../harfbuzz/harfbuzz.go.html#line-100" class="ident">Language</a> = <label for="r9" class="ident">input</label>.<a href="input.go.html#line-45" class="ident">Language</a></code></span>
+<span class="codeline" id="line-86"><code>	<label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/buffer.go.html#line-77" class="ident">Props</a>.<a href="../harfbuzz/harfbuzz.go.html#line-107" class="ident">Script</a> = <label for="r9" class="ident">input</label>.<a href="input.go.html#line-42" class="ident">Script</a></code></span>
+<span class="codeline" id="line-87"><code></code></span>
+<span class="codeline" id="line-88"><code>	<span class="comment">// reuse font when possible</span></code></span>
+<span class="codeline" id="line-89"><code>	<label for="r14" class="ident">font</label>, <label for="r15" class="ident">ok</label> := <label for="r7" class="ident">t</label>.<a href="#line-18" class="ident">fonts</a>.<a href="lru.go.html#line-28" class="ident">Get</a>(<label for="r9" class="ident">input</label>.<a href="input.go.html#line-28" class="ident">Face</a>.<a href="../font/font.go.html#line-492" class="ident">Font</a>)</code></span>
+<span class="codeline" id="line-90"><code>	<span class="keyword">if</span> !<label for="r15" class="ident">ok</label> { <span class="comment">// create a new font and cache it</span></code></span>
+<span class="codeline" id="line-91"><code>		<label for="r14" class="ident">font</label> = <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html" class="ident i1">harfbuzz</a>.<a href="../harfbuzz/fonts.go.html#line-69" class="ident">NewFont</a>(<label for="r9" class="ident">input</label>.<a href="input.go.html#line-28" class="ident">Face</a>)</code></span>
+<span class="codeline" id="line-92"><code>		<label for="r7" class="ident">t</label>.<a href="#line-18" class="ident">fonts</a>.<a href="lru.go.html#line-39" class="ident">Put</a>(<label for="r9" class="ident">input</label>.<a href="input.go.html#line-28" class="ident">Face</a>.<a href="../font/font.go.html#line-492" class="ident">Font</a>, <label for="r14" class="ident">font</label>)</code></span>
+<span class="codeline" id="line-93"><code>	}</code></span>
+<span class="codeline" id="line-94"><code>	<span class="comment">// adjust the user provided fields</span></code></span>
+<span class="codeline" id="line-95"><code>	<label for="r14" class="ident">font</label>.<a href="../harfbuzz/fonts.go.html#line-60" class="ident">XScale</a> = <a href="../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r9" class="ident">input</label>.<a href="input.go.html#line-39" class="ident">Size</a>.<a href="../../../../golang.org/x/image/math/fixed/fixed.go.html#line-57" class="ident">Ceil</a>()) &lt;&lt; <a href="#line-44" class="ident">scaleShift</a></code></span>
+<span class="codeline" id="line-96"><code>	<label for="r14" class="ident">font</label>.<a href="../harfbuzz/fonts.go.html#line-60" class="ident">YScale</a> = <label for="r14" class="ident">font</label>.<a href="../harfbuzz/fonts.go.html#line-60" class="ident">XScale</a></code></span>
+<span class="codeline" id="line-97"><code></code></span>
+<span class="codeline" id="line-98"><code>	<span class="keyword">if</span> <label for="r16" class="ident">L</label> := <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r9" class="ident">input</label>.<a href="input.go.html#line-33" class="ident">FontFeatures</a>); <a href="../../../../../pkg/builtin.html#name-cap" class="ident">cap</a>(<label for="r7" class="ident">t</label>.<a href="#line-20" class="ident">features</a>) &lt; <label for="r16" class="ident">L</label> {</code></span>
+<span class="codeline" id="line-99"><code>		<label for="r7" class="ident">t</label>.<a href="#line-20" class="ident">features</a> = <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html" class="ident i1">harfbuzz</a>.<a href="../harfbuzz/harfbuzz.go.html#line-194" class="ident">Feature</a>, <label for="r16" class="ident">L</label>)</code></span>
+<span class="codeline" id="line-100"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-101"><code>		<label for="r7" class="ident">t</label>.<a href="#line-20" class="ident">features</a> = <label for="r7" class="ident">t</label>.<a href="#line-20" class="ident">features</a>[<span class="lit-number">0</span>:<label for="r16" class="ident">L</label>]</code></span>
+<span class="codeline" id="line-102"><code>	}</code></span>
+<span class="codeline" id="line-103"><code>	<span class="keyword">for</span> <label for="r17" class="ident">i</label>, <label for="r18" class="ident">f</label> := <span class="keyword">range</span> <label for="r9" class="ident">input</label>.<a href="input.go.html#line-33" class="ident">FontFeatures</a> {</code></span>
+<span class="codeline" id="line-104"><code>		<label for="r7" class="ident">t</label>.<a href="#line-20" class="ident">features</a>[<label for="r17" class="ident">i</label>] = <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html" class="ident i1">harfbuzz</a>.<a href="../harfbuzz/harfbuzz.go.html#line-194" class="ident">Feature</a>{</code></span>
+<span class="codeline" id="line-105"><code>			<a href="../harfbuzz/harfbuzz.go.html#line-195" class="ident">Tag</a>:   <label for="r18" class="ident">f</label>.<a href="input.go.html#line-63" class="ident">Tag</a>,</code></span>
+<span class="codeline" id="line-106"><code>			<a href="../harfbuzz/harfbuzz.go.html#line-199" class="ident">Value</a>: <label for="r18" class="ident">f</label>.<a href="input.go.html#line-64" class="ident">Value</a>,</code></span>
+<span class="codeline" id="line-107"><code>			<a href="../harfbuzz/harfbuzz.go.html#line-201" class="ident">Start</a>: <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html" class="ident i1">harfbuzz</a>.<a href="../harfbuzz/harfbuzz.go.html#line-209" class="ident">FeatureGlobalStart</a>,</code></span>
+<span class="codeline" id="line-108"><code>			<a href="../harfbuzz/harfbuzz.go.html#line-203" class="ident">End</a>:   <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html" class="ident i1">harfbuzz</a>.<a href="../harfbuzz/harfbuzz.go.html#line-212" class="ident">FeatureGlobalEnd</a>,</code></span>
+<span class="codeline" id="line-109"><code>		}</code></span>
+<span class="codeline" id="line-110"><code>	}</code></span>
+<span class="codeline" id="line-111"><code></code></span>
+<span class="codeline" id="line-112"><code>	<span class="comment">// Actually use harfbuzz to shape the text.</span></code></span>
+<span class="codeline" id="line-113"><code>	<label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/shape.go.html#line-29" class="ident">Shape</a>(<label for="r14" class="ident">font</label>, <label for="r7" class="ident">t</label>.<a href="#line-20" class="ident">features</a>)</code></span>
+<span class="codeline" id="line-114"><code></code></span>
+<span class="codeline" id="line-115"><code>	<span class="comment">// Convert the shaped text into an Output.</span></code></span>
+<span class="codeline" id="line-116"><code>	<label for="r19" class="ident">glyphs</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="output.go.html#line-13" class="ident">Glyph</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/buffer.go.html#line-60" class="ident">Info</a>))</code></span>
+<span class="codeline" id="line-117"><code>	<span class="keyword">for</span> <label for="r20" class="ident">i</label> := <span class="keyword">range</span> <label for="r19" class="ident">glyphs</label> {</code></span>
+<span class="codeline" id="line-118"><code>		<label for="r21" class="ident">g</label> := <label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/buffer.go.html#line-60" class="ident">Info</a>[<label for="r20" class="ident">i</label>].<a href="../harfbuzz/glyph.go.html#line-148" class="ident">Glyph</a></code></span>
+<span class="codeline" id="line-119"><code>		<label for="r19" class="ident">glyphs</label>[<label for="r20" class="ident">i</label>] = <a href="output.go.html#line-13" class="ident">Glyph</a>{</code></span>
+<span class="codeline" id="line-120"><code>			<a href="output.go.html#line-46" class="ident">ClusterIndex</a>: <label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/buffer.go.html#line-60" class="ident">Info</a>[<label for="r20" class="ident">i</label>].<a href="../harfbuzz/glyph.go.html#line-141" class="ident">Cluster</a>,</code></span>
+<span class="codeline" id="line-121"><code>			<a href="output.go.html#line-52" class="ident">GlyphID</a>:      <label for="r21" class="ident">g</label>,</code></span>
+<span class="codeline" id="line-122"><code>			<a href="output.go.html#line-53" class="ident">Mask</a>:         <label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/buffer.go.html#line-60" class="ident">Info</a>[<label for="r20" class="ident">i</label>].<a href="../harfbuzz/glyph.go.html#line-152" class="ident">Mask</a>,</code></span>
+<span class="codeline" id="line-123"><code>		}</code></span>
+<span class="codeline" id="line-124"><code>		<label for="r22" class="ident">extents</label>, <label for="r23" class="ident">ok</label> := <label for="r14" class="ident">font</label>.<a href="../harfbuzz/fonts.go.html#line-136" class="ident">GlyphExtents</a>(<label for="r21" class="ident">g</label>)</code></span>
+<span class="codeline" id="line-125"><code>		<span class="keyword">if</span> !<label for="r23" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-126"><code>			<span class="comment">// Leave the glyph having zero size if it isn't in the font. There</span></code></span>
+<span class="codeline" id="line-127"><code><span class="comment">			// isn't really anything we can do to recover from such an error.</span></code></span>
+<span class="codeline" id="line-128"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-129"><code>		}</code></span>
+<span class="codeline" id="line-130"><code>		<label for="r19" class="ident">glyphs</label>[<label for="r20" class="ident">i</label>].<a href="output.go.html#line-17" class="ident">Width</a> = <a href="../../../../../pkg/golang.org/x/image/math/fixed.html" class="ident i2">fixed</a>.<a href="../../../../golang.org/x/image/math/fixed/fixed.go.html#line-17" class="ident">I</a>(<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r22" class="ident">extents</label>.<a href="../harfbuzz/fonts.go.html#line-130" class="ident">Width</a>)) &gt;&gt; <a href="#line-44" class="ident">scaleShift</a></code></span>
+<span class="codeline" id="line-131"><code>		<label for="r19" class="ident">glyphs</label>[<label for="r20" class="ident">i</label>].<a href="output.go.html#line-21" class="ident">Height</a> = <a href="../../../../../pkg/golang.org/x/image/math/fixed.html" class="ident i2">fixed</a>.<a href="../../../../golang.org/x/image/math/fixed/fixed.go.html#line-17" class="ident">I</a>(<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r22" class="ident">extents</label>.<a href="../harfbuzz/fonts.go.html#line-131" class="ident">Height</a>)) &gt;&gt; <a href="#line-44" class="ident">scaleShift</a></code></span>
+<span class="codeline" id="line-132"><code>		<label for="r19" class="ident">glyphs</label>[<label for="r20" class="ident">i</label>].<a href="output.go.html#line-25" class="ident">XBearing</a> = <a href="../../../../../pkg/golang.org/x/image/math/fixed.html" class="ident i2">fixed</a>.<a href="../../../../golang.org/x/image/math/fixed/fixed.go.html#line-17" class="ident">I</a>(<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r22" class="ident">extents</label>.<a href="../harfbuzz/fonts.go.html#line-128" class="ident">XBearing</a>)) &gt;&gt; <a href="#line-44" class="ident">scaleShift</a></code></span>
+<span class="codeline" id="line-133"><code>		<label for="r19" class="ident">glyphs</label>[<label for="r20" class="ident">i</label>].<a href="output.go.html#line-28" class="ident">YBearing</a> = <a href="../../../../../pkg/golang.org/x/image/math/fixed.html" class="ident i2">fixed</a>.<a href="../../../../golang.org/x/image/math/fixed/fixed.go.html#line-17" class="ident">I</a>(<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r22" class="ident">extents</label>.<a href="../harfbuzz/fonts.go.html#line-129" class="ident">YBearing</a>)) &gt;&gt; <a href="#line-44" class="ident">scaleShift</a></code></span>
+<span class="codeline" id="line-134"><code>		<label for="r19" class="ident">glyphs</label>[<label for="r20" class="ident">i</label>].<a href="output.go.html#line-31" class="ident">XAdvance</a> = <a href="../../../../../pkg/golang.org/x/image/math/fixed.html" class="ident i2">fixed</a>.<a href="../../../../golang.org/x/image/math/fixed/fixed.go.html#line-17" class="ident">I</a>(<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/buffer.go.html#line-64" class="ident">Pos</a>[<label for="r20" class="ident">i</label>].<a href="../harfbuzz/glyph.go.html#line-19" class="ident">XAdvance</a>)) &gt;&gt; <a href="#line-44" class="ident">scaleShift</a></code></span>
+<span class="codeline" id="line-135"><code>		<label for="r19" class="ident">glyphs</label>[<label for="r20" class="ident">i</label>].<a href="output.go.html#line-34" class="ident">YAdvance</a> = <a href="../../../../../pkg/golang.org/x/image/math/fixed.html" class="ident i2">fixed</a>.<a href="../../../../golang.org/x/image/math/fixed/fixed.go.html#line-17" class="ident">I</a>(<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/buffer.go.html#line-64" class="ident">Pos</a>[<label for="r20" class="ident">i</label>].<a href="../harfbuzz/glyph.go.html#line-26" class="ident">YAdvance</a>)) &gt;&gt; <a href="#line-44" class="ident">scaleShift</a></code></span>
+<span class="codeline" id="line-136"><code>		<label for="r19" class="ident">glyphs</label>[<label for="r20" class="ident">i</label>].<a href="output.go.html#line-40" class="ident">XOffset</a> = <a href="../../../../../pkg/golang.org/x/image/math/fixed.html" class="ident i2">fixed</a>.<a href="../../../../golang.org/x/image/math/fixed/fixed.go.html#line-17" class="ident">I</a>(<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/buffer.go.html#line-64" class="ident">Pos</a>[<label for="r20" class="ident">i</label>].<a href="../harfbuzz/glyph.go.html#line-22" class="ident">XOffset</a>)) &gt;&gt; <a href="#line-44" class="ident">scaleShift</a></code></span>
+<span class="codeline" id="line-137"><code>		<label for="r19" class="ident">glyphs</label>[<label for="r20" class="ident">i</label>].<a href="output.go.html#line-40" class="ident">YOffset</a> = <a href="../../../../../pkg/golang.org/x/image/math/fixed.html" class="ident i2">fixed</a>.<a href="../../../../golang.org/x/image/math/fixed/fixed.go.html#line-17" class="ident">I</a>(<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r7" class="ident">t</label>.<a href="#line-16" class="ident">buf</a>.<a href="../harfbuzz/buffer.go.html#line-64" class="ident">Pos</a>[<label for="r20" class="ident">i</label>].<a href="../harfbuzz/glyph.go.html#line-29" class="ident">YOffset</a>)) &gt;&gt; <a href="#line-44" class="ident">scaleShift</a></code></span>
+<span class="codeline" id="line-138"><code>	}</code></span>
+<span class="codeline" id="line-139"><code>	<a href="#line-168" class="ident">countClusters</a>(<label for="r19" class="ident">glyphs</label>, <label for="r9" class="ident">input</label>.<a href="input.go.html#line-24" class="ident">RunEnd</a>, <label for="r9" class="ident">input</label>.<a href="input.go.html#line-26" class="ident">Direction</a>.<a href="../di/direction.go.html#line-54" class="ident">Progression</a>())</code></span>
+<span class="codeline" id="line-140"><code>	<label for="r24" class="ident">out</label> := <a href="output.go.html#line-120" class="ident">Output</a>{</code></span>
+<span class="codeline" id="line-141"><code>		<a href="output.go.html#line-127" class="ident">Glyphs</a>:    <label for="r19" class="ident">glyphs</label>,</code></span>
+<span class="codeline" id="line-142"><code>		<a href="output.go.html#line-140" class="ident">Direction</a>: <label for="r9" class="ident">input</label>.<a href="input.go.html#line-26" class="ident">Direction</a>,</code></span>
+<span class="codeline" id="line-143"><code>		<a href="output.go.html#line-148" class="ident">Face</a>:      <label for="r9" class="ident">input</label>.<a href="input.go.html#line-28" class="ident">Face</a>,</code></span>
+<span class="codeline" id="line-144"><code>		<a href="output.go.html#line-125" class="ident">Size</a>:      <label for="r9" class="ident">input</label>.<a href="input.go.html#line-39" class="ident">Size</a>,</code></span>
+<span class="codeline" id="line-145"><code>	}</code></span>
+<span class="codeline" id="line-146"><code>	<label for="r24" class="ident">out</label>.<a href="output.go.html#line-143" class="ident">Runes</a>.<a href="wrapping.go.html#line-407" class="ident">Offset</a> = <label for="r9" class="ident">input</label>.<a href="input.go.html#line-24" class="ident">RunStart</a></code></span>
+<span class="codeline" id="line-147"><code>	<label for="r24" class="ident">out</label>.<a href="output.go.html#line-143" class="ident">Runes</a>.<a href="wrapping.go.html#line-408" class="ident">Count</a> = <label for="r9" class="ident">input</label>.<a href="input.go.html#line-24" class="ident">RunEnd</a> - <label for="r9" class="ident">input</label>.<a href="input.go.html#line-24" class="ident">RunStart</a></code></span>
+<span class="codeline" id="line-148"><code></code></span>
+<span class="codeline" id="line-149"><code>	<span class="keyword">if</span> <label for="r13" class="ident">isSideways</label> {</code></span>
+<span class="codeline" id="line-150"><code>		<span class="comment">// set the Direction to the correct value.</span></code></span>
+<span class="codeline" id="line-151"><code><span class="comment">		// this is required here so that the following call to ExtentsForDirection</span></code></span>
+<span class="codeline" id="line-152"><code><span class="comment">		// returns the vertical data.</span></code></span>
+<span class="codeline" id="line-153"><code>		<label for="r24" class="ident">out</label>.<a href="output.go.html#line-257" class="ident">sideways</a>()</code></span>
+<span class="codeline" id="line-154"><code>	}</code></span>
+<span class="codeline" id="line-155"><code></code></span>
+<span class="codeline" id="line-156"><code>	<label for="r25" class="ident">fontExtents</label> := <label for="r14" class="ident">font</label>.<a href="../harfbuzz/fonts.go.html#line-292" class="ident">ExtentsForDirection</a>(<label for="r24" class="ident">out</label>.<a href="output.go.html#line-140" class="ident">Direction</a>.<a href="../di/direction.go.html#line-119" class="ident">Harfbuzz</a>())</code></span>
+<span class="codeline" id="line-157"><code>	<label for="r24" class="ident">out</label>.<a href="output.go.html#line-130" class="ident">LineBounds</a> = <a href="output.go.html#line-101" class="ident">Bounds</a>{</code></span>
+<span class="codeline" id="line-158"><code>		<a href="output.go.html#line-104" class="ident">Ascent</a>:  <a href="../../../../../pkg/golang.org/x/image/math/fixed.html" class="ident i2">fixed</a>.<a href="../../../../golang.org/x/image/math/fixed/fixed.go.html#line-17" class="ident">I</a>(<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r25" class="ident">fontExtents</label>.<a href="../font/font.go.html#line-86" class="ident">Ascender</a>)) &gt;&gt; <a href="#line-44" class="ident">scaleShift</a>,</code></span>
+<span class="codeline" id="line-159"><code>		<a href="output.go.html#line-107" class="ident">Descent</a>: <a href="../../../../../pkg/golang.org/x/image/math/fixed.html" class="ident i2">fixed</a>.<a href="../../../../golang.org/x/image/math/fixed/fixed.go.html#line-17" class="ident">I</a>(<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r25" class="ident">fontExtents</label>.<a href="../font/font.go.html#line-87" class="ident">Descender</a>)) &gt;&gt; <a href="#line-44" class="ident">scaleShift</a>,</code></span>
+<span class="codeline" id="line-160"><code>		<a href="output.go.html#line-110" class="ident">Gap</a>:     <a href="../../../../../pkg/golang.org/x/image/math/fixed.html" class="ident i2">fixed</a>.<a href="../../../../golang.org/x/image/math/fixed/fixed.go.html#line-17" class="ident">I</a>(<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r25" class="ident">fontExtents</label>.<a href="../font/font.go.html#line-88" class="ident">LineGap</a>)) &gt;&gt; <a href="#line-44" class="ident">scaleShift</a>,</code></span>
+<span class="codeline" id="line-161"><code>	}</code></span>
+<span class="codeline" id="line-162"><code>	<label for="r24" class="ident">out</label>.<a href="output.go.html#line-208" class="ident">RecalculateAll</a>()</code></span>
+<span class="codeline" id="line-163"><code>	<span class="keyword">return</span> <label for="r24" class="ident">out</label></code></span>
+<span class="codeline" id="line-164"><code>}</code></span>
+<span class="codeline" id="line-165"><code></code></span>
+<span class="codeline" id="line-166"><code><span class="comment">// countClusters tallies the number of runes and glyphs in each cluster</span></code></span>
+<span class="codeline" id="line-167"><code><span class="comment">// and updates the relevant fields on the provided glyph slice.</span></code></span>
+<span class="codeline" id="line-168"><code><span class="keyword">func</span> <label for="r26" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/shaping.html#name-countClusters" class="ident">countClusters</a></label>(<label for="r27" class="ident">glyphs</label> []<a href="output.go.html#line-13" class="ident">Glyph</a>, <label for="r28" class="ident">textLen</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r29" class="ident">dir</label> <a href="../../../../../pkg/github.com/go-text/typesetting/di.html" class="ident i0">di</a>.<a href="../di/direction.go.html#line-80" class="ident">Progression</a>) {</code></span>
+<span class="codeline" id="line-169"><code>	<label for="r30" class="ident">currentCluster</label> := -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-170"><code>	<label for="r31" class="ident">runesInCluster</label> := <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-171"><code>	<label for="r32" class="ident">glyphsInCluster</label> := <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-172"><code>	<label for="r33" class="ident">previousCluster</label> := <label for="r28" class="ident">textLen</label></code></span>
+<span class="codeline" id="line-173"><code>	<span class="keyword">for</span> <label for="r34" class="ident">i</label> := <span class="keyword">range</span> <label for="r27" class="ident">glyphs</label> {</code></span>
+<span class="codeline" id="line-174"><code>		<label for="r35" class="ident">g</label> := <label for="r27" class="ident">glyphs</label>[<label for="r34" class="ident">i</label>].<a href="output.go.html#line-46" class="ident">ClusterIndex</a></code></span>
+<span class="codeline" id="line-175"><code>		<span class="keyword">if</span> <label for="r35" class="ident">g</label> != <label for="r30" class="ident">currentCluster</label> {</code></span>
+<span class="codeline" id="line-176"><code>			<span class="comment">// If we're processing a new cluster, count the runes and glyphs</span></code></span>
+<span class="codeline" id="line-177"><code><span class="comment">			// that compose it.</span></code></span>
+<span class="codeline" id="line-178"><code>			<label for="r31" class="ident">runesInCluster</label> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-179"><code>			<label for="r32" class="ident">glyphsInCluster</label> = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-180"><code>			<label for="r30" class="ident">currentCluster</label> = <label for="r35" class="ident">g</label></code></span>
+<span class="codeline" id="line-181"><code>			<label for="r36" class="ident">nextCluster</label> := -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-182"><code>		<label for="r37" class="ident">glyphCountLoop</label>:</code></span>
+<span class="codeline" id="line-183"><code>			<span class="keyword">for</span> <label for="r38" class="ident">k</label> := <label for="r34" class="ident">i</label> + <span class="lit-number">1</span>; <label for="r38" class="ident">k</label> &lt; <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r27" class="ident">glyphs</label>); <label for="r38" class="ident">k</label>++ {</code></span>
+<span class="codeline" id="line-184"><code>				<span class="keyword">if</span> <label for="r27" class="ident">glyphs</label>[<label for="r38" class="ident">k</label>].<a href="output.go.html#line-46" class="ident">ClusterIndex</a> == <label for="r35" class="ident">g</label> {</code></span>
+<span class="codeline" id="line-185"><code>					<label for="r32" class="ident">glyphsInCluster</label>++</code></span>
+<span class="codeline" id="line-186"><code>				} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-187"><code>					<label for="r36" class="ident">nextCluster</label> = <label for="r27" class="ident">glyphs</label>[<label for="r38" class="ident">k</label>].<a href="output.go.html#line-46" class="ident">ClusterIndex</a></code></span>
+<span class="codeline" id="line-188"><code>					<span class="keyword">break</span> <label for="r37" class="ident">glyphCountLoop</label></code></span>
+<span class="codeline" id="line-189"><code>				}</code></span>
+<span class="codeline" id="line-190"><code>			}</code></span>
+<span class="codeline" id="line-191"><code>			<span class="keyword">if</span> <label for="r36" class="ident">nextCluster</label> == -<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-192"><code>				<label for="r36" class="ident">nextCluster</label> = <label for="r28" class="ident">textLen</label></code></span>
+<span class="codeline" id="line-193"><code>			}</code></span>
+<span class="codeline" id="line-194"><code>			<span class="keyword">switch</span> <label for="r29" class="ident">dir</label> {</code></span>
+<span class="codeline" id="line-195"><code>			<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/di.html" class="ident i0">di</a>.<a href="../di/direction.go.html#line-87" class="ident">FromTopLeft</a>:</code></span>
+<span class="codeline" id="line-196"><code>				<label for="r31" class="ident">runesInCluster</label> = <label for="r36" class="ident">nextCluster</label> - <label for="r30" class="ident">currentCluster</label></code></span>
+<span class="codeline" id="line-197"><code>			<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/di.html" class="ident i0">di</a>.<a href="../di/direction.go.html#line-92" class="ident">TowardTopLeft</a>:</code></span>
+<span class="codeline" id="line-198"><code>				<label for="r31" class="ident">runesInCluster</label> = <label for="r33" class="ident">previousCluster</label> - <label for="r30" class="ident">currentCluster</label></code></span>
+<span class="codeline" id="line-199"><code>			}</code></span>
+<span class="codeline" id="line-200"><code>			<label for="r33" class="ident">previousCluster</label> = <label for="r35" class="ident">g</label></code></span>
+<span class="codeline" id="line-201"><code>		}</code></span>
+<span class="codeline" id="line-202"><code>		<label for="r27" class="ident">glyphs</label>[<label for="r34" class="ident">i</label>].<a href="output.go.html#line-51" class="ident">GlyphCount</a> = <label for="r32" class="ident">glyphsInCluster</label></code></span>
+<span class="codeline" id="line-203"><code>		<label for="r27" class="ident">glyphs</label>[<label for="r34" class="ident">i</label>].<a href="output.go.html#line-49" class="ident">RuneCount</a> = <label for="r31" class="ident">runesInCluster</label></code></span>
+<span class="codeline" id="line-204"><code>	}</code></span>
+<span class="codeline" id="line-205"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: fsnotify.go in package github.com/fsnotify/fsnotify</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	fsnotify.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/fsnotify/fsnotify.html">github.com/fsnotify/fsnotify</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Package fsnotify provides a cross-platform interface for file system</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// notifications.</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// Currently supported systems:</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">//	Linux 2.6.32+    via inotify</span></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">//	BSD, macOS       via kqueue</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">//	Windows          via ReadDirectoryChangesW</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">//	illumos          via FEN</span></code></span></div><span class="codeline" id="line-10"><code><span class="keyword">package</span> fsnotify</code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-13"><code>	<label for="i0"><span class="lit-string i0">"errors"</span></label></code></span>
+<span class="codeline" id="line-14"><code>	<label for="i1"><span class="lit-string i1">"fmt"</span></label></code></span>
+<span class="codeline" id="line-15"><code>	<label for="i2"><span class="lit-string i2">"path/filepath"</span></label></code></span>
+<span class="codeline" id="line-16"><code>	<label for="i3"><span class="lit-string i3">"strings"</span></label></code></span>
+<span class="codeline" id="line-17"><code>)</code></span>
+<span class="codeline" id="line-18"><code></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// Event represents a file system notification.</span></code></span>
+<span class="codeline" id="line-20"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-Event" class="ident">Event</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-21"><code>	<span class="comment">// Path to the file or directory.</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">	// Paths are relative to the input; for example with Add("dir") the Name</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">	// will be set to "dir/file" if you create that file, but if you use</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">	// Add("/path/to/dir") it will be "/path/to/dir/file".</span></code></span>
+<span class="codeline" id="line-26"><code>	Name <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-27"><code></code></span>
+<span class="codeline" id="line-28"><code>	<span class="comment">// File operation that triggered the event.</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-30"><code><span class="comment">	// This is a bitmask and some systems may send multiple operations at once.</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">	// Use the Event.Has() method instead of comparing with ==.</span></code></span>
+<span class="codeline" id="line-32"><code>	Op <a href="#line-36" class="ident">Op</a></code></span>
+<span class="codeline" id="line-33"><code>}</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">// Op describes a set of file operations.</span></code></span>
+<span class="codeline" id="line-36"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-Op" class="ident">Op</a> <a href="../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">// The operations fsnotify can trigger; see the documentation on [Watcher] for a</span></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">// full description, and check them with [Event.Has].</span></code></span>
+<span class="codeline" id="line-40"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-41"><code>	<span class="comment">// A new pathname was created.</span></code></span>
+<span class="codeline" id="line-42"><code>	<a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-Create" class="ident">Create</a> <a href="#line-36" class="ident">Op</a> = <span class="lit-number">1</span> &lt;&lt; <a href="../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code>	<span class="comment">// The pathname was written to; this does *not* mean the write has finished,</span></code></span>
+<span class="codeline" id="line-45"><code><span class="comment">	// and a write can be followed by more writes.</span></code></span>
+<span class="codeline" id="line-46"><code>	<a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-Write" class="ident">Write</a></code></span>
+<span class="codeline" id="line-47"><code></code></span>
+<span class="codeline" id="line-48"><code>	<span class="comment">// The path was removed; any watches on it will be removed. Some "remove"</span></code></span>
+<span class="codeline" id="line-49"><code><span class="comment">	// operations may trigger a Rename if the file is actually moved (for</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">	// example "remove to trash" is often a rename).</span></code></span>
+<span class="codeline" id="line-51"><code>	<a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-Remove" class="ident">Remove</a></code></span>
+<span class="codeline" id="line-52"><code></code></span>
+<span class="codeline" id="line-53"><code>	<span class="comment">// The path was renamed to something else; any watched on it will be</span></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">	// removed.</span></code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-Rename" class="ident">Rename</a></code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code>	<span class="comment">// File attributes were changed.</span></code></span>
+<span class="codeline" id="line-58"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-59"><code><span class="comment">	// It's generally not recommended to take action on this event, as it may</span></code></span>
+<span class="codeline" id="line-60"><code><span class="comment">	// get triggered very frequently by some software. For example, Spotlight</span></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">	// indexing on macOS, anti-virus software, backup software, etc.</span></code></span>
+<span class="codeline" id="line-62"><code>	<a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-Chmod" class="ident">Chmod</a></code></span>
+<span class="codeline" id="line-63"><code>)</code></span>
+<span class="codeline" id="line-64"><code></code></span>
+<span class="codeline" id="line-65"><code><span class="comment">// Common errors that can be reported.</span></code></span>
+<span class="codeline" id="line-66"><code><span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-67"><code>	<a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-ErrNonExistentWatch" class="ident">ErrNonExistentWatch</a> = <a href="../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"fsnotify: can't remove non-existent watch"</span>)</code></span>
+<span class="codeline" id="line-68"><code>	<a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-ErrEventOverflow" class="ident">ErrEventOverflow</a>    = <a href="../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"fsnotify: queue or buffer overflow"</span>)</code></span>
+<span class="codeline" id="line-69"><code>	<a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-ErrClosed" class="ident">ErrClosed</a>           = <a href="../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"fsnotify: watcher already closed"</span>)</code></span>
+<span class="codeline" id="line-70"><code>)</code></span>
+<span class="codeline" id="line-71"><code></code></span>
+<span class="codeline" id="line-72"><code><span class="keyword">func</span> (<label for="r0" class="ident">o</label> <a href="#line-36" class="ident">Op</a>) <label for="r1" class="ident"><a href="../../../../imp/github.com/fsnotify/fsnotify.Op.html#name-.String" class="ident">String</a></label>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-73"><code>	<span class="keyword">var</span> <label for="r2" class="ident">b</label> <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/builder.go.html#line-17" class="ident">Builder</a></code></span>
+<span class="codeline" id="line-74"><code>	<span class="keyword">if</span> <label for="r0" class="ident">o</label>.<a href="#line-96" class="ident">Has</a>(<a href="#line-42" class="ident">Create</a>) {</code></span>
+<span class="codeline" id="line-75"><code>		<label for="r2" class="ident">b</label>.<a href="../../../strings/builder.go.html#line-106" class="ident">WriteString</a>(<span class="lit-string">"|CREATE"</span>)</code></span>
+<span class="codeline" id="line-76"><code>	}</code></span>
+<span class="codeline" id="line-77"><code>	<span class="keyword">if</span> <label for="r0" class="ident">o</label>.<a href="#line-96" class="ident">Has</a>(<a href="#line-51" class="ident">Remove</a>) {</code></span>
+<span class="codeline" id="line-78"><code>		<label for="r2" class="ident">b</label>.<a href="../../../strings/builder.go.html#line-106" class="ident">WriteString</a>(<span class="lit-string">"|REMOVE"</span>)</code></span>
+<span class="codeline" id="line-79"><code>	}</code></span>
+<span class="codeline" id="line-80"><code>	<span class="keyword">if</span> <label for="r0" class="ident">o</label>.<a href="#line-96" class="ident">Has</a>(<a href="#line-46" class="ident">Write</a>) {</code></span>
+<span class="codeline" id="line-81"><code>		<label for="r2" class="ident">b</label>.<a href="../../../strings/builder.go.html#line-106" class="ident">WriteString</a>(<span class="lit-string">"|WRITE"</span>)</code></span>
+<span class="codeline" id="line-82"><code>	}</code></span>
+<span class="codeline" id="line-83"><code>	<span class="keyword">if</span> <label for="r0" class="ident">o</label>.<a href="#line-96" class="ident">Has</a>(<a href="#line-55" class="ident">Rename</a>) {</code></span>
+<span class="codeline" id="line-84"><code>		<label for="r2" class="ident">b</label>.<a href="../../../strings/builder.go.html#line-106" class="ident">WriteString</a>(<span class="lit-string">"|RENAME"</span>)</code></span>
+<span class="codeline" id="line-85"><code>	}</code></span>
+<span class="codeline" id="line-86"><code>	<span class="keyword">if</span> <label for="r0" class="ident">o</label>.<a href="#line-96" class="ident">Has</a>(<a href="#line-62" class="ident">Chmod</a>) {</code></span>
+<span class="codeline" id="line-87"><code>		<label for="r2" class="ident">b</label>.<a href="../../../strings/builder.go.html#line-106" class="ident">WriteString</a>(<span class="lit-string">"|CHMOD"</span>)</code></span>
+<span class="codeline" id="line-88"><code>	}</code></span>
+<span class="codeline" id="line-89"><code>	<span class="keyword">if</span> <label for="r2" class="ident">b</label>.<a href="../../../strings/builder.go.html#line-45" class="ident">Len</a>() == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-90"><code>		<span class="keyword">return</span> <span class="lit-string">"[no events]"</span></code></span>
+<span class="codeline" id="line-91"><code>	}</code></span>
+<span class="codeline" id="line-92"><code>	<span class="keyword">return</span> <label for="r2" class="ident">b</label>.<a href="../../../strings/builder.go.html#line-40" class="ident">String</a>()[<span class="lit-number">1</span>:]</code></span>
+<span class="codeline" id="line-93"><code>}</code></span>
+<span class="codeline" id="line-94"><code></code></span>
+<span class="codeline" id="line-95"><code><span class="comment">// Has reports if this operation has the given operation.</span></code></span>
+<span class="codeline" id="line-96"><code><span class="keyword">func</span> (<label for="r3" class="ident">o</label> <a href="#line-36" class="ident">Op</a>) <label for="r4" class="ident">Has</label>(<label for="r5" class="ident">h</label> <a href="#line-36" class="ident">Op</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r3" class="ident">o</label>&amp;<label for="r5" class="ident">h</label> != <span class="lit-number">0</span> }</code></span>
+<span class="codeline" id="line-97"><code></code></span>
+<span class="codeline" id="line-98"><code><span class="comment">// Has reports if this event has the given operation.</span></code></span>
+<span class="codeline" id="line-99"><code><span class="keyword">func</span> (<label for="r6" class="ident">e</label> <a href="#line-20" class="ident">Event</a>) <label for="r7" class="ident">Has</label>(<label for="r8" class="ident">op</label> <a href="#line-36" class="ident">Op</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r6" class="ident">e</label>.<a href="#line-32" class="ident">Op</a>.<a href="#line-96" class="ident">Has</a>(<label for="r8" class="ident">op</label>) }</code></span>
+<span class="codeline" id="line-100"><code></code></span>
+<span class="codeline" id="line-101"><code><span class="comment">// String returns a string representation of the event with their path.</span></code></span>
+<span class="codeline" id="line-102"><code><span class="keyword">func</span> (<label for="r9" class="ident">e</label> <a href="#line-20" class="ident">Event</a>) <label for="r10" class="ident"><a href="../../../../imp/github.com/fsnotify/fsnotify.Event.html#name-.String" class="ident">String</a></label>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-103"><code>	<span class="keyword">return</span> <a href="../../../../pkg/fmt.html" class="ident i1">fmt</a>.<a href="../../../fmt/print.go.html#line-237" class="ident">Sprintf</a>(<span class="lit-string">"%-13s %q"</span>, <label for="r9" class="ident">e</label>.<a href="#line-32" class="ident">Op</a>.<a href="#line-72" class="ident">String</a>(), <label for="r9" class="ident">e</label>.<a href="#line-26" class="ident">Name</a>)</code></span>
+<span class="codeline" id="line-104"><code>}</code></span>
+<span class="codeline" id="line-105"><code></code></span>
+<span class="codeline" id="line-106"><code><span class="keyword">type</span> (</code></span>
+<span class="codeline" id="line-107"><code>	<a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-addOpt" class="ident">addOpt</a>   <span class="keyword">func</span>(opt *<a href="#line-108" class="ident">withOpts</a>)</code></span>
+<span class="codeline" id="line-108"><code>	<a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-withOpts" class="ident">withOpts</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-109"><code>		bufsize <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-110"><code>	}</code></span>
+<span class="codeline" id="line-111"><code>)</code></span>
+<span class="codeline" id="line-112"><code></code></span>
+<span class="codeline" id="line-113"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-defaultOpts" class="ident">defaultOpts</a> = <a href="#line-108" class="ident">withOpts</a>{</code></span>
+<span class="codeline" id="line-114"><code>	<a href="#line-109" class="ident">bufsize</a>: <span class="lit-number">65536</span>, <span class="comment">// 64K</span></code></span>
+<span class="codeline" id="line-115"><code>}</code></span>
+<span class="codeline" id="line-116"><code></code></span>
+<span class="codeline" id="line-117"><code><span class="keyword">func</span> <label for="r11" class="ident"><a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-getOptions" class="ident">getOptions</a></label>(<label for="r12" class="ident">opts</label> ...<a href="#line-107" class="ident">addOpt</a>) <a href="#line-108" class="ident">withOpts</a> {</code></span>
+<span class="codeline" id="line-118"><code>	<label for="r13" class="ident">with</label> := <a href="#line-113" class="ident">defaultOpts</a></code></span>
+<span class="codeline" id="line-119"><code>	<span class="keyword">for</span> <label for="r14" class="ident">_</label>, <label for="r15" class="ident">o</label> := <span class="keyword">range</span> <label for="r12" class="ident">opts</label> {</code></span>
+<span class="codeline" id="line-120"><code>		<label for="r15" class="ident">o</label>(&amp;<label for="r13" class="ident">with</label>)</code></span>
+<span class="codeline" id="line-121"><code>	}</code></span>
+<span class="codeline" id="line-122"><code>	<span class="keyword">return</span> <label for="r13" class="ident">with</label></code></span>
+<span class="codeline" id="line-123"><code>}</code></span>
+<span class="codeline" id="line-124"><code></code></span>
+<span class="codeline" id="line-125"><code><span class="comment">// WithBufferSize sets the [ReadDirectoryChangesW] buffer size.</span></code></span>
+<span class="codeline" id="line-126"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-127"><code><span class="comment">// This only has effect on Windows systems, and is a no-op for other backends.</span></code></span>
+<span class="codeline" id="line-128"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-129"><code><span class="comment">// The default value is 64K (65536 bytes) which is the highest value that works</span></code></span>
+<span class="codeline" id="line-130"><code><span class="comment">// on all filesystems and should be enough for most applications, but if you</span></code></span>
+<span class="codeline" id="line-131"><code><span class="comment">// have a large burst of events it may not be enough. You can increase it if</span></code></span>
+<span class="codeline" id="line-132"><code><span class="comment">// you're hitting "queue or buffer overflow" errors ([ErrEventOverflow]).</span></code></span>
+<span class="codeline" id="line-133"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-134"><code><span class="comment">// [ReadDirectoryChangesW]: https://learn.microsoft.com/en-gb/windows/win32/api/winbase/nf-winbase-readdirectorychangesw</span></code></span>
+<span class="codeline" id="line-135"><code><span class="keyword">func</span> <label for="r16" class="ident"><a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-WithBufferSize" class="ident">WithBufferSize</a></label>(<label for="r17" class="ident">bytes</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="#line-107" class="ident">addOpt</a> {</code></span>
+<span class="codeline" id="line-136"><code>	<span class="keyword">return</span> <span class="keyword">func</span>(<label for="r18" class="ident">opt</label> *<a href="#line-108" class="ident">withOpts</a>) { <label for="r18" class="ident">opt</label>.<a href="#line-109" class="ident">bufsize</a> = <label for="r17" class="ident">bytes</label> }</code></span>
+<span class="codeline" id="line-137"><code>}</code></span>
+<span class="codeline" id="line-138"><code></code></span>
+<span class="codeline" id="line-139"><code><span class="comment">// Check if this path is recursive (ends with "/..." or "\..."), and return the</span></code></span>
+<span class="codeline" id="line-140"><code><span class="comment">// path with the /... stripped.</span></code></span>
+<span class="codeline" id="line-141"><code><span class="keyword">func</span> <label for="r19" class="ident"><a href="../../../../pkg/github.com/fsnotify/fsnotify.html#name-recursivePath" class="ident">recursivePath</a></label>(<label for="r20" class="ident">path</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-142"><code>	<span class="keyword">if</span> <a href="../../../../pkg/path/filepath.html" class="ident i2">filepath</a>.<a href="../../../path/filepath/path.go.html#line-455" class="ident">Base</a>(<label for="r20" class="ident">path</label>) == <span class="lit-string">"..."</span> {</code></span>
+<span class="codeline" id="line-143"><code>		<span class="keyword">return</span> <a href="../../../../pkg/path/filepath.html" class="ident i2">filepath</a>.<a href="../../../path/filepath/path.go.html#line-465" class="ident">Dir</a>(<label for="r20" class="ident">path</label>), <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-144"><code>	}</code></span>
+<span class="codeline" id="line-145"><code>	<span class="keyword">return</span> <label for="r20" class="ident">path</label>, <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-146"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/fyne/v2/internal/driver/common</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>common</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../../index.html#pkg-fyne.io/fyne/v2/internal/driver/common">fyne.io/fyne/v2/internal/driver/common</a><i> (on <a href="https://pkg.go.dev/fyne.io/fyne/v2/internal/driver/common" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../../dep/fyne.io/fyne/v2/internal/driver/common.html">12 packages</a>, and imported by <a href="../../../../../../dep/fyne.io/fyne/v2/internal/driver/common.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html">canvas.go</a></span>
+	<span class="nodocs">    <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/driver.go.html">driver.go</a></span>
+	<span class="nodocs">    <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/window.go.html">window.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 7, in which 4 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Canvas" data-popularity="1950">	<input type='checkbox' class="fold" id="Canvas-fold-content"><label for="Canvas-fold-content"> type <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-27">Canvas</a> <i>(struct)</i></label><span id='Canvas-fold-content-docs' class="fold-docs">
+<span class="md-text">		Canvas defines common canvas implementation.</span>
+
+		<input type='checkbox' class="fold" id="Canvas-fold-fields"><label for="Canvas-fold-fields">Fields (<i>total 19, in which 3 are exported</i>)</label><span id='Canvas-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-30">OnFocus</a> <i>func(obj <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Focusable">Focusable</a>)</i></span></span><span>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-31">OnUnfocus</a> <i>func()</i></span></span><span>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-28">RWMutex</a> <i><a href="../../../../../sync.html">sync</a>.<a href="../../../../../sync.html#name-RWMutex">RWMutex</a></i></span></span>
+			<input type='checkbox' class="showhide" id="Canvas-showhide-fields"><i><label for="Canvas-showhide-fields" class="show-inline">/* 16 unexporteds ... */</label><label for="Canvas-showhide-fields" class="hide-inline">/* 16 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-35">contentFocusMgr</a> <i>*<a href="../app.html">app</a>.<a href="../app.html#name-FocusManager">FocusManager</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-54">contentTree</a> <i>*<a href="#name-renderCacheTree">renderCacheTree</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-52">dirty</a> <i><a href="../../../../../sync/atomic.html">atomic</a>.<a href="../../../../../sync/atomic.html#name-Bool">Bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-33">impl</a> <i><a href="#name-SizeableCanvas">SizeableCanvas</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-54">mWindowHeadTree</a> <i>*<a href="#name-renderCacheTree">renderCacheTree</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-36">menuFocusMgr</a> <i>*<a href="../app.html">app</a>.<a href="../app.html#name-FocusManager">FocusManager</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-54">menuTree</a> <i>*<a href="#name-renderCacheTree">renderCacheTree</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-37">overlays</a> <i>*<a href="#name-overlayStack">overlayStack</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-41">painter</a> <i><a href="../painter/gl.html">gl</a>.<a href="../painter/gl.html#name-Painter">Painter</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Canvas-fold-field-refreshQueue"><label for="Canvas-fold-field-refreshQueue"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-51">refreshQueue</a> <i>*<a href="../async.html">async</a>.<a href="../async.html#name-CanvasObjectQueue">CanvasObjectQueue</a></i></label><span id='Canvas-fold-field-refreshQueue-docs' class="fold-docs">
+<span class="md-text">				Any object that requestes to enter to the refresh queue should
+				not be omitted as it is always a rendering task's decision
+				for skipping frames or drawing calls.
+				
+				If an object failed to ender the refresh queue, the object may
+				disappear or blink from the view at any frames. As of this reason,
+				the refreshQueue is an unbounded queue which is bale to cache
+				arbitrary number of fyne.CanvasObject for the rendering.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Canvas-fold-field-readerCount"><label for="Canvas-fold-field-readerCount"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-28">RWMutex</a>.<a href="../../../../../../src/sync/rwmutex.go.html#line-41">readerCount</a> <i><a href="../../../../../sync/atomic.html">atomic</a>.<a href="../../../../../sync/atomic.html#name-Int32">Int32</a></i></label><span id='Canvas-fold-field-readerCount-docs' class="fold-docs">
+<span class="md-text">				// number of pending readers</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Canvas-fold-field-readerSem"><label for="Canvas-fold-field-readerSem"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-28" class="path-duplicate">RWMutex</a>.<a href="../../../../../../src/sync/rwmutex.go.html#line-40">readerSem</a> <i><a href="../../../../../builtin.html#name-uint32">uint32</a></i></label><span id='Canvas-fold-field-readerSem-docs' class="fold-docs">
+<span class="md-text">				// semaphore for readers to wait for completing writers</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Canvas-fold-field-readerWait"><label for="Canvas-fold-field-readerWait"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-28" class="path-duplicate">RWMutex</a>.<a href="../../../../../../src/sync/rwmutex.go.html#line-42">readerWait</a> <i><a href="../../../../../sync/atomic.html">atomic</a>.<a href="../../../../../sync/atomic.html#name-Int32">Int32</a></i></label><span id='Canvas-fold-field-readerWait-docs' class="fold-docs">
+<span class="md-text">				// number of departing readers</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Canvas-fold-field-w"><label for="Canvas-fold-field-w"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-28" class="path-duplicate">RWMutex</a>.<a href="../../../../../../src/sync/rwmutex.go.html#line-38">w</a> <i><a href="../../../../../sync.html">sync</a>.<a href="../../../../../sync.html#name-Mutex">Mutex</a></i></label><span id='Canvas-fold-field-w-docs' class="fold-docs">
+<span class="md-text">				// held if there are pending writers</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Canvas-fold-field-writerSem"><label for="Canvas-fold-field-writerSem"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-28" class="path-duplicate">RWMutex</a>.<a href="../../../../../../src/sync/rwmutex.go.html#line-39">writerSem</a> <i><a href="../../../../../builtin.html#name-uint32">uint32</a></i></label><span id='Canvas-fold-field-writerSem-docs' class="fold-docs">
+<span class="md-text">				// semaphore for writers to wait for completing readers</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-39">shortcut</a> <i><a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-ShortcutHandler">ShortcutHandler</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Canvas-fold-methods"><label for="Canvas-fold-methods">Methods (<i>total 37, in which 32 are exported</i>)</label><span id='Canvas-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-AddShortcut"><label for="Canvas-fold-method-AddShortcut">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-58">AddShortcut</a>(shortcut <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Shortcut">Shortcut</a>, handler func(shortcut <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Shortcut">Shortcut</a>))</label><span id='Canvas-fold-method-AddShortcut-docs' class="fold-docs">
+<span class="md-text">				AddShortcut adds a shortcut to the canvas.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-CheckDirtyAndClear"><label for="Canvas-fold-method-CheckDirtyAndClear">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-382">CheckDirtyAndClear</a>() <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='Canvas-fold-method-CheckDirtyAndClear-docs' class="fold-docs">
+<span class="md-text">				CheckDirtyAndClear returns true if the canvas is dirty and
+				clears the dirty state atomically.</span>
+</span></span><span>
+			<span class="nodocs">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-62">DrawDebugOverlay</a>(obj <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a>, pos <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Position">Position</a>, size <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Size">Size</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-EnsureMinSize"><label for="Canvas-fold-method-EnsureMinSize">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-86">EnsureMinSize</a>() <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='Canvas-fold-method-EnsureMinSize-docs' class="fold-docs">
+<span class="md-text">				EnsureMinSize ensure canvas min size.
+				
+				This function uses lock.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-Focus"><label for="Canvas-fold-method-Focus">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-155">Focus</a>(obj <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Focusable">Focusable</a>)</label><span id='Canvas-fold-method-Focus-docs' class="fold-docs">
+<span class="md-text">				Focus makes the provided item focused.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-FocusGained"><label for="Canvas-fold-method-FocusGained">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-196">FocusGained</a>()</label><span id='Canvas-fold-method-FocusGained-docs' class="fold-docs">
+<span class="md-text">				FocusGained signals to the manager that its content got focus.
+				Valid only on Desktop.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-FocusLost"><label for="Canvas-fold-method-FocusLost">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-206">FocusLost</a>()</label><span id='Canvas-fold-method-FocusLost-docs' class="fold-docs">
+<span class="md-text">				FocusLost signals to the manager that its content lost focus.
+				Valid only on Desktop.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-FocusNext"><label for="Canvas-fold-method-FocusNext">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-215">FocusNext</a>()</label><span id='Canvas-fold-method-FocusNext-docs' class="fold-docs">
+<span class="md-text">				FocusNext focuses the next focusable item.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-FocusPrevious"><label for="Canvas-fold-method-FocusPrevious">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-224">FocusPrevious</a>()</label><span id='Canvas-fold-method-FocusPrevious-docs' class="fold-docs">
+<span class="md-text">				FocusPrevious focuses the previous focusable item.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-Focused"><label for="Canvas-fold-method-Focused">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-186">Focused</a>() <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Focusable">Focusable</a></label><span id='Canvas-fold-method-Focused-docs' class="fold-docs">
+<span class="md-text">				Focused returns the current focused object.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-FreeDirtyTextures"><label for="Canvas-fold-method-FreeDirtyTextures">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-233">FreeDirtyTextures</a>() (freed <a href="../../../../../builtin.html#name-uint64">uint64</a>)</label><span id='Canvas-fold-method-FreeDirtyTextures-docs' class="fold-docs">
+<span class="md-text">				FreeDirtyTextures frees dirty textures and returns the number of freed textures.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-Initialize"><label for="Canvas-fold-method-Initialize">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-293">Initialize</a>(impl <a href="#name-SizeableCanvas">SizeableCanvas</a>, onOverlayChanged func())</label><span id='Canvas-fold-method-Initialize-docs' class="fold-docs">
+<span class="md-text">				Initialize initializes the canvas.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-Lock"><label for="Canvas-fold-method-Lock">(*Canvas) <a href="../../../../../../src/sync/rwmutex.go.html#line-142">Lock</a>()</label><span id='Canvas-fold-method-Lock-docs' class="fold-docs">
+<span class="md-text">				Lock locks rw for writing.
+				If the lock is already locked for reading or writing,
+				Lock blocks until the lock is available.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-ObjectTrees"><label for="Canvas-fold-method-ObjectTrees">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-307">ObjectTrees</a>() []<a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a></label><span id='Canvas-fold-method-ObjectTrees-docs' class="fold-docs">
+<span class="md-text">				ObjectTrees return canvas object trees.
+				
+				This function uses lock.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-Overlays"><label for="Canvas-fold-method-Overlays">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-327">Overlays</a>() <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-OverlayStack">OverlayStack</a></label><span id='Canvas-fold-method-Overlays-docs' class="fold-docs">
+<span class="md-text">				Overlays returns the overlay stack.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-Painter"><label for="Canvas-fold-method-Painter">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-333">Painter</a>() <a href="../painter/gl.html">gl</a>.<a href="../painter/gl.html#name-Painter">Painter</a></label><span id='Canvas-fold-method-Painter-docs' class="fold-docs">
+<span class="md-text">				Painter returns the canvas painter.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-RLock"><label for="Canvas-fold-method-RLock">(*Canvas) <a href="../../../../../../src/sync/rwmutex.go.html#line-65">RLock</a>()</label><span id='Canvas-fold-method-RLock-docs' class="fold-docs">
+<span class="md-text">				RLock locks rw for reading.
+				
+				It should not be used for recursive read locking; a blocked Lock
+				call excludes new readers from acquiring the lock. See the
+				documentation on the [RWMutex] type.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-RLocker"><label for="Canvas-fold-method-RLocker">(*Canvas) <a href="../../../../../../src/sync/rwmutex.go.html#line-238">RLocker</a>() <a href="../../../../../sync.html">sync</a>.<a href="../../../../../sync.html#name-Locker">Locker</a></label><span id='Canvas-fold-method-RLocker-docs' class="fold-docs">
+<span class="md-text">				RLocker returns a [Locker] interface that implements
+				the [Locker.Lock] and [Locker.Unlock] methods by calling rw.RLock and rw.RUnlock.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-RUnlock"><label for="Canvas-fold-method-RUnlock">(*Canvas) <a href="../../../../../../src/sync/rwmutex.go.html#line-112">RUnlock</a>()</label><span id='Canvas-fold-method-RUnlock-docs' class="fold-docs">
+<span class="md-text">				RUnlock undoes a single [RWMutex.RLock] call;
+				it does not affect other simultaneous readers.
+				It is a run-time error if rw is not locked for reading
+				on entry to RUnlock.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-Refresh"><label for="Canvas-fold-method-Refresh">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-338">Refresh</a>(obj <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='Canvas-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh refreshes a canvas object.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-RemoveShortcut"><label for="Canvas-fold-method-RemoveShortcut">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-361">RemoveShortcut</a>(shortcut <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Shortcut">Shortcut</a>)</label><span id='Canvas-fold-method-RemoveShortcut-docs' class="fold-docs">
+<span class="md-text">				RemoveShortcut removes a shortcut from the canvas.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-SetContentTreeAndFocusMgr"><label for="Canvas-fold-method-SetContentTreeAndFocusMgr">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-368">SetContentTreeAndFocusMgr</a>(content <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='Canvas-fold-method-SetContentTreeAndFocusMgr-docs' class="fold-docs">
+<span class="md-text">				SetContentTreeAndFocusMgr sets content tree and focus manager.
+				
+				This function does not use the canvas lock.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-SetDirty"><label for="Canvas-fold-method-SetDirty">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-387">SetDirty</a>()</label><span id='Canvas-fold-method-SetDirty-docs' class="fold-docs">
+<span class="md-text">				SetDirty sets canvas dirty flag atomically.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-SetMenuTreeAndFocusMgr"><label for="Canvas-fold-method-SetMenuTreeAndFocusMgr">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-394">SetMenuTreeAndFocusMgr</a>(menu <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='Canvas-fold-method-SetMenuTreeAndFocusMgr-docs' class="fold-docs">
+<span class="md-text">				SetMenuTreeAndFocusMgr sets menu tree and focus manager.
+				
+				This function does not use the canvas lock.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-SetMobileWindowHeadTree"><label for="Canvas-fold-method-SetMobileWindowHeadTree">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-406">SetMobileWindowHeadTree</a>(head <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='Canvas-fold-method-SetMobileWindowHeadTree-docs' class="fold-docs">
+<span class="md-text">				SetMobileWindowHeadTree sets window head tree.
+				
+				This function does not use the canvas lock.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-SetPainter"><label for="Canvas-fold-method-SetPainter">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-411">SetPainter</a>(p <a href="../painter/gl.html">gl</a>.<a href="../painter/gl.html#name-Painter">Painter</a>)</label><span id='Canvas-fold-method-SetPainter-docs' class="fold-docs">
+<span class="md-text">				SetPainter sets the canvas painter.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-TryLock"><label for="Canvas-fold-method-TryLock">(*Canvas) <a href="../../../../../../src/sync/rwmutex.go.html#line-167">TryLock</a>() <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='Canvas-fold-method-TryLock-docs' class="fold-docs">
+<span class="md-text">				TryLock tries to lock rw for writing and reports whether it succeeded.
+				
+				Note that while correct uses of TryLock do exist, they are rare,
+				and use of TryLock is often a sign of a deeper problem
+				in a particular use of mutexes.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-TryRLock"><label for="Canvas-fold-method-TryRLock">(*Canvas) <a href="../../../../../../src/sync/rwmutex.go.html#line-85">TryRLock</a>() <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='Canvas-fold-method-TryRLock-docs' class="fold-docs">
+<span class="md-text">				TryRLock tries to lock rw for reading and reports whether it succeeded.
+				
+				Note that while correct uses of TryRLock do exist, they are rare,
+				and use of TryRLock is often a sign of a deeper problem
+				in a particular use of mutexes.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-TypedShortcut"><label for="Canvas-fold-method-TypedShortcut">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-416">TypedShortcut</a>(shortcut <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Shortcut">Shortcut</a>)</label><span id='Canvas-fold-method-TypedShortcut-docs' class="fold-docs">
+<span class="md-text">				TypedShortcut handle the registered shortcut.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-Unfocus"><label for="Canvas-fold-method-Unfocus">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-421">Unfocus</a>()</label><span id='Canvas-fold-method-Unfocus-docs' class="fold-docs">
+<span class="md-text">				Unfocus unfocuses all the objects in the canvas.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-Unlock"><label for="Canvas-fold-method-Unlock">(*Canvas) <a href="../../../../../../src/sync/rwmutex.go.html#line-199">Unlock</a>()</label><span id='Canvas-fold-method-Unlock-docs' class="fold-docs">
+<span class="md-text">				Unlock unlocks rw for writing. It is a run-time error if rw is
+				not locked for writing on entry to Unlock.
+				
+				As with Mutexes, a locked [RWMutex] is not associated with a particular
+				goroutine. One goroutine may [RWMutex.RLock] ([RWMutex.Lock]) a RWMutex and then
+				arrange for another goroutine to [RWMutex.RUnlock] ([RWMutex.Unlock]) it.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Canvas-fold-method-WalkTrees"><label for="Canvas-fold-method-WalkTrees">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-432">WalkTrees</a>(beforeChildren func(*<a href="#name-RenderCacheNode">RenderCacheNode</a>, <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Position">Position</a>), afterChildren func(*<a href="#name-RenderCacheNode">RenderCacheNode</a>, <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Position">Position</a>))</label><span id='Canvas-fold-method-WalkTrees-docs' class="fold-docs">
+<span class="md-text">				WalkTrees walks over the trees.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Canvas-showhide-methods"><i><label for="Canvas-showhide-methods" class="show-inline">/* 5 unexporteds ... */</label><label for="Canvas-showhide-methods" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-450">focusManager</a>() *<a href="../app.html">app</a>.<a href="../app.html#name-FocusManager">FocusManager</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-462">isMenuActive</a>() <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Canvas) <a href="../../../../../../src/sync/rwmutex.go.html#line-127">rUnlockSlow</a>(r <a href="../../../../../builtin.html#name-int32">int32</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-594">updateLayout</a>(objToLayout <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Canvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-473">walkTree</a>(tree *<a href="#name-renderCacheTree">renderCacheTree</a>, beforeChildren func(*<a href="#name-RenderCacheNode">RenderCacheNode</a>, <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Position">Position</a>), afterChildren func(*<a href="#name-RenderCacheNode">RenderCacheNode</a>, <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Position">Position</a>))</span></i></span></span>
+		<input type='checkbox' class="fold" id="Canvas-fold-impls"><label for="Canvas-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='Canvas-fold-impls-items' class="fold-items"><span>
+			*Canvas : fyne.io/fyne/v2.<a href="../../../v2.html#name-Shortcutable">Shortcutable</a></span><span>
+			*Canvas : sync.<a href="../../../../../sync.html#name-Locker">Locker</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-RenderCacheNode" data-popularity="50">	<input type='checkbox' class="fold" id="RenderCacheNode-fold-content"><label for="RenderCacheNode-fold-content"> type <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-528">RenderCacheNode</a> <i>(struct)</i></label><span id='RenderCacheNode-fold-content-docs' class="fold-docs">
+<span class="md-text">		RenderCacheNode represents a node in a render cache tree.</span>
+
+		<input type='checkbox' class="fold" id="RenderCacheNode-fold-fields"><label for="RenderCacheNode-fold-fields">Fields (<i>total 6, none are exported</i>)</label><span id='RenderCacheNode-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="RenderCacheNode-showhide-fields"><i><label for="RenderCacheNode-showhide-fields" class="show-inline">/* 6 unexporteds ... */</label><label for="RenderCacheNode-showhide-fields" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="RenderCacheNode-fold-field-firstChild"><label for="RenderCacheNode-fold-field-firstChild"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-530">firstChild</a> <i>*<b>RenderCacheNode</b></i></label><span id='RenderCacheNode-fold-field-firstChild-docs' class="fold-docs">
+<span class="md-text">				structural data</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="RenderCacheNode-fold-field-minSize"><label for="RenderCacheNode-fold-field-minSize"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-535">minSize</a> <i><a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Size">Size</a></i></label><span id='RenderCacheNode-fold-field-minSize-docs' class="fold-docs">
+<span class="md-text">				cache data</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-531">nextSibling</a> <i>*<b>RenderCacheNode</b></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-532">obj</a> <i><a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="RenderCacheNode-fold-field-painterData"><label for="RenderCacheNode-fold-field-painterData"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-540">painterData</a> <i><a href="../../../../../builtin.html#name-any">any</a></i></label><span id='RenderCacheNode-fold-field-painterData-docs' class="fold-docs">
+<span class="md-text">				painterData is some data from the painter associated with the drawed node
+				it may for instance point to a GL texture
+				it should free all associated resources when released
+				i.e. it should not simply be a texture reference integer</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-533">parent</a> <i>*<b>RenderCacheNode</b></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="RenderCacheNode-fold-methods"><label for="RenderCacheNode-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='RenderCacheNode-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="RenderCacheNode-fold-method-Obj"><label for="RenderCacheNode-fold-method-Obj">(*RenderCacheNode) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-544">Obj</a>() <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a></label><span id='RenderCacheNode-fold-method-Obj-docs' class="fold-docs">
+<span class="md-text">				Obj returns the node object.</span>
+</span></span></span>
+
+</span></div><div class="anchor type-res" id="name-SizeableCanvas" data-popularity="1335">	<input type='checkbox' class="fold" id="SizeableCanvas-fold-content"><label for="SizeableCanvas-fold-content"> type <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-20">SizeableCanvas</a> <b><i>(interface)</i></b></label><span id='SizeableCanvas-fold-content-docs' class="fold-docs">
+<span class="md-text">		SizeableCanvas defines a canvas with size related functions.</span>
+
+		<input type='checkbox' class="fold" id="SizeableCanvas-fold-methods"><label for="SizeableCanvas-fold-methods">Methods (<i>total 22, all are exported</i>)</label><span id='SizeableCanvas-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-44">AddShortcut</a>(shortcut <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Shortcut">Shortcut</a>, handler func(shortcut <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Shortcut">Shortcut</a>))</span></span><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-47">Capture</a>() <a href="../../../../../image.html">image</a>.<a href="../../../../../image.html#name-Image">Image</a></span></span><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-8">Content</a>() <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a></span></span><span>
+			<input type='checkbox' class="fold" id="SizeableCanvas-fold-method-Focus"><label for="SizeableCanvas-fold-method-Focus">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-15">Focus</a>(<a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Focusable">Focusable</a>)</label><span id='SizeableCanvas-fold-method-Focus-docs' class="fold-docs">
+<span class="md-text">				Focus makes the provided item focused.
+				The item has to be added to the contents of the canvas before calling this.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="SizeableCanvas-fold-method-FocusNext"><label for="SizeableCanvas-fold-method-FocusNext">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-21">FocusNext</a>()</label><span id='SizeableCanvas-fold-method-FocusNext-docs' class="fold-docs">
+<span class="md-text">				FocusNext focuses the next focusable item.
+				If no item is currently focused, the first focusable item is focused.
+				If the last focusable item is currently focused, the first focusable item is focused.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="SizeableCanvas-fold-method-FocusPrevious"><label for="SizeableCanvas-fold-method-FocusPrevious">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-27">FocusPrevious</a>()</label><span id='SizeableCanvas-fold-method-FocusPrevious-docs' class="fold-docs">
+<span class="md-text">				FocusPrevious focuses the previous focusable item.
+				If no item is currently focused, the last focusable item is focused.
+				If the first focusable item is currently focused, the last focusable item is focused.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-29">Focused</a>() <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Focusable">Focusable</a></span></span><span>
+			<input type='checkbox' class="fold" id="SizeableCanvas-fold-method-InteractiveArea"><label for="SizeableCanvas-fold-method-InteractiveArea">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-57">InteractiveArea</a>() (<a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Position">Position</a>, <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Size">Size</a>)</label><span id='SizeableCanvas-fold-method-InteractiveArea-docs' class="fold-docs">
+<span class="md-text">				InteractiveArea returns the position and size of the central interactive area.
+				Operating system elements may overlap the portions outside this area and widgets should avoid being outside.
+				
+				Since: 1.4</span>
+</span></span><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-23">MinSize</a>() <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Size">Size</a></span></span><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-42">OnTypedKey</a>() func(*<a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-KeyEvent">KeyEvent</a>)</span></span><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-40">OnTypedRune</a>() func(<a href="../../../../../builtin.html#name-rune">rune</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="SizeableCanvas-fold-method-Overlays"><label for="SizeableCanvas-fold-method-Overlays">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-38">Overlays</a>() <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-OverlayStack">OverlayStack</a></label><span id='SizeableCanvas-fold-method-Overlays-docs' class="fold-docs">
+<span class="md-text">				Overlays returns the overlay stack.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="SizeableCanvas-fold-method-PixelCoordinateForPosition"><label for="SizeableCanvas-fold-method-PixelCoordinateForPosition">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-51">PixelCoordinateForPosition</a>(<a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Position">Position</a>) (<a href="../../../../../builtin.html#name-int">int</a>, <a href="../../../../../builtin.html#name-int">int</a>)</label><span id='SizeableCanvas-fold-method-PixelCoordinateForPosition-docs' class="fold-docs">
+<span class="md-text">				PixelCoordinateForPosition returns the x and y pixel coordinate for a given position on this canvas.
+				This can be used to find absolute pixel positions or pixel offsets relative to an object top left.</span>
+</span></span><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-11">Refresh</a>(<a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a>)</span></span><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-45">RemoveShortcut</a>(shortcut <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Shortcut">Shortcut</a>)</span></span><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-22">Resize</a>(<a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Size">Size</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="SizeableCanvas-fold-method-Scale"><label for="SizeableCanvas-fold-method-Scale">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-35">Scale</a>() <a href="../../../../../builtin.html#name-float32">float32</a></label><span id='SizeableCanvas-fold-method-Scale-docs' class="fold-docs">
+<span class="md-text">				Scale returns the current scale (multiplication factor) this canvas uses to render
+				The pixel size of a [CanvasObject] can be found by multiplying by this value.</span>
+</span></span><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-9">SetContent</a>(<a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a>)</span></span><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-43">SetOnTypedKey</a>(func(*<a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-KeyEvent">KeyEvent</a>))</span></span><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-41">SetOnTypedRune</a>(func(<a href="../../../../../builtin.html#name-rune">rune</a>))</span></span><span>
+			<input type='checkbox' class="fold" id="SizeableCanvas-fold-method-Size"><label for="SizeableCanvas-fold-method-Size">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-32">Size</a>() <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Size">Size</a></label><span id='SizeableCanvas-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the current size of this canvas</span>
+</span></span><span>
+			<span class="nodocs">( SizeableCanvas) <a href="../../../../../../src/fyne.io/fyne/v2/canvas.go.html#line-28">Unfocus</a>()</span></span></span>
+		<input type='checkbox' class="fold" id="SizeableCanvas-fold-impledby"><label for="SizeableCanvas-fold-impledby">Implemented By (<i>at least one unexported</i>)</label><span id='SizeableCanvas-fold-impledby-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="SizeableCanvas-showhide-impedBys"><i><label for="SizeableCanvas-showhide-impedBys" class="show-inline">/* at least one unexported ... */</label><label for="SizeableCanvas-showhide-impedBys" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			*fyne.io/fyne/v2/internal/driver/glfw.<a href="glfw.html#name-glCanvas">glCanvas</a></i></span></span>
+		<input type='checkbox' class="fold" id="SizeableCanvas-fold-impls"><label for="SizeableCanvas-fold-impls">Implements (<i>at least one exported</i>)</label><span id='SizeableCanvas-fold-impls-items' class="fold-items"><span>
+			 SizeableCanvas : fyne.io/fyne/v2.<a href="../../../v2.html#name-Canvas">Canvas</a></span></span>
+		<input type='checkbox' class="fold" id="SizeableCanvas-fold-params"><label for="SizeableCanvas-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='SizeableCanvas-fold-params-items' class="fold-items"><span>
+			func (*<a href="#name-Canvas">Canvas</a>).<a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-293">Initialize</a>(impl <b>SizeableCanvas</b>, onOverlayChanged func())</span></span>
+
+</span></div><div class="anchor type-res" id="name-Window" data-popularity="250">	<input type='checkbox' class="fold" id="Window-fold-content"><label for="Window-fold-content"> type <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/window.go.html#line-10">Window</a> <i>(struct)</i></label><span id='Window-fold-content-docs' class="fold-docs">
+<span class="md-text">		Window defines common functionality for windows.</span>
+
+		<input type='checkbox' class="fold" id="Window-fold-fields"><label for="Window-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='Window-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Window-showhide-fields"><i><label for="Window-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="Window-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/window.go.html#line-11">eventQueue</a> <i>*<a href="../async.html">async</a>.<a href="../async.html#name-UnboundedFuncChan">UnboundedFuncChan</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Window-fold-methods"><label for="Window-fold-methods">Methods (<i>total 5, all are exported</i>)</label><span id='Window-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Window-fold-method-DestroyEventQueue"><label for="Window-fold-method-DestroyEventQueue">(*Window) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/window.go.html#line-15">DestroyEventQueue</a>()</label><span id='Window-fold-method-DestroyEventQueue-docs' class="fold-docs">
+<span class="md-text">				DestroyEventQueue destroys the event queue.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Window-fold-method-InitEventQueue"><label for="Window-fold-method-InitEventQueue">(*Window) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/window.go.html#line-20">InitEventQueue</a>()</label><span id='Window-fold-method-InitEventQueue-docs' class="fold-docs">
+<span class="md-text">				InitEventQueue initializes the event queue.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Window-fold-method-QueueEvent"><label for="Window-fold-method-QueueEvent">(*Window) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/window.go.html#line-27">QueueEvent</a>(fn func())</label><span id='Window-fold-method-QueueEvent-docs' class="fold-docs">
+<span class="md-text">				QueueEvent uses this method to queue up a callback that handles an event. This ensures
+				user interaction events for a given window are processed in order.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Window-fold-method-RunEventQueue"><label for="Window-fold-method-RunEventQueue">(*Window) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/window.go.html#line-33">RunEventQueue</a>()</label><span id='Window-fold-method-RunEventQueue-docs' class="fold-docs">
+<span class="md-text">				RunEventQueue runs the event queue. This should called inside a go routine.
+				This function blocks.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Window-fold-method-WaitForEvents"><label for="Window-fold-method-WaitForEvents">(*Window) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/window.go.html#line-40">WaitForEvents</a>()</label><span id='Window-fold-method-WaitForEvents-docs' class="fold-docs">
+<span class="md-text">				WaitForEvents wait for all the events.</span>
+</span></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-activatableMenu" data-popularity="200">	<input type='checkbox' class="fold" id="activatableMenu-fold-content"><label for="activatableMenu-fold-content"> type <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-548">activatableMenu</a> <b><i>(interface)</i></b></label><span id='activatableMenu-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="activatableMenu-fold-methods"><label for="activatableMenu-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='activatableMenu-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( activatableMenu) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-549">IsActive</a>() <a href="../../../../../builtin.html#name-bool">bool</a></span></span></span>
+		<input type='checkbox' class="fold" id="activatableMenu-fold-impledby"><label for="activatableMenu-fold-impledby">Implemented By (<i>at least one exported</i>)</label><span id='activatableMenu-fold-impledby-items' class="fold-items"><span>
+			*fyne.io/fyne/v2/internal/driver/glfw.<a href="glfw.html#name-MenuBar">MenuBar</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-overlayStack" data-popularity="500">	<input type='checkbox' class="fold" id="overlayStack-fold-content"><label for="overlayStack-fold-content"> type <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-552">overlayStack</a> <i>(struct)</i></label><span id='overlayStack-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="overlayStack-fold-fields"><label for="overlayStack-fold-fields">Fields (<i>total 8, in which 3 are exported</i>)</label><span id='overlayStack-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-553">OverlayStack</a> <i><a href="../../internal.html">internal</a>.<a href="../../internal.html#name-OverlayStack">OverlayStack</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-553" class="path-duplicate">OverlayStack</a>.<a href="../../../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-14">Canvas</a> <i><a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Canvas">Canvas</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-553" class="path-duplicate">OverlayStack</a>.<a href="../../../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-13">OnChange</a> <i>func()</i></span></span>
+			<input type='checkbox' checked class="showhide" id="overlayStack-showhide-fields"><i><label for="overlayStack-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="overlayStack-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-553" class="path-duplicate">OverlayStack</a>.<a href="../../../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-15">focusManagers</a> <i>[]*<a href="../app.html">app</a>.<a href="../app.html#name-FocusManager">FocusManager</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-553" class="path-duplicate">OverlayStack</a>.<a href="../../../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-16">overlays</a> <i>[]<a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-553" class="path-duplicate">OverlayStack</a>.<a href="../../../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-17">propertyLock</a> <i><a href="../../../../../sync.html">sync</a>.<a href="../../../../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-555">propertyLock</a> <i><a href="../../../../../sync.html">sync</a>.<a href="../../../../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-556">renderCaches</a> <i>[]*<a href="#name-renderCacheTree">renderCacheTree</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="overlayStack-fold-methods"><label for="overlayStack-fold-methods">Methods (<i>total 9, in which 6 are exported</i>)</label><span id='overlayStack-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*overlayStack) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-559">Add</a>(overlay <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="overlayStack-fold-method-List"><label for="overlayStack-fold-method-List">(*overlayStack) <a href="../../../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-52">List</a>() []<a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a></label><span id='overlayStack-fold-method-List-docs' class="fold-docs">
+<span class="md-text">				List returns all overlays on the stack from bottom to top.
+				
+				Implements: fyne.OverlayStack</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="overlayStack-fold-method-ListFocusManagers"><label for="overlayStack-fold-method-ListFocusManagers">(*overlayStack) <a href="../../../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-60">ListFocusManagers</a>() []*<a href="../app.html">app</a>.<a href="../app.html#name-FocusManager">FocusManager</a></label><span id='overlayStack-fold-method-ListFocusManagers-docs' class="fold-docs">
+<span class="md-text">				ListFocusManagers returns all focus managers on the stack from bottom to top.</span>
+</span></span><span>
+			<span class="nodocs">(*overlayStack) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-568">Remove</a>(overlay <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="overlayStack-fold-method-Top"><label for="overlayStack-fold-method-Top">(*overlayStack) <a href="../../../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-100">Top</a>() <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a></label><span id='overlayStack-fold-method-Top-docs' class="fold-docs">
+<span class="md-text">				Top returns the top-most overlay of the stack.
+				
+				Implements: fyne.OverlayStack</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="overlayStack-fold-method-TopFocusManager"><label for="overlayStack-fold-method-TopFocusManager">(*overlayStack) <a href="../../../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-111">TopFocusManager</a>() *<a href="../app.html">app</a>.<a href="../app.html#name-FocusManager">FocusManager</a></label><span id='overlayStack-fold-method-TopFocusManager-docs' class="fold-docs">
+<span class="md-text">				TopFocusManager returns the app.FocusManager assigned to the top-most overlay of the stack.</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="overlayStack-showhide-methods"><i><label for="overlayStack-showhide-methods" class="show-inline">/* 3 unexporteds ... */</label><label for="overlayStack-showhide-methods" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*overlayStack) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-577">add</a>(overlay <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*overlayStack) <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-582">remove</a>(overlay <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*overlayStack) <a href="../../../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-117">topFocusManager</a>() *<a href="../app.html">app</a>.<a href="../app.html#name-FocusManager">FocusManager</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="overlayStack-fold-impls"><label for="overlayStack-fold-impls">Implements (<i>at least one exported</i>)</label><span id='overlayStack-fold-impls-items' class="fold-items"><span>
+			*overlayStack : fyne.io/fyne/v2.<a href="../../../v2.html#name-OverlayStack">OverlayStack</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-renderCacheTree" data-popularity="485">	<input type='checkbox' class="fold" id="renderCacheTree-fold-content"><label for="renderCacheTree-fold-content"> type <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-589">renderCacheTree</a> <i>(struct)</i></label><span id='renderCacheTree-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="renderCacheTree-fold-fields"><label for="renderCacheTree-fold-fields">Fields (<i>total 7, in which 1 is exported</i>)</label><span id='renderCacheTree-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-590">RWMutex</a> <i><a href="../../../../../sync.html">sync</a>.<a href="../../../../../sync.html#name-RWMutex">RWMutex</a></i></span></span>
+			<input type='checkbox' checked class="showhide" id="renderCacheTree-showhide-fields"><i><label for="renderCacheTree-showhide-fields" class="show-inline">/* 6 unexporteds ... */</label><label for="renderCacheTree-showhide-fields" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-591">root</a> <i>*<a href="#name-RenderCacheNode">RenderCacheNode</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="renderCacheTree-fold-field-readerCount"><label for="renderCacheTree-fold-field-readerCount"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-590">RWMutex</a>.<a href="../../../../../../src/sync/rwmutex.go.html#line-41">readerCount</a> <i><a href="../../../../../sync/atomic.html">atomic</a>.<a href="../../../../../sync/atomic.html#name-Int32">Int32</a></i></label><span id='renderCacheTree-fold-field-readerCount-docs' class="fold-docs">
+<span class="md-text">				// number of pending readers</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="renderCacheTree-fold-field-readerSem"><label for="renderCacheTree-fold-field-readerSem"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-590" class="path-duplicate">RWMutex</a>.<a href="../../../../../../src/sync/rwmutex.go.html#line-40">readerSem</a> <i><a href="../../../../../builtin.html#name-uint32">uint32</a></i></label><span id='renderCacheTree-fold-field-readerSem-docs' class="fold-docs">
+<span class="md-text">				// semaphore for readers to wait for completing writers</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="renderCacheTree-fold-field-readerWait"><label for="renderCacheTree-fold-field-readerWait"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-590" class="path-duplicate">RWMutex</a>.<a href="../../../../../../src/sync/rwmutex.go.html#line-42">readerWait</a> <i><a href="../../../../../sync/atomic.html">atomic</a>.<a href="../../../../../sync/atomic.html#name-Int32">Int32</a></i></label><span id='renderCacheTree-fold-field-readerWait-docs' class="fold-docs">
+<span class="md-text">				// number of departing readers</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="renderCacheTree-fold-field-w"><label for="renderCacheTree-fold-field-w"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-590" class="path-duplicate">RWMutex</a>.<a href="../../../../../../src/sync/rwmutex.go.html#line-38">w</a> <i><a href="../../../../../sync.html">sync</a>.<a href="../../../../../sync.html#name-Mutex">Mutex</a></i></label><span id='renderCacheTree-fold-field-w-docs' class="fold-docs">
+<span class="md-text">				// held if there are pending writers</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="renderCacheTree-fold-field-writerSem"><label for="renderCacheTree-fold-field-writerSem"><a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-590" class="path-duplicate">RWMutex</a>.<a href="../../../../../../src/sync/rwmutex.go.html#line-39">writerSem</a> <i><a href="../../../../../builtin.html#name-uint32">uint32</a></i></label><span id='renderCacheTree-fold-field-writerSem-docs' class="fold-docs">
+<span class="md-text">				// semaphore for writers to wait for completing readers</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="renderCacheTree-fold-methods"><label for="renderCacheTree-fold-methods">Methods (<i>total 8, in which 7 are exported</i>)</label><span id='renderCacheTree-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="renderCacheTree-fold-method-Lock"><label for="renderCacheTree-fold-method-Lock">(*renderCacheTree) <a href="../../../../../../src/sync/rwmutex.go.html#line-142">Lock</a>()</label><span id='renderCacheTree-fold-method-Lock-docs' class="fold-docs">
+<span class="md-text">				Lock locks rw for writing.
+				If the lock is already locked for reading or writing,
+				Lock blocks until the lock is available.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="renderCacheTree-fold-method-RLock"><label for="renderCacheTree-fold-method-RLock">(*renderCacheTree) <a href="../../../../../../src/sync/rwmutex.go.html#line-65">RLock</a>()</label><span id='renderCacheTree-fold-method-RLock-docs' class="fold-docs">
+<span class="md-text">				RLock locks rw for reading.
+				
+				It should not be used for recursive read locking; a blocked Lock
+				call excludes new readers from acquiring the lock. See the
+				documentation on the [RWMutex] type.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="renderCacheTree-fold-method-RLocker"><label for="renderCacheTree-fold-method-RLocker">(*renderCacheTree) <a href="../../../../../../src/sync/rwmutex.go.html#line-238">RLocker</a>() <a href="../../../../../sync.html">sync</a>.<a href="../../../../../sync.html#name-Locker">Locker</a></label><span id='renderCacheTree-fold-method-RLocker-docs' class="fold-docs">
+<span class="md-text">				RLocker returns a [Locker] interface that implements
+				the [Locker.Lock] and [Locker.Unlock] methods by calling rw.RLock and rw.RUnlock.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="renderCacheTree-fold-method-RUnlock"><label for="renderCacheTree-fold-method-RUnlock">(*renderCacheTree) <a href="../../../../../../src/sync/rwmutex.go.html#line-112">RUnlock</a>()</label><span id='renderCacheTree-fold-method-RUnlock-docs' class="fold-docs">
+<span class="md-text">				RUnlock undoes a single [RWMutex.RLock] call;
+				it does not affect other simultaneous readers.
+				It is a run-time error if rw is not locked for reading
+				on entry to RUnlock.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="renderCacheTree-fold-method-TryLock"><label for="renderCacheTree-fold-method-TryLock">(*renderCacheTree) <a href="../../../../../../src/sync/rwmutex.go.html#line-167">TryLock</a>() <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='renderCacheTree-fold-method-TryLock-docs' class="fold-docs">
+<span class="md-text">				TryLock tries to lock rw for writing and reports whether it succeeded.
+				
+				Note that while correct uses of TryLock do exist, they are rare,
+				and use of TryLock is often a sign of a deeper problem
+				in a particular use of mutexes.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="renderCacheTree-fold-method-TryRLock"><label for="renderCacheTree-fold-method-TryRLock">(*renderCacheTree) <a href="../../../../../../src/sync/rwmutex.go.html#line-85">TryRLock</a>() <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='renderCacheTree-fold-method-TryRLock-docs' class="fold-docs">
+<span class="md-text">				TryRLock tries to lock rw for reading and reports whether it succeeded.
+				
+				Note that while correct uses of TryRLock do exist, they are rare,
+				and use of TryRLock is often a sign of a deeper problem
+				in a particular use of mutexes.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="renderCacheTree-fold-method-Unlock"><label for="renderCacheTree-fold-method-Unlock">(*renderCacheTree) <a href="../../../../../../src/sync/rwmutex.go.html#line-199">Unlock</a>()</label><span id='renderCacheTree-fold-method-Unlock-docs' class="fold-docs">
+<span class="md-text">				Unlock unlocks rw for writing. It is a run-time error if rw is
+				not locked for writing on entry to Unlock.
+				
+				As with Mutexes, a locked [RWMutex] is not associated with a particular
+				goroutine. One goroutine may [RWMutex.RLock] ([RWMutex.Lock]) a RWMutex and then
+				arrange for another goroutine to [RWMutex.RUnlock] ([RWMutex.Unlock]) it.</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="renderCacheTree-showhide-methods"><i><label for="renderCacheTree-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="renderCacheTree-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*renderCacheTree) <a href="../../../../../../src/sync/rwmutex.go.html#line-127">rUnlockSlow</a>(r <a href="../../../../../builtin.html#name-int32">int32</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="renderCacheTree-fold-impls"><label for="renderCacheTree-fold-impls">Implements (<i>at least one exported</i>)</label><span id='renderCacheTree-fold-impls-items' class="fold-items"><span>
+			*renderCacheTree : sync.<a href="../../../../../sync.html#name-Locker">Locker</a></span></span>
+		<input type='checkbox' class="fold" id="renderCacheTree-fold-params"><label for="renderCacheTree-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='renderCacheTree-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="renderCacheTree-showhide-outputofs"><i><label for="renderCacheTree-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="renderCacheTree-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Canvas">Canvas</a>).<a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/canvas.go.html#line-473">walkTree</a>(tree *<b>renderCacheTree</b>, beforeChildren func(*<a href="#name-RenderCacheNode">RenderCacheNode</a>, <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Position">Position</a>), afterChildren func(*<a href="#name-RenderCacheNode">RenderCacheNode</a>, <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Position">Position</a>))</i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (only one, which is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-CanvasForObject">	<input type='checkbox' class="fold" id="CanvasForObject-fold-content"><label for="CanvasForObject-fold-content"> func <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/driver.go.html#line-9">CanvasForObject</a>(obj <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-CanvasObject">CanvasObject</a>) <a href="../../../v2.html">fyne</a>.<a href="../../../v2.html#name-Canvas">Canvas</a></label><span id='CanvasForObject-fold-content-docs' class="fold-docs">
+<span class="md-text">		CanvasForObject returns the canvas for the specified object.</span>
+
+</span></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (only one, which is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-DonePool">	<span class="nodocs">  var <a href="../../../../../../src/fyne.io/fyne/v2/internal/driver/common/window.go.html#line-48">DonePool</a> <a href="../../../../../sync.html">sync</a>.<a href="../../../../../sync.html#name-Pool">Pool</a></span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

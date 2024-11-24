@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: parser.go in package github.com/nicksnyder/go-i18n/v2/i18n/template</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	parser.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/i18n/template.html">github.com/nicksnyder/go-i18n/v2/i18n/template</a>
+</code></pre>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Package template defines a generic interface for template parsers and implementations of that interface.</span></code></span></div><span class="codeline" id="line-2"><code><span class="keyword">package</span> template</code></span>
+<span class="codeline" id="line-3"><code></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// Parser parses strings into executable templates.</span></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/i18n/template.html#name-Parser" class="ident">Parser</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-6"><code>	<span class="comment">// Parse parses src and returns a ParsedTemplate.</span></code></span>
+<span class="codeline" id="line-7"><code>	<a href="../../../../../../../imp/github.com/nicksnyder/go-i18n/v2/i18n/template.Parser.html#name-Parse" class="ident">Parse</a>(src, leftDelim, rightDelim <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="#line-14" class="ident">ParsedTemplate</a>, <a href="../../../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code>	<span class="comment">// Cacheable returns true if Parse returns ParsedTemplates that are always safe to cache.</span></code></span>
+<span class="codeline" id="line-10"><code>	<a href="../../../../../../../imp/github.com/nicksnyder/go-i18n/v2/i18n/template.Parser.html#name-Cacheable" class="ident">Cacheable</a>() <a href="../../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-11"><code>}</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// ParsedTemplate is an executable template.</span></code></span>
+<span class="codeline" id="line-14"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/i18n/template.html#name-ParsedTemplate" class="ident">ParsedTemplate</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-15"><code>	<span class="comment">// Execute applies a parsed template to the specified data.</span></code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../../../../../../imp/github.com/nicksnyder/go-i18n/v2/i18n/template.ParsedTemplate.html#name-Execute" class="ident">Execute</a>(data <a href="../../../../../../../pkg/builtin.html#name-any" class="ident">any</a>) (<a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <a href="../../../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-17"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

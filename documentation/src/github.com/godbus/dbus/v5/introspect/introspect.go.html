@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: introspect.go in package github.com/godbus/dbus/v5/introspect</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	introspect.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html">github.com/godbus/dbus/v5/introspect</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Package introspect provides some utilities for dealing with the DBus</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// introspection format.</span></code></span></div><span class="codeline" id="line-3"><code><span class="keyword">package</span> introspect</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"encoding/xml"</span></label></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// The introspection data for the org.freedesktop.DBus.Introspectable interface.</span></code></span>
+<span class="codeline" id="line-8"><code><span class="keyword">var</span> <a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html#name-IntrospectData" class="ident">IntrospectData</a> = <a href="#line-45" class="ident">Interface</a>{</code></span>
+<span class="codeline" id="line-9"><code>	<a href="#line-46" class="ident">Name</a>: <span class="lit-string">"org.freedesktop.DBus.Introspectable"</span>,</code></span>
+<span class="codeline" id="line-10"><code>	<a href="#line-47" class="ident">Methods</a>: []<a href="#line-54" class="ident">Method</a>{</code></span>
+<span class="codeline" id="line-11"><code>		{</code></span>
+<span class="codeline" id="line-12"><code>			<a href="#line-55" class="ident">Name</a>: <span class="lit-string">"Introspect"</span>,</code></span>
+<span class="codeline" id="line-13"><code>			<a href="#line-56" class="ident">Args</a>: []<a href="#line-76" class="ident">Arg</a>{</code></span>
+<span class="codeline" id="line-14"><code>				{<span class="lit-string">"out"</span>, <span class="lit-string">"s"</span>, <span class="lit-string">"out"</span>},</code></span>
+<span class="codeline" id="line-15"><code>			},</code></span>
+<span class="codeline" id="line-16"><code>		},</code></span>
+<span class="codeline" id="line-17"><code>	},</code></span>
+<span class="codeline" id="line-18"><code>}</code></span>
+<span class="codeline" id="line-19"><code></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">// XML document type declaration of the introspection format version 1.0</span></code></span>
+<span class="codeline" id="line-21"><code><span class="keyword">const</span> <a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html#name-IntrospectDeclarationString" class="ident">IntrospectDeclarationString</a> = <span class="lit-string">`</span></code></span>
+<span class="codeline" id="line-22"><code><span class="lit-string">	&lt;!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"</span></code></span>
+<span class="codeline" id="line-23"><code><span class="lit-string">	 "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd"&gt;</span></code></span>
+<span class="codeline" id="line-24"><code><span class="lit-string">`</span></code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">// The introspection data for the org.freedesktop.DBus.Introspectable interface,</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">// as a string.</span></code></span>
+<span class="codeline" id="line-28"><code><span class="keyword">const</span> <a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html#name-IntrospectDataString" class="ident">IntrospectDataString</a> = <span class="lit-string">`</span></code></span>
+<span class="codeline" id="line-29"><code><span class="lit-string">	&lt;interface name="org.freedesktop.DBus.Introspectable"&gt;</span></code></span>
+<span class="codeline" id="line-30"><code><span class="lit-string">		&lt;method name="Introspect"&gt;</span></code></span>
+<span class="codeline" id="line-31"><code><span class="lit-string">			&lt;arg name="out" direction="out" type="s"/&gt;</span></code></span>
+<span class="codeline" id="line-32"><code><span class="lit-string">		&lt;/method&gt;</span></code></span>
+<span class="codeline" id="line-33"><code><span class="lit-string">	&lt;/interface&gt;</span></code></span>
+<span class="codeline" id="line-34"><code><span class="lit-string">`</span></code></span>
+<span class="codeline" id="line-35"><code></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// Node is the root element of an introspection.</span></code></span>
+<span class="codeline" id="line-37"><code><span class="keyword">type</span> <a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html#name-Node" class="ident">Node</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-38"><code>	XMLName    <a href="../../../../../../pkg/encoding/xml.html" class="ident i0">xml</a>.<a href="../../../../../encoding/xml/xml.go.html#line-40" class="ident">Name</a>    <span class="lit-string">`xml:"node"`</span></code></span>
+<span class="codeline" id="line-39"><code>	Name       <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>      <span class="lit-string">`xml:"name,attr,omitempty"`</span></code></span>
+<span class="codeline" id="line-40"><code>	Interfaces []<a href="#line-45" class="ident">Interface</a> <span class="lit-string">`xml:"interface"`</span></code></span>
+<span class="codeline" id="line-41"><code>	Children   []<a href="#line-37" class="ident">Node</a>      <span class="lit-string">`xml:"node,omitempty"`</span></code></span>
+<span class="codeline" id="line-42"><code>}</code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code><span class="comment">// Interface describes a DBus interface that is available on the message bus.</span></code></span>
+<span class="codeline" id="line-45"><code><span class="keyword">type</span> <a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html#name-Interface" class="ident">Interface</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-46"><code>	Name        <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>       <span class="lit-string">`xml:"name,attr"`</span></code></span>
+<span class="codeline" id="line-47"><code>	Methods     []<a href="#line-54" class="ident">Method</a>     <span class="lit-string">`xml:"method"`</span></code></span>
+<span class="codeline" id="line-48"><code>	Signals     []<a href="#line-61" class="ident">Signal</a>     <span class="lit-string">`xml:"signal"`</span></code></span>
+<span class="codeline" id="line-49"><code>	Properties  []<a href="#line-68" class="ident">Property</a>   <span class="lit-string">`xml:"property"`</span></code></span>
+<span class="codeline" id="line-50"><code>	Annotations []<a href="#line-83" class="ident">Annotation</a> <span class="lit-string">`xml:"annotation"`</span></code></span>
+<span class="codeline" id="line-51"><code>}</code></span>
+<span class="codeline" id="line-52"><code></code></span>
+<span class="codeline" id="line-53"><code><span class="comment">// Method describes a Method on an Interface as returned by an introspection.</span></code></span>
+<span class="codeline" id="line-54"><code><span class="keyword">type</span> <a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html#name-Method" class="ident">Method</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-55"><code>	Name        <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>       <span class="lit-string">`xml:"name,attr"`</span></code></span>
+<span class="codeline" id="line-56"><code>	Args        []<a href="#line-76" class="ident">Arg</a>        <span class="lit-string">`xml:"arg"`</span></code></span>
+<span class="codeline" id="line-57"><code>	Annotations []<a href="#line-83" class="ident">Annotation</a> <span class="lit-string">`xml:"annotation"`</span></code></span>
+<span class="codeline" id="line-58"><code>}</code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code><span class="comment">// Signal describes a Signal emitted on an Interface.</span></code></span>
+<span class="codeline" id="line-61"><code><span class="keyword">type</span> <a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html#name-Signal" class="ident">Signal</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-62"><code>	Name        <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>       <span class="lit-string">`xml:"name,attr"`</span></code></span>
+<span class="codeline" id="line-63"><code>	Args        []<a href="#line-76" class="ident">Arg</a>        <span class="lit-string">`xml:"arg"`</span></code></span>
+<span class="codeline" id="line-64"><code>	Annotations []<a href="#line-83" class="ident">Annotation</a> <span class="lit-string">`xml:"annotation"`</span></code></span>
+<span class="codeline" id="line-65"><code>}</code></span>
+<span class="codeline" id="line-66"><code></code></span>
+<span class="codeline" id="line-67"><code><span class="comment">// Property describes a property of an Interface.</span></code></span>
+<span class="codeline" id="line-68"><code><span class="keyword">type</span> <a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html#name-Property" class="ident">Property</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-69"><code>	Name        <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>       <span class="lit-string">`xml:"name,attr"`</span></code></span>
+<span class="codeline" id="line-70"><code>	Type        <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>       <span class="lit-string">`xml:"type,attr"`</span></code></span>
+<span class="codeline" id="line-71"><code>	Access      <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>       <span class="lit-string">`xml:"access,attr"`</span></code></span>
+<span class="codeline" id="line-72"><code>	Annotations []<a href="#line-83" class="ident">Annotation</a> <span class="lit-string">`xml:"annotation"`</span></code></span>
+<span class="codeline" id="line-73"><code>}</code></span>
+<span class="codeline" id="line-74"><code></code></span>
+<span class="codeline" id="line-75"><code><span class="comment">// Arg represents an argument of a method or a signal.</span></code></span>
+<span class="codeline" id="line-76"><code><span class="keyword">type</span> <a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html#name-Arg" class="ident">Arg</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-77"><code>	Name      <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> <span class="lit-string">`xml:"name,attr,omitempty"`</span></code></span>
+<span class="codeline" id="line-78"><code>	Type      <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> <span class="lit-string">`xml:"type,attr"`</span></code></span>
+<span class="codeline" id="line-79"><code>	Direction <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> <span class="lit-string">`xml:"direction,attr,omitempty"`</span></code></span>
+<span class="codeline" id="line-80"><code>}</code></span>
+<span class="codeline" id="line-81"><code></code></span>
+<span class="codeline" id="line-82"><code><span class="comment">// Annotation is an annotation in the introspection format.</span></code></span>
+<span class="codeline" id="line-83"><code><span class="keyword">type</span> <a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html#name-Annotation" class="ident">Annotation</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-84"><code>	Name  <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> <span class="lit-string">`xml:"name,attr"`</span></code></span>
+<span class="codeline" id="line-85"><code>	Value <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> <span class="lit-string">`xml:"value,attr"`</span></code></span>
+<span class="codeline" id="line-86"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

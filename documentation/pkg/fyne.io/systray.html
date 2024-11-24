@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/systray</title>
+<link href="../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>systray</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../index.html#pkg-fyne.io/systray">fyne.io/systray</a><i> (on <a href="https://pkg.go.dev/fyne.io/systray" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../dep/fyne.io/systray.html">14 packages</a>, and imported by <a href="../../dep/fyne.io/systray.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../src/fyne.io/systray/systray.go.html#doc">d</a> <a href="../../src/fyne.io/systray/systray.go.html">systray.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package systray is a cross-platform Go library to place an icon and menu in the notification area.</span>
+</span>
+	<span class="nodocs">    <a href="../../src/fyne.io/systray/systray_menu_unix.go.html">systray_menu_unix.go</a></span>
+	<span class="nodocs">    <a href="../../src/fyne.io/systray/systray_unix.go.html">systray_unix.go</a></span>
+	<span class="nodocs">    <a href="../../src/fyne.io/systray/systray.h.html">systray.h</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 5, in which 2 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-MenuItem" data-popularity="1845">	<input type='checkbox' class="fold" id="MenuItem-fold-content"><label for="MenuItem-fold-content"> type <a href="../../src/fyne.io/systray/systray.go.html#line-38">MenuItem</a> <i>(struct)</i></label><span id='MenuItem-fold-content-docs' class="fold-docs">
+<span class="md-text">		MenuItem is used to keep track each menu item of systray.
+		Don't create it directly, use the one systray.AddMenuItem() returned</span>
+
+		<input type='checkbox' class="fold" id="MenuItem-fold-fields"><label for="MenuItem-fold-fields">Fields (<i>total 8, in which 1 is exported</i>)</label><span id='MenuItem-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-field-ClickedCh"><label for="MenuItem-fold-field-ClickedCh"><a href="../../src/fyne.io/systray/systray.go.html#line-40">ClickedCh</a> <i>chan struct{}</i></label><span id='MenuItem-fold-field-ClickedCh-docs' class="fold-docs">
+<span class="md-text">				ClickedCh is the channel which will be notified when the menu item is clicked</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="MenuItem-showhide-fields"><i><label for="MenuItem-showhide-fields" class="show-inline">/* 7 unexporteds ... */</label><label for="MenuItem-showhide-fields" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="MenuItem-fold-field-checked"><label for="MenuItem-fold-field-checked"><a href="../../src/fyne.io/systray/systray.go.html#line-51">checked</a> <i><a href="../builtin.html#name-bool">bool</a></i></label><span id='MenuItem-fold-field-checked-docs' class="fold-docs">
+<span class="md-text">				checked menu item has a tick before the title</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="MenuItem-fold-field-disabled"><label for="MenuItem-fold-field-disabled"><a href="../../src/fyne.io/systray/systray.go.html#line-49">disabled</a> <i><a href="../builtin.html#name-bool">bool</a></i></label><span id='MenuItem-fold-field-disabled-docs' class="fold-docs">
+<span class="md-text">				disabled menu item is grayed out and has no effect when clicked</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="MenuItem-fold-field-id"><label for="MenuItem-fold-field-id"><a href="../../src/fyne.io/systray/systray.go.html#line-43">id</a> <i><a href="../builtin.html#name-uint32">uint32</a></i></label><span id='MenuItem-fold-field-id-docs' class="fold-docs">
+<span class="md-text">				id uniquely identify a menu item, not supposed to be modified</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="MenuItem-fold-field-isCheckable"><label for="MenuItem-fold-field-isCheckable"><a href="../../src/fyne.io/systray/systray.go.html#line-53">isCheckable</a> <i><a href="../builtin.html#name-bool">bool</a></i></label><span id='MenuItem-fold-field-isCheckable-docs' class="fold-docs">
+<span class="md-text">				has the menu item a checkbox (Linux)</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="MenuItem-fold-field-parent"><label for="MenuItem-fold-field-parent"><a href="../../src/fyne.io/systray/systray.go.html#line-55">parent</a> <i>*<b>MenuItem</b></i></label><span id='MenuItem-fold-field-parent-docs' class="fold-docs">
+<span class="md-text">				parent item, for sub menus</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="MenuItem-fold-field-title"><label for="MenuItem-fold-field-title"><a href="../../src/fyne.io/systray/systray.go.html#line-45">title</a> <i><a href="../builtin.html#name-string">string</a></i></label><span id='MenuItem-fold-field-title-docs' class="fold-docs">
+<span class="md-text">				title is the text shown on menu item</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="MenuItem-fold-field-tooltip"><label for="MenuItem-fold-field-tooltip"><a href="../../src/fyne.io/systray/systray.go.html#line-47">tooltip</a> <i><a href="../builtin.html#name-string">string</a></i></label><span id='MenuItem-fold-field-tooltip-docs' class="fold-docs">
+<span class="md-text">				tooltip is the text shown when pointing to menu item</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="MenuItem-fold-methods"><label for="MenuItem-fold-methods">Methods (<i>total 18, in which 17 are exported</i>)</label><span id='MenuItem-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-AddSeparator"><label for="MenuItem-fold-method-AddSeparator">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-172">AddSeparator</a>()</label><span id='MenuItem-fold-method-AddSeparator-docs' class="fold-docs">
+<span class="md-text">				AddSeparator adds a separator bar to the submenu</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-AddSubMenuItem"><label for="MenuItem-fold-method-AddSubMenuItem">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-179">AddSubMenuItem</a>(title <a href="../builtin.html#name-string">string</a>, tooltip <a href="../builtin.html#name-string">string</a>) *<b>MenuItem</b></label><span id='MenuItem-fold-method-AddSubMenuItem-docs' class="fold-docs">
+<span class="md-text">				AddSubMenuItem adds a nested sub-menu item with the designated title and tooltip.
+				It can be safely invoked from different goroutines.
+				Created menu items are checkable on Windows and OSX by default. For Linux you have to use AddSubMenuItemCheckbox</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-AddSubMenuItemCheckbox"><label for="MenuItem-fold-method-AddSubMenuItemCheckbox">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-188">AddSubMenuItemCheckbox</a>(title <a href="../builtin.html#name-string">string</a>, tooltip <a href="../builtin.html#name-string">string</a>, checked <a href="../builtin.html#name-bool">bool</a>) *<b>MenuItem</b></label><span id='MenuItem-fold-method-AddSubMenuItemCheckbox-docs' class="fold-docs">
+<span class="md-text">				AddSubMenuItemCheckbox adds a nested sub-menu item with the designated title and tooltip and a checkbox for Linux.
+				It can be safely invoked from different goroutines.
+				On Windows and OSX this is the same as calling AddSubMenuItem</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-Check"><label for="MenuItem-fold-method-Check">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-254">Check</a>()</label><span id='MenuItem-fold-method-Check-docs' class="fold-docs">
+<span class="md-text">				Check a menu item regardless if it's previously checked or not</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-Checked"><label for="MenuItem-fold-method-Checked">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-249">Checked</a>() <a href="../builtin.html#name-bool">bool</a></label><span id='MenuItem-fold-method-Checked-docs' class="fold-docs">
+<span class="md-text">				Checked returns if the menu item has a check mark</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-Disable"><label for="MenuItem-fold-method-Disable">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-220">Disable</a>()</label><span id='MenuItem-fold-method-Disable-docs' class="fold-docs">
+<span class="md-text">				Disable a menu item regardless if it's previously disabled or not</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-Disabled"><label for="MenuItem-fold-method-Disabled">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-209">Disabled</a>() <a href="../builtin.html#name-bool">bool</a></label><span id='MenuItem-fold-method-Disabled-docs' class="fold-docs">
+<span class="md-text">				Disabled checks if the menu item is disabled</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-Enable"><label for="MenuItem-fold-method-Enable">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-214">Enable</a>()</label><span id='MenuItem-fold-method-Enable-docs' class="fold-docs">
+<span class="md-text">				Enable a menu item regardless if it's previously enabled or not</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-Hide"><label for="MenuItem-fold-method-Hide">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-226">Hide</a>()</label><span id='MenuItem-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide hides a menu item</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-Remove"><label for="MenuItem-fold-method-Remove">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-231">Remove</a>()</label><span id='MenuItem-fold-method-Remove-docs' class="fold-docs">
+<span class="md-text">				Remove removes a menu item</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-SetIcon"><label for="MenuItem-fold-method-SetIcon">(*MenuItem) <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-16">SetIcon</a>(iconBytes []<a href="../builtin.html#name-byte">byte</a>)</label><span id='MenuItem-fold-method-SetIcon-docs' class="fold-docs">
+<span class="md-text">				SetIcon sets the icon of a menu item.
+				iconBytes should be the content of .ico/.jpg/.png</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-SetTemplateIcon"><label for="MenuItem-fold-method-SetTemplateIcon">(*MenuItem) <a href="../../src/fyne.io/systray/systray_unix.go.html#line-133">SetTemplateIcon</a>(templateIconBytes []<a href="../builtin.html#name-byte">byte</a>, regularIconBytes []<a href="../builtin.html#name-byte">byte</a>)</label><span id='MenuItem-fold-method-SetTemplateIcon-docs' class="fold-docs">
+<span class="md-text">				SetTemplateIcon sets the icon of a menu item as a template icon (on macOS). On Windows and
+				Linux, it falls back to the regular icon bytes.
+				templateIconBytes and regularIconBytes should be the content of .ico for windows and
+				.ico/.jpg/.png for other platforms.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-SetTitle"><label for="MenuItem-fold-method-SetTitle">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-197">SetTitle</a>(title <a href="../builtin.html#name-string">string</a>)</label><span id='MenuItem-fold-method-SetTitle-docs' class="fold-docs">
+<span class="md-text">				SetTitle set the text to display on a menu item</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-SetTooltip"><label for="MenuItem-fold-method-SetTooltip">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-203">SetTooltip</a>(tooltip <a href="../builtin.html#name-string">string</a>)</label><span id='MenuItem-fold-method-SetTooltip-docs' class="fold-docs">
+<span class="md-text">				SetTooltip set the tooltip to show when mouse hover</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-Show"><label for="MenuItem-fold-method-Show">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-244">Show</a>()</label><span id='MenuItem-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show shows a previously hidden menu item</span>
+</span></span><span>
+			<span class="nodocs">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-58">String</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-Uncheck"><label for="MenuItem-fold-method-Uncheck">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-260">Uncheck</a>()</label><span id='MenuItem-fold-method-Uncheck-docs' class="fold-docs">
+<span class="md-text">				Uncheck a menu item regardless if it's previously unchecked or not</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="MenuItem-showhide-methods"><i><label for="MenuItem-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="MenuItem-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="MenuItem-fold-method-update"><label for="MenuItem-fold-method-update">(*MenuItem) <a href="../../src/fyne.io/systray/systray.go.html#line-266">update</a>()</label><span id='MenuItem-fold-method-update-docs' class="fold-docs">
+<span class="md-text">				update propagates changes on a menu item to systray</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="MenuItem-fold-impls"><label for="MenuItem-fold-impls">Implements (<i>at least 5, in which 2 are exported</i>)</label><span id='MenuItem-fold-impls-items' class="fold-items"><span>
+			*MenuItem : fyne.io/fyne/v2.<a href="fyne/v2.html#name-Disableable">Disableable</a></span><span>
+			*MenuItem : fmt.<a href="../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="MenuItem-showhide-impls"><i><label for="MenuItem-showhide-impls" class="show-inline">/* 3+ unexporteds ... */</label><label for="MenuItem-showhide-impls" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			*MenuItem : context.<a href="../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			*MenuItem : os/signal.<a href="../os/signal.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			*MenuItem : runtime.<a href="../runtime.html#name-stringer">stringer</a></i></span></span>
+		<input type='checkbox' class="fold" id="MenuItem-fold-results"><label for="MenuItem-fold-results">As Outputs Of (<i>at least 6, in which 4 are exported</i>)</label><span id='MenuItem-fold-results-items' class="fold-items"><span>
+			func <a href="#name-AddMenuItem">AddMenuItem</a>(title <a href="../builtin.html#name-string">string</a>, tooltip <a href="../builtin.html#name-string">string</a>) *<b>MenuItem</b></span><span>
+			func <a href="#name-AddMenuItemCheckbox">AddMenuItemCheckbox</a>(title <a href="../builtin.html#name-string">string</a>, tooltip <a href="../builtin.html#name-string">string</a>, checked <a href="../builtin.html#name-bool">bool</a>) *<b>MenuItem</b></span><span>
+			func (*MenuItem).<a href="../../src/fyne.io/systray/systray.go.html#line-179">AddSubMenuItem</a>(title <a href="../builtin.html#name-string">string</a>, tooltip <a href="../builtin.html#name-string">string</a>) *<b>MenuItem</b></span><span>
+			func (*MenuItem).<a href="../../src/fyne.io/systray/systray.go.html#line-188">AddSubMenuItemCheckbox</a>(title <a href="../builtin.html#name-string">string</a>, tooltip <a href="../builtin.html#name-string">string</a>, checked <a href="../builtin.html#name-bool">bool</a>) *<b>MenuItem</b></span>
+			<input type='checkbox' class="showhide" id="MenuItem-showhide-inputofs"><i><label for="MenuItem-showhide-inputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="MenuItem-showhide-inputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-newMenuItem">newMenuItem</a>(title <a href="../builtin.html#name-string">string</a>, tooltip <a href="../builtin.html#name-string">string</a>, parent *<b>MenuItem</b>) *<b>MenuItem</b></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/driver/glfw.<a href="fyne/v2/internal/driver/glfw.html#name-itemForMenuItem">itemForMenuItem</a>(i *<a href="fyne/v2.html">fyne</a>.<a href="fyne/v2.html#name-MenuItem">MenuItem</a>, parent *<b>MenuItem</b>) *<b>MenuItem</b></i></span></span>
+		<input type='checkbox' class="fold" id="MenuItem-fold-params"><label for="MenuItem-fold-params">As Inputs Of (<i>at least 7, none are exported</i>)</label><span id='MenuItem-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="MenuItem-showhide-outputofs"><i><label for="MenuItem-showhide-outputofs" class="show-inline">/* 7+ unexporteds ... */</label><label for="MenuItem-showhide-outputofs" class="hide-inline">/* 7+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-addOrUpdateMenuItem">addOrUpdateMenuItem</a>(item *<b>MenuItem</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-applyItemToLayout">applyItemToLayout</a>(in *<b>MenuItem</b>, out *<a href="#name-menuLayout">menuLayout</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-hideMenuItem">hideMenuItem</a>(item *<b>MenuItem</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-newMenuItem">newMenuItem</a>(title <a href="../builtin.html#name-string">string</a>, tooltip <a href="../builtin.html#name-string">string</a>, parent *<b>MenuItem</b>) *<b>MenuItem</b></i></span><span class="hidden"><i>
+			func <a href="#name-removeMenuItem">removeMenuItem</a>(item *<b>MenuItem</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-showMenuItem">showMenuItem</a>(item *<b>MenuItem</b>)</i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/driver/glfw.<a href="fyne/v2/internal/driver/glfw.html#name-itemForMenuItem">itemForMenuItem</a>(i *<a href="fyne/v2.html">fyne</a>.<a href="fyne/v2.html#name-MenuItem">MenuItem</a>, parent *<b>MenuItem</b>) *<b>MenuItem</b></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-PX" data-popularity="75">	<input type='checkbox' class="fold" id="PX-fold-content"><label for="PX-fold-content"> type <a href="../../src/fyne.io/systray/systray_unix.go.html#line-373">PX</a> <i>(struct)</i></label><span id='PX-fold-content-docs' class="fold-docs">
+<span class="md-text">		PX is picture pix map structure with width and high</span>
+
+		<input type='checkbox' class="fold" id="PX-fold-fields"><label for="PX-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='PX-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-374">H</a> <i><a href="../builtin.html#name-int">int</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-375">Pix</a> <i>[]<a href="../builtin.html#name-byte">byte</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-374">W</a> <i><a href="../builtin.html#name-int">int</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="PX-fold-results"><label for="PX-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='PX-fold-results-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="PX-showhide-inputofs"><i><label for="PX-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="PX-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-convertToPixels">convertToPixels</a>(data []<a href="../builtin.html#name-byte">byte</a>) <b>PX</b></i></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-menuLayout" data-popularity="0">	<input type='checkbox' class="fold" id="menuLayout-fold-content"><label for="menuLayout-fold-content"> type <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-162">menuLayout</a> = <i>(struct)</i></label><span id='menuLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		menuLayout is a named struct to map into generated bindings. It represents the layout of a menu item</span>
+
+		<input type='checkbox' class="fold" id="menuLayout-fold-fields"><label for="menuLayout-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='menuLayout-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/fyne.io/systray/internal/generated/menu/dbus_menu.go.html#line-186">V0</a> <i><a href="../builtin.html#name-int32">int32</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/fyne.io/systray/internal/generated/menu/dbus_menu.go.html#line-187">V1</a> <i>map[<a href="../builtin.html#name-string">string</a>]<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Variant">Variant</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/fyne.io/systray/internal/generated/menu/dbus_menu.go.html#line-188">V2</a> <i>[]<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Variant">Variant</a></i></span></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-tooltip" data-popularity="0">	<input type='checkbox' class="fold" id="tooltip-fold-content"><label for="tooltip-fold-content"> type <a href="../../src/fyne.io/systray/systray_unix.go.html#line-380">tooltip</a> = <i>(struct)</i></label><span id='tooltip-fold-content-docs' class="fold-docs">
+<span class="md-text">		tooltip is our data for a tooltip property.
+		Param names need to match the generated code...</span>
+
+		<input type='checkbox' class="fold" id="tooltip-fold-fields"><label for="tooltip-fold-fields">Fields (<i>total 4, all are exported</i>)</label><span id='tooltip-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="tooltip-fold-field-V0"><label for="tooltip-fold-field-V0"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-381">V0</a> <i><a href="../builtin.html#name-string">string</a></i></label><span id='tooltip-fold-field-V0-docs' class="fold-docs">
+<span class="md-text">				// name</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="tooltip-fold-field-V1"><label for="tooltip-fold-field-V1"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-382">V1</a> <i>[]<a href="#name-PX">PX</a></i></label><span id='tooltip-fold-field-V1-docs' class="fold-docs">
+<span class="md-text">				// icons</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="tooltip-fold-field-V2"><label for="tooltip-fold-field-V2"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-383">V2</a> <i><a href="../builtin.html#name-string">string</a></i></label><span id='tooltip-fold-field-V2-docs' class="fold-docs">
+<span class="md-text">				// title</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="tooltip-fold-field-V3"><label for="tooltip-fold-field-V3"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-384">V3</a> <i><a href="../builtin.html#name-string">string</a></i></label><span id='tooltip-fold-field-V3-docs' class="fold-docs">
+<span class="md-text">				// description</span>
+</span></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-tray" data-popularity="455">	<input type='checkbox' class="fold" id="tray-fold-content"><label for="tray-fold-content"> type <a href="../../src/fyne.io/systray/systray_unix.go.html#line-284">tray</a> <i>(struct)</i></label><span id='tray-fold-content-docs' class="fold-docs">
+<span class="md-text">		tray is a basic type that handles the dbus functionality</span>
+
+		<input type='checkbox' class="fold" id="tray-fold-fields"><label for="tray-fold-fields">Fields (<i>total 10, none are exported</i>)</label><span id='tray-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="tray-showhide-fields"><i><label for="tray-showhide-fields" class="show-inline">/* 10 unexporteds ... */</label><label for="tray-showhide-fields" class="hide-inline">/* 10 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="tray-fold-field-conn"><label for="tray-fold-field-conn"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-286">conn</a> <i>*<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Conn">Conn</a></i></label><span id='tray-fold-field-conn-docs' class="fold-docs">
+<span class="md-text">				the DBus connection that we will use</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="tray-fold-field-iconData"><label for="tray-fold-field-iconData"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-289">iconData</a> <i>[]<a href="../builtin.html#name-byte">byte</a></i></label><span id='tray-fold-field-iconData-docs' class="fold-docs">
+<span class="md-text">				icon data for the main systray icon</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-293">lock</a> <i><a href="../sync.html">sync</a>.<a href="../sync.html#name-Mutex">Mutex</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-294">menu</a> <i>*<a href="#name-menuLayout">menuLayout</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-295">menuLock</a> <i><a href="../sync.html">sync</a>.<a href="../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-296">menuProps</a> <i>*<a href="../github.com/godbus/dbus/v5/prop.html">prop</a>.<a href="../github.com/godbus/dbus/v5/prop.html#name-Properties">Properties</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-297">menuVersion</a> <i><a href="../builtin.html#name-uint32">uint32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-296">props</a> <i>*<a href="../github.com/godbus/dbus/v5/prop.html">prop</a>.<a href="../github.com/godbus/dbus/v5/prop.html#name-Properties">Properties</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="tray-fold-field-title"><label for="tray-fold-field-title"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-291">title</a> <i><a href="../builtin.html#name-string">string</a></i></label><span id='tray-fold-field-title-docs' class="fold-docs">
+<span class="md-text">				title and tooltip state</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="tray-fold-field-tooltipTitle"><label for="tray-fold-field-tooltipTitle"><a href="../../src/fyne.io/systray/systray_unix.go.html#line-291">tooltipTitle</a> <i><a href="../builtin.html#name-string">string</a></i></label><span id='tray-fold-field-tooltipTitle-docs' class="fold-docs">
+<span class="md-text">				title and tooltip state</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="tray-fold-methods"><label for="tray-fold-methods">Methods (<i>total 8, in which 7 are exported</i>)</label><span id='tray-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="tray-fold-method-AboutToShow"><label for="tray-fold-method-AboutToShow">(*tray) <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-119">AboutToShow</a>(id <a href="../builtin.html#name-int32">int32</a>) (needUpdate <a href="../builtin.html#name-bool">bool</a>, err *<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Error">Error</a>)</label><span id='tray-fold-method-AboutToShow-docs' class="fold-docs">
+<span class="md-text">				AboutToShow is com.canonical.dbusmenu.AboutToShow method.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="tray-fold-method-AboutToShowGroup"><label for="tray-fold-method-AboutToShowGroup">(*tray) <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-124">AboutToShowGroup</a>(ids []<a href="../builtin.html#name-int32">int32</a>) (updatesNeeded []<a href="../builtin.html#name-int32">int32</a>, idErrors []<a href="../builtin.html#name-int32">int32</a>, err *<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Error">Error</a>)</label><span id='tray-fold-method-AboutToShowGroup-docs' class="fold-docs">
+<span class="md-text">				AboutToShowGroup is com.canonical.dbusmenu.AboutToShowGroup method.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="tray-fold-method-Event"><label for="tray-fold-method-Event">(*tray) <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-96">Event</a>(id <a href="../builtin.html#name-int32">int32</a>, eventID <a href="../builtin.html#name-string">string</a>, data <a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Variant">Variant</a>, timestamp <a href="../builtin.html#name-uint32">uint32</a>) (err *<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Error">Error</a>)</label><span id='tray-fold-method-Event-docs' class="fold-docs">
+<span class="md-text">				Event is com.canonical.dbusmenu.Event method.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="tray-fold-method-EventGroup"><label for="tray-fold-method-EventGroup">(*tray) <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-104">EventGroup</a>(events []struct{V0 <a href="../builtin.html#name-int32">int32</a>; V1 <a href="../builtin.html#name-string">string</a>; V2 <a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Variant">Variant</a>; V3 <a href="../builtin.html#name-uint32">uint32</a>}) (idErrors []<a href="../builtin.html#name-int32">int32</a>, err *<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Error">Error</a>)</label><span id='tray-fold-method-EventGroup-docs' class="fold-docs">
+<span class="md-text">				EventGroup is com.canonical.dbusmenu.EventGroup method.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="tray-fold-method-GetGroupProperties"><label for="tray-fold-method-GetGroupProperties">(*tray) <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-59">GetGroupProperties</a>(ids []<a href="../builtin.html#name-int32">int32</a>, propertyNames []<a href="../builtin.html#name-string">string</a>) (properties []struct{V0 <a href="../builtin.html#name-int32">int32</a>; V1 map[<a href="../builtin.html#name-string">string</a>]<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Variant">Variant</a>}, err *<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Error">Error</a>)</label><span id='tray-fold-method-GetGroupProperties-docs' class="fold-docs">
+<span class="md-text">				GetGroupProperties is com.canonical.dbusmenu.GetGroupProperties method.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="tray-fold-method-GetLayout"><label for="tray-fold-method-GetLayout">(*tray) <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-48">GetLayout</a>(parentID <a href="../builtin.html#name-int32">int32</a>, recursionDepth <a href="../builtin.html#name-int32">int32</a>, propertyNames []<a href="../builtin.html#name-string">string</a>) (revision <a href="../builtin.html#name-uint32">uint32</a>, layout <a href="#name-menuLayout">menuLayout</a>, err *<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Error">Error</a>)</label><span id='tray-fold-method-GetLayout-docs' class="fold-docs">
+<span class="md-text">				GetLayout is com.canonical.dbusmenu.GetLayout method.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="tray-fold-method-GetProperty"><label for="tray-fold-method-GetProperty">(*tray) <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-84">GetProperty</a>(id <a href="../builtin.html#name-int32">int32</a>, name <a href="../builtin.html#name-string">string</a>) (value <a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Variant">Variant</a>, err *<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Error">Error</a>)</label><span id='tray-fold-method-GetProperty-docs' class="fold-docs">
+<span class="md-text">				GetProperty is com.canonical.dbusmenu.GetProperty method.</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="tray-showhide-methods"><i><label for="tray-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="tray-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*tray) <a href="../../src/fyne.io/systray/systray_unix.go.html#line-300">createPropSpec</a>() map[<a href="../builtin.html#name-string">string</a>]map[<a href="../builtin.html#name-string">string</a>]*<a href="../github.com/godbus/dbus/v5/prop.html">prop</a>.<a href="../github.com/godbus/dbus/v5/prop.html#name-Prop">Prop</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="tray-fold-impls"><label for="tray-fold-impls">Implements (<i>at least one exported</i>)</label><span id='tray-fold-impls-items' class="fold-items"><span>
+			*tray : fyne.io/systray/internal/generated/menu.<a href="systray/internal/generated/menu.html#name-Dbusmenuer">Dbusmenuer</a></span></span>
+		<input type='checkbox' class="fold" id="tray-fold-values"><label for="tray-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='tray-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="tray-showhide-values"><i><label for="tray-showhide-values" class="show-inline">/* one unexported ... */</label><label for="tray-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var <a href="#name-instance">instance</a> *tray</i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 39, in which 12 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-AddMenuItem">	<input type='checkbox' class="fold" id="AddMenuItem-fold-content"><label for="AddMenuItem-fold-content"> func <a href="../../src/fyne.io/systray/systray.go.html#line-149">AddMenuItem</a>(title <a href="../builtin.html#name-string">string</a>, tooltip <a href="../builtin.html#name-string">string</a>) *<a href="#name-MenuItem">MenuItem</a></label><span id='AddMenuItem-fold-content-docs' class="fold-docs">
+<span class="md-text">		AddMenuItem adds a menu item with the designated title and tooltip.
+		It can be safely invoked from different goroutines.
+		Created menu items are checkable on Windows and OSX by default. For Linux you have to use AddMenuItemCheckbox</span>
+
+</span></div><div class="anchor value-res" id="name-AddMenuItemCheckbox">	<input type='checkbox' class="fold" id="AddMenuItemCheckbox-fold-content"><label for="AddMenuItemCheckbox-fold-content"> func <a href="../../src/fyne.io/systray/systray.go.html#line-158">AddMenuItemCheckbox</a>(title <a href="../builtin.html#name-string">string</a>, tooltip <a href="../builtin.html#name-string">string</a>, checked <a href="../builtin.html#name-bool">bool</a>) *<a href="#name-MenuItem">MenuItem</a></label><span id='AddMenuItemCheckbox-fold-content-docs' class="fold-docs">
+<span class="md-text">		AddMenuItemCheckbox adds a menu item with the designated title and tooltip and a checkbox for Linux.
+		On other platforms there will be a check indicated next to the item if `checked` is true.
+		It can be safely invoked from different goroutines.</span>
+
+</span></div><div class="anchor value-res" id="name-AddSeparator">	<input type='checkbox' class="fold" id="AddSeparator-fold-content"><label for="AddSeparator-fold-content"> func <a href="../../src/fyne.io/systray/systray.go.html#line-167">AddSeparator</a>()</label><span id='AddSeparator-fold-content-docs' class="fold-docs">
+<span class="md-text">		AddSeparator adds a separator bar to the menu</span>
+
+</span></div><div class="anchor value-res" id="name-Quit">	<input type='checkbox' class="fold" id="Quit-fold-content"><label for="Quit-fold-content"> func <a href="../../src/fyne.io/systray/systray.go.html#line-142">Quit</a>()</label><span id='Quit-fold-content-docs' class="fold-docs">
+<span class="md-text">		Quit the systray</span>
+
+</span></div><div class="anchor value-res" id="name-Register">	<input type='checkbox' class="fold" id="Register-fold-content"><label for="Register-fold-content"> func <a href="../../src/fyne.io/systray/systray.go.html#line-104">Register</a>(onReady func(), onExit func())</label><span id='Register-fold-content-docs' class="fold-docs">
+<span class="md-text">		Register initializes GUI and registers the callbacks but relies on the
+		caller to run the event loop somewhere else. It's useful if the program
+		needs to show other UI elements, for example, webview.
+		To overcome some OS weirdness, On macOS versions before Catalina, calling
+		this does exactly the same as Run().</span>
+
+</span></div><div class="anchor value-res" id="name-ResetMenu">	<input type='checkbox' class="fold" id="ResetMenu-fold-content"><label for="ResetMenu-fold-content"> func <a href="../../src/fyne.io/systray/systray.go.html#line-129">ResetMenu</a>()</label><span id='ResetMenu-fold-content-docs' class="fold-docs">
+<span class="md-text">		ResetMenu will remove all menu items</span>
+
+</span></div><div class="anchor value-res" id="name-Run">	<input type='checkbox' class="fold" id="Run-fold-content"><label for="Run-fold-content"> func <a href="../../src/fyne.io/systray/systray.go.html#line-81">Run</a>(onReady, onExit func())</label><span id='Run-fold-content-docs' class="fold-docs">
+<span class="md-text">		Run initializes GUI and starts the event loop, then invokes the onReady
+		callback. It blocks until systray.Quit() is called.</span>
+
+</span></div><div class="anchor value-res" id="name-RunWithExternalLoop">	<input type='checkbox' class="fold" id="RunWithExternalLoop-fold-content"><label for="RunWithExternalLoop-fold-content"> func <a href="../../src/fyne.io/systray/systray.go.html#line-90">RunWithExternalLoop</a>(onReady, onExit func()) (start, end func())</label><span id='RunWithExternalLoop-fold-content-docs' class="fold-docs">
+<span class="md-text">		RunWithExternalLoop allows the systemtray module to operate with other tookits.
+		The returned start and end functions should be called by the toolkit when the application has started and will end.</span>
+
+</span></div><div class="anchor value-res" id="name-SetIcon">	<input type='checkbox' class="fold" id="SetIcon-fold-content"><label for="SetIcon-fold-content"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-51">SetIcon</a>(iconBytes []<a href="../builtin.html#name-byte">byte</a>)</label><span id='SetIcon-fold-content-docs' class="fold-docs">
+<span class="md-text">		SetIcon sets the systray icon.
+		iconBytes should be the content of .ico for windows and .ico/.jpg/.png
+		for other platforms.</span>
+
+</span></div><div class="anchor value-res" id="name-SetTemplateIcon">	<input type='checkbox' class="fold" id="SetTemplateIcon-fold-content"><label for="SetTemplateIcon-fold-content"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-43">SetTemplateIcon</a>(templateIconBytes []<a href="../builtin.html#name-byte">byte</a>, regularIconBytes []<a href="../builtin.html#name-byte">byte</a>)</label><span id='SetTemplateIcon-fold-content-docs' class="fold-docs">
+<span class="md-text">		SetTemplateIcon sets the systray icon as a template icon (on macOS), falling back
+		to a regular icon on other platforms.
+		templateIconBytes and iconBytes should be the content of .ico for windows and
+		.ico/.jpg/.png for other platforms.</span>
+
+</span></div><div class="anchor value-res" id="name-SetTitle">	<input type='checkbox' class="fold" id="SetTitle-fold-content"><label for="SetTitle-fold-content"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-79">SetTitle</a>(t <a href="../builtin.html#name-string">string</a>)</label><span id='SetTitle-fold-content-docs' class="fold-docs">
+<span class="md-text">		SetTitle sets the systray title, only available on Mac and Linux.</span>
+
+</span></div><div class="anchor value-res" id="name-SetTooltip">	<input type='checkbox' class="fold" id="SetTooltip-fold-content"><label for="SetTooltip-fold-content"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-112">SetTooltip</a>(tooltipTitle <a href="../builtin.html#name-string">string</a>)</label><span id='SetTooltip-fold-content-docs' class="fold-docs">
+<span class="md-text">		SetTooltip sets the systray tooltip to display on mouse hover of the tray icon,
+		only available on Mac and Windows.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 27 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 27 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-addOrUpdateMenuItem"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-168">addOrUpdateMenuItem</a>(item *<a href="#name-MenuItem">MenuItem</a>)</span></i></div><div class="anchor value-res hidden" id="name-addSeparator"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-199">addSeparator</a>(id <a href="../builtin.html#name-uint32">uint32</a>, parent <a href="../builtin.html#name-uint32">uint32</a>)</span></i></div><div class="anchor value-res hidden" id="name-applyItemToLayout"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-215">applyItemToLayout</a>(in *<a href="#name-MenuItem">MenuItem</a>, out *<a href="#name-menuLayout">menuLayout</a>)</span></i></div><div class="anchor value-res hidden" id="name-argbForImage"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-404">argbForImage</a>(img <a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>) []<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-convertToPixels"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-387">convertToPixels</a>(data []<a href="../builtin.html#name-byte">byte</a>) <a href="#name-PX">PX</a></span></i></div><div class="anchor value-res hidden" id="name-copyLayout"><i>	<input type='checkbox' class="fold" id="copyLayout-fold-content"><label for="copyLayout-fold-content"> func <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-27">copyLayout</a>(in *<a href="#name-menuLayout">menuLayout</a>, depth <a href="../builtin.html#name-int32">int32</a>) *<a href="#name-menuLayout">menuLayout</a></label><span id='copyLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		copyLayout makes full copy of layout</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-createMenuPropSpec"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-128">createMenuPropSpec</a>() map[<a href="../builtin.html#name-string">string</a>]map[<a href="../builtin.html#name-string">string</a>]*<a href="../github.com/godbus/dbus/v5/prop.html">prop</a>.<a href="../github.com/godbus/dbus/v5/prop.html#name-Prop">Prop</a></span></i></div><div class="anchor value-res hidden" id="name-findLayout"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-232">findLayout</a>(id <a href="../builtin.html#name-int32">int32</a>) (*<a href="#name-menuLayout">menuLayout</a>, <a href="../builtin.html#name-bool">bool</a>)</span></i></div><div class="anchor value-res hidden" id="name-findSubLayout"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-239">findSubLayout</a>(id <a href="../builtin.html#name-int32">int32</a>, vals []<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Variant">Variant</a>) (*<a href="#name-menuLayout">menuLayout</a>, <a href="../builtin.html#name-bool">bool</a>)</span></i></div><div class="anchor value-res hidden" id="name-hideMenuItem"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-293">hideMenuItem</a>(item *<a href="#name-MenuItem">MenuItem</a>)</span></i></div><div class="anchor value-res hidden" id="name-init"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray.go.html#line-32">init</a>()</span></i></div><div class="anchor value-res hidden" id="name-nativeEnd"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-151">nativeEnd</a>()</span></i></div><div class="anchor value-res hidden" id="name-nativeLoop"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-144">nativeLoop</a>() <a href="../builtin.html#name-int">int</a></span></i></div><div class="anchor value-res hidden" id="name-nativeStart"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-160">nativeStart</a>()</span></i></div><div class="anchor value-res hidden" id="name-newMenuItem"><i>	<input type='checkbox' class="fold" id="newMenuItem-fold-content"><label for="newMenuItem-fold-content"> func <a href="../../src/fyne.io/systray/systray.go.html#line-66">newMenuItem</a>(title <a href="../builtin.html#name-string">string</a>, tooltip <a href="../builtin.html#name-string">string</a>, parent *<a href="#name-MenuItem">MenuItem</a>) *<a href="#name-MenuItem">MenuItem</a></label><span id='newMenuItem-fold-content-docs' class="fold-docs">
+<span class="md-text">		newMenuItem returns a populated MenuItem object</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-quit"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-156">quit</a>()</span></i></div><div class="anchor value-res hidden" id="name-refresh"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-313">refresh</a>()</span></i></div><div class="anchor value-res hidden" id="name-register"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-232">register</a>() <a href="../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-registerSystray"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-141">registerSystray</a>()</span></i></div><div class="anchor value-res hidden" id="name-removeMenuItem"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-274">removeMenuItem</a>(item *<a href="#name-MenuItem">MenuItem</a>)</span></i></div><div class="anchor value-res hidden" id="name-removeSubLayout"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-257">removeSubLayout</a>(id <a href="../builtin.html#name-int32">int32</a>, vals []<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Variant">Variant</a>) ([]<a href="../github.com/godbus/dbus/v5.html">dbus</a>.<a href="../github.com/godbus/dbus/v5.html#name-Variant">Variant</a>, <a href="../builtin.html#name-bool">bool</a>)</span></i></div><div class="anchor value-res hidden" id="name-resetMenu"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-336">resetMenu</a>()</span></i></div><div class="anchor value-res hidden" id="name-runSystrayExit"><i>	<input type='checkbox' class="fold" id="runSystrayExit-fold-content"><label for="runSystrayExit-fold-content"> func <a href="../../src/fyne.io/systray/systray.go.html#line-25">runSystrayExit</a>()</label><span id='runSystrayExit-fold-content-docs' class="fold-docs">
+<span class="md-text">		This helper function allows us to call systrayExit only once,
+		without accidentally calling it twice in the same lifetime.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-setInternalLoop"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-137">setInternalLoop</a>(_ <a href="../builtin.html#name-bool">bool</a>)</span></i></div><div class="anchor value-res hidden" id="name-showMenuItem"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_menu_unix.go.html#line-303">showMenuItem</a>(item *<a href="#name-MenuItem">MenuItem</a>)</span></i></div><div class="anchor value-res hidden" id="name-stayRegistered"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray_unix.go.html#line-243">stayRegistered</a>()</span></i></div><div class="anchor value-res hidden" id="name-systrayMenuItemSelected"><i>	<span class="nodocs"> func <a href="../../src/fyne.io/systray/systray.go.html#line-273">systrayMenuItemSelected</a>(id <a href="../builtin.html#name-uint32">uint32</a>)</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 9, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 9 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 9 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-currentID"><i>	<span class="nodocs">  var <a href="../../src/fyne.io/systray/systray.go.html#line-19">currentID</a> <a href="../sync/atomic.html">atomic</a>.<a href="../sync/atomic.html#name-Uint32">Uint32</a></span></i></div><div class="anchor value-res hidden" id="name-instance"><i>	<input type='checkbox' class="fold" id="instance-fold-content"><label for="instance-fold-content">  var <a href="../../src/fyne.io/systray/systray_unix.go.html#line-36">instance</a> *<a href="#name-tray">tray</a></label><span id='instance-fold-content-docs' class="fold-docs">
+<span class="md-text">		instance is the current instance of our DBus tray server</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-menuItems"><i>	<span class="nodocs">  var <a href="../../src/fyne.io/systray/systray.go.html#line-16">menuItems</a> map[<a href="../builtin.html#name-uint32">uint32</a>]*<a href="#name-MenuItem">MenuItem</a></span></i></div><div class="anchor value-res hidden" id="name-menuItemsLock"><i>	<span class="nodocs">  var <a href="../../src/fyne.io/systray/systray.go.html#line-17">menuItemsLock</a> <a href="../sync.html">sync</a>.<a href="../sync.html#name-RWMutex">RWMutex</a></span></i></div><div class="anchor value-res hidden" id="name-quitChan"><i>	<input type='checkbox' class="fold" id="quitChan-fold-content"><label for="quitChan-fold-content">  var <a href="../../src/fyne.io/systray/systray_unix.go.html#line-33">quitChan</a> chan struct{}</label><span id='quitChan-fold-content-docs' class="fold-docs">
+<span class="md-text">		to signal quitting the internal main loop</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-quitOnce"><i>	<span class="nodocs">  var <a href="../../src/fyne.io/systray/systray.go.html#line-20">quitOnce</a> <a href="../sync.html">sync</a>.<a href="../sync.html#name-Once">Once</a></span></i></div><div class="anchor value-res hidden" id="name-systrayExit"><i>	<span class="nodocs">  var <a href="../../src/fyne.io/systray/systray.go.html#line-14">systrayExit</a> ()</span></i></div><div class="anchor value-res hidden" id="name-systrayExitCalled"><i>	<span class="nodocs">  var <a href="../../src/fyne.io/systray/systray.go.html#line-15">systrayExitCalled</a> <a href="../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-systrayReady"><i>	<span class="nodocs">  var <a href="../../src/fyne.io/systray/systray.go.html#line-13">systrayReady</a> ()</span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 2, neither is exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-menuPath"><i>	<span class="nodocs">const <a href="../../src/fyne.io/systray/systray_unix.go.html#line-28">menuPath</a> = "/StatusNotifierMenu"</span></i></div><div class="anchor value-res hidden" id="name-path"><i>	<span class="nodocs">const <a href="../../src/fyne.io/systray/systray_unix.go.html#line-27">path</a> = "/StatusNotifierItem"</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

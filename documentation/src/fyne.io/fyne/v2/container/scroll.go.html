@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: scroll.go in package fyne.io/fyne/v2/container</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	scroll.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/fyne.io/fyne/v2/container.html">fyne.io/fyne/v2/container</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> container</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"fyne.io/fyne/v2/internal/widget"</span></label></code></span>
+<span class="codeline" id="line-6"><code>)</code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// Scroll defines a container that is smaller than the Content.</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// The Offset is used to determine the position of the child widgets within the container.</span></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// Since: 1.4</span></code></span>
+<span class="codeline" id="line-12"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/container.html#name-Scroll" class="ident">Scroll</a> = <a href="../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i1">widget</a>.<a href="../internal/widget/scroller.go.html#line-400" class="ident">Scroll</a></code></span>
+<span class="codeline" id="line-13"><code></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">// ScrollDirection represents the directions in which a Scroll container can scroll its child content.</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// Since: 1.4</span></code></span>
+<span class="codeline" id="line-17"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/container.html#name-ScrollDirection" class="ident">ScrollDirection</a> = <a href="../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i1">widget</a>.<a href="../internal/widget/scroller.go.html#line-12" class="ident">ScrollDirection</a></code></span>
+<span class="codeline" id="line-18"><code></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// Constants for valid values of ScrollDirection.</span></code></span>
+<span class="codeline" id="line-20"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-21"><code>	<span class="comment">// ScrollBoth supports horizontal and vertical scrolling.</span></code></span>
+<span class="codeline" id="line-22"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2/container.html#name-ScrollBoth" class="ident">ScrollBoth</a> <a href="#line-17" class="ident">ScrollDirection</a> = <a href="../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i1">widget</a>.<a href="../internal/widget/scroller.go.html#line-17" class="ident">ScrollBoth</a></code></span>
+<span class="codeline" id="line-23"><code>	<span class="comment">// ScrollHorizontalOnly specifies the scrolling should only happen left to right.</span></code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2/container.html#name-ScrollHorizontalOnly" class="ident">ScrollHorizontalOnly</a> = <a href="../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i1">widget</a>.<a href="../internal/widget/scroller.go.html#line-19" class="ident">ScrollHorizontalOnly</a></code></span>
+<span class="codeline" id="line-25"><code>	<span class="comment">// ScrollVerticalOnly specifies the scrolling should only happen top to bottom.</span></code></span>
+<span class="codeline" id="line-26"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2/container.html#name-ScrollVerticalOnly" class="ident">ScrollVerticalOnly</a> = <a href="../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i1">widget</a>.<a href="../internal/widget/scroller.go.html#line-21" class="ident">ScrollVerticalOnly</a></code></span>
+<span class="codeline" id="line-27"><code>	<span class="comment">// ScrollNone turns off scrolling for this container.</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">	// Since: 2.1</span></code></span>
+<span class="codeline" id="line-30"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2/container.html#name-ScrollNone" class="ident">ScrollNone</a> = <a href="../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i1">widget</a>.<a href="../internal/widget/scroller.go.html#line-25" class="ident">ScrollNone</a></code></span>
+<span class="codeline" id="line-31"><code>)</code></span>
+<span class="codeline" id="line-32"><code></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">// NewScroll creates a scrollable parent wrapping the specified content.</span></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">// Note that this may cause the MinSize to be smaller than that of the passed object.</span></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// Since: 1.4</span></code></span>
+<span class="codeline" id="line-37"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/fyne.io/fyne/v2/container.html#name-NewScroll" class="ident">NewScroll</a></label>(<label for="r1" class="ident">content</label> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../canvasobject.go.html#line-10" class="ident">CanvasObject</a>) *<a href="#line-12" class="ident">Scroll</a> {</code></span>
+<span class="codeline" id="line-38"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i1">widget</a>.<a href="../internal/widget/scroller.go.html#line-550" class="ident">NewScroll</a>(<label for="r1" class="ident">content</label>)</code></span>
+<span class="codeline" id="line-39"><code>}</code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">// NewHScroll create a scrollable parent wrapping the specified content.</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">// Note that this may cause the MinSize.Width to be smaller than that of the passed object.</span></code></span>
+<span class="codeline" id="line-43"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-44"><code><span class="comment">// Since: 1.4</span></code></span>
+<span class="codeline" id="line-45"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../../../../pkg/fyne.io/fyne/v2/container.html#name-NewHScroll" class="ident">NewHScroll</a></label>(<label for="r3" class="ident">content</label> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../canvasobject.go.html#line-10" class="ident">CanvasObject</a>) *<a href="#line-12" class="ident">Scroll</a> {</code></span>
+<span class="codeline" id="line-46"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i1">widget</a>.<a href="../internal/widget/scroller.go.html#line-558" class="ident">NewHScroll</a>(<label for="r3" class="ident">content</label>)</code></span>
+<span class="codeline" id="line-47"><code>}</code></span>
+<span class="codeline" id="line-48"><code></code></span>
+<span class="codeline" id="line-49"><code><span class="comment">// NewVScroll a scrollable parent wrapping the specified content.</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">// Note that this may cause the MinSize.Height to be smaller than that of the passed object.</span></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-52"><code><span class="comment">// Since: 1.4</span></code></span>
+<span class="codeline" id="line-53"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../../../../pkg/fyne.io/fyne/v2/container.html#name-NewVScroll" class="ident">NewVScroll</a></label>(<label for="r5" class="ident">content</label> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../canvasobject.go.html#line-10" class="ident">CanvasObject</a>) *<a href="#line-12" class="ident">Scroll</a> {</code></span>
+<span class="codeline" id="line-54"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i1">widget</a>.<a href="../internal/widget/scroller.go.html#line-566" class="ident">NewVScroll</a>(<label for="r5" class="ident">content</label>)</code></span>
+<span class="codeline" id="line-55"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

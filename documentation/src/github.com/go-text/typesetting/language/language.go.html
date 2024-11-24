@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: language.go in package github.com/go-text/typesetting/language</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	language.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/go-text/typesetting/language.html">github.com/go-text/typesetting/language</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> language</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<label for="i0"><span class="lit-string i0">"os"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i1"><span class="lit-string i1">"strings"</span></label></code></span>
+<span class="codeline" id="line-8"><code>)</code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html#name-canonMap" class="ident">canonMap</a> = [<span class="lit-number">256</span>]<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{</code></span>
+<span class="codeline" id="line-11"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-12"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-13"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">'-'</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-14"><code>	<span class="lit-number">'0'</span>, <span class="lit-number">'1'</span>, <span class="lit-number">'2'</span>, <span class="lit-number">'3'</span>, <span class="lit-number">'4'</span>, <span class="lit-number">'5'</span>, <span class="lit-number">'6'</span>, <span class="lit-number">'7'</span>, <span class="lit-number">'8'</span>, <span class="lit-number">'9'</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-15"><code>	<span class="lit-number">'-'</span>, <span class="lit-number">'a'</span>, <span class="lit-number">'b'</span>, <span class="lit-number">'c'</span>, <span class="lit-number">'d'</span>, <span class="lit-number">'e'</span>, <span class="lit-number">'f'</span>, <span class="lit-number">'g'</span>, <span class="lit-number">'h'</span>, <span class="lit-number">'i'</span>, <span class="lit-number">'j'</span>, <span class="lit-number">'k'</span>, <span class="lit-number">'l'</span>, <span class="lit-number">'m'</span>, <span class="lit-number">'n'</span>, <span class="lit-number">'o'</span>,</code></span>
+<span class="codeline" id="line-16"><code>	<span class="lit-number">'p'</span>, <span class="lit-number">'q'</span>, <span class="lit-number">'r'</span>, <span class="lit-number">'s'</span>, <span class="lit-number">'t'</span>, <span class="lit-number">'u'</span>, <span class="lit-number">'v'</span>, <span class="lit-number">'w'</span>, <span class="lit-number">'x'</span>, <span class="lit-number">'y'</span>, <span class="lit-number">'z'</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">'-'</span>,</code></span>
+<span class="codeline" id="line-17"><code>	<span class="lit-number">0</span>, <span class="lit-number">'a'</span>, <span class="lit-number">'b'</span>, <span class="lit-number">'c'</span>, <span class="lit-number">'d'</span>, <span class="lit-number">'e'</span>, <span class="lit-number">'f'</span>, <span class="lit-number">'g'</span>, <span class="lit-number">'h'</span>, <span class="lit-number">'i'</span>, <span class="lit-number">'j'</span>, <span class="lit-number">'k'</span>, <span class="lit-number">'l'</span>, <span class="lit-number">'m'</span>, <span class="lit-number">'n'</span>, <span class="lit-number">'o'</span>,</code></span>
+<span class="codeline" id="line-18"><code>	<span class="lit-number">'p'</span>, <span class="lit-number">'q'</span>, <span class="lit-number">'r'</span>, <span class="lit-number">'s'</span>, <span class="lit-number">'t'</span>, <span class="lit-number">'u'</span>, <span class="lit-number">'v'</span>, <span class="lit-number">'w'</span>, <span class="lit-number">'x'</span>, <span class="lit-number">'y'</span>, <span class="lit-number">'z'</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-19"><code>}</code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">// Language store the canonicalized BCP 47 tag,</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// which has the generic form &lt;lang&gt;-&lt;country&gt;-&lt;other tags&gt;...</span></code></span>
+<span class="codeline" id="line-23"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html#name-Language" class="ident">Language</a> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-24"><code></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// NewLanguage canonicalizes the language input (as a BCP 47 language tag), by converting it to</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">// lowercase, mapping '_' to '-', and stripping all characters other</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">// than letters, numbers and '-'.</span></code></span>
+<span class="codeline" id="line-28"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/language.html#name-NewLanguage" class="ident">NewLanguage</a></label>(<label for="r1" class="ident">language</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="#line-23" class="ident">Language</a> {</code></span>
+<span class="codeline" id="line-29"><code>	<label for="r2" class="ident">out</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <span class="lit-number">0</span>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r1" class="ident">language</label>))</code></span>
+<span class="codeline" id="line-30"><code>	<span class="keyword">for</span> <label for="r3" class="ident">_</label>, <label for="r4" class="ident">r</label> := <span class="keyword">range</span> <label for="r1" class="ident">language</label> {</code></span>
+<span class="codeline" id="line-31"><code>		<span class="keyword">if</span> <label for="r4" class="ident">r</label> &gt;= <span class="lit-number">0xFF</span> {</code></span>
+<span class="codeline" id="line-32"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-33"><code>		}</code></span>
+<span class="codeline" id="line-34"><code>		<label for="r5" class="ident">can</label> := <a href="#line-10" class="ident">canonMap</a>[<label for="r4" class="ident">r</label>]</code></span>
+<span class="codeline" id="line-35"><code>		<span class="keyword">if</span> <label for="r5" class="ident">can</label> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-36"><code>			<label for="r2" class="ident">out</label> = <a href="../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r2" class="ident">out</label>, <label for="r5" class="ident">can</label>)</code></span>
+<span class="codeline" id="line-37"><code>		}</code></span>
+<span class="codeline" id="line-38"><code>	}</code></span>
+<span class="codeline" id="line-39"><code>	<span class="keyword">return</span> <a href="#line-23" class="ident">Language</a>(<label for="r2" class="ident">out</label>)</code></span>
+<span class="codeline" id="line-40"><code>}</code></span>
+<span class="codeline" id="line-41"><code></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">// Primary returns the root language of l, that is</span></code></span>
+<span class="codeline" id="line-43"><code><span class="comment">// the part before the first '-' separator</span></code></span>
+<span class="codeline" id="line-44"><code><span class="keyword">func</span> (<label for="r6" class="ident">l</label> <a href="#line-23" class="ident">Language</a>) <label for="r7" class="ident">Primary</label>() <a href="#line-23" class="ident">Language</a> {</code></span>
+<span class="codeline" id="line-45"><code>	<span class="keyword">if</span> <label for="r8" class="ident">index</label> := <a href="../../../../../pkg/strings.html" class="ident i1">strings</a>.<a href="../../../../strings/strings.go.html#line-118" class="ident">IndexByte</a>(<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r6" class="ident">l</label>), <span class="lit-number">'-'</span>); <label for="r8" class="ident">index</label> != -<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-46"><code>		<label for="r6" class="ident">l</label> = <label for="r6" class="ident">l</label>[:<label for="r8" class="ident">index</label>]</code></span>
+<span class="codeline" id="line-47"><code>	}</code></span>
+<span class="codeline" id="line-48"><code>	<span class="keyword">return</span> <label for="r6" class="ident">l</label></code></span>
+<span class="codeline" id="line-49"><code>}</code></span>
+<span class="codeline" id="line-50"><code></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">// SimpleInheritance returns the list of matching language, using simple truncation inheritance.</span></code></span>
+<span class="codeline" id="line-52"><code><span class="comment">// The resulting slice starts with the given whole language.</span></code></span>
+<span class="codeline" id="line-53"><code><span class="comment">// See http://www.unicode.org/reports/tr35/#Locale_Inheritance for more information.</span></code></span>
+<span class="codeline" id="line-54"><code><span class="keyword">func</span> (<label for="r9" class="ident">l</label> <a href="#line-23" class="ident">Language</a>) <label for="r10" class="ident">SimpleInheritance</label>() []<a href="#line-23" class="ident">Language</a> {</code></span>
+<span class="codeline" id="line-55"><code>	<label for="r11" class="ident">tags</label> := <a href="../../../../../pkg/strings.html" class="ident i1">strings</a>.<a href="../../../../strings/strings.go.html#line-306" class="ident">Split</a>(<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r9" class="ident">l</label>), <span class="lit-string">"-"</span>)</code></span>
+<span class="codeline" id="line-56"><code>	<label for="r12" class="ident">out</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="#line-23" class="ident">Language</a>, <span class="lit-number">0</span>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r11" class="ident">tags</label>))</code></span>
+<span class="codeline" id="line-57"><code>	<span class="keyword">for</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r11" class="ident">tags</label>) != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-58"><code>		<label for="r12" class="ident">out</label> = <a href="../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r12" class="ident">out</label>, <a href="#line-23" class="ident">Language</a>(<a href="../../../../../pkg/strings.html" class="ident i1">strings</a>.<a href="../../../../strings/strings.go.html#line-428" class="ident">Join</a>(<label for="r11" class="ident">tags</label>, <span class="lit-string">"-"</span>)))</code></span>
+<span class="codeline" id="line-59"><code>		<label for="r11" class="ident">tags</label> = <label for="r11" class="ident">tags</label>[:<a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r11" class="ident">tags</label>)-<span class="lit-number">1</span>]</code></span>
+<span class="codeline" id="line-60"><code>	}</code></span>
+<span class="codeline" id="line-61"><code>	<span class="keyword">return</span> <label for="r12" class="ident">out</label></code></span>
+<span class="codeline" id="line-62"><code>}</code></span>
+<span class="codeline" id="line-63"><code></code></span>
+<span class="codeline" id="line-64"><code><span class="comment">// IsDerivedFrom returns `true` if `l` has</span></code></span>
+<span class="codeline" id="line-65"><code><span class="comment">// the `root` as primary language.</span></code></span>
+<span class="codeline" id="line-66"><code><span class="keyword">func</span> (<label for="r13" class="ident">l</label> <a href="#line-23" class="ident">Language</a>) <label for="r14" class="ident">IsDerivedFrom</label>(<label for="r15" class="ident">root</label> <a href="#line-23" class="ident">Language</a>) <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r13" class="ident">l</label>.<a href="#line-44" class="ident">Primary</a>() == <label for="r15" class="ident">root</label> }</code></span>
+<span class="codeline" id="line-67"><code></code></span>
+<span class="codeline" id="line-68"><code><span class="comment">// IsUndetermined returns `true` if its primary language is "und".</span></code></span>
+<span class="codeline" id="line-69"><code><span class="comment">// It is a shortcut for IsDerivedFrom("und").</span></code></span>
+<span class="codeline" id="line-70"><code><span class="keyword">func</span> (<label for="r16" class="ident">l</label> <a href="#line-23" class="ident">Language</a>) <label for="r17" class="ident">IsUndetermined</label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r16" class="ident">l</label>.<a href="#line-66" class="ident">IsDerivedFrom</a>(<span class="lit-string">"und"</span>) }</code></span>
+<span class="codeline" id="line-71"><code></code></span>
+<span class="codeline" id="line-72"><code><span class="comment">// SplitExtensionTags splits the language at the extension and private-use subtags, which are</span></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">// marked by a "-&lt;one char&gt;-" pattern.</span></code></span>
+<span class="codeline" id="line-74"><code><span class="comment">// It returns the language before the first pattern, and, if any, the private-use subtag.</span></code></span>
+<span class="codeline" id="line-75"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-76"><code><span class="comment">// (l, "") is returned if the language has no extension or private-use tag.</span></code></span>
+<span class="codeline" id="line-77"><code><span class="keyword">func</span> (<label for="r18" class="ident">l</label> <a href="#line-23" class="ident">Language</a>) <label for="r19" class="ident">SplitExtensionTags</label>() (<label for="r20" class="ident">prefix</label>, <label for="r21" class="ident">private</label> <a href="#line-23" class="ident">Language</a>) {</code></span>
+<span class="codeline" id="line-78"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r18" class="ident">l</label>) &gt;= <span class="lit-number">2</span> &amp;&amp; <label for="r18" class="ident">l</label>[<span class="lit-number">0</span>] == <span class="lit-number">'x'</span> &amp;&amp; <label for="r18" class="ident">l</label>[<span class="lit-number">1</span>] == <span class="lit-number">'-'</span> { <span class="comment">// x-&lt;....&gt; 'fully' private</span></code></span>
+<span class="codeline" id="line-79"><code>		<span class="keyword">return</span> <span class="lit-string">""</span>, <label for="r18" class="ident">l</label></code></span>
+<span class="codeline" id="line-80"><code>	}</code></span>
+<span class="codeline" id="line-81"><code></code></span>
+<span class="codeline" id="line-82"><code>	<label for="r22" class="ident">firstExtension</label> := -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-83"><code>	<span class="keyword">for</span> <label for="r23" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r23" class="ident">i</label>+<span class="lit-number">3</span> &lt; <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r18" class="ident">l</label>); <label for="r23" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-84"><code>		<span class="keyword">if</span> <label for="r18" class="ident">l</label>[<label for="r23" class="ident">i</label>] == <span class="lit-number">'-'</span> &amp;&amp; <label for="r18" class="ident">l</label>[<label for="r23" class="ident">i</label>+<span class="lit-number">2</span>] == <span class="lit-number">'-'</span> {</code></span>
+<span class="codeline" id="line-85"><code>			<span class="keyword">if</span> <label for="r22" class="ident">firstExtension</label> == -<span class="lit-number">1</span> { <span class="comment">// mark the end of the prefix</span></code></span>
+<span class="codeline" id="line-86"><code>				<label for="r22" class="ident">firstExtension</label> = <label for="r23" class="ident">i</label></code></span>
+<span class="codeline" id="line-87"><code>			}</code></span>
+<span class="codeline" id="line-88"><code></code></span>
+<span class="codeline" id="line-89"><code>			<span class="keyword">if</span> <label for="r18" class="ident">l</label>[<label for="r23" class="ident">i</label>+<span class="lit-number">1</span>] == <span class="lit-number">'x'</span> { <span class="comment">// private-use tag</span></code></span>
+<span class="codeline" id="line-90"><code>				<span class="keyword">return</span> <label for="r18" class="ident">l</label>[:<label for="r22" class="ident">firstExtension</label>], <label for="r18" class="ident">l</label>[<label for="r23" class="ident">i</label>+<span class="lit-number">1</span>:]</code></span>
+<span class="codeline" id="line-91"><code>			}</code></span>
+<span class="codeline" id="line-92"><code>			<span class="comment">// else keep looking for private sub tags</span></code></span>
+<span class="codeline" id="line-93"><code>		}</code></span>
+<span class="codeline" id="line-94"><code>	}</code></span>
+<span class="codeline" id="line-95"><code></code></span>
+<span class="codeline" id="line-96"><code>	<span class="keyword">if</span> <label for="r22" class="ident">firstExtension</label> == -<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-97"><code>		<span class="keyword">return</span> <label for="r18" class="ident">l</label>, <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-98"><code>	}</code></span>
+<span class="codeline" id="line-99"><code>	<span class="keyword">return</span> <label for="r18" class="ident">l</label>[:<label for="r22" class="ident">firstExtension</label>], <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-100"><code>}</code></span>
+<span class="codeline" id="line-101"><code></code></span>
+<span class="codeline" id="line-102"><code><span class="comment">// LanguageComparison is a three state enum resulting from comparing two languages</span></code></span>
+<span class="codeline" id="line-103"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html#name-LanguageComparison" class="ident">LanguageComparison</a> <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a></code></span>
+<span class="codeline" id="line-104"><code></code></span>
+<span class="codeline" id="line-105"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-106"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/language.html#name-LanguagesDiffer" class="ident">LanguagesDiffer</a>      <a href="#line-103" class="ident">LanguageComparison</a> = <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a> <span class="comment">// the two languages are totally differents</span></code></span>
+<span class="codeline" id="line-107"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/language.html#name-LanguagesExactMatch" class="ident">LanguagesExactMatch</a>                            <span class="comment">// the two languages are exactly the same</span></code></span>
+<span class="codeline" id="line-108"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/language.html#name-LanguagePrimaryMatch" class="ident">LanguagePrimaryMatch</a>                           <span class="comment">// the two languages have the same primary language, but differs.</span></code></span>
+<span class="codeline" id="line-109"><code>)</code></span>
+<span class="codeline" id="line-110"><code></code></span>
+<span class="codeline" id="line-111"><code><span class="comment">// Compare compares `other` and `l`.</span></code></span>
+<span class="codeline" id="line-112"><code><span class="comment">// Undetermined languages are only compared using the remaining tags,</span></code></span>
+<span class="codeline" id="line-113"><code><span class="comment">// meaning that "und-fr" and "und-be" are compared as LanguagesDiffer, not</span></code></span>
+<span class="codeline" id="line-114"><code><span class="comment">// LanguagePrimaryMatch.</span></code></span>
+<span class="codeline" id="line-115"><code><span class="keyword">func</span> (<label for="r24" class="ident">l</label> <a href="#line-23" class="ident">Language</a>) <label for="r25" class="ident">Compare</label>(<label for="r26" class="ident">other</label> <a href="#line-23" class="ident">Language</a>) <a href="#line-103" class="ident">LanguageComparison</a> {</code></span>
+<span class="codeline" id="line-116"><code>	<span class="keyword">if</span> <label for="r24" class="ident">l</label> == <label for="r26" class="ident">other</label> {</code></span>
+<span class="codeline" id="line-117"><code>		<span class="keyword">return</span> <a href="#line-107" class="ident">LanguagesExactMatch</a></code></span>
+<span class="codeline" id="line-118"><code>	}</code></span>
+<span class="codeline" id="line-119"><code></code></span>
+<span class="codeline" id="line-120"><code>	<label for="r27" class="ident">primary1</label>, <label for="r28" class="ident">primary2</label> := <label for="r24" class="ident">l</label>.<a href="#line-44" class="ident">Primary</a>(), <label for="r26" class="ident">other</label>.<a href="#line-44" class="ident">Primary</a>()</code></span>
+<span class="codeline" id="line-121"><code>	<span class="keyword">if</span> <label for="r27" class="ident">primary1</label> != <label for="r28" class="ident">primary2</label> {</code></span>
+<span class="codeline" id="line-122"><code>		<span class="keyword">return</span> <a href="#line-106" class="ident">LanguagesDiffer</a></code></span>
+<span class="codeline" id="line-123"><code>	}</code></span>
+<span class="codeline" id="line-124"><code></code></span>
+<span class="codeline" id="line-125"><code>	<span class="comment">// check for the undetermined special case</span></code></span>
+<span class="codeline" id="line-126"><code>	<span class="keyword">if</span> <label for="r27" class="ident">primary1</label> == <span class="lit-string">"und"</span> {</code></span>
+<span class="codeline" id="line-127"><code>		<span class="keyword">return</span> <a href="#line-106" class="ident">LanguagesDiffer</a></code></span>
+<span class="codeline" id="line-128"><code>	}</code></span>
+<span class="codeline" id="line-129"><code>	<span class="keyword">return</span> <a href="#line-108" class="ident">LanguagePrimaryMatch</a></code></span>
+<span class="codeline" id="line-130"><code>}</code></span>
+<span class="codeline" id="line-131"><code></code></span>
+<span class="codeline" id="line-132"><code><span class="keyword">func</span> <label for="r29" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/language.html#name-languageFromLocale" class="ident">languageFromLocale</a></label>(<label for="r30" class="ident">locale</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="#line-23" class="ident">Language</a> {</code></span>
+<span class="codeline" id="line-133"><code>	<span class="keyword">if</span> <label for="r31" class="ident">i</label> := <a href="../../../../../pkg/strings.html" class="ident i1">strings</a>.<a href="../../../../strings/strings.go.html#line-118" class="ident">IndexByte</a>(<label for="r30" class="ident">locale</label>, <span class="lit-number">'.'</span>); <label for="r31" class="ident">i</label> &gt;= <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-134"><code>		<label for="r30" class="ident">locale</label> = <label for="r30" class="ident">locale</label>[:<label for="r31" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-135"><code>	}</code></span>
+<span class="codeline" id="line-136"><code>	<span class="keyword">return</span> <a href="#line-28" class="ident">NewLanguage</a>(<label for="r30" class="ident">locale</label>)</code></span>
+<span class="codeline" id="line-137"><code>}</code></span>
+<span class="codeline" id="line-138"><code></code></span>
+<span class="codeline" id="line-139"><code><span class="comment">// DefaultLanguage returns the language found in environment variables LC_ALL, LC_CTYPE or</span></code></span>
+<span class="codeline" id="line-140"><code><span class="comment">// LANG (in that order), or the zero value if not found.</span></code></span>
+<span class="codeline" id="line-141"><code><span class="keyword">func</span> <label for="r32" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/language.html#name-DefaultLanguage" class="ident">DefaultLanguage</a></label>() <a href="#line-23" class="ident">Language</a> {</code></span>
+<span class="codeline" id="line-142"><code>	<label for="r33" class="ident">p</label>, <label for="r34" class="ident">ok</label> := <a href="../../../../../pkg/os.html" class="ident i0">os</a>.<a href="../../../../os/env.go.html#line-112" class="ident">LookupEnv</a>(<span class="lit-string">"LC_ALL"</span>)</code></span>
+<span class="codeline" id="line-143"><code>	<span class="keyword">if</span> <label for="r34" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-144"><code>		<span class="keyword">return</span> <a href="#line-132" class="ident">languageFromLocale</a>(<label for="r33" class="ident">p</label>)</code></span>
+<span class="codeline" id="line-145"><code>	}</code></span>
+<span class="codeline" id="line-146"><code></code></span>
+<span class="codeline" id="line-147"><code>	<label for="r33" class="ident">p</label>, <label for="r34" class="ident">ok</label> = <a href="../../../../../pkg/os.html" class="ident i0">os</a>.<a href="../../../../os/env.go.html#line-112" class="ident">LookupEnv</a>(<span class="lit-string">"LC_CTYPE"</span>)</code></span>
+<span class="codeline" id="line-148"><code>	<span class="keyword">if</span> <label for="r34" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-149"><code>		<span class="keyword">return</span> <a href="#line-132" class="ident">languageFromLocale</a>(<label for="r33" class="ident">p</label>)</code></span>
+<span class="codeline" id="line-150"><code>	}</code></span>
+<span class="codeline" id="line-151"><code></code></span>
+<span class="codeline" id="line-152"><code>	<label for="r33" class="ident">p</label>, <label for="r34" class="ident">ok</label> = <a href="../../../../../pkg/os.html" class="ident i0">os</a>.<a href="../../../../os/env.go.html#line-112" class="ident">LookupEnv</a>(<span class="lit-string">"LANG"</span>)</code></span>
+<span class="codeline" id="line-153"><code>	<span class="keyword">if</span> <label for="r34" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-154"><code>		<span class="keyword">return</span> <a href="#line-132" class="ident">languageFromLocale</a>(<label for="r33" class="ident">p</label>)</code></span>
+<span class="codeline" id="line-155"><code>	}</code></span>
+<span class="codeline" id="line-156"><code></code></span>
+<span class="codeline" id="line-157"><code>	<span class="keyword">return</span> <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-158"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: harfbuzz.go in package github.com/go-text/typesetting/harfbuzz</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	harfbuzz.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html">github.com/go-text/typesetting/harfbuzz</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72],
+input[id=r73]:checked ~pre label[for=r73],
+input[id=r74]:checked ~pre label[for=r74],
+input[id=r75]:checked ~pre label[for=r75],
+input[id=r76]:checked ~pre label[for=r76],
+input[id=r77]:checked ~pre label[for=r77],
+input[id=r78]:checked ~pre label[for=r78],
+input[id=r79]:checked ~pre label[for=r79],
+input[id=r80]:checked ~pre label[for=r80],
+input[id=r81]:checked ~pre label[for=r81],
+input[id=r82]:checked ~pre label[for=r82],
+input[id=r83]:checked ~pre label[for=r83],
+input[id=r84]:checked ~pre label[for=r84],
+input[id=r85]:checked ~pre label[for=r85],
+input[id=r86]:checked ~pre label[for=r86],
+input[id=r87]:checked ~pre label[for=r87],
+input[id=r88]:checked ~pre label[for=r88],
+input[id=r89]:checked ~pre label[for=r89],
+input[id=r90]:checked ~pre label[for=r90],
+input[id=r91]:checked ~pre label[for=r91],
+input[id=r92]:checked ~pre label[for=r92],
+input[id=r93]:checked ~pre label[for=r93],
+input[id=r94]:checked ~pre label[for=r94],
+input[id=r95]:checked ~pre label[for=r95]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5,
+input[id=i6]:checked ~pre .i6,
+input[id=i7]:checked ~pre .i7,
+input[id=i8]:checked ~pre .i8
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="r73" type="radio" name="g"/>
+<input id="r74" type="radio" name="g"/>
+<input id="r75" type="radio" name="g"/>
+<input id="r76" type="radio" name="g"/>
+<input id="r77" type="radio" name="g"/>
+<input id="r78" type="radio" name="g"/>
+<input id="r79" type="radio" name="g"/>
+<input id="r80" type="radio" name="g"/>
+<input id="r81" type="radio" name="g"/>
+<input id="r82" type="radio" name="g"/>
+<input id="r83" type="radio" name="g"/>
+<input id="r84" type="radio" name="g"/>
+<input id="r85" type="radio" name="g"/>
+<input id="r86" type="radio" name="g"/>
+<input id="r87" type="radio" name="g"/>
+<input id="r88" type="radio" name="g"/>
+<input id="r89" type="radio" name="g"/>
+<input id="r90" type="radio" name="g"/>
+<input id="r91" type="radio" name="g"/>
+<input id="r92" type="radio" name="g"/>
+<input id="r93" type="radio" name="g"/>
+<input id="r94" type="radio" name="g"/>
+<input id="r95" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+<input id="i6" type="radio" name="i"/>
+<input id="i7" type="radio" name="i"/>
+<input id="i8" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Package harfbuzz provides advanced text layout for various scripts and languages,</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// with font-aware substitutions and positionning.</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// Given a font and an input specified as runes, the package shapes this input</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// and returns a slice of positionned glyphs, identified by their index in the font.</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">// See `Buffer` and its methods for more details.</span></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// This package is a direct port of the C/C++ library.</span></code></span></div><span class="codeline" id="line-9"><code><span class="keyword">package</span> harfbuzz</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-12"><code>	<label for="i0"><span class="lit-string i0">"errors"</span></label></code></span>
+<span class="codeline" id="line-13"><code>	<label for="i1"><span class="lit-string i1">"fmt"</span></label></code></span>
+<span class="codeline" id="line-14"><code>	<label for="i2"><span class="lit-string i2">"math"</span></label></code></span>
+<span class="codeline" id="line-15"><code>	<label for="i3"><span class="lit-string i3">"math/bits"</span></label></code></span>
+<span class="codeline" id="line-16"><code>	<label for="i4"><span class="lit-string i4">"strconv"</span></label></code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code>	<label for="i5"><span class="lit-string i5">"github.com/go-text/typesetting/font"</span></label></code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i6">ot</a> <label for="i6"><span class="lit-string i6">"github.com/go-text/typesetting/font/opentype"</span></label></code></span>
+<span class="codeline" id="line-20"><code>	<label for="i7"><span class="lit-string i7">"github.com/go-text/typesetting/font/opentype/tables"</span></label></code></span>
+<span class="codeline" id="line-21"><code>	<label for="i8"><span class="lit-string i8">"github.com/go-text/typesetting/language"</span></label></code></span>
+<span class="codeline" id="line-22"><code>)</code></span>
+<span class="codeline" id="line-23"><code></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">// based on upstream commit 5d543d64222c6ce45332d0c188790f90691ef112</span></code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">// debugMode is only used in test: if true, it prints detailed information</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">// about shaping</span></code></span>
+<span class="codeline" id="line-28"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-debugMode" class="ident">debugMode</a> = <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-29"><code></code></span>
+<span class="codeline" id="line-30"><code><span class="keyword">type</span> (</code></span>
+<span class="codeline" id="line-31"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-GID" class="ident">GID</a> = <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i6">ot</a>.<a href="../font/opentype/opentype.go.html#line-38" class="ident">GID</a></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-gID" class="ident">gID</a> = <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i7">tables</a>.<a href="../font/opentype/tables/tables.go.html#line-9" class="ident">GlyphID</a></code></span>
+<span class="codeline" id="line-33"><code>)</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">// Direction is the text direction.</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// The zero value is the initial, unset, invalid direction.</span></code></span>
+<span class="codeline" id="line-37"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-Direction" class="ident">Direction</a> <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a></code></span>
+<span class="codeline" id="line-38"><code></code></span>
+<span class="codeline" id="line-39"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-40"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-LeftToRight" class="ident">LeftToRight</a> <a href="#line-37" class="ident">Direction</a> = <span class="lit-number">4</span> + <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a> <span class="comment">// Text is set horizontally from left to right.</span></code></span>
+<span class="codeline" id="line-41"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-RightToLeft" class="ident">RightToLeft</a>                      <span class="comment">// Text is set horizontally from right to left.</span></code></span>
+<span class="codeline" id="line-42"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-TopToBottom" class="ident">TopToBottom</a>                      <span class="comment">// Text is set vertically from top to bottom.</span></code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-BottomToTop" class="ident">BottomToTop</a>                      <span class="comment">// Text is set vertically from bottom to top.</span></code></span>
+<span class="codeline" id="line-44"><code>)</code></span>
+<span class="codeline" id="line-45"><code></code></span>
+<span class="codeline" id="line-46"><code><span class="comment">// Fetches the `Direction` of a script when it is</span></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">// set horizontally. All right-to-left scripts will return</span></code></span>
+<span class="codeline" id="line-48"><code><span class="comment">// `RightToLeft`. All left-to-right scripts will return</span></code></span>
+<span class="codeline" id="line-49"><code><span class="comment">// `LeftToRight`.  Scripts that can be written either</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">// horizontally or vertically will return `Invalid`.</span></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">// Unknown scripts will return `LeftToRight`.</span></code></span>
+<span class="codeline" id="line-52"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-getHorizontalDirection" class="ident">getHorizontalDirection</a></label>(<label for="r1" class="ident">script</label> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts.go.html#line-12" class="ident">Script</a>) <a href="#line-37" class="ident">Direction</a> {</code></span>
+<span class="codeline" id="line-53"><code>	<span class="comment">/* https://docs.google.com/spreadsheets/d/1Y90M0Ie3MUJ6UVCRDOypOtijlMDLNNyyLk36T6iMu0o */</span></code></span>
+<span class="codeline" id="line-54"><code>	<span class="keyword">switch</span> <label for="r1" class="ident">script</label> {</code></span>
+<span class="codeline" id="line-55"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-12" class="ident">Arabic</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-67" class="ident">Hebrew</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-167" class="ident">Syriac</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-179" class="ident">Thaana</a>,</code></span>
+<span class="codeline" id="line-56"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-40" class="ident">Cypriot</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-81" class="ident">Kharoshthi</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-145" class="ident">Phoenician</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-124" class="ident">Nko</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-98" class="ident">Lydian</a>,</code></span>
+<span class="codeline" id="line-57"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-14" class="ident">Avestan</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-69" class="ident">Imperial_Aramaic</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-71" class="ident">Inscriptional_Pahlavi</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-72" class="ident">Inscriptional_Parthian</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-135" class="ident">Old_South_Arabian</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-136" class="ident">Old_Turkic</a>,</code></span>
+<span class="codeline" id="line-58"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-151" class="ident">Samaritan</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-102" class="ident">Mandaic</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-111" class="ident">Meroitic_Cursive</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-112" class="ident">Meroitic_Hieroglyphs</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-103" class="ident">Manichaean</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-110" class="ident">Mende_Kikakui</a>,</code></span>
+<span class="codeline" id="line-59"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-119" class="ident">Nabataean</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-131" class="ident">Old_North_Arabian</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-142" class="ident">Palmyrene</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-146" class="ident">Psalter_Pahlavi</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-66" class="ident">Hatran</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-8" class="ident">Adlam</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-64" class="ident">Hanifi_Rohingya</a>,</code></span>
+<span class="codeline" id="line-60"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-134" class="ident">Old_Sogdian</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-160" class="ident">Sogdian</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-52" class="ident">Elymaic</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-34" class="ident">Chorasmian</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-193" class="ident">Yezidi</a>:</code></span>
+<span class="codeline" id="line-61"><code></code></span>
+<span class="codeline" id="line-62"><code>		<span class="keyword">return</span> <a href="#line-41" class="ident">RightToLeft</a></code></span>
+<span class="codeline" id="line-63"><code></code></span>
+<span class="codeline" id="line-64"><code>	<span class="comment">/* https://github.com/harfbuzz/harfbuzz/issues/1000 */</span></code></span>
+<span class="codeline" id="line-65"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-129" class="ident">Old_Hungarian</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-130" class="ident">Old_Italic</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-150" class="ident">Runic</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts_table.go.html#line-182" class="ident">Tifinagh</a>:</code></span>
+<span class="codeline" id="line-66"><code>		<span class="keyword">return</span> <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-67"><code>	}</code></span>
+<span class="codeline" id="line-68"><code></code></span>
+<span class="codeline" id="line-69"><code>	<span class="keyword">return</span> <a href="#line-40" class="ident">LeftToRight</a></code></span>
+<span class="codeline" id="line-70"><code>}</code></span>
+<span class="codeline" id="line-71"><code></code></span>
+<span class="codeline" id="line-72"><code><span class="comment">// Tests whether a text direction is horizontal. Requires</span></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">// that the direction be valid.</span></code></span>
+<span class="codeline" id="line-74"><code><span class="keyword">func</span> (<label for="r2" class="ident">dir</label> <a href="#line-37" class="ident">Direction</a>) <label for="r3" class="ident">isHorizontal</label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r2" class="ident">dir</label> &amp; ^<a href="#line-37" class="ident">Direction</a>(<span class="lit-number">1</span>) == <span class="lit-number">4</span> }</code></span>
+<span class="codeline" id="line-75"><code></code></span>
+<span class="codeline" id="line-76"><code><span class="comment">// Tests whether a text direction is vertical. Requires</span></code></span>
+<span class="codeline" id="line-77"><code><span class="comment">// that the direction be valid.</span></code></span>
+<span class="codeline" id="line-78"><code><span class="keyword">func</span> (<label for="r4" class="ident">dir</label> <a href="#line-37" class="ident">Direction</a>) <label for="r5" class="ident">isVertical</label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r4" class="ident">dir</label> &amp; ^<a href="#line-37" class="ident">Direction</a>(<span class="lit-number">1</span>) == <span class="lit-number">6</span> }</code></span>
+<span class="codeline" id="line-79"><code></code></span>
+<span class="codeline" id="line-80"><code><span class="comment">// Tests whether a text direction moves backward (from right to left, or from</span></code></span>
+<span class="codeline" id="line-81"><code><span class="comment">// bottom to top). Requires that the direction be valid.</span></code></span>
+<span class="codeline" id="line-82"><code><span class="keyword">func</span> (<label for="r6" class="ident">dir</label> <a href="#line-37" class="ident">Direction</a>) <label for="r7" class="ident">isBackward</label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r6" class="ident">dir</label> &amp; ^<a href="#line-37" class="ident">Direction</a>(<span class="lit-number">2</span>) == <span class="lit-number">5</span> }</code></span>
+<span class="codeline" id="line-83"><code></code></span>
+<span class="codeline" id="line-84"><code><span class="comment">// Tests whether a text direction moves forward (from left to right, or from</span></code></span>
+<span class="codeline" id="line-85"><code><span class="comment">// top to bottom). Requires that the direction be valid.</span></code></span>
+<span class="codeline" id="line-86"><code><span class="keyword">func</span> (<label for="r8" class="ident">dir</label> <a href="#line-37" class="ident">Direction</a>) <label for="r9" class="ident">isForward</label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r8" class="ident">dir</label> &amp; ^<a href="#line-37" class="ident">Direction</a>(<span class="lit-number">2</span>) == <span class="lit-number">4</span> }</code></span>
+<span class="codeline" id="line-87"><code></code></span>
+<span class="codeline" id="line-88"><code><span class="comment">// Reverses a text direction. Requires that the direction</span></code></span>
+<span class="codeline" id="line-89"><code><span class="comment">// is valid.</span></code></span>
+<span class="codeline" id="line-90"><code><span class="keyword">func</span> (<label for="r10" class="ident">dir</label> <a href="#line-37" class="ident">Direction</a>) <label for="r11" class="ident">Reverse</label>() <a href="#line-37" class="ident">Direction</a> {</code></span>
+<span class="codeline" id="line-91"><code>	<span class="keyword">return</span> <label for="r10" class="ident">dir</label> ^ <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-92"><code>}</code></span>
+<span class="codeline" id="line-93"><code></code></span>
+<span class="codeline" id="line-94"><code><span class="comment">// SegmentProperties holds various text properties of a `Buffer`.</span></code></span>
+<span class="codeline" id="line-95"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-SegmentProperties" class="ident">SegmentProperties</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-96"><code>	<span class="comment">// Languages are crucial for selecting which OpenType feature to apply to the</span></code></span>
+<span class="codeline" id="line-97"><code><span class="comment">	// buffer which can result in applying language-specific behaviour. Languages</span></code></span>
+<span class="codeline" id="line-98"><code><span class="comment">	// are orthogonal to the scripts, and though they are related, they are</span></code></span>
+<span class="codeline" id="line-99"><code><span class="comment">	// different concepts and should not be confused with each other.</span></code></span>
+<span class="codeline" id="line-100"><code>	Language <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/language.go.html#line-23" class="ident">Language</a></code></span>
+<span class="codeline" id="line-101"><code></code></span>
+<span class="codeline" id="line-102"><code>	<span class="comment">// Script is crucial for choosing the proper shaping behaviour for scripts that</span></code></span>
+<span class="codeline" id="line-103"><code><span class="comment">	// require it (e.g. Arabic) and the OpenType features defined in the font</span></code></span>
+<span class="codeline" id="line-104"><code><span class="comment">	// to be applied.</span></code></span>
+<span class="codeline" id="line-105"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-106"><code><span class="comment">	// See the package language for predefined values.</span></code></span>
+<span class="codeline" id="line-107"><code>	Script <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i8">language</a>.<a href="../language/scripts.go.html#line-12" class="ident">Script</a></code></span>
+<span class="codeline" id="line-108"><code></code></span>
+<span class="codeline" id="line-109"><code>	<span class="comment">// Direction is the text flow direction of the buffer. No shaping can happen without</span></code></span>
+<span class="codeline" id="line-110"><code><span class="comment">	// setting direction, and it controls the visual direction for the</span></code></span>
+<span class="codeline" id="line-111"><code><span class="comment">	// output glyphs; for RTL direction the glyphs will be reversed. Many layout</span></code></span>
+<span class="codeline" id="line-112"><code><span class="comment">	// features depend on the proper setting of the direction, for example,</span></code></span>
+<span class="codeline" id="line-113"><code><span class="comment">	// reversing RTL text before shaping, then shaping with LTR direction is not</span></code></span>
+<span class="codeline" id="line-114"><code><span class="comment">	// the same as keeping the text in logical order and shaping with RTL</span></code></span>
+<span class="codeline" id="line-115"><code><span class="comment">	// direction.</span></code></span>
+<span class="codeline" id="line-116"><code>	Direction <a href="#line-37" class="ident">Direction</a></code></span>
+<span class="codeline" id="line-117"><code>}</code></span>
+<span class="codeline" id="line-118"><code></code></span>
+<span class="codeline" id="line-119"><code><span class="comment">// ShappingOptions controls some fine tunning of the shaping</span></code></span>
+<span class="codeline" id="line-120"><code><span class="comment">// (see the constants).</span></code></span>
+<span class="codeline" id="line-121"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-ShappingOptions" class="ident">ShappingOptions</a> <a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-122"><code></code></span>
+<span class="codeline" id="line-123"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-124"><code>	<span class="comment">// Flag indicating that special handling of the beginning</span></code></span>
+<span class="codeline" id="line-125"><code><span class="comment">	// of text paragraph can be applied to this buffer. Should usually</span></code></span>
+<span class="codeline" id="line-126"><code><span class="comment">	// be set, unless you are passing to the buffer only part</span></code></span>
+<span class="codeline" id="line-127"><code><span class="comment">	// of the text without the full context.</span></code></span>
+<span class="codeline" id="line-128"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-Bot" class="ident">Bot</a> <a href="#line-121" class="ident">ShappingOptions</a> = <span class="lit-number">1</span> &lt;&lt; <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-129"><code>	<span class="comment">// Flag indicating that special handling of the end of text</span></code></span>
+<span class="codeline" id="line-130"><code><span class="comment">	// paragraph can be applied to this buffer, similar to</span></code></span>
+<span class="codeline" id="line-131"><code><span class="comment">	// `Bot`.</span></code></span>
+<span class="codeline" id="line-132"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-Eot" class="ident">Eot</a></code></span>
+<span class="codeline" id="line-133"><code>	<span class="comment">// Flag indication that character with Default_Ignorable</span></code></span>
+<span class="codeline" id="line-134"><code><span class="comment">	// Unicode property should use the corresponding glyph</span></code></span>
+<span class="codeline" id="line-135"><code><span class="comment">	// from the font, instead of hiding them (done by</span></code></span>
+<span class="codeline" id="line-136"><code><span class="comment">	// replacing them with the space glyph and zeroing the</span></code></span>
+<span class="codeline" id="line-137"><code><span class="comment">	// advance width.)  This flag takes precedence over</span></code></span>
+<span class="codeline" id="line-138"><code><span class="comment">	// `RemoveDefaultIgnorables`.</span></code></span>
+<span class="codeline" id="line-139"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-PreserveDefaultIgnorables" class="ident">PreserveDefaultIgnorables</a></code></span>
+<span class="codeline" id="line-140"><code>	<span class="comment">// Flag indication that character with Default_Ignorable</span></code></span>
+<span class="codeline" id="line-141"><code><span class="comment">	// Unicode property should be removed from glyph string</span></code></span>
+<span class="codeline" id="line-142"><code><span class="comment">	// instead of hiding them (done by replacing them with the</span></code></span>
+<span class="codeline" id="line-143"><code><span class="comment">	// space glyph and zeroing the advance width.)</span></code></span>
+<span class="codeline" id="line-144"><code><span class="comment">	// `PreserveDefaultIgnorables` takes</span></code></span>
+<span class="codeline" id="line-145"><code><span class="comment">	// precedence over this flag.</span></code></span>
+<span class="codeline" id="line-146"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-RemoveDefaultIgnorables" class="ident">RemoveDefaultIgnorables</a></code></span>
+<span class="codeline" id="line-147"><code>	<span class="comment">// Flag indicating that a dotted circle should</span></code></span>
+<span class="codeline" id="line-148"><code><span class="comment">	// not be inserted in the rendering of incorrect</span></code></span>
+<span class="codeline" id="line-149"><code><span class="comment">	// character sequences (such at &lt;0905 093E&gt;).</span></code></span>
+<span class="codeline" id="line-150"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-DoNotinsertDottedCircle" class="ident">DoNotinsertDottedCircle</a></code></span>
+<span class="codeline" id="line-151"><code></code></span>
+<span class="codeline" id="line-152"><code>	<span class="comment">// Flag indicating that the [GlyphUnsafeToConcat]</span></code></span>
+<span class="codeline" id="line-153"><code><span class="comment">	// glyph-flag should be produced by the shaper. By default</span></code></span>
+<span class="codeline" id="line-154"><code><span class="comment">	// it will not be produced since it incurs a cost.</span></code></span>
+<span class="codeline" id="line-155"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-ProduceUnsafeToConcat" class="ident">ProduceUnsafeToConcat</a></code></span>
+<span class="codeline" id="line-156"><code></code></span>
+<span class="codeline" id="line-157"><code>	<span class="comment">// Flag indicating that the [GlyphSafeToInsertTatweel]</span></code></span>
+<span class="codeline" id="line-158"><code><span class="comment">	// glyph-flag should be produced by the shaper. By default</span></code></span>
+<span class="codeline" id="line-159"><code><span class="comment">	// it will not be produced.</span></code></span>
+<span class="codeline" id="line-160"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-ProduceSafeToInsertTatweel" class="ident">ProduceSafeToInsertTatweel</a></code></span>
+<span class="codeline" id="line-161"><code>)</code></span>
+<span class="codeline" id="line-162"><code></code></span>
+<span class="codeline" id="line-163"><code><span class="comment">// ClusterLevel allows selecting more fine-grained Cluster handling.</span></code></span>
+<span class="codeline" id="line-164"><code><span class="comment">// It defaults to `MonotoneGraphemes`.</span></code></span>
+<span class="codeline" id="line-165"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-ClusterLevel" class="ident">ClusterLevel</a> <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a></code></span>
+<span class="codeline" id="line-166"><code></code></span>
+<span class="codeline" id="line-167"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-168"><code>	<span class="comment">// Return cluster values grouped by graphemes into monotone order.</span></code></span>
+<span class="codeline" id="line-169"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-MonotoneGraphemes" class="ident">MonotoneGraphemes</a> <a href="#line-165" class="ident">ClusterLevel</a> = <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-170"><code>	<span class="comment">//  Return cluster values grouped into monotone order.</span></code></span>
+<span class="codeline" id="line-171"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-MonotoneCharacters" class="ident">MonotoneCharacters</a></code></span>
+<span class="codeline" id="line-172"><code>	<span class="comment">// Don't group cluster values.</span></code></span>
+<span class="codeline" id="line-173"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-Characters" class="ident">Characters</a></code></span>
+<span class="codeline" id="line-174"><code>)</code></span>
+<span class="codeline" id="line-175"><code></code></span>
+<span class="codeline" id="line-176"><code><span class="keyword">func</span> (<label for="r12" class="ident">cl</label> <a href="#line-165" class="ident">ClusterLevel</a>) <label for="r13" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.ClusterLevel.html#name-.String" class="ident">String</a></label>() <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-177"><code>	<span class="keyword">switch</span> <label for="r12" class="ident">cl</label> {</code></span>
+<span class="codeline" id="line-178"><code>	<span class="keyword">case</span> <a href="#line-171" class="ident">MonotoneCharacters</a>:</code></span>
+<span class="codeline" id="line-179"><code>		<span class="keyword">return</span> <span class="lit-string">"MonotoneCharacters"</span></code></span>
+<span class="codeline" id="line-180"><code>	<span class="keyword">case</span> <a href="#line-169" class="ident">MonotoneGraphemes</a>:</code></span>
+<span class="codeline" id="line-181"><code>		<span class="keyword">return</span> <span class="lit-string">"MonotoneGraphemes"</span></code></span>
+<span class="codeline" id="line-182"><code>	<span class="keyword">case</span> <a href="#line-173" class="ident">Characters</a>:</code></span>
+<span class="codeline" id="line-183"><code>		<span class="keyword">return</span> <span class="lit-string">"Characters"</span></code></span>
+<span class="codeline" id="line-184"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-185"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/fmt.html" class="ident i1">fmt</a>.<a href="../../../../fmt/print.go.html#line-237" class="ident">Sprintf</a>(<span class="lit-string">"&lt;unknown cluster level: %d&gt;"</span>, <label for="r12" class="ident">cl</label>)</code></span>
+<span class="codeline" id="line-186"><code>	}</code></span>
+<span class="codeline" id="line-187"><code>}</code></span>
+<span class="codeline" id="line-188"><code></code></span>
+<span class="codeline" id="line-189"><code><span class="comment">// Feature holds information about requested</span></code></span>
+<span class="codeline" id="line-190"><code><span class="comment">// feature application. The feature will be applied with the given value to all</span></code></span>
+<span class="codeline" id="line-191"><code><span class="comment">// glyphs which are in clusters between `start` (inclusive) and `end` (exclusive).</span></code></span>
+<span class="codeline" id="line-192"><code><span class="comment">// Setting start to `FeatureGlobalStart` and end to `FeatureGlobalEnd`</span></code></span>
+<span class="codeline" id="line-193"><code><span class="comment">// specifies that the feature always applies to the entire buffer.</span></code></span>
+<span class="codeline" id="line-194"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-Feature" class="ident">Feature</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-195"><code>	Tag <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i6">ot</a>.<a href="../font/opentype/opentype.go.html#line-11" class="ident">Tag</a></code></span>
+<span class="codeline" id="line-196"><code>	<span class="comment">// Value of the feature: 0 disables the feature, non-zero (usually</span></code></span>
+<span class="codeline" id="line-197"><code><span class="comment">	// 1) enables the feature. For features implemented as lookup type 3 (like</span></code></span>
+<span class="codeline" id="line-198"><code><span class="comment">	// 'salt') `Value` is a one-based index into the alternates.</span></code></span>
+<span class="codeline" id="line-199"><code>	Value <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-200"><code>	<span class="comment">// The cluster to Start applying this feature setting (inclusive)</span></code></span>
+<span class="codeline" id="line-201"><code>	Start <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-202"><code>	<span class="comment">// The cluster to End applying this feature setting (exclusive)</span></code></span>
+<span class="codeline" id="line-203"><code>	End <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-204"><code>}</code></span>
+<span class="codeline" id="line-205"><code></code></span>
+<span class="codeline" id="line-206"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-207"><code>	<span class="comment">// Special setting for `Feature.Start` to apply the feature from the start</span></code></span>
+<span class="codeline" id="line-208"><code><span class="comment">	// of the buffer.</span></code></span>
+<span class="codeline" id="line-209"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-FeatureGlobalStart" class="ident">FeatureGlobalStart</a> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-210"><code>	<span class="comment">// Special setting for `Feature.End` to apply the feature from to the end</span></code></span>
+<span class="codeline" id="line-211"><code><span class="comment">	// of the buffer.</span></code></span>
+<span class="codeline" id="line-212"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-FeatureGlobalEnd" class="ident">FeatureGlobalEnd</a> = <a href="#line-494" class="ident">maxInt</a></code></span>
+<span class="codeline" id="line-213"><code>)</code></span>
+<span class="codeline" id="line-214"><code></code></span>
+<span class="codeline" id="line-215"><code><span class="comment">// ParseVariation parse the string representation of a variation</span></code></span>
+<span class="codeline" id="line-216"><code><span class="comment">// of the form tag=value</span></code></span>
+<span class="codeline" id="line-217"><code><span class="keyword">func</span> <label for="r14" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-ParseVariation" class="ident">ParseVariation</a></label>(<label for="r15" class="ident">s</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="../../../../../pkg/github.com/go-text/typesetting/font.html" class="ident i5">font</a>.<a href="../font/variations.go.html#line-509" class="ident">Variation</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-218"><code>	<label for="r16" class="ident">pr</label> := <a href="#line-222" class="ident">parser</a>{<a href="#line-223" class="ident">data</a>: []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r15" class="ident">s</label>)}</code></span>
+<span class="codeline" id="line-219"><code>	<span class="keyword">return</span> <label for="r16" class="ident">pr</label>.<a href="#line-327" class="ident">parseOneVariation</a>()</code></span>
+<span class="codeline" id="line-220"><code>}</code></span>
+<span class="codeline" id="line-221"><code></code></span>
+<span class="codeline" id="line-222"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-parser" class="ident">parser</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-223"><code>	data []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-224"><code>	pos  <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-225"><code>}</code></span>
+<span class="codeline" id="line-226"><code></code></span>
+<span class="codeline" id="line-227"><code><span class="keyword">func</span> <label for="r17" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-isSpace" class="ident">isSpace</a></label>(<label for="r18" class="ident">c</label> <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-228"><code>	<span class="keyword">return</span> <label for="r18" class="ident">c</label> == <span class="lit-number">' '</span> || <label for="r18" class="ident">c</label> == <span class="lit-number">'\f'</span> || <label for="r18" class="ident">c</label> == <span class="lit-number">'\n'</span> || <label for="r18" class="ident">c</label> == <span class="lit-number">'\r'</span> || <label for="r18" class="ident">c</label> == <span class="lit-number">'\t'</span> || <label for="r18" class="ident">c</label> == <span class="lit-number">'\v'</span></code></span>
+<span class="codeline" id="line-229"><code>}</code></span>
+<span class="codeline" id="line-230"><code></code></span>
+<span class="codeline" id="line-231"><code><span class="keyword">func</span> (<label for="r19" class="ident">p</label> *<a href="#line-222" class="ident">parser</a>) <label for="r20" class="ident">skipSpaces</label>() {</code></span>
+<span class="codeline" id="line-232"><code>	<span class="keyword">for</span> <label for="r19" class="ident">p</label>.<a href="#line-224" class="ident">pos</a> &lt; <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r19" class="ident">p</label>.<a href="#line-223" class="ident">data</a>) &amp;&amp; <a href="#line-227" class="ident">isSpace</a>(<label for="r19" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r19" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>]) {</code></span>
+<span class="codeline" id="line-233"><code>		<label for="r19" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>++</code></span>
+<span class="codeline" id="line-234"><code>	}</code></span>
+<span class="codeline" id="line-235"><code>}</code></span>
+<span class="codeline" id="line-236"><code></code></span>
+<span class="codeline" id="line-237"><code><span class="comment">// return true if `c` was found</span></code></span>
+<span class="codeline" id="line-238"><code><span class="keyword">func</span> (<label for="r21" class="ident">p</label> *<a href="#line-222" class="ident">parser</a>) <label for="r22" class="ident">parseChar</label>(<label for="r23" class="ident">c</label> <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-239"><code>	<label for="r21" class="ident">p</label>.<a href="#line-231" class="ident">skipSpaces</a>()</code></span>
+<span class="codeline" id="line-240"><code></code></span>
+<span class="codeline" id="line-241"><code>	<span class="keyword">if</span> <label for="r21" class="ident">p</label>.<a href="#line-224" class="ident">pos</a> == <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r21" class="ident">p</label>.<a href="#line-223" class="ident">data</a>) || <label for="r21" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r21" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>] != <label for="r23" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-242"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-243"><code>	}</code></span>
+<span class="codeline" id="line-244"><code>	<label for="r21" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>++</code></span>
+<span class="codeline" id="line-245"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-246"><code>}</code></span>
+<span class="codeline" id="line-247"><code></code></span>
+<span class="codeline" id="line-248"><code><span class="keyword">func</span> (<label for="r24" class="ident">p</label> *<a href="#line-222" class="ident">parser</a>) <label for="r25" class="ident">parseUint32</label>() (<a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-249"><code>	<label for="r26" class="ident">start</label> := <label for="r24" class="ident">p</label>.<a href="#line-224" class="ident">pos</a></code></span>
+<span class="codeline" id="line-250"><code>	<span class="comment">// go to the next space</span></code></span>
+<span class="codeline" id="line-251"><code>	<span class="keyword">for</span> <label for="r24" class="ident">p</label>.<a href="#line-224" class="ident">pos</a> &lt; <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r24" class="ident">p</label>.<a href="#line-223" class="ident">data</a>) &amp;&amp; <a href="#line-479" class="ident">isAlnum</a>(<label for="r24" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r24" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>]) {</code></span>
+<span class="codeline" id="line-252"><code>		<label for="r24" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>++</code></span>
+<span class="codeline" id="line-253"><code>	}</code></span>
+<span class="codeline" id="line-254"><code>	<label for="r27" class="ident">out</label>, <label for="r28" class="ident">err</label> := <a href="../../../../../pkg/strconv.html" class="ident i4">strconv</a>.<a href="../../../../strconv/atoi.go.html#line-242" class="ident">Atoi</a>(<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r24" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r26" class="ident">start</label>:<label for="r24" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>]))</code></span>
+<span class="codeline" id="line-255"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r27" class="ident">out</label>), <label for="r28" class="ident">err</label> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-256"><code>}</code></span>
+<span class="codeline" id="line-257"><code></code></span>
+<span class="codeline" id="line-258"><code><span class="keyword">func</span> (<label for="r29" class="ident">p</label> *<a href="#line-222" class="ident">parser</a>) <label for="r30" class="ident">parseBool</label>() (<a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-259"><code>	<label for="r29" class="ident">p</label>.<a href="#line-231" class="ident">skipSpaces</a>()</code></span>
+<span class="codeline" id="line-260"><code></code></span>
+<span class="codeline" id="line-261"><code>	<label for="r31" class="ident">startPos</label> := <label for="r29" class="ident">p</label>.<a href="#line-224" class="ident">pos</a></code></span>
+<span class="codeline" id="line-262"><code>	<span class="keyword">for</span> <label for="r29" class="ident">p</label>.<a href="#line-224" class="ident">pos</a> &lt; <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r29" class="ident">p</label>.<a href="#line-223" class="ident">data</a>) &amp;&amp; <a href="#line-478" class="ident">isAlpha</a>(<label for="r29" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r29" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>]) {</code></span>
+<span class="codeline" id="line-263"><code>		<label for="r29" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>++</code></span>
+<span class="codeline" id="line-264"><code>	}</code></span>
+<span class="codeline" id="line-265"><code>	<label for="r32" class="ident">data</label> := <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r29" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r31" class="ident">startPos</label>:<label for="r29" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>])</code></span>
+<span class="codeline" id="line-266"><code></code></span>
+<span class="codeline" id="line-267"><code>	<span class="comment">/* CSS allows on/off as aliases 1/0. */</span></code></span>
+<span class="codeline" id="line-268"><code>	<span class="keyword">if</span> <label for="r32" class="ident">data</label> == <span class="lit-string">"on"</span> {</code></span>
+<span class="codeline" id="line-269"><code>		<span class="keyword">return</span> <span class="lit-number">1</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-270"><code>	} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r32" class="ident">data</label> == <span class="lit-string">"off"</span> {</code></span>
+<span class="codeline" id="line-271"><code>		<span class="keyword">return</span> <span class="lit-number">0</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-272"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-273"><code>		<span class="keyword">return</span> <span class="lit-number">0</span>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-274"><code>	}</code></span>
+<span class="codeline" id="line-275"><code>}</code></span>
+<span class="codeline" id="line-276"><code></code></span>
+<span class="codeline" id="line-277"><code><span class="keyword">func</span> (<label for="r33" class="ident">p</label> *<a href="#line-222" class="ident">parser</a>) <label for="r34" class="ident">parseTag</label>() (<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i6">ot</a>.<a href="../font/opentype/opentype.go.html#line-11" class="ident">Tag</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-278"><code>	<label for="r33" class="ident">p</label>.<a href="#line-231" class="ident">skipSpaces</a>()</code></span>
+<span class="codeline" id="line-279"><code></code></span>
+<span class="codeline" id="line-280"><code>	<span class="keyword">var</span> <label for="r35" class="ident">quote</label> <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-281"><code></code></span>
+<span class="codeline" id="line-282"><code>	<span class="keyword">if</span> <label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a> &lt; <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r33" class="ident">p</label>.<a href="#line-223" class="ident">data</a>) &amp;&amp; (<label for="r33" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>] == <span class="lit-number">'\''</span> || <label for="r33" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>] == <span class="lit-number">'"'</span>) {</code></span>
+<span class="codeline" id="line-283"><code>		<label for="r35" class="ident">quote</label> = <label for="r33" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>]</code></span>
+<span class="codeline" id="line-284"><code>		<label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>++</code></span>
+<span class="codeline" id="line-285"><code>	}</code></span>
+<span class="codeline" id="line-286"><code></code></span>
+<span class="codeline" id="line-287"><code>	<label for="r36" class="ident">start</label> := <label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a></code></span>
+<span class="codeline" id="line-288"><code>	<span class="keyword">for</span> <label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a> &lt; <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r33" class="ident">p</label>.<a href="#line-223" class="ident">data</a>) &amp;&amp; (<a href="#line-479" class="ident">isAlnum</a>(<label for="r33" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>]) || <label for="r33" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>] == <span class="lit-number">'_'</span>) {</code></span>
+<span class="codeline" id="line-289"><code>		<label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>++</code></span>
+<span class="codeline" id="line-290"><code>	}</code></span>
+<span class="codeline" id="line-291"><code></code></span>
+<span class="codeline" id="line-292"><code>	<span class="keyword">if</span> <label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a> == <label for="r36" class="ident">start</label> || <label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a> &gt; <label for="r36" class="ident">start</label>+<span class="lit-number">4</span> {</code></span>
+<span class="codeline" id="line-293"><code>		<span class="keyword">return</span> <span class="lit-number">0</span>, <a href="../../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"invalid tag length"</span>)</code></span>
+<span class="codeline" id="line-294"><code>	}</code></span>
+<span class="codeline" id="line-295"><code></code></span>
+<span class="codeline" id="line-296"><code>	<span class="comment">// padd with space if necessary, since MustNewTag requires 4 bytes</span></code></span>
+<span class="codeline" id="line-297"><code>	<label for="r37" class="ident">tagBytes</label> := [<span class="lit-number">4</span>]<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{<span class="lit-number">' '</span>, <span class="lit-number">' '</span>, <span class="lit-number">' '</span>, <span class="lit-number">' '</span>}</code></span>
+<span class="codeline" id="line-298"><code>	<a href="../../../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r37" class="ident">tagBytes</label>[:], <label for="r33" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r36" class="ident">start</label>:<label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>])</code></span>
+<span class="codeline" id="line-299"><code>	<label for="r38" class="ident">tag</label> := <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i6">ot</a>.<a href="../font/opentype/opentype.go.html#line-20" class="ident">MustNewTag</a>(<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r37" class="ident">tagBytes</label>[:]))</code></span>
+<span class="codeline" id="line-300"><code></code></span>
+<span class="codeline" id="line-301"><code>	<span class="keyword">if</span> <label for="r35" class="ident">quote</label> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-302"><code>		<span class="comment">/* CSS expects exactly four bytes.  And we only allow quotations for</span></code></span>
+<span class="codeline" id="line-303"><code><span class="comment">		 * CSS compatibility.  So, enforce the length. */</span></code></span>
+<span class="codeline" id="line-304"><code>		<span class="keyword">if</span> <label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a> != <label for="r36" class="ident">start</label>+<span class="lit-number">4</span> {</code></span>
+<span class="codeline" id="line-305"><code>			<span class="keyword">return</span> <span class="lit-number">0</span>, <a href="../../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"tag must have 4 bytes"</span>)</code></span>
+<span class="codeline" id="line-306"><code>		}</code></span>
+<span class="codeline" id="line-307"><code>		<span class="keyword">if</span> <label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a> == <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r33" class="ident">p</label>.<a href="#line-223" class="ident">data</a>) || <label for="r33" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>] != <label for="r35" class="ident">quote</label> {</code></span>
+<span class="codeline" id="line-308"><code>			<span class="keyword">return</span> <span class="lit-number">0</span>, <a href="../../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"tag is missing end quote"</span>)</code></span>
+<span class="codeline" id="line-309"><code>		}</code></span>
+<span class="codeline" id="line-310"><code>		<label for="r33" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>++</code></span>
+<span class="codeline" id="line-311"><code>	}</code></span>
+<span class="codeline" id="line-312"><code></code></span>
+<span class="codeline" id="line-313"><code>	<span class="keyword">return</span> <label for="r38" class="ident">tag</label>, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-314"><code>}</code></span>
+<span class="codeline" id="line-315"><code></code></span>
+<span class="codeline" id="line-316"><code><span class="keyword">func</span> (<label for="r39" class="ident">p</label> *<a href="#line-222" class="ident">parser</a>) <label for="r40" class="ident">parseVariationValue</label>() (<a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-317"><code>	<label for="r39" class="ident">p</label>.<a href="#line-238" class="ident">parseChar</a>(<span class="lit-number">'='</span>) <span class="comment">// Optional.</span></code></span>
+<span class="codeline" id="line-318"><code>	<label for="r41" class="ident">start</label> := <label for="r39" class="ident">p</label>.<a href="#line-224" class="ident">pos</a></code></span>
+<span class="codeline" id="line-319"><code>	<span class="comment">// go to the next space</span></code></span>
+<span class="codeline" id="line-320"><code>	<span class="keyword">for</span> <label for="r39" class="ident">p</label>.<a href="#line-224" class="ident">pos</a> &lt; <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r39" class="ident">p</label>.<a href="#line-223" class="ident">data</a>) &amp;&amp; !<a href="#line-227" class="ident">isSpace</a>(<label for="r39" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r39" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>]) {</code></span>
+<span class="codeline" id="line-321"><code>		<label for="r39" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>++</code></span>
+<span class="codeline" id="line-322"><code>	}</code></span>
+<span class="codeline" id="line-323"><code>	<label for="r42" class="ident">v</label>, <label for="r43" class="ident">err</label> := <a href="../../../../../pkg/strconv.html" class="ident i4">strconv</a>.<a href="../../../../strconv/atof.go.html#line-695" class="ident">ParseFloat</a>(<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r39" class="ident">p</label>.<a href="#line-223" class="ident">data</a>[<label for="r41" class="ident">start</label>:<label for="r39" class="ident">p</label>.<a href="#line-224" class="ident">pos</a>]), <span class="lit-number">32</span>)</code></span>
+<span class="codeline" id="line-324"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r42" class="ident">v</label>), <label for="r43" class="ident">err</label></code></span>
+<span class="codeline" id="line-325"><code>}</code></span>
+<span class="codeline" id="line-326"><code></code></span>
+<span class="codeline" id="line-327"><code><span class="keyword">func</span> (<label for="r44" class="ident">p</label> *<a href="#line-222" class="ident">parser</a>) <label for="r45" class="ident">parseOneVariation</label>() (<label for="r46" class="ident">vari</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html" class="ident i5">font</a>.<a href="../font/variations.go.html#line-509" class="ident">Variation</a>, <label for="r47" class="ident">err</label> <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-328"><code>	<label for="r46" class="ident">vari</label>.<a href="../font/variations.go.html#line-510" class="ident">Tag</a>, <label for="r47" class="ident">err</label> = <label for="r44" class="ident">p</label>.<a href="#line-277" class="ident">parseTag</a>()</code></span>
+<span class="codeline" id="line-329"><code>	<span class="keyword">if</span> <label for="r47" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-330"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-331"><code>	}</code></span>
+<span class="codeline" id="line-332"><code>	<label for="r46" class="ident">vari</label>.<a href="../font/variations.go.html#line-511" class="ident">Value</a>, <label for="r47" class="ident">err</label> = <label for="r44" class="ident">p</label>.<a href="#line-316" class="ident">parseVariationValue</a>()</code></span>
+<span class="codeline" id="line-333"><code>	<span class="keyword">if</span> <label for="r47" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-334"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-335"><code>	}</code></span>
+<span class="codeline" id="line-336"><code>	<label for="r44" class="ident">p</label>.<a href="#line-231" class="ident">skipSpaces</a>()</code></span>
+<span class="codeline" id="line-337"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-338"><code>}</code></span>
+<span class="codeline" id="line-339"><code></code></span>
+<span class="codeline" id="line-340"><code><span class="keyword">func</span> (<label for="r48" class="ident">p</label> *<a href="#line-222" class="ident">parser</a>) <label for="r49" class="ident">parseFeatureIndices</label>() (<label for="r50" class="ident">start</label>, <label for="r51" class="ident">end</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r52" class="ident">err</label> <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-341"><code>	<label for="r48" class="ident">p</label>.<a href="#line-231" class="ident">skipSpaces</a>()</code></span>
+<span class="codeline" id="line-342"><code></code></span>
+<span class="codeline" id="line-343"><code>	<label for="r50" class="ident">start</label>, <label for="r51" class="ident">end</label> = <a href="#line-209" class="ident">FeatureGlobalStart</a>, <a href="#line-212" class="ident">FeatureGlobalEnd</a></code></span>
+<span class="codeline" id="line-344"><code></code></span>
+<span class="codeline" id="line-345"><code>	<span class="keyword">if</span> !<label for="r48" class="ident">p</label>.<a href="#line-238" class="ident">parseChar</a>(<span class="lit-number">'['</span>) {</code></span>
+<span class="codeline" id="line-346"><code>		<span class="keyword">return</span> <label for="r50" class="ident">start</label>, <label for="r51" class="ident">end</label>, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-347"><code>	}</code></span>
+<span class="codeline" id="line-348"><code></code></span>
+<span class="codeline" id="line-349"><code>	<label for="r53" class="ident">startU</label>, <label for="r54" class="ident">hasStart</label> := <label for="r48" class="ident">p</label>.<a href="#line-248" class="ident">parseUint32</a>()</code></span>
+<span class="codeline" id="line-350"><code>	<label for="r50" class="ident">start</label> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r53" class="ident">startU</label>)</code></span>
+<span class="codeline" id="line-351"><code></code></span>
+<span class="codeline" id="line-352"><code>	<span class="keyword">if</span> <label for="r48" class="ident">p</label>.<a href="#line-238" class="ident">parseChar</a>(<span class="lit-number">':'</span>) || <label for="r48" class="ident">p</label>.<a href="#line-238" class="ident">parseChar</a>(<span class="lit-number">';'</span>) {</code></span>
+<span class="codeline" id="line-353"><code>		<span class="keyword">if</span> <label for="r55" class="ident">endU</label>, <label for="r56" class="ident">ok</label> := <label for="r48" class="ident">p</label>.<a href="#line-248" class="ident">parseUint32</a>(); <label for="r56" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-354"><code>			<label for="r51" class="ident">end</label> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r55" class="ident">endU</label>)</code></span>
+<span class="codeline" id="line-355"><code>		}</code></span>
+<span class="codeline" id="line-356"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-357"><code>		<span class="keyword">if</span> <label for="r54" class="ident">hasStart</label> {</code></span>
+<span class="codeline" id="line-358"><code>			<label for="r51" class="ident">end</label> = <label for="r50" class="ident">start</label> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-359"><code>		}</code></span>
+<span class="codeline" id="line-360"><code>	}</code></span>
+<span class="codeline" id="line-361"><code></code></span>
+<span class="codeline" id="line-362"><code>	<span class="keyword">if</span> !<label for="r48" class="ident">p</label>.<a href="#line-238" class="ident">parseChar</a>(<span class="lit-number">']'</span>) {</code></span>
+<span class="codeline" id="line-363"><code>		<span class="keyword">return</span> <span class="lit-number">0</span>, <span class="lit-number">0</span>, <a href="../../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"expecting closing bracked after feature indices"</span>)</code></span>
+<span class="codeline" id="line-364"><code>	}</code></span>
+<span class="codeline" id="line-365"><code></code></span>
+<span class="codeline" id="line-366"><code>	<span class="keyword">return</span> <label for="r50" class="ident">start</label>, <label for="r51" class="ident">end</label>, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-367"><code>}</code></span>
+<span class="codeline" id="line-368"><code></code></span>
+<span class="codeline" id="line-369"><code><span class="comment">// return true if a value was specified</span></code></span>
+<span class="codeline" id="line-370"><code><span class="keyword">func</span> (<label for="r57" class="ident">p</label> *<a href="#line-222" class="ident">parser</a>) <label for="r58" class="ident">parseFeatureValuePostfix</label>() (<a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-371"><code>	<span class="comment">/* CSS doesn't use equal-sign between tag and value.</span></code></span>
+<span class="codeline" id="line-372"><code><span class="comment">	 * If there was an equal-sign, then there *must* be a value.</span></code></span>
+<span class="codeline" id="line-373"><code><span class="comment">	 * A value without an equal-sign is ok, but not required. */</span></code></span>
+<span class="codeline" id="line-374"><code>	<label for="r57" class="ident">p</label>.<a href="#line-238" class="ident">parseChar</a>(<span class="lit-number">'='</span>)</code></span>
+<span class="codeline" id="line-375"><code></code></span>
+<span class="codeline" id="line-376"><code>	<label for="r59" class="ident">val</label>, <label for="r60" class="ident">hadValue</label> := <label for="r57" class="ident">p</label>.<a href="#line-248" class="ident">parseUint32</a>()</code></span>
+<span class="codeline" id="line-377"><code>	<span class="keyword">if</span> !<label for="r60" class="ident">hadValue</label> {</code></span>
+<span class="codeline" id="line-378"><code>		<label for="r59" class="ident">val</label>, <label for="r60" class="ident">hadValue</label> = <label for="r57" class="ident">p</label>.<a href="#line-258" class="ident">parseBool</a>()</code></span>
+<span class="codeline" id="line-379"><code>	}</code></span>
+<span class="codeline" id="line-380"><code>	<span class="keyword">return</span> <label for="r59" class="ident">val</label>, <label for="r60" class="ident">hadValue</label></code></span>
+<span class="codeline" id="line-381"><code>}</code></span>
+<span class="codeline" id="line-382"><code></code></span>
+<span class="codeline" id="line-383"><code><span class="keyword">func</span> (<label for="r61" class="ident">p</label> *<a href="#line-222" class="ident">parser</a>) <label for="r62" class="ident">parseFeatureValuePrefix</label>() <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a> {</code></span>
+<span class="codeline" id="line-384"><code>	<span class="keyword">if</span> <label for="r61" class="ident">p</label>.<a href="#line-238" class="ident">parseChar</a>(<span class="lit-number">'-'</span>) {</code></span>
+<span class="codeline" id="line-385"><code>		<span class="keyword">return</span> <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-386"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-387"><code>		_ = <label for="r61" class="ident">p</label>.<a href="#line-238" class="ident">parseChar</a>(<span class="lit-number">'+'</span>)</code></span>
+<span class="codeline" id="line-388"><code>		<span class="keyword">return</span> <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-389"><code>	}</code></span>
+<span class="codeline" id="line-390"><code>}</code></span>
+<span class="codeline" id="line-391"><code></code></span>
+<span class="codeline" id="line-392"><code><span class="keyword">func</span> (<label for="r63" class="ident">p</label> *<a href="#line-222" class="ident">parser</a>) <label for="r64" class="ident">parseOneFeature</label>() (<label for="r65" class="ident">feature</label> <a href="#line-194" class="ident">Feature</a>, <label for="r66" class="ident">err</label> <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-393"><code>	<label for="r65" class="ident">feature</label>.<a href="#line-199" class="ident">Value</a> = <label for="r63" class="ident">p</label>.<a href="#line-383" class="ident">parseFeatureValuePrefix</a>()</code></span>
+<span class="codeline" id="line-394"><code>	<label for="r65" class="ident">feature</label>.<a href="#line-195" class="ident">Tag</a>, <label for="r66" class="ident">err</label> = <label for="r63" class="ident">p</label>.<a href="#line-277" class="ident">parseTag</a>()</code></span>
+<span class="codeline" id="line-395"><code>	<span class="keyword">if</span> <label for="r66" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-396"><code>		<span class="keyword">return</span> <label for="r65" class="ident">feature</label>, <label for="r66" class="ident">err</label></code></span>
+<span class="codeline" id="line-397"><code>	}</code></span>
+<span class="codeline" id="line-398"><code>	<label for="r65" class="ident">feature</label>.<a href="#line-201" class="ident">Start</a>, <label for="r65" class="ident">feature</label>.<a href="#line-203" class="ident">End</a>, <label for="r66" class="ident">err</label> = <label for="r63" class="ident">p</label>.<a href="#line-340" class="ident">parseFeatureIndices</a>()</code></span>
+<span class="codeline" id="line-399"><code>	<span class="keyword">if</span> <label for="r66" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-400"><code>		<span class="keyword">return</span> <label for="r65" class="ident">feature</label>, <label for="r66" class="ident">err</label></code></span>
+<span class="codeline" id="line-401"><code>	}</code></span>
+<span class="codeline" id="line-402"><code>	<span class="keyword">if</span> <label for="r67" class="ident">val</label>, <label for="r68" class="ident">ok</label> := <label for="r63" class="ident">p</label>.<a href="#line-370" class="ident">parseFeatureValuePostfix</a>(); <label for="r68" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-403"><code>		<label for="r65" class="ident">feature</label>.<a href="#line-199" class="ident">Value</a> = <label for="r67" class="ident">val</label></code></span>
+<span class="codeline" id="line-404"><code>	}</code></span>
+<span class="codeline" id="line-405"><code>	<label for="r63" class="ident">p</label>.<a href="#line-231" class="ident">skipSpaces</a>()</code></span>
+<span class="codeline" id="line-406"><code>	<span class="keyword">return</span> <label for="r65" class="ident">feature</label>, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-407"><code>}</code></span>
+<span class="codeline" id="line-408"><code></code></span>
+<span class="codeline" id="line-409"><code><span class="comment">// ParseFeature parses one feature string (usually coming from a comma-separated list of font features).</span></code></span>
+<span class="codeline" id="line-410"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-411"><code><span class="comment">//	Features can be enabled or disabled, either globally or limited to</span></code></span>
+<span class="codeline" id="line-412"><code><span class="comment">//	specific character ranges.  The format for specifying feature settings</span></code></span>
+<span class="codeline" id="line-413"><code><span class="comment">//	follows.  All valid CSS font-feature-settings values other than 'normal'</span></code></span>
+<span class="codeline" id="line-414"><code><span class="comment">//	and the global values are also accepted, though not documented below.</span></code></span>
+<span class="codeline" id="line-415"><code><span class="comment">//	CSS string escapes are not supported.</span></code></span>
+<span class="codeline" id="line-416"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-417"><code><span class="comment">//	The range indices refer to the positions between Unicode characters,</span></code></span>
+<span class="codeline" id="line-418"><code><span class="comment">//	unless the --utf8-clusters is provided, in which case range indices</span></code></span>
+<span class="codeline" id="line-419"><code><span class="comment">//	refer to UTF-8 byte indices. The position before the first character</span></code></span>
+<span class="codeline" id="line-420"><code><span class="comment">//	is always 0.</span></code></span>
+<span class="codeline" id="line-421"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-422"><code><span class="comment">//	The format is Python-esque.  Here is how it all works:</span></code></span>
+<span class="codeline" id="line-423"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-424"><code><span class="comment">//	  Syntax:       Value:    Start:    End:</span></code></span>
+<span class="codeline" id="line-425"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-426"><code><span class="comment">//	Setting value:</span></code></span>
+<span class="codeline" id="line-427"><code><span class="comment">//	  "kern"        1         0         ∞         // Turn feature on</span></code></span>
+<span class="codeline" id="line-428"><code><span class="comment">//	  "+kern"       1         0         ∞         // Turn feature on</span></code></span>
+<span class="codeline" id="line-429"><code><span class="comment">//	  "-kern"       0         0         ∞         // Turn feature off</span></code></span>
+<span class="codeline" id="line-430"><code><span class="comment">//	  "kern=0"      0         0         ∞         // Turn feature off</span></code></span>
+<span class="codeline" id="line-431"><code><span class="comment">//	  "kern=1"      1         0         ∞         // Turn feature on</span></code></span>
+<span class="codeline" id="line-432"><code><span class="comment">//	  "aalt=2"      2         0         ∞         // Choose 2nd alternate</span></code></span>
+<span class="codeline" id="line-433"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-434"><code><span class="comment">//	Setting index:</span></code></span>
+<span class="codeline" id="line-435"><code><span class="comment">//	  "kern[]"      1         0         ∞         // Turn feature on</span></code></span>
+<span class="codeline" id="line-436"><code><span class="comment">//	  "kern[:]"     1         0         ∞         // Turn feature on</span></code></span>
+<span class="codeline" id="line-437"><code><span class="comment">//	  "kern[5:]"    1         5         ∞         // Turn feature on, partial</span></code></span>
+<span class="codeline" id="line-438"><code><span class="comment">//	  "kern[:5]"    1         0         5         // Turn feature on, partial</span></code></span>
+<span class="codeline" id="line-439"><code><span class="comment">//	  "kern[3:5]"   1         3         5         // Turn feature on, range</span></code></span>
+<span class="codeline" id="line-440"><code><span class="comment">//	  "kern[3]"     1         3         3+1       // Turn feature on, single char</span></code></span>
+<span class="codeline" id="line-441"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-442"><code><span class="comment">//	Mixing it all:</span></code></span>
+<span class="codeline" id="line-443"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-444"><code><span class="comment">//	  "aalt[3:5]=2" 2         3         5         // Turn 2nd alternate on for range</span></code></span>
+<span class="codeline" id="line-445"><code><span class="keyword">func</span> <label for="r69" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-ParseFeature" class="ident">ParseFeature</a></label>(<label for="r70" class="ident">feature</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="#line-194" class="ident">Feature</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-446"><code>	<label for="r71" class="ident">pr</label> := <a href="#line-222" class="ident">parser</a>{<a href="#line-223" class="ident">data</a>: []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r70" class="ident">feature</label>)}</code></span>
+<span class="codeline" id="line-447"><code>	<span class="keyword">return</span> <label for="r71" class="ident">pr</label>.<a href="#line-392" class="ident">parseOneFeature</a>()</code></span>
+<span class="codeline" id="line-448"><code>}</code></span>
+<span class="codeline" id="line-449"><code></code></span>
+<span class="codeline" id="line-450"><code><span class="keyword">func</span> <label for="r72" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-min" class="ident">min</a></label>(<label for="r73" class="ident">a</label>, <label for="r74" class="ident">b</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-451"><code>	<span class="keyword">if</span> <label for="r73" class="ident">a</label> &lt; <label for="r74" class="ident">b</label> {</code></span>
+<span class="codeline" id="line-452"><code>		<span class="keyword">return</span> <label for="r73" class="ident">a</label></code></span>
+<span class="codeline" id="line-453"><code>	}</code></span>
+<span class="codeline" id="line-454"><code>	<span class="keyword">return</span> <label for="r74" class="ident">b</label></code></span>
+<span class="codeline" id="line-455"><code>}</code></span>
+<span class="codeline" id="line-456"><code></code></span>
+<span class="codeline" id="line-457"><code><span class="keyword">func</span> <label for="r75" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-min8" class="ident">min8</a></label>(<label for="r76" class="ident">a</label>, <label for="r77" class="ident">b</label> <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>) <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a> {</code></span>
+<span class="codeline" id="line-458"><code>	<span class="keyword">if</span> <label for="r76" class="ident">a</label> &lt; <label for="r77" class="ident">b</label> {</code></span>
+<span class="codeline" id="line-459"><code>		<span class="keyword">return</span> <label for="r76" class="ident">a</label></code></span>
+<span class="codeline" id="line-460"><code>	}</code></span>
+<span class="codeline" id="line-461"><code>	<span class="keyword">return</span> <label for="r77" class="ident">b</label></code></span>
+<span class="codeline" id="line-462"><code>}</code></span>
+<span class="codeline" id="line-463"><code></code></span>
+<span class="codeline" id="line-464"><code><span class="keyword">func</span> <label for="r78" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-max" class="ident">max</a></label>(<label for="r79" class="ident">a</label>, <label for="r80" class="ident">b</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-465"><code>	<span class="keyword">if</span> <label for="r79" class="ident">a</label> &gt; <label for="r80" class="ident">b</label> {</code></span>
+<span class="codeline" id="line-466"><code>		<span class="keyword">return</span> <label for="r79" class="ident">a</label></code></span>
+<span class="codeline" id="line-467"><code>	}</code></span>
+<span class="codeline" id="line-468"><code>	<span class="keyword">return</span> <label for="r80" class="ident">b</label></code></span>
+<span class="codeline" id="line-469"><code>}</code></span>
+<span class="codeline" id="line-470"><code></code></span>
+<span class="codeline" id="line-471"><code><span class="keyword">func</span> <label for="r81" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-max32" class="ident">max32</a></label>(<label for="r82" class="ident">a</label>, <label for="r83" class="ident">b</label> <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a> {</code></span>
+<span class="codeline" id="line-472"><code>	<span class="keyword">if</span> <label for="r82" class="ident">a</label> &gt; <label for="r83" class="ident">b</label> {</code></span>
+<span class="codeline" id="line-473"><code>		<span class="keyword">return</span> <label for="r82" class="ident">a</label></code></span>
+<span class="codeline" id="line-474"><code>	}</code></span>
+<span class="codeline" id="line-475"><code>	<span class="keyword">return</span> <label for="r83" class="ident">b</label></code></span>
+<span class="codeline" id="line-476"><code>}</code></span>
+<span class="codeline" id="line-477"><code></code></span>
+<span class="codeline" id="line-478"><code><span class="keyword">func</span> <label for="r84" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-isAlpha" class="ident">isAlpha</a></label>(<label for="r85" class="ident">c</label> <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> (<label for="r85" class="ident">c</label> &gt;= <span class="lit-number">'a'</span> &amp;&amp; <label for="r85" class="ident">c</label> &lt;= <span class="lit-number">'z'</span>) || (<label for="r85" class="ident">c</label> &gt;= <span class="lit-number">'A'</span> &amp;&amp; <label for="r85" class="ident">c</label> &lt;= <span class="lit-number">'Z'</span>) }</code></span>
+<span class="codeline" id="line-479"><code><span class="keyword">func</span> <label for="r86" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-isAlnum" class="ident">isAlnum</a></label>(<label for="r87" class="ident">c</label> <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <a href="#line-478" class="ident">isAlpha</a>(<label for="r87" class="ident">c</label>) || (<label for="r87" class="ident">c</label> &gt;= <span class="lit-number">'0'</span> &amp;&amp; <label for="r87" class="ident">c</label> &lt;= <span class="lit-number">'9'</span>) }</code></span>
+<span class="codeline" id="line-480"><code><span class="keyword">func</span> <label for="r88" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-toUpper" class="ident">toUpper</a></label>(<label for="r89" class="ident">c</label> <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-481"><code>	<span class="keyword">if</span> <label for="r89" class="ident">c</label> &gt;= <span class="lit-number">'a'</span> &amp;&amp; <label for="r89" class="ident">c</label> &lt;= <span class="lit-number">'z'</span> {</code></span>
+<span class="codeline" id="line-482"><code>		<span class="keyword">return</span> <label for="r89" class="ident">c</label> - <span class="lit-number">'a'</span> + <span class="lit-number">'A'</span></code></span>
+<span class="codeline" id="line-483"><code>	}</code></span>
+<span class="codeline" id="line-484"><code>	<span class="keyword">return</span> <label for="r89" class="ident">c</label></code></span>
+<span class="codeline" id="line-485"><code>}</code></span>
+<span class="codeline" id="line-486"><code></code></span>
+<span class="codeline" id="line-487"><code><span class="keyword">func</span> <label for="r90" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-toLower" class="ident">toLower</a></label>(<label for="r91" class="ident">c</label> <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-488"><code>	<span class="keyword">if</span> <label for="r91" class="ident">c</label> &gt;= <span class="lit-number">'A'</span> &amp;&amp; <label for="r91" class="ident">c</label> &lt;= <span class="lit-number">'Z'</span> {</code></span>
+<span class="codeline" id="line-489"><code>		<span class="keyword">return</span> <label for="r91" class="ident">c</label> - <span class="lit-number">'A'</span> + <span class="lit-number">'a'</span></code></span>
+<span class="codeline" id="line-490"><code>	}</code></span>
+<span class="codeline" id="line-491"><code>	<span class="keyword">return</span> <label for="r91" class="ident">c</label></code></span>
+<span class="codeline" id="line-492"><code>}</code></span>
+<span class="codeline" id="line-493"><code></code></span>
+<span class="codeline" id="line-494"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-maxInt" class="ident">maxInt</a> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(^<a href="../../../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<span class="lit-number">0</span>) &gt;&gt; <span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-495"><code></code></span>
+<span class="codeline" id="line-496"><code><span class="comment">// bitStorage returns the number of bits needed to store the number.</span></code></span>
+<span class="codeline" id="line-497"><code><span class="keyword">func</span> <label for="r92" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-bitStorage" class="ident">bitStorage</a></label>(<label for="r93" class="ident">v</label> <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a> { <span class="keyword">return</span> <span class="lit-number">32</span> - <a href="../../../../../pkg/math/bits.html" class="ident i3">bits</a>.<a href="../../../../math/bits/bits.go.html#line-34" class="ident">LeadingZeros32</a>(<label for="r93" class="ident">v</label>) }</code></span>
+<span class="codeline" id="line-498"><code></code></span>
+<span class="codeline" id="line-499"><code><span class="keyword">func</span> <label for="r94" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-roundf" class="ident">roundf</a></label>(<label for="r95" class="ident">f</label> <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="glyph.go.html#line-11" class="ident">Position</a> {</code></span>
+<span class="codeline" id="line-500"><code>	<span class="keyword">return</span> <a href="glyph.go.html#line-11" class="ident">Position</a>(<a href="../../../../../pkg/math.html" class="ident i2">math</a>.<a href="../../../../math/floor.go.html#line-83" class="ident">Round</a>(<a href="../../../../../pkg/builtin.html#name-float64" class="ident">float64</a>(<label for="r95" class="ident">f</label>)))</code></span>
+<span class="codeline" id="line-501"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

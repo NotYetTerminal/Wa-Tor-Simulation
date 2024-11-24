@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: introspectable.go in package github.com/godbus/dbus/v5/introspect</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	introspectable.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html">github.com/godbus/dbus/v5/introspect</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> introspect</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"encoding/xml"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"reflect"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"strings"</span></label></code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i3"><span class="lit-string i3">"github.com/godbus/dbus/v5"</span></label></code></span>
+<span class="codeline" id="line-9"><code>)</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// Introspectable implements org.freedesktop.Introspectable.</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// You can create it by converting the XML-formatted introspection data from a</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">// string to an Introspectable or call NewIntrospectable with a Node. Then,</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// export it as org.freedesktop.Introspectable on you object.</span></code></span>
+<span class="codeline" id="line-16"><code><span class="keyword">type</span> <a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html#name-Introspectable" class="ident">Introspectable</a> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">// NewIntrospectable returns an Introspectable that returns the introspection</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// data that corresponds to the given Node. If n.Interfaces doesn't contain the</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">// data for org.freedesktop.DBus.Introspectable, it is added automatically.</span></code></span>
+<span class="codeline" id="line-21"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html#name-NewIntrospectable" class="ident">NewIntrospectable</a></label>(<label for="r1" class="ident">n</label> *<a href="introspect.go.html#line-37" class="ident">Node</a>) <a href="#line-16" class="ident">Introspectable</a> {</code></span>
+<span class="codeline" id="line-22"><code>	<label for="r2" class="ident">found</label> := <a href="../../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-23"><code>	<span class="keyword">for</span> <label for="r3" class="ident">_</label>, <label for="r4" class="ident">v</label> := <span class="keyword">range</span> <label for="r1" class="ident">n</label>.<a href="introspect.go.html#line-40" class="ident">Interfaces</a> {</code></span>
+<span class="codeline" id="line-24"><code>		<span class="keyword">if</span> <label for="r4" class="ident">v</label>.<a href="introspect.go.html#line-46" class="ident">Name</a> == <span class="lit-string">"org.freedesktop.DBus.Introspectable"</span> {</code></span>
+<span class="codeline" id="line-25"><code>			<label for="r2" class="ident">found</label> = <a href="../../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-26"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-27"><code>		}</code></span>
+<span class="codeline" id="line-28"><code>	}</code></span>
+<span class="codeline" id="line-29"><code>	<span class="keyword">if</span> !<label for="r2" class="ident">found</label> {</code></span>
+<span class="codeline" id="line-30"><code>		<label for="r1" class="ident">n</label>.<a href="introspect.go.html#line-40" class="ident">Interfaces</a> = <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r1" class="ident">n</label>.<a href="introspect.go.html#line-40" class="ident">Interfaces</a>, <a href="introspect.go.html#line-8" class="ident">IntrospectData</a>)</code></span>
+<span class="codeline" id="line-31"><code>	}</code></span>
+<span class="codeline" id="line-32"><code>	<label for="r5" class="ident">b</label>, <label for="r6" class="ident">err</label> := <a href="../../../../../../pkg/encoding/xml.html" class="ident i0">xml</a>.<a href="../../../../../encoding/xml/marshal.go.html#line-80" class="ident">Marshal</a>(<label for="r1" class="ident">n</label>)</code></span>
+<span class="codeline" id="line-33"><code>	<span class="keyword">if</span> <label for="r6" class="ident">err</label> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-34"><code>		<a href="../../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<label for="r6" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-35"><code>	}</code></span>
+<span class="codeline" id="line-36"><code>	<span class="keyword">return</span> <a href="#line-16" class="ident">Introspectable</a>(<a href="../../../../../../pkg/strings.html" class="ident i2">strings</a>.<a href="../../../../../strings/strings.go.html#line-1039" class="ident">TrimSpace</a>(<a href="introspect.go.html#line-21" class="ident">IntrospectDeclarationString</a>) + <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r5" class="ident">b</label>))</code></span>
+<span class="codeline" id="line-37"><code>}</code></span>
+<span class="codeline" id="line-38"><code></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">// Introspect implements org.freedesktop.Introspectable.Introspect.</span></code></span>
+<span class="codeline" id="line-40"><code><span class="keyword">func</span> (<label for="r7" class="ident">i</label> <a href="#line-16" class="ident">Introspectable</a>) <label for="r8" class="ident">Introspect</label>() (<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>, *<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../conn.go.html#line-695" class="ident">Error</a>) {</code></span>
+<span class="codeline" id="line-41"><code>	<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r7" class="ident">i</label>), <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-42"><code>}</code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code><span class="comment">// Methods returns the description of the methods of v. This can be used to</span></code></span>
+<span class="codeline" id="line-45"><code><span class="comment">// create a Node which can be passed to NewIntrospectable.</span></code></span>
+<span class="codeline" id="line-46"><code><span class="keyword">func</span> <label for="r9" class="ident"><a href="../../../../../../pkg/github.com/godbus/dbus/v5/introspect.html#name-Methods" class="ident">Methods</a></label>(<label for="r10" class="ident">v</label> <span class="keyword">interface</span>{}) []<a href="introspect.go.html#line-54" class="ident">Method</a> {</code></span>
+<span class="codeline" id="line-47"><code>	<label for="r11" class="ident">t</label> := <a href="../../../../../../pkg/reflect.html" class="ident i1">reflect</a>.<a href="../../../../../reflect/type.go.html#line-1296" class="ident">TypeOf</a>(<label for="r10" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-48"><code>	<label for="r12" class="ident">ms</label> := <a href="../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="introspect.go.html#line-54" class="ident">Method</a>, <span class="lit-number">0</span>, <label for="r11" class="ident">t</label>.<a href="../../../../../reflect/type.go.html#line-78" class="ident">NumMethod</a>())</code></span>
+<span class="codeline" id="line-49"><code>	<span class="keyword">for</span> <label for="r13" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r13" class="ident">i</label> &lt; <label for="r11" class="ident">t</label>.<a href="../../../../../reflect/type.go.html#line-78" class="ident">NumMethod</a>(); <label for="r13" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-50"><code>		<span class="keyword">if</span> <label for="r11" class="ident">t</label>.<a href="../../../../../reflect/type.go.html#line-61" class="ident">Method</a>(<label for="r13" class="ident">i</label>).<a href="../../../../../reflect/type.go.html#line-451" class="ident">PkgPath</a> != <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-51"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-52"><code>		}</code></span>
+<span class="codeline" id="line-53"><code>		<label for="r14" class="ident">mt</label> := <label for="r11" class="ident">t</label>.<a href="../../../../../reflect/type.go.html#line-61" class="ident">Method</a>(<label for="r13" class="ident">i</label>).<a href="../../../../../reflect/type.go.html#line-453" class="ident">Type</a></code></span>
+<span class="codeline" id="line-54"><code>		<span class="keyword">if</span> <label for="r14" class="ident">mt</label>.<a href="../../../../../reflect/type.go.html#line-221" class="ident">NumOut</a>() == <span class="lit-number">0</span> ||</code></span>
+<span class="codeline" id="line-55"><code>			<label for="r14" class="ident">mt</label>.<a href="../../../../../reflect/type.go.html#line-226" class="ident">Out</a>(<label for="r14" class="ident">mt</label>.<a href="../../../../../reflect/type.go.html#line-221" class="ident">NumOut</a>()-<span class="lit-number">1</span>) != <a href="../../../../../../pkg/reflect.html" class="ident i1">reflect</a>.<a href="../../../../../reflect/type.go.html#line-1296" class="ident">TypeOf</a>(&amp;<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../conn.go.html#line-695" class="ident">Error</a>{}) {</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-58"><code>		}</code></span>
+<span class="codeline" id="line-59"><code>		<span class="keyword">var</span> <label for="r15" class="ident">m</label> <a href="introspect.go.html#line-54" class="ident">Method</a></code></span>
+<span class="codeline" id="line-60"><code>		<label for="r15" class="ident">m</label>.<a href="introspect.go.html#line-55" class="ident">Name</a> = <label for="r11" class="ident">t</label>.<a href="../../../../../reflect/type.go.html#line-61" class="ident">Method</a>(<label for="r13" class="ident">i</label>).<a href="../../../../../reflect/type.go.html#line-444" class="ident">Name</a></code></span>
+<span class="codeline" id="line-61"><code>		<label for="r15" class="ident">m</label>.<a href="introspect.go.html#line-56" class="ident">Args</a> = <a href="../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="introspect.go.html#line-76" class="ident">Arg</a>, <span class="lit-number">0</span>, <label for="r14" class="ident">mt</label>.<a href="../../../../../reflect/type.go.html#line-217" class="ident">NumIn</a>()+<label for="r14" class="ident">mt</label>.<a href="../../../../../reflect/type.go.html#line-221" class="ident">NumOut</a>()-<span class="lit-number">2</span>)</code></span>
+<span class="codeline" id="line-62"><code>		<span class="keyword">for</span> <label for="r16" class="ident">j</label> := <span class="lit-number">1</span>; <label for="r16" class="ident">j</label> &lt; <label for="r14" class="ident">mt</label>.<a href="../../../../../reflect/type.go.html#line-217" class="ident">NumIn</a>(); <label for="r16" class="ident">j</label>++ {</code></span>
+<span class="codeline" id="line-63"><code>			<span class="keyword">if</span> <label for="r14" class="ident">mt</label>.<a href="../../../../../reflect/type.go.html#line-201" class="ident">In</a>(<label for="r16" class="ident">j</label>) != <a href="../../../../../../pkg/reflect.html" class="ident i1">reflect</a>.<a href="../../../../../reflect/type.go.html#line-1296" class="ident">TypeOf</a>((*<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../export.go.html#line-60" class="ident">Sender</a>)(<a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)).<a href="../../../../../reflect/type.go.html#line-160" class="ident">Elem</a>() &amp;&amp;</code></span>
+<span class="codeline" id="line-64"><code>				<label for="r14" class="ident">mt</label>.<a href="../../../../../reflect/type.go.html#line-201" class="ident">In</a>(<label for="r16" class="ident">j</label>) != <a href="../../../../../../pkg/reflect.html" class="ident i1">reflect</a>.<a href="../../../../../reflect/type.go.html#line-1296" class="ident">TypeOf</a>((*<a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../message.go.html#line-107" class="ident">Message</a>)(<a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)).<a href="../../../../../reflect/type.go.html#line-160" class="ident">Elem</a>() {</code></span>
+<span class="codeline" id="line-65"><code>				<label for="r17" class="ident">arg</label> := <a href="introspect.go.html#line-76" class="ident">Arg</a>{<span class="lit-string">""</span>, <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../sig.go.html#line-44" class="ident">SignatureOfType</a>(<label for="r14" class="ident">mt</label>.<a href="../../../../../reflect/type.go.html#line-201" class="ident">In</a>(<label for="r16" class="ident">j</label>)).<a href="../sig.go.html#line-163" class="ident">String</a>(), <span class="lit-string">"in"</span>}</code></span>
+<span class="codeline" id="line-66"><code>				<label for="r15" class="ident">m</label>.<a href="introspect.go.html#line-56" class="ident">Args</a> = <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r15" class="ident">m</label>.<a href="introspect.go.html#line-56" class="ident">Args</a>, <label for="r17" class="ident">arg</label>)</code></span>
+<span class="codeline" id="line-67"><code>			}</code></span>
+<span class="codeline" id="line-68"><code>		}</code></span>
+<span class="codeline" id="line-69"><code>		<span class="keyword">for</span> <label for="r18" class="ident">j</label> := <span class="lit-number">0</span>; <label for="r18" class="ident">j</label> &lt; <label for="r14" class="ident">mt</label>.<a href="../../../../../reflect/type.go.html#line-221" class="ident">NumOut</a>()-<span class="lit-number">1</span>; <label for="r18" class="ident">j</label>++ {</code></span>
+<span class="codeline" id="line-70"><code>			<label for="r19" class="ident">arg</label> := <a href="introspect.go.html#line-76" class="ident">Arg</a>{<span class="lit-string">""</span>, <a href="../../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i3">dbus</a>.<a href="../sig.go.html#line-44" class="ident">SignatureOfType</a>(<label for="r14" class="ident">mt</label>.<a href="../../../../../reflect/type.go.html#line-226" class="ident">Out</a>(<label for="r18" class="ident">j</label>)).<a href="../sig.go.html#line-163" class="ident">String</a>(), <span class="lit-string">"out"</span>}</code></span>
+<span class="codeline" id="line-71"><code>			<label for="r15" class="ident">m</label>.<a href="introspect.go.html#line-56" class="ident">Args</a> = <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r15" class="ident">m</label>.<a href="introspect.go.html#line-56" class="ident">Args</a>, <label for="r19" class="ident">arg</label>)</code></span>
+<span class="codeline" id="line-72"><code>		}</code></span>
+<span class="codeline" id="line-73"><code>		<label for="r15" class="ident">m</label>.<a href="introspect.go.html#line-57" class="ident">Annotations</a> = <a href="../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="introspect.go.html#line-83" class="ident">Annotation</a>, <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-74"><code>		<label for="r12" class="ident">ms</label> = <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r12" class="ident">ms</label>, <label for="r15" class="ident">m</label>)</code></span>
+<span class="codeline" id="line-75"><code>	}</code></span>
+<span class="codeline" id="line-76"><code>	<span class="keyword">return</span> <label for="r12" class="ident">ms</label></code></span>
+<span class="codeline" id="line-77"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

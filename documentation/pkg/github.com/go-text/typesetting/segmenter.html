@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/go-text/typesetting/segmenter</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>segmenter</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-github.com/go-text/typesetting/segmenter">github.com/go-text/typesetting/segmenter</a><i> (on <a href="https://pkg.go.dev/github.com/go-text/typesetting/segmenter" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/github.com/go-text/typesetting/segmenter.html">2 packages</a>, and imported by <a href="../../../../dep/github.com/go-text/typesetting/segmenter.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#doc">d</a> <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html">segmenter.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package segmenter implements Unicode rules used
+		to segment a paragraph of text according to several criteria.
+		In particular, it provides a way of delimiting line break opportunities.
+		
+		The API of the package follows the very nice iterator pattern proposed
+		in github.com/npillmayer/uax,
+		but use a somewhat simpler internal implementation, inspired by Pango.
+		
+		The reference documentation is at https://unicode.org/reports/tr14
+		and https://unicode.org/reports/tr29.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html">unicode14_rules.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode29_rules.go.html">unicode29_rules.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 16, in which 7 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Grapheme" data-popularity="75">	<input type='checkbox' class="fold" id="Grapheme-fold-content"><label for="Grapheme-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-293">Grapheme</a> <i>(struct)</i></label><span id='Grapheme-fold-content-docs' class="fold-docs">
+<span class="md-text">		Grapheme is the content of a grapheme delimited by the segmenter.</span>
+
+		<input type='checkbox' class="fold" id="Grapheme-fold-fields"><label for="Grapheme-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='Grapheme-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Grapheme-fold-field-Offset"><label for="Grapheme-fold-field-Offset"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-297">Offset</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='Grapheme-fold-field-Offset-docs' class="fold-docs">
+<span class="md-text">				Offset is the start of the grapheme in the input rune slice</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Grapheme-fold-field-Text"><label for="Grapheme-fold-field-Text"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-295">Text</a> <i>[]<a href="../../../builtin.html#name-rune">rune</a></i></label><span id='Grapheme-fold-field-Text-docs' class="fold-docs">
+<span class="md-text">				Text is a subslice of the original input slice, containing the delimited grapheme</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Grapheme-fold-results"><label for="Grapheme-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Grapheme-fold-results-items' class="fold-items"><span>
+			func (*<a href="#name-GraphemeIterator">GraphemeIterator</a>).<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-311">Grapheme</a>() <b>Grapheme</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-GraphemeIterator" data-popularity="225">	<input type='checkbox' class="fold" id="GraphemeIterator-fold-content"><label for="GraphemeIterator-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-302">GraphemeIterator</a> <i>(struct)</i></label><span id='GraphemeIterator-fold-content-docs' class="fold-docs">
+<span class="md-text">		GraphemeIterator provides a convenient way of
+		iterating over the graphemes delimited by a `Segmenter`.</span>
+
+		<input type='checkbox' class="fold" id="GraphemeIterator-fold-fields"><label for="GraphemeIterator-fold-fields">Fields (<i>total 5, none are exported</i>)</label><span id='GraphemeIterator-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="GraphemeIterator-showhide-fields"><i><label for="GraphemeIterator-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="GraphemeIterator-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-270">attributeIterator</a> <i><a href="#name-attributeIterator">attributeIterator</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="GraphemeIterator-fold-field-flag"><label for="GraphemeIterator-fold-field-flag"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-270" class="path-duplicate">attributeIterator</a>.<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-237">flag</a> <i><a href="#name-breakAttr">breakAttr</a></i></label><span id='GraphemeIterator-fold-field-flag-docs' class="fold-docs">
+<span class="md-text">				// break where this flag is on</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="GraphemeIterator-fold-field-lastBreak"><label for="GraphemeIterator-fold-field-lastBreak"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-270" class="path-duplicate">attributeIterator</a>.<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-236">lastBreak</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='GraphemeIterator-fold-field-lastBreak-docs' class="fold-docs">
+<span class="md-text">				// the start of the current segment</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="GraphemeIterator-fold-field-pos"><label for="GraphemeIterator-fold-field-pos"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-270" class="path-duplicate">attributeIterator</a>.<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-235">pos</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='GraphemeIterator-fold-field-pos-docs' class="fold-docs">
+<span class="md-text">				// the current position in the input slice</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-270" class="path-duplicate">attributeIterator</a>.<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-234">src</a> <i>*<a href="#name-Segmenter">Segmenter</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="GraphemeIterator-fold-methods"><label for="GraphemeIterator-fold-methods">Methods (<i>total 3, in which 2 are exported</i>)</label><span id='GraphemeIterator-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="GraphemeIterator-fold-method-Grapheme"><label for="GraphemeIterator-fold-method-Grapheme">(*GraphemeIterator) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-311">Grapheme</a>() <a href="#name-Grapheme">Grapheme</a></label><span id='GraphemeIterator-fold-method-Grapheme-docs' class="fold-docs">
+<span class="md-text">				Grapheme returns the current `Grapheme`</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="GraphemeIterator-fold-method-Next"><label for="GraphemeIterator-fold-method-Next">(*GraphemeIterator) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-308">Next</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='GraphemeIterator-fold-method-Next-docs' class="fold-docs">
+<span class="md-text">				Next returns true if there is still a grapheme to process,
+				and advances the iterator; or return false.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="GraphemeIterator-showhide-methods"><i><label for="GraphemeIterator-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="GraphemeIterator-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="GraphemeIterator-fold-method-next"><label for="GraphemeIterator-fold-method-next">(*GraphemeIterator) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-243">next</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='GraphemeIterator-fold-method-next-docs' class="fold-docs">
+<span class="md-text">				next returns true if there is still a segment to process,
+				and advances the iterator; or return false.
+				if returning true, the segment is at [iter.lastBreak:iter.pos]</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="GraphemeIterator-fold-results"><label for="GraphemeIterator-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='GraphemeIterator-fold-results-items' class="fold-items"><span>
+			func (*<a href="#name-Segmenter">Segmenter</a>).<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-320">GraphemeIterator</a>() *<b>GraphemeIterator</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-Line" data-popularity="75">	<input type='checkbox' class="fold" id="Line-fold-content"><label for="Line-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-257">Line</a> <i>(struct)</i></label><span id='Line-fold-content-docs' class="fold-docs">
+<span class="md-text">		Line is the content of a line delimited by the segmenter.</span>
+
+		<input type='checkbox' class="fold" id="Line-fold-fields"><label for="Line-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='Line-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Line-fold-field-IsMandatoryBreak"><label for="Line-fold-field-IsMandatoryBreak"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-264">IsMandatoryBreak</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='Line-fold-field-IsMandatoryBreak-docs' class="fold-docs">
+<span class="md-text">				IsMandatoryBreak is true if breaking (at the end of the line)
+				is mandatory</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-field-Offset"><label for="Line-fold-field-Offset"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-261">Offset</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='Line-fold-field-Offset-docs' class="fold-docs">
+<span class="md-text">				Offset is the start of the line in the input rune slice</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-field-Text"><label for="Line-fold-field-Text"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-259">Text</a> <i>[]<a href="../../../builtin.html#name-rune">rune</a></i></label><span id='Line-fold-field-Text-docs' class="fold-docs">
+<span class="md-text">				Text is a subslice of the original input slice, containing the delimited line</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Line-fold-results"><label for="Line-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Line-fold-results-items' class="fold-items"><span>
+			func (*<a href="#name-LineIterator">LineIterator</a>).<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-278">Line</a>() <b>Line</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-LineIterator" data-popularity="225">	<input type='checkbox' class="fold" id="LineIterator-fold-content"><label for="LineIterator-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-269">LineIterator</a> <i>(struct)</i></label><span id='LineIterator-fold-content-docs' class="fold-docs">
+<span class="md-text">		LineIterator provides a convenient way of
+		iterating over the lines delimited by a `Segmenter`.</span>
+
+		<input type='checkbox' class="fold" id="LineIterator-fold-fields"><label for="LineIterator-fold-fields">Fields (<i>total 5, none are exported</i>)</label><span id='LineIterator-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="LineIterator-showhide-fields"><i><label for="LineIterator-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="LineIterator-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-270">attributeIterator</a> <i><a href="#name-attributeIterator">attributeIterator</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="LineIterator-fold-field-flag"><label for="LineIterator-fold-field-flag"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-270" class="path-duplicate">attributeIterator</a>.<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-237">flag</a> <i><a href="#name-breakAttr">breakAttr</a></i></label><span id='LineIterator-fold-field-flag-docs' class="fold-docs">
+<span class="md-text">				// break where this flag is on</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="LineIterator-fold-field-lastBreak"><label for="LineIterator-fold-field-lastBreak"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-270" class="path-duplicate">attributeIterator</a>.<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-236">lastBreak</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='LineIterator-fold-field-lastBreak-docs' class="fold-docs">
+<span class="md-text">				// the start of the current segment</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="LineIterator-fold-field-pos"><label for="LineIterator-fold-field-pos"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-270" class="path-duplicate">attributeIterator</a>.<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-235">pos</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='LineIterator-fold-field-pos-docs' class="fold-docs">
+<span class="md-text">				// the current position in the input slice</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-270" class="path-duplicate">attributeIterator</a>.<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-234">src</a> <i>*<a href="#name-Segmenter">Segmenter</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="LineIterator-fold-methods"><label for="LineIterator-fold-methods">Methods (<i>total 3, in which 2 are exported</i>)</label><span id='LineIterator-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="LineIterator-fold-method-Line"><label for="LineIterator-fold-method-Line">(*LineIterator) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-278">Line</a>() <a href="#name-Line">Line</a></label><span id='LineIterator-fold-method-Line-docs' class="fold-docs">
+<span class="md-text">				Line returns the current `Line`</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LineIterator-fold-method-Next"><label for="LineIterator-fold-method-Next">(*LineIterator) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-275">Next</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='LineIterator-fold-method-Next-docs' class="fold-docs">
+<span class="md-text">				Next returns true if there is still a line to process,
+				and advances the iterator; or return false.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="LineIterator-showhide-methods"><i><label for="LineIterator-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="LineIterator-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="LineIterator-fold-method-next"><label for="LineIterator-fold-method-next">(*LineIterator) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-243">next</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='LineIterator-fold-method-next-docs' class="fold-docs">
+<span class="md-text">				next returns true if there is still a segment to process,
+				and advances the iterator; or return false.
+				if returning true, the segment is at [iter.lastBreak:iter.pos]</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="LineIterator-fold-results"><label for="LineIterator-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='LineIterator-fold-results-items' class="fold-items"><span>
+			func (*<a href="#name-Segmenter">Segmenter</a>).<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-288">LineIterator</a>() *<b>LineIterator</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-Segmenter" data-popularity="235">	<input type='checkbox' class="fold" id="Segmenter-fold-content"><label for="Segmenter-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-211">Segmenter</a> <i>(struct)</i></label><span id='Segmenter-fold-content-docs' class="fold-docs">
+<span class="md-text">		Segmenter is the entry point of the package.
+		
+		Usage :
+		
+			var seg Segmenter
+			seg.Init(...)
+			iter := seg.LineIterator()
+			for iter.Next() {
+			  ... // do something with iter.Line()
+			}</span>
+
+		<input type='checkbox' class="fold" id="Segmenter-fold-fields"><label for="Segmenter-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='Segmenter-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Segmenter-showhide-fields"><i><label for="Segmenter-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="Segmenter-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Segmenter-fold-field-attributes"><label for="Segmenter-fold-field-attributes"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-220">attributes</a> <i>[]<a href="#name-breakAttr">breakAttr</a></i></label><span id='Segmenter-fold-field-attributes-docs' class="fold-docs">
+<span class="md-text">				with length len(text) + 1 :
+				the attribute at indice i is about the
+				rune at i-1 and i.
+				See also [ComputeBreakAttributes]
+				Example :
+					text : 			[b, 		u, 	l, 	l]
+					attributes :	[&lt;start&gt; b, b u, u l, l l, l &lt;end&gt;]</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-212">text</a> <i>[]<a href="../../../builtin.html#name-rune">rune</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Segmenter-fold-methods"><label for="Segmenter-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='Segmenter-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Segmenter-fold-method-GraphemeIterator"><label for="Segmenter-fold-method-GraphemeIterator">(*Segmenter) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-320">GraphemeIterator</a>() *<a href="#name-GraphemeIterator">GraphemeIterator</a></label><span id='Segmenter-fold-method-GraphemeIterator-docs' class="fold-docs">
+<span class="md-text">				GraphemeIterator returns an iterator over the graphemes
+				delimited in [Init].</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Segmenter-fold-method-Init"><label for="Segmenter-fold-method-Init">(*Segmenter) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-225">Init</a>(paragraph []<a href="../../../builtin.html#name-rune">rune</a>)</label><span id='Segmenter-fold-method-Init-docs' class="fold-docs">
+<span class="md-text">				Init resets the segmenter storage with the given input,
+				and computes the attributes required to segment the text.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Segmenter-fold-method-LineIterator"><label for="Segmenter-fold-method-LineIterator">(*Segmenter) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-288">LineIterator</a>() *<a href="#name-LineIterator">LineIterator</a></label><span id='Segmenter-fold-method-LineIterator-docs' class="fold-docs">
+<span class="md-text">				LineIterator returns an iterator on the lines
+				delimited in [Init].</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Segmenter-fold-method-WordIterator"><label for="Segmenter-fold-method-WordIterator">(*Segmenter) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-377">WordIterator</a>() *<a href="#name-WordIterator">WordIterator</a></label><span id='Segmenter-fold-method-WordIterator-docs' class="fold-docs">
+<span class="md-text">				WordIterator returns an iterator over the word
+				delimited in [Init].</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Segmenter-fold-params"><label for="Segmenter-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='Segmenter-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Segmenter-showhide-outputofs"><i><label for="Segmenter-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Segmenter-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func github.com/go-text/typesetting/shaping.<a href="shaping.html#name-newBreaker">newBreaker</a>(seg *<b>Segmenter</b>, text []<a href="../../../builtin.html#name-rune">rune</a>) *<a href="shaping.html">shaping</a>.<a href="shaping.html#name-breaker">breaker</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Word" data-popularity="75">	<input type='checkbox' class="fold" id="Word-fold-content"><label for="Word-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-333">Word</a> <i>(struct)</i></label><span id='Word-fold-content-docs' class="fold-docs">
+<span class="md-text">		Word is the content of a word delimited by the segmenter.
+		
+		More precisely, a word is formed by runes
+		with the [Alphabetic] property, or with a General_Category of Number,
+		delimited by the Word Boundary Unicode Property.
+		
+		See also https://unicode.org/reports/tr29/#Word_Boundary_Rules,
+		http://unicode.org/reports/tr44/#Alphabetic and
+		http://unicode.org/reports/tr44/#General_Category_Values</span>
+
+		<input type='checkbox' class="fold" id="Word-fold-fields"><label for="Word-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='Word-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Word-fold-field-Offset"><label for="Word-fold-field-Offset"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-297">Offset</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='Word-fold-field-Offset-docs' class="fold-docs">
+<span class="md-text">				Offset is the start of the grapheme in the input rune slice</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Word-fold-field-Text"><label for="Word-fold-field-Text"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-295">Text</a> <i>[]<a href="../../../builtin.html#name-rune">rune</a></i></label><span id='Word-fold-field-Text-docs' class="fold-docs">
+<span class="md-text">				Text is a subslice of the original input slice, containing the delimited grapheme</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Word-fold-results"><label for="Word-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Word-fold-results-items' class="fold-items"><span>
+			func (*<a href="#name-WordIterator">WordIterator</a>).<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-368">Word</a>() <b>Word</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-WordIterator" data-popularity="225">	<input type='checkbox' class="fold" id="WordIterator-fold-content"><label for="WordIterator-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-340">WordIterator</a> <i>(struct)</i></label><span id='WordIterator-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="WordIterator-fold-fields"><label for="WordIterator-fold-fields">Fields (<i>total 6, none are exported</i>)</label><span id='WordIterator-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="WordIterator-showhide-fields"><i><label for="WordIterator-showhide-fields" class="show-inline">/* 6 unexporteds ... */</label><label for="WordIterator-showhide-fields" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-341">attributeIterator</a> <i><a href="#name-attributeIterator">attributeIterator</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="WordIterator-fold-field-flag"><label for="WordIterator-fold-field-flag"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-341" class="path-duplicate">attributeIterator</a>.<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-237">flag</a> <i><a href="#name-breakAttr">breakAttr</a></i></label><span id='WordIterator-fold-field-flag-docs' class="fold-docs">
+<span class="md-text">				// break where this flag is on</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="WordIterator-fold-field-lastBreak"><label for="WordIterator-fold-field-lastBreak"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-341" class="path-duplicate">attributeIterator</a>.<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-236">lastBreak</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='WordIterator-fold-field-lastBreak-docs' class="fold-docs">
+<span class="md-text">				// the start of the current segment</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="WordIterator-fold-field-pos"><label for="WordIterator-fold-field-pos"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-341" class="path-duplicate">attributeIterator</a>.<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-235">pos</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='WordIterator-fold-field-pos-docs' class="fold-docs">
+<span class="md-text">				// the current position in the input slice</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-341" class="path-duplicate">attributeIterator</a>.<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-234">src</a> <i>*<a href="#name-Segmenter">Segmenter</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="WordIterator-fold-field-inWord"><label for="WordIterator-fold-field-inWord"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-343">inWord</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='WordIterator-fold-field-inWord-docs' class="fold-docs">
+<span class="md-text">				// true if we have seen the start of a word</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="WordIterator-fold-methods"><label for="WordIterator-fold-methods">Methods (<i>total 3, in which 2 are exported</i>)</label><span id='WordIterator-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="WordIterator-fold-method-Next"><label for="WordIterator-fold-method-Next">(*WordIterator) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-348">Next</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='WordIterator-fold-method-Next-docs' class="fold-docs">
+<span class="md-text">				Next returns true if there is still a word to process,
+				and advances the iterator; or return false.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="WordIterator-fold-method-Word"><label for="WordIterator-fold-method-Word">(*WordIterator) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-368">Word</a>() <a href="#name-Word">Word</a></label><span id='WordIterator-fold-method-Word-docs' class="fold-docs">
+<span class="md-text">				Word returns the current `Word`</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="WordIterator-showhide-methods"><i><label for="WordIterator-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="WordIterator-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="WordIterator-fold-method-next"><label for="WordIterator-fold-method-next">(*WordIterator) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-243">next</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='WordIterator-fold-method-next-docs' class="fold-docs">
+<span class="md-text">				next returns true if there is still a segment to process,
+				and advances the iterator; or return false.
+				if returning true, the segment is at [iter.lastBreak:iter.pos]</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="WordIterator-fold-results"><label for="WordIterator-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='WordIterator-fold-results-items' class="fold-items"><span>
+			func (*<a href="#name-Segmenter">Segmenter</a>).<a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-377">WordIterator</a>() *<b>WordIterator</b></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 9 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 9 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-attributeIterator" data-popularity="50">	<input type='checkbox' class="fold" id="attributeIterator-fold-content"><label for="attributeIterator-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-233">attributeIterator</a> <i>(struct)</i></label><span id='attributeIterator-fold-content-docs' class="fold-docs">
+<span class="md-text">		attributeIterator is an helper type used to
+		handle iterating over a slice of runeAttr</span>
+
+		<input type='checkbox' class="fold" id="attributeIterator-fold-fields"><label for="attributeIterator-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='attributeIterator-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="attributeIterator-showhide-fields"><i><label for="attributeIterator-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="attributeIterator-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="attributeIterator-fold-field-flag"><label for="attributeIterator-fold-field-flag"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-237">flag</a> <i><a href="#name-breakAttr">breakAttr</a></i></label><span id='attributeIterator-fold-field-flag-docs' class="fold-docs">
+<span class="md-text">				// break where this flag is on</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="attributeIterator-fold-field-lastBreak"><label for="attributeIterator-fold-field-lastBreak"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-236">lastBreak</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='attributeIterator-fold-field-lastBreak-docs' class="fold-docs">
+<span class="md-text">				// the start of the current segment</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="attributeIterator-fold-field-pos"><label for="attributeIterator-fold-field-pos"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-235">pos</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='attributeIterator-fold-field-pos-docs' class="fold-docs">
+<span class="md-text">				// the current position in the input slice</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-234">src</a> <i>*<a href="#name-Segmenter">Segmenter</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="attributeIterator-fold-methods"><label for="attributeIterator-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='attributeIterator-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="attributeIterator-showhide-methods"><i><label for="attributeIterator-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="attributeIterator-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="attributeIterator-fold-method-next"><label for="attributeIterator-fold-method-next">(*attributeIterator) <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-243">next</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='attributeIterator-fold-method-next-docs' class="fold-docs">
+<span class="md-text">				next returns true if there is still a segment to process,
+				and advances the iterator; or return false.
+				if returning true, the segment is at [iter.lastBreak:iter.pos]</span>
+</span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-breakAttr" data-popularity="50">	<input type='checkbox' class="fold" id="breakAttr-fold-content"><label for="breakAttr-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-23">breakAttr</a> <a href="../../../builtin.html#name-uint8">uint8</a> <i>(basic type)</i></label><span id='breakAttr-fold-content-docs' class="fold-docs">
+<span class="md-text">		breakAttr is a flag storing the break properties between two runes of
+		the input text.</span>
+
+		<input type='checkbox' class="fold" id="breakAttr-fold-params"><label for="breakAttr-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='breakAttr-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="breakAttr-showhide-outputofs"><i><label for="breakAttr-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="breakAttr-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-computeBreakAttributes">computeBreakAttributes</a>(text []<a href="../../../builtin.html#name-rune">rune</a>, attributes []<b>breakAttr</b>)</i></span></span>
+		<input type='checkbox' class="fold" id="breakAttr-fold-values"><label for="breakAttr-fold-values">As Types Of (<i>total 4, none are exported</i>)</label><span id='breakAttr-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="breakAttr-showhide-values"><i><label for="breakAttr-showhide-values" class="show-inline">/* 4 unexporteds ... */</label><label for="breakAttr-showhide-values" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			const <a href="#name-graphemeBoundary">graphemeBoundary</a></i></span><span class="hidden"><i>
+			const <a href="#name-lineBoundary">lineBoundary</a></i></span><span class="hidden"><i>
+			const <a href="#name-mandatoryLineBoundary">mandatoryLineBoundary</a></i></span><span class="hidden"><i>
+			const <a href="#name-wordBoundary">wordBoundary</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-breakOpportunity" data-popularity="15">	<input type='checkbox' class="fold" id="breakOpportunity-fold-content"><label for="breakOpportunity-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-38">breakOpportunity</a> <a href="../../../builtin.html#name-uint8">uint8</a> <i>(basic type)</i></label><span id='breakOpportunity-fold-content-docs' class="fold-docs">
+<span class="md-text">		breakOpportunity is a convenient enum,
+		mapped to the LineBreak and MandatoryBreak properties,
+		avoiding too many bit operations</span>
+
+		<input type='checkbox' class="fold" id="breakOpportunity-fold-values"><label for="breakOpportunity-fold-values">As Types Of (<i>total 4, none are exported</i>)</label><span id='breakOpportunity-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="breakOpportunity-showhide-values"><i><label for="breakOpportunity-showhide-values" class="show-inline">/* 4 unexporteds ... */</label><label for="breakOpportunity-showhide-values" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			const <a href="#name-breakAllowed">breakAllowed</a></i></span><span class="hidden"><i>
+			const <a href="#name-breakEmpty">breakEmpty</a></i></span><span class="hidden"><i>
+			const <a href="#name-breakMandatory">breakMandatory</a></i></span><span class="hidden"><i>
+			const <a href="#name-breakProhibited">breakProhibited</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-cursor" data-popularity="975">	<input type='checkbox' class="fold" id="cursor-fold-content"><label for="cursor-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-61">cursor</a> <i>(struct)</i></label><span id='cursor-fold-content-docs' class="fold-docs">
+<span class="md-text">		cursor holds the information for the current index
+		processed by `computeAttributes`, that is
+		the context provided by previous and next runes in the text</span>
+
+		<input type='checkbox' class="fold" id="cursor-fold-fields"><label for="cursor-fold-fields">Fields (<i>total 20, none are exported</i>)</label><span id='cursor-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="cursor-showhide-fields"><i><label for="cursor-showhide-fields" class="show-inline">/* 20 unexporteds ... */</label><label for="cursor-showhide-fields" class="hide-inline">/* 20 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-beforeSpaces"><label for="cursor-fold-field-beforeSpaces"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-97">beforeSpaces</a> <i><a href="#name-lineBreakClass">lineBreakClass</a></i></label><span id='cursor-fold-field-beforeSpaces-docs' class="fold-docs">
+<span class="md-text">				the last rune after spaces, used in rules LB14,LB15,LB16,LB17
+				to match ... SP* ...</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-grapheme"><label for="cursor-fold-field-grapheme"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-73">grapheme</a> <i><a href="#name-graphemeBreakClass">graphemeBreakClass</a></i></label><span id='cursor-fold-field-grapheme-docs' class="fold-docs">
+<span class="md-text">				// the Grapheme Break property at index i</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-isExtentedPic"><label for="cursor-fold-field-isExtentedPic"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-68">isExtentedPic</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='cursor-fold-field-isExtentedPic-docs' class="fold-docs">
+<span class="md-text">				is r included in `ucd.Extended_Pictographic`,
+				cached for efficiency</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-isPrevGraphemeRIOdd"><label for="cursor-fold-field-isPrevGraphemeRIOdd"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-78">isPrevGraphemeRIOdd</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='cursor-fold-field-isPrevGraphemeRIOdd-docs' class="fold-docs">
+<span class="md-text">				true if the `prev` rune was an odd Regional_Indicator, false if it was even or not an RI
+				used for rules GB12 and GB13
+				see [updateGraphemeRIOdd]</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-isPrevLinebreakRIOdd"><label for="cursor-fold-field-isPrevLinebreakRIOdd"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-101">isPrevLinebreakRIOdd</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='cursor-fold-field-isPrevLinebreakRIOdd-docs' class="fold-docs">
+<span class="md-text">				true if the `prev` rune was an odd Regional_Indicator, false if it was even or not an RI
+				used for rules LB30a</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-isPrevWordRIOdd"><label for="cursor-fold-field-isPrevWordRIOdd"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-88">isPrevWordRIOdd</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='cursor-fold-field-isPrevWordRIOdd-docs' class="fold-docs">
+<span class="md-text">				true if the `prev` rune was an odd Regional_Indicator, false if it was even or not an RI
+				used for rules WB15 and WB16
+				see [updateWordRIOdd]</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-line"><label for="cursor-fold-field-line"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-92">line</a> <i><a href="#name-lineBreakClass">lineBreakClass</a></i></label><span id='cursor-fold-field-line-docs' class="fold-docs">
+<span class="md-text">				// the Line Break Class at index i</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-next"><label for="cursor-fold-field-next"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-64">next</a> <i><a href="../../../builtin.html#name-rune">rune</a></i></label><span id='cursor-fold-field-next-docs' class="fold-docs">
+<span class="md-text">				// the rune at index i+1</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-nextLine"><label for="cursor-fold-field-nextLine"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-93">nextLine</a> <i><a href="#name-lineBreakClass">lineBreakClass</a></i></label><span id='cursor-fold-field-nextLine-docs' class="fold-docs">
+<span class="md-text">				// the Line Break Class at index i+1</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-numSequence"><label for="cursor-fold-field-numSequence"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-104">numSequence</a> <i><a href="#name-numSequenceState">numSequenceState</a></i></label><span id='cursor-fold-field-numSequence-docs' class="fold-docs">
+<span class="md-text">				are we in a numeric sequence, as defined in Example 7 of customisation for LB25</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-pictoSequence"><label for="cursor-fold-field-pictoSequence"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-108">pictoSequence</a> <i><a href="#name-pictoSequenceState">pictoSequenceState</a></i></label><span id='cursor-fold-field-pictoSequence-docs' class="fold-docs">
+<span class="md-text">				are we in an emoji sequence, as defined in rule GB11
+				see [updatePictoSequence]</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-prev"><label for="cursor-fold-field-prev"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-62">prev</a> <i><a href="../../../builtin.html#name-rune">rune</a></i></label><span id='cursor-fold-field-prev-docs' class="fold-docs">
+<span class="md-text">				// the rune at index i-1</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-prevGrapheme"><label for="cursor-fold-field-prevGrapheme"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-72">prevGrapheme</a> <i><a href="#name-graphemeBreakClass">graphemeBreakClass</a></i></label><span id='cursor-fold-field-prevGrapheme-docs' class="fold-docs">
+<span class="md-text">				// the Grapheme Break property at index i-1</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-prevLine"><label for="cursor-fold-field-prevLine"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-91">prevLine</a> <i><a href="#name-lineBreakClass">lineBreakClass</a></i></label><span id='cursor-fold-field-prevLine-docs' class="fold-docs">
+<span class="md-text">				// the Line Break Class at index i-1 (see rules LB9 and LB10 for edge cases)</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-prevPrevLine"><label for="cursor-fold-field-prevPrevLine"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-90">prevPrevLine</a> <i><a href="#name-lineBreakClass">lineBreakClass</a></i></label><span id='cursor-fold-field-prevPrevLine-docs' class="fold-docs">
+<span class="md-text">				// the Line Break Class at index i-2 (see rules LB9 and LB10 for edge cases)</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-prevPrevWord"><label for="cursor-fold-field-prevPrevWord"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-80">prevPrevWord</a> <i><a href="#name-wordBreakClass">wordBreakClass</a></i></label><span id='cursor-fold-field-prevPrevWord-docs' class="fold-docs">
+<span class="md-text">				// the Word Break property at the previous previous, non Extend rune</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-prevWord"><label for="cursor-fold-field-prevWord"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-81">prevWord</a> <i><a href="#name-wordBreakClass">wordBreakClass</a></i></label><span id='cursor-fold-field-prevWord-docs' class="fold-docs">
+<span class="md-text">				// the Word Break property at the previous, non Extend rune</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-prevWordNoExtend"><label for="cursor-fold-field-prevWordNoExtend"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-83">prevWordNoExtend</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='cursor-fold-field-prevWordNoExtend-docs' class="fold-docs">
+<span class="md-text">				// the index of the last rune NOT having a Extend word break property</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-r"><label for="cursor-fold-field-r"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-63">r</a> <i><a href="../../../builtin.html#name-rune">rune</a></i></label><span id='cursor-fold-field-r-docs' class="fold-docs">
+<span class="md-text">				// the rune at index i</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-field-word"><label for="cursor-fold-field-word"><a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-82">word</a> <i><a href="#name-wordBreakClass">wordBreakClass</a></i></label><span id='cursor-fold-field-word-docs' class="fold-docs">
+<span class="md-text">				// the Word Break property at index i</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="cursor-fold-methods"><label for="cursor-fold-methods">Methods (<i>total 18, none are exported</i>)</label><span id='cursor-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="cursor-showhide-methods"><i><label for="cursor-showhide-methods" class="show-inline">/* 18 unexporteds ... */</label><label for="cursor-showhide-methods" class="hide-inline">/* 18 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-method-applyGraphemeBoundaryRules"><label for="cursor-fold-method-applyGraphemeBoundaryRules">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode29_rules.go.html#line-16">applyGraphemeBoundaryRules</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='cursor-fold-method-applyGraphemeBoundaryRules-docs' class="fold-docs">
+<span class="md-text">				Apply the Grapheme_Cluster_Boundary_Rules and returns a true if we are
+				at a grapheme break.
+				See https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundary_Rules</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-method-applyLineBoundaryRules"><label for="cursor-fold-method-applyLineBoundaryRules">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-13">applyLineBoundaryRules</a>() <a href="#name-breakOpportunity">breakOpportunity</a></label><span id='cursor-fold-method-applyLineBoundaryRules-docs' class="fold-docs">
+<span class="md-text">				Apply the Line Breaking Rules and returns the computed break opportunity
+				See https://unicode.org/reports/tr14/#BreakingRules</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-method-applyWordBoundaryRules"><label for="cursor-fold-method-applyWordBoundaryRules">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode29_rules.go.html#line-130">applyWordBoundaryRules</a>(i <a href="../../../builtin.html#name-int">int</a>) (isWordBoundary, removePrevNoExtend <a href="../../../builtin.html#name-bool">bool</a>)</label><span id='cursor-fold-method-applyWordBoundaryRules-docs' class="fold-docs">
+<span class="md-text">				Apply the Word_Boundary_Rules and returns true if we are at a
+				word boundary.
+				removePrevNoExtend is true if the index [prevWordNoExtend]
+				should be marked as NOT being a word boundary
+				See https://unicode.org/reports/tr29/#Word_Boundary_Rules</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-method-endIteration"><label for="cursor-fold-method-endIteration">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-421">endIteration</a>(isStart <a href="../../../builtin.html#name-bool">bool</a>)</label><span id='cursor-fold-method-endIteration-docs' class="fold-docs">
+<span class="md-text">				end the current iteration, computing some of the properties
+				required for the next rune and respecting rule LB9 and LB10</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-method-ruleLB1"><label for="cursor-fold-method-ruleLB1">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-311">ruleLB1</a>()</label><span id='cursor-fold-method-ruleLB1-docs' class="fold-docs">
+<span class="md-text">				apply rule LB1 to resolve break classses AI, SG, XX, SA and CJ.
+				We use the default values specified in https://unicode.org/reports/tr14/#BreakingRules.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-178">ruleLB21To9</a>(breakOp *<a href="#name-breakOpportunity">breakOpportunity</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-142">ruleLB24To22</a>(breakOp *<a href="#name-breakOpportunity">breakOpportunity</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-method-ruleLB25"><label for="cursor-fold-method-ruleLB25">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-117">ruleLB25</a>(breakOp *<a href="#name-breakOpportunity">breakOpportunity</a>, triggerNumSequence <a href="../../../builtin.html#name-bool">bool</a>)</label><span id='cursor-fold-method-ruleLB25-docs' class="fold-docs">
+<span class="md-text">				we follow other implementations by using the tailoring described
+				in Example 7</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-78">ruleLB29To26</a>(breakOp *<a href="#name-breakOpportunity">breakOpportunity</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-47">ruleLB30</a>(breakOp *<a href="#name-breakOpportunity">breakOpportunity</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-60">ruleLB30ab</a>(breakOp *<a href="#name-breakOpportunity">breakOpportunity</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-285">ruleLB7To4</a>(breakOp *<a href="#name-breakOpportunity">breakOpportunity</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-270">ruleLB8</a>(breakOp *<a href="#name-breakOpportunity">breakOpportunity</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-method-startIteration"><label for="cursor-fold-method-startIteration">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-383">startIteration</a>(text []<a href="../../../builtin.html#name-rune">rune</a>, i <a href="../../../builtin.html#name-int">int</a>)</label><span id='cursor-fold-method-startIteration-docs' class="fold-docs">
+<span class="md-text">				startIteration updates the cursor properties, setting the current
+				rune to text[i].
+				Some properties depending on the context are rather
+				updated in the previous `endIteration` call.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-method-updateGraphemeRIOdd"><label for="cursor-fold-method-updateGraphemeRIOdd">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode29_rules.go.html#line-50">updateGraphemeRIOdd</a>() (trigger <a href="../../../builtin.html#name-bool">bool</a>)</label><span id='cursor-fold-method-updateGraphemeRIOdd-docs' class="fold-docs">
+<span class="md-text">				update `isPrevGraphemeRIOdd` used for the rules GB12 and GB13
+				and returns `true` if one of them triggered</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-method-updateNumSequence"><label for="cursor-fold-method-updateNumSequence">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-337">updateNumSequence</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='cursor-fold-method-updateNumSequence-docs' class="fold-docs">
+<span class="md-text">				update the `numSequence` state used for rule LB25
+				and returns true if we matched one</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-method-updatePictoSequence"><label for="cursor-fold-method-updatePictoSequence">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode29_rules.go.html#line-72">updatePictoSequence</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='cursor-fold-method-updatePictoSequence-docs' class="fold-docs">
+<span class="md-text">				update the `pictoSequence` state used for rule GB11 pattern :
+				(ExtendedPic)(Extend*)(ZWJ)(ExtendedPic)
+				and returns true if we matched one</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cursor-fold-method-updateWordRIOdd"><label for="cursor-fold-method-updateWordRIOdd">(*cursor) <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode29_rules.go.html#line-111">updateWordRIOdd</a>() (trigger <a href="../../../builtin.html#name-bool">bool</a>)</label><span id='cursor-fold-method-updateWordRIOdd-docs' class="fold-docs">
+<span class="md-text">				update `isPrevWordRIOdd` used for the rules WB15 and WB16
+				and returns `true` if one of them triggered</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="cursor-fold-results"><label for="cursor-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='cursor-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="cursor-showhide-inputofs"><i><label for="cursor-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="cursor-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-newCursor">newCursor</a>(text []<a href="../../../builtin.html#name-rune">rune</a>) *<b>cursor</b></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-graphemeBreakClass" data-popularity="0">	<input type='checkbox' class="fold" id="graphemeBreakClass-fold-content"><label for="graphemeBreakClass-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-52">graphemeBreakClass</a> = *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a> <i>(*)</i></label><span id='graphemeBreakClass-fold-content-docs' class="fold-docs">
+<span class="md-text">		graphemeBreakClass stores the Unicode Grapheme Cluster Break Property
+		See https://unicode.org/reports/tr29/#Grapheme_Cluster_Break_Property_Values</span>
+
+</span></div><div class="anchor type-res hidden" id="name-lineBreakClass" data-popularity="0">	<input type='checkbox' class="fold" id="lineBreakClass-fold-content"><label for="lineBreakClass-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-48">lineBreakClass</a> = *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a> <i>(*)</i></label><span id='lineBreakClass-fold-content-docs' class="fold-docs">
+<span class="md-text">		lineBreakClass stores the Line Break Property
+		See https://unicode.org/reports/tr14/#Properties</span>
+
+</span></div><div class="anchor type-res hidden" id="name-numSequenceState" data-popularity="15">	<input type='checkbox' class="fold" id="numSequenceState-fold-content"><label for="numSequenceState-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-327">numSequenceState</a> <a href="../../../builtin.html#name-uint8">uint8</a> <i>(basic type)</i></label><span id='numSequenceState-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="numSequenceState-fold-values"><label for="numSequenceState-fold-values">As Types Of (<i>total 3, none are exported</i>)</label><span id='numSequenceState-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="numSequenceState-showhide-values"><i><label for="numSequenceState-showhide-values" class="show-inline">/* 3 unexporteds ... */</label><label for="numSequenceState-showhide-values" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			const <a href="#name-inNumSequence">inNumSequence</a></i></span><span class="hidden"><i>
+			const <a href="#name-noNumSequence">noNumSequence</a></i></span><span class="hidden"><i>
+			const <a href="#name-seenCloseNum">seenCloseNum</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-pictoSequenceState" data-popularity="15">	<input type='checkbox' class="fold" id="pictoSequenceState-fold-content"><label for="pictoSequenceState-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode29_rules.go.html#line-61">pictoSequenceState</a> <a href="../../../builtin.html#name-uint8">uint8</a> <i>(basic type)</i></label><span id='pictoSequenceState-fold-content-docs' class="fold-docs">
+<span class="md-text">		see rule GB11</span>
+
+		<input type='checkbox' class="fold" id="pictoSequenceState-fold-values"><label for="pictoSequenceState-fold-values">As Types Of (<i>total 3, none are exported</i>)</label><span id='pictoSequenceState-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="pictoSequenceState-showhide-values"><i><label for="pictoSequenceState-showhide-values" class="show-inline">/* 3 unexporteds ... */</label><label for="pictoSequenceState-showhide-values" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			const <a href="#name-inPictoExtend">inPictoExtend</a></i></span><span class="hidden"><i>
+			const <a href="#name-noPictoSequence">noPictoSequence</a></i></span><span class="hidden"><i>
+			const <a href="#name-seenPictoZWJ">seenPictoZWJ</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-wordBreakClass" data-popularity="0">	<input type='checkbox' class="fold" id="wordBreakClass-fold-content"><label for="wordBreakClass-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-56">wordBreakClass</a> = *<a href="../../../unicode.html">unicode</a>.<a href="../../../unicode.html#name-RangeTable">RangeTable</a> <i>(*)</i></label><span id='wordBreakClass-fold-content-docs' class="fold-docs">
+<span class="md-text">		wordBreakClass stores the Unicode Word Break Property
+		See https://unicode.org/reports/tr29/#Table_Word_Break_Property_Values</span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 2, neither is exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-computeBreakAttributes"><i>	<input type='checkbox' class="fold" id="computeBreakAttributes-fold-content"><label for="computeBreakAttributes-fold-content"> func <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-137">computeBreakAttributes</a>(text []<a href="../../../builtin.html#name-rune">rune</a>, attributes []<a href="#name-breakAttr">breakAttr</a>)</label><span id='computeBreakAttributes-fold-content-docs' class="fold-docs">
+<span class="md-text">		computeBreakAttributes does the heavy lifting of text segmentation,
+		by computing a break attribute for each rune.
+		
+		More precisely, `attributes` must be a slice of length len(text)+1,
+		which will be filled at index i by the attribute describing the
+		break between rune at index i-1 and index i.
+		
+		Unicode defines a lot of properties; for now we only handle
+		grapheme, word and line breaking.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-newCursor"><i>	<input type='checkbox' class="fold" id="newCursor-fold-content"><label for="newCursor-fold-content"> func <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-113">newCursor</a>(text []<a href="../../../builtin.html#name-rune">rune</a>) *<a href="#name-cursor">cursor</a></label><span id='newCursor-fold-content-docs' class="fold-docs">
+<span class="md-text">		initialise the cursor properties
+		some of them are set in [startIteration]</span>
+
+</span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 15, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 15 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 15 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-breakAllowed"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-43">breakAllowed</a> <a href="#name-breakOpportunity">breakOpportunity</a> = 2 // <span class="md-text">direct break (can always break here)</span></span></i></div><div class="anchor value-res hidden" id="name-breakEmpty"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-41">breakEmpty</a> <a href="#name-breakOpportunity">breakOpportunity</a> = 0 // <span class="md-text">not specified</span></span></i></div><div class="anchor value-res hidden" id="name-breakMandatory"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-44">breakMandatory</a> <a href="#name-breakOpportunity">breakOpportunity</a> = 3 // <span class="md-text">break is mandatory (implies breakAllowed)</span></span></i></div><div class="anchor value-res hidden" id="name-breakProhibited"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-42">breakProhibited</a> <a href="#name-breakOpportunity">breakOpportunity</a> = 1 // <span class="md-text">no break</span></span></i></div><div class="anchor value-res hidden" id="name-graphemeBoundary"><i>	<input type='checkbox' class="fold" id="graphemeBoundary-fold-content"><label for="graphemeBoundary-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-31">graphemeBoundary</a> <a href="#name-breakAttr">breakAttr</a> = 4</label><span id='graphemeBoundary-fold-content-docs' class="fold-docs">
+<span class="md-text">		graphemeBoundary is on if the cursor can appear in front of a character,
+		i.e. if we are at a grapheme boundary.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-inNumSequence"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-331">inNumSequence</a> <a href="#name-numSequenceState">numSequenceState</a> = 1 // <span class="md-text">we are in NU (NU | SY | IS)*</span></span></i></div><div class="anchor value-res hidden" id="name-inPictoExtend"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode29_rules.go.html#line-65">inPictoExtend</a> <a href="#name-pictoSequenceState">pictoSequenceState</a> = 1 // <span class="md-text">we are in (ExtendedPic)(Extend*) pattern</span></span></i></div><div class="anchor value-res hidden" id="name-lineBoundary"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-26">lineBoundary</a> <a href="#name-breakAttr">breakAttr</a> = 1</span></i></div><div class="anchor value-res hidden" id="name-mandatoryLineBoundary"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-27">mandatoryLineBoundary</a> <a href="#name-breakAttr">breakAttr</a> = 2 // <span class="md-text">implies LineBoundary</span></span></i></div><div class="anchor value-res hidden" id="name-noNumSequence"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-330">noNumSequence</a> <a href="#name-numSequenceState">numSequenceState</a> = 0 // <span class="md-text">we are not in a sequence</span></span></i></div><div class="anchor value-res hidden" id="name-noPictoSequence"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode29_rules.go.html#line-64">noPictoSequence</a> <a href="#name-pictoSequenceState">pictoSequenceState</a> = 0 // <span class="md-text">we are not in a sequence</span></span></i></div><div class="anchor value-res hidden" id="name-paragraphSeparator"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-44">paragraphSeparator</a> <a href="../../../builtin.html#name-rune">rune</a> = 8233</span></i></div><div class="anchor value-res hidden" id="name-seenCloseNum"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode14_rules.go.html#line-332">seenCloseNum</a> <a href="#name-numSequenceState">numSequenceState</a> = 2 // <span class="md-text">we are at NU (NU | SY | IS)* (CL | CP)?</span></span></i></div><div class="anchor value-res hidden" id="name-seenPictoZWJ"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/unicode29_rules.go.html#line-66">seenPictoZWJ</a> <a href="#name-pictoSequenceState">pictoSequenceState</a> = 2 // <span class="md-text">we have seen (ExtendedPic)(Extend*)(ZWJ)</span></span></i></div><div class="anchor value-res hidden" id="name-wordBoundary"><i>	<input type='checkbox' class="fold" id="wordBoundary-fold-content"><label for="wordBoundary-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/segmenter/segmenter.go.html#line-41">wordBoundary</a> <a href="#name-breakAttr">breakAttr</a> = 8</label><span id='wordBoundary-fold-content-docs' class="fold-docs">
+<span class="md-text">		wordBoundary is on if we are at the beginning or end of a word.
+		
+		To actually detect words, you should also look for runes
+		with the [Alphabetic] property, or with a General_Category of Number.
+		
+		See also https://unicode.org/reports/tr29/#Word_Boundary_Rules,
+		http://unicode.org/reports/tr44/#Alphabetic and
+		http://unicode.org/reports/tr44/#General_Category_Values</span>
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

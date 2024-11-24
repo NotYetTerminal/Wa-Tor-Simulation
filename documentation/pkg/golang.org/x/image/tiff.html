@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: golang.org/x/image/tiff</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>tiff</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-golang.org/x/image/tiff">golang.org/x/image/tiff</a><i> (on <a href="https://pkg.go.dev/golang.org/x/image/tiff" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/golang.org/x/image/tiff.html">13 packages</a>, and imported by <a href="../../../../dep/golang.org/x/image/tiff.html#imported-by">2 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../src/golang.org/x/image/tiff/buffer.go.html">buffer.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/golang.org/x/image/tiff/compress.go.html">compress.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/golang.org/x/image/tiff/consts.go.html">consts.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-3-fold-content"><label for="file-3-fold-content">  <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#doc">d</a> <a href="../../../../src/golang.org/x/image/tiff/reader.go.html">reader.go</a></label><span id='file-3-fold-content-items' class="fold-items">
+<span class="md-text">		Package tiff implements a TIFF image decoder and encoder.
+		
+		The TIFF specification is at http://partners.adobe.com/public/developer/en/tiff/TIFF6.pdf</span>
+</span>
+	<span class="nodocs">    <a href="../../../../src/golang.org/x/image/tiff/writer.go.html">writer.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 10, in which 4 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-CompressionType" data-popularity="65">	<input type='checkbox' class="fold" id="CompressionType-fold-content"><label for="CompressionType-fold-content"> type <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-124">CompressionType</a> <a href="../../../builtin.html#name-int">int</a> <i>(basic type)</i></label><span id='CompressionType-fold-content-docs' class="fold-docs">
+<span class="md-text">		CompressionType describes the type of compression used in Options.</span>
+
+		<input type='checkbox' class="fold" id="CompressionType-fold-methods"><label for="CompressionType-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='CompressionType-fold-methods-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="CompressionType-showhide-methods"><i><label for="CompressionType-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="CompressionType-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CompressionType-fold-method-specValue"><label for="CompressionType-fold-method-specValue">( CompressionType) <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-137">specValue</a>() <a href="../../../builtin.html#name-uint32">uint32</a></label><span id='CompressionType-fold-method-specValue-docs' class="fold-docs">
+<span class="md-text">				specValue returns the compression type constant from the TIFF spec that
+				is equivalent to c.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="CompressionType-fold-values"><label for="CompressionType-fold-values">As Types Of (<i>total 5, all are exported</i>)</label><span id='CompressionType-fold-values-items' class="fold-items"><span>
+			const <a href="#name-CCITTGroup3">CCITTGroup3</a></span><span>
+			const <a href="#name-CCITTGroup4">CCITTGroup4</a></span><span>
+			const <a href="#name-Deflate">Deflate</a></span><span>
+			const <a href="#name-LZW">LZW</a></span><span>
+			const <a href="#name-Uncompressed">Uncompressed</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-FormatError" data-popularity="160">	<input type='checkbox' class="fold" id="FormatError-fold-content"><label for="FormatError-fold-content"> type <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-25">FormatError</a> <a href="../../../builtin.html#name-string">string</a> <i>(basic type)</i></label><span id='FormatError-fold-content-docs' class="fold-docs">
+<span class="md-text">		A FormatError reports that the input is not a valid TIFF image.</span>
+
+		<input type='checkbox' class="fold" id="FormatError-fold-methods"><label for="FormatError-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='FormatError-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( FormatError) <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-27">Error</a>() <a href="../../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="FormatError-fold-impls"><label for="FormatError-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='FormatError-fold-impls-items' class="fold-items"><span>
+			 FormatError : <a href="../../../builtin.html#name-error">error</a></span><span>
+			 FormatError : github.com/fredbi/uri.<a href="../../../github.com/fredbi/uri.html#name-Error">Error</a></span></span>
+		<input type='checkbox' class="fold" id="FormatError-fold-values"><label for="FormatError-fold-values">As Types Of (<i>total 2, neither is exported</i>)</label><span id='FormatError-fold-values-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="FormatError-showhide-values"><i><label for="FormatError-showhide-values" class="show-inline">/* 2 unexporteds ... */</label><label for="FormatError-showhide-values" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			  var <a href="#name-errInvalidColorIndex">errInvalidColorIndex</a></i></span><span class="hidden"><i>
+			  var <a href="#name-errNoPixels">errNoPixels</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Options" data-popularity="35">	<input type='checkbox' class="fold" id="Options-fold-content"><label for="Options-fold-content"> type <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-278">Options</a> <i>(struct)</i></label><span id='Options-fold-content-docs' class="fold-docs">
+<span class="md-text">		Options are the encoding parameters.</span>
+
+		<input type='checkbox' class="fold" id="Options-fold-fields"><label for="Options-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='Options-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Options-fold-field-Compression"><label for="Options-fold-field-Compression"><a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-280">Compression</a> <i><a href="#name-CompressionType">CompressionType</a></i></label><span id='Options-fold-field-Compression-docs' class="fold-docs">
+<span class="md-text">				Compression is the type of compression used.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Options-fold-field-Predictor"><label for="Options-fold-field-Predictor"><a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-286">Predictor</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='Options-fold-field-Predictor-docs' class="fold-docs">
+<span class="md-text">				Predictor determines whether a differencing predictor is used;
+				if true, instead of each pixel's color, the color difference to the
+				preceding one is saved. This improves the compression for certain
+				types of images and compressors. For example, it works well for
+				photos with Deflate compression.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Options-fold-params"><label for="Options-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='Options-fold-params-items' class="fold-items"><span>
+			func <a href="#name-Encode">Encode</a>(w <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Writer">Writer</a>, m <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>, opt *<b>Options</b>) <a href="../../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-UnsupportedError" data-popularity="150">	<input type='checkbox' class="fold" id="UnsupportedError-fold-content"><label for="UnsupportedError-fold-content"> type <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-33">UnsupportedError</a> <a href="../../../builtin.html#name-string">string</a> <i>(basic type)</i></label><span id='UnsupportedError-fold-content-docs' class="fold-docs">
+<span class="md-text">		An UnsupportedError reports that the input uses a valid but
+		unimplemented feature.</span>
+
+		<input type='checkbox' class="fold" id="UnsupportedError-fold-methods"><label for="UnsupportedError-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='UnsupportedError-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( UnsupportedError) <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-35">Error</a>() <a href="../../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="UnsupportedError-fold-impls"><label for="UnsupportedError-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='UnsupportedError-fold-impls-items' class="fold-items"><span>
+			 UnsupportedError : <a href="../../../builtin.html#name-error">error</a></span><span>
+			 UnsupportedError : github.com/fredbi/uri.<a href="../../../github.com/fredbi/uri.html#name-Error">Error</a></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 6 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 6 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-buffer" data-popularity="200">	<input type='checkbox' class="fold" id="buffer-fold-content"><label for="buffer-fold-content"> type <a href="../../../../src/golang.org/x/image/tiff/buffer.go.html#line-10">buffer</a> <i>(struct)</i></label><span id='buffer-fold-content-docs' class="fold-docs">
+<span class="md-text">		buffer buffers an io.Reader to satisfy io.ReaderAt.</span>
+
+		<input type='checkbox' class="fold" id="buffer-fold-fields"><label for="buffer-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='buffer-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="buffer-showhide-fields"><i><label for="buffer-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="buffer-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/tiff/buffer.go.html#line-12">buf</a> <i>[]<a href="../../../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/tiff/buffer.go.html#line-11">r</a> <i><a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="buffer-fold-methods"><label for="buffer-fold-methods">Methods (<i>total 3, in which 2 are exported</i>)</label><span id='buffer-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*buffer) <a href="../../../../src/golang.org/x/image/tiff/buffer.go.html#line-39">ReadAt</a>(p []<a href="../../../builtin.html#name-byte">byte</a>, off <a href="../../../builtin.html#name-int64">int64</a>) (<a href="../../../builtin.html#name-int">int</a>, <a href="../../../builtin.html#name-error">error</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="buffer-fold-method-Slice"><label for="buffer-fold-method-Slice">(*buffer) <a href="../../../../src/golang.org/x/image/tiff/buffer.go.html#line-52">Slice</a>(off, n <a href="../../../builtin.html#name-int">int</a>) ([]<a href="../../../builtin.html#name-byte">byte</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='buffer-fold-method-Slice-docs' class="fold-docs">
+<span class="md-text">				Slice returns a slice of the underlying buffer. The slice contains
+				n bytes starting at offset off.</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="buffer-showhide-methods"><i><label for="buffer-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="buffer-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="buffer-fold-method-fill"><label for="buffer-fold-method-fill">(*buffer) <a href="../../../../src/golang.org/x/image/tiff/buffer.go.html#line-16">fill</a>(end <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='buffer-fold-method-fill-docs' class="fold-docs">
+<span class="md-text">				fill reads data from b.r until the buffer contains at least end bytes.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="buffer-fold-impls"><label for="buffer-fold-impls">Implements (<i>at least one exported</i>)</label><span id='buffer-fold-impls-items' class="fold-items"><span>
+			*buffer : io.<a href="../../../io.html#name-ReaderAt">ReaderAt</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-byTag" data-popularity="200">	<input type='checkbox' class="fold" id="byTag-fold-content"><label for="byTag-fold-content"> type <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-53">byTag</a> <i>([])</i></label><span id='byTag-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="byTag-fold-methods"><label for="byTag-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='byTag-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( byTag) <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-55">Len</a>() <a href="../../../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">( byTag) <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-56">Less</a>(i, j <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( byTag) <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-57">Swap</a>(i, j <a href="../../../builtin.html#name-int">int</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="byTag-fold-impls"><label for="byTag-fold-impls">Implements (<i>at least one exported</i>)</label><span id='byTag-fold-impls-items' class="fold-items"><span>
+			 byTag : sort.<a href="../../../sort.html#name-Interface">Interface</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-byteReader" data-popularity="1650">	<input type='checkbox' class="fold" id="byteReader-fold-content"><label for="byteReader-fold-content"> type <a href="../../../../src/golang.org/x/image/tiff/compress.go.html#line-12">byteReader</a> <b><i>(interface)</i></b></label><span id='byteReader-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="byteReader-fold-methods"><label for="byteReader-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='byteReader-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( byteReader) <a href="../../../../src/io/io.go.html#line-87">Read</a>(p []<a href="../../../builtin.html#name-byte">byte</a>) (n <a href="../../../builtin.html#name-int">int</a>, err <a href="../../../builtin.html#name-error">error</a>)</span></span><span>
+			<span class="nodocs">( byteReader) <a href="../../../../src/io/io.go.html#line-263">ReadByte</a>() (<a href="../../../builtin.html#name-byte">byte</a>, <a href="../../../builtin.html#name-error">error</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="byteReader-fold-impledby"><label for="byteReader-fold-impledby">Implemented By (<i>at least 9, in which 7 are exported</i>)</label><span id='byteReader-fold-impledby-items' class="fold-items"><span>
+			*bufio.<a href="../../../bufio.html#name-Reader">Reader</a></span><span>
+			 bufio.<a href="../../../bufio.html#name-ReadWriter">ReadWriter</a></span><span>
+			*bytes.<a href="../../../bytes.html#name-Buffer">Buffer</a></span><span>
+			*bytes.<a href="../../../bytes.html#name-Reader">Reader</a></span><span>
+			 compress/flate.<a href="../../../compress/flate.html#name-Reader">Reader</a> <i>(interface)</i></span><span>
+			 image/jpeg.<a href="../../../image/jpeg.html#name-Reader">Reader</a> <i>(interface)</i></span><span>
+			*strings.<a href="../../../strings.html#name-Reader">Reader</a></span>
+			<input type='checkbox' checked class="showhide" id="byteReader-showhide-impedBys"><i><label for="byteReader-showhide-impedBys" class="show-inline">/* 2+ unexporteds ... */</label><label for="byteReader-showhide-impedBys" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			*encoding/json.<a href="../../../encoding/json.html#name-encodeState">encodeState</a></i></span><span class="hidden"><i>
+			 math/big.<a href="../../../math/big.html#name-byteReader">byteReader</a></i></span></span>
+		<input type='checkbox' class="fold" id="byteReader-fold-impls"><label for="byteReader-fold-impls">Implements (<i>at least 4, all are exported</i>)</label><span id='byteReader-fold-impls-items' class="fold-items"><span>
+			 byteReader : compress/flate.<a href="../../../compress/flate.html#name-Reader">Reader</a></span><span>
+			 byteReader : image/jpeg.<a href="../../../image/jpeg.html#name-Reader">Reader</a></span><span>
+			 byteReader : io.<a href="../../../io.html#name-ByteReader">ByteReader</a></span><span>
+			 byteReader : io.<a href="../../../io.html#name-Reader">Reader</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-decoder" data-popularity="375">	<input type='checkbox' class="fold" id="decoder-fold-content"><label for="decoder-fold-content"> type <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-90">decoder</a> <i>(struct)</i></label><span id='decoder-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="decoder-fold-fields"><label for="decoder-fold-fields">Fields (<i>total 11, none are exported</i>)</label><span id='decoder-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="decoder-showhide-fields"><i><label for="decoder-showhide-fields" class="show-inline">/* 11 unexporteds ... */</label><label for="decoder-showhide-fields" class="hide-inline">/* 11 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-95">bpp</a> <i><a href="../../../builtin.html#name-uint">uint</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-99">buf</a> <i>[]<a href="../../../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-92">byteOrder</a> <i><a href="../../../encoding/binary.html">binary</a>.<a href="../../../encoding/binary.html#name-ByteOrder">ByteOrder</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-93">config</a> <i><a href="../../../image.html">image</a>.<a href="../../../image.html#name-Config">Config</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-96">features</a> <i>map[<a href="../../../builtin.html#name-int">int</a>][]<a href="../../../builtin.html#name-uint">uint</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-94">mode</a> <i><a href="#name-imageMode">imageMode</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-field-nbits"><label for="decoder-fold-field-nbits"><a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-102">nbits</a> <i><a href="../../../builtin.html#name-uint">uint</a></i></label><span id='decoder-fold-field-nbits-docs' class="fold-docs">
+<span class="md-text">				// Remaining number of bits in v.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-field-off"><label for="decoder-fold-field-off"><a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-100">off</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='decoder-fold-field-off-docs' class="fold-docs">
+<span class="md-text">				// Current offset in buf.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-97">palette</a> <i>[]<a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-91">r</a> <i><a href="../../../io.html">io</a>.<a href="../../../io.html#name-ReaderAt">ReaderAt</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-field-v"><label for="decoder-fold-field-v"><a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-101">v</a> <i><a href="../../../builtin.html#name-uint32">uint32</a></i></label><span id='decoder-fold-field-v-docs' class="fold-docs">
+<span class="md-text">				// Buffer value for reading with arbitrary bit depths.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="decoder-fold-methods"><label for="decoder-fold-methods">Methods (<i>total 6, none are exported</i>)</label><span id='decoder-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="decoder-showhide-methods"><i><label for="decoder-showhide-methods" class="show-inline">/* 6 unexporteds ... */</label><label for="decoder-showhide-methods" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-method-decode"><label for="decoder-fold-method-decode">(*decoder) <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-260">decode</a>(dst <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>, xmin, ymin, xmax, ymax <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='decoder-fold-method-decode-docs' class="fold-docs">
+<span class="md-text">				decode decodes the raw data of an image.
+				It reads from d.buf and writes the strip or tile into dst.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-method-firstVal"><label for="decoder-fold-method-firstVal">(*decoder) <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-107">firstVal</a>(tag <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-uint">uint</a></label><span id='decoder-fold-method-firstVal-docs' class="fold-docs">
+<span class="md-text">				firstVal returns the first uint of the features entry with the given tag,
+				or 0 if the tag does not exist.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-method-flushBits"><label for="decoder-fold-method-flushBits">(*decoder) <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-245">flushBits</a>()</label><span id='decoder-fold-method-flushBits-docs' class="fold-docs">
+<span class="md-text">				flushBits discards the unread bits in the buffer used by readBits.
+				It is used at the end of a line.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-method-ifdUint"><label for="decoder-fold-method-ifdUint">(*decoder) <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-117">ifdUint</a>(p []<a href="../../../builtin.html#name-byte">byte</a>) (u []<a href="../../../builtin.html#name-uint">uint</a>, err <a href="../../../builtin.html#name-error">error</a>)</label><span id='decoder-fold-method-ifdUint-docs' class="fold-docs">
+<span class="md-text">				ifdUint decodes the IFD entry in p, which must be of the Byte, Short
+				or Long type, and returns the decoded uint values.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-method-parseIFD"><label for="decoder-fold-method-parseIFD">(*decoder) <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-165">parseIFD</a>(p []<a href="../../../builtin.html#name-byte">byte</a>) (<a href="../../../builtin.html#name-int">int</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='decoder-fold-method-parseIFD-docs' class="fold-docs">
+<span class="md-text">				parseIFD decides whether the IFD entry in p is "interesting" and
+				stows away the data in the decoder. It returns the tag number of the
+				entry and an error, if any.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-method-readBits"><label for="decoder-fold-method-readBits">(*decoder) <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-227">readBits</a>(n <a href="../../../builtin.html#name-uint">uint</a>) (v <a href="../../../builtin.html#name-uint32">uint32</a>, ok <a href="../../../builtin.html#name-bool">bool</a>)</label><span id='decoder-fold-method-readBits-docs' class="fold-docs">
+<span class="md-text">				readBits reads n bits from the internal buffer starting at the current offset.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="decoder-fold-results"><label for="decoder-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='decoder-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="decoder-showhide-inputofs"><i><label for="decoder-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="decoder-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-newDecoder">newDecoder</a>(r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>) (*<b>decoder</b>, <a href="../../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-ifdEntry" data-popularity="85">	<input type='checkbox' class="fold" id="ifdEntry-fold-content"><label for="ifdEntry-fold-content"> type <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-31">ifdEntry</a> <i>(struct)</i></label><span id='ifdEntry-fold-content-docs' class="fold-docs">
+<span class="md-text">		An ifdEntry is a single entry in an Image File Directory.
+		A value of type dtRational is composed of two 32-bit values,
+		thus data contains two uints (numerator and denominator) for a single number.</span>
+
+		<input type='checkbox' class="fold" id="ifdEntry-fold-fields"><label for="ifdEntry-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='ifdEntry-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="ifdEntry-showhide-fields"><i><label for="ifdEntry-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="ifdEntry-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-34">data</a> <i>[]<a href="../../../builtin.html#name-uint32">uint32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-33">datatype</a> <i><a href="../../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-32">tag</a> <i><a href="../../../builtin.html#name-int">int</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="ifdEntry-fold-methods"><label for="ifdEntry-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='ifdEntry-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="ifdEntry-showhide-methods"><i><label for="ifdEntry-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="ifdEntry-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( ifdEntry) <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-37">putData</a>(p []<a href="../../../builtin.html#name-byte">byte</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="ifdEntry-fold-params"><label for="ifdEntry-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='ifdEntry-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="ifdEntry-showhide-outputofs"><i><label for="ifdEntry-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="ifdEntry-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-writeIFD">writeIFD</a>(w <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Writer">Writer</a>, ifdOffset <a href="../../../builtin.html#name-int">int</a>, d []<b>ifdEntry</b>) <a href="../../../builtin.html#name-error">error</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-imageMode" data-popularity="15">	<input type='checkbox' class="fold" id="imageMode-fold-content"><label for="imageMode-fold-content"> type <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-110">imageMode</a> <a href="../../../builtin.html#name-int">int</a> <i>(basic type)</i></label><span id='imageMode-fold-content-docs' class="fold-docs">
+<span class="md-text">		imageMode represents the mode of the image.</span>
+
+		<input type='checkbox' class="fold" id="imageMode-fold-values"><label for="imageMode-fold-values">As Types Of (<i>total 8, none are exported</i>)</label><span id='imageMode-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="imageMode-showhide-values"><i><label for="imageMode-showhide-values" class="show-inline">/* 8 unexporteds ... */</label><label for="imageMode-showhide-values" class="hide-inline">/* 8 unexporteds: */</label></i><span class="hidden"><i>
+			const <a href="#name-mBilevel">mBilevel</a></i></span><span class="hidden"><i>
+			const <a href="#name-mCMYK">mCMYK</a></i></span><span class="hidden"><i>
+			const <a href="#name-mGray">mGray</a></i></span><span class="hidden"><i>
+			const <a href="#name-mGrayInvert">mGrayInvert</a></i></span><span class="hidden"><i>
+			const <a href="#name-mNRGBA">mNRGBA</a></i></span><span class="hidden"><i>
+			const <a href="#name-mPaletted">mPaletted</a></i></span><span class="hidden"><i>
+			const <a href="#name-mRGB">mRGB</a></i></span><span class="hidden"><i>
+			const <a href="#name-mRGBA">mRGBA</a></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 18, in which 3 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Decode">	<input type='checkbox' class="fold" id="Decode-fold-content"><label for="Decode-fold-content"> func <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-618">Decode</a>(r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>) (img <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>, err <a href="../../../builtin.html#name-error">error</a>)</label><span id='Decode-fold-content-docs' class="fold-docs">
+<span class="md-text">		Decode reads a TIFF image from r and returns it as an image.Image.
+		The type of Image returned depends on the contents of the TIFF.</span>
+
+</span></div><div class="anchor value-res" id="name-DecodeConfig">	<input type='checkbox' class="fold" id="DecodeConfig-fold-content"><label for="DecodeConfig-fold-content"> func <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-601">DecodeConfig</a>(r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>) (<a href="../../../image.html">image</a>.<a href="../../../image.html#name-Config">Config</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='DecodeConfig-fold-content-docs' class="fold-docs">
+<span class="md-text">		DecodeConfig returns the color model and dimensions of a TIFF image without
+		decoding the entire image.</span>
+
+</span></div><div class="anchor value-res" id="name-Encode">	<input type='checkbox' class="fold" id="Encode-fold-content"><label for="Encode-fold-content"> func <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-292">Encode</a>(w <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Writer">Writer</a>, m <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>, opt *<a href="#name-Options">Options</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='Encode-fold-content-docs' class="fold-docs">
+<span class="md-text">		Encode writes the image m to w. opt determines the options used for
+		encoding, such as the compression type. If opt is nil, an uncompressed
+		image is written.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 15 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 15 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-ccittFillOrder"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-609">ccittFillOrder</a>(tiffFillOrder <a href="../../../builtin.html#name-uint">uint</a>) <a href="ccitt.html">ccitt</a>.<a href="ccitt.html#name-Order">Order</a></span></i></div><div class="anchor value-res hidden" id="name-encode"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-170">encode</a>(w <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Writer">Writer</a>, m <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>, predictor <a href="../../../builtin.html#name-bool">bool</a>) <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-encodeGray"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-59">encodeGray</a>(w <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Writer">Writer</a>, pix []<a href="../../../builtin.html#name-uint8">uint8</a>, dx, dy, stride <a href="../../../builtin.html#name-int">int</a>, predictor <a href="../../../builtin.html#name-bool">bool</a>) <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-encodeGray16"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-82">encodeGray16</a>(w <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Writer">Writer</a>, pix []<a href="../../../builtin.html#name-uint8">uint8</a>, dx, dy, stride <a href="../../../builtin.html#name-int">int</a>, predictor <a href="../../../builtin.html#name-bool">bool</a>) <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-encodeRGBA"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-107">encodeRGBA</a>(w <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Writer">Writer</a>, pix []<a href="../../../builtin.html#name-uint8">uint8</a>, dx, dy, stride <a href="../../../builtin.html#name-int">int</a>, predictor <a href="../../../builtin.html#name-bool">bool</a>) <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-encodeRGBA64"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-133">encodeRGBA64</a>(w <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Writer">Writer</a>, pix []<a href="../../../builtin.html#name-uint8">uint8</a>, dx, dy, stride <a href="../../../builtin.html#name-int">int</a>, predictor <a href="../../../builtin.html#name-bool">bool</a>) <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-init"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-782">init</a>()</span></i></div><div class="anchor value-res hidden" id="name-minInt"><i>	<input type='checkbox' class="fold" id="minInt-fold-content"><label for="minInt-fold-content"> func <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-251">minInt</a>(a, b <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-int">int</a></label><span id='minInt-fold-content-docs' class="fold-docs">
+<span class="md-text">		minInt returns the smaller of x or y.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-newDecoder"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-452">newDecoder</a>(r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>) (*<a href="#name-decoder">decoder</a>, <a href="../../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-newReaderAt"><i>	<input type='checkbox' class="fold" id="newReaderAt-fold-content"><label for="newReaderAt-fold-content"> func <a href="../../../../src/golang.org/x/image/tiff/buffer.go.html#line-61">newReaderAt</a>(r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>) <a href="../../../io.html">io</a>.<a href="../../../io.html#name-ReaderAt">ReaderAt</a></label><span id='newReaderAt-fold-content-docs' class="fold-docs">
+<span class="md-text">		newReaderAt converts an io.Reader into an io.ReaderAt.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-readBuf"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-776">readBuf</a>(r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>, buf []<a href="../../../builtin.html#name-byte">byte</a>, lim <a href="../../../builtin.html#name-int64">int64</a>) ([]<a href="../../../builtin.html#name-byte">byte</a>, <a href="../../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-safeReadAt"><i>	<input type='checkbox' class="fold" id="safeReadAt-fold-content"><label for="safeReadAt-fold-content"> func <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-52">safeReadAt</a>(r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-ReaderAt">ReaderAt</a>, n <a href="../../../builtin.html#name-uint64">uint64</a>, off <a href="../../../builtin.html#name-int64">int64</a>) ([]<a href="../../../builtin.html#name-byte">byte</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='safeReadAt-fold-content-docs' class="fold-docs">
+<span class="md-text">		safeReadAt is a verbatim copy of internal/saferio.ReadDataAt from the
+		standard library, which is used to read data from a reader using a length
+		provided by untrusted data, without allocating the entire slice ahead of time
+		if it is large (&gt;maxChunkSize). This allows us to avoid allocating giant
+		slices before learning that we can't actually read that much data from the
+		reader.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-unpackBits"><i>	<input type='checkbox' class="fold" id="unpackBits-fold-content"><label for="unpackBits-fold-content"> func <a href="../../../../src/golang.org/x/image/tiff/compress.go.html#line-22">unpackBits</a>(r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>) ([]<a href="../../../builtin.html#name-byte">byte</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='unpackBits-fold-content-docs' class="fold-docs">
+<span class="md-text">		unpackBits decodes the PackBits-compressed data in src and returns the
+		uncompressed data.
+		
+		The PackBits compression format is described in section 9 (p. 42)
+		of the TIFF spec.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-writeIFD"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-224">writeIFD</a>(w <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Writer">Writer</a>, ifdOffset <a href="../../../builtin.html#name-int">int</a>, d []<a href="#name-ifdEntry">ifdEntry</a>) <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-writePix"><i>	<input type='checkbox' class="fold" id="writePix-fold-content"><label for="writePix-fold-content"> func <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-210">writePix</a>(w <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Writer">Writer</a>, pix []<a href="../../../builtin.html#name-byte">byte</a>, nrows, length, stride <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='writePix-fold-content-docs' class="fold-docs">
+<span class="md-text">		writePix writes the internal byte array of an image to w. It is less general
+		but much faster then encode. writePix is used when pix directly
+		corresponds to one of the TIFF image types.</span>
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 4, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-enc"><i>	<input type='checkbox' class="fold" id="enc-fold-content"><label for="enc-fold-content">  var <a href="../../../../src/golang.org/x/image/tiff/writer.go.html#line-26">enc</a> <a href="../../../encoding/binary.html">binary</a>.<a href="../../../encoding/binary.html#name-littleEndian">littleEndian</a></label><span id='enc-fold-content-docs' class="fold-docs">
+<span class="md-text">		We only write little-endian TIFF files.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-errInvalidColorIndex"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-41">errInvalidColorIndex</a> <a href="#name-FormatError">FormatError</a></span></i></div><div class="anchor value-res hidden" id="name-errNoPixels"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-40">errNoPixels</a> <a href="#name-FormatError">FormatError</a></span></i></div><div class="anchor value-res hidden" id="name-lengths"><i>	<input type='checkbox' class="fold" id="lengths-fold-content"><label for="lengths-fold-content">  var <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-35">lengths</a> [6]<a href="../../../builtin.html#name-uint32">uint32</a></label><span id='lengths-fold-content-docs' class="fold-docs">
+<span class="md-text">		The length of one instance of each data type in bytes.</span>
+
+</span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 68, in which 5 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-CCITTGroup3">	<input type='checkbox' class="fold" id="CCITTGroup3-fold-content"><label for="CCITTGroup3-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-131">CCITTGroup3</a> <a href="#name-CompressionType">CompressionType</a> = 3</label><span id='CCITTGroup3-fold-content-docs' class="fold-docs">
+<span class="md-text">		Constants for supported compression types.</span>
+
+</span></div><div class="anchor value-res" id="name-CCITTGroup4">	<input type='checkbox' class="fold" id="CCITTGroup4-fold-content"><label for="CCITTGroup4-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-132">CCITTGroup4</a> <a href="#name-CompressionType">CompressionType</a> = 4</label><span id='CCITTGroup4-fold-content-docs' class="fold-docs">
+<span class="md-text">		Constants for supported compression types.</span>
+
+</span></div><div class="anchor value-res" id="name-Deflate">	<input type='checkbox' class="fold" id="Deflate-fold-content"><label for="Deflate-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-129">Deflate</a> <a href="#name-CompressionType">CompressionType</a> = 1</label><span id='Deflate-fold-content-docs' class="fold-docs">
+<span class="md-text">		Constants for supported compression types.</span>
+
+</span></div><div class="anchor value-res" id="name-LZW">	<input type='checkbox' class="fold" id="LZW-fold-content"><label for="LZW-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-130">LZW</a> <a href="#name-CompressionType">CompressionType</a> = 2</label><span id='LZW-fold-content-docs' class="fold-docs">
+<span class="md-text">		Constants for supported compression types.</span>
+
+</span></div><div class="anchor value-res" id="name-Uncompressed">	<input type='checkbox' class="fold" id="Uncompressed-fold-content"><label for="Uncompressed-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-128">Uncompressed</a> <a href="#name-CompressionType">CompressionType</a> = 0</label><span id='Uncompressed-fold-content-docs' class="fold-docs">
+<span class="md-text">		Constants for supported compression types.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 63 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 63 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-beHeader"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-20">beHeader</a> = "MM\x00*" // <span class="md-text">Header for big-endian files.</span></span></i></div><div class="anchor value-res hidden" id="name-cCCITT"><i>	<input type='checkbox' class="fold" id="cCCITT-fold-content"><label for="cCCITT-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-73">cCCITT</a> = 2</label><span id='cCCITT-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compression types (defined in various places in the spec and supplements).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cDeflate"><i>	<input type='checkbox' class="fold" id="cDeflate-fold-content"><label for="cDeflate-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-79">cDeflate</a> = 8 // <span class="md-text">zlib compression.</span></label><span id='cDeflate-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compression types (defined in various places in the spec and supplements).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cDeflateOld"><i>	<input type='checkbox' class="fold" id="cDeflateOld-fold-content"><label for="cDeflateOld-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-81">cDeflateOld</a> = 32946 // <span class="md-text">Superseded by cDeflate.</span></label><span id='cDeflateOld-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compression types (defined in various places in the spec and supplements).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cG3"><i>	<input type='checkbox' class="fold" id="cG3-fold-content"><label for="cG3-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-74">cG3</a> = 3 // <span class="md-text">Group 3 Fax.</span></label><span id='cG3-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compression types (defined in various places in the spec and supplements).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cG4"><i>	<input type='checkbox' class="fold" id="cG4-fold-content"><label for="cG4-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-75">cG4</a> = 4 // <span class="md-text">Group 4 Fax.</span></label><span id='cG4-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compression types (defined in various places in the spec and supplements).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cJPEG"><i>	<input type='checkbox' class="fold" id="cJPEG-fold-content"><label for="cJPEG-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-78">cJPEG</a> = 7</label><span id='cJPEG-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compression types (defined in various places in the spec and supplements).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cJPEGOld"><i>	<input type='checkbox' class="fold" id="cJPEGOld-fold-content"><label for="cJPEGOld-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-77">cJPEGOld</a> = 6 // <span class="md-text">Superseded by cJPEG.</span></label><span id='cJPEGOld-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compression types (defined in various places in the spec and supplements).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cLZW"><i>	<input type='checkbox' class="fold" id="cLZW-fold-content"><label for="cLZW-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-76">cLZW</a> = 5</label><span id='cLZW-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compression types (defined in various places in the spec and supplements).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cNone"><i>	<input type='checkbox' class="fold" id="cNone-fold-content"><label for="cNone-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-72">cNone</a> = 1</label><span id='cNone-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compression types (defined in various places in the spec and supplements).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-cPackBits"><i>	<input type='checkbox' class="fold" id="cPackBits-fold-content"><label for="cPackBits-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-80">cPackBits</a> = 32773</label><span id='cPackBits-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compression types (defined in various places in the spec and supplements).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-dtASCII"><i>	<input type='checkbox' class="fold" id="dtASCII-fold-content"><label for="dtASCII-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-28">dtASCII</a> = 2</label><span id='dtASCII-fold-content-docs' class="fold-docs">
+<span class="md-text">		Data types (p. 14-16 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-dtByte"><i>	<input type='checkbox' class="fold" id="dtByte-fold-content"><label for="dtByte-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-27">dtByte</a> = 1</label><span id='dtByte-fold-content-docs' class="fold-docs">
+<span class="md-text">		Data types (p. 14-16 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-dtLong"><i>	<input type='checkbox' class="fold" id="dtLong-fold-content"><label for="dtLong-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-30">dtLong</a> = 4</label><span id='dtLong-fold-content-docs' class="fold-docs">
+<span class="md-text">		Data types (p. 14-16 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-dtRational"><i>	<input type='checkbox' class="fold" id="dtRational-fold-content"><label for="dtRational-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-31">dtRational</a> = 5</label><span id='dtRational-fold-content-docs' class="fold-docs">
+<span class="md-text">		Data types (p. 14-16 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-dtShort"><i>	<input type='checkbox' class="fold" id="dtShort-fold-content"><label for="dtShort-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-29">dtShort</a> = 3</label><span id='dtShort-fold-content-docs' class="fold-docs">
+<span class="md-text">		Data types (p. 14-16 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-ifdLen"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-22">ifdLen</a> = 12 // <span class="md-text">Length of an IFD entry in bytes.</span></span></i></div><div class="anchor value-res hidden" id="name-leHeader"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-19">leHeader</a> = "II*\x00" // <span class="md-text">Header for little-endian files.</span></span></i></div><div class="anchor value-res hidden" id="name-maxChunkSize"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/tiff/reader.go.html#line-44">maxChunkSize</a> = 10485760 // <span class="md-text">10M</span></span></i></div><div class="anchor value-res hidden" id="name-mBilevel"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-113">mBilevel</a> <a href="#name-imageMode">imageMode</a> = 0</span></i></div><div class="anchor value-res hidden" id="name-mCMYK"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-120">mCMYK</a> <a href="#name-imageMode">imageMode</a> = 7</span></i></div><div class="anchor value-res hidden" id="name-mGray"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-115">mGray</a> <a href="#name-imageMode">imageMode</a> = 2</span></i></div><div class="anchor value-res hidden" id="name-mGrayInvert"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-116">mGrayInvert</a> <a href="#name-imageMode">imageMode</a> = 3</span></i></div><div class="anchor value-res hidden" id="name-mNRGBA"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-119">mNRGBA</a> <a href="#name-imageMode">imageMode</a> = 6</span></i></div><div class="anchor value-res hidden" id="name-mPaletted"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-114">mPaletted</a> <a href="#name-imageMode">imageMode</a> = 1</span></i></div><div class="anchor value-res hidden" id="name-mRGB"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-117">mRGB</a> <a href="#name-imageMode">imageMode</a> = 4</span></i></div><div class="anchor value-res hidden" id="name-mRGBA"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-118">mRGBA</a> <a href="#name-imageMode">imageMode</a> = 5</span></i></div><div class="anchor value-res hidden" id="name-pBlackIsZero"><i>	<input type='checkbox' class="fold" id="pBlackIsZero-fold-content"><label for="pBlackIsZero-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-87">pBlackIsZero</a> = 1</label><span id='pBlackIsZero-fold-content-docs' class="fold-docs">
+<span class="md-text">		Photometric interpretation values (see p. 37 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-pCIELab"><i>	<input type='checkbox' class="fold" id="pCIELab-fold-content"><label for="pCIELab-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-93">pCIELab</a> = 8</label><span id='pCIELab-fold-content-docs' class="fold-docs">
+<span class="md-text">		Photometric interpretation values (see p. 37 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-pCMYK"><i>	<input type='checkbox' class="fold" id="pCMYK-fold-content"><label for="pCMYK-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-91">pCMYK</a> = 5</label><span id='pCMYK-fold-content-docs' class="fold-docs">
+<span class="md-text">		Photometric interpretation values (see p. 37 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-pPaletted"><i>	<input type='checkbox' class="fold" id="pPaletted-fold-content"><label for="pPaletted-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-89">pPaletted</a> = 3</label><span id='pPaletted-fold-content-docs' class="fold-docs">
+<span class="md-text">		Photometric interpretation values (see p. 37 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-pRGB"><i>	<input type='checkbox' class="fold" id="pRGB-fold-content"><label for="pRGB-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-88">pRGB</a> = 2</label><span id='pRGB-fold-content-docs' class="fold-docs">
+<span class="md-text">		Photometric interpretation values (see p. 37 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-prHorizontal"><i>	<input type='checkbox' class="fold" id="prHorizontal-fold-content"><label for="prHorizontal-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-99">prHorizontal</a> = 2</label><span id='prHorizontal-fold-content-docs' class="fold-docs">
+<span class="md-text">		Values for the tPredictor tag (page 64-65 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-prNone"><i>	<input type='checkbox' class="fold" id="prNone-fold-content"><label for="prNone-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-98">prNone</a> = 1</label><span id='prNone-fold-content-docs' class="fold-docs">
+<span class="md-text">		Values for the tPredictor tag (page 64-65 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-pTransMask"><i>	<input type='checkbox' class="fold" id="pTransMask-fold-content"><label for="pTransMask-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-90">pTransMask</a> = 4 // <span class="md-text">transparency mask</span></label><span id='pTransMask-fold-content-docs' class="fold-docs">
+<span class="md-text">		Photometric interpretation values (see p. 37 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-pWhiteIsZero"><i>	<input type='checkbox' class="fold" id="pWhiteIsZero-fold-content"><label for="pWhiteIsZero-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-86">pWhiteIsZero</a> = 0</label><span id='pWhiteIsZero-fold-content-docs' class="fold-docs">
+<span class="md-text">		Photometric interpretation values (see p. 37 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-pYCbCr"><i>	<input type='checkbox' class="fold" id="pYCbCr-fold-content"><label for="pYCbCr-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-92">pYCbCr</a> = 6</label><span id='pYCbCr-fold-content-docs' class="fold-docs">
+<span class="md-text">		Photometric interpretation values (see p. 37 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-resNone"><i>	<input type='checkbox' class="fold" id="resNone-fold-content"><label for="resNone-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-104">resNone</a> = 1</label><span id='resNone-fold-content-docs' class="fold-docs">
+<span class="md-text">		Values for the tResolutionUnit tag (page 18).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-resPerCM"><i>	<input type='checkbox' class="fold" id="resPerCM-fold-content"><label for="resPerCM-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-106">resPerCM</a> = 3 // <span class="md-text">Dots per centimeter.</span></label><span id='resPerCM-fold-content-docs' class="fold-docs">
+<span class="md-text">		Values for the tResolutionUnit tag (page 18).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-resPerInch"><i>	<input type='checkbox' class="fold" id="resPerInch-fold-content"><label for="resPerInch-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-105">resPerInch</a> = 2 // <span class="md-text">Dots per inch.</span></label><span id='resPerInch-fold-content-docs' class="fold-docs">
+<span class="md-text">		Values for the tResolutionUnit tag (page 18).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tBitsPerSample"><i>	<input type='checkbox' class="fold" id="tBitsPerSample-fold-content"><label for="tBitsPerSample-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-41">tBitsPerSample</a> = 258</label><span id='tBitsPerSample-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tColorMap"><i>	<input type='checkbox' class="fold" id="tColorMap-fold-content"><label for="tColorMap-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-65">tColorMap</a> = 320</label><span id='tColorMap-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tCompression"><i>	<input type='checkbox' class="fold" id="tCompression-fold-content"><label for="tCompression-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-42">tCompression</a> = 259</label><span id='tCompression-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tExtraSamples"><i>	<input type='checkbox' class="fold" id="tExtraSamples-fold-content"><label for="tExtraSamples-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-66">tExtraSamples</a> = 338</label><span id='tExtraSamples-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tFillOrder"><i>	<input type='checkbox' class="fold" id="tFillOrder-fold-content"><label for="tFillOrder-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-45">tFillOrder</a> = 266</label><span id='tFillOrder-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tImageLength"><i>	<input type='checkbox' class="fold" id="tImageLength-fold-content"><label for="tImageLength-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-40">tImageLength</a> = 257</label><span id='tImageLength-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tImageWidth"><i>	<input type='checkbox' class="fold" id="tImageWidth-fold-content"><label for="tImageWidth-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-39">tImageWidth</a> = 256</label><span id='tImageWidth-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tPhotometricInterpretation"><i>	<input type='checkbox' class="fold" id="tPhotometricInterpretation-fold-content"><label for="tPhotometricInterpretation-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-43">tPhotometricInterpretation</a> = 262</label><span id='tPhotometricInterpretation-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tPredictor"><i>	<input type='checkbox' class="fold" id="tPredictor-fold-content"><label for="tPredictor-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-64">tPredictor</a> = 317</label><span id='tPredictor-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tResolutionUnit"><i>	<input type='checkbox' class="fold" id="tResolutionUnit-fold-content"><label for="tResolutionUnit-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-62">tResolutionUnit</a> = 296</label><span id='tResolutionUnit-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tRowsPerStrip"><i>	<input type='checkbox' class="fold" id="tRowsPerStrip-fold-content"><label for="tRowsPerStrip-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-49">tRowsPerStrip</a> = 278</label><span id='tRowsPerStrip-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tSampleFormat"><i>	<input type='checkbox' class="fold" id="tSampleFormat-fold-content"><label for="tSampleFormat-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-67">tSampleFormat</a> = 339</label><span id='tSampleFormat-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tSamplesPerPixel"><i>	<input type='checkbox' class="fold" id="tSamplesPerPixel-fold-content"><label for="tSamplesPerPixel-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-48">tSamplesPerPixel</a> = 277</label><span id='tSamplesPerPixel-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tStripByteCounts"><i>	<input type='checkbox' class="fold" id="tStripByteCounts-fold-content"><label for="tStripByteCounts-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-50">tStripByteCounts</a> = 279</label><span id='tStripByteCounts-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tStripOffsets"><i>	<input type='checkbox' class="fold" id="tStripOffsets-fold-content"><label for="tStripOffsets-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-47">tStripOffsets</a> = 273</label><span id='tStripOffsets-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tT4Options"><i>	<input type='checkbox' class="fold" id="tT4Options-fold-content"><label for="tT4Options-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-52">tT4Options</a> = 292 // <span class="md-text">CCITT Group 3 options, a set of 32 flag bits.</span></label><span id='tT4Options-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tT6Options"><i>	<input type='checkbox' class="fold" id="tT6Options-fold-content"><label for="tT6Options-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-53">tT6Options</a> = 293 // <span class="md-text">CCITT Group 4 options, a set of 32 flag bits.</span></label><span id='tT6Options-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tTileByteCounts"><i>	<input type='checkbox' class="fold" id="tTileByteCounts-fold-content"><label for="tTileByteCounts-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-58">tTileByteCounts</a> = 325</label><span id='tTileByteCounts-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tTileLength"><i>	<input type='checkbox' class="fold" id="tTileLength-fold-content"><label for="tTileLength-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-56">tTileLength</a> = 323</label><span id='tTileLength-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tTileOffsets"><i>	<input type='checkbox' class="fold" id="tTileOffsets-fold-content"><label for="tTileOffsets-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-57">tTileOffsets</a> = 324</label><span id='tTileOffsets-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tTileWidth"><i>	<input type='checkbox' class="fold" id="tTileWidth-fold-content"><label for="tTileWidth-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-55">tTileWidth</a> = 322</label><span id='tTileWidth-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tXResolution"><i>	<input type='checkbox' class="fold" id="tXResolution-fold-content"><label for="tXResolution-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-60">tXResolution</a> = 282</label><span id='tXResolution-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tYResolution"><i>	<input type='checkbox' class="fold" id="tYResolution-fold-content"><label for="tYResolution-fold-content">const <a href="../../../../src/golang.org/x/image/tiff/consts.go.html#line-61">tYResolution</a> = 283</label><span id='tYResolution-fold-content-docs' class="fold-docs">
+<span class="md-text">		Tags (see p. 28-41 of the spec).</span>
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

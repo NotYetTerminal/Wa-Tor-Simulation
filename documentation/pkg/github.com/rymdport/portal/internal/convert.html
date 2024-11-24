@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/rymdport/portal/internal/convert</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>convert</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-github.com/rymdport/portal/internal/convert">github.com/rymdport/portal/internal/convert</a><i> (on <a href="https://pkg.go.dev/github.com/rymdport/portal/internal/convert" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/github.com/rymdport/portal/internal/convert.html">2 packages</a>, and imported by <a href="../../../../../dep/github.com/rymdport/portal/internal/convert.html#imported-by">2 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../src/github.com/rymdport/portal/internal/convert/basic.go.html">basic.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-1-fold-content"><label for="file-1-fold-content">  <a href="../../../../../src/github.com/rymdport/portal/internal/convert/convert.go.html#doc">d</a> <a href="../../../../../src/github.com/rymdport/portal/internal/convert/convert.go.html">convert.go</a></label><span id='file-1-fold-content-items' class="fold-items">
+<span class="md-text">		Packge convert contains functions for converting to dbus data structures.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/rymdport/portal/internal/convert/nullstr.go.html">nullstr.go</a></span></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 4, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-FromBool">	<input type='checkbox' class="fold" id="FromBool-fold-content"><label for="FromBool-fold-content"> func <a href="../../../../../src/github.com/rymdport/portal/internal/convert/basic.go.html#line-15">FromBool</a>(input <a href="../../../../builtin.html#name-bool">bool</a>) <a href="../../../godbus/dbus/v5.html">dbus</a>.<a href="../../../godbus/dbus/v5.html#name-Variant">Variant</a></label><span id='FromBool-fold-content-docs' class="fold-docs">
+<span class="md-text">		FromBool is a fast converter from a boolean to its dbus representation.</span>
+
+</span></div><div class="anchor value-res" id="name-FromString">	<input type='checkbox' class="fold" id="FromString-fold-content"><label for="FromString-fold-content"> func <a href="../../../../../src/github.com/rymdport/portal/internal/convert/basic.go.html#line-20">FromString</a>(input <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../godbus/dbus/v5.html">dbus</a>.<a href="../../../godbus/dbus/v5.html#name-Variant">Variant</a></label><span id='FromString-fold-content-docs' class="fold-docs">
+<span class="md-text">		FromBool is a fast converter from a string to its dbus representation.</span>
+
+</span></div><div class="anchor value-res" id="name-FromStringToNullTerminated">	<input type='checkbox' class="fold" id="FromStringToNullTerminated-fold-content"><label for="FromStringToNullTerminated-fold-content"> func <a href="../../../../../src/github.com/rymdport/portal/internal/convert/nullstr.go.html#line-17">FromStringToNullTerminated</a>(input <a href="../../../../builtin.html#name-string">string</a>) []<a href="../../../../builtin.html#name-byte">byte</a></label><span id='FromStringToNullTerminated-fold-content-docs' class="fold-docs">
+<span class="md-text">		FromStringToNullTerminated converts a regular string into a null terminated byte string</span>
+
+</span></div><div class="anchor value-res" id="name-ToNullTerminatedValue">	<input type='checkbox' class="fold" id="ToNullTerminatedValue-fold-content"><label for="ToNullTerminatedValue-fold-content"> func <a href="../../../../../src/github.com/rymdport/portal/internal/convert/nullstr.go.html#line-12">ToNullTerminatedValue</a>(input <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../godbus/dbus/v5.html">dbus</a>.<a href="../../../godbus/dbus/v5.html#name-Variant">Variant</a></label><span id='ToNullTerminatedValue-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToNullTerminatedValue converts a regular string into a null terminated byte string.</span>
+
+</span></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 3, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-boolSignature"><i>	<span class="nodocs">  var <a href="../../../../../src/github.com/rymdport/portal/internal/convert/basic.go.html#line-10">boolSignature</a> <a href="../../../godbus/dbus/v5.html">dbus</a>.<a href="../../../godbus/dbus/v5.html#name-Signature">Signature</a></span></i></div><div class="anchor value-res hidden" id="name-bytesSignature"><i>	<span class="nodocs">  var <a href="../../../../../src/github.com/rymdport/portal/internal/convert/nullstr.go.html#line-9">bytesSignature</a> <a href="../../../godbus/dbus/v5.html">dbus</a>.<a href="../../../godbus/dbus/v5.html#name-Signature">Signature</a></span></i></div><div class="anchor value-res hidden" id="name-stringSignature"><i>	<span class="nodocs">  var <a href="../../../../../src/github.com/rymdport/portal/internal/convert/basic.go.html#line-11">stringSignature</a> <a href="../../../godbus/dbus/v5.html">dbus</a>.<a href="../../../godbus/dbus/v5.html#name-Signature">Signature</a></span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

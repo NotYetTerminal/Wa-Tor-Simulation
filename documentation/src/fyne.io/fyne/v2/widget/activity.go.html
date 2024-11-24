@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: activity.go in package fyne.io/fyne/v2/widget</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	activity.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/fyne.io/fyne/v2/widget.html">fyne.io/fyne/v2/widget</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> widget</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"image/color"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"sync/atomic"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"time"</span></label></code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i3"><span class="lit-string i3">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i4"><span class="lit-string i4">"fyne.io/fyne/v2/canvas"</span></label></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i5"><span class="lit-string i5">"fyne.io/fyne/v2/theme"</span></label></code></span>
+<span class="codeline" id="line-11"><code>)</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">var</span> _ <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../widget.go.html#line-6" class="ident">Widget</a> = (*<a href="#line-19" class="ident">Activity</a>)(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// Activity is used to indicate that something is happening that should be waited for,</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// or is in the background (depending on usage).</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">// Since: 2.5</span></code></span>
+<span class="codeline" id="line-19"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/widget.html#name-Activity" class="ident">Activity</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-20"><code>	<a href="widget.go.html#line-17" class="ident">BaseWidget</a></code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code>	started <a href="../../../../../pkg/sync/atomic.html" class="ident i1">atomic</a>.<a href="../../../../sync/atomic/type.go.html#line-11" class="ident">Bool</a></code></span>
+<span class="codeline" id="line-23"><code>}</code></span>
+<span class="codeline" id="line-24"><code></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// NewActivity returns a widget for indicating activity</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">// Since: 2.5</span></code></span>
+<span class="codeline" id="line-28"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/fyne.io/fyne/v2/widget.html#name-NewActivity" class="ident">NewActivity</a></label>() *<a href="#line-19" class="ident">Activity</a> {</code></span>
+<span class="codeline" id="line-29"><code>	<label for="r1" class="ident">a</label> := &amp;<a href="#line-19" class="ident">Activity</a>{}</code></span>
+<span class="codeline" id="line-30"><code>	<label for="r1" class="ident">a</label>.<a href="widget.go.html#line-28" class="ident">ExtendBaseWidget</a>(<label for="r1" class="ident">a</label>)</code></span>
+<span class="codeline" id="line-31"><code>	<span class="keyword">return</span> <label for="r1" class="ident">a</label></code></span>
+<span class="codeline" id="line-32"><code>}</code></span>
+<span class="codeline" id="line-33"><code></code></span>
+<span class="codeline" id="line-34"><code><span class="keyword">func</span> (<label for="r2" class="ident">a</label> *<a href="#line-19" class="ident">Activity</a>) <label for="r3" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/widget.Activity.html#name-.MinSize" class="ident">MinSize</a></label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../geometry.go.html#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-35"><code>	<label for="r2" class="ident">a</label>.<a href="widget.go.html#line-28" class="ident">ExtendBaseWidget</a>(<label for="r2" class="ident">a</label>)</code></span>
+<span class="codeline" id="line-36"><code>	<span class="keyword">return</span> <label for="r2" class="ident">a</label>.<a href="#line-20" class="ident">BaseWidget</a>.<a href="widget.go.html#line-71" class="ident">MinSize</a>()</code></span>
+<span class="codeline" id="line-37"><code>}</code></span>
+<span class="codeline" id="line-38"><code></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">// Start the activity indicator animation</span></code></span>
+<span class="codeline" id="line-40"><code><span class="keyword">func</span> (<label for="r4" class="ident">a</label> *<a href="#line-19" class="ident">Activity</a>) <label for="r5" class="ident">Start</label>() {</code></span>
+<span class="codeline" id="line-41"><code>	<span class="keyword">if</span> !<label for="r4" class="ident">a</label>.<a href="#line-22" class="ident">started</a>.<a href="../../../../sync/atomic/type.go.html#line-26" class="ident">CompareAndSwap</a>(<a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a>) {</code></span>
+<span class="codeline" id="line-42"><code>		<span class="keyword">return</span> <span class="comment">// already started</span></code></span>
+<span class="codeline" id="line-43"><code>	}</code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code>	<label for="r4" class="ident">a</label>.<a href="widget.go.html#line-126" class="ident">Refresh</a>()</code></span>
+<span class="codeline" id="line-46"><code>}</code></span>
+<span class="codeline" id="line-47"><code></code></span>
+<span class="codeline" id="line-48"><code><span class="comment">// Stop the activity indicator animation</span></code></span>
+<span class="codeline" id="line-49"><code><span class="keyword">func</span> (<label for="r6" class="ident">a</label> *<a href="#line-19" class="ident">Activity</a>) <label for="r7" class="ident">Stop</label>() {</code></span>
+<span class="codeline" id="line-50"><code>	<span class="keyword">if</span> !<label for="r6" class="ident">a</label>.<a href="#line-22" class="ident">started</a>.<a href="../../../../sync/atomic/type.go.html#line-26" class="ident">CompareAndSwap</a>(<a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a>) {</code></span>
+<span class="codeline" id="line-51"><code>		<span class="keyword">return</span> <span class="comment">// already stopped</span></code></span>
+<span class="codeline" id="line-52"><code>	}</code></span>
+<span class="codeline" id="line-53"><code></code></span>
+<span class="codeline" id="line-54"><code>	<label for="r6" class="ident">a</label>.<a href="widget.go.html#line-126" class="ident">Refresh</a>()</code></span>
+<span class="codeline" id="line-55"><code>}</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code><span class="keyword">func</span> (<label for="r8" class="ident">a</label> *<a href="#line-19" class="ident">Activity</a>) <label for="r9" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/widget.Activity.html#name-.CreateRenderer" class="ident">CreateRenderer</a></label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../widget.go.html#line-17" class="ident">WidgetRenderer</a> {</code></span>
+<span class="codeline" id="line-58"><code>	<label for="r10" class="ident">dots</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../canvasobject.go.html#line-10" class="ident">CanvasObject</a>, <span class="lit-number">3</span>)</code></span>
+<span class="codeline" id="line-59"><code>	<label for="r11" class="ident">v</label> := <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../app.go.html#line-92" class="ident">CurrentApp</a>().<a href="../app.go.html#line-53" class="ident">Settings</a>().<a href="../settings.go.html#line-23" class="ident">ThemeVariant</a>()</code></span>
+<span class="codeline" id="line-60"><code>	<span class="keyword">for</span> <label for="r12" class="ident">i</label> := <span class="keyword">range</span> <label for="r10" class="ident">dots</label> {</code></span>
+<span class="codeline" id="line-61"><code>		<label for="r10" class="ident">dots</label>[<label for="r12" class="ident">i</label>] = <a href="../../../../../pkg/fyne.io/fyne/v2/canvas.html" class="ident i4">canvas</a>.<a href="../canvas/circle.go.html#line-25" class="ident">NewCircle</a>(<label for="r8" class="ident">a</label>.<a href="widget.go.html#line-144" class="ident">Theme</a>().<a href="../theme.go.html#line-29" class="ident">Color</a>(<a href="../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i5">theme</a>.<a href="../theme/color.go.html#line-78" class="ident">ColorNameForeground</a>, <label for="r11" class="ident">v</label>))</code></span>
+<span class="codeline" id="line-62"><code>	}</code></span>
+<span class="codeline" id="line-63"><code>	<label for="r13" class="ident">r</label> := &amp;<a href="#line-79" class="ident">activityRenderer</a>{<a href="#line-81" class="ident">dots</a>: <label for="r10" class="ident">dots</label>, <a href="#line-82" class="ident">parent</a>: <label for="r8" class="ident">a</label>}</code></span>
+<span class="codeline" id="line-64"><code>	<label for="r13" class="ident">r</label>.<a href="#line-80" class="ident">anim</a> = &amp;<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../animation.go.html#line-39" class="ident">Animation</a>{</code></span>
+<span class="codeline" id="line-65"><code>		<a href="../animation.go.html#line-42" class="ident">Duration</a>:    <a href="../../../../../pkg/time.html" class="ident i2">time</a>.<a href="../../../../time/time.go.html#line-655" class="ident">Second</a> * <span class="lit-number">2</span>,</code></span>
+<span class="codeline" id="line-66"><code>		<a href="../animation.go.html#line-43" class="ident">RepeatCount</a>: <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../animation.go.html#line-14" class="ident">AnimationRepeatForever</a>,</code></span>
+<span class="codeline" id="line-67"><code>		<a href="../animation.go.html#line-44" class="ident">Tick</a>:        <label for="r13" class="ident">r</label>.<a href="#line-123" class="ident">animate</a>}</code></span>
+<span class="codeline" id="line-68"><code>	<label for="r13" class="ident">r</label>.<a href="#line-172" class="ident">updateColor</a>()</code></span>
+<span class="codeline" id="line-69"><code></code></span>
+<span class="codeline" id="line-70"><code>	<span class="keyword">if</span> <label for="r8" class="ident">a</label>.<a href="#line-22" class="ident">started</a>.<a href="../../../../sync/atomic/type.go.html#line-17" class="ident">Load</a>() {</code></span>
+<span class="codeline" id="line-71"><code>		<label for="r13" class="ident">r</label>.<a href="#line-162" class="ident">start</a>()</code></span>
+<span class="codeline" id="line-72"><code>	}</code></span>
+<span class="codeline" id="line-73"><code></code></span>
+<span class="codeline" id="line-74"><code>	<span class="keyword">return</span> <label for="r13" class="ident">r</label></code></span>
+<span class="codeline" id="line-75"><code>}</code></span>
+<span class="codeline" id="line-76"><code></code></span>
+<span class="codeline" id="line-77"><code><span class="keyword">var</span> _ <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../widget.go.html#line-17" class="ident">WidgetRenderer</a> = (*<a href="#line-79" class="ident">activityRenderer</a>)(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-78"><code></code></span>
+<span class="codeline" id="line-79"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/widget.html#name-activityRenderer" class="ident">activityRenderer</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-80"><code>	anim   *<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../animation.go.html#line-39" class="ident">Animation</a></code></span>
+<span class="codeline" id="line-81"><code>	dots   []<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../canvasobject.go.html#line-10" class="ident">CanvasObject</a></code></span>
+<span class="codeline" id="line-82"><code>	parent *<a href="#line-19" class="ident">Activity</a></code></span>
+<span class="codeline" id="line-83"><code></code></span>
+<span class="codeline" id="line-84"><code>	bound      <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../geometry.go.html#line-91" class="ident">Size</a></code></span>
+<span class="codeline" id="line-85"><code>	maxCol     <a href="../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a></code></span>
+<span class="codeline" id="line-86"><code>	maxRad     <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-87"><code>	wasStarted <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-88"><code>}</code></span>
+<span class="codeline" id="line-89"><code></code></span>
+<span class="codeline" id="line-90"><code><span class="keyword">func</span> (<label for="r14" class="ident">a</label> *<a href="#line-79" class="ident">activityRenderer</a>) <label for="r15" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/widget.activityRenderer^e44a0.html#name-.Destroy" class="ident">Destroy</a></label>() {</code></span>
+<span class="codeline" id="line-91"><code>	<label for="r14" class="ident">a</label>.<a href="#line-82" class="ident">parent</a>.<a href="#line-22" class="ident">started</a>.<a href="../../../../sync/atomic/type.go.html#line-20" class="ident">Store</a>(<a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a>)</code></span>
+<span class="codeline" id="line-92"><code>	<label for="r14" class="ident">a</label>.<a href="#line-167" class="ident">stop</a>()</code></span>
+<span class="codeline" id="line-93"><code>}</code></span>
+<span class="codeline" id="line-94"><code></code></span>
+<span class="codeline" id="line-95"><code><span class="keyword">func</span> (<label for="r16" class="ident">a</label> *<a href="#line-79" class="ident">activityRenderer</a>) <label for="r17" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/widget.activityRenderer^e44a0.html#name-.Layout" class="ident">Layout</a></label>(<label for="r18" class="ident">size</label> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../geometry.go.html#line-91" class="ident">Size</a>) {</code></span>
+<span class="codeline" id="line-96"><code>	<label for="r16" class="ident">a</label>.<a href="#line-86" class="ident">maxRad</a> = <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../math.go.html#line-4" class="ident">Min</a>(<label for="r18" class="ident">size</label>.<a href="../geometry.go.html#line-92" class="ident">Width</a>, <label for="r18" class="ident">size</label>.<a href="../geometry.go.html#line-93" class="ident">Height</a>) / <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-97"><code>	<label for="r16" class="ident">a</label>.<a href="#line-84" class="ident">bound</a> = <label for="r18" class="ident">size</label></code></span>
+<span class="codeline" id="line-98"><code>}</code></span>
+<span class="codeline" id="line-99"><code></code></span>
+<span class="codeline" id="line-100"><code><span class="keyword">func</span> (<label for="r19" class="ident">a</label> *<a href="#line-79" class="ident">activityRenderer</a>) <label for="r20" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/widget.activityRenderer^e44a0.html#name-.MinSize" class="ident">MinSize</a></label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../geometry.go.html#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-101"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../geometry.go.html#line-104" class="ident">NewSquareSize</a>(<label for="r19" class="ident">a</label>.<a href="#line-82" class="ident">parent</a>.<a href="widget.go.html#line-144" class="ident">Theme</a>().<a href="../theme.go.html#line-32" class="ident">Size</a>(<a href="../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i5">theme</a>.<a href="../theme/size.go.html#line-14" class="ident">SizeNameInlineIcon</a>))</code></span>
+<span class="codeline" id="line-102"><code>}</code></span>
+<span class="codeline" id="line-103"><code></code></span>
+<span class="codeline" id="line-104"><code><span class="keyword">func</span> (<label for="r21" class="ident">a</label> *<a href="#line-79" class="ident">activityRenderer</a>) <label for="r22" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/widget.activityRenderer^e44a0.html#name-.Objects" class="ident">Objects</a></label>() []<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../canvasobject.go.html#line-10" class="ident">CanvasObject</a> {</code></span>
+<span class="codeline" id="line-105"><code>	<span class="keyword">return</span> <label for="r21" class="ident">a</label>.<a href="#line-81" class="ident">dots</a></code></span>
+<span class="codeline" id="line-106"><code>}</code></span>
+<span class="codeline" id="line-107"><code></code></span>
+<span class="codeline" id="line-108"><code><span class="keyword">func</span> (<label for="r23" class="ident">a</label> *<a href="#line-79" class="ident">activityRenderer</a>) <label for="r24" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/widget.activityRenderer^e44a0.html#name-.Refresh" class="ident">Refresh</a></label>() {</code></span>
+<span class="codeline" id="line-109"><code>	<label for="r25" class="ident">started</label> := <label for="r23" class="ident">a</label>.<a href="#line-82" class="ident">parent</a>.<a href="#line-22" class="ident">started</a>.<a href="../../../../sync/atomic/type.go.html#line-17" class="ident">Load</a>()</code></span>
+<span class="codeline" id="line-110"><code>	<span class="keyword">if</span> <label for="r25" class="ident">started</label> {</code></span>
+<span class="codeline" id="line-111"><code>		<span class="keyword">if</span> !<label for="r23" class="ident">a</label>.<a href="#line-87" class="ident">wasStarted</a> {</code></span>
+<span class="codeline" id="line-112"><code>			<label for="r23" class="ident">a</label>.<a href="#line-162" class="ident">start</a>()</code></span>
+<span class="codeline" id="line-113"><code>		}</code></span>
+<span class="codeline" id="line-114"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-115"><code>	} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r23" class="ident">a</label>.<a href="#line-87" class="ident">wasStarted</a> {</code></span>
+<span class="codeline" id="line-116"><code>		<label for="r23" class="ident">a</label>.<a href="#line-167" class="ident">stop</a>()</code></span>
+<span class="codeline" id="line-117"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-118"><code>	}</code></span>
+<span class="codeline" id="line-119"><code></code></span>
+<span class="codeline" id="line-120"><code>	<label for="r23" class="ident">a</label>.<a href="#line-172" class="ident">updateColor</a>()</code></span>
+<span class="codeline" id="line-121"><code>}</code></span>
+<span class="codeline" id="line-122"><code></code></span>
+<span class="codeline" id="line-123"><code><span class="keyword">func</span> (<label for="r26" class="ident">a</label> *<a href="#line-79" class="ident">activityRenderer</a>) <label for="r27" class="ident">animate</label>(<label for="r28" class="ident">done</label> <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) {</code></span>
+<span class="codeline" id="line-124"><code>	<label for="r29" class="ident">off</label> := <label for="r28" class="ident">done</label> * <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-125"><code>	<span class="keyword">if</span> <label for="r29" class="ident">off</label> &gt; <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-126"><code>		<label for="r29" class="ident">off</label> = <span class="lit-number">2</span> - <label for="r29" class="ident">off</label></code></span>
+<span class="codeline" id="line-127"><code>	}</code></span>
+<span class="codeline" id="line-128"><code></code></span>
+<span class="codeline" id="line-129"><code>	<label for="r30" class="ident">off1</label> := (<label for="r28" class="ident">done</label> + <span class="lit-number">0.25</span>) * <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-130"><code>	<span class="keyword">if</span> <label for="r28" class="ident">done</label> &gt;= <span class="lit-number">0.75</span> {</code></span>
+<span class="codeline" id="line-131"><code>		<label for="r30" class="ident">off1</label> = (<label for="r28" class="ident">done</label> - <span class="lit-number">0.75</span>) * <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-132"><code>	}</code></span>
+<span class="codeline" id="line-133"><code>	<span class="keyword">if</span> <label for="r30" class="ident">off1</label> &gt; <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-134"><code>		<label for="r30" class="ident">off1</label> = <span class="lit-number">2</span> - <label for="r30" class="ident">off1</label></code></span>
+<span class="codeline" id="line-135"><code>	}</code></span>
+<span class="codeline" id="line-136"><code></code></span>
+<span class="codeline" id="line-137"><code>	<label for="r31" class="ident">off2</label> := (<label for="r28" class="ident">done</label> + <span class="lit-number">0.75</span>) * <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-138"><code>	<span class="keyword">if</span> <label for="r28" class="ident">done</label> &gt;= <span class="lit-number">0.25</span> {</code></span>
+<span class="codeline" id="line-139"><code>		<label for="r31" class="ident">off2</label> = (<label for="r28" class="ident">done</label> - <span class="lit-number">0.25</span>) * <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-140"><code>	}</code></span>
+<span class="codeline" id="line-141"><code>	<span class="keyword">if</span> <label for="r31" class="ident">off2</label> &gt; <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-142"><code>		<label for="r31" class="ident">off2</label> = <span class="lit-number">2</span> - <label for="r31" class="ident">off2</label></code></span>
+<span class="codeline" id="line-143"><code>	}</code></span>
+<span class="codeline" id="line-144"><code></code></span>
+<span class="codeline" id="line-145"><code>	<label for="r26" class="ident">a</label>.<a href="#line-150" class="ident">scaleDot</a>(<label for="r26" class="ident">a</label>.<a href="#line-81" class="ident">dots</a>[<span class="lit-number">0</span>].(*<a href="../../../../../pkg/fyne.io/fyne/v2/canvas.html" class="ident i4">canvas</a>.<a href="../canvas/circle.go.html#line-14" class="ident">Circle</a>), <label for="r29" class="ident">off</label>)</code></span>
+<span class="codeline" id="line-146"><code>	<label for="r26" class="ident">a</label>.<a href="#line-150" class="ident">scaleDot</a>(<label for="r26" class="ident">a</label>.<a href="#line-81" class="ident">dots</a>[<span class="lit-number">1</span>].(*<a href="../../../../../pkg/fyne.io/fyne/v2/canvas.html" class="ident i4">canvas</a>.<a href="../canvas/circle.go.html#line-14" class="ident">Circle</a>), <label for="r30" class="ident">off1</label>)</code></span>
+<span class="codeline" id="line-147"><code>	<label for="r26" class="ident">a</label>.<a href="#line-150" class="ident">scaleDot</a>(<label for="r26" class="ident">a</label>.<a href="#line-81" class="ident">dots</a>[<span class="lit-number">2</span>].(*<a href="../../../../../pkg/fyne.io/fyne/v2/canvas.html" class="ident i4">canvas</a>.<a href="../canvas/circle.go.html#line-14" class="ident">Circle</a>), <label for="r31" class="ident">off2</label>)</code></span>
+<span class="codeline" id="line-148"><code>}</code></span>
+<span class="codeline" id="line-149"><code></code></span>
+<span class="codeline" id="line-150"><code><span class="keyword">func</span> (<label for="r32" class="ident">a</label> *<a href="#line-79" class="ident">activityRenderer</a>) <label for="r33" class="ident">scaleDot</label>(<label for="r34" class="ident">dot</label> *<a href="../../../../../pkg/fyne.io/fyne/v2/canvas.html" class="ident i4">canvas</a>.<a href="../canvas/circle.go.html#line-14" class="ident">Circle</a>, <label for="r35" class="ident">off</label> <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) {</code></span>
+<span class="codeline" id="line-151"><code>	<label for="r36" class="ident">rad</label> := <label for="r32" class="ident">a</label>.<a href="#line-86" class="ident">maxRad</a> - <label for="r32" class="ident">a</label>.<a href="#line-86" class="ident">maxRad</a>*<label for="r35" class="ident">off</label>/<span class="lit-number">1.2</span></code></span>
+<span class="codeline" id="line-152"><code>	<label for="r37" class="ident">mid</label> := <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../geometry.go.html#line-43" class="ident">NewPos</a>(<label for="r32" class="ident">a</label>.<a href="#line-84" class="ident">bound</a>.<a href="../geometry.go.html#line-92" class="ident">Width</a>/<span class="lit-number">2</span>, <label for="r32" class="ident">a</label>.<a href="#line-84" class="ident">bound</a>.<a href="../geometry.go.html#line-93" class="ident">Height</a>/<span class="lit-number">2</span>)</code></span>
+<span class="codeline" id="line-153"><code></code></span>
+<span class="codeline" id="line-154"><code>	<label for="r34" class="ident">dot</label>.<a href="../canvas/circle.go.html#line-45" class="ident">Move</a>(<label for="r37" class="ident">mid</label>.<a href="../geometry.go.html#line-79" class="ident">Subtract</a>(<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../geometry.go.html#line-50" class="ident">NewSquareOffsetPos</a>(<label for="r36" class="ident">rad</label>)))</code></span>
+<span class="codeline" id="line-155"><code>	<label for="r34" class="ident">dot</label>.<a href="../canvas/circle.go.html#line-64" class="ident">Resize</a>(<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../geometry.go.html#line-104" class="ident">NewSquareSize</a>(<label for="r36" class="ident">rad</label> * <span class="lit-number">2</span>))</code></span>
+<span class="codeline" id="line-156"><code></code></span>
+<span class="codeline" id="line-157"><code>	<label for="r38" class="ident">alpha</label> := <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<span class="lit-number">0</span> + <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r32" class="ident">a</label>.<a href="#line-85" class="ident">maxCol</a>.<a href="../../../../image/color/color.go.html#line-57" class="ident">A</a>)*<label for="r35" class="ident">off</label>))</code></span>
+<span class="codeline" id="line-158"><code>	<label for="r34" class="ident">dot</label>.<a href="../canvas/circle.go.html#line-19" class="ident">FillColor</a> = <a href="../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../image/color/color.go.html#line-57" class="ident">R</a>: <label for="r32" class="ident">a</label>.<a href="#line-85" class="ident">maxCol</a>.<a href="../../../../image/color/color.go.html#line-57" class="ident">R</a>, <a href="../../../../image/color/color.go.html#line-57" class="ident">G</a>: <label for="r32" class="ident">a</label>.<a href="#line-85" class="ident">maxCol</a>.<a href="../../../../image/color/color.go.html#line-57" class="ident">G</a>, <a href="../../../../image/color/color.go.html#line-57" class="ident">B</a>: <label for="r32" class="ident">a</label>.<a href="#line-85" class="ident">maxCol</a>.<a href="../../../../image/color/color.go.html#line-57" class="ident">B</a>, <a href="../../../../image/color/color.go.html#line-57" class="ident">A</a>: <label for="r38" class="ident">alpha</label>}</code></span>
+<span class="codeline" id="line-159"><code>	<label for="r34" class="ident">dot</label>.<a href="../canvas/circle.go.html#line-58" class="ident">Refresh</a>()</code></span>
+<span class="codeline" id="line-160"><code>}</code></span>
+<span class="codeline" id="line-161"><code></code></span>
+<span class="codeline" id="line-162"><code><span class="keyword">func</span> (<label for="r39" class="ident">a</label> *<a href="#line-79" class="ident">activityRenderer</a>) <label for="r40" class="ident">start</label>() {</code></span>
+<span class="codeline" id="line-163"><code>	<label for="r39" class="ident">a</label>.<a href="#line-87" class="ident">wasStarted</a> = <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-164"><code>	<label for="r39" class="ident">a</label>.<a href="#line-80" class="ident">anim</a>.<a href="../animation.go.html#line-57" class="ident">Start</a>()</code></span>
+<span class="codeline" id="line-165"><code>}</code></span>
+<span class="codeline" id="line-166"><code></code></span>
+<span class="codeline" id="line-167"><code><span class="keyword">func</span> (<label for="r41" class="ident">a</label> *<a href="#line-79" class="ident">activityRenderer</a>) <label for="r42" class="ident">stop</label>() {</code></span>
+<span class="codeline" id="line-168"><code>	<label for="r41" class="ident">a</label>.<a href="#line-87" class="ident">wasStarted</a> = <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-169"><code>	<label for="r41" class="ident">a</label>.<a href="#line-80" class="ident">anim</a>.<a href="../animation.go.html#line-62" class="ident">Stop</a>()</code></span>
+<span class="codeline" id="line-170"><code>}</code></span>
+<span class="codeline" id="line-171"><code></code></span>
+<span class="codeline" id="line-172"><code><span class="keyword">func</span> (<label for="r43" class="ident">a</label> *<a href="#line-79" class="ident">activityRenderer</a>) <label for="r44" class="ident">updateColor</label>() {</code></span>
+<span class="codeline" id="line-173"><code>	<label for="r45" class="ident">v</label> := <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../app.go.html#line-92" class="ident">CurrentApp</a>().<a href="../app.go.html#line-53" class="ident">Settings</a>().<a href="../settings.go.html#line-23" class="ident">ThemeVariant</a>()</code></span>
+<span class="codeline" id="line-174"><code>	<label for="r46" class="ident">rr</label>, <label for="r47" class="ident">gg</label>, <label for="r48" class="ident">bb</label>, <label for="r49" class="ident">aa</label> := <label for="r43" class="ident">a</label>.<a href="#line-82" class="ident">parent</a>.<a href="widget.go.html#line-144" class="ident">Theme</a>().<a href="../theme.go.html#line-29" class="ident">Color</a>(<a href="../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i5">theme</a>.<a href="../theme/color.go.html#line-78" class="ident">ColorNameForeground</a>, <label for="r45" class="ident">v</label>).<a href="../../../../image/color/color.go.html#line-18" class="ident">RGBA</a>()</code></span>
+<span class="codeline" id="line-175"><code>	<label for="r43" class="ident">a</label>.<a href="#line-85" class="ident">maxCol</a> = <a href="../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../image/color/color.go.html#line-57" class="ident">R</a>: <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r46" class="ident">rr</label> &gt;&gt; <span class="lit-number">8</span>), <a href="../../../../image/color/color.go.html#line-57" class="ident">G</a>: <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r47" class="ident">gg</label> &gt;&gt; <span class="lit-number">8</span>), <a href="../../../../image/color/color.go.html#line-57" class="ident">B</a>: <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r48" class="ident">bb</label> &gt;&gt; <span class="lit-number">8</span>), <a href="../../../../image/color/color.go.html#line-57" class="ident">A</a>: <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r49" class="ident">aa</label> &gt;&gt; <span class="lit-number">8</span>)}</code></span>
+<span class="codeline" id="line-176"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

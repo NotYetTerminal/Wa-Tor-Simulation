@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: device.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	device.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4]
+{background: #226; color: #ff8;}
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// DeviceOrientation represents the different ways that a mobile device can be held</span></code></span>
+<span class="codeline" id="line-4"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-DeviceOrientation" class="ident">DeviceOrientation</a> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-5"><code></code></span>
+<span class="codeline" id="line-6"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-7"><code>	<span class="comment">// OrientationVertical is the default vertical orientation</span></code></span>
+<span class="codeline" id="line-8"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-OrientationVertical" class="ident">OrientationVertical</a> <a href="#line-4" class="ident">DeviceOrientation</a> = <a href="../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-9"><code>	<span class="comment">// OrientationVerticalUpsideDown is the portrait orientation held upside down</span></code></span>
+<span class="codeline" id="line-10"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-OrientationVerticalUpsideDown" class="ident">OrientationVerticalUpsideDown</a></code></span>
+<span class="codeline" id="line-11"><code>	<span class="comment">// OrientationHorizontalLeft is used to indicate a landscape orientation with the top to the left</span></code></span>
+<span class="codeline" id="line-12"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-OrientationHorizontalLeft" class="ident">OrientationHorizontalLeft</a></code></span>
+<span class="codeline" id="line-13"><code>	<span class="comment">// OrientationHorizontalRight is used to indicate a landscape orientation with the top to the right</span></code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-OrientationHorizontalRight" class="ident">OrientationHorizontalRight</a></code></span>
+<span class="codeline" id="line-15"><code>)</code></span>
+<span class="codeline" id="line-16"><code></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// IsVertical is a helper utility that determines if a passed orientation is vertical</span></code></span>
+<span class="codeline" id="line-18"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-IsVertical" class="ident">IsVertical</a></label>(<label for="r1" class="ident">orient</label> <a href="#line-4" class="ident">DeviceOrientation</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-19"><code>	<span class="keyword">return</span> <label for="r1" class="ident">orient</label> == <a href="#line-8" class="ident">OrientationVertical</a> || <label for="r1" class="ident">orient</label> == <a href="#line-10" class="ident">OrientationVerticalUpsideDown</a></code></span>
+<span class="codeline" id="line-20"><code>}</code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// IsHorizontal is a helper utility that determines if a passed orientation is horizontal</span></code></span>
+<span class="codeline" id="line-23"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-IsHorizontal" class="ident">IsHorizontal</a></label>(<label for="r3" class="ident">orient</label> <a href="#line-4" class="ident">DeviceOrientation</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-24"><code>	<span class="keyword">return</span> !<a href="#line-18" class="ident">IsVertical</a>(<label for="r3" class="ident">orient</label>)</code></span>
+<span class="codeline" id="line-25"><code>}</code></span>
+<span class="codeline" id="line-26"><code></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">// Device provides information about the devices the code is running on</span></code></span>
+<span class="codeline" id="line-28"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Device" class="ident">Device</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Device.html#name-Orientation" class="ident">Orientation</a>() <a href="#line-4" class="ident">DeviceOrientation</a></code></span>
+<span class="codeline" id="line-30"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Device.html#name-IsMobile" class="ident">IsMobile</a>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-31"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Device.html#name-IsBrowser" class="ident">IsBrowser</a>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Device.html#name-HasKeyboard" class="ident">HasKeyboard</a>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Device.html#name-SystemScaleForWindow" class="ident">SystemScaleForWindow</a>(<a href="window.go.html#line-5" class="ident">Window</a>) <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code>	<span class="comment">// Locale returns the information about this device's language and region.</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">	// Since: 2.5</span></code></span>
+<span class="codeline" id="line-38"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Device.html#name-Locale" class="ident">Locale</a>() <a href="locale.go.html#line-8" class="ident">Locale</a></code></span>
+<span class="codeline" id="line-39"><code>}</code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">// CurrentDevice returns the device information for the current hardware (via the driver)</span></code></span>
+<span class="codeline" id="line-42"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-CurrentDevice" class="ident">CurrentDevice</a></label>() <a href="#line-28" class="ident">Device</a> {</code></span>
+<span class="codeline" id="line-43"><code>	<span class="keyword">return</span> <a href="app.go.html#line-92" class="ident">CurrentApp</a>().<a href="app.go.html#line-43" class="ident">Driver</a>().<a href="driver.go.html#line-24" class="ident">Device</a>()</code></span>
+<span class="codeline" id="line-44"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

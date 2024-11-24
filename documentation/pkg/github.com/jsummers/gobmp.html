@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/jsummers/gobmp</title>
+<link href="../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>gobmp</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-github.com/jsummers/gobmp">github.com/jsummers/gobmp</a><i> (on <a href="https://pkg.go.dev/github.com/jsummers/gobmp" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../dep/github.com/jsummers/gobmp.html">5 packages</a>, and imported by <a href="../../../dep/github.com/jsummers/gobmp.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#doc">d</a> <a href="../../../src/github.com/jsummers/gobmp/reader.go.html">reader.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package gobmp implements a BMP image decoder and encoder.</span>
+</span>
+	<span class="nodocs">    <a href="../../../src/github.com/jsummers/gobmp/rle.go.html">rle.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/jsummers/gobmp/writer.go.html">writer.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 9, in which 3 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-EncoderOptions" data-popularity="135">	<input type='checkbox' class="fold" id="EncoderOptions-fold-content"><label for="EncoderOptions-fold-content"> type <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-16">EncoderOptions</a> <i>(struct)</i></label><span id='EncoderOptions-fold-content-docs' class="fold-docs">
+<span class="md-text">		EncoderOptions stores options that can be passed to EncodeWithOptions().
+		Create an EncoderOptions object with new().</span>
+
+		<input type='checkbox' class="fold" id="EncoderOptions-fold-fields"><label for="EncoderOptions-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='EncoderOptions-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="EncoderOptions-showhide-fields"><i><label for="EncoderOptions-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="EncoderOptions-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-17">densitySet</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-19">supportTrns</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-18">xDens</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-18">yDens</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="EncoderOptions-fold-methods"><label for="EncoderOptions-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='EncoderOptions-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="EncoderOptions-fold-method-SetDensity"><label for="EncoderOptions-fold-method-SetDensity">(*EncoderOptions) <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-24">SetDensity</a>(xDens, yDens <a href="../../builtin.html#name-int">int</a>)</label><span id='EncoderOptions-fold-method-SetDensity-docs' class="fold-docs">
+<span class="md-text">				SetDensity sets the density to write to the output image's metadata, in
+				pixels per meter.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="EncoderOptions-fold-method-SupportTransparency"><label for="EncoderOptions-fold-method-SupportTransparency">(*EncoderOptions) <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-33">SupportTransparency</a>(t <a href="../../builtin.html#name-bool">bool</a>)</label><span id='EncoderOptions-fold-method-SupportTransparency-docs' class="fold-docs">
+<span class="md-text">				SupportTransparency indicates whether to retain transparency information
+				when writing the BMP file. Transparency requires the use of a
+				not-so-portable version of BMP.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="EncoderOptions-fold-params"><label for="EncoderOptions-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='EncoderOptions-fold-params-items' class="fold-items"><span>
+			func <a href="#name-EncodeWithOptions">EncodeWithOptions</a>(w <a href="../../io.html">io</a>.<a href="../../io.html#name-Writer">Writer</a>, m <a href="../../image.html">image</a>.<a href="../../image.html#name-Image">Image</a>, opts *<b>EncoderOptions</b>) <a href="../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-FormatError" data-popularity="150">	<input type='checkbox' class="fold" id="FormatError-fold-content"><label for="FormatError-fold-content"> type <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-63">FormatError</a> <a href="../../builtin.html#name-string">string</a> <i>(basic type)</i></label><span id='FormatError-fold-content-docs' class="fold-docs">
+<span class="md-text">		A FormatError reports that the input is not a valid BMP file.</span>
+
+		<input type='checkbox' class="fold" id="FormatError-fold-methods"><label for="FormatError-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='FormatError-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( FormatError) <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-65">Error</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="FormatError-fold-impls"><label for="FormatError-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='FormatError-fold-impls-items' class="fold-items"><span>
+			 FormatError : github.com/fredbi/uri.<a href="../fredbi/uri.html#name-Error">Error</a></span><span>
+			 FormatError : <a href="../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-UnsupportedError" data-popularity="150">	<input type='checkbox' class="fold" id="UnsupportedError-fold-content"><label for="UnsupportedError-fold-content"> type <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-58">UnsupportedError</a> <a href="../../builtin.html#name-string">string</a> <i>(basic type)</i></label><span id='UnsupportedError-fold-content-docs' class="fold-docs">
+<span class="md-text">		An UnsupportedError reports that the input uses a valid but unimplemented
+		BMP feature.</span>
+
+		<input type='checkbox' class="fold" id="UnsupportedError-fold-methods"><label for="UnsupportedError-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='UnsupportedError-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( UnsupportedError) <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-60">Error</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="UnsupportedError-fold-impls"><label for="UnsupportedError-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='UnsupportedError-fold-impls-items' class="fold-items"><span>
+			 UnsupportedError : github.com/fredbi/uri.<a href="../fredbi/uri.html#name-Error">Error</a></span><span>
+			 UnsupportedError : <a href="../../builtin.html#name-error">error</a></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 6 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 6 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-bitFieldsInfo" data-popularity="0">	<input type='checkbox' class="fold" id="bitFieldsInfo-fold-content"><label for="bitFieldsInfo-fold-content"> type <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-24">bitFieldsInfo</a> <i>(struct)</i></label><span id='bitFieldsInfo-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="bitFieldsInfo-fold-fields"><label for="bitFieldsInfo-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='bitFieldsInfo-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="bitFieldsInfo-showhide-fields"><i><label for="bitFieldsInfo-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="bitFieldsInfo-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-25">mask</a> <i><a href="../../builtin.html#name-uint32">uint32</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="bitFieldsInfo-fold-field-scale"><label for="bitFieldsInfo-fold-field-scale"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-27">scale</a> <i><a href="../../builtin.html#name-float64">float64</a></i></label><span id='bitFieldsInfo-fold-field-scale-docs' class="fold-docs">
+<span class="md-text">				// Amount to multiply the sample value by, to scale it to [0..255]</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-26">shift</a> <i><a href="../../builtin.html#name-uint">uint</a></i></span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-decodeInfoHeaderFuncType" data-popularity="0">	<span class="nodocs"> type <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-319">decodeInfoHeaderFuncType</a> <i>(func)</i></span></div><div class="anchor type-res hidden" id="name-decoder" data-popularity="795">	<input type='checkbox' class="fold" id="decoder-fold-content"><label for="decoder-fold-content"> type <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-30">decoder</a> <i>(struct)</i></label><span id='decoder-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="decoder-fold-fields"><label for="decoder-fold-fields">Fields (<i>total 19, none are exported</i>)</label><span id='decoder-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="decoder-showhide-fields"><i><label for="decoder-showhide-fields" class="show-inline">/* 19 unexporteds ... */</label><label for="decoder-showhide-fields" class="hide-inline">/* 19 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-36">bfOffBits</a> <i><a href="../../builtin.html#name-uint32">uint32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-41">biCompression</a> <i><a href="../../builtin.html#name-uint32">uint32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-40">bitCount</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-53">bitFields</a> <i>[4]<a href="#name-bitFieldsInfo">bitFieldsInfo</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-52">bitFieldsSegmentSize</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-48">dstHasPalette</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-47">dstPalNumEntries</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-49">dstPalette</a> <i><a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Palette">Palette</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-51">hasBitFieldsSegment</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-37">headerSize</a> <i><a href="../../builtin.html#name-uint32">uint32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-39">height</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-field-img_NRGBA"><label for="decoder-fold-field-img_NRGBA"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-34">img_NRGBA</a> <i>*<a href="../../image.html">image</a>.<a href="../../image.html#name-NRGBA">NRGBA</a></i></label><span id='decoder-fold-field-img_NRGBA-docs' class="fold-docs">
+<span class="md-text">				// Used otherwise</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-field-img_Paletted"><label for="decoder-fold-field-img_Paletted"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-33">img_Paletted</a> <i>*<a href="../../image.html">image</a>.<a href="../../image.html#name-Paletted">Paletted</a></i></label><span id='decoder-fold-field-img_Paletted-docs' class="fold-docs">
+<span class="md-text">				// Used if dstHasPalette is true</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-42">isTopDown</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-31">r</a> <i><a href="../../io.html">io</a>.<a href="../../io.html#name-Reader">Reader</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-45">srcPalBytesPerEntry</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-44">srcPalNumEntries</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-46">srcPalSizeInBytes</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-38">width</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="decoder-fold-methods"><label for="decoder-fold-methods">Methods (<i>total 11, none are exported</i>)</label><span id='decoder-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="decoder-showhide-methods"><i><label for="decoder-showhide-methods" class="show-inline">/* 11 unexporteds ... */</label><label for="decoder-showhide-methods" class="hide-inline">/* 11 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-425">decodeFileHeader</a>(b []<a href="../../builtin.html#name-byte">byte</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-387">readBitFieldsSegment</a>() <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../../src/github.com/jsummers/gobmp/rle.go.html#line-46">readBitsRLE</a>() <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-149">readBitsUncompressed</a>() <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="decoder-fold-method-readGap"><label for="decoder-fold-method-readGap">(*decoder) <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-199">readGap</a>() <a href="../../builtin.html#name-error">error</a></label><span id='decoder-fold-method-readGap-docs' class="fold-docs">
+<span class="md-text">				If there is a gap before the bits, skip over it.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-433">readHeaders</a>(configOnly <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-458">readMain</a>(r <a href="../../io.html">io</a>.<a href="../../io.html#name-Reader">Reader</a>, configOnly <a href="../../builtin.html#name-bool">bool</a>) (<a href="../../image.html">image</a>.<a href="../../image.html#name-Image">Image</a>, <a href="../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-398">readPalette</a>() <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-364">recordBitFields</a>(r, g, b, a <a href="../../builtin.html#name-uint32">uint32</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../../src/github.com/jsummers/gobmp/rle.go.html#line-19">rlePutPixel</a>(rle *<a href="#name-rleState">rleState</a>, v <a href="../../builtin.html#name-byte">byte</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-181">skipBytes</a>(n <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-error">error</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="decoder-fold-params"><label for="decoder-fold-params">As Inputs Of (<i>at least 7, none are exported</i>)</label><span id='decoder-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="decoder-showhide-outputofs"><i><label for="decoder-showhide-outputofs" class="show-inline">/* 7+ unexporteds ... */</label><label for="decoder-showhide-outputofs" class="hide-inline">/* 7+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-decodeInfoHeader108">decodeInfoHeader108</a>(d *<b>decoder</b>, h []<a href="../../builtin.html#name-byte">byte</a>, configOnly <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-error">error</a></i></span><span class="hidden"><i>
+			func <a href="#name-decodeInfoHeader12">decodeInfoHeader12</a>(d *<b>decoder</b>, h []<a href="../../builtin.html#name-byte">byte</a>, configOnly <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-error">error</a></i></span><span class="hidden"><i>
+			func <a href="#name-decodeInfoHeader40">decodeInfoHeader40</a>(d *<b>decoder</b>, h []<a href="../../builtin.html#name-byte">byte</a>, configOnly <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-error">error</a></i></span><span class="hidden"><i>
+			func <a href="#name-decodeRow_16or32">decodeRow_16or32</a>(d *<b>decoder</b>, buf []<a href="../../builtin.html#name-byte">byte</a>, j <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-error">error</a></i></span><span class="hidden"><i>
+			func <a href="#name-decodeRow_24">decodeRow_24</a>(d *<b>decoder</b>, buf []<a href="../../builtin.html#name-byte">byte</a>, j <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-error">error</a></i></span><span class="hidden"><i>
+			func <a href="#name-decodeRow_paletted">decodeRow_paletted</a>(d *<b>decoder</b>, buf []<a href="../../builtin.html#name-byte">byte</a>, j <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-error">error</a></i></span><span class="hidden"><i>
+			func <a href="#name-readInfoHeader">readInfoHeader</a>(d *<b>decoder</b>, configOnly <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-error">error</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-decodeRowFuncType" data-popularity="0">	<span class="nodocs"> type <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-137">decodeRowFuncType</a> <i>(func)</i></span></div><div class="anchor type-res hidden" id="name-encoder" data-popularity="610">	<input type='checkbox' class="fold" id="encoder-fold-content"><label for="encoder-fold-content"> type <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-37">encoder</a> <i>(struct)</i></label><span id='encoder-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="encoder-fold-fields"><label for="encoder-fold-fields">Fields (<i>total 17, none are exported</i>)</label><span id='encoder-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="encoder-showhide-fields"><i><label for="encoder-showhide-fields" class="show-inline">/* 17 unexporteds ... */</label><label for="encoder-showhide-fields" class="hide-inline">/* 17 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-48">dstBitCount</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-49">dstBitsOffset</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-47">dstBitsSize</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-50">dstFileSize</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-46">dstStride</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="encoder-fold-field-headerSize"><label for="encoder-fold-field-headerSize"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-56">headerSize</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='encoder-fold-field-headerSize-docs' class="fold-docs">
+<span class="md-text">				// 40 (for BMPv3) or 124 (for BMPv5)</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-45">height</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-40">m</a> <i><a href="../../image.html">image</a>.<a href="../../image.html#name-Image">Image</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-41">m_AsPaletted</a> <i>*<a href="../../image.html">image</a>.<a href="../../image.html#name-Paletted">Paletted</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="encoder-fold-field-nColors"><label for="encoder-fold-field-nColors"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-55">nColors</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='encoder-fold-field-nColors-docs' class="fold-docs">
+<span class="md-text">				// Number of colors in palette; 0 if no palette</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-38">opts</a> <i>*<a href="#name-EncoderOptions">EncoderOptions</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-43">srcBounds</a> <i><a href="../../image.html">image</a>.<a href="../../image.html#name-Rectangle">Rectangle</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-54">srcIsGray</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-39">w</a> <i><a href="../../io.html">io</a>.<a href="../../io.html#name-Writer">Writer</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-44">width</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-52">writeAlpha</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-53">writePaletted</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="encoder-fold-methods"><label for="encoder-fold-methods">Methods (<i>total 8, none are exported</i>)</label><span id='encoder-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="encoder-showhide-methods"><i><label for="encoder-showhide-methods" class="show-inline">/* 8 unexporteds ... */</label><label for="encoder-showhide-methods" class="hide-inline">/* 8 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="encoder-fold-method-checkPaletted"><label for="encoder-fold-method-checkPaletted">(*encoder) <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-256">checkPaletted</a>()</label><span id='encoder-fold-method-checkPaletted-docs' class="fold-docs">
+<span class="md-text">				If the image can be written as a paletted image, sets e.writePaletted
+				to true, and sets related fields.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="encoder-fold-method-generateFileHeader"><label for="encoder-fold-method-generateFileHeader">(*encoder) <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-72">generateFileHeader</a>(h []<a href="../../builtin.html#name-byte">byte</a>)</label><span id='encoder-fold-method-generateFileHeader-docs' class="fold-docs">
+<span class="md-text">				Write the BITMAPFILEHEADER structure to a slice[14].</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="encoder-fold-method-generateInfoHeader"><label for="encoder-fold-method-generateInfoHeader">(*encoder) <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-80">generateInfoHeader</a>(h []<a href="../../builtin.html#name-byte">byte</a>)</label><span id='encoder-fold-method-generateInfoHeader-docs' class="fold-docs">
+<span class="md-text">				Write the BITMAPINFOHEADER structure to a slice[40] or [124].</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-278">srcIsOpaque</a>() <a href="../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="encoder-fold-method-strategize"><label for="encoder-fold-method-strategize">(*encoder) <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-297">strategize</a>() <a href="../../builtin.html#name-error">error</a></label><span id='encoder-fold-method-strategize-docs' class="fold-docs">
+<span class="md-text">				Plot out the structure of the file that we're going to write.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-217">writeBits</a>() <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-110">writeHeaders</a>() <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-118">writePalette</a>() <a href="../../builtin.html#name-error">error</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="encoder-fold-params"><label for="encoder-fold-params">As Inputs Of (<i>at least 6, none are exported</i>)</label><span id='encoder-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="encoder-showhide-outputofs"><i><label for="encoder-showhide-outputofs" class="show-inline">/* 6+ unexporteds ... */</label><label for="encoder-showhide-outputofs" class="hide-inline">/* 6+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-generateRow_1">generateRow_1</a>(e *<b>encoder</b>, j <a href="../../builtin.html#name-int">int</a>, rowBuf []<a href="../../builtin.html#name-byte">byte</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-generateRow_24">generateRow_24</a>(e *<b>encoder</b>, j <a href="../../builtin.html#name-int">int</a>, rowBuf []<a href="../../builtin.html#name-byte">byte</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-generateRow_32">generateRow_32</a>(e *<b>encoder</b>, j <a href="../../builtin.html#name-int">int</a>, rowBuf []<a href="../../builtin.html#name-byte">byte</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-generateRow_4">generateRow_4</a>(e *<b>encoder</b>, j <a href="../../builtin.html#name-int">int</a>, rowBuf []<a href="../../builtin.html#name-byte">byte</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-generateRow_8">generateRow_8</a>(e *<b>encoder</b>, j <a href="../../builtin.html#name-int">int</a>, rowBuf []<a href="../../builtin.html#name-byte">byte</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-generateRow_GrayPal">generateRow_GrayPal</a>(e *<b>encoder</b>, j <a href="../../builtin.html#name-int">int</a>, rowBuf []<a href="../../builtin.html#name-byte">byte</a>)</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-rleState" data-popularity="0">	<input type='checkbox' class="fold" id="rleState-fold-content"><label for="rleState-fold-content"> type <a href="../../../src/github.com/jsummers/gobmp/rle.go.html#line-14">rleState</a> <i>(struct)</i></label><span id='rleState-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="rleState-fold-fields"><label for="rleState-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='rleState-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="rleState-showhide-fields"><i><label for="rleState-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="rleState-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/jsummers/gobmp/rle.go.html#line-16">badColorFlag</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="rleState-fold-field-xpos"><label for="rleState-fold-field-xpos"><a href="../../../src/github.com/jsummers/gobmp/rle.go.html#line-15">xpos</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='rleState-fold-field-xpos-docs' class="fold-docs">
+<span class="md-text">				// Position in the target image</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="rleState-fold-field-ypos"><label for="rleState-fold-field-ypos"><a href="../../../src/github.com/jsummers/gobmp/rle.go.html#line-15">ypos</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='rleState-fold-field-ypos-docs' class="fold-docs">
+<span class="md-text">				// Position in the target image</span>
+</span></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 22, in which 4 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Decode">	<input type='checkbox' class="fold" id="Decode-fold-content"><label for="Decode-fold-content"> func <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-550">Decode</a>(r <a href="../../io.html">io</a>.<a href="../../io.html#name-Reader">Reader</a>) (<a href="../../image.html">image</a>.<a href="../../image.html#name-Image">Image</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='Decode-fold-content-docs' class="fold-docs">
+<span class="md-text">		Decode reads a BMP image from r and returns it as an image.Image.</span>
+
+</span></div><div class="anchor value-res" id="name-DecodeConfig">	<input type='checkbox' class="fold" id="DecodeConfig-fold-content"><label for="DecodeConfig-fold-content"> func <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-562">DecodeConfig</a>(r <a href="../../io.html">io</a>.<a href="../../io.html#name-Reader">Reader</a>) (<a href="../../image.html">image</a>.<a href="../../image.html#name-Config">Config</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='DecodeConfig-fold-content-docs' class="fold-docs">
+<span class="md-text">		DecodeConfig returns the color model and dimensions of the BMP image without
+		decoding the entire image.</span>
+
+</span></div><div class="anchor value-res" id="name-Encode">	<input type='checkbox' class="fold" id="Encode-fold-content"><label for="Encode-fold-content"> func <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-371">Encode</a>(w <a href="../../io.html">io</a>.<a href="../../io.html#name-Writer">Writer</a>, m <a href="../../image.html">image</a>.<a href="../../image.html#name-Image">Image</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Encode-fold-content-docs' class="fold-docs">
+<span class="md-text">		Encode writes the Image m to w in BMP format.</span>
+
+</span></div><div class="anchor value-res" id="name-EncodeWithOptions">	<input type='checkbox' class="fold" id="EncodeWithOptions-fold-content"><label for="EncodeWithOptions-fold-content"> func <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-335">EncodeWithOptions</a>(w <a href="../../io.html">io</a>.<a href="../../io.html#name-Writer">Writer</a>, m <a href="../../image.html">image</a>.<a href="../../image.html#name-Image">Image</a>, opts *<a href="#name-EncoderOptions">EncoderOptions</a>) <a href="../../builtin.html#name-error">error</a></label><span id='EncodeWithOptions-fold-content-docs' class="fold-docs">
+<span class="md-text">		EncodeWithOptions writes the Image m to w in BMP format, using the options
+		recorded in opts.
+		opts may be nil, in which case it behaves the same as Encode.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 18 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 18 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-decodeInfoHeader108"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-301">decodeInfoHeader108</a>(d *<a href="#name-decoder">decoder</a>, h []<a href="../../builtin.html#name-byte">byte</a>, configOnly <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-decodeInfoHeader12"><i>	<input type='checkbox' class="fold" id="decodeInfoHeader12-fold-content"><label for="decodeInfoHeader12-fold-content"> func <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-213">decodeInfoHeader12</a>(d *<a href="#name-decoder">decoder</a>, h []<a href="../../builtin.html#name-byte">byte</a>, configOnly <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-error">error</a></label><span id='decodeInfoHeader12-fold-content-docs' class="fold-docs">
+<span class="md-text">		Read a 12-byte BITMAPCOREHEADER.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-decodeInfoHeader40"><i>	<input type='checkbox' class="fold" id="decodeInfoHeader40-fold-content"><label for="decodeInfoHeader40-fold-content"> func <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-237">decodeInfoHeader40</a>(d *<a href="#name-decoder">decoder</a>, h []<a href="../../builtin.html#name-byte">byte</a>, configOnly <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-error">error</a></label><span id='decodeInfoHeader40-fold-content-docs' class="fold-docs">
+<span class="md-text">		Read a 40-byte BITMAPINFOHEADER.
+		Use of this function does not imply that the entire header is 40 bytes.
+		We may just be decoding the first 40 bytes of a 108- or 124-byte header.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-decodeRow_16or32"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-99">decodeRow_16or32</a>(d *<a href="#name-decoder">decoder</a>, buf []<a href="../../builtin.html#name-byte">byte</a>, j <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-decodeRow_24"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-127">decodeRow_24</a>(d *<a href="#name-decoder">decoder</a>, buf []<a href="../../builtin.html#name-byte">byte</a>, j <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-decodeRow_paletted"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-74">decodeRow_paletted</a>(d *<a href="#name-decoder">decoder</a>, buf []<a href="../../builtin.html#name-byte">byte</a>, j <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-generateRow_1"><i>	<input type='checkbox' class="fold" id="generateRow_1-fold-content"><label for="generateRow_1-fold-content"> func <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-144">generateRow_1</a>(e *<a href="#name-encoder">encoder</a>, j <a href="../../builtin.html#name-int">int</a>, rowBuf []<a href="../../builtin.html#name-byte">byte</a>)</label><span id='generateRow_1-fold-content-docs' class="fold-docs">
+<span class="md-text">		Read a row from the (paletted) source image, and store it in rowBuf in 1-bit
+		BMP format.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-generateRow_24"><i>	<input type='checkbox' class="fold" id="generateRow_24-fold-content"><label for="generateRow_24-fold-content"> func <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-187">generateRow_24</a>(e *<a href="#name-encoder">encoder</a>, j <a href="../../builtin.html#name-int">int</a>, rowBuf []<a href="../../builtin.html#name-byte">byte</a>)</label><span id='generateRow_24-fold-content-docs' class="fold-docs">
+<span class="md-text">		Read a row from the source image, and store it in rowBuf in 24-bit BMP format.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-generateRow_32"><i>	<input type='checkbox' class="fold" id="generateRow_32-fold-content"><label for="generateRow_32-fold-content"> func <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-199">generateRow_32</a>(e *<a href="#name-encoder">encoder</a>, j <a href="../../builtin.html#name-int">int</a>, rowBuf []<a href="../../builtin.html#name-byte">byte</a>)</label><span id='generateRow_32-fold-content-docs' class="fold-docs">
+<span class="md-text">		Read a row from the source image, and store it in rowBuf in 32-bit BMP format.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-generateRow_4"><i>	<input type='checkbox' class="fold" id="generateRow_4-fold-content"><label for="generateRow_4-fold-content"> func <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-157">generateRow_4</a>(e *<a href="#name-encoder">encoder</a>, j <a href="../../builtin.html#name-int">int</a>, rowBuf []<a href="../../builtin.html#name-byte">byte</a>)</label><span id='generateRow_4-fold-content-docs' class="fold-docs">
+<span class="md-text">		Read a row from the (paletted) source image, and store it in rowBuf in 4-bit
+		BMP format.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-generateRow_8"><i>	<input type='checkbox' class="fold" id="generateRow_8-fold-content"><label for="generateRow_8-fold-content"> func <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-172">generateRow_8</a>(e *<a href="#name-encoder">encoder</a>, j <a href="../../builtin.html#name-int">int</a>, rowBuf []<a href="../../builtin.html#name-byte">byte</a>)</label><span id='generateRow_8-fold-content-docs' class="fold-docs">
+<span class="md-text">		Read a row from the (paletted) source image, and store it in rowBuf in 8-bit
+		BMP format.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-generateRow_GrayPal"><i>	<input type='checkbox' class="fold" id="generateRow_GrayPal-fold-content"><label for="generateRow_GrayPal-fold-content"> func <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-178">generateRow_GrayPal</a>(e *<a href="#name-encoder">encoder</a>, j <a href="../../builtin.html#name-int">int</a>, rowBuf []<a href="../../builtin.html#name-byte">byte</a>)</label><span id='generateRow_GrayPal-fold-content-docs' class="fold-docs">
+<span class="md-text">		Read a row from the (grayscale) source image, and store it in rowBuf in
+		8-bit BMP format.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-getDWORD"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-70">getDWORD</a>(b []<a href="../../builtin.html#name-byte">byte</a>) <a href="../../builtin.html#name-uint32">uint32</a></span></i></div><div class="anchor value-res hidden" id="name-getWORD"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-67">getWORD</a>(b []<a href="../../builtin.html#name-byte">byte</a>) <a href="../../builtin.html#name-uint32">uint32</a></span></i></div><div class="anchor value-res hidden" id="name-init"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-585">init</a>()</span></i></div><div class="anchor value-res hidden" id="name-readInfoHeader"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-321">readInfoHeader</a>(d *<a href="#name-decoder">decoder</a>, configOnly <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-setDWORD"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-64">setDWORD</a>(b []<a href="../../builtin.html#name-byte">byte</a>, n <a href="../../builtin.html#name-uint32">uint32</a>)</span></i></div><div class="anchor value-res hidden" id="name-setWORD"><i>	<span class="nodocs"> func <a href="../../../src/github.com/jsummers/gobmp/writer.go.html#line-59">setWORD</a>(b []<a href="../../builtin.html#name-byte">byte</a>, n <a href="../../builtin.html#name-uint16">uint16</a>)</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (only one, which is unexported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-rowDecoders"><i>	<span class="nodocs">  var <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-139">rowDecoders</a> map[<a href="../../builtin.html#name-int">int</a>]<a href="#name-decodeRowFuncType">decodeRowFuncType</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 4, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-bI_BITFIELDS"><i>	<span class="nodocs">const <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-21">bI_BITFIELDS</a> = 3</span></i></div><div class="anchor value-res hidden" id="name-bI_RGB"><i>	<span class="nodocs">const <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-18">bI_RGB</a> = 0</span></i></div><div class="anchor value-res hidden" id="name-bI_RLE4"><i>	<span class="nodocs">const <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-20">bI_RLE4</a> = 2</span></i></div><div class="anchor value-res hidden" id="name-bI_RLE8"><i>	<span class="nodocs">const <a href="../../../src/github.com/jsummers/gobmp/reader.go.html#line-19">bI_RLE8</a> = 1</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

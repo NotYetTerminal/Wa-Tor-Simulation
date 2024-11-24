@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: docs.go in package fyne.io/fyne/v2/internal</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	docs.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/fyne.io/fyne/v2/internal.html">fyne.io/fyne/v2/internal</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> internal</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"errors"</span></label></code></span>
+<span class="codeline" id="line-5"><code></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i1"><span class="lit-string i1">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i2"><span class="lit-string i2">"fyne.io/fyne/v2/storage"</span></label></code></span>
+<span class="codeline" id="line-8"><code>)</code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code><span class="keyword">var</span> <a href="../../../../../pkg/fyne.io/fyne/v2/internal.html#name-errNoAppID" class="ident">errNoAppID</a> = <a href="../../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"storage API requires a unique ID, use app.NewWithID()"</span>)</code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// Docs is an internal implementation of the document features of the Storage interface.</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// It is based on top of the current `file` repository and is rooted at RootDocURI.</span></code></span>
+<span class="codeline" id="line-14"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/internal.html#name-Docs" class="ident">Docs</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-15"><code>	RootDocURI <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i1">fyne</a>.<a href="../uri.go.html#line-32" class="ident">URI</a></code></span>
+<span class="codeline" id="line-16"><code>}</code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">// Create will create a new document ready for writing, you must write something and close the returned writer</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// for the create process to complete.</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">// If the document for this app with that name already exists a storage.ErrAlreadyExists error will be returned.</span></code></span>
+<span class="codeline" id="line-21"><code><span class="keyword">func</span> (<label for="r0" class="ident">d</label> *<a href="#line-14" class="ident">Docs</a>) <label for="r1" class="ident">Create</label>(<label for="r2" class="ident">name</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i1">fyne</a>.<a href="../uri.go.html#line-18" class="ident">URIWriteCloser</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-22"><code>	<span class="keyword">if</span> <label for="r0" class="ident">d</label>.<a href="#line-15" class="ident">RootDocURI</a> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-23"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="#line-10" class="ident">errNoAppID</a></code></span>
+<span class="codeline" id="line-24"><code>	}</code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code>	<label for="r3" class="ident">err</label> := <label for="r0" class="ident">d</label>.<a href="#line-118" class="ident">ensureRootExists</a>()</code></span>
+<span class="codeline" id="line-27"><code>	<span class="keyword">if</span> <label for="r3" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-28"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r3" class="ident">err</label></code></span>
+<span class="codeline" id="line-29"><code>	}</code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code>	<label for="r4" class="ident">u</label>, <label for="r3" class="ident">err</label> := <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/uri.go.html#line-110" class="ident">Child</a>(<label for="r0" class="ident">d</label>.<a href="#line-15" class="ident">RootDocURI</a>, <label for="r2" class="ident">name</label>)</code></span>
+<span class="codeline" id="line-32"><code>	<span class="keyword">if</span> <label for="r3" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-33"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r3" class="ident">err</label></code></span>
+<span class="codeline" id="line-34"><code>	}</code></span>
+<span class="codeline" id="line-35"><code></code></span>
+<span class="codeline" id="line-36"><code>	<label for="r5" class="ident">exists</label>, <label for="r3" class="ident">err</label> := <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/uri.go.html#line-144" class="ident">Exists</a>(<label for="r4" class="ident">u</label>)</code></span>
+<span class="codeline" id="line-37"><code>	<span class="keyword">if</span> <label for="r3" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-38"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r3" class="ident">err</label></code></span>
+<span class="codeline" id="line-39"><code>	}</code></span>
+<span class="codeline" id="line-40"><code>	<span class="keyword">if</span> <label for="r5" class="ident">exists</label> {</code></span>
+<span class="codeline" id="line-41"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/errors.go.html#line-9" class="ident">ErrAlreadyExists</a></code></span>
+<span class="codeline" id="line-42"><code>	}</code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/uri.go.html#line-273" class="ident">Writer</a>(<label for="r4" class="ident">u</label>)</code></span>
+<span class="codeline" id="line-45"><code>}</code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">// List returns all documents that have been saved by the current application.</span></code></span>
+<span class="codeline" id="line-48"><code><span class="comment">// Remember to use `app.NewWithID` so that your storage is unique.</span></code></span>
+<span class="codeline" id="line-49"><code><span class="keyword">func</span> (<label for="r6" class="ident">d</label> *<a href="#line-14" class="ident">Docs</a>) <label for="r7" class="ident">List</label>() []<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-50"><code>	<span class="keyword">if</span> <label for="r6" class="ident">d</label>.<a href="#line-15" class="ident">RootDocURI</a> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-51"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-52"><code>	}</code></span>
+<span class="codeline" id="line-53"><code></code></span>
+<span class="codeline" id="line-54"><code>	<label for="r8" class="ident">uris</label>, <label for="r9" class="ident">err</label> := <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/uri.go.html#line-468" class="ident">List</a>(<label for="r6" class="ident">d</label>.<a href="#line-15" class="ident">RootDocURI</a>)</code></span>
+<span class="codeline" id="line-55"><code>	<span class="keyword">if</span> <label for="r9" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-56"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-57"><code>	}</code></span>
+<span class="codeline" id="line-58"><code></code></span>
+<span class="codeline" id="line-59"><code>	<label for="r10" class="ident">ret</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r8" class="ident">uris</label>))</code></span>
+<span class="codeline" id="line-60"><code>	<span class="keyword">for</span> <label for="r11" class="ident">i</label>, <label for="r12" class="ident">u</label> := <span class="keyword">range</span> <label for="r8" class="ident">uris</label> {</code></span>
+<span class="codeline" id="line-61"><code>		<label for="r10" class="ident">ret</label>[<label for="r11" class="ident">i</label>] = <label for="r12" class="ident">u</label>.<a href="../uri.go.html#line-43" class="ident">Name</a>()</code></span>
+<span class="codeline" id="line-62"><code>	}</code></span>
+<span class="codeline" id="line-63"><code></code></span>
+<span class="codeline" id="line-64"><code>	<span class="keyword">return</span> <label for="r10" class="ident">ret</label></code></span>
+<span class="codeline" id="line-65"><code>}</code></span>
+<span class="codeline" id="line-66"><code></code></span>
+<span class="codeline" id="line-67"><code><span class="comment">// Open will grant access to the contents of the named file. If an error occurs it is returned instead.</span></code></span>
+<span class="codeline" id="line-68"><code><span class="keyword">func</span> (<label for="r13" class="ident">d</label> *<a href="#line-14" class="ident">Docs</a>) <label for="r14" class="ident">Open</label>(<label for="r15" class="ident">name</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i1">fyne</a>.<a href="../uri.go.html#line-10" class="ident">URIReadCloser</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-69"><code>	<span class="keyword">if</span> <label for="r13" class="ident">d</label>.<a href="#line-15" class="ident">RootDocURI</a> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-70"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="#line-10" class="ident">errNoAppID</a></code></span>
+<span class="codeline" id="line-71"><code>	}</code></span>
+<span class="codeline" id="line-72"><code></code></span>
+<span class="codeline" id="line-73"><code>	<label for="r16" class="ident">u</label>, <label for="r17" class="ident">err</label> := <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/uri.go.html#line-110" class="ident">Child</a>(<label for="r13" class="ident">d</label>.<a href="#line-15" class="ident">RootDocURI</a>, <label for="r15" class="ident">name</label>)</code></span>
+<span class="codeline" id="line-74"><code>	<span class="keyword">if</span> <label for="r17" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-75"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r17" class="ident">err</label></code></span>
+<span class="codeline" id="line-76"><code>	}</code></span>
+<span class="codeline" id="line-77"><code></code></span>
+<span class="codeline" id="line-78"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/uri.go.html#line-208" class="ident">Reader</a>(<label for="r16" class="ident">u</label>)</code></span>
+<span class="codeline" id="line-79"><code>}</code></span>
+<span class="codeline" id="line-80"><code></code></span>
+<span class="codeline" id="line-81"><code><span class="comment">// Remove will delete the document with the specified name, if it exists</span></code></span>
+<span class="codeline" id="line-82"><code><span class="keyword">func</span> (<label for="r18" class="ident">d</label> *<a href="#line-14" class="ident">Docs</a>) <label for="r19" class="ident">Remove</label>(<label for="r20" class="ident">name</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-83"><code>	<span class="keyword">if</span> <label for="r18" class="ident">d</label>.<a href="#line-15" class="ident">RootDocURI</a> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-84"><code>		<span class="keyword">return</span> <a href="#line-10" class="ident">errNoAppID</a></code></span>
+<span class="codeline" id="line-85"><code>	}</code></span>
+<span class="codeline" id="line-86"><code></code></span>
+<span class="codeline" id="line-87"><code>	<label for="r21" class="ident">u</label>, <label for="r22" class="ident">err</label> := <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/uri.go.html#line-110" class="ident">Child</a>(<label for="r18" class="ident">d</label>.<a href="#line-15" class="ident">RootDocURI</a>, <label for="r20" class="ident">name</label>)</code></span>
+<span class="codeline" id="line-88"><code>	<span class="keyword">if</span> <label for="r22" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-89"><code>		<span class="keyword">return</span> <label for="r22" class="ident">err</label></code></span>
+<span class="codeline" id="line-90"><code>	}</code></span>
+<span class="codeline" id="line-91"><code></code></span>
+<span class="codeline" id="line-92"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/uri.go.html#line-173" class="ident">Delete</a>(<label for="r21" class="ident">u</label>)</code></span>
+<span class="codeline" id="line-93"><code>}</code></span>
+<span class="codeline" id="line-94"><code></code></span>
+<span class="codeline" id="line-95"><code><span class="comment">// Save will open a document ready for writing, you close the returned writer for the save to complete.</span></code></span>
+<span class="codeline" id="line-96"><code><span class="comment">// If the document for this app with that name does not exist a storage.ErrNotExists error will be returned.</span></code></span>
+<span class="codeline" id="line-97"><code><span class="keyword">func</span> (<label for="r23" class="ident">d</label> *<a href="#line-14" class="ident">Docs</a>) <label for="r24" class="ident">Save</label>(<label for="r25" class="ident">name</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i1">fyne</a>.<a href="../uri.go.html#line-18" class="ident">URIWriteCloser</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-98"><code>	<span class="keyword">if</span> <label for="r23" class="ident">d</label>.<a href="#line-15" class="ident">RootDocURI</a> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-99"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="#line-10" class="ident">errNoAppID</a></code></span>
+<span class="codeline" id="line-100"><code>	}</code></span>
+<span class="codeline" id="line-101"><code></code></span>
+<span class="codeline" id="line-102"><code>	<label for="r26" class="ident">u</label>, <label for="r27" class="ident">err</label> := <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/uri.go.html#line-110" class="ident">Child</a>(<label for="r23" class="ident">d</label>.<a href="#line-15" class="ident">RootDocURI</a>, <label for="r25" class="ident">name</label>)</code></span>
+<span class="codeline" id="line-103"><code>	<span class="keyword">if</span> <label for="r27" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-104"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r27" class="ident">err</label></code></span>
+<span class="codeline" id="line-105"><code>	}</code></span>
+<span class="codeline" id="line-106"><code></code></span>
+<span class="codeline" id="line-107"><code>	<label for="r28" class="ident">exists</label>, <label for="r27" class="ident">err</label> := <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/uri.go.html#line-144" class="ident">Exists</a>(<label for="r26" class="ident">u</label>)</code></span>
+<span class="codeline" id="line-108"><code>	<span class="keyword">if</span> <label for="r27" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-109"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r27" class="ident">err</label></code></span>
+<span class="codeline" id="line-110"><code>	}</code></span>
+<span class="codeline" id="line-111"><code>	<span class="keyword">if</span> !<label for="r28" class="ident">exists</label> {</code></span>
+<span class="codeline" id="line-112"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/errors.go.html#line-14" class="ident">ErrNotExists</a></code></span>
+<span class="codeline" id="line-113"><code>	}</code></span>
+<span class="codeline" id="line-114"><code></code></span>
+<span class="codeline" id="line-115"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/uri.go.html#line-273" class="ident">Writer</a>(<label for="r26" class="ident">u</label>)</code></span>
+<span class="codeline" id="line-116"><code>}</code></span>
+<span class="codeline" id="line-117"><code></code></span>
+<span class="codeline" id="line-118"><code><span class="keyword">func</span> (<label for="r29" class="ident">d</label> *<a href="#line-14" class="ident">Docs</a>) <label for="r30" class="ident">ensureRootExists</label>() <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-119"><code>	<label for="r31" class="ident">exists</label>, <label for="r32" class="ident">err</label> := <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/uri.go.html#line-144" class="ident">Exists</a>(<label for="r29" class="ident">d</label>.<a href="#line-15" class="ident">RootDocURI</a>)</code></span>
+<span class="codeline" id="line-120"><code>	<span class="keyword">if</span> <label for="r32" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-121"><code>		<span class="keyword">return</span> <label for="r32" class="ident">err</label></code></span>
+<span class="codeline" id="line-122"><code>	}</code></span>
+<span class="codeline" id="line-123"><code>	<span class="keyword">if</span> <label for="r31" class="ident">exists</label> {</code></span>
+<span class="codeline" id="line-124"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-125"><code>	}</code></span>
+<span class="codeline" id="line-126"><code></code></span>
+<span class="codeline" id="line-127"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i2">storage</a>.<a href="../storage/uri.go.html#line-519" class="ident">CreateListable</a>(<label for="r29" class="ident">d</label>.<a href="#line-15" class="ident">RootDocURI</a>)</code></span>
+<span class="codeline" id="line-128"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

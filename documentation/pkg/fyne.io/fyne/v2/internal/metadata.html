@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/fyne/v2/internal/metadata</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>metadata</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-fyne.io/fyne/v2/internal/metadata">fyne.io/fyne/v2/internal/metadata</a><i> (on <a href="https://pkg.go.dev/fyne.io/fyne/v2/internal/metadata" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/fyne.io/fyne/v2/internal/metadata.html">5 packages</a>, and imported by <a href="../../../../../dep/fyne.io/fyne/v2/internal/metadata.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html">data.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/load.go.html">load.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/save.go.html">save.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 3, all are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-AppDetails" data-popularity="0">	<input type='checkbox' class="fold" id="AppDetails-fold-content"><label for="AppDetails-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-13">AppDetails</a> <i>(struct)</i></label><span id='AppDetails-fold-content-docs' class="fold-docs">
+<span class="md-text">		AppDetails describes the build information, this group may be OS or arch specific</span>
+
+		<input type='checkbox' class="fold" id="AppDetails-fold-fields"><label for="AppDetails-fold-fields">Fields (<i>total 5, all are exported</i>)</label><span id='AppDetails-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-17">Build</a> <i><a href="../../../../builtin.html#name-int">int</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-15">ID</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-14">Icon</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-15">Name</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-16">Version</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span></span>
+
+</span></div><div class="anchor type-res" id="name-FyneApp" data-popularity="220">	<input type='checkbox' class="fold" id="FyneApp-fold-content"><label for="FyneApp-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-4">FyneApp</a> <i>(struct)</i></label><span id='FyneApp-fold-content-docs' class="fold-docs">
+<span class="md-text">		FyneApp describes the top level metadata for building a fyne application</span>
+
+		<input type='checkbox' class="fold" id="FyneApp-fold-fields"><label for="FyneApp-fold-fields">Fields (<i>total 5, all are exported</i>)</label><span id='FyneApp-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-6">Details</a> <i><a href="#name-AppDetails">AppDetails</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-7">Development</a> <i>map[<a href="../../../../builtin.html#name-string">string</a>]<a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-9">LinuxAndBSD</a> <i>*<a href="#name-LinuxAndBSD">LinuxAndBSD</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-8">Release</a> <i>map[<a href="../../../../builtin.html#name-string">string</a>]<a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-5">Website</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="FyneApp-fold-results"><label for="FyneApp-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='FyneApp-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Load">Load</a>(r <a href="../../../../io.html">io</a>.<a href="../../../../io.html#name-Reader">Reader</a>) (*<b>FyneApp</b>, <a href="../../../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-LoadStandard">LoadStandard</a>(dir <a href="../../../../builtin.html#name-string">string</a>) (*<b>FyneApp</b>, <a href="../../../../builtin.html#name-error">error</a>)</span></span>
+		<input type='checkbox' class="fold" id="FyneApp-fold-params"><label for="FyneApp-fold-params">As Inputs Of (<i>at least 2, both are exported</i>)</label><span id='FyneApp-fold-params-items' class="fold-items"><span>
+			func <a href="#name-Save">Save</a>(f *<b>FyneApp</b>, w <a href="../../../../io.html">io</a>.<a href="../../../../io.html#name-Writer">Writer</a>) <a href="../../../../builtin.html#name-error">error</a></span><span>
+			func <a href="#name-SaveStandard">SaveStandard</a>(f *<b>FyneApp</b>, dir <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-LinuxAndBSD" data-popularity="0">	<input type='checkbox' class="fold" id="LinuxAndBSD-fold-content"><label for="LinuxAndBSD-fold-content"> type <a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-21">LinuxAndBSD</a> <i>(struct)</i></label><span id='LinuxAndBSD-fold-content-docs' class="fold-docs">
+<span class="md-text">		LinuxAndBSD describes specific metadata for desktop files on Linux and BSD.</span>
+
+		<input type='checkbox' class="fold" id="LinuxAndBSD-fold-fields"><label for="LinuxAndBSD-fold-fields">Fields (<i>total 5, all are exported</i>)</label><span id='LinuxAndBSD-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-23">Categories</a> <i>[]<a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-24">Comment</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-26">ExecParams</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-22">GenericName</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/data.go.html#line-25">Keywords</a> <i>[]<a href="../../../../builtin.html#name-string">string</a></i></span></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 4, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Load">	<input type='checkbox' class="fold" id="Load-fold-content"><label for="Load-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/load.go.html#line-13">Load</a>(r <a href="../../../../io.html">io</a>.<a href="../../../../io.html#name-Reader">Reader</a>) (*<a href="#name-FyneApp">FyneApp</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Load-fold-content-docs' class="fold-docs">
+<span class="md-text">		Load attempts to read a FyneApp metadata from the provided reader.
+		If this cannot be done an error will be returned.</span>
+
+</span></div><div class="anchor value-res" id="name-LoadStandard">	<input type='checkbox' class="fold" id="LoadStandard-fold-content"><label for="LoadStandard-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/load.go.html#line-25">LoadStandard</a>(dir <a href="../../../../builtin.html#name-string">string</a>) (*<a href="#name-FyneApp">FyneApp</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='LoadStandard-fold-content-docs' class="fold-docs">
+<span class="md-text">		LoadStandard attempts to read a FyneApp metadata from the `FyneApp.toml` file in the specified dir.
+		If the file cannot be found or parsed an error will be returned.</span>
+
+</span></div><div class="anchor value-res" id="name-Save">	<input type='checkbox' class="fold" id="Save-fold-content"><label for="Save-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/save.go.html#line-14">Save</a>(f *<a href="#name-FyneApp">FyneApp</a>, w <a href="../../../../io.html">io</a>.<a href="../../../../io.html#name-Writer">Writer</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='Save-fold-content-docs' class="fold-docs">
+<span class="md-text">		Save attempts to write a FyneApp metadata to the provided writer.
+		If the encoding fails an error will be returned.</span>
+
+</span></div><div class="anchor value-res" id="name-SaveStandard">	<input type='checkbox' class="fold" id="SaveStandard-fold-content"><label for="SaveStandard-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/metadata/save.go.html#line-27">SaveStandard</a>(f *<a href="#name-FyneApp">FyneApp</a>, dir <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='SaveStandard-fold-content-docs' class="fold-docs">
+<span class="md-text">		SaveStandard attempts to save a FyneApp metadata to the `FyneApp.toml` file in the specified dir.
+		If the file cannot be written or encoding fails an error will be returned.</span>
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

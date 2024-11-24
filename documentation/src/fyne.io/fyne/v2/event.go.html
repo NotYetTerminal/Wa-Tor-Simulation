@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: event.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	event.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// HardwareKey contains information associated with physical key events</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// Most applications should use [KeyName] for cross-platform compatibility.</span></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-HardwareKey" class="ident">HardwareKey</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-6"><code>	<span class="comment">// ScanCode represents a hardware ID for (normally desktop) keyboard events.</span></code></span>
+<span class="codeline" id="line-7"><code>	ScanCode <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-8"><code>}</code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">// KeyEvent describes a keyboard input event.</span></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyEvent" class="ident">KeyEvent</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-12"><code>	<span class="comment">// Name describes the keyboard event that is consistent across platforms.</span></code></span>
+<span class="codeline" id="line-13"><code>	Name <a href="key.go.html#line-4" class="ident">KeyName</a></code></span>
+<span class="codeline" id="line-14"><code>	<span class="comment">// Physical is a platform specific field that reports the hardware information of physical keyboard events.</span></code></span>
+<span class="codeline" id="line-15"><code>	Physical <a href="#line-5" class="ident">HardwareKey</a></code></span>
+<span class="codeline" id="line-16"><code>}</code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">// PointEvent describes a pointer input event. The position is relative to the</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// top-left of the [CanvasObject] this is triggered on.</span></code></span>
+<span class="codeline" id="line-20"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-PointEvent" class="ident">PointEvent</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-21"><code>	AbsolutePosition <a href="geometry.go.html#line-37" class="ident">Position</a> <span class="comment">// The absolute position of the event</span></code></span>
+<span class="codeline" id="line-22"><code>	Position         <a href="geometry.go.html#line-37" class="ident">Position</a> <span class="comment">// The relative position of the event</span></code></span>
+<span class="codeline" id="line-23"><code>}</code></span>
+<span class="codeline" id="line-24"><code></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// ScrollEvent defines the parameters of a pointer or other scroll event.</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">// The DeltaX and DeltaY represent how large the scroll was in two dimensions.</span></code></span>
+<span class="codeline" id="line-27"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-ScrollEvent" class="ident">ScrollEvent</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-28"><code>	<a href="#line-20" class="ident">PointEvent</a></code></span>
+<span class="codeline" id="line-29"><code>	Scrolled <a href="geometry.go.html#line-16" class="ident">Delta</a></code></span>
+<span class="codeline" id="line-30"><code>}</code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">// DragEvent defines the parameters of a pointer or other drag event.</span></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">// The DraggedX and DraggedY fields show how far the item was dragged since the last event.</span></code></span>
+<span class="codeline" id="line-34"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-DragEvent" class="ident">DragEvent</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-35"><code>	<a href="#line-20" class="ident">PointEvent</a></code></span>
+<span class="codeline" id="line-36"><code>	Dragged <a href="geometry.go.html#line-16" class="ident">Delta</a></code></span>
+<span class="codeline" id="line-37"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

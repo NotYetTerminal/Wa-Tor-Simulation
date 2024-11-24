@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/fyne/v2/storage</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>storage</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-fyne.io/fyne/v2/storage">fyne.io/fyne/v2/storage</a><i> (on <a href="https://pkg.go.dev/fyne.io/fyne/v2/storage" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/fyne.io/fyne/v2/storage.html">6 packages</a>, and imported by <a href="../../../../dep/fyne.io/fyne/v2/storage.html#imported-by">8 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/storage/errors.go.html">errors.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-1-fold-content"><label for="file-1-fold-content">  <a href="../../../../src/fyne.io/fyne/v2/storage/file.go.html#doc">d</a> <a href="../../../../src/fyne.io/fyne/v2/storage/file.go.html">file.go</a></label><span id='file-1-fold-content-items' class="fold-items">
+<span class="md-text">		Package storage provides storage access and management functionality.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/storage/filter.go.html">filter.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/storage/resource.go.html">resource.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html">uri.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/storage/uri_root_error.go.html">uri_root_error.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 4, in which 3 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-ExtensionFileFilter" data-popularity="100">	<input type='checkbox' class="fold" id="ExtensionFileFilter-fold-content"><label for="ExtensionFileFilter-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/storage/filter.go.html#line-17">ExtensionFileFilter</a> <i>(struct)</i></label><span id='ExtensionFileFilter-fold-content-docs' class="fold-docs">
+<span class="md-text">		ExtensionFileFilter represents a file filter based on the ending of file names,
+		for example ".txt" and ".png".</span>
+
+		<input type='checkbox' class="fold" id="ExtensionFileFilter-fold-fields"><label for="ExtensionFileFilter-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='ExtensionFileFilter-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/storage/filter.go.html#line-18">Extensions</a> <i>[]<a href="../../../builtin.html#name-string">string</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="ExtensionFileFilter-fold-methods"><label for="ExtensionFileFilter-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='ExtensionFileFilter-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ExtensionFileFilter-fold-method-Matches"><label for="ExtensionFileFilter-fold-method-Matches">(*ExtensionFileFilter) <a href="../../../../src/fyne.io/fyne/v2/storage/filter.go.html#line-28">Matches</a>(uri <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) <a href="../../../builtin.html#name-bool">bool</a></label><span id='ExtensionFileFilter-fold-method-Matches-docs' class="fold-docs">
+<span class="md-text">				Matches returns true if a file URI has one of the filtered extensions.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="ExtensionFileFilter-fold-impls"><label for="ExtensionFileFilter-fold-impls">Implements (<i>at least one exported</i>)</label><span id='ExtensionFileFilter-fold-impls-items' class="fold-items"><span>
+			*ExtensionFileFilter : <a href="#name-FileFilter">FileFilter</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-FileFilter" data-popularity="500">	<input type='checkbox' class="fold" id="FileFilter-fold-content"><label for="FileFilter-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/storage/filter.go.html#line-11">FileFilter</a> <b><i>(interface)</i></b></label><span id='FileFilter-fold-content-docs' class="fold-docs">
+<span class="md-text">		FileFilter is an interface that can be implemented to provide a filter to a file dialog.</span>
+
+		<input type='checkbox' class="fold" id="FileFilter-fold-methods"><label for="FileFilter-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='FileFilter-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( FileFilter) <a href="../../../../src/fyne.io/fyne/v2/storage/filter.go.html#line-12">Matches</a>(<a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) <a href="../../../builtin.html#name-bool">bool</a></span></span></span>
+		<input type='checkbox' class="fold" id="FileFilter-fold-impledby"><label for="FileFilter-fold-impledby">Implemented By (<i>at least 2, both are exported</i>)</label><span id='FileFilter-fold-impledby-items' class="fold-items"><span>
+			*<a href="#name-ExtensionFileFilter">ExtensionFileFilter</a></span><span>
+			*<a href="#name-MimeTypeFileFilter">MimeTypeFileFilter</a></span></span>
+		<input type='checkbox' class="fold" id="FileFilter-fold-results"><label for="FileFilter-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='FileFilter-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewExtensionFileFilter">NewExtensionFileFilter</a>(extensions []<a href="../../../builtin.html#name-string">string</a>) <b>FileFilter</b></span><span>
+			func <a href="#name-NewMimeTypeFileFilter">NewMimeTypeFileFilter</a>(mimeTypes []<a href="../../../builtin.html#name-string">string</a>) <b>FileFilter</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-MimeTypeFileFilter" data-popularity="100">	<input type='checkbox' class="fold" id="MimeTypeFileFilter-fold-content"><label for="MimeTypeFileFilter-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/storage/filter.go.html#line-23">MimeTypeFileFilter</a> <i>(struct)</i></label><span id='MimeTypeFileFilter-fold-content-docs' class="fold-docs">
+<span class="md-text">		MimeTypeFileFilter represents a file filter based on the files mime type,
+		for example "image/*", "audio/mp3".</span>
+
+		<input type='checkbox' class="fold" id="MimeTypeFileFilter-fold-fields"><label for="MimeTypeFileFilter-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='MimeTypeFileFilter-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/storage/filter.go.html#line-24">MimeTypes</a> <i>[]<a href="../../../builtin.html#name-string">string</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="MimeTypeFileFilter-fold-methods"><label for="MimeTypeFileFilter-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='MimeTypeFileFilter-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="MimeTypeFileFilter-fold-method-Matches"><label for="MimeTypeFileFilter-fold-method-Matches">(*MimeTypeFileFilter) <a href="../../../../src/fyne.io/fyne/v2/storage/filter.go.html#line-45">Matches</a>(uri <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) <a href="../../../builtin.html#name-bool">bool</a></label><span id='MimeTypeFileFilter-fold-method-Matches-docs' class="fold-docs">
+<span class="md-text">				Matches returns true if a file URI has one of the filtered mimetypes.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="MimeTypeFileFilter-fold-impls"><label for="MimeTypeFileFilter-fold-impls">Implements (<i>at least one exported</i>)</label><span id='MimeTypeFileFilter-fold-impls-items' class="fold-items"><span>
+			*MimeTypeFileFilter : <a href="#name-FileFilter">FileFilter</a></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor type-res hidden" id="name-legacyListable" data-popularity="800">	<input type='checkbox' class="fold" id="legacyListable-fold-content"><label for="legacyListable-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/storage/file.go.html#line-42">legacyListable</a> <i>(struct)</i></label><span id='legacyListable-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="legacyListable-fold-fields"><label for="legacyListable-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='legacyListable-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/storage/file.go.html#line-43">URI</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="legacyListable-fold-methods"><label for="legacyListable-fold-methods">Methods (<i>total 10, all are exported</i>)</label><span id='legacyListable-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="legacyListable-fold-method-Authority"><label for="legacyListable-fold-method-Authority">( legacyListable) <a href="../../../../src/fyne.io/fyne/v2/uri.go.html#line-65">Authority</a>() <a href="../../../builtin.html#name-string">string</a></label><span id='legacyListable-fold-method-Authority-docs' class="fold-docs">
+<span class="md-text">				Authority should return the URI authority, as defined by IETF
+				RFC3986.
+				
+				NOTE: the RFC3986 can be obtained by combining the [net/url.URL.User]
+				and [net/url.URL.Host]. Consult IETF RFC3986, section
+				3.2, pp. 17.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="legacyListable-fold-method-Extension"><label for="legacyListable-fold-method-Extension">( legacyListable) <a href="../../../../src/fyne.io/fyne/v2/uri.go.html#line-39">Extension</a>() <a href="../../../builtin.html#name-string">string</a></label><span id='legacyListable-fold-method-Extension-docs' class="fold-docs">
+<span class="md-text">				Extension should return the file extension of the resource
+				(including the dot) referenced by the URI. For example, the
+				Extension() of 'file://foo/bar.baz' is '.baz'. May return an
+				empty string if the referenced resource has none.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="legacyListable-fold-method-Fragment"><label for="legacyListable-fold-method-Fragment">( legacyListable) <a href="../../../../src/fyne.io/fyne/v2/uri.go.html#line-81">Fragment</a>() <a href="../../../builtin.html#name-string">string</a></label><span id='legacyListable-fold-method-Fragment-docs' class="fold-docs">
+<span class="md-text">				Fragment should return the URI fragment, as defined by IETF
+				RFC3986.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<span class="nodocs">(*legacyListable) <a href="../../../../src/fyne.io/fyne/v2/storage/file.go.html#line-46">List</a>() ([]<a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>, <a href="../../../builtin.html#name-error">error</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="legacyListable-fold-method-MimeType"><label for="legacyListable-fold-method-MimeType">( legacyListable) <a href="../../../../src/fyne.io/fyne/v2/uri.go.html#line-48">MimeType</a>() <a href="../../../builtin.html#name-string">string</a></label><span id='legacyListable-fold-method-MimeType-docs' class="fold-docs">
+<span class="md-text">				MimeType should return the content type of the resource referenced
+				by the URI. The returned string should be in the format described
+				by Section 5 of RFC2045 ("Content-Type Header Field").</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="legacyListable-fold-method-Name"><label for="legacyListable-fold-method-Name">( legacyListable) <a href="../../../../src/fyne.io/fyne/v2/uri.go.html#line-43">Name</a>() <a href="../../../builtin.html#name-string">string</a></label><span id='legacyListable-fold-method-Name-docs' class="fold-docs">
+<span class="md-text">				Name should return the base name of the item referenced by the URI.
+				For example, the name of 'file://foo/bar.baz' is 'bar.baz'.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="legacyListable-fold-method-Path"><label for="legacyListable-fold-method-Path">( legacyListable) <a href="../../../../src/fyne.io/fyne/v2/uri.go.html#line-70">Path</a>() <a href="../../../builtin.html#name-string">string</a></label><span id='legacyListable-fold-method-Path-docs' class="fold-docs">
+<span class="md-text">				Path should return the URI path, as defined by IETF RFC3986.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="legacyListable-fold-method-Query"><label for="legacyListable-fold-method-Query">( legacyListable) <a href="../../../../src/fyne.io/fyne/v2/uri.go.html#line-75">Query</a>() <a href="../../../builtin.html#name-string">string</a></label><span id='legacyListable-fold-method-Query-docs' class="fold-docs">
+<span class="md-text">				Query should return the URI query, as defined by IETF RFC3986.
+				
+				Since: 2.0</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="legacyListable-fold-method-Scheme"><label for="legacyListable-fold-method-Scheme">( legacyListable) <a href="../../../../src/fyne.io/fyne/v2/uri.go.html#line-55">Scheme</a>() <a href="../../../builtin.html#name-string">string</a></label><span id='legacyListable-fold-method-Scheme-docs' class="fold-docs">
+<span class="md-text">				Scheme should return the URI scheme of the URI as defined by IETF
+				RFC3986. For example, the Scheme() of 'file://foo/bar.baz` is
+				'file'.
+				
+				Scheme should always return the scheme in all lower-case characters.</span>
+</span></span><span>
+			<span class="nodocs">( legacyListable) <a href="../../../../src/runtime/error.go.html#line-211">String</a>() <a href="../../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="legacyListable-fold-impls"><label for="legacyListable-fold-impls">Implements (<i>at least 6, in which 3 are exported</i>)</label><span id='legacyListable-fold-impls-items' class="fold-items"><span>
+			*legacyListable : fyne.io/fyne/v2.<a href="../v2.html#name-ListableURI">ListableURI</a></span><span>
+			 legacyListable : fyne.io/fyne/v2.<a href="../v2.html#name-URI">URI</a></span><span>
+			 legacyListable : fmt.<a href="../../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="legacyListable-showhide-impls"><i><label for="legacyListable-showhide-impls" class="show-inline">/* 3+ unexporteds ... */</label><label for="legacyListable-showhide-impls" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			 legacyListable : context.<a href="../../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 legacyListable : os/signal.<a href="../../../os/signal.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 legacyListable : runtime.<a href="../../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 22, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-CanList">	<input type='checkbox' class="fold" id="CanList-fold-content"><label for="CanList-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-428">CanList</a>(u <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) (<a href="../../../builtin.html#name-bool">bool</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='CanList-fold-content-docs' class="fold-docs">
+<span class="md-text">		CanList will determine if the URI is listable or not.
+		
+		This method may fail in several ways:
+		
+		  - Different permissions or credentials are required to check if the
+		    URI supports listing.
+		
+		  - This URI scheme could represent some resources that can be listed,
+		    but this specific URI is not one of them (e.g. a file on a
+		    filesystem, as opposed to a directory).
+		
+		  - Checking for listability depended on a lower level operation
+		    such as network or filesystem access that has failed in some way.
+		
+		  - If the scheme of the given URI does not have a registered
+		    ListableRepository instance, then this method will fail with a
+		    repository.ErrOperationNotSupported.
+		
+		CanList is backed by the repository system - this function calls into a
+		scheme-specific implementation from a registered repository.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-CanRead">	<input type='checkbox' class="fold" id="CanRead-fold-content"><label for="CanRead-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-234">CanRead</a>(u <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) (<a href="../../../builtin.html#name-bool">bool</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='CanRead-fold-content-docs' class="fold-docs">
+<span class="md-text">		CanRead determines if a given URI could be written to using the Reader()
+		method. It is preferred to check if a URI is readable using this method
+		before calling Reader(), because the underlying operations required to
+		attempt to read and then report an error may be slower than the operations
+		needed to test if a URI is readable. Keep in mind however that even if
+		CanRead returns true, you must still do appropriate error handling for
+		Reader(), as the underlying filesystem may have changed since you called
+		CanRead.
+		
+		The non-existence of a resource should not be treated as an error. In other
+		words, a Repository implementation which for some URI u returns false, nil
+		for Exists(u), CanRead(u) should also return false, nil.
+		
+		CanRead is backed by the repository system - this function calls into a
+		scheme-specific implementation from a registered repository.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-CanWrite">	<input type='checkbox' class="fold" id="CanWrite-fold-content"><label for="CanWrite-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-300">CanWrite</a>(u <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) (<a href="../../../builtin.html#name-bool">bool</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='CanWrite-fold-content-docs' class="fold-docs">
+<span class="md-text">		CanWrite is backed by the repository system - this function calls into a
+		scheme-specific implementation from a registered repository.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-Child">	<input type='checkbox' class="fold" id="Child-fold-content"><label for="Child-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-110">Child</a>(u <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>, component <a href="../../../builtin.html#name-string">string</a>) (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='Child-fold-content-docs' class="fold-docs">
+<span class="md-text">		Child returns a URI referencing a resource nested hierarchically below the
+		given URI, identified by a string. For example, the child with the string
+		component 'quux' of 'file://foo/bar' is 'file://foo/bar/quux'.
+		
+		This can fail in several ways:
+		
+		  - If the URI refers to a resource which does not exist in a hierarchical
+		    context (e.g. the URI references something which does not have a
+		    semantically meaningful "child"), the Child() implementation may return an
+		    error.
+		
+		  - If generating a reference to a child of the referenced resource requires
+		    interfacing with some external system, failures may propagate through the
+		    Child() implementation. It is expected that this case would occur very
+		    rarely if ever.
+		
+		  - If the scheme of the given URI does not have a registered
+		    HierarchicalRepository instance, then this method will fail with a
+		    repository.ErrOperationNotSupported.
+		
+		NOTE: since v2.0.0, Child() is backed by the repository system - this
+		function is a helper which calls into an appropriate repository instance for
+		the scheme of the URI it is given.
+		
+		Since: 1.4</span>
+
+</span></div><div class="anchor value-res" id="name-Copy">	<input type='checkbox' class="fold" id="Copy-fold-content"><label for="Copy-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-344">Copy</a>(source <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>, destination <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='Copy-fold-content-docs' class="fold-docs">
+<span class="md-text">		Copy given two URIs, 'src', and 'dest' both of the same scheme, will copy
+		one to the other. If the source and destination are of different schemes,
+		then the Copy implementation for the storage repository registered to the
+		scheme of the source will be used. Implementations are recommended to use
+		repository.GenericCopy() as a fail-over in the case that they do not
+		understand how to operate on the scheme of the destination URI. However, the
+		behavior of calling Copy() on URIs of non-matching schemes is ultimately
+		defined by the storage repository registered to the scheme of the source
+		URI.
+		
+		This method may fail in several ways:
+		
+		  - Different permissions or credentials are required to perform the
+		    copy operation.
+		
+		  - This URI scheme could represent some resources that can be copied,
+		    but either the source, destination, or both are not resources
+		    that support copying.
+		
+		  - Performing the copy operation depended on a lower level operation
+		    such as network or filesystem access that has failed in some way.
+		
+		  - If the scheme of the given URI does not have a registered
+		    CopyableRepository instance, then this method will fail with a
+		    repository.ErrOperationNotSupported.
+		
+		Copy is backed by the repository system - this function calls into a
+		scheme-specific implementation from a registered repository.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-CreateListable">	<input type='checkbox' class="fold" id="CreateListable-fold-content"><label for="CreateListable-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-519">CreateListable</a>(u <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='CreateListable-fold-content-docs' class="fold-docs">
+<span class="md-text">		CreateListable creates a new listable resource referenced by the given URI.
+		CreateListable will error if the URI already references an extant resource.
+		This method is used for storage repositories where listable resources are of
+		a different underlying type than other resources - for example, in a typical
+		filesystem ('file://'), CreateListable() corresponds to directory creation,
+		and Writer() implies file creation for non-extant operands.
+		
+		For storage repositories where listable and non-listable resources are the
+		of the same underlying type, CreateListable should be equivalent to calling
+		Writer(), writing zero bytes, and then closing the `URIWriteCloser - in
+		filesystem terms, the same as calling 'touch;'.
+		
+		Storage repositories which support listing, but not creation of listable
+		objects may return repository.ErrOperationNotSupported.
+		
+		CreateListable should generally fail if the parent of it's operand does not
+		exist, however this can vary by the implementation details of the specific
+		storage repository. In filesystem terms, this function is "mkdir" not "mkdir
+		-p".
+		
+		This method may fail in several ways:
+		
+		  - Different permissions or credentials are required to create the requested
+		    resource.
+		
+		  - Creating the resource depended on a lower level operation such as network
+		    or filesystem access that has failed in some way.
+		
+		  - If the scheme of the given URI does not have a registered
+		    ListableRepository instance, then this method will fail with a
+		    repository.ErrOperationNotSupported.
+		
+		CreateListable is backed by the repository system - this function either
+		calls into a scheme-specific implementation from a registered repository, or
+		fails with a URIOperationNotSupported error.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-Delete">	<input type='checkbox' class="fold" id="Delete-fold-content"><label for="Delete-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-173">Delete</a>(u <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='Delete-fold-content-docs' class="fold-docs">
+<span class="md-text">		Delete destroys, deletes, or otherwise removes the resource referenced
+		by the URI.
+		
+		This can fail in several ways:
+		
+		  - If removing the resource requires interfacing with some external system,
+		    failures may propagate through Destroy(). For example, deleting a file may
+		    fail with a permissions error.
+		
+		  - If the referenced resource does not exist, attempting to destroy it should
+		    throw an error.
+		
+		  - If the scheme of the given URI does not have a registered
+		    WritableRepository instance, then this method will fail with a
+		    repository.ErrOperationNotSupported.
+		
+		Delete is backed by the repository system - this function calls
+		into a scheme-specific implementation from a registered repository.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-Exists">	<input type='checkbox' class="fold" id="Exists-fold-content"><label for="Exists-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-144">Exists</a>(u <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) (<a href="../../../builtin.html#name-bool">bool</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='Exists-fold-content-docs' class="fold-docs">
+<span class="md-text">		Exists determines if the resource referenced by the URI exists.
+		
+		This can fail in several ways:
+		
+		  - If checking the existence of a resource requires interfacing with some
+		    external system, then failures may propagate through Exists(). For
+		    example, checking the existence of a resource requires reading a directory
+		    may result in a permissions error.
+		
+		It is understood that a non-nil error value signals that the existence or
+		non-existence of the resource cannot be determined and is undefined.
+		
+		NOTE: since v2.0.0, Exists is backed by the repository system - this function
+		calls into a scheme-specific implementation from a registered repository.
+		
+		Exists may call into either a generic implementation, or into a
+		scheme-specific implementation depending on which storage repositories have
+		been registered.
+		
+		Since: 1.4</span>
+
+</span></div><div class="anchor value-res" id="name-List">	<input type='checkbox' class="fold" id="List-fold-content"><label for="List-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-468">List</a>(u <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) ([]<a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='List-fold-content-docs' class="fold-docs">
+<span class="md-text">		List returns a list of URIs that reference resources which are nested below
+		the resource referenced by the argument. For example, listing a directory on
+		a filesystem should return a list of files and directories it contains.
+		
+		This method may fail in several ways:
+		
+		  - Different permissions or credentials are required to obtain a
+		    listing for the given URI.
+		
+		  - This URI scheme could represent some resources that can be listed,
+		    but this specific URI is not one of them (e.g. a file on a
+		    filesystem, as opposed to a directory). This can be tested in advance
+		    using the Listable() function.
+		
+		  - Obtaining the listing depended on a lower level operation such as
+		    network or filesystem access that has failed in some way.
+		
+		  - If the scheme of the given URI does not have a registered
+		    ListableRepository instance, then this method will fail with a
+		    repository.ErrOperationNotSupported.
+		
+		List is backed by the repository system - this function either calls into a
+		scheme-specific implementation from a registered repository, or fails with a
+		URIOperationNotSupported error.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-ListerForURI">	<input type='checkbox' class="fold" id="ListerForURI-fold-content"><label for="ListerForURI-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/file.go.html#line-30">ListerForURI</a>(uri <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-ListableURI">ListableURI</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='ListerForURI-fold-content-docs' class="fold-docs">
+<span class="md-text">		ListerForURI will attempt to use the application's driver to convert a
+		standard URI into a listable URI.
+		
+		Since: 1.4</span>
+
+</span></div><div class="anchor value-res" id="name-LoadResourceFromURI">	<input type='checkbox' class="fold" id="LoadResourceFromURI-fold-content"><label for="LoadResourceFromURI-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/resource.go.html#line-12">LoadResourceFromURI</a>(u <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-Resource">Resource</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='LoadResourceFromURI-fold-content-docs' class="fold-docs">
+<span class="md-text">		LoadResourceFromURI creates a new StaticResource in memory using the contents of the specified URI.
+		The URI will be opened using the current driver, so valid schemas will vary from platform to platform.
+		The file:// schema will always work.</span>
+
+</span></div><div class="anchor value-res" id="name-Move">	<input type='checkbox' class="fold" id="Move-fold-content"><label for="Move-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-392">Move</a>(source <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>, destination <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='Move-fold-content-docs' class="fold-docs">
+<span class="md-text">		Move returns a method that given two URIs, 'src' and 'dest' both of the same
+		scheme this will move src to dest. This means the resource referenced by
+		src will be copied into the resource referenced by dest, and the resource
+		referenced by src will no longer exist after the operation is complete.
+		
+		If the source and destination are of different schemes, then the Move
+		implementation for the storage repository registered to the scheme of the
+		source will be used. Implementations are recommended to use
+		repository.GenericMove() as a fail-over in the case that they do not
+		understand how to operate on the scheme of the destination URI. However, the
+		behavior of calling Move() on URIs of non-matching schemes is ultimately
+		defined by the storage repository registered to the scheme of the source
+		URI.
+		
+		This method may fail in several ways:
+		
+		  - Different permissions or credentials are required to perform the
+		    rename operation.
+		
+		  - This URI scheme could represent some resources that can be renamed,
+		    but either the source, destination, or both are not resources
+		    that support renaming.
+		
+		  - Performing the rename operation depended on a lower level operation
+		    such as network or filesystem access that has failed in some way.
+		
+		  - If the scheme of the given URI does not have a registered
+		    MovableRepository instance, then this method will fail with a
+		    repository.ErrOperationNotSupported.
+		
+		Move is backed by the repository system - this function calls into a
+		scheme-specific implementation from a registered repository.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-NewExtensionFileFilter">	<input type='checkbox' class="fold" id="NewExtensionFileFilter-fold-content"><label for="NewExtensionFileFilter-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/filter.go.html#line-40">NewExtensionFileFilter</a>(extensions []<a href="../../../builtin.html#name-string">string</a>) <a href="#name-FileFilter">FileFilter</a></label><span id='NewExtensionFileFilter-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewExtensionFileFilter takes a string slice of extensions with a leading . and creates a filter for the file dialog.
+		Example: .jpg, .mp3, .txt, .sh</span>
+
+</span></div><div class="anchor value-res" id="name-NewFileURI">	<input type='checkbox' class="fold" id="NewFileURI-fold-content"><label for="NewFileURI-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-9">NewFileURI</a>(path <a href="../../../builtin.html#name-string">string</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a></label><span id='NewFileURI-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewFileURI creates a new URI from the given file path.</span>
+
+</span></div><div class="anchor value-res" id="name-NewMimeTypeFileFilter">	<input type='checkbox' class="fold" id="NewMimeTypeFileFilter-fold-content"><label for="NewMimeTypeFileFilter-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/filter.go.html#line-63">NewMimeTypeFileFilter</a>(mimeTypes []<a href="../../../builtin.html#name-string">string</a>) <a href="#name-FileFilter">FileFilter</a></label><span id='NewMimeTypeFileFilter-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewMimeTypeFileFilter takes a string slice of mimetypes, including globs, and creates a filter for the file dialog.
+		Example: image/*, audio/mp3, text/plain, application/*</span>
+
+</span></div><div class="anchor value-res" id="name-NewURI">	<input type='checkbox' class="fold" id="NewURI-fold-content"><label for="NewURI-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-17">NewURI</a>(s <a href="../../../builtin.html#name-string">string</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a></label><span id='NewURI-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewURI creates a new URI from the given string representation. This could be
+		a URI from an external source or one saved from URI.String()
+		
+		Deprecated: use ParseURI instead</span>
+
+</span></div><div class="anchor value-res" id="name-OpenFileFromURI">	<input type='checkbox' class="fold" id="OpenFileFromURI-fold-content"><label for="OpenFileFromURI-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/file.go.html#line-14">OpenFileFromURI</a>(uri <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-URIReadCloser">URIReadCloser</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='OpenFileFromURI-fold-content-docs' class="fold-docs">
+<span class="md-text">		OpenFileFromURI loads a file read stream from a resource identifier.
+		This is mostly provided so that file references can be saved using their URI and loaded again later.
+		
+		Deprecated: this has been replaced by storage.Reader(URI)</span>
+
+</span></div><div class="anchor value-res" id="name-Parent">	<input type='checkbox' class="fold" id="Parent-fold-content"><label for="Parent-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-70">Parent</a>(u <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='Parent-fold-content-docs' class="fold-docs">
+<span class="md-text">		Parent returns a URI referencing the parent resource of the resource
+		referenced by the URI. For example, the Parent() of 'file://foo/bar.baz' is
+		'file://foo'. The URI which is returned will be listable.
+		
+		NOTE: it is not a given that Parent() return a parent URI with the same
+		Scheme(), though this will normally be the case.
+		
+		This can fail in several ways:
+		
+		  - If the URI refers to a filesystem root, then the Parent() implementation
+		    must return (nil, URIRootError).
+		
+		  - If the URI refers to a resource which does not exist in a hierarchical
+		    context (e.g. the URI references something which does not have a
+		    semantically meaningful "parent"), the Parent() implementation may return
+		    an error.
+		
+		  - If determining the parent of the referenced resource requires
+		    interfacing with some external system, failures may propagate
+		    through the Parent() implementation. For example if determining
+		    the parent of a file:// URI requires reading information from
+		    the filesystem, it could fail with a permission error.
+		
+		  - If the scheme of the given URI does not have a registered
+		    HierarchicalRepository instance, then this method will fail with a
+		    repository.ErrOperationNotSupported.
+		
+		NOTE: since v2.0.0, Parent() is backed by the repository system - this
+		function is a helper which calls into an appropriate repository instance for
+		the scheme of the URI it is given.
+		
+		Since: 1.4</span>
+
+</span></div><div class="anchor value-res" id="name-ParseURI">	<input type='checkbox' class="fold" id="ParseURI-fold-content"><label for="ParseURI-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-34">ParseURI</a>(s <a href="../../../builtin.html#name-string">string</a>) (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='ParseURI-fold-content-docs' class="fold-docs">
+<span class="md-text">		ParseURI creates a new URI instance by parsing a URI string.
+		
+		Parse URI will parse up to the first ':' present in the URI string to
+		extract the scheme, and then delegate further parsing to the registered
+		repository for the given scheme. If no repository is registered for that
+		scheme, the URI is parsed on a best-effort basis using net/url.
+		
+		As a special exception, URIs beginning with 'file:' are always parsed using
+		NewFileURI(), which will correctly handle back-slashes appearing in the URI
+		path component on Windows.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-Reader">	<input type='checkbox' class="fold" id="Reader-fold-content"><label for="Reader-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-208">Reader</a>(u <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-URIReadCloser">URIReadCloser</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='Reader-fold-content-docs' class="fold-docs">
+<span class="md-text">		Reader returns URIReadCloser set up to read from the resource that the
+		URI references.
+		
+		This method can fail in several ways:
+		
+		  - Different permissions or credentials are required to read the
+		    referenced resource.
+		
+		  - This URI scheme could represent some resources that can be read,
+		    but this particular URI references a resources that is not
+		    something that can be read.
+		
+		  - Attempting to set up the reader depended on a lower level
+		    operation such as a network or filesystem access that has failed
+		    in some way.
+		
+		Reader is backed by the repository system - this function calls
+		into a scheme-specific implementation from a registered repository.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-SaveFileToURI">	<input type='checkbox' class="fold" id="SaveFileToURI-fold-content"><label for="SaveFileToURI-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/file.go.html#line-22">SaveFileToURI</a>(uri <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-URIWriteCloser">URIWriteCloser</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='SaveFileToURI-fold-content-docs' class="fold-docs">
+<span class="md-text">		SaveFileToURI loads a file write stream to a resource identifier.
+		This is mostly provided so that file references can be saved using their URI and written to again later.
+		
+		Deprecated: this has been replaced by storage.Writer(URI)</span>
+
+</span></div><div class="anchor value-res" id="name-Writer">	<input type='checkbox' class="fold" id="Writer-fold-content"><label for="Writer-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/storage/uri.go.html#line-273">Writer</a>(u <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-URIWriteCloser">URIWriteCloser</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='Writer-fold-content-docs' class="fold-docs">
+<span class="md-text">		Writer returns URIWriteCloser set up to write to the resource that the
+		URI references.
+		
+		Writing to a non-extant resource should create that resource if possible
+		(and if not possible, this should be reflected in the return of CanWrite()).
+		Writing to an extant resource should overwrite it in-place. At present, this
+		API does not provide a mechanism for appending to an already-extant
+		resource, except for reading it in and writing all the data back out.
+		
+		This method can fail in several ways:
+		
+		  - Different permissions or credentials are required to write to the
+		    referenced resource.
+		
+		  - This URI scheme could represent some resources that can be
+		    written, but this particular URI references a resources that is
+		    not something that can be written.
+		
+		  - Attempting to set up the writer depended on a lower level
+		    operation such as a network or filesystem access that has failed
+		    in some way.
+		
+		  - If the scheme of the given URI does not have a registered
+		    WritableRepository instance, then this method will fail with a
+		    repository.ErrOperationNotSupported.
+		
+		Writer is backed by the repository system - this function calls into a
+		scheme-specific implementation from a registered repository.
+		
+		Since: 2.0</span>
+
+</span></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 3, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ErrAlreadyExists">	<input type='checkbox' class="fold" id="ErrAlreadyExists-fold-content"><label for="ErrAlreadyExists-fold-content">  var <a href="../../../../src/fyne.io/fyne/v2/storage/errors.go.html#line-9">ErrAlreadyExists</a> <a href="../../../builtin.html#name-error">error</a></label><span id='ErrAlreadyExists-fold-content-docs' class="fold-docs">
+<span class="md-text">		ErrAlreadyExists may be thrown by docs. E.g., save a document twice.
+		
+		Since: 2.3</span>
+
+</span></div><div class="anchor value-res" id="name-ErrNotExists">	<input type='checkbox' class="fold" id="ErrNotExists-fold-content"><label for="ErrNotExists-fold-content">  var <a href="../../../../src/fyne.io/fyne/v2/storage/errors.go.html#line-14">ErrNotExists</a> <a href="../../../builtin.html#name-error">error</a></label><span id='ErrNotExists-fold-content-docs' class="fold-docs">
+<span class="md-text">		ErrNotExists may be thrown by docs. E.g., save an unknown document.
+		
+		Since: 2.3</span>
+
+</span></div><div class="anchor value-res" id="name-URIRootError">	<input type='checkbox' class="fold" id="URIRootError-fold-content"><label for="URIRootError-fold-content">  var <a href="../../../../src/fyne.io/fyne/v2/storage/uri_root_error.go.html#line-10">URIRootError</a> <a href="../../../builtin.html#name-error">error</a></label><span id='URIRootError-fold-content-docs' class="fold-docs">
+<span class="md-text">		URIRootError is a wrapper for repository.URIRootError
+		
+		Deprecated - use repository.ErrURIRoot instead</span>
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

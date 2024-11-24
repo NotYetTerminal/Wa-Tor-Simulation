@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: entry_cursor_anim.go in package fyne.io/fyne/v2/widget</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	entry_cursor_anim.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/fyne.io/fyne/v2/widget.html">fyne.io/fyne/v2/widget</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5,
+input[id=i6]:checked ~pre .i6
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+<input id="i6" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> widget</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"image/color"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"sync"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"time"</span></label></code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i3"><span class="lit-string i3">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i4"><span class="lit-string i4">"fyne.io/fyne/v2/canvas"</span></label></code></span>
+<span class="codeline" id="line-10"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2/internal/color.html" class="ident i5">col</a> <label for="i5"><span class="lit-string i5">"fyne.io/fyne/v2/internal/color"</span></label></code></span>
+<span class="codeline" id="line-11"><code>	<label for="i6"><span class="lit-string i6">"fyne.io/fyne/v2/theme"</span></label></code></span>
+<span class="codeline" id="line-12"><code>)</code></span>
+<span class="codeline" id="line-13"><code></code></span>
+<span class="codeline" id="line-14"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2/widget.html#name-cursorInterruptTime" class="ident">cursorInterruptTime</a> = <span class="lit-number">300</span> * <a href="../../../../../pkg/time.html" class="ident i2">time</a>.<a href="../../../../time/time.go.html#line-654" class="ident">Millisecond</a></code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2/widget.html#name-cursorFadeAlpha" class="ident">cursorFadeAlpha</a>     = <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<span class="lit-number">0x16</span>)</code></span>
+<span class="codeline" id="line-17"><code>	<a href="../../../../../pkg/fyne.io/fyne/v2/widget.html#name-cursorFadeRatio" class="ident">cursorFadeRatio</a>     = <span class="lit-number">0.1</span></code></span>
+<span class="codeline" id="line-18"><code>)</code></span>
+<span class="codeline" id="line-19"><code></code></span>
+<span class="codeline" id="line-20"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/widget.html#name-entryCursorAnimation" class="ident">entryCursorAnimation</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-21"><code>	mu                *<a href="../../../../../pkg/sync.html" class="ident i1">sync</a>.<a href="../../../../sync/rwmutex.go.html#line-37" class="ident">RWMutex</a></code></span>
+<span class="codeline" id="line-22"><code>	cursor            *<a href="../../../../../pkg/fyne.io/fyne/v2/canvas.html" class="ident i4">canvas</a>.<a href="../canvas/rectangle.go.html#line-13" class="ident">Rectangle</a></code></span>
+<span class="codeline" id="line-23"><code>	anim              *<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../animation.go.html#line-39" class="ident">Animation</a></code></span>
+<span class="codeline" id="line-24"><code>	lastInterruptTime <a href="../../../../../pkg/time.html" class="ident i2">time</a>.<a href="../../../../time/time.go.html#line-139" class="ident">Time</a></code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code>	timeNow <span class="keyword">func</span>() <a href="../../../../../pkg/time.html" class="ident i2">time</a>.<a href="../../../../time/time.go.html#line-139" class="ident">Time</a> <span class="comment">// useful for testing</span></code></span>
+<span class="codeline" id="line-27"><code>}</code></span>
+<span class="codeline" id="line-28"><code></code></span>
+<span class="codeline" id="line-29"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/fyne.io/fyne/v2/widget.html#name-newEntryCursorAnimation" class="ident">newEntryCursorAnimation</a></label>(<label for="r1" class="ident">cursor</label> *<a href="../../../../../pkg/fyne.io/fyne/v2/canvas.html" class="ident i4">canvas</a>.<a href="../canvas/rectangle.go.html#line-13" class="ident">Rectangle</a>) *<a href="#line-20" class="ident">entryCursorAnimation</a> {</code></span>
+<span class="codeline" id="line-30"><code>	<label for="r2" class="ident">a</label> := &amp;<a href="#line-20" class="ident">entryCursorAnimation</a>{<a href="#line-21" class="ident">mu</a>: &amp;<a href="../../../../../pkg/sync.html" class="ident i1">sync</a>.<a href="../../../../sync/rwmutex.go.html#line-37" class="ident">RWMutex</a>{}, <a href="#line-22" class="ident">cursor</a>: <label for="r1" class="ident">cursor</label>, <a href="#line-26" class="ident">timeNow</a>: <a href="../../../../../pkg/time.html" class="ident i2">time</a>.<a href="../../../../time/time.go.html#line-1159" class="ident">Now</a>}</code></span>
+<span class="codeline" id="line-31"><code>	<span class="keyword">return</span> <label for="r2" class="ident">a</label></code></span>
+<span class="codeline" id="line-32"><code>}</code></span>
+<span class="codeline" id="line-33"><code></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">// creates fyne animation</span></code></span>
+<span class="codeline" id="line-35"><code><span class="keyword">func</span> (<label for="r3" class="ident">a</label> *<a href="#line-20" class="ident">entryCursorAnimation</a>) <label for="r4" class="ident">createAnim</label>(<label for="r5" class="ident">inverted</label> <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) *<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../animation.go.html#line-39" class="ident">Animation</a> {</code></span>
+<span class="codeline" id="line-36"><code>	<label for="r6" class="ident">cursorOpaque</label> := <a href="../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i6">theme</a>.<a href="../theme/color.go.html#line-262" class="ident">Color</a>(<a href="../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i6">theme</a>.<a href="../theme/color.go.html#line-148" class="ident">ColorNamePrimary</a>)</code></span>
+<span class="codeline" id="line-37"><code>	<label for="r7" class="ident">ri</label>, <label for="r8" class="ident">gi</label>, <label for="r9" class="ident">bi</label>, <label for="r10" class="ident">ai</label> := <a href="../../../../../pkg/fyne.io/fyne/v2/internal/color.html" class="ident i5">col</a>.<a href="../internal/color/color.go.html#line-8" class="ident">ToNRGBA</a>(<label for="r6" class="ident">cursorOpaque</label>)</code></span>
+<span class="codeline" id="line-38"><code>	<label for="r11" class="ident">r</label> := <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r7" class="ident">ri</label> &gt;&gt; <span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-39"><code>	<label for="r12" class="ident">g</label> := <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r8" class="ident">gi</label> &gt;&gt; <span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-40"><code>	<label for="r13" class="ident">b</label> := <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r9" class="ident">bi</label> &gt;&gt; <span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-41"><code>	<label for="r14" class="ident">endA</label> := <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r10" class="ident">ai</label> &gt;&gt; <span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-42"><code>	<label for="r15" class="ident">startA</label> := <a href="#line-16" class="ident">cursorFadeAlpha</a></code></span>
+<span class="codeline" id="line-43"><code>	<label for="r16" class="ident">cursorDim</label> := <a href="../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../image/color/color.go.html#line-57" class="ident">R</a>: <label for="r11" class="ident">r</label>, <a href="../../../../image/color/color.go.html#line-57" class="ident">G</a>: <label for="r12" class="ident">g</label>, <a href="../../../../image/color/color.go.html#line-57" class="ident">B</a>: <label for="r13" class="ident">b</label>, <a href="../../../../image/color/color.go.html#line-57" class="ident">A</a>: <a href="#line-16" class="ident">cursorFadeAlpha</a>}</code></span>
+<span class="codeline" id="line-44"><code>	<span class="keyword">if</span> <label for="r5" class="ident">inverted</label> {</code></span>
+<span class="codeline" id="line-45"><code>		<label for="r3" class="ident">a</label>.<a href="#line-22" class="ident">cursor</a>.<a href="../canvas/rectangle.go.html#line-16" class="ident">FillColor</a> = <label for="r6" class="ident">cursorOpaque</label></code></span>
+<span class="codeline" id="line-46"><code>		<label for="r15" class="ident">startA</label>, <label for="r14" class="ident">endA</label> = <label for="r14" class="ident">endA</label>, <label for="r15" class="ident">startA</label></code></span>
+<span class="codeline" id="line-47"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-48"><code>		<label for="r3" class="ident">a</label>.<a href="#line-22" class="ident">cursor</a>.<a href="../canvas/rectangle.go.html#line-16" class="ident">FillColor</a> = <label for="r16" class="ident">cursorDim</label></code></span>
+<span class="codeline" id="line-49"><code>	}</code></span>
+<span class="codeline" id="line-50"><code></code></span>
+<span class="codeline" id="line-51"><code>	<label for="r17" class="ident">deltaA</label> := <label for="r14" class="ident">endA</label> - <label for="r15" class="ident">startA</label></code></span>
+<span class="codeline" id="line-52"><code>	<label for="r18" class="ident">fadeStart</label> := <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<span class="lit-number">0.5</span> - <a href="#line-17" class="ident">cursorFadeRatio</a>)</code></span>
+<span class="codeline" id="line-53"><code>	<label for="r19" class="ident">fadeStop</label> := <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<span class="lit-number">0.5</span> + <a href="#line-17" class="ident">cursorFadeRatio</a>)</code></span>
+<span class="codeline" id="line-54"><code></code></span>
+<span class="codeline" id="line-55"><code>	<label for="r20" class="ident">interrupted</label> := <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-56"><code>	<label for="r21" class="ident">anim</label> := <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../animation.go.html#line-52" class="ident">NewAnimation</a>(<a href="../../../../../pkg/time.html" class="ident i2">time</a>.<a href="../../../../time/time.go.html#line-655" class="ident">Second</a>/<span class="lit-number">2</span>, <span class="keyword">func</span>(<label for="r22" class="ident">f</label> <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) {</code></span>
+<span class="codeline" id="line-57"><code>		<label for="r3" class="ident">a</label>.<a href="#line-21" class="ident">mu</a>.<a href="../../../../sync/rwmutex.go.html#line-65" class="ident">RLock</a>()</code></span>
+<span class="codeline" id="line-58"><code>		<label for="r23" class="ident">shouldInterrupt</label> := <label for="r3" class="ident">a</label>.<a href="#line-26" class="ident">timeNow</a>().<a href="../../../../time/time.go.html#line-914" class="ident">Sub</a>(<label for="r3" class="ident">a</label>.<a href="#line-24" class="ident">lastInterruptTime</a>) &lt;= <a href="#line-15" class="ident">cursorInterruptTime</a></code></span>
+<span class="codeline" id="line-59"><code>		<label for="r3" class="ident">a</label>.<a href="#line-21" class="ident">mu</a>.<a href="../../../../sync/rwmutex.go.html#line-112" class="ident">RUnlock</a>()</code></span>
+<span class="codeline" id="line-60"><code>		<span class="keyword">if</span> <label for="r23" class="ident">shouldInterrupt</label> {</code></span>
+<span class="codeline" id="line-61"><code>			<span class="keyword">if</span> !<label for="r20" class="ident">interrupted</label> {</code></span>
+<span class="codeline" id="line-62"><code>				<label for="r3" class="ident">a</label>.<a href="#line-22" class="ident">cursor</a>.<a href="../canvas/rectangle.go.html#line-16" class="ident">FillColor</a> = <label for="r6" class="ident">cursorOpaque</label></code></span>
+<span class="codeline" id="line-63"><code>				<label for="r3" class="ident">a</label>.<a href="#line-22" class="ident">cursor</a>.<a href="../canvas/rectangle.go.html#line-40" class="ident">Refresh</a>()</code></span>
+<span class="codeline" id="line-64"><code>				<label for="r20" class="ident">interrupted</label> = <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-65"><code>			}</code></span>
+<span class="codeline" id="line-66"><code>			<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-67"><code>		}</code></span>
+<span class="codeline" id="line-68"><code>		<span class="keyword">if</span> <label for="r20" class="ident">interrupted</label> {</code></span>
+<span class="codeline" id="line-69"><code>			<label for="r3" class="ident">a</label>.<a href="#line-21" class="ident">mu</a>.<a href="../../../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-70"><code>			<label for="r3" class="ident">a</label>.<a href="#line-23" class="ident">anim</a>.<a href="../animation.go.html#line-62" class="ident">Stop</a>()</code></span>
+<span class="codeline" id="line-71"><code>			<span class="keyword">if</span> !<label for="r5" class="ident">inverted</label> {</code></span>
+<span class="codeline" id="line-72"><code>				<label for="r3" class="ident">a</label>.<a href="#line-23" class="ident">anim</a> = <label for="r3" class="ident">a</label>.<label for="r4" class="ident">createAnim</label>(<a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a>)</code></span>
+<span class="codeline" id="line-73"><code>			}</code></span>
+<span class="codeline" id="line-74"><code>			<label for="r20" class="ident">interrupted</label> = <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-75"><code>			<label for="r3" class="ident">a</label>.<a href="#line-21" class="ident">mu</a>.<a href="../../../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-76"><code>			<span class="keyword">go</span> <span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-77"><code>				<label for="r3" class="ident">a</label>.<a href="#line-21" class="ident">mu</a>.<a href="../../../../sync/rwmutex.go.html#line-65" class="ident">RLock</a>()</code></span>
+<span class="codeline" id="line-78"><code>				<label for="r24" class="ident">canStart</label> := <label for="r3" class="ident">a</label>.<a href="#line-23" class="ident">anim</a> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-79"><code>				<label for="r3" class="ident">a</label>.<a href="#line-21" class="ident">mu</a>.<a href="../../../../sync/rwmutex.go.html#line-112" class="ident">RUnlock</a>()</code></span>
+<span class="codeline" id="line-80"><code>				<span class="keyword">if</span> <label for="r24" class="ident">canStart</label> {</code></span>
+<span class="codeline" id="line-81"><code>					<label for="r3" class="ident">a</label>.<a href="#line-23" class="ident">anim</a>.<a href="../animation.go.html#line-57" class="ident">Start</a>()</code></span>
+<span class="codeline" id="line-82"><code>				}</code></span>
+<span class="codeline" id="line-83"><code>			}()</code></span>
+<span class="codeline" id="line-84"><code>			<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-85"><code>		}</code></span>
+<span class="codeline" id="line-86"><code></code></span>
+<span class="codeline" id="line-87"><code>		<label for="r25" class="ident">alpha</label> := <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-88"><code>		<span class="keyword">if</span> <label for="r22" class="ident">f</label> &lt; <label for="r18" class="ident">fadeStart</label> {</code></span>
+<span class="codeline" id="line-89"><code>			<span class="keyword">if</span> <label for="r26" class="ident">_</label>, <label for="r27" class="ident">_</label>, <label for="r28" class="ident">_</label>, <label for="r29" class="ident">al</label> := <label for="r3" class="ident">a</label>.<a href="#line-22" class="ident">cursor</a>.<a href="../canvas/rectangle.go.html#line-16" class="ident">FillColor</a>.<a href="../../../../image/color/color.go.html#line-18" class="ident">RGBA</a>(); <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r29" class="ident">al</label>&gt;&gt;<span class="lit-number">8</span>) == <a href="#line-16" class="ident">cursorFadeAlpha</a> {</code></span>
+<span class="codeline" id="line-90"><code>				<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-91"><code>			}</code></span>
+<span class="codeline" id="line-92"><code></code></span>
+<span class="codeline" id="line-93"><code>			<label for="r3" class="ident">a</label>.<a href="#line-22" class="ident">cursor</a>.<a href="../canvas/rectangle.go.html#line-16" class="ident">FillColor</a> = <label for="r16" class="ident">cursorDim</label></code></span>
+<span class="codeline" id="line-94"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r22" class="ident">f</label> &gt;= <label for="r19" class="ident">fadeStop</label> {</code></span>
+<span class="codeline" id="line-95"><code>			<span class="keyword">if</span> <label for="r30" class="ident">_</label>, <label for="r31" class="ident">_</label>, <label for="r32" class="ident">_</label>, <label for="r33" class="ident">al</label> := <label for="r3" class="ident">a</label>.<a href="#line-22" class="ident">cursor</a>.<a href="../canvas/rectangle.go.html#line-16" class="ident">FillColor</a>.<a href="../../../../image/color/color.go.html#line-18" class="ident">RGBA</a>(); <label for="r33" class="ident">al</label> == <span class="lit-number">0xffff</span> {</code></span>
+<span class="codeline" id="line-96"><code>				<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-97"><code>			}</code></span>
+<span class="codeline" id="line-98"><code></code></span>
+<span class="codeline" id="line-99"><code>			<label for="r3" class="ident">a</label>.<a href="#line-22" class="ident">cursor</a>.<a href="../canvas/rectangle.go.html#line-16" class="ident">FillColor</a> = <label for="r6" class="ident">cursorOpaque</label></code></span>
+<span class="codeline" id="line-100"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-101"><code>			<label for="r34" class="ident">fade</label> := (<label for="r22" class="ident">f</label> + <a href="#line-17" class="ident">cursorFadeRatio</a> - <span class="lit-number">0.5</span>) * (<span class="lit-number">1</span> / (<a href="#line-17" class="ident">cursorFadeRatio</a> * <span class="lit-number">2</span>))</code></span>
+<span class="codeline" id="line-102"><code>			<label for="r25" class="ident">alpha</label> = <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r17" class="ident">deltaA</label>) * <label for="r34" class="ident">fade</label>)</code></span>
+<span class="codeline" id="line-103"><code>			<label for="r3" class="ident">a</label>.<a href="#line-22" class="ident">cursor</a>.<a href="../canvas/rectangle.go.html#line-16" class="ident">FillColor</a> = <a href="../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../image/color/color.go.html#line-57" class="ident">R</a>: <label for="r11" class="ident">r</label>, <a href="../../../../image/color/color.go.html#line-57" class="ident">G</a>: <label for="r12" class="ident">g</label>, <a href="../../../../image/color/color.go.html#line-57" class="ident">B</a>: <label for="r13" class="ident">b</label>, <a href="../../../../image/color/color.go.html#line-57" class="ident">A</a>: <label for="r25" class="ident">alpha</label>}</code></span>
+<span class="codeline" id="line-104"><code>		}</code></span>
+<span class="codeline" id="line-105"><code></code></span>
+<span class="codeline" id="line-106"><code>		<label for="r3" class="ident">a</label>.<a href="#line-22" class="ident">cursor</a>.<a href="../canvas/rectangle.go.html#line-40" class="ident">Refresh</a>()</code></span>
+<span class="codeline" id="line-107"><code>	})</code></span>
+<span class="codeline" id="line-108"><code></code></span>
+<span class="codeline" id="line-109"><code>	<label for="r21" class="ident">anim</label>.<a href="../animation.go.html#line-43" class="ident">RepeatCount</a> = <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i3">fyne</a>.<a href="../animation.go.html#line-14" class="ident">AnimationRepeatForever</a></code></span>
+<span class="codeline" id="line-110"><code>	<label for="r21" class="ident">anim</label>.<a href="../animation.go.html#line-40" class="ident">AutoReverse</a> = <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-111"><code>	<span class="keyword">return</span> <label for="r21" class="ident">anim</label></code></span>
+<span class="codeline" id="line-112"><code>}</code></span>
+<span class="codeline" id="line-113"><code></code></span>
+<span class="codeline" id="line-114"><code><span class="comment">// starts cursor animation.</span></code></span>
+<span class="codeline" id="line-115"><code><span class="keyword">func</span> (<label for="r35" class="ident">a</label> *<a href="#line-20" class="ident">entryCursorAnimation</a>) <label for="r36" class="ident">start</label>() {</code></span>
+<span class="codeline" id="line-116"><code>	<label for="r35" class="ident">a</label>.<a href="#line-21" class="ident">mu</a>.<a href="../../../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-117"><code>	<label for="r37" class="ident">isStopped</label> := <label for="r35" class="ident">a</label>.<a href="#line-23" class="ident">anim</a> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-118"><code>	<span class="keyword">if</span> <label for="r37" class="ident">isStopped</label> {</code></span>
+<span class="codeline" id="line-119"><code>		<label for="r35" class="ident">a</label>.<a href="#line-23" class="ident">anim</a> = <label for="r35" class="ident">a</label>.<a href="#line-35" class="ident">createAnim</a>(<a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a>)</code></span>
+<span class="codeline" id="line-120"><code>	}</code></span>
+<span class="codeline" id="line-121"><code>	<label for="r35" class="ident">a</label>.<a href="#line-21" class="ident">mu</a>.<a href="../../../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-122"><code>	<span class="keyword">if</span> <label for="r37" class="ident">isStopped</label> {</code></span>
+<span class="codeline" id="line-123"><code>		<label for="r35" class="ident">a</label>.<a href="#line-23" class="ident">anim</a>.<a href="../animation.go.html#line-57" class="ident">Start</a>()</code></span>
+<span class="codeline" id="line-124"><code>	}</code></span>
+<span class="codeline" id="line-125"><code>}</code></span>
+<span class="codeline" id="line-126"><code></code></span>
+<span class="codeline" id="line-127"><code><span class="comment">// temporarily stops the animation by "cursorInterruptTime".</span></code></span>
+<span class="codeline" id="line-128"><code><span class="keyword">func</span> (<label for="r38" class="ident">a</label> *<a href="#line-20" class="ident">entryCursorAnimation</a>) <label for="r39" class="ident">interrupt</label>() {</code></span>
+<span class="codeline" id="line-129"><code>	<label for="r38" class="ident">a</label>.<a href="#line-21" class="ident">mu</a>.<a href="../../../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-130"><code>	<label for="r38" class="ident">a</label>.<a href="#line-24" class="ident">lastInterruptTime</a> = <label for="r38" class="ident">a</label>.<a href="#line-26" class="ident">timeNow</a>()</code></span>
+<span class="codeline" id="line-131"><code>	<label for="r38" class="ident">a</label>.<a href="#line-21" class="ident">mu</a>.<a href="../../../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-132"><code>}</code></span>
+<span class="codeline" id="line-133"><code></code></span>
+<span class="codeline" id="line-134"><code><span class="comment">// stops cursor animation.</span></code></span>
+<span class="codeline" id="line-135"><code><span class="keyword">func</span> (<label for="r40" class="ident">a</label> *<a href="#line-20" class="ident">entryCursorAnimation</a>) <label for="r41" class="ident">stop</label>() {</code></span>
+<span class="codeline" id="line-136"><code>	<label for="r40" class="ident">a</label>.<a href="#line-21" class="ident">mu</a>.<a href="../../../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-137"><code>	<span class="keyword">if</span> <label for="r40" class="ident">a</label>.<a href="#line-23" class="ident">anim</a> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-138"><code>		<label for="r40" class="ident">a</label>.<a href="#line-23" class="ident">anim</a>.<a href="../animation.go.html#line-62" class="ident">Stop</a>()</code></span>
+<span class="codeline" id="line-139"><code>		<label for="r40" class="ident">a</label>.<a href="#line-23" class="ident">anim</a> = <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-140"><code>	}</code></span>
+<span class="codeline" id="line-141"><code>	<label for="r40" class="ident">a</label>.<a href="#line-21" class="ident">mu</a>.<a href="../../../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-142"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

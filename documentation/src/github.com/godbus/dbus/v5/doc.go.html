@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: doc.go in package github.com/godbus/dbus/v5</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	doc.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/godbus/dbus/v5.html">github.com/godbus/dbus/v5</a>
+</code></pre>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">/*</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">Package dbus implements bindings to the D-Bus message bus system.</span></code></span>
+<span class="codeline" id="line-3"><code></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">To use the message bus API, you first need to connect to a bus (usually the</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">session or system bus). The acquired connection then can be used to call methods</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">on remote objects and emit or receive signals. Using the Export method, you can</span></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">arrange D-Bus methods calls to be directly translated to method calls on a Go</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">value.</span></code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">Conversion Rules</span></code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">For outgoing messages, Go types are automatically converted to the</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">corresponding D-Bus types. See the official specification at</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">https://dbus.freedesktop.org/doc/dbus-specification.html#type-system for more</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">information on the D-Bus type system. The following types are directly encoded</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">as their respective D-Bus equivalents:</span></code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">     Go type     | D-Bus type</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">     ------------+-----------</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">     byte        | BYTE</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">     bool        | BOOLEAN</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">     int16       | INT16</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">     uint16      | UINT16</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">     int         | INT32</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">     uint        | UINT32</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">     int32       | INT32</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">     uint32      | UINT32</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">     int64       | INT64</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">     uint64      | UINT64</span></code></span>
+<span class="codeline" id="line-30"><code><span class="comment">     float64     | DOUBLE</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">     string      | STRING</span></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">     ObjectPath  | OBJECT_PATH</span></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">     Signature   | SIGNATURE</span></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">     Variant     | VARIANT</span></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">     interface{} | VARIANT</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">     UnixFDIndex | UNIX_FD</span></code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">Slices and arrays encode as ARRAYs of their element type.</span></code></span>
+<span class="codeline" id="line-39"><code></code></span>
+<span class="codeline" id="line-40"><code><span class="comment">Maps encode as DICTs, provided that their key type can be used as a key for</span></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">a DICT.</span></code></span>
+<span class="codeline" id="line-42"><code></code></span>
+<span class="codeline" id="line-43"><code><span class="comment">Structs other than Variant and Signature encode as a STRUCT containing their</span></code></span>
+<span class="codeline" id="line-44"><code><span class="comment">exported fields in order. Fields whose tags contain `dbus:"-"` and unexported</span></code></span>
+<span class="codeline" id="line-45"><code><span class="comment">fields will be skipped.</span></code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">Pointers encode as the value they're pointed to.</span></code></span>
+<span class="codeline" id="line-48"><code></code></span>
+<span class="codeline" id="line-49"><code><span class="comment">Types convertible to one of the base types above will be mapped as the</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">base type.</span></code></span>
+<span class="codeline" id="line-51"><code></code></span>
+<span class="codeline" id="line-52"><code><span class="comment">Trying to encode any other type or a slice, map or struct containing an</span></code></span>
+<span class="codeline" id="line-53"><code><span class="comment">unsupported type will result in an InvalidTypeError.</span></code></span>
+<span class="codeline" id="line-54"><code></code></span>
+<span class="codeline" id="line-55"><code><span class="comment">For incoming messages, the inverse of these rules are used, with the exception</span></code></span>
+<span class="codeline" id="line-56"><code><span class="comment">of STRUCTs. Incoming STRUCTS are represented as a slice of empty interfaces</span></code></span>
+<span class="codeline" id="line-57"><code><span class="comment">containing the struct fields in the correct order. The Store function can be</span></code></span>
+<span class="codeline" id="line-58"><code><span class="comment">used to convert such values to Go structs.</span></code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code><span class="comment">Unix FD passing</span></code></span>
+<span class="codeline" id="line-61"><code></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">Handling Unix file descriptors deserves special mention. To use them, you should</span></code></span>
+<span class="codeline" id="line-63"><code><span class="comment">first check that they are supported on a connection by calling SupportsUnixFDs.</span></code></span>
+<span class="codeline" id="line-64"><code><span class="comment">If it returns true, all method of Connection will translate messages containing</span></code></span>
+<span class="codeline" id="line-65"><code><span class="comment">UnixFD's to messages that are accompanied by the given file descriptors with the</span></code></span>
+<span class="codeline" id="line-66"><code><span class="comment">UnixFD values being substituted by the correct indices. Similarly, the indices</span></code></span>
+<span class="codeline" id="line-67"><code><span class="comment">of incoming messages are automatically resolved. It shouldn't be necessary to use</span></code></span>
+<span class="codeline" id="line-68"><code><span class="comment">UnixFDIndex.</span></code></span>
+<span class="codeline" id="line-69"><code></code></span>
+<span class="codeline" id="line-70"><code><span class="comment">*/</span></code></span></div><span class="codeline" id="line-71"><code><span class="keyword">package</span> dbus</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

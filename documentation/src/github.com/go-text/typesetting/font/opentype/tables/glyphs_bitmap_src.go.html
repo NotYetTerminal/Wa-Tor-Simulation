@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: glyphs_bitmap_src.go in package github.com/go-text/typesetting/font/opentype/tables</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	glyphs_bitmap_src.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html">github.com/go-text/typesetting/font/opentype/tables</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> tables</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"fmt"</span></label></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// CBLC is the Color Bitmap Location Table</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// See - https://learn.microsoft.com/fr-fr/typography/opentype/spec/cblc</span></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CBLC" class="ident">CBLC</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-10"><code>	majorVersion   <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>             <span class="comment">//	Major version of the CBLC table, = 3.</span></code></span>
+<span class="codeline" id="line-11"><code>	minorVersion   <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>             <span class="comment">//	Minor version of the CBLC table, = 0.</span></code></span>
+<span class="codeline" id="line-12"><code>	BitmapSizes    []<a href="#line-44" class="ident">BitmapSize</a>       <span class="lit-string">`arrayCount:"FirstUint32"`</span> <span class="comment">// BitmapSize records array.</span></code></span>
+<span class="codeline" id="line-13"><code>	IndexSubTables [][]<a href="glyphs.go.html#line-5" class="ident">BitmapSubtable</a> <span class="lit-string">`isOpaque:""`</span>              <span class="comment">// with same length as [BitmapSizes]</span></code></span>
+<span class="codeline" id="line-14"><code>}</code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code><span class="keyword">func</span> (<label for="r0" class="ident">cb</label> *<a href="#line-9" class="ident">CBLC</a>) <label for="r1" class="ident">parseIndexSubTables</label>(<label for="r2" class="ident">src</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-17"><code>	<label for="r0" class="ident">cb</label>.<a href="#line-13" class="ident">IndexSubTables</a> = <a href="../../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([][]<a href="glyphs.go.html#line-5" class="ident">BitmapSubtable</a>, <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r0" class="ident">cb</label>.<a href="#line-12" class="ident">BitmapSizes</a>))</code></span>
+<span class="codeline" id="line-18"><code>	<span class="keyword">for</span> <label for="r3" class="ident">i</label>, <label for="r4" class="ident">size</label> := <span class="keyword">range</span> <label for="r0" class="ident">cb</label>.<a href="#line-12" class="ident">BitmapSizes</a> {</code></span>
+<span class="codeline" id="line-19"><code>		<label for="r5" class="ident">start</label> := <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r4" class="ident">size</label>.<a href="#line-45" class="ident">indexSubTableArrayOffset</a>)</code></span>
+<span class="codeline" id="line-20"><code>		<span class="keyword">if</span> <label for="r6" class="ident">L</label> := <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r2" class="ident">src</label>); <label for="r6" class="ident">L</label> &lt; <label for="r5" class="ident">start</label> {</code></span>
+<span class="codeline" id="line-21"><code>			<span class="keyword">return</span> <a href="../../../../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"EOF: expected length: %d, got %d"</span>, <label for="r5" class="ident">start</label>, <label for="r6" class="ident">L</label>)</code></span>
+<span class="codeline" id="line-22"><code>		}</code></span>
+<span class="codeline" id="line-23"><code>		<label for="r7" class="ident">subtables</label>, <label for="r8" class="ident">_</label>, <label for="r9" class="ident">err</label> := <a href="glyphs_bitmap_gen.go.html#line-322" class="ident">ParseIndexSubTableArray</a>(<label for="r2" class="ident">src</label>[<label for="r5" class="ident">start</label>:], <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r4" class="ident">size</label>.<a href="#line-47" class="ident">numberOfIndexSubTables</a>))</code></span>
+<span class="codeline" id="line-24"><code>		<span class="keyword">if</span> <label for="r9" class="ident">err</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-25"><code>			<span class="keyword">return</span> <label for="r9" class="ident">err</label></code></span>
+<span class="codeline" id="line-26"><code>		}</code></span>
+<span class="codeline" id="line-27"><code>		<label for="r10" class="ident">sizeSubtables</label> := <a href="../../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="glyphs.go.html#line-5" class="ident">BitmapSubtable</a>, <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r7" class="ident">subtables</label>.<a href="#line-75" class="ident">Subtables</a>))</code></span>
+<span class="codeline" id="line-28"><code>		<span class="keyword">for</span> <label for="r11" class="ident">j</label>, <label for="r12" class="ident">subtable</label> := <span class="keyword">range</span> <label for="r7" class="ident">subtables</label>.<a href="#line-75" class="ident">Subtables</a> {</code></span>
+<span class="codeline" id="line-29"><code>			<label for="r13" class="ident">numGlyphs</label> := <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r12" class="ident">subtable</label>.<a href="#line-80" class="ident">LastGlyph</a>) - <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r12" class="ident">subtable</label>.<a href="#line-79" class="ident">FirstGlyph</a>) + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-30"><code>			<label for="r14" class="ident">subtableStart</label> := <label for="r5" class="ident">start</label> + <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r12" class="ident">subtable</label>.<a href="#line-81" class="ident">additionalOffsetToIndexSubtable</a>)</code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code>			<label for="r10" class="ident">sizeSubtables</label>[<label for="r11" class="ident">j</label>].<a href="glyphs.go.html#line-6" class="ident">FirstGlyph</a> = <label for="r12" class="ident">subtable</label>.<a href="#line-79" class="ident">FirstGlyph</a></code></span>
+<span class="codeline" id="line-33"><code>			<label for="r10" class="ident">sizeSubtables</label>[<label for="r11" class="ident">j</label>].<a href="glyphs.go.html#line-7" class="ident">LastGlyph</a> = <label for="r12" class="ident">subtable</label>.<a href="#line-80" class="ident">LastGlyph</a></code></span>
+<span class="codeline" id="line-34"><code>			<label for="r10" class="ident">sizeSubtables</label>[<label for="r11" class="ident">j</label>].<a href="glyphs.go.html#line-8" class="ident">IndexSubHeader</a>, _, <label for="r9" class="ident">err</label> = <a href="glyphs_bitmap_gen.go.html#line-283" class="ident">ParseIndexSubHeader</a>(<label for="r2" class="ident">src</label>[<label for="r14" class="ident">subtableStart</label>:], <label for="r13" class="ident">numGlyphs</label>+<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-35"><code>			<span class="keyword">if</span> <label for="r9" class="ident">err</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-36"><code>				<span class="keyword">return</span> <label for="r9" class="ident">err</label></code></span>
+<span class="codeline" id="line-37"><code>			}</code></span>
+<span class="codeline" id="line-38"><code>		}</code></span>
+<span class="codeline" id="line-39"><code>		<label for="r0" class="ident">cb</label>.<a href="#line-13" class="ident">IndexSubTables</a>[<label for="r3" class="ident">i</label>] = <label for="r10" class="ident">sizeSubtables</label></code></span>
+<span class="codeline" id="line-40"><code>	}</code></span>
+<span class="codeline" id="line-41"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-42"><code>}</code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-BitmapSize" class="ident">BitmapSize</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-45"><code>	indexSubTableArrayOffset <a href="tables.go.html#line-58" class="ident">Offset32</a>        <span class="comment">//	Offset to index subtable from beginning of CBLC.</span></code></span>
+<span class="codeline" id="line-46"><code>	indexTablesSize          <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>          <span class="comment">//	Number of bytes in corresponding index subtables and array.</span></code></span>
+<span class="codeline" id="line-47"><code>	numberOfIndexSubTables   <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>          <span class="comment">//	There is an index subtable for each range or format change.</span></code></span>
+<span class="codeline" id="line-48"><code>	colorRef                 <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>          <span class="comment">//	Not used; set to 0.</span></code></span>
+<span class="codeline" id="line-49"><code>	Hori                     <a href="#line-59" class="ident">SbitLineMetrics</a> <span class="comment">//	Line metrics for text rendered horizontally.</span></code></span>
+<span class="codeline" id="line-50"><code>	Vert                     <a href="#line-59" class="ident">SbitLineMetrics</a> <span class="comment">//	Line metrics for text rendered vertically.</span></code></span>
+<span class="codeline" id="line-51"><code>	startGlyphIndex          <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>          <span class="comment">//	Lowest glyph index for this size.</span></code></span>
+<span class="codeline" id="line-52"><code>	endGlyphIndex            <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>          <span class="comment">//	Highest glyph index for this size.</span></code></span>
+<span class="codeline" id="line-53"><code>	PpemX                    <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>           <span class="comment">//	Horizontal pixels per em.</span></code></span>
+<span class="codeline" id="line-54"><code>	PpemY                    <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>           <span class="comment">//	Vertical pixels per em.</span></code></span>
+<span class="codeline" id="line-55"><code>	bitDepth                 <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>           <span class="comment">//	In addtition to already defined bitDepth values 1, 2, 4, and 8 supported by existing implementations, the value of 32 is used to identify color bitmaps with 8 bit per pixel RGBA channels.</span></code></span>
+<span class="codeline" id="line-56"><code>	flags                    <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a>            <span class="comment">//	Vertical or horizontal (see the Bitmap Flags section of the EBLC table chapter).</span></code></span>
+<span class="codeline" id="line-57"><code>}</code></span>
+<span class="codeline" id="line-58"><code></code></span>
+<span class="codeline" id="line-59"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-SbitLineMetrics" class="ident">SbitLineMetrics</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-60"><code>	Ascender              <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a></code></span>
+<span class="codeline" id="line-61"><code>	Descender             <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a></code></span>
+<span class="codeline" id="line-62"><code>	widthMax              <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a></code></span>
+<span class="codeline" id="line-63"><code>	caretSlopeNumerator   <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a></code></span>
+<span class="codeline" id="line-64"><code>	caretSlopeDenominator <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a></code></span>
+<span class="codeline" id="line-65"><code>	caretOffset           <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a></code></span>
+<span class="codeline" id="line-66"><code>	minOriginSB           <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a></code></span>
+<span class="codeline" id="line-67"><code>	minAdvanceSB          <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a></code></span>
+<span class="codeline" id="line-68"><code>	MaxBeforeBL           <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a></code></span>
+<span class="codeline" id="line-69"><code>	MinAfterBL            <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a></code></span>
+<span class="codeline" id="line-70"><code>	pad1                  <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a></code></span>
+<span class="codeline" id="line-71"><code>	pad2                  <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a></code></span>
+<span class="codeline" id="line-72"><code>}</code></span>
+<span class="codeline" id="line-73"><code></code></span>
+<span class="codeline" id="line-74"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-IndexSubTableArray" class="ident">IndexSubTableArray</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-75"><code>	Subtables []<a href="#line-78" class="ident">IndexSubTableHeader</a></code></span>
+<span class="codeline" id="line-76"><code>}</code></span>
+<span class="codeline" id="line-77"><code></code></span>
+<span class="codeline" id="line-78"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-IndexSubTableHeader" class="ident">IndexSubTableHeader</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-79"><code>	FirstGlyph                      <a href="tables.go.html#line-9" class="ident">GlyphID</a>  <span class="comment">//	First glyph ID of this range.</span></code></span>
+<span class="codeline" id="line-80"><code>	LastGlyph                       <a href="tables.go.html#line-9" class="ident">GlyphID</a>  <span class="comment">//	Last glyph ID of this range (inclusive).</span></code></span>
+<span class="codeline" id="line-81"><code>	additionalOffsetToIndexSubtable <a href="tables.go.html#line-58" class="ident">Offset32</a> <span class="comment">//	Add to indexSubTableArrayOffset to get offset from beginning of EBLC.</span></code></span>
+<span class="codeline" id="line-82"><code>}</code></span>
+<span class="codeline" id="line-83"><code></code></span>
+<span class="codeline" id="line-84"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-IndexSubHeader" class="ident">IndexSubHeader</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-85"><code>	indexFormat     <a href="#line-91" class="ident">indexVersion</a> <span class="comment">// Format of this IndexSubTable.</span></code></span>
+<span class="codeline" id="line-86"><code>	ImageFormat     <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>       <span class="comment">// Format of EBDT image data.</span></code></span>
+<span class="codeline" id="line-87"><code>	ImageDataOffset <a href="tables.go.html#line-58" class="ident">Offset32</a>     <span class="comment">// Offset to image data in EBDT table.</span></code></span>
+<span class="codeline" id="line-88"><code>	IndexData       <a href="#line-101" class="ident">IndexData</a>    <span class="lit-string">`unionField:"indexFormat"`</span></code></span>
+<span class="codeline" id="line-89"><code>}</code></span>
+<span class="codeline" id="line-90"><code></code></span>
+<span class="codeline" id="line-91"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-indexVersion" class="ident">indexVersion</a> <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-92"><code></code></span>
+<span class="codeline" id="line-93"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-94"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-indexVersion1" class="ident">indexVersion1</a> <a href="#line-91" class="ident">indexVersion</a> = <a href="../../../../../../../pkg/builtin.html#name-iota" class="ident">iota</a> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-95"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-indexVersion2" class="ident">indexVersion2</a></code></span>
+<span class="codeline" id="line-96"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-indexVersion3" class="ident">indexVersion3</a></code></span>
+<span class="codeline" id="line-97"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-indexVersion4" class="ident">indexVersion4</a></code></span>
+<span class="codeline" id="line-98"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-indexVersion5" class="ident">indexVersion5</a></code></span>
+<span class="codeline" id="line-99"><code>)</code></span>
+<span class="codeline" id="line-100"><code></code></span>
+<span class="codeline" id="line-101"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-IndexData" class="ident">IndexData</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-102"><code>	<a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.IndexData.html#name-github.com/go-text/typesetting/font/opentype/tables.isIndexData" class="ident">isIndexData</a>()</code></span>
+<span class="codeline" id="line-103"><code>}</code></span>
+<span class="codeline" id="line-104"><code></code></span>
+<span class="codeline" id="line-105"><code><span class="keyword">func</span> (<a href="#line-111" class="ident">IndexData1</a>) <label for="r15" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.IndexData1.html#name-isIndexData" class="ident">isIndexData</a></label>() {}</code></span>
+<span class="codeline" id="line-106"><code><span class="keyword">func</span> (<a href="#line-117" class="ident">IndexData2</a>) <label for="r16" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.IndexData2.html#name-isIndexData" class="ident">isIndexData</a></label>() {}</code></span>
+<span class="codeline" id="line-107"><code><span class="keyword">func</span> (<a href="#line-122" class="ident">IndexData3</a>) <label for="r17" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.IndexData3.html#name-isIndexData" class="ident">isIndexData</a></label>() {}</code></span>
+<span class="codeline" id="line-108"><code><span class="keyword">func</span> (<a href="#line-128" class="ident">IndexData4</a>) <label for="r18" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.IndexData4.html#name-isIndexData" class="ident">isIndexData</a></label>() {}</code></span>
+<span class="codeline" id="line-109"><code><span class="keyword">func</span> (<a href="#line-138" class="ident">IndexData5</a>) <label for="r19" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.IndexData5.html#name-isIndexData" class="ident">isIndexData</a></label>() {}</code></span>
+<span class="codeline" id="line-110"><code></code></span>
+<span class="codeline" id="line-111"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-IndexData1" class="ident">IndexData1</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-112"><code>	<span class="comment">// sizeOfArray = (lastGlyph - firstGlyph + 1) + 1 + 1 pad if needed</span></code></span>
+<span class="codeline" id="line-113"><code><span class="comment">	// sbitOffsets[glyphIndex] + imageDataOffset = glyphData</span></code></span>
+<span class="codeline" id="line-114"><code>	SbitOffsets []<a href="tables.go.html#line-58" class="ident">Offset32</a></code></span>
+<span class="codeline" id="line-115"><code>}</code></span>
+<span class="codeline" id="line-116"><code></code></span>
+<span class="codeline" id="line-117"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-IndexData2" class="ident">IndexData2</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-118"><code>	ImageSize  <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>          <span class="comment">// All the glyphs are of the same size.</span></code></span>
+<span class="codeline" id="line-119"><code>	BigMetrics <a href="#line-157" class="ident">BigGlyphMetrics</a> <span class="comment">// All glyphs have the same metrics; glyph data may be compressed, byte-aligned, or bit-aligned.</span></code></span>
+<span class="codeline" id="line-120"><code>}</code></span>
+<span class="codeline" id="line-121"><code></code></span>
+<span class="codeline" id="line-122"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-IndexData3" class="ident">IndexData3</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-123"><code>	<span class="comment">// sizeOfArray = (lastGlyph - firstGlyph + 1) + 1 + 1 pad if needed</span></code></span>
+<span class="codeline" id="line-124"><code><span class="comment">	// sbitOffets[glyphIndex] + imageDataOffset = glyphData</span></code></span>
+<span class="codeline" id="line-125"><code>	SbitOffsets []<a href="tables.go.html#line-55" class="ident">Offset16</a></code></span>
+<span class="codeline" id="line-126"><code>}</code></span>
+<span class="codeline" id="line-127"><code></code></span>
+<span class="codeline" id="line-128"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-IndexData4" class="ident">IndexData4</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-129"><code>	numGlyphs  <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>              <span class="comment">//	Array length.</span></code></span>
+<span class="codeline" id="line-130"><code>	GlyphArray []<a href="#line-133" class="ident">GlyphIdOffsetPair</a> <span class="lit-string">`arrayCount:"ComputedField-numGlyphs+1"`</span> <span class="comment">//[numGlyphs + 1]	One per glyph.</span></code></span>
+<span class="codeline" id="line-131"><code>}</code></span>
+<span class="codeline" id="line-132"><code></code></span>
+<span class="codeline" id="line-133"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-GlyphIdOffsetPair" class="ident">GlyphIdOffsetPair</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-134"><code>	GlyphID    <a href="tables.go.html#line-9" class="ident">GlyphID</a>  <span class="comment">//	Glyph ID of glyph present.</span></code></span>
+<span class="codeline" id="line-135"><code>	SbitOffset <a href="tables.go.html#line-55" class="ident">Offset16</a> <span class="comment">//	Location in EBDT.</span></code></span>
+<span class="codeline" id="line-136"><code>}</code></span>
+<span class="codeline" id="line-137"><code></code></span>
+<span class="codeline" id="line-138"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-IndexData5" class="ident">IndexData5</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-139"><code>	ImageSize    <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>          <span class="comment">//	All glyphs have the same data size.</span></code></span>
+<span class="codeline" id="line-140"><code>	BigMetrics   <a href="#line-157" class="ident">BigGlyphMetrics</a> <span class="comment">//	All glyphs have the same metrics.</span></code></span>
+<span class="codeline" id="line-141"><code>	GlyphIdArray []<a href="tables.go.html#line-9" class="ident">GlyphID</a>       <span class="lit-string">`arrayCount:"FirstUint32"`</span> <span class="comment">// [numGlyphs] One per glyph, sorted by glyph ID.</span></code></span>
+<span class="codeline" id="line-142"><code>}</code></span>
+<span class="codeline" id="line-143"><code></code></span>
+<span class="codeline" id="line-144"><code><span class="comment">// ------------------------- actual data : shared by EBDT / CBDT / BDAT -------------------------</span></code></span>
+<span class="codeline" id="line-145"><code><span class="comment">// for now, we simplify the implementation to two cases:</span></code></span>
+<span class="codeline" id="line-146"><code><span class="comment">//	- data, metrics (small)</span></code></span>
+<span class="codeline" id="line-147"><code><span class="comment">//  - data only</span></code></span>
+<span class="codeline" id="line-148"><code></code></span>
+<span class="codeline" id="line-149"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-SmallGlyphMetrics" class="ident">SmallGlyphMetrics</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-150"><code>	Height   <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a> <span class="comment">// Number of rows of data.</span></code></span>
+<span class="codeline" id="line-151"><code>	Width    <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a> <span class="comment">// Number of columns of data.</span></code></span>
+<span class="codeline" id="line-152"><code>	BearingX <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a>  <span class="comment">// Distance in pixels from the horizontal origin to the left edge of the bitmap.</span></code></span>
+<span class="codeline" id="line-153"><code>	BearingY <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a>  <span class="comment">// Distance in pixels from the horizontal origin to the top edge of the bitmap.</span></code></span>
+<span class="codeline" id="line-154"><code>	Advance  <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a> <span class="comment">// Horizontal advance width in pixels.</span></code></span>
+<span class="codeline" id="line-155"><code>}</code></span>
+<span class="codeline" id="line-156"><code></code></span>
+<span class="codeline" id="line-157"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-BigGlyphMetrics" class="ident">BigGlyphMetrics</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-158"><code>	<a href="#line-149" class="ident">SmallGlyphMetrics</a></code></span>
+<span class="codeline" id="line-159"><code>	vertBearingX <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a>  <span class="comment">// Distance in pixels from the vertical origin to the left edge of the bitmap.</span></code></span>
+<span class="codeline" id="line-160"><code>	vertBearingY <a href="../../../../../../../pkg/builtin.html#name-int8" class="ident">int8</a>  <span class="comment">// Distance in pixels from the vertical origin to the top edge of the bitmap.</span></code></span>
+<span class="codeline" id="line-161"><code>	vertAdvance  <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a> <span class="comment">// Vertical advance width in pixels.</span></code></span>
+<span class="codeline" id="line-162"><code>}</code></span>
+<span class="codeline" id="line-163"><code></code></span>
+<span class="codeline" id="line-164"><code><span class="comment">// Format 2: small metrics, bit-aligned data</span></code></span>
+<span class="codeline" id="line-165"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-BitmapData2" class="ident">BitmapData2</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-166"><code>	<a href="#line-149" class="ident">SmallGlyphMetrics</a></code></span>
+<span class="codeline" id="line-167"><code>	Image []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="lit-string">`arrayCount:"ToEnd"`</span></code></span>
+<span class="codeline" id="line-168"><code>}</code></span>
+<span class="codeline" id="line-169"><code></code></span>
+<span class="codeline" id="line-170"><code><span class="comment">// Format 5: metrics in CBLC table, bit-aligned image data only</span></code></span>
+<span class="codeline" id="line-171"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-BitmapData5" class="ident">BitmapData5</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-172"><code>	Image []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="lit-string">`arrayCount:"ToEnd"`</span></code></span>
+<span class="codeline" id="line-173"><code>}</code></span>
+<span class="codeline" id="line-174"><code></code></span>
+<span class="codeline" id="line-175"><code><span class="comment">// Format 17: small metrics, PNG image data</span></code></span>
+<span class="codeline" id="line-176"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-BitmapData17" class="ident">BitmapData17</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-177"><code>	<a href="#line-149" class="ident">SmallGlyphMetrics</a></code></span>
+<span class="codeline" id="line-178"><code>	Image []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="lit-string">`arrayCount:"FirstUint32"`</span></code></span>
+<span class="codeline" id="line-179"><code>}</code></span>
+<span class="codeline" id="line-180"><code></code></span>
+<span class="codeline" id="line-181"><code><span class="comment">// Format 18: big metrics, PNG image data</span></code></span>
+<span class="codeline" id="line-182"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-BitmapData18" class="ident">BitmapData18</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-183"><code>	<a href="#line-157" class="ident">BigGlyphMetrics</a></code></span>
+<span class="codeline" id="line-184"><code>	Image []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="lit-string">`arrayCount:"FirstUint32"`</span></code></span>
+<span class="codeline" id="line-185"><code>}</code></span>
+<span class="codeline" id="line-186"><code></code></span>
+<span class="codeline" id="line-187"><code><span class="comment">// Format 19: metrics in CBLC table, PNG image data</span></code></span>
+<span class="codeline" id="line-188"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-BitmapData19" class="ident">BitmapData19</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-189"><code>	Image []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="lit-string">`arrayCount:"FirstUint32"`</span></code></span>
+<span class="codeline" id="line-190"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

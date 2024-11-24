@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/fyne/v2/internal</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>internal</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-fyne.io/fyne/v2/internal">fyne.io/fyne/v2/internal</a><i> (on <a href="https://pkg.go.dev/fyne.io/fyne/v2/internal" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/fyne.io/fyne/v2/internal.html">7 packages</a>, and imported by <a href="../../../../dep/fyne.io/fyne/v2/internal.html#imported-by">4 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html">clip.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/internal/docs.go.html">docs.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/internal/hints_disabled.go.html">hints_disabled.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html">overlay_stack.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html">preferences.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 5, all are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-ClipItem" data-popularity="400">	<input type='checkbox' class="fold" id="ClipItem-fold-content"><label for="ClipItem-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-50">ClipItem</a> <i>(struct)</i></label><span id='ClipItem-fold-content-docs' class="fold-docs">
+<span class="md-text">		ClipItem represents a single clip in a clip stack, denoted by a size and position.</span>
+
+		<input type='checkbox' class="fold" id="ClipItem-fold-fields"><label for="ClipItem-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='ClipItem-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="ClipItem-showhide-fields"><i><label for="ClipItem-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="ClipItem-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-51">pos</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-52">size</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="ClipItem-fold-methods"><label for="ClipItem-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='ClipItem-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ClipItem-fold-method-Intersect"><label for="ClipItem-fold-method-Intersect">(*ClipItem) <a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-61">Intersect</a>(p <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>, s <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>) *<b>ClipItem</b></label><span id='ClipItem-fold-method-Intersect-docs' class="fold-docs">
+<span class="md-text">				Intersect returns a new clip item that is the intersection of the requested parameters and this clip.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ClipItem-fold-method-Rect"><label for="ClipItem-fold-method-Rect">(*ClipItem) <a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-56">Rect</a>() (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>, <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='ClipItem-fold-method-Rect-docs' class="fold-docs">
+<span class="md-text">				Rect returns the position and size parameters of the clip.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="ClipItem-fold-results"><label for="ClipItem-fold-results">As Outputs Of (<i>at least 4, all are exported</i>)</label><span id='ClipItem-fold-results-items' class="fold-items"><span>
+			func (*ClipItem).<a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-61">Intersect</a>(p <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>, s <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>) *<b>ClipItem</b></span><span>
+			func (*<a href="#name-ClipStack">ClipStack</a>).<a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-13">Pop</a>() *<b>ClipItem</b></span><span>
+			func (*<a href="#name-ClipStack">ClipStack</a>).<a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-32">Push</a>(p <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>, s <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>) *<b>ClipItem</b></span><span>
+			func (*<a href="#name-ClipStack">ClipStack</a>).<a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-41">Top</a>() *<b>ClipItem</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-ClipStack" data-popularity="200">	<input type='checkbox' class="fold" id="ClipStack-fold-content"><label for="ClipStack-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-8">ClipStack</a> <i>(struct)</i></label><span id='ClipStack-fold-content-docs' class="fold-docs">
+<span class="md-text">		ClipStack keeps track of the areas that should be clipped when drawing a canvas.
+		If no clips are present then adding one will be added as-is.
+		Subsequent items pushed will be completely within the previous clip.</span>
+
+		<input type='checkbox' class="fold" id="ClipStack-fold-fields"><label for="ClipStack-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='ClipStack-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="ClipStack-showhide-fields"><i><label for="ClipStack-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="ClipStack-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-9">clips</a> <i>[]*<a href="#name-ClipItem">ClipItem</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="ClipStack-fold-methods"><label for="ClipStack-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='ClipStack-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ClipStack-fold-method-Length"><label for="ClipStack-fold-method-Length">(*ClipStack) <a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-26">Length</a>() <a href="../../../builtin.html#name-int">int</a></label><span id='ClipStack-fold-method-Length-docs' class="fold-docs">
+<span class="md-text">				Length  returns the number of items in this clip stack. 0 means no clip.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ClipStack-fold-method-Pop"><label for="ClipStack-fold-method-Pop">(*ClipStack) <a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-13">Pop</a>() *<a href="#name-ClipItem">ClipItem</a></label><span id='ClipStack-fold-method-Pop-docs' class="fold-docs">
+<span class="md-text">				Pop removes the current top clip and returns it.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ClipStack-fold-method-Push"><label for="ClipStack-fold-method-Push">(*ClipStack) <a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-32">Push</a>(p <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>, s <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>) *<a href="#name-ClipItem">ClipItem</a></label><span id='ClipStack-fold-method-Push-docs' class="fold-docs">
+<span class="md-text">				Push a new clip onto this stack at position and size specified.
+				The returned clip item is the result of calculating the intersection of the requested clip and it's parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ClipStack-fold-method-Top"><label for="ClipStack-fold-method-Top">(*ClipStack) <a href="../../../../src/fyne.io/fyne/v2/internal/clip.go.html#line-41">Top</a>() *<a href="#name-ClipItem">ClipItem</a></label><span id='ClipStack-fold-method-Top-docs' class="fold-docs">
+<span class="md-text">				Top returns the current clip item - it will always be within the bounds of any parent clips.</span>
+</span></span></span>
+
+</span></div><div class="anchor type-res" id="name-Docs" data-popularity="375">	<input type='checkbox' class="fold" id="Docs-fold-content"><label for="Docs-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/internal/docs.go.html#line-14">Docs</a> <i>(struct)</i></label><span id='Docs-fold-content-docs' class="fold-docs">
+<span class="md-text">		Docs is an internal implementation of the document features of the Storage interface.
+		It is based on top of the current `file` repository and is rooted at RootDocURI.</span>
+
+		<input type='checkbox' class="fold" id="Docs-fold-fields"><label for="Docs-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='Docs-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/internal/docs.go.html#line-15">RootDocURI</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Docs-fold-methods"><label for="Docs-fold-methods">Methods (<i>total 6, in which 5 are exported</i>)</label><span id='Docs-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Docs-fold-method-Create"><label for="Docs-fold-method-Create">(*Docs) <a href="../../../../src/fyne.io/fyne/v2/internal/docs.go.html#line-21">Create</a>(name <a href="../../../builtin.html#name-string">string</a>) (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-URIWriteCloser">URIWriteCloser</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='Docs-fold-method-Create-docs' class="fold-docs">
+<span class="md-text">				Create will create a new document ready for writing, you must write something and close the returned writer
+				for the create process to complete.
+				If the document for this app with that name already exists a storage.ErrAlreadyExists error will be returned.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Docs-fold-method-List"><label for="Docs-fold-method-List">(*Docs) <a href="../../../../src/fyne.io/fyne/v2/internal/docs.go.html#line-49">List</a>() []<a href="../../../builtin.html#name-string">string</a></label><span id='Docs-fold-method-List-docs' class="fold-docs">
+<span class="md-text">				List returns all documents that have been saved by the current application.
+				Remember to use `app.NewWithID` so that your storage is unique.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Docs-fold-method-Open"><label for="Docs-fold-method-Open">(*Docs) <a href="../../../../src/fyne.io/fyne/v2/internal/docs.go.html#line-68">Open</a>(name <a href="../../../builtin.html#name-string">string</a>) (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-URIReadCloser">URIReadCloser</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='Docs-fold-method-Open-docs' class="fold-docs">
+<span class="md-text">				Open will grant access to the contents of the named file. If an error occurs it is returned instead.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Docs-fold-method-Remove"><label for="Docs-fold-method-Remove">(*Docs) <a href="../../../../src/fyne.io/fyne/v2/internal/docs.go.html#line-82">Remove</a>(name <a href="../../../builtin.html#name-string">string</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='Docs-fold-method-Remove-docs' class="fold-docs">
+<span class="md-text">				Remove will delete the document with the specified name, if it exists</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Docs-fold-method-Save"><label for="Docs-fold-method-Save">(*Docs) <a href="../../../../src/fyne.io/fyne/v2/internal/docs.go.html#line-97">Save</a>(name <a href="../../../builtin.html#name-string">string</a>) (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-URIWriteCloser">URIWriteCloser</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='Docs-fold-method-Save-docs' class="fold-docs">
+<span class="md-text">				Save will open a document ready for writing, you close the returned writer for the save to complete.
+				If the document for this app with that name does not exist a storage.ErrNotExists error will be returned.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Docs-showhide-methods"><i><label for="Docs-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="Docs-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Docs) <a href="../../../../src/fyne.io/fyne/v2/internal/docs.go.html#line-118">ensureRootExists</a>() <a href="../../../builtin.html#name-error">error</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="Docs-fold-results"><label for="Docs-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='Docs-fold-results-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Docs-showhide-inputofs"><i><label for="Docs-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="Docs-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/app.<a href="app.html#name-makeStoreDocs">makeStoreDocs</a>(id <a href="../../../builtin.html#name-string">string</a>, s *<a href="app.html">app</a>.<a href="app.html#name-store">store</a>) *<b>Docs</b></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-InMemoryPreferences" data-popularity="1775">	<input type='checkbox' class="fold" id="InMemoryPreferences-fold-content"><label for="InMemoryPreferences-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-11">InMemoryPreferences</a> <i>(struct)</i></label><span id='InMemoryPreferences-fold-content-docs' class="fold-docs">
+<span class="md-text">		InMemoryPreferences provides an implementation of the fyne.Preferences API that is stored in memory.</span>
+
+		<input type='checkbox' class="fold" id="InMemoryPreferences-fold-fields"><label for="InMemoryPreferences-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='InMemoryPreferences-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="InMemoryPreferences-showhide-fields"><i><label for="InMemoryPreferences-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="InMemoryPreferences-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-14">changeListeners</a> <i>[]func()</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-13">lock</a> <i><a href="../../../sync.html">sync</a>.<a href="../../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-12">values</a> <i>map[<a href="../../../builtin.html#name-string">string</a>]<a href="../../../builtin.html#name-any">any</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="InMemoryPreferences-fold-methods"><label for="InMemoryPreferences-fold-methods">Methods (<i>total 33, in which 29 are exported</i>)</label><span id='InMemoryPreferences-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-AddChangeListener"><label for="InMemoryPreferences-fold-method-AddChangeListener">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-22">AddChangeListener</a>(listener func())</label><span id='InMemoryPreferences-fold-method-AddChangeListener-docs' class="fold-docs">
+<span class="md-text">				AddChangeListener allows code to be notified when some preferences change. This will fire on any update.
+				The passed 'listener' should not try to write values.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-Bool"><label for="InMemoryPreferences-fold-method-Bool">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-30">Bool</a>(key <a href="../../../builtin.html#name-string">string</a>) <a href="../../../builtin.html#name-bool">bool</a></label><span id='InMemoryPreferences-fold-method-Bool-docs' class="fold-docs">
+<span class="md-text">				Bool looks up a boolean value for the key</span>
+</span></span><span>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-34">BoolList</a>(key <a href="../../../builtin.html#name-string">string</a>) []<a href="../../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-38">BoolListWithFallback</a>(key <a href="../../../builtin.html#name-string">string</a>, fallback []<a href="../../../builtin.html#name-bool">bool</a>) []<a href="../../../builtin.html#name-bool">bool</a></span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-BoolWithFallback"><label for="InMemoryPreferences-fold-method-BoolWithFallback">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-51">BoolWithFallback</a>(key <a href="../../../builtin.html#name-string">string</a>, fallback <a href="../../../builtin.html#name-bool">bool</a>) <a href="../../../builtin.html#name-bool">bool</a></label><span id='InMemoryPreferences-fold-method-BoolWithFallback-docs' class="fold-docs">
+<span class="md-text">				BoolWithFallback looks up a boolean value and returns the given fallback if not found</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-ChangeListeners"><label for="InMemoryPreferences-fold-method-ChangeListeners">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-64">ChangeListeners</a>() []func()</label><span id='InMemoryPreferences-fold-method-ChangeListeners-docs' class="fold-docs">
+<span class="md-text">				ChangeListeners returns the list of listeners registered for this set of preferences.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-Float"><label for="InMemoryPreferences-fold-method-Float">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-69">Float</a>(key <a href="../../../builtin.html#name-string">string</a>) <a href="../../../builtin.html#name-float64">float64</a></label><span id='InMemoryPreferences-fold-method-Float-docs' class="fold-docs">
+<span class="md-text">				Float looks up a float64 value for the key</span>
+</span></span><span>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-73">FloatList</a>(key <a href="../../../builtin.html#name-string">string</a>) []<a href="../../../builtin.html#name-float64">float64</a></span></span><span>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-77">FloatListWithFallback</a>(key <a href="../../../builtin.html#name-string">string</a>, fallback []<a href="../../../builtin.html#name-float64">float64</a>) []<a href="../../../builtin.html#name-float64">float64</a></span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-FloatWithFallback"><label for="InMemoryPreferences-fold-method-FloatWithFallback">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-98">FloatWithFallback</a>(key <a href="../../../builtin.html#name-string">string</a>, fallback <a href="../../../builtin.html#name-float64">float64</a>) <a href="../../../builtin.html#name-float64">float64</a></label><span id='InMemoryPreferences-fold-method-FloatWithFallback-docs' class="fold-docs">
+<span class="md-text">				FloatWithFallback looks up a float64 value and returns the given fallback if not found</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-Int"><label for="InMemoryPreferences-fold-method-Int">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-115">Int</a>(key <a href="../../../builtin.html#name-string">string</a>) <a href="../../../builtin.html#name-int">int</a></label><span id='InMemoryPreferences-fold-method-Int-docs' class="fold-docs">
+<span class="md-text">				Int looks up an integer value for the key</span>
+</span></span><span>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-119">IntList</a>(key <a href="../../../builtin.html#name-string">string</a>) []<a href="../../../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-123">IntListWithFallback</a>(key <a href="../../../builtin.html#name-string">string</a>, fallback []<a href="../../../builtin.html#name-int">int</a>) []<a href="../../../builtin.html#name-int">int</a></span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-IntWithFallback"><label for="InMemoryPreferences-fold-method-IntWithFallback">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-145">IntWithFallback</a>(key <a href="../../../builtin.html#name-string">string</a>, fallback <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-int">int</a></label><span id='InMemoryPreferences-fold-method-IntWithFallback-docs' class="fold-docs">
+<span class="md-text">				IntWithFallback looks up an integer value and returns the given fallback if not found</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-ReadValues"><label for="InMemoryPreferences-fold-method-ReadValues">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-164">ReadValues</a>(fn func(map[<a href="../../../builtin.html#name-string">string</a>]<a href="../../../builtin.html#name-any">any</a>))</label><span id='InMemoryPreferences-fold-method-ReadValues-docs' class="fold-docs">
+<span class="md-text">				ReadValues provides read access to the underlying value map - for internal use only...
+				You should not retain a reference to the map nor write to the values in the callback function</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-RemoveValue"><label for="InMemoryPreferences-fold-method-RemoveValue">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-171">RemoveValue</a>(key <a href="../../../builtin.html#name-string">string</a>)</label><span id='InMemoryPreferences-fold-method-RemoveValue-docs' class="fold-docs">
+<span class="md-text">				RemoveValue deletes a value on the given key</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-SetBool"><label for="InMemoryPreferences-fold-method-SetBool">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-176">SetBool</a>(key <a href="../../../builtin.html#name-string">string</a>, value <a href="../../../builtin.html#name-bool">bool</a>)</label><span id='InMemoryPreferences-fold-method-SetBool-docs' class="fold-docs">
+<span class="md-text">				SetBool saves a boolean value for the given key</span>
+</span></span><span>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-180">SetBoolList</a>(key <a href="../../../builtin.html#name-string">string</a>, value []<a href="../../../builtin.html#name-bool">bool</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-SetFloat"><label for="InMemoryPreferences-fold-method-SetFloat">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-185">SetFloat</a>(key <a href="../../../builtin.html#name-string">string</a>, value <a href="../../../builtin.html#name-float64">float64</a>)</label><span id='InMemoryPreferences-fold-method-SetFloat-docs' class="fold-docs">
+<span class="md-text">				SetFloat saves a float64 value for the given key</span>
+</span></span><span>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-189">SetFloatList</a>(key <a href="../../../builtin.html#name-string">string</a>, value []<a href="../../../builtin.html#name-float64">float64</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-SetInt"><label for="InMemoryPreferences-fold-method-SetInt">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-194">SetInt</a>(key <a href="../../../builtin.html#name-string">string</a>, value <a href="../../../builtin.html#name-int">int</a>)</label><span id='InMemoryPreferences-fold-method-SetInt-docs' class="fold-docs">
+<span class="md-text">				SetInt saves an integer value for the given key</span>
+</span></span><span>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-198">SetIntList</a>(key <a href="../../../builtin.html#name-string">string</a>, value []<a href="../../../builtin.html#name-int">int</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-SetString"><label for="InMemoryPreferences-fold-method-SetString">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-203">SetString</a>(key <a href="../../../builtin.html#name-string">string</a>, value <a href="../../../builtin.html#name-string">string</a>)</label><span id='InMemoryPreferences-fold-method-SetString-docs' class="fold-docs">
+<span class="md-text">				SetString saves a string value for the given key</span>
+</span></span><span>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-207">SetStringList</a>(key <a href="../../../builtin.html#name-string">string</a>, value []<a href="../../../builtin.html#name-string">string</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-String"><label for="InMemoryPreferences-fold-method-String">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-212">String</a>(key <a href="../../../builtin.html#name-string">string</a>) <a href="../../../builtin.html#name-string">string</a></label><span id='InMemoryPreferences-fold-method-String-docs' class="fold-docs">
+<span class="md-text">				String looks up a string value for the key</span>
+</span></span><span>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-216">StringList</a>(key <a href="../../../builtin.html#name-string">string</a>) []<a href="../../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-220">StringListWithFallback</a>(key <a href="../../../builtin.html#name-string">string</a>, fallback []<a href="../../../builtin.html#name-string">string</a>) []<a href="../../../builtin.html#name-string">string</a></span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-StringWithFallback"><label for="InMemoryPreferences-fold-method-StringWithFallback">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-233">StringWithFallback</a>(key, fallback <a href="../../../builtin.html#name-string">string</a>) <a href="../../../builtin.html#name-string">string</a></label><span id='InMemoryPreferences-fold-method-StringWithFallback-docs' class="fold-docs">
+<span class="md-text">				StringWithFallback looks up a string value and returns the given fallback if not found</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="InMemoryPreferences-fold-method-WriteValues"><label for="InMemoryPreferences-fold-method-WriteValues">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-247">WriteValues</a>(fn func(map[<a href="../../../builtin.html#name-string">string</a>]<a href="../../../builtin.html#name-any">any</a>))</label><span id='InMemoryPreferences-fold-method-WriteValues-docs' class="fold-docs">
+<span class="md-text">				WriteValues provides write access to the underlying value map - for internal use only...
+				You should not retain a reference to the map passed to the callback function</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="InMemoryPreferences-showhide-methods"><i><label for="InMemoryPreferences-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="InMemoryPreferences-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-260">fireChange</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-278">get</a>(key <a href="../../../builtin.html#name-string">string</a>) (<a href="../../../builtin.html#name-any">any</a>, <a href="../../../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-286">remove</a>(key <a href="../../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*InMemoryPreferences) <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-294">set</a>(key <a href="../../../builtin.html#name-string">string</a>, value <a href="../../../builtin.html#name-any">any</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="InMemoryPreferences-fold-impls"><label for="InMemoryPreferences-fold-impls">Implements (<i>at least one exported</i>)</label><span id='InMemoryPreferences-fold-impls-items' class="fold-items"><span>
+			*InMemoryPreferences : fyne.io/fyne/v2.<a href="../v2.html#name-Preferences">Preferences</a></span></span>
+		<input type='checkbox' class="fold" id="InMemoryPreferences-fold-results"><label for="InMemoryPreferences-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='InMemoryPreferences-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewInMemoryPreferences">NewInMemoryPreferences</a>() *<b>InMemoryPreferences</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-OverlayStack" data-popularity="400">	<input type='checkbox' class="fold" id="OverlayStack-fold-content"><label for="OverlayStack-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-12">OverlayStack</a> <i>(struct)</i></label><span id='OverlayStack-fold-content-docs' class="fold-docs">
+<span class="md-text">		OverlayStack implements fyne.OverlayStack</span>
+
+		<input type='checkbox' class="fold" id="OverlayStack-fold-fields"><label for="OverlayStack-fold-fields">Fields (<i>total 5, in which 2 are exported</i>)</label><span id='OverlayStack-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-14">Canvas</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-Canvas">Canvas</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-13">OnChange</a> <i>func()</i></span></span>
+			<input type='checkbox' class="showhide" id="OverlayStack-showhide-fields"><i><label for="OverlayStack-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="OverlayStack-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-15">focusManagers</a> <i>[]*<a href="internal/app.html">app</a>.<a href="internal/app.html#name-FocusManager">FocusManager</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-16">overlays</a> <i>[]<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-17">propertyLock</a> <i><a href="../../../sync.html">sync</a>.<a href="../../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="OverlayStack-fold-methods"><label for="OverlayStack-fold-methods">Methods (<i>total 7, in which 6 are exported</i>)</label><span id='OverlayStack-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="OverlayStack-fold-method-Add"><label for="OverlayStack-fold-method-Add">(*OverlayStack) <a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-25">Add</a>(overlay <a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='OverlayStack-fold-method-Add-docs' class="fold-docs">
+<span class="md-text">				Add puts an overlay on the stack.
+				
+				Implements: fyne.OverlayStack</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayStack-fold-method-List"><label for="OverlayStack-fold-method-List">(*OverlayStack) <a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-52">List</a>() []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a></label><span id='OverlayStack-fold-method-List-docs' class="fold-docs">
+<span class="md-text">				List returns all overlays on the stack from bottom to top.
+				
+				Implements: fyne.OverlayStack</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayStack-fold-method-ListFocusManagers"><label for="OverlayStack-fold-method-ListFocusManagers">(*OverlayStack) <a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-60">ListFocusManagers</a>() []*<a href="internal/app.html">app</a>.<a href="internal/app.html#name-FocusManager">FocusManager</a></label><span id='OverlayStack-fold-method-ListFocusManagers-docs' class="fold-docs">
+<span class="md-text">				ListFocusManagers returns all focus managers on the stack from bottom to top.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayStack-fold-method-Remove"><label for="OverlayStack-fold-method-Remove">(*OverlayStack) <a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-70">Remove</a>(overlay <a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='OverlayStack-fold-method-Remove-docs' class="fold-docs">
+<span class="md-text">				Remove deletes an overlay and all overlays above it from the stack.
+				
+				Implements: fyne.OverlayStack</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayStack-fold-method-Top"><label for="OverlayStack-fold-method-Top">(*OverlayStack) <a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-100">Top</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a></label><span id='OverlayStack-fold-method-Top-docs' class="fold-docs">
+<span class="md-text">				Top returns the top-most overlay of the stack.
+				
+				Implements: fyne.OverlayStack</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OverlayStack-fold-method-TopFocusManager"><label for="OverlayStack-fold-method-TopFocusManager">(*OverlayStack) <a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-111">TopFocusManager</a>() *<a href="internal/app.html">app</a>.<a href="internal/app.html#name-FocusManager">FocusManager</a></label><span id='OverlayStack-fold-method-TopFocusManager-docs' class="fold-docs">
+<span class="md-text">				TopFocusManager returns the app.FocusManager assigned to the top-most overlay of the stack.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="OverlayStack-showhide-methods"><i><label for="OverlayStack-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="OverlayStack-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*OverlayStack) <a href="../../../../src/fyne.io/fyne/v2/internal/overlay_stack.go.html#line-117">topFocusManager</a>() *<a href="internal/app.html">app</a>.<a href="internal/app.html#name-FocusManager">FocusManager</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="OverlayStack-fold-impls"><label for="OverlayStack-fold-impls">Implements (<i>at least one exported</i>)</label><span id='OverlayStack-fold-impls-items' class="fold-items"><span>
+			*OverlayStack : fyne.io/fyne/v2.<a href="../v2.html#name-OverlayStack">OverlayStack</a></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 2, both are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-LogHint">	<input type='checkbox' class="fold" id="LogHint-fold-content"><label for="LogHint-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/internal/hints_disabled.go.html#line-7">LogHint</a>(reason <a href="../../../builtin.html#name-string">string</a>)</label><span id='LogHint-fold-content-docs' class="fold-docs">
+<span class="md-text">		LogHint reports a developer hint that should be followed to improve their app.
+		This does nothing unless the "hints" build flag is used.</span>
+
+</span></div><div class="anchor value-res" id="name-NewInMemoryPreferences">	<input type='checkbox' class="fold" id="NewInMemoryPreferences-fold-content"><label for="NewInMemoryPreferences-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/internal/preferences.go.html#line-256">NewInMemoryPreferences</a>() *<a href="#name-InMemoryPreferences">InMemoryPreferences</a></label><span id='NewInMemoryPreferences-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewInMemoryPreferences creates a new preferences implementation stored in memory</span>
+
+</span></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (only one, which is unexported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-errNoAppID"><i>	<span class="nodocs">  var <a href="../../../../src/fyne.io/fyne/v2/internal/docs.go.html#line-10">errNoAppID</a> <a href="../../../builtin.html#name-error">error</a></span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

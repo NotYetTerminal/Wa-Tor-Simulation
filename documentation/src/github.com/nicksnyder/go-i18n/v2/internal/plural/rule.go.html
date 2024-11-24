@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: rule.go in package github.com/nicksnyder/go-i18n/v2/internal/plural</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	rule.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html">github.com/nicksnyder/go-i18n/v2/internal/plural</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> plural</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"golang.org/x/text/language"</span></label></code></span>
+<span class="codeline" id="line-5"><code>)</code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// Rule defines the CLDR plural rules for a language.</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// http://unicode.org/reports/tr35/tr35-numbers.html#Operands</span></code></span>
+<span class="codeline" id="line-10"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html#name-Rule" class="ident">Rule</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-11"><code>	PluralForms    <span class="keyword">map</span>[<a href="form.go.html#line-5" class="ident">Form</a>]<span class="keyword">struct</span>{}</code></span>
+<span class="codeline" id="line-12"><code>	PluralFormFunc <span class="keyword">func</span>(*<a href="operands.go.html#line-13" class="ident">Operands</a>) <a href="form.go.html#line-5" class="ident">Form</a></code></span>
+<span class="codeline" id="line-13"><code>}</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html#name-addPluralRules" class="ident">addPluralRules</a></label>(<label for="r1" class="ident">rules</label> <a href="rules.go.html#line-6" class="ident">Rules</a>, <label for="r2" class="ident">ids</label> []<a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r3" class="ident">ps</label> *<a href="#line-10" class="ident">Rule</a>) {</code></span>
+<span class="codeline" id="line-16"><code>	<span class="keyword">for</span> <label for="r4" class="ident">_</label>, <label for="r5" class="ident">id</label> := <span class="keyword">range</span> <label for="r2" class="ident">ids</label> {</code></span>
+<span class="codeline" id="line-17"><code>		<span class="keyword">if</span> <label for="r5" class="ident">id</label> == <span class="lit-string">"root"</span> {</code></span>
+<span class="codeline" id="line-18"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-19"><code>		}</code></span>
+<span class="codeline" id="line-20"><code>		<label for="r6" class="ident">tag</label> := <a href="../../../../../../../pkg/golang.org/x/text/language.html" class="ident i0">language</a>.<a href="../../../../../../golang.org/x/text/language/tags.go.html#line-13" class="ident">MustParse</a>(<label for="r5" class="ident">id</label>)</code></span>
+<span class="codeline" id="line-21"><code>		<label for="r1" class="ident">rules</label>[<label for="r6" class="ident">tag</label>] = <label for="r3" class="ident">ps</label></code></span>
+<span class="codeline" id="line-22"><code>	}</code></span>
+<span class="codeline" id="line-23"><code>}</code></span>
+<span class="codeline" id="line-24"><code></code></span>
+<span class="codeline" id="line-25"><code><span class="keyword">func</span> <label for="r7" class="ident"><a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html#name-newPluralFormSet" class="ident">newPluralFormSet</a></label>(<label for="r8" class="ident">pluralForms</label> ...<a href="form.go.html#line-5" class="ident">Form</a>) <span class="keyword">map</span>[<a href="form.go.html#line-5" class="ident">Form</a>]<span class="keyword">struct</span>{} {</code></span>
+<span class="codeline" id="line-26"><code>	<label for="r9" class="ident">set</label> := <a href="../../../../../../../pkg/builtin.html#name-make" class="ident">make</a>(<span class="keyword">map</span>[<a href="form.go.html#line-5" class="ident">Form</a>]<span class="keyword">struct</span>{}, <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r8" class="ident">pluralForms</label>))</code></span>
+<span class="codeline" id="line-27"><code>	<span class="keyword">for</span> <label for="r10" class="ident">_</label>, <label for="r11" class="ident">plural</label> := <span class="keyword">range</span> <label for="r8" class="ident">pluralForms</label> {</code></span>
+<span class="codeline" id="line-28"><code>		<label for="r9" class="ident">set</label>[<label for="r11" class="ident">plural</label>] = <span class="keyword">struct</span>{}{}</code></span>
+<span class="codeline" id="line-29"><code>	}</code></span>
+<span class="codeline" id="line-30"><code>	<span class="keyword">return</span> <label for="r9" class="ident">set</label></code></span>
+<span class="codeline" id="line-31"><code>}</code></span>
+<span class="codeline" id="line-32"><code></code></span>
+<span class="codeline" id="line-33"><code><span class="keyword">func</span> <label for="r12" class="ident"><a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html#name-intInRange" class="ident">intInRange</a></label>(<label for="r13" class="ident">i</label>, <label for="r14" class="ident">from</label>, <label for="r15" class="ident">to</label> <a href="../../../../../../../pkg/builtin.html#name-int64" class="ident">int64</a>) <a href="../../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-34"><code>	<span class="keyword">return</span> <label for="r14" class="ident">from</label> &lt;= <label for="r13" class="ident">i</label> &amp;&amp; <label for="r13" class="ident">i</label> &lt;= <label for="r15" class="ident">to</label></code></span>
+<span class="codeline" id="line-35"><code>}</code></span>
+<span class="codeline" id="line-36"><code></code></span>
+<span class="codeline" id="line-37"><code><span class="keyword">func</span> <label for="r16" class="ident"><a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html#name-intEqualsAny" class="ident">intEqualsAny</a></label>(<label for="r17" class="ident">i</label> <a href="../../../../../../../pkg/builtin.html#name-int64" class="ident">int64</a>, <label for="r18" class="ident">any</label> ...<a href="../../../../../../../pkg/builtin.html#name-int64" class="ident">int64</a>) <a href="../../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-38"><code>	<span class="keyword">for</span> <label for="r19" class="ident">_</label>, <label for="r20" class="ident">a</label> := <span class="keyword">range</span> <label for="r18" class="ident">any</label> {</code></span>
+<span class="codeline" id="line-39"><code>		<span class="keyword">if</span> <label for="r17" class="ident">i</label> == <label for="r20" class="ident">a</label> {</code></span>
+<span class="codeline" id="line-40"><code>			<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-41"><code>		}</code></span>
+<span class="codeline" id="line-42"><code>	}</code></span>
+<span class="codeline" id="line-43"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-44"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

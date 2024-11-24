@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: ast.go in package github.com/yuin/goldmark/ast</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	ast.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/yuin/goldmark/ast.html">github.com/yuin/goldmark/ast</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72],
+input[id=r73]:checked ~pre label[for=r73],
+input[id=r74]:checked ~pre label[for=r74],
+input[id=r75]:checked ~pre label[for=r75],
+input[id=r76]:checked ~pre label[for=r76],
+input[id=r77]:checked ~pre label[for=r77],
+input[id=r78]:checked ~pre label[for=r78],
+input[id=r79]:checked ~pre label[for=r79],
+input[id=r80]:checked ~pre label[for=r80],
+input[id=r81]:checked ~pre label[for=r81],
+input[id=r82]:checked ~pre label[for=r82],
+input[id=r83]:checked ~pre label[for=r83],
+input[id=r84]:checked ~pre label[for=r84],
+input[id=r85]:checked ~pre label[for=r85],
+input[id=r86]:checked ~pre label[for=r86],
+input[id=r87]:checked ~pre label[for=r87],
+input[id=r88]:checked ~pre label[for=r88],
+input[id=r89]:checked ~pre label[for=r89],
+input[id=r90]:checked ~pre label[for=r90],
+input[id=r91]:checked ~pre label[for=r91],
+input[id=r92]:checked ~pre label[for=r92],
+input[id=r93]:checked ~pre label[for=r93],
+input[id=r94]:checked ~pre label[for=r94],
+input[id=r95]:checked ~pre label[for=r95],
+input[id=r96]:checked ~pre label[for=r96],
+input[id=r97]:checked ~pre label[for=r97],
+input[id=r98]:checked ~pre label[for=r98],
+input[id=r99]:checked ~pre label[for=r99],
+input[id=r100]:checked ~pre label[for=r100],
+input[id=r101]:checked ~pre label[for=r101],
+input[id=r102]:checked ~pre label[for=r102],
+input[id=r103]:checked ~pre label[for=r103],
+input[id=r104]:checked ~pre label[for=r104],
+input[id=r105]:checked ~pre label[for=r105],
+input[id=r106]:checked ~pre label[for=r106],
+input[id=r107]:checked ~pre label[for=r107],
+input[id=r108]:checked ~pre label[for=r108],
+input[id=r109]:checked ~pre label[for=r109],
+input[id=r110]:checked ~pre label[for=r110],
+input[id=r111]:checked ~pre label[for=r111],
+input[id=r112]:checked ~pre label[for=r112],
+input[id=r113]:checked ~pre label[for=r113],
+input[id=r114]:checked ~pre label[for=r114],
+input[id=r115]:checked ~pre label[for=r115],
+input[id=r116]:checked ~pre label[for=r116],
+input[id=r117]:checked ~pre label[for=r117],
+input[id=r118]:checked ~pre label[for=r118],
+input[id=r119]:checked ~pre label[for=r119],
+input[id=r120]:checked ~pre label[for=r120],
+input[id=r121]:checked ~pre label[for=r121],
+input[id=r122]:checked ~pre label[for=r122],
+input[id=r123]:checked ~pre label[for=r123],
+input[id=r124]:checked ~pre label[for=r124],
+input[id=r125]:checked ~pre label[for=r125],
+input[id=r126]:checked ~pre label[for=r126],
+input[id=r127]:checked ~pre label[for=r127],
+input[id=r128]:checked ~pre label[for=r128],
+input[id=r129]:checked ~pre label[for=r129],
+input[id=r130]:checked ~pre label[for=r130],
+input[id=r131]:checked ~pre label[for=r131],
+input[id=r132]:checked ~pre label[for=r132]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="r73" type="radio" name="g"/>
+<input id="r74" type="radio" name="g"/>
+<input id="r75" type="radio" name="g"/>
+<input id="r76" type="radio" name="g"/>
+<input id="r77" type="radio" name="g"/>
+<input id="r78" type="radio" name="g"/>
+<input id="r79" type="radio" name="g"/>
+<input id="r80" type="radio" name="g"/>
+<input id="r81" type="radio" name="g"/>
+<input id="r82" type="radio" name="g"/>
+<input id="r83" type="radio" name="g"/>
+<input id="r84" type="radio" name="g"/>
+<input id="r85" type="radio" name="g"/>
+<input id="r86" type="radio" name="g"/>
+<input id="r87" type="radio" name="g"/>
+<input id="r88" type="radio" name="g"/>
+<input id="r89" type="radio" name="g"/>
+<input id="r90" type="radio" name="g"/>
+<input id="r91" type="radio" name="g"/>
+<input id="r92" type="radio" name="g"/>
+<input id="r93" type="radio" name="g"/>
+<input id="r94" type="radio" name="g"/>
+<input id="r95" type="radio" name="g"/>
+<input id="r96" type="radio" name="g"/>
+<input id="r97" type="radio" name="g"/>
+<input id="r98" type="radio" name="g"/>
+<input id="r99" type="radio" name="g"/>
+<input id="r100" type="radio" name="g"/>
+<input id="r101" type="radio" name="g"/>
+<input id="r102" type="radio" name="g"/>
+<input id="r103" type="radio" name="g"/>
+<input id="r104" type="radio" name="g"/>
+<input id="r105" type="radio" name="g"/>
+<input id="r106" type="radio" name="g"/>
+<input id="r107" type="radio" name="g"/>
+<input id="r108" type="radio" name="g"/>
+<input id="r109" type="radio" name="g"/>
+<input id="r110" type="radio" name="g"/>
+<input id="r111" type="radio" name="g"/>
+<input id="r112" type="radio" name="g"/>
+<input id="r113" type="radio" name="g"/>
+<input id="r114" type="radio" name="g"/>
+<input id="r115" type="radio" name="g"/>
+<input id="r116" type="radio" name="g"/>
+<input id="r117" type="radio" name="g"/>
+<input id="r118" type="radio" name="g"/>
+<input id="r119" type="radio" name="g"/>
+<input id="r120" type="radio" name="g"/>
+<input id="r121" type="radio" name="g"/>
+<input id="r122" type="radio" name="g"/>
+<input id="r123" type="radio" name="g"/>
+<input id="r124" type="radio" name="g"/>
+<input id="r125" type="radio" name="g"/>
+<input id="r126" type="radio" name="g"/>
+<input id="r127" type="radio" name="g"/>
+<input id="r128" type="radio" name="g"/>
+<input id="r129" type="radio" name="g"/>
+<input id="r130" type="radio" name="g"/>
+<input id="r131" type="radio" name="g"/>
+<input id="r132" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Package ast defines AST nodes that represent markdown elements.</span></code></span></div><span class="codeline" id="line-2"><code><span class="keyword">package</span> ast</code></span>
+<span class="codeline" id="line-3"><code></code></span>
+<span class="codeline" id="line-4"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-5"><code>	<label for="i0"><span class="lit-string i0">"bytes"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i1"><span class="lit-string i1">"fmt"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i2"><span class="lit-string i2">"strings"</span></label></code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code>	<a href="../../../../../pkg/github.com/yuin/goldmark/text.html" class="ident i3">textm</a> <label for="i3"><span class="lit-string i3">"github.com/yuin/goldmark/text"</span></label></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i4"><span class="lit-string i4">"github.com/yuin/goldmark/util"</span></label></code></span>
+<span class="codeline" id="line-11"><code>)</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// A NodeType indicates what type a node belongs to.</span></code></span>
+<span class="codeline" id="line-14"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-NodeType" class="ident">NodeType</a> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-17"><code>	<span class="comment">// TypeBlock indicates that a node is kind of block nodes.</span></code></span>
+<span class="codeline" id="line-18"><code>	<a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-TypeBlock" class="ident">TypeBlock</a> <a href="#line-14" class="ident">NodeType</a> = <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-19"><code>	<span class="comment">// TypeInline indicates that a node is kind of inline nodes.</span></code></span>
+<span class="codeline" id="line-20"><code>	<a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-TypeInline" class="ident">TypeInline</a></code></span>
+<span class="codeline" id="line-21"><code>	<span class="comment">// TypeDocument indicates that a node is kind of document nodes.</span></code></span>
+<span class="codeline" id="line-22"><code>	<a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-TypeDocument" class="ident">TypeDocument</a></code></span>
+<span class="codeline" id="line-23"><code>)</code></span>
+<span class="codeline" id="line-24"><code></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// NodeKind indicates more specific type than NodeType.</span></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-NodeKind" class="ident">NodeKind</a> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-27"><code></code></span>
+<span class="codeline" id="line-28"><code><span class="keyword">func</span> (<label for="r0" class="ident">k</label> <a href="#line-26" class="ident">NodeKind</a>) <label for="r1" class="ident"><a href="../../../../../imp/github.com/yuin/goldmark/ast.NodeKind.html#name-.String" class="ident">String</a></label>() <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-29"><code>	<span class="keyword">return</span> <a href="#line-33" class="ident">kindNames</a>[<label for="r0" class="ident">k</label>]</code></span>
+<span class="codeline" id="line-30"><code>}</code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-kindMax" class="ident">kindMax</a> <a href="#line-26" class="ident">NodeKind</a></code></span>
+<span class="codeline" id="line-33"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-kindNames" class="ident">kindNames</a> = []<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>{<span class="lit-string">""</span>}</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">// NewNodeKind returns a new Kind value.</span></code></span>
+<span class="codeline" id="line-36"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-NewNodeKind" class="ident">NewNodeKind</a></label>(<label for="r3" class="ident">name</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="#line-26" class="ident">NodeKind</a> {</code></span>
+<span class="codeline" id="line-37"><code>	<a href="#line-32" class="ident">kindMax</a>++</code></span>
+<span class="codeline" id="line-38"><code>	<a href="#line-33" class="ident">kindNames</a> = <a href="../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<a href="#line-33" class="ident">kindNames</a>, <label for="r3" class="ident">name</label>)</code></span>
+<span class="codeline" id="line-39"><code>	<span class="keyword">return</span> <a href="#line-32" class="ident">kindMax</a></code></span>
+<span class="codeline" id="line-40"><code>}</code></span>
+<span class="codeline" id="line-41"><code></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">// An Attribute is an attribute of the Node.</span></code></span>
+<span class="codeline" id="line-43"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-Attribute" class="ident">Attribute</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-44"><code>	Name  []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-45"><code>	Value <span class="keyword">interface</span>{}</code></span>
+<span class="codeline" id="line-46"><code>}</code></span>
+<span class="codeline" id="line-47"><code></code></span>
+<span class="codeline" id="line-48"><code><span class="comment">// A Node interface defines basic AST node functionalities.</span></code></span>
+<span class="codeline" id="line-49"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-Node" class="ident">Node</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-50"><code>	<span class="comment">// Type returns a type of this node.</span></code></span>
+<span class="codeline" id="line-51"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-Type" class="ident">Type</a>() <a href="#line-14" class="ident">NodeType</a></code></span>
+<span class="codeline" id="line-52"><code></code></span>
+<span class="codeline" id="line-53"><code>	<span class="comment">// Kind returns a kind of this node.</span></code></span>
+<span class="codeline" id="line-54"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-Kind" class="ident">Kind</a>() <a href="#line-26" class="ident">NodeKind</a></code></span>
+<span class="codeline" id="line-55"><code></code></span>
+<span class="codeline" id="line-56"><code>	<span class="comment">// NextSibling returns a next sibling node of this node.</span></code></span>
+<span class="codeline" id="line-57"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-NextSibling" class="ident">NextSibling</a>() <a href="#line-49" class="ident">Node</a></code></span>
+<span class="codeline" id="line-58"><code></code></span>
+<span class="codeline" id="line-59"><code>	<span class="comment">// PreviousSibling returns a previous sibling node of this node.</span></code></span>
+<span class="codeline" id="line-60"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-PreviousSibling" class="ident">PreviousSibling</a>() <a href="#line-49" class="ident">Node</a></code></span>
+<span class="codeline" id="line-61"><code></code></span>
+<span class="codeline" id="line-62"><code>	<span class="comment">// Parent returns a parent node of this node.</span></code></span>
+<span class="codeline" id="line-63"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-Parent" class="ident">Parent</a>() <a href="#line-49" class="ident">Node</a></code></span>
+<span class="codeline" id="line-64"><code></code></span>
+<span class="codeline" id="line-65"><code>	<span class="comment">// SetParent sets a parent node to this node.</span></code></span>
+<span class="codeline" id="line-66"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-SetParent" class="ident">SetParent</a>(<a href="#line-49" class="ident">Node</a>)</code></span>
+<span class="codeline" id="line-67"><code></code></span>
+<span class="codeline" id="line-68"><code>	<span class="comment">// SetPreviousSibling sets a previous sibling node to this node.</span></code></span>
+<span class="codeline" id="line-69"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-SetPreviousSibling" class="ident">SetPreviousSibling</a>(<a href="#line-49" class="ident">Node</a>)</code></span>
+<span class="codeline" id="line-70"><code></code></span>
+<span class="codeline" id="line-71"><code>	<span class="comment">// SetNextSibling sets a next sibling node to this node.</span></code></span>
+<span class="codeline" id="line-72"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-SetNextSibling" class="ident">SetNextSibling</a>(<a href="#line-49" class="ident">Node</a>)</code></span>
+<span class="codeline" id="line-73"><code></code></span>
+<span class="codeline" id="line-74"><code>	<span class="comment">// HasChildren returns true if this node has any children, otherwise false.</span></code></span>
+<span class="codeline" id="line-75"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-HasChildren" class="ident">HasChildren</a>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-76"><code></code></span>
+<span class="codeline" id="line-77"><code>	<span class="comment">// ChildCount returns a total number of children.</span></code></span>
+<span class="codeline" id="line-78"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-ChildCount" class="ident">ChildCount</a>() <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-79"><code></code></span>
+<span class="codeline" id="line-80"><code>	<span class="comment">// FirstChild returns a first child of this node.</span></code></span>
+<span class="codeline" id="line-81"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-FirstChild" class="ident">FirstChild</a>() <a href="#line-49" class="ident">Node</a></code></span>
+<span class="codeline" id="line-82"><code></code></span>
+<span class="codeline" id="line-83"><code>	<span class="comment">// LastChild returns a last child of this node.</span></code></span>
+<span class="codeline" id="line-84"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-LastChild" class="ident">LastChild</a>() <a href="#line-49" class="ident">Node</a></code></span>
+<span class="codeline" id="line-85"><code></code></span>
+<span class="codeline" id="line-86"><code>	<span class="comment">// AppendChild append a node child to the tail of the children.</span></code></span>
+<span class="codeline" id="line-87"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-AppendChild" class="ident">AppendChild</a>(self, child <a href="#line-49" class="ident">Node</a>)</code></span>
+<span class="codeline" id="line-88"><code></code></span>
+<span class="codeline" id="line-89"><code>	<span class="comment">// RemoveChild removes a node child from this node.</span></code></span>
+<span class="codeline" id="line-90"><code><span class="comment">	// If a node child is not children of this node, RemoveChild nothing to do.</span></code></span>
+<span class="codeline" id="line-91"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-RemoveChild" class="ident">RemoveChild</a>(self, child <a href="#line-49" class="ident">Node</a>)</code></span>
+<span class="codeline" id="line-92"><code></code></span>
+<span class="codeline" id="line-93"><code>	<span class="comment">// RemoveChildren removes all children from this node.</span></code></span>
+<span class="codeline" id="line-94"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-RemoveChildren" class="ident">RemoveChildren</a>(self <a href="#line-49" class="ident">Node</a>)</code></span>
+<span class="codeline" id="line-95"><code></code></span>
+<span class="codeline" id="line-96"><code>	<span class="comment">// SortChildren sorts childrens by comparator.</span></code></span>
+<span class="codeline" id="line-97"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-SortChildren" class="ident">SortChildren</a>(comparator <span class="keyword">func</span>(n1, n2 <a href="#line-49" class="ident">Node</a>) <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>)</code></span>
+<span class="codeline" id="line-98"><code></code></span>
+<span class="codeline" id="line-99"><code>	<span class="comment">// ReplaceChild replace a node v1 with a node insertee.</span></code></span>
+<span class="codeline" id="line-100"><code><span class="comment">	// If v1 is not children of this node, ReplaceChild append a insetee to the</span></code></span>
+<span class="codeline" id="line-101"><code><span class="comment">	// tail of the children.</span></code></span>
+<span class="codeline" id="line-102"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-ReplaceChild" class="ident">ReplaceChild</a>(self, v1, insertee <a href="#line-49" class="ident">Node</a>)</code></span>
+<span class="codeline" id="line-103"><code></code></span>
+<span class="codeline" id="line-104"><code>	<span class="comment">// InsertBefore inserts a node insertee before a node v1.</span></code></span>
+<span class="codeline" id="line-105"><code><span class="comment">	// If v1 is not children of this node, InsertBefore append a insetee to the</span></code></span>
+<span class="codeline" id="line-106"><code><span class="comment">	// tail of the children.</span></code></span>
+<span class="codeline" id="line-107"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-InsertBefore" class="ident">InsertBefore</a>(self, v1, insertee <a href="#line-49" class="ident">Node</a>)</code></span>
+<span class="codeline" id="line-108"><code></code></span>
+<span class="codeline" id="line-109"><code>	<span class="comment">// InsertAfterinserts a node insertee after a node v1.</span></code></span>
+<span class="codeline" id="line-110"><code><span class="comment">	// If v1 is not children of this node, InsertBefore append a insetee to the</span></code></span>
+<span class="codeline" id="line-111"><code><span class="comment">	// tail of the children.</span></code></span>
+<span class="codeline" id="line-112"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-InsertAfter" class="ident">InsertAfter</a>(self, v1, insertee <a href="#line-49" class="ident">Node</a>)</code></span>
+<span class="codeline" id="line-113"><code></code></span>
+<span class="codeline" id="line-114"><code>	<span class="comment">// OwnerDocument returns this node's owner document.</span></code></span>
+<span class="codeline" id="line-115"><code><span class="comment">	// If this node is not a child of the Document node, OwnerDocument</span></code></span>
+<span class="codeline" id="line-116"><code><span class="comment">	// returns nil.</span></code></span>
+<span class="codeline" id="line-117"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-OwnerDocument" class="ident">OwnerDocument</a>() *<a href="block.go.html#line-51" class="ident">Document</a></code></span>
+<span class="codeline" id="line-118"><code></code></span>
+<span class="codeline" id="line-119"><code>	<span class="comment">// Dump dumps an AST tree structure to stdout.</span></code></span>
+<span class="codeline" id="line-120"><code><span class="comment">	// This function completely aimed for debugging.</span></code></span>
+<span class="codeline" id="line-121"><code><span class="comment">	// level is a indent level. Implementer should indent informations with</span></code></span>
+<span class="codeline" id="line-122"><code><span class="comment">	// 2 * level spaces.</span></code></span>
+<span class="codeline" id="line-123"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-Dump" class="ident">Dump</a>(source []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, level <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>)</code></span>
+<span class="codeline" id="line-124"><code></code></span>
+<span class="codeline" id="line-125"><code>	<span class="comment">// Text returns text values of this node.</span></code></span>
+<span class="codeline" id="line-126"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-Text" class="ident">Text</a>(source []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-127"><code></code></span>
+<span class="codeline" id="line-128"><code>	<span class="comment">// HasBlankPreviousLines returns true if the row before this node is blank,</span></code></span>
+<span class="codeline" id="line-129"><code><span class="comment">	// otherwise false.</span></code></span>
+<span class="codeline" id="line-130"><code><span class="comment">	// This method is valid only for block nodes.</span></code></span>
+<span class="codeline" id="line-131"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-HasBlankPreviousLines" class="ident">HasBlankPreviousLines</a>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-132"><code></code></span>
+<span class="codeline" id="line-133"><code>	<span class="comment">// SetBlankPreviousLines sets whether the row before this node is blank.</span></code></span>
+<span class="codeline" id="line-134"><code><span class="comment">	// This method is valid only for block nodes.</span></code></span>
+<span class="codeline" id="line-135"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-SetBlankPreviousLines" class="ident">SetBlankPreviousLines</a>(v <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>)</code></span>
+<span class="codeline" id="line-136"><code></code></span>
+<span class="codeline" id="line-137"><code>	<span class="comment">// Lines returns text segments that hold positions in a source.</span></code></span>
+<span class="codeline" id="line-138"><code><span class="comment">	// This method is valid only for block nodes.</span></code></span>
+<span class="codeline" id="line-139"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-Lines" class="ident">Lines</a>() *<a href="../../../../../pkg/github.com/yuin/goldmark/text.html" class="ident i3">textm</a>.<a href="../text/segment.go.html#line-145" class="ident">Segments</a></code></span>
+<span class="codeline" id="line-140"><code></code></span>
+<span class="codeline" id="line-141"><code>	<span class="comment">// SetLines sets text segments that hold positions in a source.</span></code></span>
+<span class="codeline" id="line-142"><code><span class="comment">	// This method is valid only for block nodes.</span></code></span>
+<span class="codeline" id="line-143"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-SetLines" class="ident">SetLines</a>(*<a href="../../../../../pkg/github.com/yuin/goldmark/text.html" class="ident i3">textm</a>.<a href="../text/segment.go.html#line-145" class="ident">Segments</a>)</code></span>
+<span class="codeline" id="line-144"><code></code></span>
+<span class="codeline" id="line-145"><code>	<span class="comment">// IsRaw returns true if contents should be rendered as 'raw' contents.</span></code></span>
+<span class="codeline" id="line-146"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-IsRaw" class="ident">IsRaw</a>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-147"><code></code></span>
+<span class="codeline" id="line-148"><code>	<span class="comment">// SetAttribute sets the given value to the attributes.</span></code></span>
+<span class="codeline" id="line-149"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-SetAttribute" class="ident">SetAttribute</a>(name []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, value <span class="keyword">interface</span>{})</code></span>
+<span class="codeline" id="line-150"><code></code></span>
+<span class="codeline" id="line-151"><code>	<span class="comment">// SetAttributeString sets the given value to the attributes.</span></code></span>
+<span class="codeline" id="line-152"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-SetAttributeString" class="ident">SetAttributeString</a>(name <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>, value <span class="keyword">interface</span>{})</code></span>
+<span class="codeline" id="line-153"><code></code></span>
+<span class="codeline" id="line-154"><code>	<span class="comment">// Attribute returns a (attribute value, true) if an attribute</span></code></span>
+<span class="codeline" id="line-155"><code><span class="comment">	// associated with the given name is found, otherwise</span></code></span>
+<span class="codeline" id="line-156"><code><span class="comment">	// (nil, false)</span></code></span>
+<span class="codeline" id="line-157"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-Attribute" class="ident">Attribute</a>(name []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) (<span class="keyword">interface</span>{}, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>)</code></span>
+<span class="codeline" id="line-158"><code></code></span>
+<span class="codeline" id="line-159"><code>	<span class="comment">// AttributeString returns a (attribute value, true) if an attribute</span></code></span>
+<span class="codeline" id="line-160"><code><span class="comment">	// associated with the given name is found, otherwise</span></code></span>
+<span class="codeline" id="line-161"><code><span class="comment">	// (nil, false)</span></code></span>
+<span class="codeline" id="line-162"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-AttributeString" class="ident">AttributeString</a>(name <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<span class="keyword">interface</span>{}, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>)</code></span>
+<span class="codeline" id="line-163"><code></code></span>
+<span class="codeline" id="line-164"><code>	<span class="comment">// Attributes returns a list of attributes.</span></code></span>
+<span class="codeline" id="line-165"><code><span class="comment">	// This may be a nil if there are no attributes.</span></code></span>
+<span class="codeline" id="line-166"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-Attributes" class="ident">Attributes</a>() []<a href="#line-43" class="ident">Attribute</a></code></span>
+<span class="codeline" id="line-167"><code></code></span>
+<span class="codeline" id="line-168"><code>	<span class="comment">// RemoveAttributes removes all attributes from this node.</span></code></span>
+<span class="codeline" id="line-169"><code>	<a href="../../../../../imp/github.com/yuin/goldmark/ast.Node.html#name-RemoveAttributes" class="ident">RemoveAttributes</a>()</code></span>
+<span class="codeline" id="line-170"><code>}</code></span>
+<span class="codeline" id="line-171"><code></code></span>
+<span class="codeline" id="line-172"><code><span class="comment">// A BaseNode struct implements the Node interface partialliy.</span></code></span>
+<span class="codeline" id="line-173"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-BaseNode" class="ident">BaseNode</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-174"><code>	firstChild <a href="#line-49" class="ident">Node</a></code></span>
+<span class="codeline" id="line-175"><code>	lastChild  <a href="#line-49" class="ident">Node</a></code></span>
+<span class="codeline" id="line-176"><code>	parent     <a href="#line-49" class="ident">Node</a></code></span>
+<span class="codeline" id="line-177"><code>	next       <a href="#line-49" class="ident">Node</a></code></span>
+<span class="codeline" id="line-178"><code>	prev       <a href="#line-49" class="ident">Node</a></code></span>
+<span class="codeline" id="line-179"><code>	childCount <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-180"><code>	attributes []<a href="#line-43" class="ident">Attribute</a></code></span>
+<span class="codeline" id="line-181"><code>}</code></span>
+<span class="codeline" id="line-182"><code></code></span>
+<span class="codeline" id="line-183"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-ensureIsolated" class="ident">ensureIsolated</a></label>(<label for="r5" class="ident">v</label> <a href="#line-49" class="ident">Node</a>) {</code></span>
+<span class="codeline" id="line-184"><code>	<span class="keyword">if</span> <label for="r6" class="ident">p</label> := <label for="r5" class="ident">v</label>.<a href="#line-63" class="ident">Parent</a>(); <label for="r6" class="ident">p</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-185"><code>		<label for="r6" class="ident">p</label>.<a href="#line-91" class="ident">RemoveChild</a>(<label for="r6" class="ident">p</label>, <label for="r5" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-186"><code>	}</code></span>
+<span class="codeline" id="line-187"><code>}</code></span>
+<span class="codeline" id="line-188"><code></code></span>
+<span class="codeline" id="line-189"><code><span class="comment">// HasChildren implements Node.HasChildren .</span></code></span>
+<span class="codeline" id="line-190"><code><span class="keyword">func</span> (<label for="r7" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r8" class="ident">HasChildren</label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-191"><code>	<span class="keyword">return</span> <label for="r7" class="ident">n</label>.<a href="#line-174" class="ident">firstChild</a> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-192"><code>}</code></span>
+<span class="codeline" id="line-193"><code></code></span>
+<span class="codeline" id="line-194"><code><span class="comment">// SetPreviousSibling implements Node.SetPreviousSibling .</span></code></span>
+<span class="codeline" id="line-195"><code><span class="keyword">func</span> (<label for="r9" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r10" class="ident">SetPreviousSibling</label>(<label for="r11" class="ident">v</label> <a href="#line-49" class="ident">Node</a>) {</code></span>
+<span class="codeline" id="line-196"><code>	<label for="r9" class="ident">n</label>.<a href="#line-178" class="ident">prev</a> = <label for="r11" class="ident">v</label></code></span>
+<span class="codeline" id="line-197"><code>}</code></span>
+<span class="codeline" id="line-198"><code></code></span>
+<span class="codeline" id="line-199"><code><span class="comment">// SetNextSibling implements Node.SetNextSibling .</span></code></span>
+<span class="codeline" id="line-200"><code><span class="keyword">func</span> (<label for="r12" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r13" class="ident">SetNextSibling</label>(<label for="r14" class="ident">v</label> <a href="#line-49" class="ident">Node</a>) {</code></span>
+<span class="codeline" id="line-201"><code>	<label for="r12" class="ident">n</label>.<a href="#line-177" class="ident">next</a> = <label for="r14" class="ident">v</label></code></span>
+<span class="codeline" id="line-202"><code>}</code></span>
+<span class="codeline" id="line-203"><code></code></span>
+<span class="codeline" id="line-204"><code><span class="comment">// PreviousSibling implements Node.PreviousSibling .</span></code></span>
+<span class="codeline" id="line-205"><code><span class="keyword">func</span> (<label for="r15" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r16" class="ident">PreviousSibling</label>() <a href="#line-49" class="ident">Node</a> {</code></span>
+<span class="codeline" id="line-206"><code>	<span class="keyword">return</span> <label for="r15" class="ident">n</label>.<a href="#line-178" class="ident">prev</a></code></span>
+<span class="codeline" id="line-207"><code>}</code></span>
+<span class="codeline" id="line-208"><code></code></span>
+<span class="codeline" id="line-209"><code><span class="comment">// NextSibling implements Node.NextSibling .</span></code></span>
+<span class="codeline" id="line-210"><code><span class="keyword">func</span> (<label for="r17" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r18" class="ident">NextSibling</label>() <a href="#line-49" class="ident">Node</a> {</code></span>
+<span class="codeline" id="line-211"><code>	<span class="keyword">return</span> <label for="r17" class="ident">n</label>.<a href="#line-177" class="ident">next</a></code></span>
+<span class="codeline" id="line-212"><code>}</code></span>
+<span class="codeline" id="line-213"><code></code></span>
+<span class="codeline" id="line-214"><code><span class="comment">// RemoveChild implements Node.RemoveChild .</span></code></span>
+<span class="codeline" id="line-215"><code><span class="keyword">func</span> (<label for="r19" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r20" class="ident">RemoveChild</label>(<label for="r21" class="ident">self</label>, <label for="r22" class="ident">v</label> <a href="#line-49" class="ident">Node</a>) {</code></span>
+<span class="codeline" id="line-216"><code>	<span class="keyword">if</span> <label for="r22" class="ident">v</label>.<a href="#line-63" class="ident">Parent</a>() != <label for="r21" class="ident">self</label> {</code></span>
+<span class="codeline" id="line-217"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-218"><code>	}</code></span>
+<span class="codeline" id="line-219"><code>	<label for="r19" class="ident">n</label>.<a href="#line-179" class="ident">childCount</a>--</code></span>
+<span class="codeline" id="line-220"><code>	<label for="r23" class="ident">prev</label> := <label for="r22" class="ident">v</label>.<a href="#line-60" class="ident">PreviousSibling</a>()</code></span>
+<span class="codeline" id="line-221"><code>	<label for="r24" class="ident">next</label> := <label for="r22" class="ident">v</label>.<a href="#line-57" class="ident">NextSibling</a>()</code></span>
+<span class="codeline" id="line-222"><code>	<span class="keyword">if</span> <label for="r23" class="ident">prev</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-223"><code>		<label for="r23" class="ident">prev</label>.<a href="#line-72" class="ident">SetNextSibling</a>(<label for="r24" class="ident">next</label>)</code></span>
+<span class="codeline" id="line-224"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-225"><code>		<label for="r19" class="ident">n</label>.<a href="#line-174" class="ident">firstChild</a> = <label for="r24" class="ident">next</label></code></span>
+<span class="codeline" id="line-226"><code>	}</code></span>
+<span class="codeline" id="line-227"><code>	<span class="keyword">if</span> <label for="r24" class="ident">next</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-228"><code>		<label for="r24" class="ident">next</label>.<a href="#line-69" class="ident">SetPreviousSibling</a>(<label for="r23" class="ident">prev</label>)</code></span>
+<span class="codeline" id="line-229"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-230"><code>		<label for="r19" class="ident">n</label>.<a href="#line-175" class="ident">lastChild</a> = <label for="r23" class="ident">prev</label></code></span>
+<span class="codeline" id="line-231"><code>	}</code></span>
+<span class="codeline" id="line-232"><code>	<label for="r22" class="ident">v</label>.<a href="#line-66" class="ident">SetParent</a>(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-233"><code>	<label for="r22" class="ident">v</label>.<a href="#line-69" class="ident">SetPreviousSibling</a>(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-234"><code>	<label for="r22" class="ident">v</label>.<a href="#line-72" class="ident">SetNextSibling</a>(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-235"><code>}</code></span>
+<span class="codeline" id="line-236"><code></code></span>
+<span class="codeline" id="line-237"><code><span class="comment">// RemoveChildren implements Node.RemoveChildren .</span></code></span>
+<span class="codeline" id="line-238"><code><span class="keyword">func</span> (<label for="r25" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r26" class="ident">RemoveChildren</label>(<label for="r27" class="ident">self</label> <a href="#line-49" class="ident">Node</a>) {</code></span>
+<span class="codeline" id="line-239"><code>	<span class="keyword">for</span> <label for="r28" class="ident">c</label> := <label for="r25" class="ident">n</label>.<a href="#line-174" class="ident">firstChild</a>; <label for="r28" class="ident">c</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; {</code></span>
+<span class="codeline" id="line-240"><code>		<label for="r28" class="ident">c</label>.<a href="#line-66" class="ident">SetParent</a>(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-241"><code>		<label for="r28" class="ident">c</label>.<a href="#line-69" class="ident">SetPreviousSibling</a>(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-242"><code>		<label for="r29" class="ident">next</label> := <label for="r28" class="ident">c</label>.<a href="#line-57" class="ident">NextSibling</a>()</code></span>
+<span class="codeline" id="line-243"><code>		<label for="r28" class="ident">c</label>.<a href="#line-72" class="ident">SetNextSibling</a>(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-244"><code>		<label for="r28" class="ident">c</label> = <label for="r29" class="ident">next</label></code></span>
+<span class="codeline" id="line-245"><code>	}</code></span>
+<span class="codeline" id="line-246"><code>	<label for="r25" class="ident">n</label>.<a href="#line-174" class="ident">firstChild</a> = <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-247"><code>	<label for="r25" class="ident">n</label>.<a href="#line-175" class="ident">lastChild</a> = <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-248"><code>	<label for="r25" class="ident">n</label>.<a href="#line-179" class="ident">childCount</a> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-249"><code>}</code></span>
+<span class="codeline" id="line-250"><code></code></span>
+<span class="codeline" id="line-251"><code><span class="comment">// SortChildren implements Node.SortChildren.</span></code></span>
+<span class="codeline" id="line-252"><code><span class="keyword">func</span> (<label for="r30" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r31" class="ident">SortChildren</label>(<label for="r32" class="ident">comparator</label> <span class="keyword">func</span>(<label for="r33" class="ident">n1</label>, <label for="r34" class="ident">n2</label> <a href="#line-49" class="ident">Node</a>) <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-253"><code>	<span class="keyword">var</span> <label for="r35" class="ident">sorted</label> <a href="#line-49" class="ident">Node</a></code></span>
+<span class="codeline" id="line-254"><code>	<label for="r36" class="ident">current</label> := <label for="r30" class="ident">n</label>.<a href="#line-174" class="ident">firstChild</a></code></span>
+<span class="codeline" id="line-255"><code>	<span class="keyword">for</span> <label for="r36" class="ident">current</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-256"><code>		<label for="r37" class="ident">next</label> := <label for="r36" class="ident">current</label>.<a href="#line-57" class="ident">NextSibling</a>()</code></span>
+<span class="codeline" id="line-257"><code>		<span class="keyword">if</span> <label for="r35" class="ident">sorted</label> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> || <label for="r32" class="ident">comparator</label>(<label for="r35" class="ident">sorted</label>, <label for="r36" class="ident">current</label>) &gt;= <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-258"><code>			<label for="r36" class="ident">current</label>.<a href="#line-72" class="ident">SetNextSibling</a>(<label for="r35" class="ident">sorted</label>)</code></span>
+<span class="codeline" id="line-259"><code>			<span class="keyword">if</span> <label for="r35" class="ident">sorted</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-260"><code>				<label for="r35" class="ident">sorted</label>.<a href="#line-69" class="ident">SetPreviousSibling</a>(<label for="r36" class="ident">current</label>)</code></span>
+<span class="codeline" id="line-261"><code>			}</code></span>
+<span class="codeline" id="line-262"><code>			<label for="r35" class="ident">sorted</label> = <label for="r36" class="ident">current</label></code></span>
+<span class="codeline" id="line-263"><code>			<label for="r35" class="ident">sorted</label>.<a href="#line-69" class="ident">SetPreviousSibling</a>(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-264"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-265"><code>			<label for="r38" class="ident">c</label> := <label for="r35" class="ident">sorted</label></code></span>
+<span class="codeline" id="line-266"><code>			<span class="keyword">for</span> <label for="r38" class="ident">c</label>.<a href="#line-57" class="ident">NextSibling</a>() != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <label for="r32" class="ident">comparator</label>(<label for="r38" class="ident">c</label>.<a href="#line-57" class="ident">NextSibling</a>(), <label for="r36" class="ident">current</label>) &lt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-267"><code>				<label for="r38" class="ident">c</label> = <label for="r38" class="ident">c</label>.<a href="#line-57" class="ident">NextSibling</a>()</code></span>
+<span class="codeline" id="line-268"><code>			}</code></span>
+<span class="codeline" id="line-269"><code>			<label for="r36" class="ident">current</label>.<a href="#line-72" class="ident">SetNextSibling</a>(<label for="r38" class="ident">c</label>.<a href="#line-57" class="ident">NextSibling</a>())</code></span>
+<span class="codeline" id="line-270"><code>			<label for="r36" class="ident">current</label>.<a href="#line-69" class="ident">SetPreviousSibling</a>(<label for="r38" class="ident">c</label>)</code></span>
+<span class="codeline" id="line-271"><code>			<span class="keyword">if</span> <label for="r38" class="ident">c</label>.<a href="#line-57" class="ident">NextSibling</a>() != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-272"><code>				<label for="r38" class="ident">c</label>.<a href="#line-57" class="ident">NextSibling</a>().<a href="#line-69" class="ident">SetPreviousSibling</a>(<label for="r36" class="ident">current</label>)</code></span>
+<span class="codeline" id="line-273"><code>			}</code></span>
+<span class="codeline" id="line-274"><code>			<label for="r38" class="ident">c</label>.<a href="#line-72" class="ident">SetNextSibling</a>(<label for="r36" class="ident">current</label>)</code></span>
+<span class="codeline" id="line-275"><code>		}</code></span>
+<span class="codeline" id="line-276"><code>		<label for="r36" class="ident">current</label> = <label for="r37" class="ident">next</label></code></span>
+<span class="codeline" id="line-277"><code>	}</code></span>
+<span class="codeline" id="line-278"><code>	<label for="r30" class="ident">n</label>.<a href="#line-174" class="ident">firstChild</a> = <label for="r35" class="ident">sorted</label></code></span>
+<span class="codeline" id="line-279"><code>	<span class="keyword">for</span> <label for="r39" class="ident">c</label> := <label for="r30" class="ident">n</label>.<a href="#line-174" class="ident">firstChild</a>; <label for="r39" class="ident">c</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r39" class="ident">c</label> = <label for="r39" class="ident">c</label>.<a href="#line-57" class="ident">NextSibling</a>() {</code></span>
+<span class="codeline" id="line-280"><code>		<label for="r30" class="ident">n</label>.<a href="#line-175" class="ident">lastChild</a> = <label for="r39" class="ident">c</label></code></span>
+<span class="codeline" id="line-281"><code>	}</code></span>
+<span class="codeline" id="line-282"><code>}</code></span>
+<span class="codeline" id="line-283"><code></code></span>
+<span class="codeline" id="line-284"><code><span class="comment">// FirstChild implements Node.FirstChild .</span></code></span>
+<span class="codeline" id="line-285"><code><span class="keyword">func</span> (<label for="r40" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r41" class="ident">FirstChild</label>() <a href="#line-49" class="ident">Node</a> {</code></span>
+<span class="codeline" id="line-286"><code>	<span class="keyword">return</span> <label for="r40" class="ident">n</label>.<a href="#line-174" class="ident">firstChild</a></code></span>
+<span class="codeline" id="line-287"><code>}</code></span>
+<span class="codeline" id="line-288"><code></code></span>
+<span class="codeline" id="line-289"><code><span class="comment">// LastChild implements Node.LastChild .</span></code></span>
+<span class="codeline" id="line-290"><code><span class="keyword">func</span> (<label for="r42" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r43" class="ident">LastChild</label>() <a href="#line-49" class="ident">Node</a> {</code></span>
+<span class="codeline" id="line-291"><code>	<span class="keyword">return</span> <label for="r42" class="ident">n</label>.<a href="#line-175" class="ident">lastChild</a></code></span>
+<span class="codeline" id="line-292"><code>}</code></span>
+<span class="codeline" id="line-293"><code></code></span>
+<span class="codeline" id="line-294"><code><span class="comment">// ChildCount implements Node.ChildCount .</span></code></span>
+<span class="codeline" id="line-295"><code><span class="keyword">func</span> (<label for="r44" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r45" class="ident">ChildCount</label>() <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-296"><code>	<span class="keyword">return</span> <label for="r44" class="ident">n</label>.<a href="#line-179" class="ident">childCount</a></code></span>
+<span class="codeline" id="line-297"><code>}</code></span>
+<span class="codeline" id="line-298"><code></code></span>
+<span class="codeline" id="line-299"><code><span class="comment">// Parent implements Node.Parent .</span></code></span>
+<span class="codeline" id="line-300"><code><span class="keyword">func</span> (<label for="r46" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r47" class="ident">Parent</label>() <a href="#line-49" class="ident">Node</a> {</code></span>
+<span class="codeline" id="line-301"><code>	<span class="keyword">return</span> <label for="r46" class="ident">n</label>.<a href="#line-176" class="ident">parent</a></code></span>
+<span class="codeline" id="line-302"><code>}</code></span>
+<span class="codeline" id="line-303"><code></code></span>
+<span class="codeline" id="line-304"><code><span class="comment">// SetParent implements Node.SetParent .</span></code></span>
+<span class="codeline" id="line-305"><code><span class="keyword">func</span> (<label for="r48" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r49" class="ident">SetParent</label>(<label for="r50" class="ident">v</label> <a href="#line-49" class="ident">Node</a>) {</code></span>
+<span class="codeline" id="line-306"><code>	<label for="r48" class="ident">n</label>.<a href="#line-176" class="ident">parent</a> = <label for="r50" class="ident">v</label></code></span>
+<span class="codeline" id="line-307"><code>}</code></span>
+<span class="codeline" id="line-308"><code></code></span>
+<span class="codeline" id="line-309"><code><span class="comment">// AppendChild implements Node.AppendChild .</span></code></span>
+<span class="codeline" id="line-310"><code><span class="keyword">func</span> (<label for="r51" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r52" class="ident">AppendChild</label>(<label for="r53" class="ident">self</label>, <label for="r54" class="ident">v</label> <a href="#line-49" class="ident">Node</a>) {</code></span>
+<span class="codeline" id="line-311"><code>	<a href="#line-183" class="ident">ensureIsolated</a>(<label for="r54" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-312"><code>	<span class="keyword">if</span> <label for="r51" class="ident">n</label>.<a href="#line-174" class="ident">firstChild</a> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-313"><code>		<label for="r51" class="ident">n</label>.<a href="#line-174" class="ident">firstChild</a> = <label for="r54" class="ident">v</label></code></span>
+<span class="codeline" id="line-314"><code>		<label for="r54" class="ident">v</label>.<a href="#line-72" class="ident">SetNextSibling</a>(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-315"><code>		<label for="r54" class="ident">v</label>.<a href="#line-69" class="ident">SetPreviousSibling</a>(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-316"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-317"><code>		<label for="r55" class="ident">last</label> := <label for="r51" class="ident">n</label>.<a href="#line-175" class="ident">lastChild</a></code></span>
+<span class="codeline" id="line-318"><code>		<label for="r55" class="ident">last</label>.<a href="#line-72" class="ident">SetNextSibling</a>(<label for="r54" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-319"><code>		<label for="r54" class="ident">v</label>.<a href="#line-69" class="ident">SetPreviousSibling</a>(<label for="r55" class="ident">last</label>)</code></span>
+<span class="codeline" id="line-320"><code>	}</code></span>
+<span class="codeline" id="line-321"><code>	<label for="r54" class="ident">v</label>.<a href="#line-66" class="ident">SetParent</a>(<label for="r53" class="ident">self</label>)</code></span>
+<span class="codeline" id="line-322"><code>	<label for="r51" class="ident">n</label>.<a href="#line-175" class="ident">lastChild</a> = <label for="r54" class="ident">v</label></code></span>
+<span class="codeline" id="line-323"><code>	<label for="r51" class="ident">n</label>.<a href="#line-179" class="ident">childCount</a>++</code></span>
+<span class="codeline" id="line-324"><code>}</code></span>
+<span class="codeline" id="line-325"><code></code></span>
+<span class="codeline" id="line-326"><code><span class="comment">// ReplaceChild implements Node.ReplaceChild .</span></code></span>
+<span class="codeline" id="line-327"><code><span class="keyword">func</span> (<label for="r56" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r57" class="ident">ReplaceChild</label>(<label for="r58" class="ident">self</label>, <label for="r59" class="ident">v1</label>, <label for="r60" class="ident">insertee</label> <a href="#line-49" class="ident">Node</a>) {</code></span>
+<span class="codeline" id="line-328"><code>	<label for="r56" class="ident">n</label>.<a href="#line-338" class="ident">InsertBefore</a>(<label for="r58" class="ident">self</label>, <label for="r59" class="ident">v1</label>, <label for="r60" class="ident">insertee</label>)</code></span>
+<span class="codeline" id="line-329"><code>	<label for="r56" class="ident">n</label>.<a href="#line-215" class="ident">RemoveChild</a>(<label for="r58" class="ident">self</label>, <label for="r59" class="ident">v1</label>)</code></span>
+<span class="codeline" id="line-330"><code>}</code></span>
+<span class="codeline" id="line-331"><code></code></span>
+<span class="codeline" id="line-332"><code><span class="comment">// InsertAfter implements Node.InsertAfter .</span></code></span>
+<span class="codeline" id="line-333"><code><span class="keyword">func</span> (<label for="r61" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r62" class="ident">InsertAfter</label>(<label for="r63" class="ident">self</label>, <label for="r64" class="ident">v1</label>, <label for="r65" class="ident">insertee</label> <a href="#line-49" class="ident">Node</a>) {</code></span>
+<span class="codeline" id="line-334"><code>	<label for="r61" class="ident">n</label>.<a href="#line-338" class="ident">InsertBefore</a>(<label for="r63" class="ident">self</label>, <label for="r64" class="ident">v1</label>.<a href="#line-57" class="ident">NextSibling</a>(), <label for="r65" class="ident">insertee</label>)</code></span>
+<span class="codeline" id="line-335"><code>}</code></span>
+<span class="codeline" id="line-336"><code></code></span>
+<span class="codeline" id="line-337"><code><span class="comment">// InsertBefore implements Node.InsertBefore .</span></code></span>
+<span class="codeline" id="line-338"><code><span class="keyword">func</span> (<label for="r66" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r67" class="ident">InsertBefore</label>(<label for="r68" class="ident">self</label>, <label for="r69" class="ident">v1</label>, <label for="r70" class="ident">insertee</label> <a href="#line-49" class="ident">Node</a>) {</code></span>
+<span class="codeline" id="line-339"><code>	<label for="r66" class="ident">n</label>.<a href="#line-179" class="ident">childCount</a>++</code></span>
+<span class="codeline" id="line-340"><code>	<span class="keyword">if</span> <label for="r69" class="ident">v1</label> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-341"><code>		<label for="r66" class="ident">n</label>.<a href="#line-310" class="ident">AppendChild</a>(<label for="r68" class="ident">self</label>, <label for="r70" class="ident">insertee</label>)</code></span>
+<span class="codeline" id="line-342"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-343"><code>	}</code></span>
+<span class="codeline" id="line-344"><code>	<a href="#line-183" class="ident">ensureIsolated</a>(<label for="r70" class="ident">insertee</label>)</code></span>
+<span class="codeline" id="line-345"><code>	<span class="keyword">if</span> <label for="r69" class="ident">v1</label>.<a href="#line-63" class="ident">Parent</a>() == <label for="r68" class="ident">self</label> {</code></span>
+<span class="codeline" id="line-346"><code>		<label for="r71" class="ident">c</label> := <label for="r69" class="ident">v1</label></code></span>
+<span class="codeline" id="line-347"><code>		<label for="r72" class="ident">prev</label> := <label for="r71" class="ident">c</label>.<a href="#line-60" class="ident">PreviousSibling</a>()</code></span>
+<span class="codeline" id="line-348"><code>		<span class="keyword">if</span> <label for="r72" class="ident">prev</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-349"><code>			<label for="r72" class="ident">prev</label>.<a href="#line-72" class="ident">SetNextSibling</a>(<label for="r70" class="ident">insertee</label>)</code></span>
+<span class="codeline" id="line-350"><code>			<label for="r70" class="ident">insertee</label>.<a href="#line-69" class="ident">SetPreviousSibling</a>(<label for="r72" class="ident">prev</label>)</code></span>
+<span class="codeline" id="line-351"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-352"><code>			<label for="r66" class="ident">n</label>.<a href="#line-174" class="ident">firstChild</a> = <label for="r70" class="ident">insertee</label></code></span>
+<span class="codeline" id="line-353"><code>			<label for="r70" class="ident">insertee</label>.<a href="#line-69" class="ident">SetPreviousSibling</a>(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-354"><code>		}</code></span>
+<span class="codeline" id="line-355"><code>		<label for="r70" class="ident">insertee</label>.<a href="#line-72" class="ident">SetNextSibling</a>(<label for="r71" class="ident">c</label>)</code></span>
+<span class="codeline" id="line-356"><code>		<label for="r71" class="ident">c</label>.<a href="#line-69" class="ident">SetPreviousSibling</a>(<label for="r70" class="ident">insertee</label>)</code></span>
+<span class="codeline" id="line-357"><code>		<label for="r70" class="ident">insertee</label>.<a href="#line-66" class="ident">SetParent</a>(<label for="r68" class="ident">self</label>)</code></span>
+<span class="codeline" id="line-358"><code>	}</code></span>
+<span class="codeline" id="line-359"><code>}</code></span>
+<span class="codeline" id="line-360"><code></code></span>
+<span class="codeline" id="line-361"><code><span class="comment">// OwnerDocument implements Node.OwnerDocument.</span></code></span>
+<span class="codeline" id="line-362"><code><span class="keyword">func</span> (<label for="r73" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r74" class="ident">OwnerDocument</label>() *<a href="block.go.html#line-51" class="ident">Document</a> {</code></span>
+<span class="codeline" id="line-363"><code>	<label for="r75" class="ident">d</label> := <label for="r73" class="ident">n</label>.<a href="#line-300" class="ident">Parent</a>()</code></span>
+<span class="codeline" id="line-364"><code>	<span class="keyword">for</span> {</code></span>
+<span class="codeline" id="line-365"><code>		<label for="r76" class="ident">p</label> := <label for="r75" class="ident">d</label>.<a href="#line-63" class="ident">Parent</a>()</code></span>
+<span class="codeline" id="line-366"><code>		<span class="keyword">if</span> <label for="r76" class="ident">p</label> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-367"><code>			<span class="keyword">if</span> <label for="r77" class="ident">v</label>, <label for="r78" class="ident">ok</label> := <label for="r75" class="ident">d</label>.(*<a href="block.go.html#line-51" class="ident">Document</a>); <label for="r78" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-368"><code>				<span class="keyword">return</span> <label for="r77" class="ident">v</label></code></span>
+<span class="codeline" id="line-369"><code>			}</code></span>
+<span class="codeline" id="line-370"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-371"><code>		}</code></span>
+<span class="codeline" id="line-372"><code>		<label for="r75" class="ident">d</label> = <label for="r76" class="ident">p</label></code></span>
+<span class="codeline" id="line-373"><code>	}</code></span>
+<span class="codeline" id="line-374"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-375"><code>}</code></span>
+<span class="codeline" id="line-376"><code></code></span>
+<span class="codeline" id="line-377"><code><span class="comment">// Text implements Node.Text  .</span></code></span>
+<span class="codeline" id="line-378"><code><span class="keyword">func</span> (<label for="r79" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r80" class="ident">Text</label>(<label for="r81" class="ident">source</label> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-379"><code>	<span class="keyword">var</span> <label for="r82" class="ident">buf</label> <a href="../../../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../../../bytes/buffer.go.html#line-20" class="ident">Buffer</a></code></span>
+<span class="codeline" id="line-380"><code>	<span class="keyword">for</span> <label for="r83" class="ident">c</label> := <label for="r79" class="ident">n</label>.<a href="#line-174" class="ident">firstChild</a>; <label for="r83" class="ident">c</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r83" class="ident">c</label> = <label for="r83" class="ident">c</label>.<a href="#line-57" class="ident">NextSibling</a>() {</code></span>
+<span class="codeline" id="line-381"><code>		<label for="r82" class="ident">buf</label>.<a href="../../../../bytes/buffer.go.html#line-175" class="ident">Write</a>(<label for="r83" class="ident">c</label>.<a href="#line-126" class="ident">Text</a>(<label for="r81" class="ident">source</label>))</code></span>
+<span class="codeline" id="line-382"><code>	}</code></span>
+<span class="codeline" id="line-383"><code>	<span class="keyword">return</span> <label for="r82" class="ident">buf</label>.<a href="../../../../bytes/buffer.go.html#line-54" class="ident">Bytes</a>()</code></span>
+<span class="codeline" id="line-384"><code>}</code></span>
+<span class="codeline" id="line-385"><code></code></span>
+<span class="codeline" id="line-386"><code><span class="comment">// SetAttribute implements Node.SetAttribute.</span></code></span>
+<span class="codeline" id="line-387"><code><span class="keyword">func</span> (<label for="r84" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r85" class="ident">SetAttribute</label>(<label for="r86" class="ident">name</label> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r87" class="ident">value</label> <span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-388"><code>	<span class="keyword">if</span> <label for="r84" class="ident">n</label>.<a href="#line-180" class="ident">attributes</a> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-389"><code>		<label for="r84" class="ident">n</label>.<a href="#line-180" class="ident">attributes</a> = <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="#line-43" class="ident">Attribute</a>, <span class="lit-number">0</span>, <span class="lit-number">10</span>)</code></span>
+<span class="codeline" id="line-390"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-391"><code>		<span class="keyword">for</span> <label for="r88" class="ident">i</label>, <label for="r89" class="ident">a</label> := <span class="keyword">range</span> <label for="r84" class="ident">n</label>.<a href="#line-180" class="ident">attributes</a> {</code></span>
+<span class="codeline" id="line-392"><code>			<span class="keyword">if</span> <a href="../../../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../../../bytes/bytes.go.html#line-19" class="ident">Equal</a>(<label for="r89" class="ident">a</label>.<a href="#line-44" class="ident">Name</a>, <label for="r86" class="ident">name</label>) {</code></span>
+<span class="codeline" id="line-393"><code>				<label for="r84" class="ident">n</label>.<a href="#line-180" class="ident">attributes</a>[<label for="r88" class="ident">i</label>].<a href="#line-44" class="ident">Name</a> = <label for="r86" class="ident">name</label></code></span>
+<span class="codeline" id="line-394"><code>				<label for="r84" class="ident">n</label>.<a href="#line-180" class="ident">attributes</a>[<label for="r88" class="ident">i</label>].<a href="#line-45" class="ident">Value</a> = <label for="r87" class="ident">value</label></code></span>
+<span class="codeline" id="line-395"><code>				<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-396"><code>			}</code></span>
+<span class="codeline" id="line-397"><code>		}</code></span>
+<span class="codeline" id="line-398"><code>	}</code></span>
+<span class="codeline" id="line-399"><code>	<label for="r84" class="ident">n</label>.<a href="#line-180" class="ident">attributes</a> = <a href="../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r84" class="ident">n</label>.<a href="#line-180" class="ident">attributes</a>, <a href="#line-43" class="ident">Attribute</a>{<label for="r86" class="ident">name</label>, <label for="r87" class="ident">value</label>})</code></span>
+<span class="codeline" id="line-400"><code>}</code></span>
+<span class="codeline" id="line-401"><code></code></span>
+<span class="codeline" id="line-402"><code><span class="comment">// SetAttributeString implements Node.SetAttributeString.</span></code></span>
+<span class="codeline" id="line-403"><code><span class="keyword">func</span> (<label for="r90" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r91" class="ident">SetAttributeString</label>(<label for="r92" class="ident">name</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r93" class="ident">value</label> <span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-404"><code>	<label for="r90" class="ident">n</label>.<a href="#line-387" class="ident">SetAttribute</a>(<a href="../../../../../pkg/github.com/yuin/goldmark/util.html" class="ident i4">util</a>.<a href="../util/util_unsafe.go.html#line-17" class="ident">StringToReadOnlyBytes</a>(<label for="r92" class="ident">name</label>), <label for="r93" class="ident">value</label>)</code></span>
+<span class="codeline" id="line-405"><code>}</code></span>
+<span class="codeline" id="line-406"><code></code></span>
+<span class="codeline" id="line-407"><code><span class="comment">// Attribute implements Node.Attribute.</span></code></span>
+<span class="codeline" id="line-408"><code><span class="keyword">func</span> (<label for="r94" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r95" class="ident">Attribute</label>(<label for="r96" class="ident">name</label> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) (<span class="keyword">interface</span>{}, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-409"><code>	<span class="keyword">if</span> <label for="r94" class="ident">n</label>.<a href="#line-180" class="ident">attributes</a> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-410"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-411"><code>	}</code></span>
+<span class="codeline" id="line-412"><code>	<span class="keyword">for</span> <label for="r97" class="ident">i</label>, <label for="r98" class="ident">a</label> := <span class="keyword">range</span> <label for="r94" class="ident">n</label>.<a href="#line-180" class="ident">attributes</a> {</code></span>
+<span class="codeline" id="line-413"><code>		<span class="keyword">if</span> <a href="../../../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../../../bytes/bytes.go.html#line-19" class="ident">Equal</a>(<label for="r98" class="ident">a</label>.<a href="#line-44" class="ident">Name</a>, <label for="r96" class="ident">name</label>) {</code></span>
+<span class="codeline" id="line-414"><code>			<span class="keyword">return</span> <label for="r94" class="ident">n</label>.<a href="#line-180" class="ident">attributes</a>[<label for="r97" class="ident">i</label>].<a href="#line-45" class="ident">Value</a>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-415"><code>		}</code></span>
+<span class="codeline" id="line-416"><code>	}</code></span>
+<span class="codeline" id="line-417"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-418"><code>}</code></span>
+<span class="codeline" id="line-419"><code></code></span>
+<span class="codeline" id="line-420"><code><span class="comment">// AttributeString implements Node.AttributeString.</span></code></span>
+<span class="codeline" id="line-421"><code><span class="keyword">func</span> (<label for="r99" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r100" class="ident">AttributeString</label>(<label for="r101" class="ident">s</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<span class="keyword">interface</span>{}, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-422"><code>	<span class="keyword">return</span> <label for="r99" class="ident">n</label>.<a href="#line-408" class="ident">Attribute</a>(<a href="../../../../../pkg/github.com/yuin/goldmark/util.html" class="ident i4">util</a>.<a href="../util/util_unsafe.go.html#line-17" class="ident">StringToReadOnlyBytes</a>(<label for="r101" class="ident">s</label>))</code></span>
+<span class="codeline" id="line-423"><code>}</code></span>
+<span class="codeline" id="line-424"><code></code></span>
+<span class="codeline" id="line-425"><code><span class="comment">// Attributes implements Node.Attributes.</span></code></span>
+<span class="codeline" id="line-426"><code><span class="keyword">func</span> (<label for="r102" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r103" class="ident">Attributes</label>() []<a href="#line-43" class="ident">Attribute</a> {</code></span>
+<span class="codeline" id="line-427"><code>	<span class="keyword">return</span> <label for="r102" class="ident">n</label>.<a href="#line-180" class="ident">attributes</a></code></span>
+<span class="codeline" id="line-428"><code>}</code></span>
+<span class="codeline" id="line-429"><code></code></span>
+<span class="codeline" id="line-430"><code><span class="comment">// RemoveAttributes implements Node.RemoveAttributes.</span></code></span>
+<span class="codeline" id="line-431"><code><span class="keyword">func</span> (<label for="r104" class="ident">n</label> *<a href="#line-173" class="ident">BaseNode</a>) <label for="r105" class="ident">RemoveAttributes</label>() {</code></span>
+<span class="codeline" id="line-432"><code>	<label for="r104" class="ident">n</label>.<a href="#line-180" class="ident">attributes</a> = <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-433"><code>}</code></span>
+<span class="codeline" id="line-434"><code></code></span>
+<span class="codeline" id="line-435"><code><span class="comment">// DumpHelper is a helper function to implement Node.Dump.</span></code></span>
+<span class="codeline" id="line-436"><code><span class="comment">// kv is pairs of an attribute name and an attribute value.</span></code></span>
+<span class="codeline" id="line-437"><code><span class="comment">// cb is a function called after wrote a name and attributes.</span></code></span>
+<span class="codeline" id="line-438"><code><span class="keyword">func</span> <label for="r106" class="ident"><a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-DumpHelper" class="ident">DumpHelper</a></label>(<label for="r107" class="ident">v</label> <a href="#line-49" class="ident">Node</a>, <label for="r108" class="ident">source</label> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r109" class="ident">level</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r110" class="ident">kv</label> <span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r111" class="ident">cb</label> <span class="keyword">func</span>(<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>)) {</code></span>
+<span class="codeline" id="line-439"><code>	<label for="r112" class="ident">name</label> := <label for="r107" class="ident">v</label>.<a href="#line-54" class="ident">Kind</a>().<a href="#line-28" class="ident">String</a>()</code></span>
+<span class="codeline" id="line-440"><code>	<label for="r113" class="ident">indent</label> := <a href="../../../../../pkg/strings.html" class="ident i2">strings</a>.<a href="../../../../strings/strings.go.html#line-557" class="ident">Repeat</a>(<span class="lit-string">"    "</span>, <label for="r109" class="ident">level</label>)</code></span>
+<span class="codeline" id="line-441"><code>	<a href="../../../../../pkg/fmt.html" class="ident i1">fmt</a>.<a href="../../../../fmt/print.go.html#line-232" class="ident">Printf</a>(<span class="lit-string">"%s%s {\n"</span>, <label for="r113" class="ident">indent</label>, <label for="r112" class="ident">name</label>)</code></span>
+<span class="codeline" id="line-442"><code>	<label for="r114" class="ident">indent2</label> := <a href="../../../../../pkg/strings.html" class="ident i2">strings</a>.<a href="../../../../strings/strings.go.html#line-557" class="ident">Repeat</a>(<span class="lit-string">"    "</span>, <label for="r109" class="ident">level</label>+<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-443"><code>	<span class="keyword">if</span> <label for="r107" class="ident">v</label>.<a href="#line-51" class="ident">Type</a>() == <a href="#line-18" class="ident">TypeBlock</a> {</code></span>
+<span class="codeline" id="line-444"><code>		<a href="../../../../../pkg/fmt.html" class="ident i1">fmt</a>.<a href="../../../../fmt/print.go.html#line-232" class="ident">Printf</a>(<span class="lit-string">"%sRawText: \""</span>, <label for="r114" class="ident">indent2</label>)</code></span>
+<span class="codeline" id="line-445"><code>		<span class="keyword">for</span> <label for="r115" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r115" class="ident">i</label> &lt; <label for="r107" class="ident">v</label>.<a href="#line-139" class="ident">Lines</a>().<a href="../text/segment.go.html#line-173" class="ident">Len</a>(); <label for="r115" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-446"><code>			<label for="r116" class="ident">line</label> := <label for="r107" class="ident">v</label>.<a href="#line-139" class="ident">Lines</a>().<a href="../text/segment.go.html#line-181" class="ident">At</a>(<label for="r115" class="ident">i</label>)</code></span>
+<span class="codeline" id="line-447"><code>			<a href="../../../../../pkg/fmt.html" class="ident i1">fmt</a>.<a href="../../../../fmt/print.go.html#line-232" class="ident">Printf</a>(<span class="lit-string">"%s"</span>, <label for="r116" class="ident">line</label>.<a href="../text/segment.go.html#line-42" class="ident">Value</a>(<label for="r108" class="ident">source</label>))</code></span>
+<span class="codeline" id="line-448"><code>		}</code></span>
+<span class="codeline" id="line-449"><code>		<a href="../../../../../pkg/fmt.html" class="ident i1">fmt</a>.<a href="../../../../fmt/print.go.html#line-232" class="ident">Printf</a>(<span class="lit-string">"\"\n"</span>)</code></span>
+<span class="codeline" id="line-450"><code>		<a href="../../../../../pkg/fmt.html" class="ident i1">fmt</a>.<a href="../../../../fmt/print.go.html#line-232" class="ident">Printf</a>(<span class="lit-string">"%sHasBlankPreviousLines: %v\n"</span>, <label for="r114" class="ident">indent2</label>, <label for="r107" class="ident">v</label>.<a href="#line-131" class="ident">HasBlankPreviousLines</a>())</code></span>
+<span class="codeline" id="line-451"><code>	}</code></span>
+<span class="codeline" id="line-452"><code>	<span class="keyword">for</span> <label for="r117" class="ident">name</label>, <label for="r118" class="ident">value</label> := <span class="keyword">range</span> <label for="r110" class="ident">kv</label> {</code></span>
+<span class="codeline" id="line-453"><code>		<a href="../../../../../pkg/fmt.html" class="ident i1">fmt</a>.<a href="../../../../fmt/print.go.html#line-232" class="ident">Printf</a>(<span class="lit-string">"%s%s: %s\n"</span>, <label for="r114" class="ident">indent2</label>, <label for="r117" class="ident">name</label>, <label for="r118" class="ident">value</label>)</code></span>
+<span class="codeline" id="line-454"><code>	}</code></span>
+<span class="codeline" id="line-455"><code>	<span class="keyword">if</span> <label for="r111" class="ident">cb</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-456"><code>		<label for="r111" class="ident">cb</label>(<label for="r109" class="ident">level</label> + <span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-457"><code>	}</code></span>
+<span class="codeline" id="line-458"><code>	<span class="keyword">for</span> <label for="r119" class="ident">c</label> := <label for="r107" class="ident">v</label>.<a href="#line-81" class="ident">FirstChild</a>(); <label for="r119" class="ident">c</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r119" class="ident">c</label> = <label for="r119" class="ident">c</label>.<a href="#line-57" class="ident">NextSibling</a>() {</code></span>
+<span class="codeline" id="line-459"><code>		<label for="r119" class="ident">c</label>.<a href="#line-123" class="ident">Dump</a>(<label for="r108" class="ident">source</label>, <label for="r109" class="ident">level</label>+<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-460"><code>	}</code></span>
+<span class="codeline" id="line-461"><code>	<a href="../../../../../pkg/fmt.html" class="ident i1">fmt</a>.<a href="../../../../fmt/print.go.html#line-232" class="ident">Printf</a>(<span class="lit-string">"%s}\n"</span>, <label for="r113" class="ident">indent</label>)</code></span>
+<span class="codeline" id="line-462"><code>}</code></span>
+<span class="codeline" id="line-463"><code></code></span>
+<span class="codeline" id="line-464"><code><span class="comment">// WalkStatus represents a current status of the Walk function.</span></code></span>
+<span class="codeline" id="line-465"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-WalkStatus" class="ident">WalkStatus</a> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-466"><code></code></span>
+<span class="codeline" id="line-467"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-468"><code>	<span class="comment">// WalkStop indicates no more walking needed.</span></code></span>
+<span class="codeline" id="line-469"><code>	<a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-WalkStop" class="ident">WalkStop</a> <a href="#line-465" class="ident">WalkStatus</a> = <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-470"><code></code></span>
+<span class="codeline" id="line-471"><code>	<span class="comment">// WalkSkipChildren indicates that Walk wont walk on children of current</span></code></span>
+<span class="codeline" id="line-472"><code><span class="comment">	// node.</span></code></span>
+<span class="codeline" id="line-473"><code>	<a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-WalkSkipChildren" class="ident">WalkSkipChildren</a></code></span>
+<span class="codeline" id="line-474"><code></code></span>
+<span class="codeline" id="line-475"><code>	<span class="comment">// WalkContinue indicates that Walk can continue to walk.</span></code></span>
+<span class="codeline" id="line-476"><code>	<a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-WalkContinue" class="ident">WalkContinue</a></code></span>
+<span class="codeline" id="line-477"><code>)</code></span>
+<span class="codeline" id="line-478"><code></code></span>
+<span class="codeline" id="line-479"><code><span class="comment">// Walker is a function that will be called when Walk find a</span></code></span>
+<span class="codeline" id="line-480"><code><span class="comment">// new node.</span></code></span>
+<span class="codeline" id="line-481"><code><span class="comment">// entering is set true before walks children, false after walked children.</span></code></span>
+<span class="codeline" id="line-482"><code><span class="comment">// If Walker returns error, Walk function immediately stop walking.</span></code></span>
+<span class="codeline" id="line-483"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-Walker" class="ident">Walker</a> <span class="keyword">func</span>(n <a href="#line-49" class="ident">Node</a>, entering <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) (<a href="#line-465" class="ident">WalkStatus</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-484"><code></code></span>
+<span class="codeline" id="line-485"><code><span class="comment">// Walk walks a AST tree by the depth first search algorithm.</span></code></span>
+<span class="codeline" id="line-486"><code><span class="keyword">func</span> <label for="r120" class="ident"><a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-Walk" class="ident">Walk</a></label>(<label for="r121" class="ident">n</label> <a href="#line-49" class="ident">Node</a>, <label for="r122" class="ident">walker</label> <a href="#line-483" class="ident">Walker</a>) <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-487"><code>	<label for="r123" class="ident">_</label>, <label for="r124" class="ident">err</label> := <a href="#line-491" class="ident">walkHelper</a>(<label for="r121" class="ident">n</label>, <label for="r122" class="ident">walker</label>)</code></span>
+<span class="codeline" id="line-488"><code>	<span class="keyword">return</span> <label for="r124" class="ident">err</label></code></span>
+<span class="codeline" id="line-489"><code>}</code></span>
+<span class="codeline" id="line-490"><code></code></span>
+<span class="codeline" id="line-491"><code><span class="keyword">func</span> <label for="r125" class="ident"><a href="../../../../../pkg/github.com/yuin/goldmark/ast.html#name-walkHelper" class="ident">walkHelper</a></label>(<label for="r126" class="ident">n</label> <a href="#line-49" class="ident">Node</a>, <label for="r127" class="ident">walker</label> <a href="#line-483" class="ident">Walker</a>) (<a href="#line-465" class="ident">WalkStatus</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-492"><code>	<label for="r128" class="ident">status</label>, <label for="r129" class="ident">err</label> := <label for="r127" class="ident">walker</label>(<label for="r126" class="ident">n</label>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a>)</code></span>
+<span class="codeline" id="line-493"><code>	<span class="keyword">if</span> <label for="r129" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> || <label for="r128" class="ident">status</label> == <a href="#line-469" class="ident">WalkStop</a> {</code></span>
+<span class="codeline" id="line-494"><code>		<span class="keyword">return</span> <label for="r128" class="ident">status</label>, <label for="r129" class="ident">err</label></code></span>
+<span class="codeline" id="line-495"><code>	}</code></span>
+<span class="codeline" id="line-496"><code>	<span class="keyword">if</span> <label for="r128" class="ident">status</label> != <a href="#line-473" class="ident">WalkSkipChildren</a> {</code></span>
+<span class="codeline" id="line-497"><code>		<span class="keyword">for</span> <label for="r130" class="ident">c</label> := <label for="r126" class="ident">n</label>.<a href="#line-81" class="ident">FirstChild</a>(); <label for="r130" class="ident">c</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r130" class="ident">c</label> = <label for="r130" class="ident">c</label>.<a href="#line-57" class="ident">NextSibling</a>() {</code></span>
+<span class="codeline" id="line-498"><code>			<span class="keyword">if</span> <label for="r131" class="ident">st</label>, <label for="r132" class="ident">err</label> := <label for="r125" class="ident">walkHelper</label>(<label for="r130" class="ident">c</label>, <label for="r127" class="ident">walker</label>); <label for="r132" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> || <label for="r131" class="ident">st</label> == <a href="#line-469" class="ident">WalkStop</a> {</code></span>
+<span class="codeline" id="line-499"><code>				<span class="keyword">return</span> <a href="#line-469" class="ident">WalkStop</a>, <label for="r132" class="ident">err</label></code></span>
+<span class="codeline" id="line-500"><code>			}</code></span>
+<span class="codeline" id="line-501"><code>		}</code></span>
+<span class="codeline" id="line-502"><code>	}</code></span>
+<span class="codeline" id="line-503"><code>	<label for="r128" class="ident">status</label>, <label for="r129" class="ident">err</label> = <label for="r127" class="ident">walker</label>(<label for="r126" class="ident">n</label>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a>)</code></span>
+<span class="codeline" id="line-504"><code>	<span class="keyword">if</span> <label for="r129" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> || <label for="r128" class="ident">status</label> == <a href="#line-469" class="ident">WalkStop</a> {</code></span>
+<span class="codeline" id="line-505"><code>		<span class="keyword">return</span> <a href="#line-469" class="ident">WalkStop</a>, <label for="r129" class="ident">err</label></code></span>
+<span class="codeline" id="line-506"><code>	}</code></span>
+<span class="codeline" id="line-507"><code>	<span class="keyword">return</span> <a href="#line-476" class="ident">WalkContinue</a>, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-508"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

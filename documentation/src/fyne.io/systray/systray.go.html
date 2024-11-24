@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: systray.go in package fyne.io/systray</title>
+<link href="../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	systray.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../pkg/fyne.io/systray.html">fyne.io/systray</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72],
+input[id=r73]:checked ~pre label[for=r73],
+input[id=r74]:checked ~pre label[for=r74],
+input[id=r75]:checked ~pre label[for=r75],
+input[id=r76]:checked ~pre label[for=r76],
+input[id=r77]:checked ~pre label[for=r77]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="r73" type="radio" name="g"/>
+<input id="r74" type="radio" name="g"/>
+<input id="r75" type="radio" name="g"/>
+<input id="r76" type="radio" name="g"/>
+<input id="r77" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Package systray is a cross-platform Go library to place an icon and menu in the notification area.</span></code></span></div><span class="codeline" id="line-2"><code><span class="keyword">package</span> systray</code></span>
+<span class="codeline" id="line-3"><code></code></span>
+<span class="codeline" id="line-4"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-5"><code>	<label for="i0"><span class="lit-string i0">"fmt"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i1"><span class="lit-string i1">"log"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i2"><span class="lit-string i2">"runtime"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i3"><span class="lit-string i3">"sync"</span></label></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i4"><span class="lit-string i4">"sync/atomic"</span></label></code></span>
+<span class="codeline" id="line-10"><code>)</code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code><span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../../pkg/fyne.io/systray.html#name-systrayReady" class="ident">systrayReady</a>      <span class="keyword">func</span>()</code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../pkg/fyne.io/systray.html#name-systrayExit" class="ident">systrayExit</a>       <span class="keyword">func</span>()</code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../pkg/fyne.io/systray.html#name-systrayExitCalled" class="ident">systrayExitCalled</a> <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../../pkg/fyne.io/systray.html#name-menuItems" class="ident">menuItems</a>         = <a href="../../../pkg/builtin.html#name-make" class="ident">make</a>(<span class="keyword">map</span>[<a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>]*<a href="#line-38" class="ident">MenuItem</a>)</code></span>
+<span class="codeline" id="line-17"><code>	<a href="../../../pkg/fyne.io/systray.html#name-menuItemsLock" class="ident">menuItemsLock</a>     <a href="../../../pkg/sync.html" class="ident i3">sync</a>.<a href="../../sync/rwmutex.go.html#line-37" class="ident">RWMutex</a></code></span>
+<span class="codeline" id="line-18"><code></code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../pkg/fyne.io/systray.html#name-currentID" class="ident">currentID</a> <a href="../../../pkg/sync/atomic.html" class="ident i4">atomic</a>.<a href="../../sync/atomic/type.go.html#line-131" class="ident">Uint32</a></code></span>
+<span class="codeline" id="line-20"><code>	<a href="../../../pkg/fyne.io/systray.html#name-quitOnce" class="ident">quitOnce</a>  <a href="../../../pkg/sync.html" class="ident i3">sync</a>.<a href="../../sync/once.go.html#line-20" class="ident">Once</a></code></span>
+<span class="codeline" id="line-21"><code>)</code></span>
+<span class="codeline" id="line-22"><code></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">// This helper function allows us to call systrayExit only once,</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">// without accidentally calling it twice in the same lifetime.</span></code></span>
+<span class="codeline" id="line-25"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../pkg/fyne.io/systray.html#name-runSystrayExit" class="ident">runSystrayExit</a></label>() {</code></span>
+<span class="codeline" id="line-26"><code>	<span class="keyword">if</span> !<a href="#line-15" class="ident">systrayExitCalled</a> {</code></span>
+<span class="codeline" id="line-27"><code>		<a href="#line-15" class="ident">systrayExitCalled</a> = <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-28"><code>		<a href="#line-14" class="ident">systrayExit</a>()</code></span>
+<span class="codeline" id="line-29"><code>	}</code></span>
+<span class="codeline" id="line-30"><code>}</code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code><span class="keyword">func</span> <label for="r1" class="ident"><a href="../../../pkg/fyne.io/systray.html#name-init" class="ident">init</a></label>() {</code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../../pkg/runtime.html" class="ident i2">runtime</a>.<a href="../../runtime/proc.go.html#line-5293" class="ident">LockOSThread</a>()</code></span>
+<span class="codeline" id="line-34"><code>}</code></span>
+<span class="codeline" id="line-35"><code></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// MenuItem is used to keep track each menu item of systray.</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">// Don't create it directly, use the one systray.AddMenuItem() returned</span></code></span>
+<span class="codeline" id="line-38"><code><span class="keyword">type</span> <a href="../../../pkg/fyne.io/systray.html#name-MenuItem" class="ident">MenuItem</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-39"><code>	<span class="comment">// ClickedCh is the channel which will be notified when the menu item is clicked</span></code></span>
+<span class="codeline" id="line-40"><code>	ClickedCh <span class="keyword">chan</span> <span class="keyword">struct</span>{}</code></span>
+<span class="codeline" id="line-41"><code></code></span>
+<span class="codeline" id="line-42"><code>	<span class="comment">// id uniquely identify a menu item, not supposed to be modified</span></code></span>
+<span class="codeline" id="line-43"><code>	id <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-44"><code>	<span class="comment">// title is the text shown on menu item</span></code></span>
+<span class="codeline" id="line-45"><code>	title <a href="../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-46"><code>	<span class="comment">// tooltip is the text shown when pointing to menu item</span></code></span>
+<span class="codeline" id="line-47"><code>	tooltip <a href="../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-48"><code>	<span class="comment">// disabled menu item is grayed out and has no effect when clicked</span></code></span>
+<span class="codeline" id="line-49"><code>	disabled <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-50"><code>	<span class="comment">// checked menu item has a tick before the title</span></code></span>
+<span class="codeline" id="line-51"><code>	checked <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-52"><code>	<span class="comment">// has the menu item a checkbox (Linux)</span></code></span>
+<span class="codeline" id="line-53"><code>	isCheckable <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-54"><code>	<span class="comment">// parent item, for sub menus</span></code></span>
+<span class="codeline" id="line-55"><code>	parent *<a href="#line-38" class="ident">MenuItem</a></code></span>
+<span class="codeline" id="line-56"><code>}</code></span>
+<span class="codeline" id="line-57"><code></code></span>
+<span class="codeline" id="line-58"><code><span class="keyword">func</span> (<label for="r2" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r3" class="ident"><a href="../../../imp/fyne.io/systray.MenuItem.html#name-.String" class="ident">String</a></label>() <a href="../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-59"><code>	<span class="keyword">if</span> <label for="r2" class="ident">item</label>.<a href="#line-55" class="ident">parent</a> == <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-60"><code>		<span class="keyword">return</span> <a href="../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../fmt/print.go.html#line-237" class="ident">Sprintf</a>(<span class="lit-string">"MenuItem[%d, %q]"</span>, <label for="r2" class="ident">item</label>.<a href="#line-43" class="ident">id</a>, <label for="r2" class="ident">item</label>.<a href="#line-45" class="ident">title</a>)</code></span>
+<span class="codeline" id="line-61"><code>	}</code></span>
+<span class="codeline" id="line-62"><code>	<span class="keyword">return</span> <a href="../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../fmt/print.go.html#line-237" class="ident">Sprintf</a>(<span class="lit-string">"MenuItem[%d, parent %d, %q]"</span>, <label for="r2" class="ident">item</label>.<a href="#line-43" class="ident">id</a>, <label for="r2" class="ident">item</label>.<a href="#line-55" class="ident">parent</a>.<a href="#line-43" class="ident">id</a>, <label for="r2" class="ident">item</label>.<a href="#line-45" class="ident">title</a>)</code></span>
+<span class="codeline" id="line-63"><code>}</code></span>
+<span class="codeline" id="line-64"><code></code></span>
+<span class="codeline" id="line-65"><code><span class="comment">// newMenuItem returns a populated MenuItem object</span></code></span>
+<span class="codeline" id="line-66"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../../pkg/fyne.io/systray.html#name-newMenuItem" class="ident">newMenuItem</a></label>(<label for="r5" class="ident">title</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r6" class="ident">tooltip</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r7" class="ident">parent</label> *<a href="#line-38" class="ident">MenuItem</a>) *<a href="#line-38" class="ident">MenuItem</a> {</code></span>
+<span class="codeline" id="line-67"><code>	<span class="keyword">return</span> &amp;<a href="#line-38" class="ident">MenuItem</a>{</code></span>
+<span class="codeline" id="line-68"><code>		<a href="#line-40" class="ident">ClickedCh</a>:   <a href="../../runtime/chan.go.html#line-73">make</a>(<span class="keyword">chan</span> <span class="keyword">struct</span>{}),</code></span>
+<span class="codeline" id="line-69"><code>		<a href="#line-43" class="ident">id</a>:          <a href="#line-19" class="ident">currentID</a>.<a href="../../sync/atomic/type.go.html#line-151" class="ident">Add</a>(<span class="lit-number">1</span>),</code></span>
+<span class="codeline" id="line-70"><code>		<a href="#line-45" class="ident">title</a>:       <label for="r5" class="ident">title</label>,</code></span>
+<span class="codeline" id="line-71"><code>		<a href="#line-47" class="ident">tooltip</a>:     <label for="r6" class="ident">tooltip</label>,</code></span>
+<span class="codeline" id="line-72"><code>		<a href="#line-49" class="ident">disabled</a>:    <a href="../../../pkg/builtin.html#name-false" class="ident">false</a>,</code></span>
+<span class="codeline" id="line-73"><code>		<a href="#line-51" class="ident">checked</a>:     <a href="../../../pkg/builtin.html#name-false" class="ident">false</a>,</code></span>
+<span class="codeline" id="line-74"><code>		<a href="#line-53" class="ident">isCheckable</a>: <a href="../../../pkg/builtin.html#name-false" class="ident">false</a>,</code></span>
+<span class="codeline" id="line-75"><code>		<a href="#line-55" class="ident">parent</a>:      <label for="r7" class="ident">parent</label>,</code></span>
+<span class="codeline" id="line-76"><code>	}</code></span>
+<span class="codeline" id="line-77"><code>}</code></span>
+<span class="codeline" id="line-78"><code></code></span>
+<span class="codeline" id="line-79"><code><span class="comment">// Run initializes GUI and starts the event loop, then invokes the onReady</span></code></span>
+<span class="codeline" id="line-80"><code><span class="comment">// callback. It blocks until systray.Quit() is called.</span></code></span>
+<span class="codeline" id="line-81"><code><span class="keyword">func</span> <label for="r8" class="ident"><a href="../../../pkg/fyne.io/systray.html#name-Run" class="ident">Run</a></label>(<label for="r9" class="ident">onReady</label>, <label for="r10" class="ident">onExit</label> <span class="keyword">func</span>()) {</code></span>
+<span class="codeline" id="line-82"><code>	<a href="systray_unix.go.html#line-137" class="ident">setInternalLoop</a>(<a href="../../../pkg/builtin.html#name-true" class="ident">true</a>)</code></span>
+<span class="codeline" id="line-83"><code>	<a href="#line-104" class="ident">Register</a>(<label for="r9" class="ident">onReady</label>, <label for="r10" class="ident">onExit</label>)</code></span>
+<span class="codeline" id="line-84"><code></code></span>
+<span class="codeline" id="line-85"><code>	<a href="systray_unix.go.html#line-144" class="ident">nativeLoop</a>()</code></span>
+<span class="codeline" id="line-86"><code>}</code></span>
+<span class="codeline" id="line-87"><code></code></span>
+<span class="codeline" id="line-88"><code><span class="comment">// RunWithExternalLoop allows the systemtray module to operate with other tookits.</span></code></span>
+<span class="codeline" id="line-89"><code><span class="comment">// The returned start and end functions should be called by the toolkit when the application has started and will end.</span></code></span>
+<span class="codeline" id="line-90"><code><span class="keyword">func</span> <label for="r11" class="ident"><a href="../../../pkg/fyne.io/systray.html#name-RunWithExternalLoop" class="ident">RunWithExternalLoop</a></label>(<label for="r12" class="ident">onReady</label>, <label for="r13" class="ident">onExit</label> <span class="keyword">func</span>()) (<label for="r14" class="ident">start</label>, <label for="r15" class="ident">end</label> <span class="keyword">func</span>()) {</code></span>
+<span class="codeline" id="line-91"><code>	<a href="#line-104" class="ident">Register</a>(<label for="r12" class="ident">onReady</label>, <label for="r13" class="ident">onExit</label>)</code></span>
+<span class="codeline" id="line-92"><code></code></span>
+<span class="codeline" id="line-93"><code>	<span class="keyword">return</span> <a href="systray_unix.go.html#line-160" class="ident">nativeStart</a>, <span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-94"><code>		<a href="systray_unix.go.html#line-151" class="ident">nativeEnd</a>()</code></span>
+<span class="codeline" id="line-95"><code>		<a href="#line-142" class="ident">Quit</a>()</code></span>
+<span class="codeline" id="line-96"><code>	}</code></span>
+<span class="codeline" id="line-97"><code>}</code></span>
+<span class="codeline" id="line-98"><code></code></span>
+<span class="codeline" id="line-99"><code><span class="comment">// Register initializes GUI and registers the callbacks but relies on the</span></code></span>
+<span class="codeline" id="line-100"><code><span class="comment">// caller to run the event loop somewhere else. It's useful if the program</span></code></span>
+<span class="codeline" id="line-101"><code><span class="comment">// needs to show other UI elements, for example, webview.</span></code></span>
+<span class="codeline" id="line-102"><code><span class="comment">// To overcome some OS weirdness, On macOS versions before Catalina, calling</span></code></span>
+<span class="codeline" id="line-103"><code><span class="comment">// this does exactly the same as Run().</span></code></span>
+<span class="codeline" id="line-104"><code><span class="keyword">func</span> <label for="r16" class="ident"><a href="../../../pkg/fyne.io/systray.html#name-Register" class="ident">Register</a></label>(<label for="r17" class="ident">onReady</label> <span class="keyword">func</span>(), <label for="r18" class="ident">onExit</label> <span class="keyword">func</span>()) {</code></span>
+<span class="codeline" id="line-105"><code>	<span class="keyword">if</span> <label for="r17" class="ident">onReady</label> == <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-106"><code>		<a href="#line-13" class="ident">systrayReady</a> = <span class="keyword">func</span>() {}</code></span>
+<span class="codeline" id="line-107"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-108"><code>		<span class="comment">// Run onReady on separate goroutine to avoid blocking event loop</span></code></span>
+<span class="codeline" id="line-109"><code>		<label for="r19" class="ident">readyCh</label> := <a href="../../runtime/chan.go.html#line-73">make</a>(<span class="keyword">chan</span> <span class="keyword">interface</span>{})</code></span>
+<span class="codeline" id="line-110"><code>		<span class="keyword">go</span> <span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-111"><code>			&lt;-<label for="r19" class="ident">readyCh</label></code></span>
+<span class="codeline" id="line-112"><code>			<label for="r17" class="ident">onReady</label>()</code></span>
+<span class="codeline" id="line-113"><code>		}()</code></span>
+<span class="codeline" id="line-114"><code>		<a href="#line-13" class="ident">systrayReady</a> = <span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-115"><code>			<a href="../../../pkg/builtin.html#name-close" class="ident">close</a>(<label for="r19" class="ident">readyCh</label>)</code></span>
+<span class="codeline" id="line-116"><code>		}</code></span>
+<span class="codeline" id="line-117"><code>	}</code></span>
+<span class="codeline" id="line-118"><code>	<span class="comment">// unlike onReady, onExit runs in the event loop to make sure it has time to</span></code></span>
+<span class="codeline" id="line-119"><code><span class="comment">	// finish before the process terminates</span></code></span>
+<span class="codeline" id="line-120"><code>	<span class="keyword">if</span> <label for="r18" class="ident">onExit</label> == <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-121"><code>		<label for="r18" class="ident">onExit</label> = <span class="keyword">func</span>() {}</code></span>
+<span class="codeline" id="line-122"><code>	}</code></span>
+<span class="codeline" id="line-123"><code>	<a href="#line-14" class="ident">systrayExit</a> = <label for="r18" class="ident">onExit</label></code></span>
+<span class="codeline" id="line-124"><code>	<a href="#line-15" class="ident">systrayExitCalled</a> = <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-125"><code>	<a href="systray_unix.go.html#line-141" class="ident">registerSystray</a>()</code></span>
+<span class="codeline" id="line-126"><code>}</code></span>
+<span class="codeline" id="line-127"><code></code></span>
+<span class="codeline" id="line-128"><code><span class="comment">// ResetMenu will remove all menu items</span></code></span>
+<span class="codeline" id="line-129"><code><span class="keyword">func</span> <label for="r20" class="ident"><a href="../../../pkg/fyne.io/systray.html#name-ResetMenu" class="ident">ResetMenu</a></label>() {</code></span>
+<span class="codeline" id="line-130"><code>	<a href="#line-17" class="ident">menuItemsLock</a>.<a href="../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-131"><code>	<label for="r21" class="ident">id</label> := <a href="#line-19" class="ident">currentID</a>.<a href="../../sync/atomic/type.go.html#line-137" class="ident">Load</a>()</code></span>
+<span class="codeline" id="line-132"><code>	<a href="#line-17" class="ident">menuItemsLock</a>.<a href="../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-133"><code>	<span class="keyword">for</span> <label for="r22" class="ident">i</label>, <label for="r23" class="ident">item</label> := <span class="keyword">range</span> <a href="#line-16" class="ident">menuItems</a> {</code></span>
+<span class="codeline" id="line-134"><code>		<span class="keyword">if</span> <label for="r22" class="ident">i</label> &lt; <label for="r21" class="ident">id</label> {</code></span>
+<span class="codeline" id="line-135"><code>			<label for="r23" class="ident">item</label>.<a href="#line-231" class="ident">Remove</a>()</code></span>
+<span class="codeline" id="line-136"><code>		}</code></span>
+<span class="codeline" id="line-137"><code>	}</code></span>
+<span class="codeline" id="line-138"><code>	<a href="systray_menu_unix.go.html#line-336" class="ident">resetMenu</a>()</code></span>
+<span class="codeline" id="line-139"><code>}</code></span>
+<span class="codeline" id="line-140"><code></code></span>
+<span class="codeline" id="line-141"><code><span class="comment">// Quit the systray</span></code></span>
+<span class="codeline" id="line-142"><code><span class="keyword">func</span> <label for="r24" class="ident"><a href="../../../pkg/fyne.io/systray.html#name-Quit" class="ident">Quit</a></label>() {</code></span>
+<span class="codeline" id="line-143"><code>	<a href="#line-20" class="ident">quitOnce</a>.<a href="../../sync/once.go.html#line-50" class="ident">Do</a>(<a href="systray_unix.go.html#line-156" class="ident">quit</a>)</code></span>
+<span class="codeline" id="line-144"><code>}</code></span>
+<span class="codeline" id="line-145"><code></code></span>
+<span class="codeline" id="line-146"><code><span class="comment">// AddMenuItem adds a menu item with the designated title and tooltip.</span></code></span>
+<span class="codeline" id="line-147"><code><span class="comment">// It can be safely invoked from different goroutines.</span></code></span>
+<span class="codeline" id="line-148"><code><span class="comment">// Created menu items are checkable on Windows and OSX by default. For Linux you have to use AddMenuItemCheckbox</span></code></span>
+<span class="codeline" id="line-149"><code><span class="keyword">func</span> <label for="r25" class="ident"><a href="../../../pkg/fyne.io/systray.html#name-AddMenuItem" class="ident">AddMenuItem</a></label>(<label for="r26" class="ident">title</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r27" class="ident">tooltip</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) *<a href="#line-38" class="ident">MenuItem</a> {</code></span>
+<span class="codeline" id="line-150"><code>	<label for="r28" class="ident">item</label> := <a href="#line-66" class="ident">newMenuItem</a>(<label for="r26" class="ident">title</label>, <label for="r27" class="ident">tooltip</label>, <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-151"><code>	<label for="r28" class="ident">item</label>.<a href="#line-266" class="ident">update</a>()</code></span>
+<span class="codeline" id="line-152"><code>	<span class="keyword">return</span> <label for="r28" class="ident">item</label></code></span>
+<span class="codeline" id="line-153"><code>}</code></span>
+<span class="codeline" id="line-154"><code></code></span>
+<span class="codeline" id="line-155"><code><span class="comment">// AddMenuItemCheckbox adds a menu item with the designated title and tooltip and a checkbox for Linux.</span></code></span>
+<span class="codeline" id="line-156"><code><span class="comment">// On other platforms there will be a check indicated next to the item if `checked` is true.</span></code></span>
+<span class="codeline" id="line-157"><code><span class="comment">// It can be safely invoked from different goroutines.</span></code></span>
+<span class="codeline" id="line-158"><code><span class="keyword">func</span> <label for="r29" class="ident"><a href="../../../pkg/fyne.io/systray.html#name-AddMenuItemCheckbox" class="ident">AddMenuItemCheckbox</a></label>(<label for="r30" class="ident">title</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r31" class="ident">tooltip</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r32" class="ident">checked</label> <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a>) *<a href="#line-38" class="ident">MenuItem</a> {</code></span>
+<span class="codeline" id="line-159"><code>	<label for="r33" class="ident">item</label> := <a href="#line-66" class="ident">newMenuItem</a>(<label for="r30" class="ident">title</label>, <label for="r31" class="ident">tooltip</label>, <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-160"><code>	<label for="r33" class="ident">item</label>.<a href="#line-53" class="ident">isCheckable</a> = <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-161"><code>	<label for="r33" class="ident">item</label>.<a href="#line-51" class="ident">checked</a> = <label for="r32" class="ident">checked</label></code></span>
+<span class="codeline" id="line-162"><code>	<label for="r33" class="ident">item</label>.<a href="#line-266" class="ident">update</a>()</code></span>
+<span class="codeline" id="line-163"><code>	<span class="keyword">return</span> <label for="r33" class="ident">item</label></code></span>
+<span class="codeline" id="line-164"><code>}</code></span>
+<span class="codeline" id="line-165"><code></code></span>
+<span class="codeline" id="line-166"><code><span class="comment">// AddSeparator adds a separator bar to the menu</span></code></span>
+<span class="codeline" id="line-167"><code><span class="keyword">func</span> <label for="r34" class="ident"><a href="../../../pkg/fyne.io/systray.html#name-AddSeparator" class="ident">AddSeparator</a></label>() {</code></span>
+<span class="codeline" id="line-168"><code>	<a href="systray_menu_unix.go.html#line-199" class="ident">addSeparator</a>(<a href="#line-19" class="ident">currentID</a>.<a href="../../sync/atomic/type.go.html#line-151" class="ident">Add</a>(<span class="lit-number">1</span>), <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-169"><code>}</code></span>
+<span class="codeline" id="line-170"><code></code></span>
+<span class="codeline" id="line-171"><code><span class="comment">// AddSeparator adds a separator bar to the submenu</span></code></span>
+<span class="codeline" id="line-172"><code><span class="keyword">func</span> (<label for="r35" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r36" class="ident">AddSeparator</label>() {</code></span>
+<span class="codeline" id="line-173"><code>	<a href="systray_menu_unix.go.html#line-199" class="ident">addSeparator</a>(<a href="#line-19" class="ident">currentID</a>.<a href="../../sync/atomic/type.go.html#line-151" class="ident">Add</a>(<span class="lit-number">1</span>), <label for="r35" class="ident">item</label>.<a href="#line-43" class="ident">id</a>)</code></span>
+<span class="codeline" id="line-174"><code>}</code></span>
+<span class="codeline" id="line-175"><code></code></span>
+<span class="codeline" id="line-176"><code><span class="comment">// AddSubMenuItem adds a nested sub-menu item with the designated title and tooltip.</span></code></span>
+<span class="codeline" id="line-177"><code><span class="comment">// It can be safely invoked from different goroutines.</span></code></span>
+<span class="codeline" id="line-178"><code><span class="comment">// Created menu items are checkable on Windows and OSX by default. For Linux you have to use AddSubMenuItemCheckbox</span></code></span>
+<span class="codeline" id="line-179"><code><span class="keyword">func</span> (<label for="r37" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r38" class="ident">AddSubMenuItem</label>(<label for="r39" class="ident">title</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r40" class="ident">tooltip</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) *<a href="#line-38" class="ident">MenuItem</a> {</code></span>
+<span class="codeline" id="line-180"><code>	<label for="r41" class="ident">child</label> := <a href="#line-66" class="ident">newMenuItem</a>(<label for="r39" class="ident">title</label>, <label for="r40" class="ident">tooltip</label>, <label for="r37" class="ident">item</label>)</code></span>
+<span class="codeline" id="line-181"><code>	<label for="r41" class="ident">child</label>.<a href="#line-266" class="ident">update</a>()</code></span>
+<span class="codeline" id="line-182"><code>	<span class="keyword">return</span> <label for="r41" class="ident">child</label></code></span>
+<span class="codeline" id="line-183"><code>}</code></span>
+<span class="codeline" id="line-184"><code></code></span>
+<span class="codeline" id="line-185"><code><span class="comment">// AddSubMenuItemCheckbox adds a nested sub-menu item with the designated title and tooltip and a checkbox for Linux.</span></code></span>
+<span class="codeline" id="line-186"><code><span class="comment">// It can be safely invoked from different goroutines.</span></code></span>
+<span class="codeline" id="line-187"><code><span class="comment">// On Windows and OSX this is the same as calling AddSubMenuItem</span></code></span>
+<span class="codeline" id="line-188"><code><span class="keyword">func</span> (<label for="r42" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r43" class="ident">AddSubMenuItemCheckbox</label>(<label for="r44" class="ident">title</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r45" class="ident">tooltip</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r46" class="ident">checked</label> <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a>) *<a href="#line-38" class="ident">MenuItem</a> {</code></span>
+<span class="codeline" id="line-189"><code>	<label for="r47" class="ident">child</label> := <a href="#line-66" class="ident">newMenuItem</a>(<label for="r44" class="ident">title</label>, <label for="r45" class="ident">tooltip</label>, <label for="r42" class="ident">item</label>)</code></span>
+<span class="codeline" id="line-190"><code>	<label for="r47" class="ident">child</label>.<a href="#line-53" class="ident">isCheckable</a> = <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-191"><code>	<label for="r47" class="ident">child</label>.<a href="#line-51" class="ident">checked</a> = <label for="r46" class="ident">checked</label></code></span>
+<span class="codeline" id="line-192"><code>	<label for="r47" class="ident">child</label>.<a href="#line-266" class="ident">update</a>()</code></span>
+<span class="codeline" id="line-193"><code>	<span class="keyword">return</span> <label for="r47" class="ident">child</label></code></span>
+<span class="codeline" id="line-194"><code>}</code></span>
+<span class="codeline" id="line-195"><code></code></span>
+<span class="codeline" id="line-196"><code><span class="comment">// SetTitle set the text to display on a menu item</span></code></span>
+<span class="codeline" id="line-197"><code><span class="keyword">func</span> (<label for="r48" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r49" class="ident">SetTitle</label>(<label for="r50" class="ident">title</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
+<span class="codeline" id="line-198"><code>	<label for="r48" class="ident">item</label>.<a href="#line-45" class="ident">title</a> = <label for="r50" class="ident">title</label></code></span>
+<span class="codeline" id="line-199"><code>	<label for="r48" class="ident">item</label>.<a href="#line-266" class="ident">update</a>()</code></span>
+<span class="codeline" id="line-200"><code>}</code></span>
+<span class="codeline" id="line-201"><code></code></span>
+<span class="codeline" id="line-202"><code><span class="comment">// SetTooltip set the tooltip to show when mouse hover</span></code></span>
+<span class="codeline" id="line-203"><code><span class="keyword">func</span> (<label for="r51" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r52" class="ident">SetTooltip</label>(<label for="r53" class="ident">tooltip</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
+<span class="codeline" id="line-204"><code>	<label for="r51" class="ident">item</label>.<a href="#line-47" class="ident">tooltip</a> = <label for="r53" class="ident">tooltip</label></code></span>
+<span class="codeline" id="line-205"><code>	<label for="r51" class="ident">item</label>.<a href="#line-266" class="ident">update</a>()</code></span>
+<span class="codeline" id="line-206"><code>}</code></span>
+<span class="codeline" id="line-207"><code></code></span>
+<span class="codeline" id="line-208"><code><span class="comment">// Disabled checks if the menu item is disabled</span></code></span>
+<span class="codeline" id="line-209"><code><span class="keyword">func</span> (<label for="r54" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r55" class="ident"><a href="../../../imp/fyne.io/systray.MenuItem.html#name-.Disabled" class="ident">Disabled</a></label>() <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-210"><code>	<span class="keyword">return</span> <label for="r54" class="ident">item</label>.<a href="#line-49" class="ident">disabled</a></code></span>
+<span class="codeline" id="line-211"><code>}</code></span>
+<span class="codeline" id="line-212"><code></code></span>
+<span class="codeline" id="line-213"><code><span class="comment">// Enable a menu item regardless if it's previously enabled or not</span></code></span>
+<span class="codeline" id="line-214"><code><span class="keyword">func</span> (<label for="r56" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r57" class="ident"><a href="../../../imp/fyne.io/systray.MenuItem.html#name-.Enable" class="ident">Enable</a></label>() {</code></span>
+<span class="codeline" id="line-215"><code>	<label for="r56" class="ident">item</label>.<a href="#line-49" class="ident">disabled</a> = <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-216"><code>	<label for="r56" class="ident">item</label>.<a href="#line-266" class="ident">update</a>()</code></span>
+<span class="codeline" id="line-217"><code>}</code></span>
+<span class="codeline" id="line-218"><code></code></span>
+<span class="codeline" id="line-219"><code><span class="comment">// Disable a menu item regardless if it's previously disabled or not</span></code></span>
+<span class="codeline" id="line-220"><code><span class="keyword">func</span> (<label for="r58" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r59" class="ident"><a href="../../../imp/fyne.io/systray.MenuItem.html#name-.Disable" class="ident">Disable</a></label>() {</code></span>
+<span class="codeline" id="line-221"><code>	<label for="r58" class="ident">item</label>.<a href="#line-49" class="ident">disabled</a> = <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-222"><code>	<label for="r58" class="ident">item</label>.<a href="#line-266" class="ident">update</a>()</code></span>
+<span class="codeline" id="line-223"><code>}</code></span>
+<span class="codeline" id="line-224"><code></code></span>
+<span class="codeline" id="line-225"><code><span class="comment">// Hide hides a menu item</span></code></span>
+<span class="codeline" id="line-226"><code><span class="keyword">func</span> (<label for="r60" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r61" class="ident">Hide</label>() {</code></span>
+<span class="codeline" id="line-227"><code>	<a href="systray_menu_unix.go.html#line-293" class="ident">hideMenuItem</a>(<label for="r60" class="ident">item</label>)</code></span>
+<span class="codeline" id="line-228"><code>}</code></span>
+<span class="codeline" id="line-229"><code></code></span>
+<span class="codeline" id="line-230"><code><span class="comment">// Remove removes a menu item</span></code></span>
+<span class="codeline" id="line-231"><code><span class="keyword">func</span> (<label for="r62" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r63" class="ident">Remove</label>() {</code></span>
+<span class="codeline" id="line-232"><code>	<a href="systray_menu_unix.go.html#line-274" class="ident">removeMenuItem</a>(<label for="r62" class="ident">item</label>)</code></span>
+<span class="codeline" id="line-233"><code>	<a href="#line-17" class="ident">menuItemsLock</a>.<a href="../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-234"><code>	<a href="../../../pkg/builtin.html#name-delete" class="ident">delete</a>(<a href="#line-16" class="ident">menuItems</a>, <label for="r62" class="ident">item</label>.<a href="#line-43" class="ident">id</a>)</code></span>
+<span class="codeline" id="line-235"><code>	<a href="../../runtime/chan.go.html#line-772"><span class="keyword">select</span></a> {</code></span>
+<span class="codeline" id="line-236"><code>	<span class="keyword">case</span> <a href="../../runtime/chan.go.html#line-488">&lt;-</a><label for="r62" class="ident">item</label>.<a href="#line-40" class="ident">ClickedCh</a>:</code></span>
+<span class="codeline" id="line-237"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-238"><code>	}</code></span>
+<span class="codeline" id="line-239"><code>	<a href="../../../pkg/builtin.html#name-close" class="ident">close</a>(<label for="r62" class="ident">item</label>.<a href="#line-40" class="ident">ClickedCh</a>)</code></span>
+<span class="codeline" id="line-240"><code>	<a href="#line-17" class="ident">menuItemsLock</a>.<a href="../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-241"><code>}</code></span>
+<span class="codeline" id="line-242"><code></code></span>
+<span class="codeline" id="line-243"><code><span class="comment">// Show shows a previously hidden menu item</span></code></span>
+<span class="codeline" id="line-244"><code><span class="keyword">func</span> (<label for="r64" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r65" class="ident">Show</label>() {</code></span>
+<span class="codeline" id="line-245"><code>	<a href="systray_menu_unix.go.html#line-303" class="ident">showMenuItem</a>(<label for="r64" class="ident">item</label>)</code></span>
+<span class="codeline" id="line-246"><code>}</code></span>
+<span class="codeline" id="line-247"><code></code></span>
+<span class="codeline" id="line-248"><code><span class="comment">// Checked returns if the menu item has a check mark</span></code></span>
+<span class="codeline" id="line-249"><code><span class="keyword">func</span> (<label for="r66" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r67" class="ident">Checked</label>() <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-250"><code>	<span class="keyword">return</span> <label for="r66" class="ident">item</label>.<a href="#line-51" class="ident">checked</a></code></span>
+<span class="codeline" id="line-251"><code>}</code></span>
+<span class="codeline" id="line-252"><code></code></span>
+<span class="codeline" id="line-253"><code><span class="comment">// Check a menu item regardless if it's previously checked or not</span></code></span>
+<span class="codeline" id="line-254"><code><span class="keyword">func</span> (<label for="r68" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r69" class="ident">Check</label>() {</code></span>
+<span class="codeline" id="line-255"><code>	<label for="r68" class="ident">item</label>.<a href="#line-51" class="ident">checked</a> = <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-256"><code>	<label for="r68" class="ident">item</label>.<a href="#line-266" class="ident">update</a>()</code></span>
+<span class="codeline" id="line-257"><code>}</code></span>
+<span class="codeline" id="line-258"><code></code></span>
+<span class="codeline" id="line-259"><code><span class="comment">// Uncheck a menu item regardless if it's previously unchecked or not</span></code></span>
+<span class="codeline" id="line-260"><code><span class="keyword">func</span> (<label for="r70" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r71" class="ident">Uncheck</label>() {</code></span>
+<span class="codeline" id="line-261"><code>	<label for="r70" class="ident">item</label>.<a href="#line-51" class="ident">checked</a> = <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-262"><code>	<label for="r70" class="ident">item</label>.<a href="#line-266" class="ident">update</a>()</code></span>
+<span class="codeline" id="line-263"><code>}</code></span>
+<span class="codeline" id="line-264"><code></code></span>
+<span class="codeline" id="line-265"><code><span class="comment">// update propagates changes on a menu item to systray</span></code></span>
+<span class="codeline" id="line-266"><code><span class="keyword">func</span> (<label for="r72" class="ident">item</label> *<a href="#line-38" class="ident">MenuItem</a>) <label for="r73" class="ident">update</label>() {</code></span>
+<span class="codeline" id="line-267"><code>	<a href="#line-17" class="ident">menuItemsLock</a>.<a href="../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-268"><code>	<a href="#line-16" class="ident">menuItems</a>[<label for="r72" class="ident">item</label>.<a href="#line-43" class="ident">id</a>] = <label for="r72" class="ident">item</label></code></span>
+<span class="codeline" id="line-269"><code>	<a href="#line-17" class="ident">menuItemsLock</a>.<a href="../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-270"><code>	<a href="systray_menu_unix.go.html#line-168" class="ident">addOrUpdateMenuItem</a>(<label for="r72" class="ident">item</label>)</code></span>
+<span class="codeline" id="line-271"><code>}</code></span>
+<span class="codeline" id="line-272"><code></code></span>
+<span class="codeline" id="line-273"><code><span class="keyword">func</span> <label for="r74" class="ident"><a href="../../../pkg/fyne.io/systray.html#name-systrayMenuItemSelected" class="ident">systrayMenuItemSelected</a></label>(<label for="r75" class="ident">id</label> <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) {</code></span>
+<span class="codeline" id="line-274"><code>	<a href="#line-17" class="ident">menuItemsLock</a>.<a href="../../sync/rwmutex.go.html#line-65" class="ident">RLock</a>()</code></span>
+<span class="codeline" id="line-275"><code>	<label for="r76" class="ident">item</label>, <label for="r77" class="ident">ok</label> := <a href="#line-16" class="ident">menuItems</a>[<label for="r75" class="ident">id</label>]</code></span>
+<span class="codeline" id="line-276"><code>	<a href="#line-17" class="ident">menuItemsLock</a>.<a href="../../sync/rwmutex.go.html#line-112" class="ident">RUnlock</a>()</code></span>
+<span class="codeline" id="line-277"><code>	<span class="keyword">if</span> !<label for="r77" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-278"><code>		<a href="../../../pkg/log.html" class="ident i1">log</a>.<a href="../../log/log.go.html#line-396" class="ident">Printf</a>(<span class="lit-string">"systray error: no menu item with ID %d\n"</span>, <label for="r75" class="ident">id</label>)</code></span>
+<span class="codeline" id="line-279"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-280"><code>	}</code></span>
+<span class="codeline" id="line-281"><code>	<a href="../../runtime/chan.go.html#line-752"><span class="keyword">select</span></a> {</code></span>
+<span class="codeline" id="line-282"><code>	<span class="keyword">case</span> <label for="r76" class="ident">item</label>.<a href="#line-40" class="ident">ClickedCh</a> <a href="../../runtime/chan.go.html#line-171">&lt;-</a> <span class="keyword">struct</span>{}{}:</code></span>
+<span class="codeline" id="line-283"><code>	<span class="comment">// in case no one waiting for the channel</span></code></span>
+<span class="codeline" id="line-284"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-285"><code>	}</code></span>
+<span class="codeline" id="line-286"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

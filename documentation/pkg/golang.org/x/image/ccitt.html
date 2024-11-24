@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: golang.org/x/image/ccitt</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>ccitt</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-golang.org/x/image/ccitt">golang.org/x/image/ccitt</a><i> (on <a href="https://pkg.go.dev/golang.org/x/image/ccitt" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/golang.org/x/image/ccitt.html">5 packages</a>, and imported by <a href="../../../../dep/golang.org/x/image/ccitt.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#doc">d</a> <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html">reader.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package ccitt implements a CCITT (fax) image decoder.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../src/golang.org/x/image/ccitt/table.go.html">table.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/golang.org/x/image/ccitt/writer.go.html">writer.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 8, in which 3 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Options" data-popularity="70">	<input type='checkbox' class="fold" id="Options-fold-content"><label for="Options-fold-content"> type <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-57">Options</a> <i>(struct)</i></label><span id='Options-fold-content-docs' class="fold-docs">
+<span class="md-text">		Options are optional parameters.</span>
+
+		<input type='checkbox' class="fold" id="Options-fold-fields"><label for="Options-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='Options-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Options-fold-field-Align"><label for="Options-fold-field-Align"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-59">Align</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='Options-fold-field-Align-docs' class="fold-docs">
+<span class="md-text">				Align means that some variable-bit-width codes are byte-aligned.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Options-fold-field-Invert"><label for="Options-fold-field-Invert"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-61">Invert</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='Options-fold-field-Invert-docs' class="fold-docs">
+<span class="md-text">				Invert means that black is the 1 bit or 0xFF byte, and white is 0.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Options-fold-params"><label for="Options-fold-params">As Inputs Of (<i>at least 2, both are exported</i>)</label><span id='Options-fold-params-items' class="fold-items"><span>
+			func <a href="#name-DecodeIntoGray">DecodeIntoGray</a>(dst *<a href="../../../image.html">image</a>.<a href="../../../image.html#name-Gray">Gray</a>, r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>, order <a href="#name-Order">Order</a>, sf <a href="#name-SubFormat">SubFormat</a>, opts *<b>Options</b>) <a href="../../../builtin.html#name-error">error</a></span><span>
+			func <a href="#name-NewReader">NewReader</a>(r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>, order <a href="#name-Order">Order</a>, sf <a href="#name-SubFormat">SubFormat</a>, width <a href="../../../builtin.html#name-int">int</a>, height <a href="../../../builtin.html#name-int">int</a>, opts *<b>Options</b>) <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Order" data-popularity="155">	<input type='checkbox' class="fold" id="Order-fold-content"><label for="Order-fold-content"> type <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-33">Order</a> <a href="../../../builtin.html#name-uint32">uint32</a> <i>(basic type)</i></label><span id='Order-fold-content-docs' class="fold-docs">
+<span class="md-text">		Order specifies the bit ordering in a CCITT data stream.</span>
+
+		<input type='checkbox' class="fold" id="Order-fold-results"><label for="Order-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='Order-fold-results-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Order-showhide-inputofs"><i><label for="Order-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="Order-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func golang.org/x/image/tiff.<a href="tiff.html#name-ccittFillOrder">ccittFillOrder</a>(tiffFillOrder <a href="../../../builtin.html#name-uint">uint</a>) <b>Order</b></i></span></span>
+		<input type='checkbox' class="fold" id="Order-fold-params"><label for="Order-fold-params">As Inputs Of (<i>at least 2, both are exported</i>)</label><span id='Order-fold-params-items' class="fold-items"><span>
+			func <a href="#name-DecodeIntoGray">DecodeIntoGray</a>(dst *<a href="../../../image.html">image</a>.<a href="../../../image.html#name-Gray">Gray</a>, r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>, order <b>Order</b>, sf <a href="#name-SubFormat">SubFormat</a>, opts *<a href="#name-Options">Options</a>) <a href="../../../builtin.html#name-error">error</a></span><span>
+			func <a href="#name-NewReader">NewReader</a>(r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>, order <b>Order</b>, sf <a href="#name-SubFormat">SubFormat</a>, width <a href="../../../builtin.html#name-int">int</a>, height <a href="../../../builtin.html#name-int">int</a>, opts *<a href="#name-Options">Options</a>) <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a></span></span>
+		<input type='checkbox' class="fold" id="Order-fold-values"><label for="Order-fold-values">As Types Of (<i>total 2, both are exported</i>)</label><span id='Order-fold-values-items' class="fold-items"><span>
+			const <a href="#name-LSB">LSB</a></span><span>
+			const <a href="#name-MSB">MSB</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-SubFormat" data-popularity="80">	<input type='checkbox' class="fold" id="SubFormat-fold-content"><label for="SubFormat-fold-content"> type <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-45">SubFormat</a> <a href="../../../builtin.html#name-uint32">uint32</a> <i>(basic type)</i></label><span id='SubFormat-fold-content-docs' class="fold-docs">
+<span class="md-text">		SubFormat represents that the CCITT format consists of a number of
+		sub-formats. Decoding or encoding a CCITT data stream requires knowing the
+		sub-format context. It is not represented in the data stream per se.</span>
+
+		<input type='checkbox' class="fold" id="SubFormat-fold-params"><label for="SubFormat-fold-params">As Inputs Of (<i>at least 2, both are exported</i>)</label><span id='SubFormat-fold-params-items' class="fold-items"><span>
+			func <a href="#name-DecodeIntoGray">DecodeIntoGray</a>(dst *<a href="../../../image.html">image</a>.<a href="../../../image.html#name-Gray">Gray</a>, r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>, order <a href="#name-Order">Order</a>, sf <b>SubFormat</b>, opts *<a href="#name-Options">Options</a>) <a href="../../../builtin.html#name-error">error</a></span><span>
+			func <a href="#name-NewReader">NewReader</a>(r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>, order <a href="#name-Order">Order</a>, sf <b>SubFormat</b>, width <a href="../../../builtin.html#name-int">int</a>, height <a href="../../../builtin.html#name-int">int</a>, opts *<a href="#name-Options">Options</a>) <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a></span></span>
+		<input type='checkbox' class="fold" id="SubFormat-fold-values"><label for="SubFormat-fold-values">As Types Of (<i>total 2, both are exported</i>)</label><span id='SubFormat-fold-values-items' class="fold-items"><span>
+			const <a href="#name-Group3">Group3</a></span><span>
+			const <a href="#name-Group4">Group4</a></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 5 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 5 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-bitReader" data-popularity="170">	<input type='checkbox' class="fold" id="bitReader-fold-content"><label for="bitReader-fold-content"> type <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-131">bitReader</a> <i>(struct)</i></label><span id='bitReader-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="bitReader-fold-fields"><label for="bitReader-fold-fields">Fields (<i>total 8, none are exported</i>)</label><span id='bitReader-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="bitReader-showhide-fields"><i><label for="bitReader-showhide-fields" class="show-inline">/* 8 unexporteds ... */</label><label for="bitReader-showhide-fields" class="hide-inline">/* 8 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="bitReader-fold-field-bits"><label for="bitReader-fold-field-bits"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-143">bits</a> <i><a href="../../../builtin.html#name-uint64">uint64</a></i></label><span id='bitReader-fold-field-bits-docs' class="fold-docs">
+<span class="md-text">				The high nBits bits of the bits field hold upcoming bits in MSB order.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="bitReader-fold-field-br"><label for="bitReader-fold-field-br"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-147">br</a> <i><a href="../../../builtin.html#name-uint32">uint32</a></i></label><span id='bitReader-fold-field-br-docs' class="fold-docs">
+<span class="md-text">				bytes[br:bw] holds bytes read from r but not yet loaded into bits.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-148">bw</a> <i><a href="../../../builtin.html#name-uint32">uint32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-149">bytes</a> <i>[1024]<a href="../../../builtin.html#name-uint8">uint8</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-144">nBits</a> <i><a href="../../../builtin.html#name-uint32">uint32</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="bitReader-fold-field-order"><label for="bitReader-fold-field-order"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-140">order</a> <i><a href="#name-Order">Order</a></i></label><span id='bitReader-fold-field-order-docs' class="fold-docs">
+<span class="md-text">				order is whether to process r's bytes LSB first or MSB first.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-132">r</a> <i><a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="bitReader-fold-field-readErr"><label for="bitReader-fold-field-readErr"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-137">readErr</a> <i><a href="../../../builtin.html#name-error">error</a></i></label><span id='bitReader-fold-field-readErr-docs' class="fold-docs">
+<span class="md-text">				readErr is the error returned from the most recent r.Read call. As the
+				io.Reader documentation says, when r.Read returns (n, err), "always
+				process the n &gt; 0 bytes returned before considering the error err".</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="bitReader-fold-methods"><label for="bitReader-fold-methods">Methods (<i>total 2, neither is exported</i>)</label><span id='bitReader-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="bitReader-showhide-methods"><i><label for="bitReader-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="bitReader-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*bitReader) <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-152">alignToByteBoundary</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*bitReader) <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-166">nextBit</a>() (<a href="../../../builtin.html#name-uint64">uint64</a>, <a href="../../../builtin.html#name-error">error</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="bitReader-fold-params"><label for="bitReader-fold-params">As Inputs Of (<i>at least 2, neither is exported</i>)</label><span id='bitReader-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="bitReader-showhide-outputofs"><i><label for="bitReader-showhide-outputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="bitReader-showhide-outputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-decode">decode</a>(b *<b>bitReader</b>, decodeTable [][2]<a href="../../../builtin.html#name-int16">int16</a>) (<a href="../../../builtin.html#name-uint32">uint32</a>, <a href="../../../builtin.html#name-error">error</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-decodeEOL">decodeEOL</a>(b *<b>bitReader</b>) <a href="../../../builtin.html#name-error">error</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-bitString" data-popularity="0">	<input type='checkbox' class="fold" id="bitString-fold-content"><label for="bitString-fold-content"> type <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-714">bitString</a> <i>(struct)</i></label><span id='bitString-fold-content-docs' class="fold-docs">
+<span class="md-text">		bitString is a pair of uint32 values representing a bit code.
+		The nBits low bits of bits make up the actual bit code.
+		Eg. bitString{0x0004, 8} represents the bitcode "00000100".</span>
+
+		<input type='checkbox' class="fold" id="bitString-fold-fields"><label for="bitString-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='bitString-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="bitString-showhide-fields"><i><label for="bitString-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="bitString-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-715">bits</a> <i><a href="../../../builtin.html#name-uint32">uint32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-716">nBits</a> <i><a href="../../../builtin.html#name-uint32">uint32</a></i></span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-bitWriter" data-popularity="200">	<input type='checkbox' class="fold" id="bitWriter-fold-content"><label for="bitWriter-fold-content"> type <a href="../../../../src/golang.org/x/image/ccitt/writer.go.html#line-12">bitWriter</a> <i>(struct)</i></label><span id='bitWriter-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="bitWriter-fold-fields"><label for="bitWriter-fold-fields">Fields (<i>total 6, none are exported</i>)</label><span id='bitWriter-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="bitWriter-showhide-fields"><i><label for="bitWriter-showhide-fields" class="show-inline">/* 6 unexporteds ... */</label><label for="bitWriter-showhide-fields" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="bitWriter-fold-field-bits"><label for="bitWriter-fold-field-bits"><a href="../../../../src/golang.org/x/image/ccitt/writer.go.html#line-19">bits</a> <i><a href="../../../builtin.html#name-uint64">uint64</a></i></label><span id='bitWriter-fold-field-bits-docs' class="fold-docs">
+<span class="md-text">				The high nBits bits of the bits field hold encoded bits to be written to w.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="bitWriter-fold-field-bw"><label for="bitWriter-fold-field-bw"><a href="../../../../src/golang.org/x/image/ccitt/writer.go.html#line-24">bw</a> <i><a href="../../../builtin.html#name-uint32">uint32</a></i></label><span id='bitWriter-fold-field-bw-docs' class="fold-docs">
+<span class="md-text">				bytes[:bw] holds encoded bytes not yet written to w.
+				Overflow protection is ensured by using a multiple of 8 as bytes length.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/writer.go.html#line-25">bytes</a> <i>[1024]<a href="../../../builtin.html#name-uint8">uint8</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/writer.go.html#line-20">nBits</a> <i><a href="../../../builtin.html#name-uint32">uint32</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="bitWriter-fold-field-order"><label for="bitWriter-fold-field-order"><a href="../../../../src/golang.org/x/image/ccitt/writer.go.html#line-16">order</a> <i><a href="#name-Order">Order</a></i></label><span id='bitWriter-fold-field-order-docs' class="fold-docs">
+<span class="md-text">				order is whether to process w's bytes LSB first or MSB first.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/writer.go.html#line-13">w</a> <i><a href="../../../io.html">io</a>.<a href="../../../io.html#name-Writer">Writer</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="bitWriter-fold-methods"><label for="bitWriter-fold-methods">Methods (<i>total 4, none are exported</i>)</label><span id='bitWriter-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="bitWriter-showhide-methods"><i><label for="bitWriter-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="bitWriter-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="bitWriter-fold-method-alignToByteBoundary"><label for="bitWriter-fold-method-alignToByteBoundary">(*bitWriter) <a href="../../../../src/golang.org/x/image/ccitt/writer.go.html#line-66">alignToByteBoundary</a>() <a href="../../../builtin.html#name-error">error</a></label><span id='bitWriter-fold-method-alignToByteBoundary-docs' class="fold-docs">
+<span class="md-text">				alignToByteBoundary rounds b.nBits up to a multiple of 8.
+				If all 64 bits are used, flush them to bitWriter's bytes.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="bitWriter-fold-method-close"><label for="bitWriter-fold-method-close">(*bitWriter) <a href="../../../../src/golang.org/x/image/ccitt/writer.go.html#line-48">close</a>() <a href="../../../builtin.html#name-error">error</a></label><span id='bitWriter-fold-method-close-docs' class="fold-docs">
+<span class="md-text">				close finalizes a bitcode stream by writing any
+				pending bits to bitWriter's underlying io.Writer.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="bitWriter-fold-method-flushBits"><label for="bitWriter-fold-method-flushBits">(*bitWriter) <a href="../../../../src/golang.org/x/image/ccitt/writer.go.html#line-30">flushBits</a>() <a href="../../../builtin.html#name-error">error</a></label><span id='bitWriter-fold-method-flushBits-docs' class="fold-docs">
+<span class="md-text">				flushBits copies 64 bits from b.bits to b.bytes. If b.bytes is then full, it
+				is written to b.w.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="bitWriter-fold-method-writeCode"><label for="bitWriter-fold-method-writeCode">(*bitWriter) <a href="../../../../src/golang.org/x/image/ccitt/writer.go.html#line-74">writeCode</a>(bs <a href="#name-bitString">bitString</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='bitWriter-fold-method-writeCode-docs' class="fold-docs">
+<span class="md-text">				writeCode writes a variable length bitcode to b's underlying io.Writer.</span>
+</span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-reader" data-popularity="590">	<input type='checkbox' class="fold" id="reader-fold-content"><label for="reader-fold-content"> type <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-263">reader</a> <i>(struct)</i></label><span id='reader-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="reader-fold-fields"><label for="reader-fold-fields">Fields (<i>total 15, none are exported</i>)</label><span id='reader-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="reader-showhide-fields"><i><label for="reader-showhide-fields" class="show-inline">/* 15 unexporteds ... */</label><label for="reader-showhide-fields" class="hide-inline">/* 15 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="reader-fold-field-align"><label for="reader-fold-field-align"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-300">align</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='reader-fold-field-align-docs' class="fold-docs">
+<span class="md-text">				These fields are copied from the *Options (which may be nil).</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="reader-fold-field-atStartOfRow"><label for="reader-fold-field-atStartOfRow"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-305">atStartOfRow</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='reader-fold-field-atStartOfRow-docs' class="fold-docs">
+<span class="md-text">				atStartOfRow is whether we have just started the row. Some parts of the
+				spec say to treat this situation as if "wi = -1".</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-264">br</a> <i><a href="#name-bitReader">bitReader</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="reader-fold-field-curr"><label for="reader-fold-field-curr"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-282">curr</a> <i>[]<a href="../../../builtin.html#name-byte">byte</a></i></label><span id='reader-fold-field-curr-docs' class="fold-docs">
+<span class="md-text">				curr and prev hold the current and previous rows. Each element is either
+				0x00 (black) or 0xFF (white).
+				
+				prev may be nil, when processing the first row.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-301">invert</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="reader-fold-field-penColorIsWhite"><label for="reader-fold-field-penColorIsWhite"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-308">penColorIsWhite</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='reader-fold-field-penColorIsWhite-docs' class="fold-docs">
+<span class="md-text">				penColorIsWhite is whether the next run is black or white.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-283">prev</a> <i>[]<a href="../../../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="reader-fold-field-readErr"><label for="reader-fold-field-readErr"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-327">readErr</a> <i><a href="../../../builtin.html#name-error">error</a></i></label><span id='reader-fold-field-readErr-docs' class="fold-docs">
+<span class="md-text">				readErr is a sticky error for the Read method.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="reader-fold-field-ri"><label for="reader-fold-field-ri"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-290">ri</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='reader-fold-field-ri-docs' class="fold-docs">
+<span class="md-text">				ri is the read index. curr[:ri] are those bytes of curr that have been
+				passed along via the Read method.
+				
+				When the reader is driven through DecodeIntoGray, instead of through the
+				io.Reader interface, this field is unused.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="reader-fold-field-rowsRemaining"><label for="reader-fold-field-rowsRemaining"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-276">rowsRemaining</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='reader-fold-field-rowsRemaining-docs' class="fold-docs">
+<span class="md-text">				rowsRemaining starts at the image height in pixels, when the reader is
+				driven through the io.Reader interface, and decrements to zero as rows
+				are decoded. Alternatively, it may be negative if the image height is
+				not known in advance at the time of the NewReader call.
+				
+				When driven through DecodeIntoGray, this field is unused.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="reader-fold-field-seenStartOfImage"><label for="reader-fold-field-seenStartOfImage"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-311">seenStartOfImage</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='reader-fold-field-seenStartOfImage-docs' class="fold-docs">
+<span class="md-text">				seenStartOfImage is whether we've called the startDecode method.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-265">subFormat</a> <i><a href="#name-SubFormat">SubFormat</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="reader-fold-field-truncated"><label for="reader-fold-field-truncated"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-324">truncated</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='reader-fold-field-truncated-docs' class="fold-docs">
+<span class="md-text">				truncated is whether the input is missing the final 6 consecutive EOL's
+				(for Group3) or 2 consecutive EOL's (for Group4). Omitting that trailer
+				(but otherwise padding to a byte boundary, with either all 0 bits or all
+				1 bits) is invalid according to the spec, but happens in practice when
+				exporting from Adobe Acrobat to TIFF + CCITT. This package silently
+				ignores the format error for CCITT input that has been truncated in that
+				fashion, returning the full decoded image.
+				
+				Detecting trailer truncation (just after the final row of pixels)
+				requires knowing which row is the final row, and therefore does not
+				trigger if the image height is not known in advance.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="reader-fold-field-wi"><label for="reader-fold-field-wi"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-297">wi</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='reader-fold-field-wi-docs' class="fold-docs">
+<span class="md-text">				wi is the write index. curr[:wi] are those bytes of curr that have
+				already been decoded via the decodeRow method.
+				
+				What this implementation calls wi is roughly equivalent to what the spec
+				calls the a0 index.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="reader-fold-field-width"><label for="reader-fold-field-width"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-268">width</a> <i><a href="../../../builtin.html#name-int">int</a></i></label><span id='reader-fold-field-width-docs' class="fold-docs">
+<span class="md-text">				width is the image width in pixels.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="reader-fold-methods"><label for="reader-fold-methods">Methods (<i>total 8, in which 1 is exported</i>)</label><span id='reader-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*reader) <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-330">Read</a>(p []<a href="../../../builtin.html#name-byte">byte</a>) (<a href="../../../builtin.html#name-int">int</a>, <a href="../../../builtin.html#name-error">error</a>)</span></span>
+			<input type='checkbox' checked class="showhide" id="reader-showhide-methods"><i><label for="reader-showhide-methods" class="show-inline">/* 7 unexporteds ... */</label><label for="reader-showhide-methods" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*reader) <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-487">decodeEOL</a>() <a href="../../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*reader) <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-491">decodeRow</a>(finalRow <a href="../../../builtin.html#name-bool">bool</a>) <a href="../../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*reader) <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-537">decodeRun</a>() <a href="../../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="reader-fold-method-findB"><label for="reader-fold-method-findB">(*reader) <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-618">findB</a>(whichB <a href="../../../builtin.html#name-bool">bool</a>) <a href="../../../builtin.html#name-int">int</a></label><span id='reader-fold-method-findB-docs' class="fold-docs">
+<span class="md-text">				findB finds either the b1 or b2 value.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*reader) <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-441">finishDecode</a>(alreadySeenEOL <a href="../../../builtin.html#name-bool">bool</a>) <a href="../../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*reader) <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-416">penColor</a>() <a href="../../../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*reader) <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-423">startDecode</a>() <a href="../../../builtin.html#name-error">error</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="reader-fold-impls"><label for="reader-fold-impls">Implements (<i>at least one exported</i>)</label><span id='reader-fold-impls-items' class="fold-items"><span>
+			*reader : io.<a href="../../../io.html#name-Reader">Reader</a></span></span>
+		<input type='checkbox' class="fold" id="reader-fold-params"><label for="reader-fold-params">As Inputs Of (<i>at least 4, none are exported</i>)</label><span id='reader-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="reader-showhide-outputofs"><i><label for="reader-showhide-outputofs" class="show-inline">/* 4+ unexporteds ... */</label><label for="reader-showhide-outputofs" class="hide-inline">/* 4+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-readerModeExt">readerModeExt</a>(z *<b>reader</b>, arg <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-error">error</a></i></span><span class="hidden"><i>
+			func <a href="#name-readerModeH">readerModeH</a>(z *<b>reader</b>, arg <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-error">error</a></i></span><span class="hidden"><i>
+			func <a href="#name-readerModePass">readerModePass</a>(z *<b>reader</b>, arg <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-error">error</a></i></span><span class="hidden"><i>
+			func <a href="#name-readerModeV">readerModeV</a>(z *<b>reader</b>, arg <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-error">error</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-readerMode" data-popularity="0">	<input type='checkbox' class="fold" id="readerMode-fold-content"><label for="readerMode-fold-content"> type <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-663">readerMode</a> <i>(struct)</i></label><span id='readerMode-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="readerMode-fold-fields"><label for="readerMode-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='readerMode-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="readerMode-showhide-fields"><i><label for="readerMode-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="readerMode-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-665">arg</a> <i><a href="../../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-664">function</a> <i>func(z *<a href="#name-reader">reader</a>, arg <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-error">error</a></i></span></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 11, in which 2 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-DecodeIntoGray">	<input type='checkbox' class="fold" id="DecodeIntoGray-fold-content"><label for="DecodeIntoGray-fold-content"> func <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-728">DecodeIntoGray</a>(dst *<a href="../../../image.html">image</a>.<a href="../../../image.html#name-Gray">Gray</a>, r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>, order <a href="#name-Order">Order</a>, sf <a href="#name-SubFormat">SubFormat</a>, opts *<a href="#name-Options">Options</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='DecodeIntoGray-fold-content-docs' class="fold-docs">
+<span class="md-text">		DecodeIntoGray decodes the CCITT-formatted data in r into dst.
+		
+		It returns an error if dst's width and height don't match the implied width
+		and height of CCITT-formatted data.</span>
+
+</span></div><div class="anchor value-res" id="name-NewReader">	<input type='checkbox' class="fold" id="NewReader-fold-content"><label for="NewReader-fold-content"> func <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-778">NewReader</a>(r <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>, order <a href="#name-Order">Order</a>, sf <a href="#name-SubFormat">SubFormat</a>, width <a href="../../../builtin.html#name-int">int</a>, height <a href="../../../builtin.html#name-int">int</a>, opts *<a href="#name-Options">Options</a>) <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a></label><span id='NewReader-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewReader returns an io.Reader that decodes the CCITT-formatted data in r.
+		The resultant byte stream is one bit per pixel (MSB first), with 1 meaning
+		white and 0 meaning black. Each row in the result is byte-aligned.
+		
+		A negative height, such as passing AutoDetectHeight, means that the image
+		height is not known in advance. A negative width is invalid.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 9 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 9 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-decode"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-208">decode</a>(b *<a href="#name-bitReader">bitReader</a>, decodeTable [][2]<a href="../../../builtin.html#name-int16">int16</a>) (<a href="../../../builtin.html#name-uint32">uint32</a>, <a href="../../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-decodeEOL"><i>	<input type='checkbox' class="fold" id="decodeEOL-fold-content"><label for="decodeEOL-fold-content"> func <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-235">decodeEOL</a>(b *<a href="#name-bitReader">bitReader</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='decodeEOL-fold-content-docs' class="fold-docs">
+<span class="md-text">		decodeEOL decodes the 12-bit EOL code 0000_0000_0001.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-highBits"><i>	<input type='checkbox' class="fold" id="highBits-fold-content"><label for="highBits-fold-content"> func <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-95">highBits</a>(dst []<a href="../../../builtin.html#name-byte">byte</a>, src []<a href="../../../builtin.html#name-byte">byte</a>, invert <a href="../../../builtin.html#name-bool">bool</a>) (d <a href="../../../builtin.html#name-int">int</a>, s <a href="../../../builtin.html#name-int">int</a>)</label><span id='highBits-fold-content-docs' class="fold-docs">
+<span class="md-text">		highBits writes to dst (1 bit per pixel, most significant bit first) the
+		high (0x80) bits from src (1 byte per pixel). It returns the number of bytes
+		written and read such that dst[:d] is the packed form of src[:s].
+		
+		For example, if src starts with the 8 bytes [0x7D, 0x7E, 0x7F, 0x80, 0x81,
+		0x82, 0x00, 0xFF] then 0x1D will be written to dst[0].
+		
+		If src has (8 * len(dst)) or more bytes then only len(dst) bytes are
+		written, (8 * len(dst)) bytes are read, and invert is ignored.
+		
+		Otherwise, if len(src) is not a multiple of 8 then the final byte written to
+		dst is padded with 1 bits (if invert is true) or 0 bits. If inverted, the 1s
+		are typically temporary, e.g. they will be flipped back to 0s by an
+		invertBytes call in the highBits caller, reader.Read.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-invertBytes"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-69">invertBytes</a>(b []<a href="../../../builtin.html#name-byte">byte</a>)</span></i></div><div class="anchor value-res hidden" id="name-readerModeExt"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-720">readerModeExt</a>(z *<a href="#name-reader">reader</a>, arg <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-readerModeH"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-695">readerModeH</a>(z *<a href="#name-reader">reader</a>, arg <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-readerModePass"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-681">readerModePass</a>(z *<a href="#name-reader">reader</a>, arg <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-readerModeV"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-705">readerModeV</a>(z *<a href="#name-reader">reader</a>, arg <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-reverseBitsWithinBytes"><i>	<span class="nodocs"> func <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-75">reverseBitsWithinBytes</a>(b []<a href="../../../builtin.html#name-byte">byte</a>)</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 20, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 20 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 20 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-blackDecodeTable"><i>	<input type='checkbox' class="fold" id="blackDecodeTable-fold-content"><label for="blackDecodeTable-fold-content">  var <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-599">blackDecodeTable</a> [105][2]<a href="../../../builtin.html#name-int16">int16</a></label><span id='blackDecodeTable-fold-content-docs' class="fold-docs">
+<span class="md-text">		blackDecodeTable represents Tables 2 and 3 for a black run.
+		
+			                     +=XXXXX
+			b017               +-+
+			                   | |     +=v1792
+			b042               | |   +-+
+			                   | |   | | +=v1984
+			b063               | |   | +-+
+			                   | |   |   +=v2048
+			b029               | | +-+
+			                   | | | |   +=v2112
+			b064               | | | | +-+
+			                   | | | | | +=v2176
+			b043               | | | +-+
+			                   | | |   | +=v2240
+			b065               | | |   +-+
+			                   | | |     +=v2304
+			b022               | +-+
+			                   |   |   +=v1856
+			b044               |   | +-+
+			                   |   | | +=v1920
+			b030               |   +-+
+			                   |     |   +=v2368
+			b066               |     | +-+
+			                   |     | | +=v2432
+			b045               |     +-+
+			                   |       | +=v2496
+			b067               |       +-+
+			                   |         +=v2560
+			b013             +-+
+			                 | |     +=v0018
+			b031             | |   +-+
+			                 | |   | |   +=v0052
+			b068             | |   | | +-+
+			                 | |   | | | | +=v0640
+			b095             | |   | | | +-+
+			                 | |   | | |   +=v0704
+			b046             | |   | +-+
+			                 | |   |   |   +=v0768
+			b096             | |   |   | +-+
+			                 | |   |   | | +=v0832
+			b069             | |   |   +-+
+			                 | |   |     +=v0055
+			b023             | | +-+
+			                 | | | |     +=v0056
+			b070             | | | |   +-+
+			                 | | | |   | | +=v1280
+			b097             | | | |   | +-+
+			                 | | | |   |   +=v1344
+			b047             | | | | +-+
+			                 | | | | | |   +=v1408
+			b098             | | | | | | +-+
+			                 | | | | | | | +=v1472
+			b071             | | | | | +-+
+			                 | | | | |   +=v0059
+			b032             | | | +-+
+			                 | | |   |   +=v0060
+			b072             | | |   | +-+
+			                 | | |   | | | +=v1536
+			b099             | | |   | | +-+
+			                 | | |   | |   +=v1600
+			b048             | | |   +-+
+			                 | | |     +=v0024
+			b018             | +-+
+			                 |   |     +=v0025
+			b049             |   |   +-+
+			                 |   |   | |   +=v1664
+			b100             |   |   | | +-+
+			                 |   |   | | | +=v1728
+			b073             |   |   | +-+
+			                 |   |   |   +=v0320
+			b033             |   | +-+
+			                 |   | | |   +=v0384
+			b074             |   | | | +-+
+			                 |   | | | | +=v0448
+			b050             |   | | +-+
+			                 |   | |   |   +=v0512
+			b101             |   | |   | +-+
+			                 |   | |   | | +=v0576
+			b075             |   | |   +-+
+			                 |   | |     +=v0053
+			b024             |   +-+
+			                 |     |     +=v0054
+			b076             |     |   +-+
+			                 |     |   | | +=v0896
+			b102             |     |   | +-+
+			                 |     |   |   +=v0960
+			b051             |     | +-+
+			                 |     | | |   +=v1024
+			b103             |     | | | +-+
+			                 |     | | | | +=v1088
+			b077             |     | | +-+
+			                 |     | |   | +=v1152
+			b104             |     | |   +-+
+			                 |     | |     +=v1216
+			b034             |     +-+
+			                 |       +=v0064
+			b010           +-+
+			               | |   +=v0013
+			b019           | | +-+
+			               | | | |     +=v0023
+			b052           | | | |   +-+
+			               | | | |   | | +=v0050
+			b078           | | | |   | +-+
+			               | | | |   |   +=v0051
+			b035           | | | | +-+
+			               | | | | | |   +=v0044
+			b079           | | | | | | +-+
+			               | | | | | | | +=v0045
+			b053           | | | | | +-+
+			               | | | | |   | +=v0046
+			b080           | | | | |   +-+
+			               | | | | |     +=v0047
+			b025           | | | +-+
+			               | | |   |     +=v0057
+			b081           | | |   |   +-+
+			               | | |   |   | +=v0058
+			b054           | | |   | +-+
+			               | | |   | | | +=v0061
+			b082           | | |   | | +-+
+			               | | |   | |   +=v0256
+			b036           | | |   +-+
+			               | | |     +=v0016
+			b014           | +-+
+			               |   |     +=v0017
+			b037           |   |   +-+
+			               |   |   | |   +=v0048
+			b083           |   |   | | +-+
+			               |   |   | | | +=v0049
+			b055           |   |   | +-+
+			               |   |   |   | +=v0062
+			b084           |   |   |   +-+
+			               |   |   |     +=v0063
+			b026           |   | +-+
+			               |   | | |     +=v0030
+			b085           |   | | |   +-+
+			               |   | | |   | +=v0031
+			b056           |   | | | +-+
+			               |   | | | | | +=v0032
+			b086           |   | | | | +-+
+			               |   | | | |   +=v0033
+			b038           |   | | +-+
+			               |   | |   |   +=v0040
+			b087           |   | |   | +-+
+			               |   | |   | | +=v0041
+			b057           |   | |   +-+
+			               |   | |     +=v0022
+			b020           |   +-+
+			               |     +=v0014
+			b008         +-+
+			             | |   +=v0010
+			b015         | | +-+
+			             | | | +=v0011
+			b011         | +-+
+			             |   |     +=v0015
+			b027         |   |   +-+
+			             |   |   | |     +=v0128
+			b088         |   |   | |   +-+
+			             |   |   | |   | +=v0192
+			b058         |   |   | | +-+
+			             |   |   | | | | +=v0026
+			b089         |   |   | | | +-+
+			             |   |   | | |   +=v0027
+			b039         |   |   | +-+
+			             |   |   |   |   +=v0028
+			b090         |   |   |   | +-+
+			             |   |   |   | | +=v0029
+			b059         |   |   |   +-+
+			             |   |   |     +=v0019
+			b021         |   | +-+
+			             |   | | |     +=v0020
+			b060         |   | | |   +-+
+			             |   | | |   | | +=v0034
+			b091         |   | | |   | +-+
+			             |   | | |   |   +=v0035
+			b040         |   | | | +-+
+			             |   | | | | |   +=v0036
+			b092         |   | | | | | +-+
+			             |   | | | | | | +=v0037
+			b061         |   | | | | +-+
+			             |   | | | |   | +=v0038
+			b093         |   | | | |   +-+
+			             |   | | | |     +=v0039
+			b028         |   | | +-+
+			             |   | |   |   +=v0021
+			b062         |   | |   | +-+
+			             |   | |   | | | +=v0042
+			b094         |   | |   | | +-+
+			             |   | |   | |   +=v0043
+			b041         |   | |   +-+
+			             |   | |     +=v0000
+			b016         |   +-+
+			             |     +=v0012
+			b006       +-+
+			           | |   +=v0009
+			b012       | | +-+
+			           | | | +=v0008
+			b009       | +-+
+			           |   +=v0007
+			b004     +-+
+			         | | +=v0006
+			b007     | +-+
+			         |   +=v0005
+			b002   +-+
+			       | | +=v0001
+			b005   | +-+
+			       |   +=v0004
+			b001 +-+
+			       | +=v0003
+			b003   +-+
+			         +=v0002</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-blackEncodeTable2"><i>	<input type='checkbox' class="fold" id="blackEncodeTable2-fold-content"><label for="blackEncodeTable2-fold-content">  var <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-846">blackEncodeTable2</a> [64]<a href="#name-bitString">bitString</a></label><span id='blackEncodeTable2-fold-content-docs' class="fold-docs">
+<span class="md-text">		blackEncodeTable2 represents Table 2 for a black run.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-blackEncodeTable3"><i>	<input type='checkbox' class="fold" id="blackEncodeTable3-fold-content"><label for="blackEncodeTable3-fold-content">  var <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-914">blackEncodeTable3</a> [40]<a href="#name-bitString">bitString</a></label><span id='blackEncodeTable3-fold-content-docs' class="fold-docs">
+<span class="md-text">		blackEncodeTable3 represents Table 3 for a black run.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-errIncompleteCode"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-19">errIncompleteCode</a> <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errInvalidBounds"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-20">errInvalidBounds</a> <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errInvalidCode"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-21">errInvalidCode</a> <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errInvalidMode"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-22">errInvalidMode</a> <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errInvalidOffset"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-23">errInvalidOffset</a> <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errMissingEOL"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-24">errMissingEOL</a> <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errRunLengthOverflowsWidth"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-25">errRunLengthOverflowsWidth</a> <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errRunLengthTooLong"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-26">errRunLengthTooLong</a> <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errUnsupportedMode"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-27">errUnsupportedMode</a> <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errUnsupportedSubFormat"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-28">errUnsupportedSubFormat</a> <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errUnsupportedWidth"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-29">errUnsupportedWidth</a> <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-modeDecodeTable"><i>	<input type='checkbox' class="fold" id="modeDecodeTable-fold-content"><label for="modeDecodeTable-fold-content">  var <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-55">modeDecodeTable</a> [11][2]<a href="../../../builtin.html#name-int16">int16</a></label><span id='modeDecodeTable-fold-content-docs' class="fold-docs">
+<span class="md-text">		modeDecodeTable represents Table 1 and the End-of-Line code.
+		
+			                   +=XXXXX
+			b009             +-+
+			                 | +=v0009
+			b007           +-+
+			               | | +=v0008
+			b010           | +-+
+			               |   +=v0005
+			b006         +-+
+			             | | +=v0007
+			b008         | +-+
+			             |   +=v0004
+			b005       +-+
+			           | +=v0000
+			b003     +-+
+			         | +=v0001
+			b002   +-+
+			       | | +=v0006
+			b004   | +-+
+			       |   +=v0003
+			b001 +-+
+			       +=v0002</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-modeEncodeTable"><i>	<input type='checkbox' class="fold" id="modeEncodeTable-fold-content"><label for="modeEncodeTable-fold-content">  var <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-720">modeEncodeTable</a> [10]<a href="#name-bitString">bitString</a></label><span id='modeEncodeTable-fold-content-docs' class="fold-docs">
+<span class="md-text">		modeEncodeTable represents Table 1 and the End-of-Line code.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-readerModes"><i>	<span class="nodocs">  var <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-668">readerModes</a> [10]<a href="#name-readerMode">readerMode</a></span></i></div><div class="anchor value-res hidden" id="name-whiteDecodeTable"><i>	<input type='checkbox' class="fold" id="whiteDecodeTable-fold-content"><label for="whiteDecodeTable-fold-content">  var <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-280">whiteDecodeTable</a> [105][2]<a href="../../../builtin.html#name-int16">int16</a></label><span id='whiteDecodeTable-fold-content-docs' class="fold-docs">
+<span class="md-text">		whiteDecodeTable represents Tables 2 and 3 for a white run.
+		
+			                     +=XXXXX
+			b059               +-+
+			                   | |     +=v1792
+			b096               | |   +-+
+			                   | |   | | +=v1984
+			b100               | |   | +-+
+			                   | |   |   +=v2048
+			b094               | | +-+
+			                   | | | |   +=v2112
+			b101               | | | | +-+
+			                   | | | | | +=v2176
+			b097               | | | +-+
+			                   | | |   | +=v2240
+			b102               | | |   +-+
+			                   | | |     +=v2304
+			b085               | +-+
+			                   |   |   +=v1856
+			b098               |   | +-+
+			                   |   | | +=v1920
+			b095               |   +-+
+			                   |     |   +=v2368
+			b103               |     | +-+
+			                   |     | | +=v2432
+			b099               |     +-+
+			                   |       | +=v2496
+			b104               |       +-+
+			                   |         +=v2560
+			b040             +-+
+			                 | | +=v0029
+			b060             | +-+
+			                 |   +=v0030
+			b026           +-+
+			               | |   +=v0045
+			b061           | | +-+
+			               | | | +=v0046
+			b041           | +-+
+			               |   +=v0022
+			b016         +-+
+			             | |   +=v0023
+			b042         | | +-+
+			             | | | | +=v0047
+			b062         | | | +-+
+			             | | |   +=v0048
+			b027         | +-+
+			             |   +=v0013
+			b008       +-+
+			           | |     +=v0020
+			b043       | |   +-+
+			           | |   | | +=v0033
+			b063       | |   | +-+
+			           | |   |   +=v0034
+			b028       | | +-+
+			           | | | |   +=v0035
+			b064       | | | | +-+
+			           | | | | | +=v0036
+			b044       | | | +-+
+			           | | |   | +=v0037
+			b065       | | |   +-+
+			           | | |     +=v0038
+			b017       | +-+
+			           |   |   +=v0019
+			b045       |   | +-+
+			           |   | | | +=v0031
+			b066       |   | | +-+
+			           |   | |   +=v0032
+			b029       |   +-+
+			           |     +=v0001
+			b004     +-+
+			         | |     +=v0012
+			b030     | |   +-+
+			         | |   | |   +=v0053
+			b067     | |   | | +-+
+			         | |   | | | +=v0054
+			b046     | |   | +-+
+			         | |   |   +=v0026
+			b018     | | +-+
+			         | | | |     +=v0039
+			b068     | | | |   +-+
+			         | | | |   | +=v0040
+			b047     | | | | +-+
+			         | | | | | | +=v0041
+			b069     | | | | | +-+
+			         | | | | |   +=v0042
+			b031     | | | +-+
+			         | | |   |   +=v0043
+			b070     | | |   | +-+
+			         | | |   | | +=v0044
+			b048     | | |   +-+
+			         | | |     +=v0021
+			b009     | +-+
+			         |   |     +=v0028
+			b049     |   |   +-+
+			         |   |   | | +=v0061
+			b071     |   |   | +-+
+			         |   |   |   +=v0062
+			b032     |   | +-+
+			         |   | | |   +=v0063
+			b072     |   | | | +-+
+			         |   | | | | +=v0000
+			b050     |   | | +-+
+			         |   | |   | +=v0320
+			b073     |   | |   +-+
+			         |   | |     +=v0384
+			b019     |   +-+
+			         |     +=v0010
+			b002   +-+
+			       | |     +=v0011
+			b020   | |   +-+
+			       | |   | |   +=v0027
+			b051   | |   | | +-+
+			       | |   | | | | +=v0059
+			b074   | |   | | | +-+
+			       | |   | | |   +=v0060
+			b033   | |   | +-+
+			       | |   |   |     +=v1472
+			b086   | |   |   |   +-+
+			       | |   |   |   | +=v1536
+			b075   | |   |   | +-+
+			       | |   |   | | | +=v1600
+			b087   | |   |   | | +-+
+			       | |   |   | |   +=v1728
+			b052   | |   |   +-+
+			       | |   |     +=v0018
+			b010   | | +-+
+			       | | | |     +=v0024
+			b053   | | | |   +-+
+			       | | | |   | | +=v0049
+			b076   | | | |   | +-+
+			       | | | |   |   +=v0050
+			b034   | | | | +-+
+			       | | | | | |   +=v0051
+			b077   | | | | | | +-+
+			       | | | | | | | +=v0052
+			b054   | | | | | +-+
+			       | | | | |   +=v0025
+			b021   | | | +-+
+			       | | |   |     +=v0055
+			b078   | | |   |   +-+
+			       | | |   |   | +=v0056
+			b055   | | |   | +-+
+			       | | |   | | | +=v0057
+			b079   | | |   | | +-+
+			       | | |   | |   +=v0058
+			b035   | | |   +-+
+			       | | |     +=v0192
+			b005   | +-+
+			       |   |     +=v1664
+			b036   |   |   +-+
+			       |   |   | |   +=v0448
+			b080   |   |   | | +-+
+			       |   |   | | | +=v0512
+			b056   |   |   | +-+
+			       |   |   |   |   +=v0704
+			b088   |   |   |   | +-+
+			       |   |   |   | | +=v0768
+			b081   |   |   |   +-+
+			       |   |   |     +=v0640
+			b022   |   | +-+
+			       |   | | |     +=v0576
+			b082   |   | | |   +-+
+			       |   | | |   | | +=v0832
+			b089   |   | | |   | +-+
+			       |   | | |   |   +=v0896
+			b057   |   | | | +-+
+			       |   | | | | |   +=v0960
+			b090   |   | | | | | +-+
+			       |   | | | | | | +=v1024
+			b083   |   | | | | +-+
+			       |   | | | |   | +=v1088
+			b091   |   | | | |   +-+
+			       |   | | | |     +=v1152
+			b037   |   | | +-+
+			       |   | |   |     +=v1216
+			b092   |   | |   |   +-+
+			       |   | |   |   | +=v1280
+			b084   |   | |   | +-+
+			       |   | |   | | | +=v1344
+			b093   |   | |   | | +-+
+			       |   | |   | |   +=v1408
+			b058   |   | |   +-+
+			       |   | |     +=v0256
+			b011   |   +-+
+			       |     +=v0002
+			b001 +-+
+			       |     +=v0003
+			b012   |   +-+
+			       |   | | +=v0128
+			b023   |   | +-+
+			       |   |   +=v0008
+			b006   | +-+
+			       | | |   +=v0009
+			b024   | | | +-+
+			       | | | | | +=v0016
+			b038   | | | | +-+
+			       | | | |   +=v0017
+			b013   | | +-+
+			       | |   +=v0004
+			b003   +-+
+			         |   +=v0005
+			b014     | +-+
+			         | | |   +=v0014
+			b039     | | | +-+
+			         | | | | +=v0015
+			b025     | | +-+
+			         | |   +=v0064
+			b007     +-+
+			           | +=v0006
+			b015       +-+
+			             +=v0007</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-whiteEncodeTable2"><i>	<input type='checkbox' class="fold" id="whiteEncodeTable2-fold-content"><label for="whiteEncodeTable2-fold-content">  var <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-734">whiteEncodeTable2</a> [64]<a href="#name-bitString">bitString</a></label><span id='whiteEncodeTable2-fold-content-docs' class="fold-docs">
+<span class="md-text">		whiteEncodeTable2 represents Table 2 for a white run.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-whiteEncodeTable3"><i>	<input type='checkbox' class="fold" id="whiteEncodeTable3-fold-content"><label for="whiteEncodeTable3-fold-content">  var <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-802">whiteEncodeTable3</a> [40]<a href="#name-bitString">bitString</a></label><span id='whiteEncodeTable3-fold-content-docs' class="fold-docs">
+<span class="md-text">		whiteEncodeTable3 represents Table 3 for a white run.</span>
+
+</span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 20, in which 5 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-AutoDetectHeight">	<input type='checkbox' class="fold" id="AutoDetectHeight-fold-content"><label for="AutoDetectHeight-fold-content">const <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-54">AutoDetectHeight</a> = -1</label><span id='AutoDetectHeight-fold-content-docs' class="fold-docs">
+<span class="md-text">		AutoDetectHeight is passed as the height argument to NewReader to indicate
+		that the image height (the number of rows) is not known in advance.</span>
+
+</span></div><div class="anchor value-res" id="name-Group3">	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-48">Group3</a> <a href="#name-SubFormat">SubFormat</a> = 0</span></div><div class="anchor value-res" id="name-Group4">	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-49">Group4</a> <a href="#name-SubFormat">SubFormat</a> = 1</span></div><div class="anchor value-res" id="name-LSB">	<input type='checkbox' class="fold" id="LSB-fold-content"><label for="LSB-fold-content">const <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-37">LSB</a> <a href="#name-Order">Order</a> = 0</label><span id='LSB-fold-content-docs' class="fold-docs">
+<span class="md-text">		LSB means Least Significant Bits first.</span>
+
+</span></div><div class="anchor value-res" id="name-MSB">	<input type='checkbox' class="fold" id="MSB-fold-content"><label for="MSB-fold-content">const <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-39">MSB</a> <a href="#name-Order">Order</a> = 1</label><span id='MSB-fold-content-docs' class="fold-docs">
+<span class="md-text">		MSB means Most Significant Bits first.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 15 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 15 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-findB1"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-613">findB1</a> = false</span></i></div><div class="anchor value-res hidden" id="name-findB2"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-614">findB2</a> = true</span></i></div><div class="anchor value-res hidden" id="name-maxCodeLength"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-707">maxCodeLength</a> = 13</span></i></div><div class="anchor value-res hidden" id="name-maxWidth"><i>	<input type='checkbox' class="fold" id="maxWidth-fold-content"><label for="maxWidth-fold-content">const <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-67">maxWidth</a> = 1048576</label><span id='maxWidth-fold-content-docs' class="fold-docs">
+<span class="md-text">		maxWidth is the maximum (inclusive) supported width. This is a limitation of
+		this implementation, to guard against integer overflow, and not anything
+		inherent to the CCITT format.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-modeExt"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-969">modeExt</a> = 9 // <span class="md-text">Extension</span></span></i></div><div class="anchor value-res hidden" id="name-modeH"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-961">modeH</a> = 1 // <span class="md-text">Horizontal</span></span></i></div><div class="anchor value-res hidden" id="name-modePass"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-960">modePass</a> = 0 // <span class="md-text">Pass</span></span></i></div><div class="anchor value-res hidden" id="name-modeV0"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-962">modeV0</a> = 2 // <span class="md-text">Vertical-0</span></span></i></div><div class="anchor value-res hidden" id="name-modeVL1"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-966">modeVL1</a> = 6 // <span class="md-text">Vertical-Left-1</span></span></i></div><div class="anchor value-res hidden" id="name-modeVL2"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-967">modeVL2</a> = 7 // <span class="md-text">Vertical-Left-2</span></span></i></div><div class="anchor value-res hidden" id="name-modeVL3"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-968">modeVL3</a> = 8 // <span class="md-text">Vertical-Left-3</span></span></i></div><div class="anchor value-res hidden" id="name-modeVR1"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-963">modeVR1</a> = 3 // <span class="md-text">Vertical-Right-1</span></span></i></div><div class="anchor value-res hidden" id="name-modeVR2"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-964">modeVR2</a> = 4 // <span class="md-text">Vertical-Right-2</span></span></i></div><div class="anchor value-res hidden" id="name-modeVR3"><i>	<span class="nodocs">const <a href="../../../../src/golang.org/x/image/ccitt/table.go.html#line-965">modeVR3</a> = 5 // <span class="md-text">Vertical-Right-3</span></span></i></div><div class="anchor value-res hidden" id="name-nextBitMaxNBits"><i>	<input type='checkbox' class="fold" id="nextBitMaxNBits-fold-content"><label for="nextBitMaxNBits-fold-content">const <a href="../../../../src/golang.org/x/image/ccitt/reader.go.html#line-164">nextBitMaxNBits</a> = 31</label><span id='nextBitMaxNBits-fold-content-docs' class="fold-docs">
+<span class="md-text">		nextBitMaxNBits is the maximum possible value of bitReader.nBits after a
+		bitReader.nextBit call, provided that bitReader.nBits was not more than this
+		value before that call.
+		
+		Note that the decode function can unread bits, which can temporarily set the
+		bitReader.nBits value above nextBitMaxNBits.</span>
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

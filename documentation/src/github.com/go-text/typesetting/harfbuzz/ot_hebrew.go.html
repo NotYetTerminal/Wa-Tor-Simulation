@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: ot_hebrew.go in package github.com/go-text/typesetting/harfbuzz</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	ot_hebrew.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html">github.com/go-text/typesetting/harfbuzz</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> harfbuzz</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i0">ot</a> <label for="i0"><span class="lit-string i0">"github.com/go-text/typesetting/font/opentype"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"github.com/go-text/typesetting/font/opentype/tables"</span></label></code></span>
+<span class="codeline" id="line-6"><code>)</code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// ported from harfbuzz/src/hb-ot-shape-complex-hebrew.cc Copyright © 2010,2012  Google, Inc.  Behdad Esfahbod</span></code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code><span class="keyword">var</span> _ <a href="ot_shape_complex.go.html#line-18" class="ident">otComplexShaper</a> = <a href="#line-12" class="ident">complexShaperHebrew</a>{}</code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-complexShaperHebrew" class="ident">complexShaperHebrew</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-13"><code>	<a href="ot_shape_complex.go.html#line-154" class="ident">complexShaperNil</a></code></span>
+<span class="codeline" id="line-14"><code>}</code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">/* Hebrew presentation-form shaping.</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">* https://bugzilla.mozilla.org/show_bug.cgi?id=728866</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">* Hebrew presentation forms with dagesh, for characters U+05D0..05EA;</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">* Note that some letters do not have a dagesh presForm encoded. */</span></code></span>
+<span class="codeline" id="line-20"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-sDageshForms" class="ident">sDageshForms</a> = [<span class="lit-number">0x05EA</span> - <span class="lit-number">0x05D0</span> + <span class="lit-number">1</span>]<a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>{</code></span>
+<span class="codeline" id="line-21"><code>	<span class="lit-number">0xFB30</span>, <span class="comment">/* ALEF */</span></code></span>
+<span class="codeline" id="line-22"><code>	<span class="lit-number">0xFB31</span>, <span class="comment">/* BET */</span></code></span>
+<span class="codeline" id="line-23"><code>	<span class="lit-number">0xFB32</span>, <span class="comment">/* GIMEL */</span></code></span>
+<span class="codeline" id="line-24"><code>	<span class="lit-number">0xFB33</span>, <span class="comment">/* DALET */</span></code></span>
+<span class="codeline" id="line-25"><code>	<span class="lit-number">0xFB34</span>, <span class="comment">/* HE */</span></code></span>
+<span class="codeline" id="line-26"><code>	<span class="lit-number">0xFB35</span>, <span class="comment">/* VAV */</span></code></span>
+<span class="codeline" id="line-27"><code>	<span class="lit-number">0xFB36</span>, <span class="comment">/* ZAYIN */</span></code></span>
+<span class="codeline" id="line-28"><code>	<span class="lit-number">0x0000</span>, <span class="comment">/* HET */</span></code></span>
+<span class="codeline" id="line-29"><code>	<span class="lit-number">0xFB38</span>, <span class="comment">/* TET */</span></code></span>
+<span class="codeline" id="line-30"><code>	<span class="lit-number">0xFB39</span>, <span class="comment">/* YOD */</span></code></span>
+<span class="codeline" id="line-31"><code>	<span class="lit-number">0xFB3A</span>, <span class="comment">/* FINAL KAF */</span></code></span>
+<span class="codeline" id="line-32"><code>	<span class="lit-number">0xFB3B</span>, <span class="comment">/* KAF */</span></code></span>
+<span class="codeline" id="line-33"><code>	<span class="lit-number">0xFB3C</span>, <span class="comment">/* LAMED */</span></code></span>
+<span class="codeline" id="line-34"><code>	<span class="lit-number">0x0000</span>, <span class="comment">/* FINAL MEM */</span></code></span>
+<span class="codeline" id="line-35"><code>	<span class="lit-number">0xFB3E</span>, <span class="comment">/* MEM */</span></code></span>
+<span class="codeline" id="line-36"><code>	<span class="lit-number">0x0000</span>, <span class="comment">/* FINAL NUN */</span></code></span>
+<span class="codeline" id="line-37"><code>	<span class="lit-number">0xFB40</span>, <span class="comment">/* NUN */</span></code></span>
+<span class="codeline" id="line-38"><code>	<span class="lit-number">0xFB41</span>, <span class="comment">/* SAMEKH */</span></code></span>
+<span class="codeline" id="line-39"><code>	<span class="lit-number">0x0000</span>, <span class="comment">/* AYIN */</span></code></span>
+<span class="codeline" id="line-40"><code>	<span class="lit-number">0xFB43</span>, <span class="comment">/* FINAL PE */</span></code></span>
+<span class="codeline" id="line-41"><code>	<span class="lit-number">0xFB44</span>, <span class="comment">/* PE */</span></code></span>
+<span class="codeline" id="line-42"><code>	<span class="lit-number">0x0000</span>, <span class="comment">/* FINAL TSADI */</span></code></span>
+<span class="codeline" id="line-43"><code>	<span class="lit-number">0xFB46</span>, <span class="comment">/* TSADI */</span></code></span>
+<span class="codeline" id="line-44"><code>	<span class="lit-number">0xFB47</span>, <span class="comment">/* QOF */</span></code></span>
+<span class="codeline" id="line-45"><code>	<span class="lit-number">0xFB48</span>, <span class="comment">/* RESH */</span></code></span>
+<span class="codeline" id="line-46"><code>	<span class="lit-number">0xFB49</span>, <span class="comment">/* SHIN */</span></code></span>
+<span class="codeline" id="line-47"><code>	<span class="lit-number">0xFB4A</span>, <span class="comment">/* TAV */</span></code></span>
+<span class="codeline" id="line-48"><code>}</code></span>
+<span class="codeline" id="line-49"><code></code></span>
+<span class="codeline" id="line-50"><code><span class="keyword">func</span> (<a href="#line-12" class="ident">complexShaperHebrew</a>) <label for="r0" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.complexShaperHebrew^24800.html#name-compose" class="ident">compose</a></label>(<label for="r1" class="ident">c</label> *<a href="ot_shape_normalize.go.html#line-64" class="ident">otNormalizeContext</a>, <label for="r2" class="ident">a</label>, <label for="r3" class="ident">b</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) (<a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-51"><code>	<label for="r4" class="ident">ab</label>, <label for="r5" class="ident">found</label> := <a href="unicode.go.html#line-10" class="ident">uni</a>.<a href="unicode.go.html#line-448" class="ident">compose</a>(<label for="r2" class="ident">a</label>, <label for="r3" class="ident">b</label>)</code></span>
+<span class="codeline" id="line-52"><code></code></span>
+<span class="codeline" id="line-53"><code>	<span class="keyword">if</span> !<label for="r5" class="ident">found</label> &amp;&amp; !<label for="r1" class="ident">c</label>.<a href="ot_shape_normalize.go.html#line-65" class="ident">plan</a>.<a href="ot_shaper.go.html#line-154" class="ident">hasGposMark</a> {</code></span>
+<span class="codeline" id="line-54"><code>		<span class="comment">/* Special-case Hebrew presentation forms that are excluded from</span></code></span>
+<span class="codeline" id="line-55"><code><span class="comment">		* standard normalization, but wanted for old fonts. */</span></code></span>
+<span class="codeline" id="line-56"><code>		<span class="keyword">switch</span> <label for="r3" class="ident">b</label> {</code></span>
+<span class="codeline" id="line-57"><code>		<span class="keyword">case</span> <span class="lit-number">0x05B4</span>: <span class="comment">/* HIRIQ */</span></code></span>
+<span class="codeline" id="line-58"><code>			<span class="keyword">if</span> <label for="r2" class="ident">a</label> == <span class="lit-number">0x05D9</span> { <span class="comment">/* YOD */</span></code></span>
+<span class="codeline" id="line-59"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB1D</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-60"><code>			}</code></span>
+<span class="codeline" id="line-61"><code>		<span class="keyword">case</span> <span class="lit-number">0x05B7</span>: <span class="comment">/* PATAH */</span></code></span>
+<span class="codeline" id="line-62"><code>			<span class="keyword">if</span> <label for="r2" class="ident">a</label> == <span class="lit-number">0x05F2</span> { <span class="comment">/* YIDDISH YOD YOD */</span></code></span>
+<span class="codeline" id="line-63"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB1F</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-64"><code>			} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r2" class="ident">a</label> == <span class="lit-number">0x05D0</span> { <span class="comment">/* ALEF */</span></code></span>
+<span class="codeline" id="line-65"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB2E</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-66"><code>			}</code></span>
+<span class="codeline" id="line-67"><code>		<span class="keyword">case</span> <span class="lit-number">0x05B8</span>: <span class="comment">/* QAMATS */</span></code></span>
+<span class="codeline" id="line-68"><code>			<span class="keyword">if</span> <label for="r2" class="ident">a</label> == <span class="lit-number">0x05D0</span> { <span class="comment">/* ALEF */</span></code></span>
+<span class="codeline" id="line-69"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB2F</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-70"><code>			}</code></span>
+<span class="codeline" id="line-71"><code>		<span class="keyword">case</span> <span class="lit-number">0x05B9</span>: <span class="comment">/* HOLAM */</span></code></span>
+<span class="codeline" id="line-72"><code>			<span class="keyword">if</span> <label for="r2" class="ident">a</label> == <span class="lit-number">0x05D5</span> { <span class="comment">/* VAV */</span></code></span>
+<span class="codeline" id="line-73"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB4B</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-74"><code>			}</code></span>
+<span class="codeline" id="line-75"><code>		<span class="keyword">case</span> <span class="lit-number">0x05BC</span>: <span class="comment">/* DAGESH */</span></code></span>
+<span class="codeline" id="line-76"><code>			<span class="keyword">if</span> <label for="r2" class="ident">a</label> &gt;= <span class="lit-number">0x05D0</span> &amp;&amp; <label for="r2" class="ident">a</label> &lt;= <span class="lit-number">0x05EA</span> {</code></span>
+<span class="codeline" id="line-77"><code>				<label for="r4" class="ident">ab</label> = <a href="#line-20" class="ident">sDageshForms</a>[<label for="r2" class="ident">a</label>-<span class="lit-number">0x05D0</span>]</code></span>
+<span class="codeline" id="line-78"><code>				<span class="keyword">return</span> <label for="r4" class="ident">ab</label>, <label for="r4" class="ident">ab</label> != <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-79"><code>			} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r2" class="ident">a</label> == <span class="lit-number">0xFB2A</span> { <span class="comment">/* SHIN WITH SHIN DOT */</span></code></span>
+<span class="codeline" id="line-80"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB2C</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-81"><code>			} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r2" class="ident">a</label> == <span class="lit-number">0xFB2B</span> { <span class="comment">/* SHIN WITH SIN DOT */</span></code></span>
+<span class="codeline" id="line-82"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB2D</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-83"><code>			}</code></span>
+<span class="codeline" id="line-84"><code>		<span class="keyword">case</span> <span class="lit-number">0x05BF</span>: <span class="comment">/* RAFE */</span></code></span>
+<span class="codeline" id="line-85"><code>			<span class="keyword">switch</span> <label for="r2" class="ident">a</label> {</code></span>
+<span class="codeline" id="line-86"><code>			<span class="keyword">case</span> <span class="lit-number">0x05D1</span>: <span class="comment">/* BET */</span></code></span>
+<span class="codeline" id="line-87"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB4C</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-88"><code>			<span class="keyword">case</span> <span class="lit-number">0x05DB</span>: <span class="comment">/* KAF */</span></code></span>
+<span class="codeline" id="line-89"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB4D</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-90"><code>			<span class="keyword">case</span> <span class="lit-number">0x05E4</span>: <span class="comment">/* PE */</span></code></span>
+<span class="codeline" id="line-91"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB4E</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-92"><code>			}</code></span>
+<span class="codeline" id="line-93"><code>		<span class="keyword">case</span> <span class="lit-number">0x05C1</span>: <span class="comment">/* SHIN DOT */</span></code></span>
+<span class="codeline" id="line-94"><code>			<span class="keyword">if</span> <label for="r2" class="ident">a</label> == <span class="lit-number">0x05E9</span> { <span class="comment">/* SHIN */</span></code></span>
+<span class="codeline" id="line-95"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB2A</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-96"><code>			} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r2" class="ident">a</label> == <span class="lit-number">0xFB49</span> { <span class="comment">/* SHIN WITH DAGESH */</span></code></span>
+<span class="codeline" id="line-97"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB2C</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-98"><code>			}</code></span>
+<span class="codeline" id="line-99"><code>		<span class="keyword">case</span> <span class="lit-number">0x05C2</span>: <span class="comment">/* SIN DOT */</span></code></span>
+<span class="codeline" id="line-100"><code>			<span class="keyword">if</span> <label for="r2" class="ident">a</label> == <span class="lit-number">0x05E9</span> { <span class="comment">/* SHIN */</span></code></span>
+<span class="codeline" id="line-101"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB2B</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-102"><code>			} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r2" class="ident">a</label> == <span class="lit-number">0xFB49</span> { <span class="comment">/* SHIN WITH DAGESH */</span></code></span>
+<span class="codeline" id="line-103"><code>				<span class="keyword">return</span> <span class="lit-number">0xFB2D</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-104"><code>			}</code></span>
+<span class="codeline" id="line-105"><code>		}</code></span>
+<span class="codeline" id="line-106"><code>	}</code></span>
+<span class="codeline" id="line-107"><code></code></span>
+<span class="codeline" id="line-108"><code>	<span class="keyword">return</span> <label for="r4" class="ident">ab</label>, <label for="r5" class="ident">found</label></code></span>
+<span class="codeline" id="line-109"><code>}</code></span>
+<span class="codeline" id="line-110"><code></code></span>
+<span class="codeline" id="line-111"><code><span class="keyword">func</span> (<a href="#line-12" class="ident">complexShaperHebrew</a>) <label for="r6" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.complexShaperHebrew^24800.html#name-marksBehavior" class="ident">marksBehavior</a></label>() (<a href="ot_shape_complex.go.html#line-9" class="ident">zeroWidthMarks</a>, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-112"><code>	<span class="keyword">return</span> <a href="ot_shape_complex.go.html#line-14" class="ident">zeroWidthMarksByGdefLate</a>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-113"><code>}</code></span>
+<span class="codeline" id="line-114"><code></code></span>
+<span class="codeline" id="line-115"><code><span class="keyword">func</span> (<a href="#line-12" class="ident">complexShaperHebrew</a>) <label for="r7" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.complexShaperHebrew^24800.html#name-normalizationPreference" class="ident">normalizationPreference</a></label>() <a href="ot_shape_normalize.go.html#line-52" class="ident">normalizationMode</a> {</code></span>
+<span class="codeline" id="line-116"><code>	<span class="keyword">return</span> <a href="ot_shape_normalize.go.html#line-61" class="ident">nmDefault</a></code></span>
+<span class="codeline" id="line-117"><code>}</code></span>
+<span class="codeline" id="line-118"><code></code></span>
+<span class="codeline" id="line-119"><code><span class="keyword">func</span> (<a href="#line-12" class="ident">complexShaperHebrew</a>) <label for="r8" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.complexShaperHebrew^24800.html#name-gposTag" class="ident">gposTag</a></label>() <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="../font/opentype/tables/tables.go.html#line-14" class="ident">Tag</a> {</code></span>
+<span class="codeline" id="line-120"><code>	<span class="comment">// https://github.com/harfbuzz/harfbuzz/issues/347#issuecomment-267838368</span></code></span>
+<span class="codeline" id="line-121"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i0">ot</a>.<a href="../font/opentype/opentype.go.html#line-14" class="ident">NewTag</a>(<span class="lit-number">'h'</span>, <span class="lit-number">'e'</span>, <span class="lit-number">'b'</span>, <span class="lit-number">'r'</span>)</code></span>
+<span class="codeline" id="line-122"><code>}</code></span>
+<span class="codeline" id="line-123"><code></code></span>
+<span class="codeline" id="line-124"><code><span class="keyword">func</span> (<a href="#line-12" class="ident">complexShaperHebrew</a>) <label for="r9" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.complexShaperHebrew^24800.html#name-reorderMarks" class="ident">reorderMarks</a></label>(<label for="r10" class="ident">_</label> *<a href="ot_shaper.go.html#line-137" class="ident">otShapePlan</a>, <label for="r11" class="ident">buffer</label> *<a href="buffer.go.html#line-56" class="ident">Buffer</a>, <label for="r12" class="ident">start</label>, <label for="r13" class="ident">end</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-125"><code>	<label for="r14" class="ident">info</label> := <label for="r11" class="ident">buffer</label>.<a href="buffer.go.html#line-60" class="ident">Info</a></code></span>
+<span class="codeline" id="line-126"><code></code></span>
+<span class="codeline" id="line-127"><code>	<span class="keyword">for</span> <label for="r15" class="ident">i</label> := <label for="r12" class="ident">start</label> + <span class="lit-number">2</span>; <label for="r15" class="ident">i</label> &lt; <label for="r13" class="ident">end</label>; <label for="r15" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-128"><code>		<label for="r16" class="ident">c0</label> := <label for="r14" class="ident">info</label>[<label for="r15" class="ident">i</label>-<span class="lit-number">2</span>].<a href="glyph.go.html#line-253" class="ident">getModifiedCombiningClass</a>()</code></span>
+<span class="codeline" id="line-129"><code>		<label for="r17" class="ident">c1</label> := <label for="r14" class="ident">info</label>[<label for="r15" class="ident">i</label>-<span class="lit-number">1</span>].<a href="glyph.go.html#line-253" class="ident">getModifiedCombiningClass</a>()</code></span>
+<span class="codeline" id="line-130"><code>		<label for="r18" class="ident">c2</label> := <label for="r14" class="ident">info</label>[<label for="r15" class="ident">i</label>-<span class="lit-number">0</span>].<a href="glyph.go.html#line-253" class="ident">getModifiedCombiningClass</a>()</code></span>
+<span class="codeline" id="line-131"><code></code></span>
+<span class="codeline" id="line-132"><code>		<span class="keyword">if</span> (<label for="r16" class="ident">c0</label> == <a href="unicode.go.html#line-113" class="ident">mcc17</a> || <label for="r16" class="ident">c0</label> == <a href="unicode.go.html#line-114" class="ident">mcc18</a>) <span class="comment">/* patach or qamats */</span> &amp;&amp;</code></span>
+<span class="codeline" id="line-133"><code>			(<label for="r17" class="ident">c1</label> == <a href="unicode.go.html#line-106" class="ident">mcc10</a> || <label for="r17" class="ident">c1</label> == <a href="unicode.go.html#line-110" class="ident">mcc14</a>) <span class="comment">/* sheva or hiriq */</span> &amp;&amp;</code></span>
+<span class="codeline" id="line-134"><code>			(<label for="r18" class="ident">c2</label> == <a href="unicode.go.html#line-118" class="ident">mcc22</a> || <label for="r18" class="ident">c2</label> == <a href="ot_shape_fallback.go.html#line-13" class="ident">combiningClassBelow</a>) <span class="comment">/* meteg or below */</span> {</code></span>
+<span class="codeline" id="line-135"><code>			<label for="r11" class="ident">buffer</label>.<a href="buffer.go.html#line-426" class="ident">mergeClusters</a>(<label for="r15" class="ident">i</label>-<span class="lit-number">1</span>, <label for="r15" class="ident">i</label>+<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-136"><code>			<label for="r14" class="ident">info</label>[<label for="r15" class="ident">i</label>-<span class="lit-number">1</span>], <label for="r14" class="ident">info</label>[<label for="r15" class="ident">i</label>] = <label for="r14" class="ident">info</label>[<label for="r15" class="ident">i</label>], <label for="r14" class="ident">info</label>[<label for="r15" class="ident">i</label>-<span class="lit-number">1</span>] <span class="comment">// swap</span></code></span>
+<span class="codeline" id="line-137"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-138"><code>		}</code></span>
+<span class="codeline" id="line-139"><code>	}</code></span>
+<span class="codeline" id="line-140"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

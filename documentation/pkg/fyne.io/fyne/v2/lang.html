@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/fyne/v2/lang</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>lang</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-fyne.io/fyne/v2/lang">fyne.io/fyne/v2/lang</a><i> (on <a href="https://pkg.go.dev/fyne.io/fyne/v2/lang" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/fyne.io/fyne/v2/lang.html">9 packages</a>, and imported by <a href="../../../../dep/fyne.io/fyne/v2/lang.html#imported-by">3 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#doc">d</a> <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html">lang.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package lang introduces a translation and localisation API for Fyne applications
+		
+		Since 2.5</span>
+</span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/lang/locale.go.html">locale.go</a></span></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 15, in which 8 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-AddTranslations">	<input type='checkbox' class="fold" id="AddTranslations-fold-content"><label for="AddTranslations-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-116">AddTranslations</a>(r <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Resource">Resource</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='AddTranslations-fold-content-docs' class="fold-docs">
+<span class="md-text">		AddTranslations allows an app to load a bundle of translations.
+		The language that this relates to will be inferred from the resource name, for example "fr.json".
+		The data should be in json format.</span>
+
+</span></div><div class="anchor value-res" id="name-AddTranslationsForLocale">	<input type='checkbox' class="fold" id="AddTranslationsForLocale-fold-content"><label for="AddTranslationsForLocale-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-123">AddTranslationsForLocale</a>(data []<a href="../../../builtin.html#name-byte">byte</a>, l <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Locale">Locale</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='AddTranslationsForLocale-fold-content-docs' class="fold-docs">
+<span class="md-text">		AddTranslationsForLocale allows an app to load a bundle of translations for a specified locale.
+		The data should be in json format.</span>
+
+</span></div><div class="anchor value-res" id="name-AddTranslationsFS">	<input type='checkbox' class="fold" id="AddTranslationsFS-fold-content"><label for="AddTranslationsFS-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-132">AddTranslationsFS</a>(fs <a href="../../../embed.html">embed</a>.<a href="../../../embed.html#name-FS">FS</a>, dir <a href="../../../builtin.html#name-string">string</a>) (retErr <a href="../../../builtin.html#name-error">error</a>)</label><span id='AddTranslationsFS-fold-content-docs' class="fold-docs">
+<span class="md-text">		AddTranslationsFS supports adding all translations in one calling using an `embed.FS` setup.
+		The `dir` parameter specifies the name or path of the directory containing translation files
+		inside this embedded filesystem.
+		Each file should be a json file with the name following pattern [prefix.]lang.json.</span>
+
+</span></div><div class="anchor value-res" id="name-Localize">	<input type='checkbox' class="fold" id="Localize-fold-content"><label for="Localize-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-49">Localize</a>(in <a href="../../../builtin.html#name-string">string</a>, data ...<a href="../../../builtin.html#name-any">any</a>) <a href="../../../builtin.html#name-string">string</a></label><span id='Localize-fold-content-docs' class="fold-docs">
+<span class="md-text">		Localize asks the translation engine to translate a string, this behaves like the gettext "_" function.
+		The string can be templated and the template data can be passed as a struct with exported fields,
+		or as a map of string keys to any suitable value.</span>
+
+</span></div><div class="anchor value-res" id="name-LocalizeKey">	<input type='checkbox' class="fold" id="LocalizeKey-fold-content"><label for="LocalizeKey-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-57">LocalizeKey</a>(key, fallback <a href="../../../builtin.html#name-string">string</a>, data ...<a href="../../../builtin.html#name-any">any</a>) <a href="../../../builtin.html#name-string">string</a></label><span id='LocalizeKey-fold-content-docs' class="fold-docs">
+<span class="md-text">		LocalizeKey asks the translation engine for the translation with specific ID.
+		If it cannot be found then the fallback will be used.
+		The string can be templated and the template data can be passed as a struct with exported fields,
+		or as a map of string keys to any suitable value.</span>
+
+</span></div><div class="anchor value-res" id="name-LocalizePlural">	<input type='checkbox' class="fold" id="LocalizePlural-fold-content"><label for="LocalizePlural-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-82">LocalizePlural</a>(in <a href="../../../builtin.html#name-string">string</a>, count <a href="../../../builtin.html#name-int">int</a>, data ...<a href="../../../builtin.html#name-any">any</a>) <a href="../../../builtin.html#name-string">string</a></label><span id='LocalizePlural-fold-content-docs' class="fold-docs">
+<span class="md-text">		LocalizePlural asks the translation engine to translate a string from one of a number of plural forms.
+		This behaves like the ngettext function, with the `count` parameter determining the plurality looked up.
+		The string can be templated and the template data can be passed as a struct with exported fields,
+		or as a map of string keys to any suitable value.</span>
+
+</span></div><div class="anchor value-res" id="name-LocalizePluralKey">	<input type='checkbox' class="fold" id="LocalizePluralKey-fold-content"><label for="LocalizePluralKey-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-91">LocalizePluralKey</a>(key, fallback <a href="../../../builtin.html#name-string">string</a>, count <a href="../../../builtin.html#name-int">int</a>, data ...<a href="../../../builtin.html#name-any">any</a>) <a href="../../../builtin.html#name-string">string</a></label><span id='LocalizePluralKey-fold-content-docs' class="fold-docs">
+<span class="md-text">		LocalizePluralKey asks the translation engine for the translation with specific ID in plural form.
+		This behaves like the npgettext function, with the `count` parameter determining the plurality looked up.
+		If it cannot be found then the fallback will be used.
+		The string can be templated and the template data can be passed as a struct with exported fields,
+		or as a map of string keys to any suitable value.</span>
+
+</span></div><div class="anchor value-res" id="name-SystemLocale">	<input type='checkbox' class="fold" id="SystemLocale-fold-content"><label for="SystemLocale-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/lang/locale.go.html#line-12">SystemLocale</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Locale">Locale</a></label><span id='SystemLocale-fold-content-docs' class="fold-docs">
+<span class="md-text">		SystemLocale returns the primary locale on the current system.
+		This may refer to a language that Fyne does not have translations for.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 7 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 7 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-addLanguage"><i>	<span class="nodocs"> func <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-162">addLanguage</a>(data []<a href="../../../builtin.html#name-byte">byte</a>, name <a href="../../../builtin.html#name-string">string</a>) <a href="../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-closestSupportedLocale"><i>	<span class="nodocs"> func <a href="../../../../src/fyne.io/fyne/v2/lang/locale.go.html#line-28">closestSupportedLocale</a>(locs []<a href="../../../builtin.html#name-string">string</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Locale">Locale</a></span></i></div><div class="anchor value-res hidden" id="name-fallbackWithData"><i>	<span class="nodocs"> func <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-183">fallbackWithData</a>(key, fallback <a href="../../../builtin.html#name-string">string</a>, data <a href="../../../builtin.html#name-any">any</a>) <a href="../../../builtin.html#name-string">string</a></span></i></div><div class="anchor value-res hidden" id="name-init"><i>	<span class="nodocs"> func <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-172">init</a>()</span></i></div><div class="anchor value-res hidden" id="name-localeFromTag"><i>	<span class="nodocs"> func <a href="../../../../src/fyne.io/fyne/v2/lang/locale.go.html#line-43">localeFromTag</a>(in <a href="../../../golang.org/x/text/language.html">language</a>.<a href="../../../golang.org/x/text/language.html#name-Tag">Tag</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Locale">Locale</a></span></i></div><div class="anchor value-res hidden" id="name-setupLang"><i>	<input type='checkbox' class="fold" id="setupLang-fold-content"><label for="setupLang-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-195">setupLang</a>(lang <a href="../../../builtin.html#name-string">string</a>)</label><span id='setupLang-fold-content-docs' class="fold-docs">
+<span class="md-text">		A utility for setting up languages - available to unit tests for overriding system</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-updateLocalizer"><i>	<input type='checkbox' class="fold" id="updateLocalizer-fold-content"><label for="updateLocalizer-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-200">updateLocalizer</a>()</label><span id='updateLocalizer-fold-content-docs' class="fold-docs">
+<span class="md-text">		updateLocalizer Finds the closest translation from the user's locale list and sets it up</span>
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 8, in which 4 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-L">	<input type='checkbox' class="fold" id="L-fold-content"><label for="L-fold-content">  var <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-24">L</a> func(in <a href="../../../builtin.html#name-string">string</a>, data ...interface{}) <a href="../../../builtin.html#name-string">string</a></label><span id='L-fold-content-docs' class="fold-docs">
+<span class="md-text">		L is a shortcut to localize a string, similar to the gettext "_" function.
+		More info available on the `Localize` function.</span>
+
+</span></div><div class="anchor value-res" id="name-N">	<input type='checkbox' class="fold" id="N-fold-content"><label for="N-fold-content">  var <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-28">N</a> func(in <a href="../../../builtin.html#name-string">string</a>, count <a href="../../../builtin.html#name-int">int</a>, data ...interface{}) <a href="../../../builtin.html#name-string">string</a></label><span id='N-fold-content-docs' class="fold-docs">
+<span class="md-text">		N is a shortcut to localize a string with plural forms, similar to the ngettext function.
+		More info available on the `LocalizePlural` function.</span>
+
+</span></div><div class="anchor value-res" id="name-X">	<input type='checkbox' class="fold" id="X-fold-content"><label for="X-fold-content">  var <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-32">X</a> func(key <a href="../../../builtin.html#name-string">string</a>, fallback <a href="../../../builtin.html#name-string">string</a>, data ...interface{}) <a href="../../../builtin.html#name-string">string</a></label><span id='X-fold-content-docs' class="fold-docs">
+<span class="md-text">		X is a shortcut to get the localization of a string with specified key, similar to pgettext.
+		More info available on the `LocalizeKey` function.</span>
+
+</span></div><div class="anchor value-res" id="name-XN">	<input type='checkbox' class="fold" id="XN-fold-content"><label for="XN-fold-content">  var <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-36">XN</a> func(key <a href="../../../builtin.html#name-string">string</a>, fallback <a href="../../../builtin.html#name-string">string</a>, count <a href="../../../builtin.html#name-int">int</a>, data ...interface{}) <a href="../../../builtin.html#name-string">string</a></label><span id='XN-fold-content-docs' class="fold-docs">
+<span class="md-text">		XN is a shortcut to get the localization plural form of a string with specified key, similar to npgettext.
+		More info available on the `LocalizePluralKey` function.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-bundle"><i>	<span class="nodocs">  var <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-38">bundle</a> *<a href="../../../github.com/nicksnyder/go-i18n/v2/i18n.html">i18n</a>.<a href="../../../github.com/nicksnyder/go-i18n/v2/i18n.html#name-Bundle">Bundle</a></span></i></div><div class="anchor value-res hidden" id="name-localizer"><i>	<span class="nodocs">  var <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-39">localizer</a> *<a href="../../../github.com/nicksnyder/go-i18n/v2/i18n.html">i18n</a>.<a href="../../../github.com/nicksnyder/go-i18n/v2/i18n.html#name-Localizer">Localizer</a></span></i></div><div class="anchor value-res hidden" id="name-translated"><i>	<span class="nodocs">  var <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-43">translated</a> []<a href="../../../golang.org/x/text/language.html">language</a>.<a href="../../../golang.org/x/text/language.html#name-Tag">Tag</a></span></i></div><div class="anchor value-res hidden" id="name-translations"><i>	<span class="nodocs">  var <a href="../../../../src/fyne.io/fyne/v2/lang/lang.go.html#line-42">translations</a> <a href="../../../embed.html">embed</a>.<a href="../../../embed.html#name-FS">FS</a></span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

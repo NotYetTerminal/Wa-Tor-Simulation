@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/fyne/v2/internal/scale</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>scale</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-fyne.io/fyne/v2/internal/scale">fyne.io/fyne/v2/internal/scale</a><i> (on <a href="https://pkg.go.dev/fyne.io/fyne/v2/internal/scale" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/fyne.io/fyne/v2/internal/scale.html">2 packages</a>, and imported by <a href="../../../../../dep/fyne.io/fyne/v2/internal/scale.html#imported-by">3 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../src/fyne.io/fyne/v2/internal/scale/scale.go.html">scale.go</a></span></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 3, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ToFyneCoordinate">	<input type='checkbox' class="fold" id="ToFyneCoordinate-fold-content"><label for="ToFyneCoordinate-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/scale/scale.go.html#line-15">ToFyneCoordinate</a>(c <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Canvas">Canvas</a>, v <a href="../../../../builtin.html#name-int">int</a>) <a href="../../../../builtin.html#name-float32">float32</a></label><span id='ToFyneCoordinate-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToFyneCoordinate converts a screen coordinate for a given canvas to a fyne coordinate</span>
+
+</span></div><div class="anchor value-res" id="name-ToFyneSize">	<input type='checkbox' class="fold" id="ToFyneSize-fold-content"><label for="ToFyneSize-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/scale/scale.go.html#line-29">ToFyneSize</a>(obj <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-CanvasObject">CanvasObject</a>, width, height <a href="../../../../builtin.html#name-int">int</a>) <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Size">Size</a></label><span id='ToFyneSize-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToFyneSize returns the scaled size of an object based on pixel coordinates, typically for images.
+		This method will attempt to find the canvas for an object to get its scale.
+		In the event that this fails it will assume a 1:1 mapping (scale=1 or low DPI display).</span>
+
+</span></div><div class="anchor value-res" id="name-ToScreenCoordinate">	<input type='checkbox' class="fold" id="ToScreenCoordinate-fold-content"><label for="ToScreenCoordinate-fold-content"> func <a href="../../../../../src/fyne.io/fyne/v2/internal/scale/scale.go.html#line-10">ToScreenCoordinate</a>(c <a href="../../v2.html">fyne</a>.<a href="../../v2.html#name-Canvas">Canvas</a>, v <a href="../../../../builtin.html#name-float32">float32</a>) <a href="../../../../builtin.html#name-int">int</a></label><span id='ToScreenCoordinate-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToScreenCoordinate converts a fyne coordinate in the given canvas to a screen coordinate</span>
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

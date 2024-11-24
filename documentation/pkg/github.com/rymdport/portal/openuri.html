@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/rymdport/portal/openuri</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>openuri</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-github.com/rymdport/portal/openuri">github.com/rymdport/portal/openuri</a><i> (on <a href="https://pkg.go.dev/github.com/rymdport/portal/openuri" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/github.com/rymdport/portal/openuri.html">3 packages</a>, and imported by <a href="../../../../dep/github.com/rymdport/portal/openuri.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../../../src/github.com/rymdport/portal/openuri/openuri.go.html#doc">d</a> <a href="../../../../src/github.com/rymdport/portal/openuri/openuri.go.html">openuri.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package openuri allows sandboxed applications to open URIs (e.g. a http: link to the applications homepage) under the control of the user.
+		Upstream API documentation can be found at https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.OpenURI.html.</span></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (only one, which is exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-OpenURIOptions" data-popularity="35">	<input type='checkbox' class="fold" id="OpenURIOptions-fold-content"><label for="OpenURIOptions-fold-content"> type <a href="../../../../src/github.com/rymdport/portal/openuri/openuri.go.html#line-17">OpenURIOptions</a> <i>(struct)</i></label><span id='OpenURIOptions-fold-content-docs' class="fold-docs">
+<span class="md-text">		OpenURIOptions holds optional settings that can be passed to the OpenURI call.</span>
+
+		<input type='checkbox' class="fold" id="OpenURIOptions-fold-fields"><label for="OpenURIOptions-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='OpenURIOptions-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="OpenURIOptions-fold-field-Ask"><label for="OpenURIOptions-fold-field-Ask"><a href="../../../../src/github.com/rymdport/portal/openuri/openuri.go.html#line-20">Ask</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='OpenURIOptions-fold-field-Ask-docs' class="fold-docs">
+<span class="md-text">				// Whether to ask the user to choose an app. If this is not passed, or false, the portal may use a default or pick the last choice.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OpenURIOptions-fold-field-HandleToken"><label for="OpenURIOptions-fold-field-HandleToken"><a href="../../../../src/github.com/rymdport/portal/openuri/openuri.go.html#line-18">HandleToken</a> <i><a href="../../../builtin.html#name-string">string</a></i></label><span id='OpenURIOptions-fold-field-HandleToken-docs' class="fold-docs">
+<span class="md-text">				// A string that will be used as the last element of the handle. Must be a valid object path element.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OpenURIOptions-fold-field-Writeable"><label for="OpenURIOptions-fold-field-Writeable"><a href="../../../../src/github.com/rymdport/portal/openuri/openuri.go.html#line-19">Writeable</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='OpenURIOptions-fold-field-Writeable-docs' class="fold-docs">
+<span class="md-text">				// Whether to allow the chosen application to write to the file. This key only takes effect the uri points to a local file that is exported in the document portal, and the chosen application is sandboxed itself.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="OpenURIOptions-fold-params"><label for="OpenURIOptions-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='OpenURIOptions-fold-params-items' class="fold-items"><span>
+			func <a href="#name-OpenURI">OpenURI</a>(parentWindow, uri <a href="../../../builtin.html#name-string">string</a>, options *<b>OpenURIOptions</b>) <a href="../../../builtin.html#name-error">error</a></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (only one, which is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-OpenURI">	<input type='checkbox' class="fold" id="OpenURI-fold-content"><label for="OpenURI-fold-content"> func <a href="../../../../src/github.com/rymdport/portal/openuri/openuri.go.html#line-24">OpenURI</a>(parentWindow, uri <a href="../../../builtin.html#name-string">string</a>, options *<a href="#name-OpenURIOptions">OpenURIOptions</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='OpenURI-fold-content-docs' class="fold-docs">
+<span class="md-text">		OpenURI opens the given URI in the corresponding application.</span>
+
+</span></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 2, neither is exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-openURIBaseName"><i>	<span class="nodocs">const <a href="../../../../src/github.com/rymdport/portal/openuri/openuri.go.html#line-12">openURIBaseName</a> = "org.freedesktop.portal.OpenURI"</span></i></div><div class="anchor value-res hidden" id="name-openURICallName"><i>	<span class="nodocs">const <a href="../../../../src/github.com/rymdport/portal/openuri/openuri.go.html#line-13">openURICallName</a> = "org.freedesktop.portal.OpenURI.OpenURI"</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: geometry.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	geometry.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72],
+input[id=r73]:checked ~pre label[for=r73],
+input[id=r74]:checked ~pre label[for=r74]
+{background: #226; color: #ff8;}
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="r73" type="radio" name="g"/>
+<input id="r74" type="radio" name="g"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-4"><code>	_ <a href="#line-10" class="ident">Vector2</a> = (*<a href="#line-16" class="ident">Delta</a>)(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-5"><code>	_ <a href="#line-10" class="ident">Vector2</a> = (*<a href="#line-37" class="ident">Position</a>)(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-6"><code>	_ <a href="#line-10" class="ident">Vector2</a> = (*<a href="#line-91" class="ident">Size</a>)(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-7"><code>)</code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// Vector2 marks geometry types that can operate as a coordinate vector.</span></code></span>
+<span class="codeline" id="line-10"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Vector2" class="ident">Vector2</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-11"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Vector2.html#name-Components" class="ident">Components</a>() (<a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>, <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>)</code></span>
+<span class="codeline" id="line-12"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Vector2.html#name-IsZero" class="ident">IsZero</a>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-13"><code>}</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// Delta is a generic X, Y coordinate, size or movement representation.</span></code></span>
+<span class="codeline" id="line-16"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Delta" class="ident">Delta</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-17"><code>	DX, DY <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-18"><code>}</code></span>
+<span class="codeline" id="line-19"><code></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">// NewDelta returns a newly allocated [Delta] representing a movement in the X and Y axis.</span></code></span>
+<span class="codeline" id="line-21"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-NewDelta" class="ident">NewDelta</a></label>(<label for="r1" class="ident">dx</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>, <label for="r2" class="ident">dy</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="#line-16" class="ident">Delta</a> {</code></span>
+<span class="codeline" id="line-22"><code>	<span class="keyword">return</span> <a href="#line-16" class="ident">Delta</a>{<a href="#line-17" class="ident">DX</a>: <label for="r1" class="ident">dx</label>, <a href="#line-17" class="ident">DY</a>: <label for="r2" class="ident">dy</label>}</code></span>
+<span class="codeline" id="line-23"><code>}</code></span>
+<span class="codeline" id="line-24"><code></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// Components returns the X and Y elements of v.</span></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">func</span> (<label for="r3" class="ident">v</label> <a href="#line-16" class="ident">Delta</a>) <label for="r4" class="ident"><a href="../../../../imp/fyne.io/fyne/v2.Delta.html#name-.Components" class="ident">Components</a></label>() (<a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>, <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) {</code></span>
+<span class="codeline" id="line-27"><code>	<span class="keyword">return</span> <label for="r3" class="ident">v</label>.<a href="#line-17" class="ident">DX</a>, <label for="r3" class="ident">v</label>.<a href="#line-17" class="ident">DY</a></code></span>
+<span class="codeline" id="line-28"><code>}</code></span>
+<span class="codeline" id="line-29"><code></code></span>
+<span class="codeline" id="line-30"><code><span class="comment">// IsZero returns whether the Position is at the zero-point.</span></code></span>
+<span class="codeline" id="line-31"><code><span class="keyword">func</span> (<label for="r5" class="ident">v</label> <a href="#line-16" class="ident">Delta</a>) <label for="r6" class="ident"><a href="../../../../imp/fyne.io/fyne/v2.Delta.html#name-.IsZero" class="ident">IsZero</a></label>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-32"><code>	<span class="keyword">return</span> <label for="r5" class="ident">v</label>.<a href="#line-17" class="ident">DX</a> == <span class="lit-number">0.0</span> &amp;&amp; <label for="r5" class="ident">v</label>.<a href="#line-17" class="ident">DY</a> == <span class="lit-number">0.0</span></code></span>
+<span class="codeline" id="line-33"><code>}</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">// Position describes a generic X, Y coordinate relative to a parent [Canvas]</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// or [CanvasObject].</span></code></span>
+<span class="codeline" id="line-37"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Position" class="ident">Position</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-38"><code>	X <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a> <span class="comment">// The position from the parent's left edge</span></code></span>
+<span class="codeline" id="line-39"><code>	Y <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a> <span class="comment">// The position from the parent's top edge</span></code></span>
+<span class="codeline" id="line-40"><code>}</code></span>
+<span class="codeline" id="line-41"><code></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">// NewPos returns a newly allocated [Position] representing the specified coordinates.</span></code></span>
+<span class="codeline" id="line-43"><code><span class="keyword">func</span> <label for="r7" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-NewPos" class="ident">NewPos</a></label>(<label for="r8" class="ident">x</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>, <label for="r9" class="ident">y</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="#line-37" class="ident">Position</a> {</code></span>
+<span class="codeline" id="line-44"><code>	<span class="keyword">return</span> <a href="#line-37" class="ident">Position</a>{<label for="r8" class="ident">x</label>, <label for="r9" class="ident">y</label>}</code></span>
+<span class="codeline" id="line-45"><code>}</code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">// NewSquareOffsetPos returns a newly allocated [Position] with the same x and y position.</span></code></span>
+<span class="codeline" id="line-48"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-49"><code><span class="comment">// Since: 2.4</span></code></span>
+<span class="codeline" id="line-50"><code><span class="keyword">func</span> <label for="r10" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-NewSquareOffsetPos" class="ident">NewSquareOffsetPos</a></label>(<label for="r11" class="ident">length</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="#line-37" class="ident">Position</a> {</code></span>
+<span class="codeline" id="line-51"><code>	<span class="keyword">return</span> <a href="#line-37" class="ident">Position</a>{<label for="r11" class="ident">length</label>, <label for="r11" class="ident">length</label>}</code></span>
+<span class="codeline" id="line-52"><code>}</code></span>
+<span class="codeline" id="line-53"><code></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">// Add returns a new [Position] that is the result of offsetting the current</span></code></span>
+<span class="codeline" id="line-55"><code><span class="comment">// position by p2 X and Y.</span></code></span>
+<span class="codeline" id="line-56"><code><span class="keyword">func</span> (<label for="r12" class="ident">p</label> <a href="#line-37" class="ident">Position</a>) <label for="r13" class="ident">Add</label>(<label for="r14" class="ident">v</label> <a href="#line-10" class="ident">Vector2</a>) <a href="#line-37" class="ident">Position</a> {</code></span>
+<span class="codeline" id="line-57"><code>	<span class="comment">// NOTE: Do not simplify to `return p.AddXY(v.Components())`, it prevents inlining.</span></code></span>
+<span class="codeline" id="line-58"><code>	<label for="r15" class="ident">x</label>, <label for="r16" class="ident">y</label> := <label for="r14" class="ident">v</label>.<a href="#line-11" class="ident">Components</a>()</code></span>
+<span class="codeline" id="line-59"><code>	<span class="keyword">return</span> <a href="#line-37" class="ident">Position</a>{<label for="r12" class="ident">p</label>.<a href="#line-38" class="ident">X</a> + <label for="r15" class="ident">x</label>, <label for="r12" class="ident">p</label>.<a href="#line-39" class="ident">Y</a> + <label for="r16" class="ident">y</label>}</code></span>
+<span class="codeline" id="line-60"><code>}</code></span>
+<span class="codeline" id="line-61"><code></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">// AddXY returns a new [Position] by adding x and y to the current one.</span></code></span>
+<span class="codeline" id="line-63"><code><span class="keyword">func</span> (<label for="r17" class="ident">p</label> <a href="#line-37" class="ident">Position</a>) <label for="r18" class="ident">AddXY</label>(<label for="r19" class="ident">x</label>, <label for="r20" class="ident">y</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="#line-37" class="ident">Position</a> {</code></span>
+<span class="codeline" id="line-64"><code>	<span class="keyword">return</span> <a href="#line-37" class="ident">Position</a>{<label for="r17" class="ident">p</label>.<a href="#line-38" class="ident">X</a> + <label for="r19" class="ident">x</label>, <label for="r17" class="ident">p</label>.<a href="#line-39" class="ident">Y</a> + <label for="r20" class="ident">y</label>}</code></span>
+<span class="codeline" id="line-65"><code>}</code></span>
+<span class="codeline" id="line-66"><code></code></span>
+<span class="codeline" id="line-67"><code><span class="comment">// Components returns the X and Y elements of p.</span></code></span>
+<span class="codeline" id="line-68"><code><span class="keyword">func</span> (<label for="r21" class="ident">p</label> <a href="#line-37" class="ident">Position</a>) <label for="r22" class="ident"><a href="../../../../imp/fyne.io/fyne/v2.Position.html#name-.Components" class="ident">Components</a></label>() (<a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>, <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) {</code></span>
+<span class="codeline" id="line-69"><code>	<span class="keyword">return</span> <label for="r21" class="ident">p</label>.<a href="#line-38" class="ident">X</a>, <label for="r21" class="ident">p</label>.<a href="#line-39" class="ident">Y</a></code></span>
+<span class="codeline" id="line-70"><code>}</code></span>
+<span class="codeline" id="line-71"><code></code></span>
+<span class="codeline" id="line-72"><code><span class="comment">// IsZero returns whether the Position is at the zero-point.</span></code></span>
+<span class="codeline" id="line-73"><code><span class="keyword">func</span> (<label for="r23" class="ident">p</label> <a href="#line-37" class="ident">Position</a>) <label for="r24" class="ident"><a href="../../../../imp/fyne.io/fyne/v2.Position.html#name-.IsZero" class="ident">IsZero</a></label>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-74"><code>	<span class="keyword">return</span> <label for="r23" class="ident">p</label>.<a href="#line-38" class="ident">X</a> == <span class="lit-number">0.0</span> &amp;&amp; <label for="r23" class="ident">p</label>.<a href="#line-39" class="ident">Y</a> == <span class="lit-number">0.0</span></code></span>
+<span class="codeline" id="line-75"><code>}</code></span>
+<span class="codeline" id="line-76"><code></code></span>
+<span class="codeline" id="line-77"><code><span class="comment">// Subtract returns a new [Position] that is the result of offsetting the current</span></code></span>
+<span class="codeline" id="line-78"><code><span class="comment">// position by p2 -X and -Y.</span></code></span>
+<span class="codeline" id="line-79"><code><span class="keyword">func</span> (<label for="r25" class="ident">p</label> <a href="#line-37" class="ident">Position</a>) <label for="r26" class="ident">Subtract</label>(<label for="r27" class="ident">v</label> <a href="#line-10" class="ident">Vector2</a>) <a href="#line-37" class="ident">Position</a> {</code></span>
+<span class="codeline" id="line-80"><code>	<span class="comment">// NOTE: Do not simplify to `return p.SubtractXY(v.Components())`, it prevents inlining.</span></code></span>
+<span class="codeline" id="line-81"><code>	<label for="r28" class="ident">x</label>, <label for="r29" class="ident">y</label> := <label for="r27" class="ident">v</label>.<a href="#line-11" class="ident">Components</a>()</code></span>
+<span class="codeline" id="line-82"><code>	<span class="keyword">return</span> <a href="#line-37" class="ident">Position</a>{<label for="r25" class="ident">p</label>.<a href="#line-38" class="ident">X</a> - <label for="r28" class="ident">x</label>, <label for="r25" class="ident">p</label>.<a href="#line-39" class="ident">Y</a> - <label for="r29" class="ident">y</label>}</code></span>
+<span class="codeline" id="line-83"><code>}</code></span>
+<span class="codeline" id="line-84"><code></code></span>
+<span class="codeline" id="line-85"><code><span class="comment">// SubtractXY returns a new [Position] by subtracting x and y from the current one.</span></code></span>
+<span class="codeline" id="line-86"><code><span class="keyword">func</span> (<label for="r30" class="ident">p</label> <a href="#line-37" class="ident">Position</a>) <label for="r31" class="ident">SubtractXY</label>(<label for="r32" class="ident">x</label>, <label for="r33" class="ident">y</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="#line-37" class="ident">Position</a> {</code></span>
+<span class="codeline" id="line-87"><code>	<span class="keyword">return</span> <a href="#line-37" class="ident">Position</a>{<label for="r30" class="ident">p</label>.<a href="#line-38" class="ident">X</a> - <label for="r32" class="ident">x</label>, <label for="r30" class="ident">p</label>.<a href="#line-39" class="ident">Y</a> - <label for="r33" class="ident">y</label>}</code></span>
+<span class="codeline" id="line-88"><code>}</code></span>
+<span class="codeline" id="line-89"><code></code></span>
+<span class="codeline" id="line-90"><code><span class="comment">// Size describes something with width and height.</span></code></span>
+<span class="codeline" id="line-91"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Size" class="ident">Size</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-92"><code>	Width  <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a> <span class="comment">// The number of units along the X axis.</span></code></span>
+<span class="codeline" id="line-93"><code>	Height <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a> <span class="comment">// The number of units along the Y axis.</span></code></span>
+<span class="codeline" id="line-94"><code>}</code></span>
+<span class="codeline" id="line-95"><code></code></span>
+<span class="codeline" id="line-96"><code><span class="comment">// NewSize returns a newly allocated Size of the specified dimensions.</span></code></span>
+<span class="codeline" id="line-97"><code><span class="keyword">func</span> <label for="r34" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-NewSize" class="ident">NewSize</a></label>(<label for="r35" class="ident">w</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>, <label for="r36" class="ident">h</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-98"><code>	<span class="keyword">return</span> <a href="#line-91" class="ident">Size</a>{<label for="r35" class="ident">w</label>, <label for="r36" class="ident">h</label>}</code></span>
+<span class="codeline" id="line-99"><code>}</code></span>
+<span class="codeline" id="line-100"><code></code></span>
+<span class="codeline" id="line-101"><code><span class="comment">// NewSquareSize returns a newly allocated Size with the same width and height.</span></code></span>
+<span class="codeline" id="line-102"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-103"><code><span class="comment">// Since: 2.4</span></code></span>
+<span class="codeline" id="line-104"><code><span class="keyword">func</span> <label for="r37" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-NewSquareSize" class="ident">NewSquareSize</a></label>(<label for="r38" class="ident">side</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-105"><code>	<span class="keyword">return</span> <a href="#line-91" class="ident">Size</a>{<label for="r38" class="ident">side</label>, <label for="r38" class="ident">side</label>}</code></span>
+<span class="codeline" id="line-106"><code>}</code></span>
+<span class="codeline" id="line-107"><code></code></span>
+<span class="codeline" id="line-108"><code><span class="comment">// Add returns a new Size that is the result of increasing the current size by</span></code></span>
+<span class="codeline" id="line-109"><code><span class="comment">// s2 Width and Height.</span></code></span>
+<span class="codeline" id="line-110"><code><span class="keyword">func</span> (<label for="r39" class="ident">s</label> <a href="#line-91" class="ident">Size</a>) <label for="r40" class="ident">Add</label>(<label for="r41" class="ident">v</label> <a href="#line-10" class="ident">Vector2</a>) <a href="#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-111"><code>	<span class="comment">// NOTE: Do not simplify to `return s.AddXY(v.Components())`, it prevents inlining.</span></code></span>
+<span class="codeline" id="line-112"><code>	<label for="r42" class="ident">w</label>, <label for="r43" class="ident">h</label> := <label for="r41" class="ident">v</label>.<a href="#line-11" class="ident">Components</a>()</code></span>
+<span class="codeline" id="line-113"><code>	<span class="keyword">return</span> <a href="#line-91" class="ident">Size</a>{<label for="r39" class="ident">s</label>.<a href="#line-92" class="ident">Width</a> + <label for="r42" class="ident">w</label>, <label for="r39" class="ident">s</label>.<a href="#line-93" class="ident">Height</a> + <label for="r43" class="ident">h</label>}</code></span>
+<span class="codeline" id="line-114"><code>}</code></span>
+<span class="codeline" id="line-115"><code></code></span>
+<span class="codeline" id="line-116"><code><span class="comment">// AddWidthHeight returns a new Size by adding width and height to the current one.</span></code></span>
+<span class="codeline" id="line-117"><code><span class="keyword">func</span> (<label for="r44" class="ident">s</label> <a href="#line-91" class="ident">Size</a>) <label for="r45" class="ident">AddWidthHeight</label>(<label for="r46" class="ident">width</label>, <label for="r47" class="ident">height</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-118"><code>	<span class="keyword">return</span> <a href="#line-91" class="ident">Size</a>{<label for="r44" class="ident">s</label>.<a href="#line-92" class="ident">Width</a> + <label for="r46" class="ident">width</label>, <label for="r44" class="ident">s</label>.<a href="#line-93" class="ident">Height</a> + <label for="r47" class="ident">height</label>}</code></span>
+<span class="codeline" id="line-119"><code>}</code></span>
+<span class="codeline" id="line-120"><code></code></span>
+<span class="codeline" id="line-121"><code><span class="comment">// IsZero returns whether the Size has zero width and zero height.</span></code></span>
+<span class="codeline" id="line-122"><code><span class="keyword">func</span> (<label for="r48" class="ident">s</label> <a href="#line-91" class="ident">Size</a>) <label for="r49" class="ident"><a href="../../../../imp/fyne.io/fyne/v2.Size.html#name-.IsZero" class="ident">IsZero</a></label>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-123"><code>	<span class="keyword">return</span> <label for="r48" class="ident">s</label>.<a href="#line-92" class="ident">Width</a> == <span class="lit-number">0.0</span> &amp;&amp; <label for="r48" class="ident">s</label>.<a href="#line-93" class="ident">Height</a> == <span class="lit-number">0.0</span></code></span>
+<span class="codeline" id="line-124"><code>}</code></span>
+<span class="codeline" id="line-125"><code></code></span>
+<span class="codeline" id="line-126"><code><span class="comment">// Max returns a new [Size] that is the maximum of the current Size and s2.</span></code></span>
+<span class="codeline" id="line-127"><code><span class="keyword">func</span> (<label for="r50" class="ident">s</label> <a href="#line-91" class="ident">Size</a>) <label for="r51" class="ident">Max</label>(<label for="r52" class="ident">v</label> <a href="#line-10" class="ident">Vector2</a>) <a href="#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-128"><code>	<label for="r53" class="ident">x</label>, <label for="r54" class="ident">y</label> := <label for="r52" class="ident">v</label>.<a href="#line-11" class="ident">Components</a>()</code></span>
+<span class="codeline" id="line-129"><code></code></span>
+<span class="codeline" id="line-130"><code>	<label for="r55" class="ident">maxW</label> := <a href="math.go.html#line-12" class="ident">Max</a>(<label for="r50" class="ident">s</label>.<a href="#line-92" class="ident">Width</a>, <label for="r53" class="ident">x</label>)</code></span>
+<span class="codeline" id="line-131"><code>	<label for="r56" class="ident">maxH</label> := <a href="math.go.html#line-12" class="ident">Max</a>(<label for="r50" class="ident">s</label>.<a href="#line-93" class="ident">Height</a>, <label for="r54" class="ident">y</label>)</code></span>
+<span class="codeline" id="line-132"><code></code></span>
+<span class="codeline" id="line-133"><code>	<span class="keyword">return</span> <a href="#line-97" class="ident">NewSize</a>(<label for="r55" class="ident">maxW</label>, <label for="r56" class="ident">maxH</label>)</code></span>
+<span class="codeline" id="line-134"><code>}</code></span>
+<span class="codeline" id="line-135"><code></code></span>
+<span class="codeline" id="line-136"><code><span class="comment">// Min returns a new [Size] that is the minimum of s and v.</span></code></span>
+<span class="codeline" id="line-137"><code><span class="keyword">func</span> (<label for="r57" class="ident">s</label> <a href="#line-91" class="ident">Size</a>) <label for="r58" class="ident">Min</label>(<label for="r59" class="ident">v</label> <a href="#line-10" class="ident">Vector2</a>) <a href="#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-138"><code>	<label for="r60" class="ident">x</label>, <label for="r61" class="ident">y</label> := <label for="r59" class="ident">v</label>.<a href="#line-11" class="ident">Components</a>()</code></span>
+<span class="codeline" id="line-139"><code></code></span>
+<span class="codeline" id="line-140"><code>	<label for="r62" class="ident">minW</label> := <a href="math.go.html#line-4" class="ident">Min</a>(<label for="r57" class="ident">s</label>.<a href="#line-92" class="ident">Width</a>, <label for="r60" class="ident">x</label>)</code></span>
+<span class="codeline" id="line-141"><code>	<label for="r63" class="ident">minH</label> := <a href="math.go.html#line-4" class="ident">Min</a>(<label for="r57" class="ident">s</label>.<a href="#line-93" class="ident">Height</a>, <label for="r61" class="ident">y</label>)</code></span>
+<span class="codeline" id="line-142"><code></code></span>
+<span class="codeline" id="line-143"><code>	<span class="keyword">return</span> <a href="#line-97" class="ident">NewSize</a>(<label for="r62" class="ident">minW</label>, <label for="r63" class="ident">minH</label>)</code></span>
+<span class="codeline" id="line-144"><code>}</code></span>
+<span class="codeline" id="line-145"><code></code></span>
+<span class="codeline" id="line-146"><code><span class="comment">// Components returns the Width and Height elements of this Size</span></code></span>
+<span class="codeline" id="line-147"><code><span class="keyword">func</span> (<label for="r64" class="ident">s</label> <a href="#line-91" class="ident">Size</a>) <label for="r65" class="ident"><a href="../../../../imp/fyne.io/fyne/v2.Size.html#name-.Components" class="ident">Components</a></label>() (<a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>, <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) {</code></span>
+<span class="codeline" id="line-148"><code>	<span class="keyword">return</span> <label for="r64" class="ident">s</label>.<a href="#line-92" class="ident">Width</a>, <label for="r64" class="ident">s</label>.<a href="#line-93" class="ident">Height</a></code></span>
+<span class="codeline" id="line-149"><code>}</code></span>
+<span class="codeline" id="line-150"><code></code></span>
+<span class="codeline" id="line-151"><code><span class="comment">// Subtract returns a new Size that is the result of decreasing the current size</span></code></span>
+<span class="codeline" id="line-152"><code><span class="comment">// by s2 Width and Height.</span></code></span>
+<span class="codeline" id="line-153"><code><span class="keyword">func</span> (<label for="r66" class="ident">s</label> <a href="#line-91" class="ident">Size</a>) <label for="r67" class="ident">Subtract</label>(<label for="r68" class="ident">v</label> <a href="#line-10" class="ident">Vector2</a>) <a href="#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-154"><code>	<span class="comment">// NOTE: Do not simplify to `return s.SubtractXY(v.Components())`, it prevents inlining.</span></code></span>
+<span class="codeline" id="line-155"><code>	<label for="r69" class="ident">w</label>, <label for="r70" class="ident">h</label> := <label for="r68" class="ident">v</label>.<a href="#line-11" class="ident">Components</a>()</code></span>
+<span class="codeline" id="line-156"><code>	<span class="keyword">return</span> <a href="#line-91" class="ident">Size</a>{<label for="r66" class="ident">s</label>.<a href="#line-92" class="ident">Width</a> - <label for="r69" class="ident">w</label>, <label for="r66" class="ident">s</label>.<a href="#line-93" class="ident">Height</a> - <label for="r70" class="ident">h</label>}</code></span>
+<span class="codeline" id="line-157"><code>}</code></span>
+<span class="codeline" id="line-158"><code></code></span>
+<span class="codeline" id="line-159"><code><span class="comment">// SubtractWidthHeight returns a new Size by subtracting width and height from the current one.</span></code></span>
+<span class="codeline" id="line-160"><code><span class="keyword">func</span> (<label for="r71" class="ident">s</label> <a href="#line-91" class="ident">Size</a>) <label for="r72" class="ident">SubtractWidthHeight</label>(<label for="r73" class="ident">width</label>, <label for="r74" class="ident">height</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-161"><code>	<span class="keyword">return</span> <a href="#line-91" class="ident">Size</a>{<label for="r71" class="ident">s</label>.<a href="#line-92" class="ident">Width</a> - <label for="r73" class="ident">width</label>, <label for="r71" class="ident">s</label>.<a href="#line-93" class="ident">Height</a> - <label for="r74" class="ident">height</label>}</code></span>
+<span class="codeline" id="line-162"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

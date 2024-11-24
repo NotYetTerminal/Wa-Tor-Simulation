@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: mouse.go in package fyne.io/fyne/v2/driver/desktop</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	mouse.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html">fyne.io/fyne/v2/driver/desktop</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> desktop</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// MouseButton represents a single button in a desktop MouseEvent</span></code></span>
+<span class="codeline" id="line-6"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-MouseButton" class="ident">MouseButton</a> <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-9"><code>	<span class="comment">// MouseButtonPrimary is the most common mouse button - on some systems the only one.</span></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">	// This will normally be on the left side of a mouse.</span></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-MouseButtonPrimary" class="ident">MouseButtonPrimary</a> <a href="#line-6" class="ident">MouseButton</a> = <span class="lit-number">1</span> &lt;&lt; <a href="../../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code>	<span class="comment">// MouseButtonSecondary is the secondary button on most mouse input devices.</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">	// This will normally be on the right side of a mouse.</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-MouseButtonSecondary" class="ident">MouseButtonSecondary</a></code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code>	<span class="comment">// MouseButtonTertiary is the middle button on the mouse, assuming it has one.</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-MouseButtonTertiary" class="ident">MouseButtonTertiary</a></code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code>	<span class="comment">// LeftMouseButton is the most common mouse button - on some systems the only one.</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">	// Deprecated: use MouseButtonPrimary which will adapt to mouse configuration.</span></code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-LeftMouseButton" class="ident">LeftMouseButton</a> = <a href="#line-13" class="ident">MouseButtonPrimary</a></code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code>	<span class="comment">// RightMouseButton is the secondary button on most mouse input devices.</span></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">	// Deprecated: use MouseButtonSecondary which will adapt to mouse configuration.</span></code></span>
+<span class="codeline" id="line-34"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-RightMouseButton" class="ident">RightMouseButton</a> = <a href="#line-19" class="ident">MouseButtonSecondary</a></code></span>
+<span class="codeline" id="line-35"><code>)</code></span>
+<span class="codeline" id="line-36"><code></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">// MouseEvent contains data relating to desktop mouse events</span></code></span>
+<span class="codeline" id="line-38"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-MouseEvent" class="ident">MouseEvent</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-39"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../event.go.html#line-20" class="ident">PointEvent</a></code></span>
+<span class="codeline" id="line-40"><code>	Button   <a href="#line-6" class="ident">MouseButton</a></code></span>
+<span class="codeline" id="line-41"><code>	Modifier <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../key.go.html#line-181" class="ident">KeyModifier</a></code></span>
+<span class="codeline" id="line-42"><code>}</code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code><span class="comment">// Mouseable represents desktop mouse events that can be sent to CanvasObjects</span></code></span>
+<span class="codeline" id="line-45"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-Mouseable" class="ident">Mouseable</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-46"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/driver/desktop.Mouseable.html#name-MouseDown" class="ident">MouseDown</a>(*<a href="#line-38" class="ident">MouseEvent</a>)</code></span>
+<span class="codeline" id="line-47"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/driver/desktop.Mouseable.html#name-MouseUp" class="ident">MouseUp</a>(*<a href="#line-38" class="ident">MouseEvent</a>)</code></span>
+<span class="codeline" id="line-48"><code>}</code></span>
+<span class="codeline" id="line-49"><code></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">// Hoverable is used when a canvas object wishes to know if a pointer device moves over it.</span></code></span>
+<span class="codeline" id="line-51"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html#name-Hoverable" class="ident">Hoverable</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-52"><code>	<span class="comment">// MouseIn is a hook that is called if the mouse pointer enters the element.</span></code></span>
+<span class="codeline" id="line-53"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/driver/desktop.Hoverable.html#name-MouseIn" class="ident">MouseIn</a>(*<a href="#line-38" class="ident">MouseEvent</a>)</code></span>
+<span class="codeline" id="line-54"><code>	<span class="comment">// MouseMoved is a hook that is called if the mouse pointer moved over the element.</span></code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/driver/desktop.Hoverable.html#name-MouseMoved" class="ident">MouseMoved</a>(*<a href="#line-38" class="ident">MouseEvent</a>)</code></span>
+<span class="codeline" id="line-56"><code>	<span class="comment">// MouseOut is a hook that is called if the mouse pointer leaves the element.</span></code></span>
+<span class="codeline" id="line-57"><code>	<a href="../../../../../../imp/fyne.io/fyne/v2/driver/desktop.Hoverable.html#name-MouseOut" class="ident">MouseOut</a>()</code></span>
+<span class="codeline" id="line-58"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

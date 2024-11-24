@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: unicode.go in package github.com/go-text/typesetting/unicodedata</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	unicode.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html">github.com/go-text/typesetting/unicodedata</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Package unicodedata provides additional lookup functions for unicode</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// properties, not covered by the standard package unicode.</span></code></span></div><span class="codeline" id="line-3"><code><span class="keyword">package</span> unicodedata</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<label for="i0"><span class="lit-string i0">"unicode"</span></label></code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i1"><span class="lit-string i1">"github.com/go-text/typesetting/language"</span></label></code></span>
+<span class="codeline" id="line-9"><code>)</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-categories" class="ident">categories</a> []*<a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/letter.go.html#line-21" class="ident">RangeTable</a></code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-init" class="ident">init</a></label>() {</code></span>
+<span class="codeline" id="line-14"><code>	<span class="keyword">for</span> <label for="r1" class="ident">cat</label>, <label for="r2" class="ident">table</label> := <span class="keyword">range</span> <a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/tables.go.html#line-9" class="ident">Categories</a> {</code></span>
+<span class="codeline" id="line-15"><code>		<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r1" class="ident">cat</label>) == <span class="lit-number">2</span> {</code></span>
+<span class="codeline" id="line-16"><code>			<a href="#line-11" class="ident">categories</a> = <a href="../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<a href="#line-11" class="ident">categories</a>, <label for="r2" class="ident">table</label>)</code></span>
+<span class="codeline" id="line-17"><code>		}</code></span>
+<span class="codeline" id="line-18"><code>	}</code></span>
+<span class="codeline" id="line-19"><code>}</code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">// LookupType returns the unicode general categorie of the rune,</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// or nil if not found.</span></code></span>
+<span class="codeline" id="line-23"><code><span class="keyword">func</span> <label for="r3" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-LookupType" class="ident">LookupType</a></label>(<label for="r4" class="ident">r</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) *<a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/letter.go.html#line-21" class="ident">RangeTable</a> {</code></span>
+<span class="codeline" id="line-24"><code>	<span class="keyword">for</span> <label for="r5" class="ident">_</label>, <label for="r6" class="ident">table</label> := <span class="keyword">range</span> <a href="#line-11" class="ident">categories</a> {</code></span>
+<span class="codeline" id="line-25"><code>		<span class="keyword">if</span> <a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/letter.go.html#line-157" class="ident">Is</a>(<label for="r6" class="ident">table</label>, <label for="r4" class="ident">r</label>) {</code></span>
+<span class="codeline" id="line-26"><code>			<span class="keyword">return</span> <label for="r6" class="ident">table</label></code></span>
+<span class="codeline" id="line-27"><code>		}</code></span>
+<span class="codeline" id="line-28"><code>	}</code></span>
+<span class="codeline" id="line-29"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-30"><code>}</code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">// LookupCombiningClass returns the class used for the Canonical Ordering Algorithm in the Unicode Standard,</span></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">// defaulting to 0.</span></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">// From http://www.unicode.org/reports/tr44/#Canonical_Combining_Class:</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// "This property could be considered either an enumerated property or a numeric property:</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">// the principal use of the property is in terms of the numeric values.</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">// For the property value names associated with different numeric values,</span></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">// see DerivedCombiningClass.txt and Canonical Combining Class Values."</span></code></span>
+<span class="codeline" id="line-40"><code><span class="keyword">func</span> <label for="r7" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-LookupCombiningClass" class="ident">LookupCombiningClass</a></label>(<label for="r8" class="ident">ch</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a> {</code></span>
+<span class="codeline" id="line-41"><code>	<span class="keyword">for</span> <label for="r9" class="ident">i</label>, <label for="r10" class="ident">t</label> := <span class="keyword">range</span> <a href="combining_classes.go.html#line-9" class="ident">combiningClasses</a> {</code></span>
+<span class="codeline" id="line-42"><code>		<span class="keyword">if</span> <label for="r10" class="ident">t</label> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-43"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-44"><code>		}</code></span>
+<span class="codeline" id="line-45"><code>		<span class="keyword">if</span> <a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/letter.go.html#line-157" class="ident">Is</a>(<label for="r10" class="ident">t</label>, <label for="r8" class="ident">ch</label>) {</code></span>
+<span class="codeline" id="line-46"><code>			<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r9" class="ident">i</label>)</code></span>
+<span class="codeline" id="line-47"><code>		}</code></span>
+<span class="codeline" id="line-48"><code>	}</code></span>
+<span class="codeline" id="line-49"><code>	<span class="keyword">return</span> <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-50"><code>}</code></span>
+<span class="codeline" id="line-51"><code></code></span>
+<span class="codeline" id="line-52"><code><span class="comment">// LookupLineBreakClass returns the break class for the rune (see the constants BreakXXX)</span></code></span>
+<span class="codeline" id="line-53"><code><span class="keyword">func</span> <label for="r11" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-LookupLineBreakClass" class="ident">LookupLineBreakClass</a></label>(<label for="r12" class="ident">ch</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) *<a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/letter.go.html#line-21" class="ident">RangeTable</a> {</code></span>
+<span class="codeline" id="line-54"><code>	<span class="keyword">for</span> <label for="r13" class="ident">_</label>, <label for="r14" class="ident">class</label> := <span class="keyword">range</span> <a href="linebreak.go.html#line-2451" class="ident">lineBreaks</a> {</code></span>
+<span class="codeline" id="line-55"><code>		<span class="keyword">if</span> <a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/letter.go.html#line-157" class="ident">Is</a>(<label for="r14" class="ident">class</label>, <label for="r12" class="ident">ch</label>) {</code></span>
+<span class="codeline" id="line-56"><code>			<span class="keyword">return</span> <label for="r14" class="ident">class</label></code></span>
+<span class="codeline" id="line-57"><code>		}</code></span>
+<span class="codeline" id="line-58"><code>	}</code></span>
+<span class="codeline" id="line-59"><code>	<span class="keyword">return</span> <a href="linebreak.go.html#line-2441" class="ident">BreakXX</a></code></span>
+<span class="codeline" id="line-60"><code>}</code></span>
+<span class="codeline" id="line-61"><code></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">// LookupGraphemeBreakClass returns the grapheme break property for the rune (see the constants GraphemeBreakXXX),</span></code></span>
+<span class="codeline" id="line-63"><code><span class="comment">// or nil</span></code></span>
+<span class="codeline" id="line-64"><code><span class="keyword">func</span> <label for="r15" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-LookupGraphemeBreakClass" class="ident">LookupGraphemeBreakClass</a></label>(<label for="r16" class="ident">ch</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) *<a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/letter.go.html#line-21" class="ident">RangeTable</a> {</code></span>
+<span class="codeline" id="line-65"><code>	<span class="comment">// a lot of runes do not have a grapheme break property :</span></code></span>
+<span class="codeline" id="line-66"><code><span class="comment">	// avoid testing all the graphemeBreaks classes for them</span></code></span>
+<span class="codeline" id="line-67"><code>	<span class="keyword">if</span> !<a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/letter.go.html#line-157" class="ident">Is</a>(<a href="grapheme_break.go.html#line-994" class="ident">graphemeBreakAll</a>, <label for="r16" class="ident">ch</label>) {</code></span>
+<span class="codeline" id="line-68"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-69"><code>	}</code></span>
+<span class="codeline" id="line-70"><code>	<span class="keyword">for</span> <label for="r17" class="ident">_</label>, <label for="r18" class="ident">class</label> := <span class="keyword">range</span> <a href="grapheme_break.go.html#line-1320" class="ident">graphemeBreaks</a> {</code></span>
+<span class="codeline" id="line-71"><code>		<span class="keyword">if</span> <a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/letter.go.html#line-157" class="ident">Is</a>(<label for="r18" class="ident">class</label>, <label for="r16" class="ident">ch</label>) {</code></span>
+<span class="codeline" id="line-72"><code>			<span class="keyword">return</span> <label for="r18" class="ident">class</label></code></span>
+<span class="codeline" id="line-73"><code>		}</code></span>
+<span class="codeline" id="line-74"><code>	}</code></span>
+<span class="codeline" id="line-75"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-76"><code>}</code></span>
+<span class="codeline" id="line-77"><code></code></span>
+<span class="codeline" id="line-78"><code><span class="comment">// LookupordBreakClass returns the word break property for the rune (see the constants ordBreakXXX),</span></code></span>
+<span class="codeline" id="line-79"><code><span class="comment">// or nil</span></code></span>
+<span class="codeline" id="line-80"><code><span class="keyword">func</span> <label for="r19" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-LookupWordBreakClass" class="ident">LookupWordBreakClass</a></label>(<label for="r20" class="ident">ch</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) *<a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/letter.go.html#line-21" class="ident">RangeTable</a> {</code></span>
+<span class="codeline" id="line-81"><code>	<span class="comment">// a lot of runes do not have a word break property :</span></code></span>
+<span class="codeline" id="line-82"><code><span class="comment">	// avoid testing all the wordBreaks classes for them</span></code></span>
+<span class="codeline" id="line-83"><code>	<span class="keyword">if</span> !<a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/letter.go.html#line-157" class="ident">Is</a>(<a href="word_break.go.html#line-1091" class="ident">wordBreakAll</a>, <label for="r20" class="ident">ch</label>) {</code></span>
+<span class="codeline" id="line-84"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-85"><code>	}</code></span>
+<span class="codeline" id="line-86"><code>	<span class="keyword">for</span> <label for="r21" class="ident">_</label>, <label for="r22" class="ident">class</label> := <span class="keyword">range</span> <a href="word_break.go.html#line-1843" class="ident">wordBreaks</a> {</code></span>
+<span class="codeline" id="line-87"><code>		<span class="keyword">if</span> <a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/letter.go.html#line-157" class="ident">Is</a>(<label for="r22" class="ident">class</label>, <label for="r20" class="ident">ch</label>) {</code></span>
+<span class="codeline" id="line-88"><code>			<span class="keyword">return</span> <label for="r22" class="ident">class</label></code></span>
+<span class="codeline" id="line-89"><code>		}</code></span>
+<span class="codeline" id="line-90"><code>	}</code></span>
+<span class="codeline" id="line-91"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-92"><code>}</code></span>
+<span class="codeline" id="line-93"><code></code></span>
+<span class="codeline" id="line-94"><code><span class="comment">// LookupMirrorChar finds the mirrored equivalent of a character as defined in</span></code></span>
+<span class="codeline" id="line-95"><code><span class="comment">// the file BidiMirroring.txt of the Unicode Character Database available at</span></code></span>
+<span class="codeline" id="line-96"><code><span class="comment">// http://www.unicode.org/Public/UNIDATA/BidiMirroring.txt.</span></code></span>
+<span class="codeline" id="line-97"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-98"><code><span class="comment">// If the input character is declared as a mirroring character in the</span></code></span>
+<span class="codeline" id="line-99"><code><span class="comment">// Unicode standard and has a mirrored equivalent, it is returned with `true`.</span></code></span>
+<span class="codeline" id="line-100"><code><span class="comment">// Otherwise the input character itself returned with `false`.</span></code></span>
+<span class="codeline" id="line-101"><code><span class="keyword">func</span> <label for="r23" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-LookupMirrorChar" class="ident">LookupMirrorChar</a></label>(<label for="r24" class="ident">ch</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) (<a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-102"><code>	<label for="r25" class="ident">m</label>, <label for="r26" class="ident">ok</label> := <a href="mirroring.go.html#line-7" class="ident">mirroring</a>[<label for="r24" class="ident">ch</label>]</code></span>
+<span class="codeline" id="line-103"><code>	<span class="keyword">if</span> !<label for="r26" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-104"><code>		<label for="r25" class="ident">m</label> = <label for="r24" class="ident">ch</label></code></span>
+<span class="codeline" id="line-105"><code>	}</code></span>
+<span class="codeline" id="line-106"><code>	<span class="keyword">return</span> <label for="r25" class="ident">m</label>, <label for="r26" class="ident">ok</label></code></span>
+<span class="codeline" id="line-107"><code>}</code></span>
+<span class="codeline" id="line-108"><code></code></span>
+<span class="codeline" id="line-109"><code><span class="comment">// Algorithmic hangul syllables [de]composition, used</span></code></span>
+<span class="codeline" id="line-110"><code><span class="comment">// in Compose and Decompose, but also exported for additional shaper</span></code></span>
+<span class="codeline" id="line-111"><code><span class="comment">// processing.</span></code></span>
+<span class="codeline" id="line-112"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-113"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-HangulSBase" class="ident">HangulSBase</a>  = <span class="lit-number">0xAC00</span></code></span>
+<span class="codeline" id="line-114"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-HangulLBase" class="ident">HangulLBase</a>  = <span class="lit-number">0x1100</span></code></span>
+<span class="codeline" id="line-115"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-HangulVBase" class="ident">HangulVBase</a>  = <span class="lit-number">0x1161</span></code></span>
+<span class="codeline" id="line-116"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-HangulTBase" class="ident">HangulTBase</a>  = <span class="lit-number">0x11A7</span></code></span>
+<span class="codeline" id="line-117"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-HangulSCount" class="ident">HangulSCount</a> = <span class="lit-number">11172</span></code></span>
+<span class="codeline" id="line-118"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-HangulLCount" class="ident">HangulLCount</a> = <span class="lit-number">19</span></code></span>
+<span class="codeline" id="line-119"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-HangulVCount" class="ident">HangulVCount</a> = <span class="lit-number">21</span></code></span>
+<span class="codeline" id="line-120"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-HangulTCount" class="ident">HangulTCount</a> = <span class="lit-number">28</span></code></span>
+<span class="codeline" id="line-121"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-HangulNCount" class="ident">HangulNCount</a> = <a href="#line-119" class="ident">HangulVCount</a> * <a href="#line-120" class="ident">HangulTCount</a></code></span>
+<span class="codeline" id="line-122"><code>)</code></span>
+<span class="codeline" id="line-123"><code></code></span>
+<span class="codeline" id="line-124"><code><span class="keyword">func</span> <label for="r27" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-decomposeHangul" class="ident">decomposeHangul</a></label>(<label for="r28" class="ident">ab</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) (<label for="r29" class="ident">a</label>, <label for="r30" class="ident">b</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>, <label for="r31" class="ident">ok</label> <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-125"><code>	<label for="r32" class="ident">si</label> := <label for="r28" class="ident">ab</label> - <a href="#line-113" class="ident">HangulSBase</a></code></span>
+<span class="codeline" id="line-126"><code></code></span>
+<span class="codeline" id="line-127"><code>	<span class="keyword">if</span> <label for="r32" class="ident">si</label> &lt; <span class="lit-number">0</span> || <label for="r32" class="ident">si</label> &gt;= <a href="#line-117" class="ident">HangulSCount</a> {</code></span>
+<span class="codeline" id="line-128"><code>		<span class="keyword">return</span> <span class="lit-number">0</span>, <span class="lit-number">0</span>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-129"><code>	}</code></span>
+<span class="codeline" id="line-130"><code></code></span>
+<span class="codeline" id="line-131"><code>	<span class="keyword">if</span> <label for="r32" class="ident">si</label>%<a href="#line-120" class="ident">HangulTCount</a> != <span class="lit-number">0</span> { <span class="comment">// LV,T</span></code></span>
+<span class="codeline" id="line-132"><code>		<span class="keyword">return</span> <a href="#line-113" class="ident">HangulSBase</a> + (<label for="r32" class="ident">si</label>/<a href="#line-120" class="ident">HangulTCount</a>)*<a href="#line-120" class="ident">HangulTCount</a>, <a href="#line-116" class="ident">HangulTBase</a> + (<label for="r32" class="ident">si</label> % <a href="#line-120" class="ident">HangulTCount</a>), <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-133"><code>	} <span class="comment">// L,V</span></code></span>
+<span class="codeline" id="line-134"><code>	<span class="keyword">return</span> <a href="#line-114" class="ident">HangulLBase</a> + (<label for="r32" class="ident">si</label> / <a href="#line-121" class="ident">HangulNCount</a>), <a href="#line-115" class="ident">HangulVBase</a> + (<label for="r32" class="ident">si</label>%<a href="#line-121" class="ident">HangulNCount</a>)/<a href="#line-120" class="ident">HangulTCount</a>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-135"><code>}</code></span>
+<span class="codeline" id="line-136"><code></code></span>
+<span class="codeline" id="line-137"><code><span class="keyword">func</span> <label for="r33" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-composeHangul" class="ident">composeHangul</a></label>(<label for="r34" class="ident">a</label>, <label for="r35" class="ident">b</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) (<a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-138"><code>	<span class="keyword">if</span> <label for="r34" class="ident">a</label> &gt;= <a href="#line-113" class="ident">HangulSBase</a> &amp;&amp; <label for="r34" class="ident">a</label> &lt; (<a href="#line-113" class="ident">HangulSBase</a>+<a href="#line-117" class="ident">HangulSCount</a>) &amp;&amp; <label for="r35" class="ident">b</label> &gt; <a href="#line-116" class="ident">HangulTBase</a> &amp;&amp; <label for="r35" class="ident">b</label> &lt; (<a href="#line-116" class="ident">HangulTBase</a>+<a href="#line-120" class="ident">HangulTCount</a>) &amp;&amp; (<label for="r34" class="ident">a</label>-<a href="#line-113" class="ident">HangulSBase</a>)%<a href="#line-120" class="ident">HangulTCount</a> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-139"><code>		<span class="comment">// LV,T</span></code></span>
+<span class="codeline" id="line-140"><code>		<span class="keyword">return</span> <label for="r34" class="ident">a</label> + (<label for="r35" class="ident">b</label> - <a href="#line-116" class="ident">HangulTBase</a>), <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-141"><code>	} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r34" class="ident">a</label> &gt;= <a href="#line-114" class="ident">HangulLBase</a> &amp;&amp; <label for="r34" class="ident">a</label> &lt; (<a href="#line-114" class="ident">HangulLBase</a>+<a href="#line-118" class="ident">HangulLCount</a>) &amp;&amp; <label for="r35" class="ident">b</label> &gt;= <a href="#line-115" class="ident">HangulVBase</a> &amp;&amp; <label for="r35" class="ident">b</label> &lt; (<a href="#line-115" class="ident">HangulVBase</a>+<a href="#line-119" class="ident">HangulVCount</a>) {</code></span>
+<span class="codeline" id="line-142"><code>		<span class="comment">// L,V</span></code></span>
+<span class="codeline" id="line-143"><code>		<label for="r36" class="ident">li</label> := <label for="r34" class="ident">a</label> - <a href="#line-114" class="ident">HangulLBase</a></code></span>
+<span class="codeline" id="line-144"><code>		<label for="r37" class="ident">vi</label> := <label for="r35" class="ident">b</label> - <a href="#line-115" class="ident">HangulVBase</a></code></span>
+<span class="codeline" id="line-145"><code>		<span class="keyword">return</span> <a href="#line-113" class="ident">HangulSBase</a> + <label for="r36" class="ident">li</label>*<a href="#line-121" class="ident">HangulNCount</a> + <label for="r37" class="ident">vi</label>*<a href="#line-120" class="ident">HangulTCount</a>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-146"><code>	}</code></span>
+<span class="codeline" id="line-147"><code>	<span class="keyword">return</span> <span class="lit-number">0</span>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-148"><code>}</code></span>
+<span class="codeline" id="line-149"><code></code></span>
+<span class="codeline" id="line-150"><code><span class="comment">// Decompose decompose an input Unicode code point,</span></code></span>
+<span class="codeline" id="line-151"><code><span class="comment">// returning the two decomposed code points, if successful.</span></code></span>
+<span class="codeline" id="line-152"><code><span class="comment">// It returns `false` otherwise.</span></code></span>
+<span class="codeline" id="line-153"><code><span class="keyword">func</span> <label for="r38" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-Decompose" class="ident">Decompose</a></label>(<label for="r39" class="ident">ab</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) (<label for="r40" class="ident">a</label>, <label for="r41" class="ident">b</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>, <label for="r42" class="ident">ok</label> <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-154"><code>	<span class="keyword">if</span> <label for="r40" class="ident">a</label>, <label for="r41" class="ident">b</label>, <label for="r42" class="ident">ok</label> = <a href="#line-124" class="ident">decomposeHangul</a>(<label for="r39" class="ident">ab</label>); <label for="r42" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-155"><code>		<span class="keyword">return</span> <label for="r40" class="ident">a</label>, <label for="r41" class="ident">b</label>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-156"><code>	}</code></span>
+<span class="codeline" id="line-157"><code></code></span>
+<span class="codeline" id="line-158"><code>	<span class="comment">// Check if it's a single-character decomposition.</span></code></span>
+<span class="codeline" id="line-159"><code>	<span class="keyword">if</span> <label for="r43" class="ident">m1</label>, <label for="r44" class="ident">ok</label> := <a href="decomposition.go.html#line-7" class="ident">decompose1</a>[<label for="r39" class="ident">ab</label>]; <label for="r44" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-160"><code>		<span class="keyword">return</span> <label for="r43" class="ident">m1</label>, <span class="lit-number">0</span>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-161"><code>	}</code></span>
+<span class="codeline" id="line-162"><code>	<span class="keyword">if</span> <label for="r45" class="ident">m2</label>, <label for="r46" class="ident">ok</label> := <a href="decomposition.go.html#line-1044" class="ident">decompose2</a>[<label for="r39" class="ident">ab</label>]; <label for="r46" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-163"><code>		<span class="keyword">return</span> <label for="r45" class="ident">m2</label>[<span class="lit-number">0</span>], <label for="r45" class="ident">m2</label>[<span class="lit-number">1</span>], <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-164"><code>	}</code></span>
+<span class="codeline" id="line-165"><code>	<span class="keyword">return</span> <label for="r39" class="ident">ab</label>, <span class="lit-number">0</span>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-166"><code>}</code></span>
+<span class="codeline" id="line-167"><code></code></span>
+<span class="codeline" id="line-168"><code><span class="comment">// Compose composes a sequence of two input Unicode code</span></code></span>
+<span class="codeline" id="line-169"><code><span class="comment">// points by canonical equivalence, returning the composed code, if successful.</span></code></span>
+<span class="codeline" id="line-170"><code><span class="comment">// It returns `false` otherwise</span></code></span>
+<span class="codeline" id="line-171"><code><span class="keyword">func</span> <label for="r47" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-Compose" class="ident">Compose</a></label>(<label for="r48" class="ident">a</label>, <label for="r49" class="ident">b</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) (<a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-172"><code>	<span class="comment">// Hangul is handled algorithmically.</span></code></span>
+<span class="codeline" id="line-173"><code>	<span class="keyword">if</span> <label for="r50" class="ident">ab</label>, <label for="r51" class="ident">ok</label> := <a href="#line-137" class="ident">composeHangul</a>(<label for="r48" class="ident">a</label>, <label for="r49" class="ident">b</label>); <label for="r51" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-174"><code>		<span class="keyword">return</span> <label for="r50" class="ident">ab</label>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-175"><code>	}</code></span>
+<span class="codeline" id="line-176"><code>	<label for="r52" class="ident">u</label> := <a href="decomposition.go.html#line-2072" class="ident">compose</a>[[<span class="lit-number">2</span>]<a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>{<label for="r48" class="ident">a</label>, <label for="r49" class="ident">b</label>}]</code></span>
+<span class="codeline" id="line-177"><code>	<span class="keyword">return</span> <label for="r52" class="ident">u</label>, <label for="r52" class="ident">u</label> != <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-178"><code>}</code></span>
+<span class="codeline" id="line-179"><code></code></span>
+<span class="codeline" id="line-180"><code><span class="comment">// ArabicJoining is a property used to shape Arabic runes.</span></code></span>
+<span class="codeline" id="line-181"><code><span class="comment">// See the table ArabicJoinings.</span></code></span>
+<span class="codeline" id="line-182"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-ArabicJoining" class="ident">ArabicJoining</a> <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-183"><code></code></span>
+<span class="codeline" id="line-184"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-185"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-U" class="ident">U</a>          <a href="#line-182" class="ident">ArabicJoining</a> = <span class="lit-number">'U'</span> <span class="comment">// Un-joining, e.g. Full Stop</span></code></span>
+<span class="codeline" id="line-186"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-R" class="ident">R</a>          <a href="#line-182" class="ident">ArabicJoining</a> = <span class="lit-number">'R'</span> <span class="comment">// Right-joining, e.g. Arabic Letter Dal</span></code></span>
+<span class="codeline" id="line-187"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-Alaph" class="ident">Alaph</a>      <a href="#line-182" class="ident">ArabicJoining</a> = <span class="lit-number">'a'</span> <span class="comment">// Alaph group (included in kind R)</span></code></span>
+<span class="codeline" id="line-188"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-DalathRish" class="ident">DalathRish</a> <a href="#line-182" class="ident">ArabicJoining</a> = <span class="lit-number">'d'</span> <span class="comment">// Dalat Rish group (included in kind R)</span></code></span>
+<span class="codeline" id="line-189"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-D" class="ident">D</a>          <a href="#line-182" class="ident">ArabicJoining</a> = <span class="lit-number">'D'</span> <span class="comment">// Dual-joining, e.g. Arabic Letter Ain</span></code></span>
+<span class="codeline" id="line-190"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-C" class="ident">C</a>          <a href="#line-182" class="ident">ArabicJoining</a> = <span class="lit-number">'C'</span> <span class="comment">// Join-Causing, e.g. Tatweel, ZWJ</span></code></span>
+<span class="codeline" id="line-191"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-L" class="ident">L</a>          <a href="#line-182" class="ident">ArabicJoining</a> = <span class="lit-number">'L'</span> <span class="comment">// Left-joining, i.e. fictional</span></code></span>
+<span class="codeline" id="line-192"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-T" class="ident">T</a>          <a href="#line-182" class="ident">ArabicJoining</a> = <span class="lit-number">'T'</span> <span class="comment">// Transparent, e.g. Arabic Fatha</span></code></span>
+<span class="codeline" id="line-193"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-G" class="ident">G</a>          <a href="#line-182" class="ident">ArabicJoining</a> = <span class="lit-number">'G'</span> <span class="comment">// Ignored, e.g. LRE, RLE, ZWNBSP</span></code></span>
+<span class="codeline" id="line-194"><code>)</code></span>
+<span class="codeline" id="line-195"><code></code></span>
+<span class="codeline" id="line-196"><code><span class="comment">// LookupVerticalOrientation returns the prefered orientation</span></code></span>
+<span class="codeline" id="line-197"><code><span class="comment">// for the given script.</span></code></span>
+<span class="codeline" id="line-198"><code><span class="keyword">func</span> <label for="r53" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/unicodedata.html#name-LookupVerticalOrientation" class="ident">LookupVerticalOrientation</a></label>(<label for="r54" class="ident">s</label> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i1">language</a>.<a href="../language/scripts.go.html#line-12" class="ident">Script</a>) <a href="vertical_orientation.go.html#line-15" class="ident">ScriptVerticalOrientation</a> {</code></span>
+<span class="codeline" id="line-199"><code>	<span class="keyword">for</span> <label for="r55" class="ident">_</label>, <label for="r56" class="ident">script</label> := <span class="keyword">range</span> <a href="vertical_orientation.go.html#line-23" class="ident">uprightOrMixedScripts</a> {</code></span>
+<span class="codeline" id="line-200"><code>		<span class="keyword">if</span> <label for="r56" class="ident">script</label>.<a href="vertical_orientation.go.html#line-17" class="ident">script</a> == <label for="r54" class="ident">s</label> {</code></span>
+<span class="codeline" id="line-201"><code>			<span class="keyword">return</span> <label for="r56" class="ident">script</label></code></span>
+<span class="codeline" id="line-202"><code>		}</code></span>
+<span class="codeline" id="line-203"><code>	}</code></span>
+<span class="codeline" id="line-204"><code></code></span>
+<span class="codeline" id="line-205"><code>	<span class="comment">// all other scripts have full R (sideways)</span></code></span>
+<span class="codeline" id="line-206"><code>	<span class="keyword">return</span> <a href="vertical_orientation.go.html#line-15" class="ident">ScriptVerticalOrientation</a>{<a href="vertical_orientation.go.html#line-16" class="ident">exceptions</a>: <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="vertical_orientation.go.html#line-17" class="ident">script</a>: <label for="r54" class="ident">s</label>, <a href="vertical_orientation.go.html#line-18" class="ident">isMainSideways</a>: <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a>}</code></span>
+<span class="codeline" id="line-207"><code>}</code></span>
+<span class="codeline" id="line-208"><code></code></span>
+<span class="codeline" id="line-209"><code><span class="comment">// Orientation returns the prefered orientation</span></code></span>
+<span class="codeline" id="line-210"><code><span class="comment">// for the given rune.</span></code></span>
+<span class="codeline" id="line-211"><code><span class="comment">// If the rune does not belong to this script, the default orientation of this script</span></code></span>
+<span class="codeline" id="line-212"><code><span class="comment">// is returned (regardless of the actual script of the given rune).</span></code></span>
+<span class="codeline" id="line-213"><code><span class="keyword">func</span> (<label for="r57" class="ident">sv</label> <a href="vertical_orientation.go.html#line-15" class="ident">ScriptVerticalOrientation</a>) <label for="r58" class="ident">Orientation</label>(<label for="r59" class="ident">r</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) (<label for="r60" class="ident">isSideways</label> <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-214"><code>	<span class="keyword">if</span> <label for="r57" class="ident">sv</label>.<a href="vertical_orientation.go.html#line-16" class="ident">exceptions</a> == <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> || !<a href="../../../../../pkg/unicode.html" class="ident i0">unicode</a>.<a href="../../../../unicode/letter.go.html#line-157" class="ident">Is</a>(<label for="r57" class="ident">sv</label>.<a href="vertical_orientation.go.html#line-16" class="ident">exceptions</a>, <label for="r59" class="ident">r</label>) {</code></span>
+<span class="codeline" id="line-215"><code>		<span class="keyword">return</span> <label for="r57" class="ident">sv</label>.<a href="vertical_orientation.go.html#line-18" class="ident">isMainSideways</a></code></span>
+<span class="codeline" id="line-216"><code>	}</code></span>
+<span class="codeline" id="line-217"><code>	<span class="keyword">return</span> !<label for="r57" class="ident">sv</label>.<a href="vertical_orientation.go.html#line-18" class="ident">isMainSideways</a></code></span>
+<span class="codeline" id="line-218"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

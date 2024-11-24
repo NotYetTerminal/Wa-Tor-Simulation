@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: ot_shape_complex.go in package github.com/go-text/typesetting/harfbuzz</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	ot_shape_complex.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html">github.com/go-text/typesetting/harfbuzz</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> harfbuzz</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i0">ot</a> <label for="i0"><span class="lit-string i0">"github.com/go-text/typesetting/font/opentype"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"github.com/go-text/typesetting/font/opentype/tables"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"github.com/go-text/typesetting/language"</span></label></code></span>
+<span class="codeline" id="line-7"><code>)</code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-zeroWidthMarks" class="ident">zeroWidthMarks</a> <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a></code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-12"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-zeroWidthMarksNone" class="ident">zeroWidthMarksNone</a> <a href="#line-9" class="ident">zeroWidthMarks</a> = <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-zeroWidthMarksByGdefEarly" class="ident">zeroWidthMarksByGdefEarly</a></code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-zeroWidthMarksByGdefLate" class="ident">zeroWidthMarksByGdefLate</a></code></span>
+<span class="codeline" id="line-15"><code>)</code></span>
+<span class="codeline" id="line-16"><code></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// implements the specialisation for a script</span></code></span>
+<span class="codeline" id="line-18"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-otComplexShaper" class="ident">otComplexShaper</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.otComplexShaper^f648d.html#name-github.com/go-text/typesetting/harfbuzz.marksBehavior" class="ident">marksBehavior</a>() (zwm <a href="#line-9" class="ident">zeroWidthMarks</a>, fallbackPosition <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>)</code></span>
+<span class="codeline" id="line-20"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.otComplexShaper^f648d.html#name-github.com/go-text/typesetting/harfbuzz.normalizationPreference" class="ident">normalizationPreference</a>() <a href="ot_shape_normalize.go.html#line-52" class="ident">normalizationMode</a></code></span>
+<span class="codeline" id="line-21"><code>	<span class="comment">// If not 0, then must match found GPOS script tag for</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">	// GPOS to be applied. Otherwise, fallback positioning will be used.</span></code></span>
+<span class="codeline" id="line-23"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.otComplexShaper^f648d.html#name-github.com/go-text/typesetting/harfbuzz.gposTag" class="ident">gposTag</a>() <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="../font/opentype/tables/tables.go.html#line-14" class="ident">Tag</a></code></span>
+<span class="codeline" id="line-24"><code></code></span>
+<span class="codeline" id="line-25"><code>	<span class="comment">// collectFeatures is alled during shape_plan().</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">	// Shapers should use plan.map to add their features and callbacks.</span></code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.otComplexShaper^f648d.html#name-github.com/go-text/typesetting/harfbuzz.collectFeatures" class="ident">collectFeatures</a>(plan *<a href="ot_shaper.go.html#line-29" class="ident">otShapePlanner</a>)</code></span>
+<span class="codeline" id="line-28"><code></code></span>
+<span class="codeline" id="line-29"><code>	<span class="comment">// overrideFeatures is called during shape_plan().</span></code></span>
+<span class="codeline" id="line-30"><code><span class="comment">	// Shapers should use plan.map to override features and add callbacks after</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">	// common features are added.</span></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.otComplexShaper^f648d.html#name-github.com/go-text/typesetting/harfbuzz.overrideFeatures" class="ident">overrideFeatures</a>(plan *<a href="ot_shaper.go.html#line-29" class="ident">otShapePlanner</a>)</code></span>
+<span class="codeline" id="line-33"><code></code></span>
+<span class="codeline" id="line-34"><code>	<span class="comment">// dataCreate is called at the end of shape_plan().</span></code></span>
+<span class="codeline" id="line-35"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.otComplexShaper^f648d.html#name-github.com/go-text/typesetting/harfbuzz.dataCreate" class="ident">dataCreate</a>(plan *<a href="ot_shaper.go.html#line-137" class="ident">otShapePlan</a>)</code></span>
+<span class="codeline" id="line-36"><code></code></span>
+<span class="codeline" id="line-37"><code>	<span class="comment">// called during shape(), shapers can use to modify text before shaping starts.</span></code></span>
+<span class="codeline" id="line-38"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.otComplexShaper^f648d.html#name-github.com/go-text/typesetting/harfbuzz.preprocessText" class="ident">preprocessText</a>(plan *<a href="ot_shaper.go.html#line-137" class="ident">otShapePlan</a>, buffer *<a href="buffer.go.html#line-56" class="ident">Buffer</a>, font *<a href="fonts.go.html#line-18" class="ident">Font</a>)</code></span>
+<span class="codeline" id="line-39"><code></code></span>
+<span class="codeline" id="line-40"><code>	<span class="comment">// called during shape()'s normalization: may use decompose_unicode as fallback</span></code></span>
+<span class="codeline" id="line-41"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.otComplexShaper^f648d.html#name-github.com/go-text/typesetting/harfbuzz.decompose" class="ident">decompose</a>(c *<a href="ot_shape_normalize.go.html#line-64" class="ident">otNormalizeContext</a>, ab <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) (a, b <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>, ok <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>)</code></span>
+<span class="codeline" id="line-42"><code></code></span>
+<span class="codeline" id="line-43"><code>	<span class="comment">// called during shape()'s normalization: may use compose_unicode as fallback</span></code></span>
+<span class="codeline" id="line-44"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.otComplexShaper^f648d.html#name-github.com/go-text/typesetting/harfbuzz.compose" class="ident">compose</a>(c *<a href="ot_shape_normalize.go.html#line-64" class="ident">otNormalizeContext</a>, a, b <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) (ab <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>, ok <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>)</code></span>
+<span class="codeline" id="line-45"><code></code></span>
+<span class="codeline" id="line-46"><code>	<span class="comment">// called during shape(), shapers should use map to get feature masks and set on buffer.</span></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">	// Shapers may NOT modify characters.</span></code></span>
+<span class="codeline" id="line-48"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.otComplexShaper^f648d.html#name-github.com/go-text/typesetting/harfbuzz.setupMasks" class="ident">setupMasks</a>(plan *<a href="ot_shaper.go.html#line-137" class="ident">otShapePlan</a>, buffer *<a href="buffer.go.html#line-56" class="ident">Buffer</a>, font *<a href="fonts.go.html#line-18" class="ident">Font</a>)</code></span>
+<span class="codeline" id="line-49"><code></code></span>
+<span class="codeline" id="line-50"><code>	<span class="comment">// called during shape(), shapers can use to modify ordering of combining marks.</span></code></span>
+<span class="codeline" id="line-51"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.otComplexShaper^f648d.html#name-github.com/go-text/typesetting/harfbuzz.reorderMarks" class="ident">reorderMarks</a>(plan *<a href="ot_shaper.go.html#line-137" class="ident">otShapePlan</a>, buffer *<a href="buffer.go.html#line-56" class="ident">Buffer</a>, start, end <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>)</code></span>
+<span class="codeline" id="line-52"><code></code></span>
+<span class="codeline" id="line-53"><code>	<span class="comment">// called during shape(), shapers can use to modify glyphs after shaping ends.</span></code></span>
+<span class="codeline" id="line-54"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.otComplexShaper^f648d.html#name-github.com/go-text/typesetting/harfbuzz.postprocessGlyphs" class="ident">postprocessGlyphs</a>(plan *<a href="ot_shaper.go.html#line-137" class="ident">otShapePlan</a>, buffer *<a href="buffer.go.html#line-56" class="ident">Buffer</a>, font *<a href="fonts.go.html#line-18" class="ident">Font</a>)</code></span>
+<span class="codeline" id="line-55"><code>}</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code><span class="comment">/*</span></code></span>
+<span class="codeline" id="line-58"><code><span class="comment"> * For lack of a better place, put Zawgyi script hack here.</span></code></span>
+<span class="codeline" id="line-59"><code><span class="comment"> * https://github.com/harfbuzz/harfbuzz/issues/1162</span></code></span>
+<span class="codeline" id="line-60"><code><span class="comment"> */</span></code></span>
+<span class="codeline" id="line-61"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-scriptMyanmarZawgyi" class="ident">scriptMyanmarZawgyi</a> = <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts.go.html#line-12" class="ident">Script</a>(<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i0">ot</a>.<a href="../font/opentype/opentype.go.html#line-14" class="ident">NewTag</a>(<span class="lit-number">'Q'</span>, <span class="lit-number">'a'</span>, <span class="lit-number">'a'</span>, <span class="lit-number">'g'</span>))</code></span>
+<span class="codeline" id="line-62"><code></code></span>
+<span class="codeline" id="line-63"><code><span class="keyword">func</span> (<label for="r0" class="ident">planner</label> *<a href="ot_shaper.go.html#line-29" class="ident">otShapePlanner</a>) <label for="r1" class="ident">categorizeComplex</label>() <a href="#line-18" class="ident">otComplexShaper</a> {</code></span>
+<span class="codeline" id="line-64"><code>	<span class="keyword">switch</span> <label for="r0" class="ident">planner</label>.<a href="ot_shaper.go.html#line-31" class="ident">props</a>.<a href="harfbuzz.go.html#line-107" class="ident">Script</a> {</code></span>
+<span class="codeline" id="line-65"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-12" class="ident">Arabic</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-167" class="ident">Syriac</a>:</code></span>
+<span class="codeline" id="line-66"><code>		<span class="comment">/* For Arabic script, use the Arabic shaper even if no OT script tag was found.</span></code></span>
+<span class="codeline" id="line-67"><code><span class="comment">		 * This is because we do fallback shaping for Arabic script (and not others).</span></code></span>
+<span class="codeline" id="line-68"><code><span class="comment">		 * But note that Arabic shaping is applicable only to horizontal layout; for</span></code></span>
+<span class="codeline" id="line-69"><code><span class="comment">		 * vertical text, just use the generic shaper instead. */</span></code></span>
+<span class="codeline" id="line-70"><code>		<span class="keyword">if</span> (<label for="r0" class="ident">planner</label>.<a href="ot_shaper.go.html#line-33" class="ident">map_</a>.<a href="ot_map.go.html#line-65" class="ident">chosenScript</a>[<span class="lit-number">0</span>] != <a href="ot_tag.go.html#line-16" class="ident">tagDefaultScript</a> ||</code></span>
+<span class="codeline" id="line-71"><code>			<label for="r0" class="ident">planner</label>.<a href="ot_shaper.go.html#line-31" class="ident">props</a>.<a href="harfbuzz.go.html#line-107" class="ident">Script</a> == <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-12" class="ident">Arabic</a>) &amp;&amp;</code></span>
+<span class="codeline" id="line-72"><code>			<label for="r0" class="ident">planner</label>.<a href="ot_shaper.go.html#line-31" class="ident">props</a>.<a href="harfbuzz.go.html#line-116" class="ident">Direction</a>.<a href="harfbuzz.go.html#line-74" class="ident">isHorizontal</a>() {</code></span>
+<span class="codeline" id="line-73"><code>			<span class="keyword">return</span> &amp;<a href="ot_arabic.go.html#line-164" class="ident">complexShaperArabic</a>{}</code></span>
+<span class="codeline" id="line-74"><code>		}</code></span>
+<span class="codeline" id="line-75"><code>		<span class="keyword">return</span> <a href="#line-174" class="ident">complexShaperDefault</a>{}</code></span>
+<span class="codeline" id="line-76"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-180" class="ident">Thai</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-88" class="ident">Lao</a>:</code></span>
+<span class="codeline" id="line-77"><code>		<span class="keyword">return</span> <a href="ot_thai.go.html#line-13" class="ident">complexShaperThai</a>{}</code></span>
+<span class="codeline" id="line-78"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-63" class="ident">Hangul</a>:</code></span>
+<span class="codeline" id="line-79"><code>		<span class="keyword">return</span> &amp;<a href="ot_hangul.go.html#line-14" class="ident">complexShaperHangul</a>{}</code></span>
+<span class="codeline" id="line-80"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-67" class="ident">Hebrew</a>:</code></span>
+<span class="codeline" id="line-81"><code>		<span class="keyword">return</span> <a href="ot_hebrew.go.html#line-12" class="ident">complexShaperHebrew</a>{}</code></span>
+<span class="codeline" id="line-82"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-19" class="ident">Bengali</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-44" class="ident">Devanagari</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-59" class="ident">Gujarati</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-61" class="ident">Gurmukhi</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-76" class="ident">Kannada</a>,</code></span>
+<span class="codeline" id="line-83"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-101" class="ident">Malayalam</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-138" class="ident">Oriya</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-174" class="ident">Tamil</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-177" class="ident">Telugu</a>:</code></span>
+<span class="codeline" id="line-84"><code>		<span class="comment">/* If the designer designed the font for the 'DFLT' script,</span></code></span>
+<span class="codeline" id="line-85"><code><span class="comment">		 * (or we ended up arbitrarily pick 'latn'), use the default shaper.</span></code></span>
+<span class="codeline" id="line-86"><code><span class="comment">		 * Otherwise, use the specific shaper.</span></code></span>
+<span class="codeline" id="line-87"><code><span class="comment">		 *</span></code></span>
+<span class="codeline" id="line-88"><code><span class="comment">		 * If it's indy3 tag, send to USE. */</span></code></span>
+<span class="codeline" id="line-89"><code>		<span class="keyword">if</span> <label for="r0" class="ident">planner</label>.<a href="ot_shaper.go.html#line-33" class="ident">map_</a>.<a href="ot_map.go.html#line-65" class="ident">chosenScript</a>[<span class="lit-number">0</span>] == <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i0">ot</a>.<a href="../font/opentype/opentype.go.html#line-14" class="ident">NewTag</a>(<span class="lit-number">'D'</span>, <span class="lit-number">'F'</span>, <span class="lit-number">'L'</span>, <span class="lit-number">'T'</span>) ||</code></span>
+<span class="codeline" id="line-90"><code>			<label for="r0" class="ident">planner</label>.<a href="ot_shaper.go.html#line-33" class="ident">map_</a>.<a href="ot_map.go.html#line-65" class="ident">chosenScript</a>[<span class="lit-number">0</span>] == <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i0">ot</a>.<a href="../font/opentype/opentype.go.html#line-14" class="ident">NewTag</a>(<span class="lit-number">'l'</span>, <span class="lit-number">'a'</span>, <span class="lit-number">'t'</span>, <span class="lit-number">'n'</span>) {</code></span>
+<span class="codeline" id="line-91"><code>			<span class="keyword">return</span> <a href="#line-174" class="ident">complexShaperDefault</a>{}</code></span>
+<span class="codeline" id="line-92"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> (<label for="r0" class="ident">planner</label>.<a href="ot_shaper.go.html#line-33" class="ident">map_</a>.<a href="ot_map.go.html#line-65" class="ident">chosenScript</a>[<span class="lit-number">0</span>] &amp; <span class="lit-number">0x000000FF</span>) == <span class="lit-number">'3'</span> {</code></span>
+<span class="codeline" id="line-93"><code>			<span class="keyword">return</span> &amp;<a href="ot_use.go.html#line-67" class="ident">complexShaperUSE</a>{}</code></span>
+<span class="codeline" id="line-94"><code>		}</code></span>
+<span class="codeline" id="line-95"><code>		<span class="keyword">return</span> &amp;<a href="ot_indic.go.html#line-48" class="ident">complexShaperIndic</a>{}</code></span>
+<span class="codeline" id="line-96"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-84" class="ident">Khmer</a>:</code></span>
+<span class="codeline" id="line-97"><code>		<span class="keyword">return</span> &amp;<a href="ot_khmer.go.html#line-15" class="ident">complexShaperKhmer</a>{}</code></span>
+<span class="codeline" id="line-98"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-118" class="ident">Myanmar</a>:</code></span>
+<span class="codeline" id="line-99"><code>		<span class="comment">/* If the designer designed the font for the 'DFLT' script,</span></code></span>
+<span class="codeline" id="line-100"><code><span class="comment">		 * (or we ended up arbitrarily pick 'latn'), use the default shaper.</span></code></span>
+<span class="codeline" id="line-101"><code><span class="comment">		 * Otherwise, use the specific shaper.</span></code></span>
+<span class="codeline" id="line-102"><code><span class="comment">		 *</span></code></span>
+<span class="codeline" id="line-103"><code><span class="comment">		 * If designer designed for 'mymr' tag, also send to default</span></code></span>
+<span class="codeline" id="line-104"><code><span class="comment">		 * shaper.  That's tag used from before Myanmar shaping spec</span></code></span>
+<span class="codeline" id="line-105"><code><span class="comment">		 * was developed.  The shaping spec uses 'mym2' tag. */</span></code></span>
+<span class="codeline" id="line-106"><code>		<span class="keyword">if</span> <label for="r0" class="ident">planner</label>.<a href="ot_shaper.go.html#line-33" class="ident">map_</a>.<a href="ot_map.go.html#line-65" class="ident">chosenScript</a>[<span class="lit-number">0</span>] == <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i0">ot</a>.<a href="../font/opentype/opentype.go.html#line-14" class="ident">NewTag</a>(<span class="lit-number">'D'</span>, <span class="lit-number">'F'</span>, <span class="lit-number">'L'</span>, <span class="lit-number">'T'</span>) ||</code></span>
+<span class="codeline" id="line-107"><code>			<label for="r0" class="ident">planner</label>.<a href="ot_shaper.go.html#line-33" class="ident">map_</a>.<a href="ot_map.go.html#line-65" class="ident">chosenScript</a>[<span class="lit-number">0</span>] == <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i0">ot</a>.<a href="../font/opentype/opentype.go.html#line-14" class="ident">NewTag</a>(<span class="lit-number">'l'</span>, <span class="lit-number">'a'</span>, <span class="lit-number">'t'</span>, <span class="lit-number">'n'</span>) ||</code></span>
+<span class="codeline" id="line-108"><code>			<label for="r0" class="ident">planner</label>.<a href="ot_shaper.go.html#line-33" class="ident">map_</a>.<a href="ot_map.go.html#line-65" class="ident">chosenScript</a>[<span class="lit-number">0</span>] == <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i0">ot</a>.<a href="../font/opentype/opentype.go.html#line-14" class="ident">NewTag</a>(<span class="lit-number">'m'</span>, <span class="lit-number">'y'</span>, <span class="lit-number">'m'</span>, <span class="lit-number">'r'</span>) {</code></span>
+<span class="codeline" id="line-109"><code>			<span class="keyword">return</span> <a href="#line-174" class="ident">complexShaperDefault</a>{}</code></span>
+<span class="codeline" id="line-110"><code>		}</code></span>
+<span class="codeline" id="line-111"><code>		<span class="keyword">return</span> <a href="ot_myanmar.go.html#line-13" class="ident">complexShaperMyanmar</a>{}</code></span>
+<span class="codeline" id="line-112"><code></code></span>
+<span class="codeline" id="line-113"><code>	<span class="keyword">case</span> <a href="#line-61" class="ident">scriptMyanmarZawgyi</a>:</code></span>
+<span class="codeline" id="line-114"><code>		<span class="comment">/* Ugly Zawgyi encoding.</span></code></span>
+<span class="codeline" id="line-115"><code><span class="comment">		 * Disable all auto processing.</span></code></span>
+<span class="codeline" id="line-116"><code><span class="comment">		 * https://github.com/harfbuzz/harfbuzz/issues/1162 */</span></code></span>
+<span class="codeline" id="line-117"><code>		<span class="keyword">return</span> <a href="#line-174" class="ident">complexShaperDefault</a>{<a href="#line-179" class="ident">dumb</a>: <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a>, <a href="#line-180" class="ident">disableNorm</a>: <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a>}</code></span>
+<span class="codeline" id="line-118"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-181" class="ident">Tibetan</a>,</code></span>
+<span class="codeline" id="line-119"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-115" class="ident">Mongolian</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-159" class="ident">Sinhala</a>,</code></span>
+<span class="codeline" id="line-120"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-27" class="ident">Buhid</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-65" class="ident">Hanunoo</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-168" class="ident">Tagalog</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-169" class="ident">Tagbanwa</a>,</code></span>
+<span class="codeline" id="line-121"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-92" class="ident">Limbu</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-170" class="ident">Tai_Le</a>,</code></span>
+<span class="codeline" id="line-122"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-26" class="ident">Buginese</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-81" class="ident">Kharoshthi</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-165" class="ident">Syloti_Nagri</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-182" class="ident">Tifinagh</a>,</code></span>
+<span class="codeline" id="line-123"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-15" class="ident">Balinese</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-124" class="ident">Nko</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-144" class="ident">Phags_Pa</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-32" class="ident">Cham</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-80" class="ident">Kayah_Li</a>,</code></span>
+<span class="codeline" id="line-124"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-91" class="ident">Lepcha</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-148" class="ident">Rejang</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-153" class="ident">Saurashtra</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-163" class="ident">Sundanese</a>,</code></span>
+<span class="codeline" id="line-125"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-48" class="ident">Egyptian_Hieroglyphs</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-73" class="ident">Javanese</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-75" class="ident">Kaithi</a>,</code></span>
+<span class="codeline" id="line-126"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-109" class="ident">Meetei_Mayek</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-171" class="ident">Tai_Tham</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-172" class="ident">Tai_Viet</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-18" class="ident">Batak</a>,</code></span>
+<span class="codeline" id="line-127"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-24" class="ident">Brahmi</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-102" class="ident">Mandaic</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-31" class="ident">Chakma</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-113" class="ident">Miao</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-154" class="ident">Sharada</a>,</code></span>
+<span class="codeline" id="line-128"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-173" class="ident">Takri</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-47" class="ident">Duployan</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-57" class="ident">Grantha</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-85" class="ident">Khojki</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-86" class="ident">Khudawadi</a>,</code></span>
+<span class="codeline" id="line-129"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-99" class="ident">Mahajani</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-103" class="ident">Manichaean</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-114" class="ident">Modi</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-141" class="ident">Pahawh_Hmong</a>,</code></span>
+<span class="codeline" id="line-130"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-146" class="ident">Psalter_Pahlavi</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-157" class="ident">Siddham</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-183" class="ident">Tirhuta</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-10" class="ident">Ahom</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-117" class="ident">Multani</a>,</code></span>
+<span class="codeline" id="line-131"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-8" class="ident">Adlam</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-20" class="ident">Bhaiksuki</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-104" class="ident">Marchen</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-123" class="ident">Newa</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-105" class="ident">Masaram_Gondi</a>,</code></span>
+<span class="codeline" id="line-132"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-162" class="ident">Soyombo</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-195" class="ident">Zanabazar_Square</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-46" class="ident">Dogra</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-60" class="ident">Gunjala_Gondi</a>,</code></span>
+<span class="codeline" id="line-133"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-64" class="ident">Hanifi_Rohingya</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-100" class="ident">Makasar</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-108" class="ident">Medefaidrin</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-134" class="ident">Old_Sogdian</a>,</code></span>
+<span class="codeline" id="line-134"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-160" class="ident">Sogdian</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-52" class="ident">Elymaic</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-121" class="ident">Nandinagari</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-126" class="ident">Nyiakeng_Puachue_Hmong</a>,</code></span>
+<span class="codeline" id="line-135"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-190" class="ident">Wancho</a>,</code></span>
+<span class="codeline" id="line-136"><code>		<a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-34" class="ident">Chorasmian</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-45" class="ident">Dives_Akuru</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-82" class="ident">Khitan_Small_Script</a>, <a href="../../../../../pkg/github.com/go-text/typesetting/language.html" class="ident i2">language</a>.<a href="../language/scripts_table.go.html#line-193" class="ident">Yezidi</a>:</code></span>
+<span class="codeline" id="line-137"><code></code></span>
+<span class="codeline" id="line-138"><code>		<span class="comment">/* If the designer designed the font for the 'DFLT' script,</span></code></span>
+<span class="codeline" id="line-139"><code><span class="comment">		 * (or we ended up arbitrarily pick 'latn'), use the default shaper.</span></code></span>
+<span class="codeline" id="line-140"><code><span class="comment">		 * Otherwise, use the specific shaper.</span></code></span>
+<span class="codeline" id="line-141"><code><span class="comment">		 * Note that for some simple scripts, there may not be *any*</span></code></span>
+<span class="codeline" id="line-142"><code><span class="comment">		 * GSUB/GPOS needed, so there may be no scripts found! */</span></code></span>
+<span class="codeline" id="line-143"><code>		<span class="keyword">if</span> <label for="r0" class="ident">planner</label>.<a href="ot_shaper.go.html#line-33" class="ident">map_</a>.<a href="ot_map.go.html#line-65" class="ident">chosenScript</a>[<span class="lit-number">0</span>] == <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i0">ot</a>.<a href="../font/opentype/opentype.go.html#line-14" class="ident">NewTag</a>(<span class="lit-number">'D'</span>, <span class="lit-number">'F'</span>, <span class="lit-number">'L'</span>, <span class="lit-number">'T'</span>) ||</code></span>
+<span class="codeline" id="line-144"><code>			<label for="r0" class="ident">planner</label>.<a href="ot_shaper.go.html#line-33" class="ident">map_</a>.<a href="ot_map.go.html#line-65" class="ident">chosenScript</a>[<span class="lit-number">0</span>] == <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype.html" class="ident i0">ot</a>.<a href="../font/opentype/opentype.go.html#line-14" class="ident">NewTag</a>(<span class="lit-number">'l'</span>, <span class="lit-number">'a'</span>, <span class="lit-number">'t'</span>, <span class="lit-number">'n'</span>) {</code></span>
+<span class="codeline" id="line-145"><code>			<span class="keyword">return</span> <a href="#line-174" class="ident">complexShaperDefault</a>{}</code></span>
+<span class="codeline" id="line-146"><code>		}</code></span>
+<span class="codeline" id="line-147"><code>		<span class="keyword">return</span> &amp;<a href="ot_use.go.html#line-67" class="ident">complexShaperUSE</a>{}</code></span>
+<span class="codeline" id="line-148"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-149"><code>		<span class="keyword">return</span> <a href="#line-174" class="ident">complexShaperDefault</a>{}</code></span>
+<span class="codeline" id="line-150"><code>	}</code></span>
+<span class="codeline" id="line-151"><code>}</code></span>
+<span class="codeline" id="line-152"><code></code></span>
+<span class="codeline" id="line-153"><code><span class="comment">// zero byte struct providing no-ops, used to reduced boilerplate</span></code></span>
+<span class="codeline" id="line-154"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-complexShaperNil" class="ident">complexShaperNil</a> <span class="keyword">struct</span>{}</code></span>
+<span class="codeline" id="line-155"><code></code></span>
+<span class="codeline" id="line-156"><code><span class="keyword">func</span> (<a href="#line-154" class="ident">complexShaperNil</a>) <label for="r2" class="ident">gposTag</label>() <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="../font/opentype/tables/tables.go.html#line-14" class="ident">Tag</a> { <span class="keyword">return</span> <span class="lit-number">0</span> }</code></span>
+<span class="codeline" id="line-157"><code></code></span>
+<span class="codeline" id="line-158"><code><span class="keyword">func</span> (<a href="#line-154" class="ident">complexShaperNil</a>) <label for="r3" class="ident">collectFeatures</label>(<label for="r4" class="ident">plan</label> *<a href="ot_shaper.go.html#line-29" class="ident">otShapePlanner</a>)  {}</code></span>
+<span class="codeline" id="line-159"><code><span class="keyword">func</span> (<a href="#line-154" class="ident">complexShaperNil</a>) <label for="r5" class="ident">overrideFeatures</label>(<label for="r6" class="ident">plan</label> *<a href="ot_shaper.go.html#line-29" class="ident">otShapePlanner</a>) {}</code></span>
+<span class="codeline" id="line-160"><code><span class="keyword">func</span> (<a href="#line-154" class="ident">complexShaperNil</a>) <label for="r7" class="ident">dataCreate</label>(<label for="r8" class="ident">plan</label> *<a href="ot_shaper.go.html#line-137" class="ident">otShapePlan</a>)          {}</code></span>
+<span class="codeline" id="line-161"><code><span class="keyword">func</span> (<a href="#line-154" class="ident">complexShaperNil</a>) <label for="r9" class="ident">decompose</label>(<label for="r10" class="ident">_</label> *<a href="ot_shape_normalize.go.html#line-64" class="ident">otNormalizeContext</a>, <label for="r11" class="ident">ab</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) (<label for="r12" class="ident">a</label>, <label for="r13" class="ident">b</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>, <label for="r14" class="ident">ok</label> <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-162"><code>	<span class="keyword">return</span> <a href="unicode.go.html#line-10" class="ident">uni</a>.<a href="unicode.go.html#line-447" class="ident">decompose</a>(<label for="r11" class="ident">ab</label>)</code></span>
+<span class="codeline" id="line-163"><code>}</code></span>
+<span class="codeline" id="line-164"><code></code></span>
+<span class="codeline" id="line-165"><code><span class="keyword">func</span> (<a href="#line-154" class="ident">complexShaperNil</a>) <label for="r15" class="ident">compose</label>(<label for="r16" class="ident">_</label> *<a href="ot_shape_normalize.go.html#line-64" class="ident">otNormalizeContext</a>, <label for="r17" class="ident">a</label>, <label for="r18" class="ident">b</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) (<label for="r19" class="ident">ab</label> <a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>, <label for="r20" class="ident">ok</label> <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-166"><code>	<span class="keyword">return</span> <a href="unicode.go.html#line-10" class="ident">uni</a>.<a href="unicode.go.html#line-448" class="ident">compose</a>(<label for="r17" class="ident">a</label>, <label for="r18" class="ident">b</label>)</code></span>
+<span class="codeline" id="line-167"><code>}</code></span>
+<span class="codeline" id="line-168"><code><span class="keyword">func</span> (<a href="#line-154" class="ident">complexShaperNil</a>) <label for="r21" class="ident">preprocessText</label>(*<a href="ot_shaper.go.html#line-137" class="ident">otShapePlan</a>, *<a href="buffer.go.html#line-56" class="ident">Buffer</a>, *<a href="fonts.go.html#line-18" class="ident">Font</a>) {}</code></span>
+<span class="codeline" id="line-169"><code><span class="keyword">func</span> (<a href="#line-154" class="ident">complexShaperNil</a>) <label for="r22" class="ident">postprocessGlyphs</label>(*<a href="ot_shaper.go.html#line-137" class="ident">otShapePlan</a>, *<a href="buffer.go.html#line-56" class="ident">Buffer</a>, *<a href="fonts.go.html#line-18" class="ident">Font</a>) {</code></span>
+<span class="codeline" id="line-170"><code>}</code></span>
+<span class="codeline" id="line-171"><code><span class="keyword">func</span> (<a href="#line-154" class="ident">complexShaperNil</a>) <label for="r23" class="ident">setupMasks</label>(*<a href="ot_shaper.go.html#line-137" class="ident">otShapePlan</a>, *<a href="buffer.go.html#line-56" class="ident">Buffer</a>, *<a href="fonts.go.html#line-18" class="ident">Font</a>)      {}</code></span>
+<span class="codeline" id="line-172"><code><span class="keyword">func</span> (<a href="#line-154" class="ident">complexShaperNil</a>) <label for="r24" class="ident">reorderMarks</label>(*<a href="ot_shaper.go.html#line-137" class="ident">otShapePlan</a>, *<a href="buffer.go.html#line-56" class="ident">Buffer</a>, <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>, <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {}</code></span>
+<span class="codeline" id="line-173"><code></code></span>
+<span class="codeline" id="line-174"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-complexShaperDefault" class="ident">complexShaperDefault</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-175"><code>	<a href="#line-154" class="ident">complexShaperNil</a></code></span>
+<span class="codeline" id="line-176"><code></code></span>
+<span class="codeline" id="line-177"><code>	<span class="comment">/* if true, no mark advance zeroing / fallback positioning.</span></code></span>
+<span class="codeline" id="line-178"><code><span class="comment">	 * Dumbest shaper ever, basically. */</span></code></span>
+<span class="codeline" id="line-179"><code>	dumb        <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-180"><code>	disableNorm <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-181"><code>}</code></span>
+<span class="codeline" id="line-182"><code></code></span>
+<span class="codeline" id="line-183"><code><span class="keyword">func</span> (<label for="r25" class="ident">cs</label> <a href="#line-174" class="ident">complexShaperDefault</a>) <label for="r26" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.complexShaperDefault^7716d.html#name-marksBehavior" class="ident">marksBehavior</a></label>() (<a href="#line-9" class="ident">zeroWidthMarks</a>, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-184"><code>	<span class="keyword">if</span> <label for="r25" class="ident">cs</label>.<a href="#line-179" class="ident">dumb</a> {</code></span>
+<span class="codeline" id="line-185"><code>		<span class="keyword">return</span> <a href="#line-12" class="ident">zeroWidthMarksNone</a>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-186"><code>	}</code></span>
+<span class="codeline" id="line-187"><code>	<span class="keyword">return</span> <a href="#line-14" class="ident">zeroWidthMarksByGdefLate</a>, <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-188"><code>}</code></span>
+<span class="codeline" id="line-189"><code></code></span>
+<span class="codeline" id="line-190"><code><span class="keyword">func</span> (<label for="r27" class="ident">cs</label> <a href="#line-174" class="ident">complexShaperDefault</a>) <label for="r28" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/harfbuzz.complexShaperDefault^7716d.html#name-normalizationPreference" class="ident">normalizationPreference</a></label>() <a href="ot_shape_normalize.go.html#line-52" class="ident">normalizationMode</a> {</code></span>
+<span class="codeline" id="line-191"><code>	<span class="keyword">if</span> <label for="r27" class="ident">cs</label>.<a href="#line-180" class="ident">disableNorm</a> {</code></span>
+<span class="codeline" id="line-192"><code>		<span class="keyword">return</span> <a href="ot_shape_normalize.go.html#line-55" class="ident">nmNone</a></code></span>
+<span class="codeline" id="line-193"><code>	}</code></span>
+<span class="codeline" id="line-194"><code>	<span class="keyword">return</span> <a href="ot_shape_normalize.go.html#line-61" class="ident">nmDefault</a></code></span>
+<span class="codeline" id="line-195"><code>}</code></span>
+<span class="codeline" id="line-196"><code></code></span>
+<span class="codeline" id="line-197"><code><span class="keyword">func</span> <label for="r29" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-syllabicInsertDottedCircles" class="ident">syllabicInsertDottedCircles</a></label>(<label for="r30" class="ident">font</label> *<a href="fonts.go.html#line-18" class="ident">Font</a>, <label for="r31" class="ident">buffer</label> *<a href="buffer.go.html#line-56" class="ident">Buffer</a>, <label for="r32" class="ident">brokenSyllableType</label>,</code></span>
+<span class="codeline" id="line-198"><code>	<label for="r33" class="ident">dottedcircleCategory</label> <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>, <label for="r34" class="ident">rephaCategory</label>, <label for="r35" class="ident">dottedCirclePosition</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>,</code></span>
+<span class="codeline" id="line-199"><code>) <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-200"><code>	<span class="keyword">if</span> (<label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-90" class="ident">Flags</a> &amp; <a href="harfbuzz.go.html#line-150" class="ident">DoNotinsertDottedCircle</a>) != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-201"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-202"><code>	}</code></span>
+<span class="codeline" id="line-203"><code></code></span>
+<span class="codeline" id="line-204"><code>	<span class="keyword">if</span> (<label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-104" class="ident">scratchFlags</a> &amp; <a href="buffer.go.html#line-34" class="ident">bsfHasBrokenSyllable</a>) == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-205"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-206"><code>	}</code></span>
+<span class="codeline" id="line-207"><code></code></span>
+<span class="codeline" id="line-208"><code>	<label for="r36" class="ident">dottedcircleGlyph</label>, <label for="r37" class="ident">ok</label> := <label for="r30" class="ident">font</label>.<a href="fonts.go.html#line-19" class="ident">face</a>.<a href="../font/metrics.go.html#line-167" class="ident">NominalGlyph</a>(<span class="lit-number">0x25CC</span>)</code></span>
+<span class="codeline" id="line-209"><code>	<span class="keyword">if</span> !<label for="r37" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-210"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-211"><code>	}</code></span>
+<span class="codeline" id="line-212"><code></code></span>
+<span class="codeline" id="line-213"><code>	<label for="r38" class="ident">dottedcircle</label> := <a href="glyph.go.html#line-130" class="ident">GlyphInfo</a>{</code></span>
+<span class="codeline" id="line-214"><code>		<a href="glyph.go.html#line-148" class="ident">Glyph</a>:           <label for="r36" class="ident">dottedcircleGlyph</label>,</code></span>
+<span class="codeline" id="line-215"><code>		<a href="glyph.go.html#line-189" class="ident">complexCategory</a>: <label for="r33" class="ident">dottedcircleCategory</label>,</code></span>
+<span class="codeline" id="line-216"><code>	}</code></span>
+<span class="codeline" id="line-217"><code></code></span>
+<span class="codeline" id="line-218"><code>	<span class="keyword">if</span> <label for="r35" class="ident">dottedCirclePosition</label> != -<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-219"><code>		<label for="r38" class="ident">dottedcircle</label>.<a href="glyph.go.html#line-189" class="ident">complexAux</a> = <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r35" class="ident">dottedCirclePosition</label>)</code></span>
+<span class="codeline" id="line-220"><code>	}</code></span>
+<span class="codeline" id="line-221"><code></code></span>
+<span class="codeline" id="line-222"><code>	<label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-656" class="ident">clearOutput</a>()</code></span>
+<span class="codeline" id="line-223"><code></code></span>
+<span class="codeline" id="line-224"><code>	<label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-103" class="ident">idx</a> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-225"><code>	<span class="keyword">var</span> <label for="r39" class="ident">lastSyllable</label> <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a></code></span>
+<span class="codeline" id="line-226"><code>	<span class="keyword">for</span> <label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-103" class="ident">idx</a> &lt; <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-60" class="ident">Info</a>) {</code></span>
+<span class="codeline" id="line-227"><code>		<label for="r40" class="ident">syllable</label> := <label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-244" class="ident">cur</a>(<span class="lit-number">0</span>).<a href="glyph.go.html#line-183" class="ident">syllable</a></code></span>
+<span class="codeline" id="line-228"><code>		<span class="keyword">if</span> <label for="r39" class="ident">lastSyllable</label> != <label for="r40" class="ident">syllable</label> &amp;&amp; (<label for="r40" class="ident">syllable</label>&amp;<span class="lit-number">0x0F</span>) == <label for="r32" class="ident">brokenSyllableType</label> {</code></span>
+<span class="codeline" id="line-229"><code>			<label for="r39" class="ident">lastSyllable</label> = <label for="r40" class="ident">syllable</label></code></span>
+<span class="codeline" id="line-230"><code></code></span>
+<span class="codeline" id="line-231"><code>			<label for="r41" class="ident">ginfo</label> := <label for="r38" class="ident">dottedcircle</label></code></span>
+<span class="codeline" id="line-232"><code>			<label for="r41" class="ident">ginfo</label>.<a href="glyph.go.html#line-141" class="ident">Cluster</a> = <label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-244" class="ident">cur</a>(<span class="lit-number">0</span>).<a href="glyph.go.html#line-141" class="ident">Cluster</a></code></span>
+<span class="codeline" id="line-233"><code>			<label for="r41" class="ident">ginfo</label>.<a href="glyph.go.html#line-152" class="ident">Mask</a> = <label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-244" class="ident">cur</a>(<span class="lit-number">0</span>).<a href="glyph.go.html#line-152" class="ident">Mask</a></code></span>
+<span class="codeline" id="line-234"><code>			<label for="r41" class="ident">ginfo</label>.<a href="glyph.go.html#line-183" class="ident">syllable</a> = <label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-244" class="ident">cur</a>(<span class="lit-number">0</span>).<a href="glyph.go.html#line-183" class="ident">syllable</a></code></span>
+<span class="codeline" id="line-235"><code></code></span>
+<span class="codeline" id="line-236"><code>			<span class="comment">/* Insert dottedcircle after possible Repha. */</span></code></span>
+<span class="codeline" id="line-237"><code>			<span class="keyword">if</span> <label for="r34" class="ident">rephaCategory</label> != -<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-238"><code>				<span class="keyword">for</span> <label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-103" class="ident">idx</a> &lt; <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-60" class="ident">Info</a>) &amp;&amp;</code></span>
+<span class="codeline" id="line-239"><code>					<label for="r39" class="ident">lastSyllable</label> == <label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-244" class="ident">cur</a>(<span class="lit-number">0</span>).<a href="glyph.go.html#line-183" class="ident">syllable</a> &amp;&amp;</code></span>
+<span class="codeline" id="line-240"><code>					<label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-244" class="ident">cur</a>(<span class="lit-number">0</span>).<a href="glyph.go.html#line-189" class="ident">complexCategory</a> == <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r34" class="ident">rephaCategory</label>) {</code></span>
+<span class="codeline" id="line-241"><code>					<label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-342" class="ident">nextGlyph</a>()</code></span>
+<span class="codeline" id="line-242"><code>				}</code></span>
+<span class="codeline" id="line-243"><code>			}</code></span>
+<span class="codeline" id="line-244"><code>			<label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-74" class="ident">outInfo</a> = <a href="../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-74" class="ident">outInfo</a>, <label for="r41" class="ident">ginfo</label>)</code></span>
+<span class="codeline" id="line-245"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-246"><code>			<label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-342" class="ident">nextGlyph</a>()</code></span>
+<span class="codeline" id="line-247"><code>		}</code></span>
+<span class="codeline" id="line-248"><code>	}</code></span>
+<span class="codeline" id="line-249"><code>	<label for="r31" class="ident">buffer</label>.<a href="buffer.go.html#line-718" class="ident">swapBuffers</a>()</code></span>
+<span class="codeline" id="line-250"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-251"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

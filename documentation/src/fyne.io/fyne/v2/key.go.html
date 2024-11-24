@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: key.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	key.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// KeyName represents the name of a key that has been pressed.</span></code></span>
+<span class="codeline" id="line-4"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyName" class="ident">KeyName</a> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-5"><code></code></span>
+<span class="codeline" id="line-6"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-7"><code>	<span class="comment">// KeyEscape is the "esc" key</span></code></span>
+<span class="codeline" id="line-8"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyEscape" class="ident">KeyEscape</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Escape"</span></code></span>
+<span class="codeline" id="line-9"><code>	<span class="comment">// KeyReturn is the carriage return (main keyboard)</span></code></span>
+<span class="codeline" id="line-10"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyReturn" class="ident">KeyReturn</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Return"</span></code></span>
+<span class="codeline" id="line-11"><code>	<span class="comment">// KeyTab is the tab advance key</span></code></span>
+<span class="codeline" id="line-12"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyTab" class="ident">KeyTab</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Tab"</span></code></span>
+<span class="codeline" id="line-13"><code>	<span class="comment">// KeyBackspace is the delete-before-cursor key</span></code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyBackspace" class="ident">KeyBackspace</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"BackSpace"</span></code></span>
+<span class="codeline" id="line-15"><code>	<span class="comment">// KeyInsert is the insert mode key</span></code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyInsert" class="ident">KeyInsert</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Insert"</span></code></span>
+<span class="codeline" id="line-17"><code>	<span class="comment">// KeyDelete is the delete-after-cursor key</span></code></span>
+<span class="codeline" id="line-18"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyDelete" class="ident">KeyDelete</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Delete"</span></code></span>
+<span class="codeline" id="line-19"><code>	<span class="comment">// KeyRight is the right arrow key</span></code></span>
+<span class="codeline" id="line-20"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyRight" class="ident">KeyRight</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Right"</span></code></span>
+<span class="codeline" id="line-21"><code>	<span class="comment">// KeyLeft is the left arrow key</span></code></span>
+<span class="codeline" id="line-22"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyLeft" class="ident">KeyLeft</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Left"</span></code></span>
+<span class="codeline" id="line-23"><code>	<span class="comment">// KeyDown is the down arrow key</span></code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyDown" class="ident">KeyDown</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Down"</span></code></span>
+<span class="codeline" id="line-25"><code>	<span class="comment">// KeyUp is the up arrow key</span></code></span>
+<span class="codeline" id="line-26"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyUp" class="ident">KeyUp</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Up"</span></code></span>
+<span class="codeline" id="line-27"><code>	<span class="comment">// KeyPageUp is the page up num-pad key</span></code></span>
+<span class="codeline" id="line-28"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyPageUp" class="ident">KeyPageUp</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Prior"</span></code></span>
+<span class="codeline" id="line-29"><code>	<span class="comment">// KeyPageDown is the page down num-pad key</span></code></span>
+<span class="codeline" id="line-30"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyPageDown" class="ident">KeyPageDown</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Next"</span></code></span>
+<span class="codeline" id="line-31"><code>	<span class="comment">// KeyHome is the line-home key</span></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyHome" class="ident">KeyHome</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Home"</span></code></span>
+<span class="codeline" id="line-33"><code>	<span class="comment">// KeyEnd is the line-end key</span></code></span>
+<span class="codeline" id="line-34"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyEnd" class="ident">KeyEnd</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"End"</span></code></span>
+<span class="codeline" id="line-35"><code></code></span>
+<span class="codeline" id="line-36"><code>	<span class="comment">// KeyF1 is the first function key</span></code></span>
+<span class="codeline" id="line-37"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyF1" class="ident">KeyF1</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"F1"</span></code></span>
+<span class="codeline" id="line-38"><code>	<span class="comment">// KeyF2 is the second function key</span></code></span>
+<span class="codeline" id="line-39"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyF2" class="ident">KeyF2</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"F2"</span></code></span>
+<span class="codeline" id="line-40"><code>	<span class="comment">// KeyF3 is the third function key</span></code></span>
+<span class="codeline" id="line-41"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyF3" class="ident">KeyF3</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"F3"</span></code></span>
+<span class="codeline" id="line-42"><code>	<span class="comment">// KeyF4 is the fourth function key</span></code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyF4" class="ident">KeyF4</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"F4"</span></code></span>
+<span class="codeline" id="line-44"><code>	<span class="comment">// KeyF5 is the fifth function key</span></code></span>
+<span class="codeline" id="line-45"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyF5" class="ident">KeyF5</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"F5"</span></code></span>
+<span class="codeline" id="line-46"><code>	<span class="comment">// KeyF6 is the sixth function key</span></code></span>
+<span class="codeline" id="line-47"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyF6" class="ident">KeyF6</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"F6"</span></code></span>
+<span class="codeline" id="line-48"><code>	<span class="comment">// KeyF7 is the seventh function key</span></code></span>
+<span class="codeline" id="line-49"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyF7" class="ident">KeyF7</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"F7"</span></code></span>
+<span class="codeline" id="line-50"><code>	<span class="comment">// KeyF8 is the eighth function key</span></code></span>
+<span class="codeline" id="line-51"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyF8" class="ident">KeyF8</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"F8"</span></code></span>
+<span class="codeline" id="line-52"><code>	<span class="comment">// KeyF9 is the ninth function key</span></code></span>
+<span class="codeline" id="line-53"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyF9" class="ident">KeyF9</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"F9"</span></code></span>
+<span class="codeline" id="line-54"><code>	<span class="comment">// KeyF10 is the tenth function key</span></code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyF10" class="ident">KeyF10</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"F10"</span></code></span>
+<span class="codeline" id="line-56"><code>	<span class="comment">// KeyF11 is the eleventh function key</span></code></span>
+<span class="codeline" id="line-57"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyF11" class="ident">KeyF11</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"F11"</span></code></span>
+<span class="codeline" id="line-58"><code>	<span class="comment">// KeyF12 is the twelfth function key</span></code></span>
+<span class="codeline" id="line-59"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyF12" class="ident">KeyF12</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"F12"</span></code></span>
+<span class="codeline" id="line-60"><code>	<span class="comment">/*</span></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">		F13</span></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">		...</span></code></span>
+<span class="codeline" id="line-63"><code><span class="comment">		F25</span></code></span>
+<span class="codeline" id="line-64"><code><span class="comment">	*/</span></code></span>
+<span class="codeline" id="line-65"><code></code></span>
+<span class="codeline" id="line-66"><code>	<span class="comment">// KeyEnter is the enter/ return key (keypad)</span></code></span>
+<span class="codeline" id="line-67"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyEnter" class="ident">KeyEnter</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"KP_Enter"</span></code></span>
+<span class="codeline" id="line-68"><code></code></span>
+<span class="codeline" id="line-69"><code>	<span class="comment">// Key0 represents the key 0</span></code></span>
+<span class="codeline" id="line-70"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-Key0" class="ident">Key0</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"0"</span></code></span>
+<span class="codeline" id="line-71"><code>	<span class="comment">// Key1 represents the key 1</span></code></span>
+<span class="codeline" id="line-72"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-Key1" class="ident">Key1</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"1"</span></code></span>
+<span class="codeline" id="line-73"><code>	<span class="comment">// Key2 represents the key 2</span></code></span>
+<span class="codeline" id="line-74"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-Key2" class="ident">Key2</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"2"</span></code></span>
+<span class="codeline" id="line-75"><code>	<span class="comment">// Key3 represents the key 3</span></code></span>
+<span class="codeline" id="line-76"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-Key3" class="ident">Key3</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"3"</span></code></span>
+<span class="codeline" id="line-77"><code>	<span class="comment">// Key4 represents the key 4</span></code></span>
+<span class="codeline" id="line-78"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-Key4" class="ident">Key4</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"4"</span></code></span>
+<span class="codeline" id="line-79"><code>	<span class="comment">// Key5 represents the key 5</span></code></span>
+<span class="codeline" id="line-80"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-Key5" class="ident">Key5</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"5"</span></code></span>
+<span class="codeline" id="line-81"><code>	<span class="comment">// Key6 represents the key 6</span></code></span>
+<span class="codeline" id="line-82"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-Key6" class="ident">Key6</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"6"</span></code></span>
+<span class="codeline" id="line-83"><code>	<span class="comment">// Key7 represents the key 7</span></code></span>
+<span class="codeline" id="line-84"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-Key7" class="ident">Key7</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"7"</span></code></span>
+<span class="codeline" id="line-85"><code>	<span class="comment">// Key8 represents the key 8</span></code></span>
+<span class="codeline" id="line-86"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-Key8" class="ident">Key8</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"8"</span></code></span>
+<span class="codeline" id="line-87"><code>	<span class="comment">// Key9 represents the key 9</span></code></span>
+<span class="codeline" id="line-88"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-Key9" class="ident">Key9</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"9"</span></code></span>
+<span class="codeline" id="line-89"><code>	<span class="comment">// KeyA represents the key A</span></code></span>
+<span class="codeline" id="line-90"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyA" class="ident">KeyA</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"A"</span></code></span>
+<span class="codeline" id="line-91"><code>	<span class="comment">// KeyB represents the key B</span></code></span>
+<span class="codeline" id="line-92"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyB" class="ident">KeyB</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"B"</span></code></span>
+<span class="codeline" id="line-93"><code>	<span class="comment">// KeyC represents the key C</span></code></span>
+<span class="codeline" id="line-94"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyC" class="ident">KeyC</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"C"</span></code></span>
+<span class="codeline" id="line-95"><code>	<span class="comment">// KeyD represents the key D</span></code></span>
+<span class="codeline" id="line-96"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyD" class="ident">KeyD</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"D"</span></code></span>
+<span class="codeline" id="line-97"><code>	<span class="comment">// KeyE represents the key E</span></code></span>
+<span class="codeline" id="line-98"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyE" class="ident">KeyE</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"E"</span></code></span>
+<span class="codeline" id="line-99"><code>	<span class="comment">// KeyF represents the key F</span></code></span>
+<span class="codeline" id="line-100"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyF" class="ident">KeyF</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"F"</span></code></span>
+<span class="codeline" id="line-101"><code>	<span class="comment">// KeyG represents the key G</span></code></span>
+<span class="codeline" id="line-102"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyG" class="ident">KeyG</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"G"</span></code></span>
+<span class="codeline" id="line-103"><code>	<span class="comment">// KeyH represents the key H</span></code></span>
+<span class="codeline" id="line-104"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyH" class="ident">KeyH</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"H"</span></code></span>
+<span class="codeline" id="line-105"><code>	<span class="comment">// KeyI represents the key I</span></code></span>
+<span class="codeline" id="line-106"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyI" class="ident">KeyI</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"I"</span></code></span>
+<span class="codeline" id="line-107"><code>	<span class="comment">// KeyJ represents the key J</span></code></span>
+<span class="codeline" id="line-108"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyJ" class="ident">KeyJ</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"J"</span></code></span>
+<span class="codeline" id="line-109"><code>	<span class="comment">// KeyK represents the key K</span></code></span>
+<span class="codeline" id="line-110"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyK" class="ident">KeyK</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"K"</span></code></span>
+<span class="codeline" id="line-111"><code>	<span class="comment">// KeyL represents the key L</span></code></span>
+<span class="codeline" id="line-112"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyL" class="ident">KeyL</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"L"</span></code></span>
+<span class="codeline" id="line-113"><code>	<span class="comment">// KeyM represents the key M</span></code></span>
+<span class="codeline" id="line-114"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyM" class="ident">KeyM</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"M"</span></code></span>
+<span class="codeline" id="line-115"><code>	<span class="comment">// KeyN represents the key N</span></code></span>
+<span class="codeline" id="line-116"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyN" class="ident">KeyN</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"N"</span></code></span>
+<span class="codeline" id="line-117"><code>	<span class="comment">// KeyO represents the key O</span></code></span>
+<span class="codeline" id="line-118"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyO" class="ident">KeyO</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"O"</span></code></span>
+<span class="codeline" id="line-119"><code>	<span class="comment">// KeyP represents the key P</span></code></span>
+<span class="codeline" id="line-120"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyP" class="ident">KeyP</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"P"</span></code></span>
+<span class="codeline" id="line-121"><code>	<span class="comment">// KeyQ represents the key Q</span></code></span>
+<span class="codeline" id="line-122"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyQ" class="ident">KeyQ</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Q"</span></code></span>
+<span class="codeline" id="line-123"><code>	<span class="comment">// KeyR represents the key R</span></code></span>
+<span class="codeline" id="line-124"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyR" class="ident">KeyR</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"R"</span></code></span>
+<span class="codeline" id="line-125"><code>	<span class="comment">// KeyS represents the key S</span></code></span>
+<span class="codeline" id="line-126"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyS" class="ident">KeyS</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"S"</span></code></span>
+<span class="codeline" id="line-127"><code>	<span class="comment">// KeyT represents the key T</span></code></span>
+<span class="codeline" id="line-128"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyT" class="ident">KeyT</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"T"</span></code></span>
+<span class="codeline" id="line-129"><code>	<span class="comment">// KeyU represents the key U</span></code></span>
+<span class="codeline" id="line-130"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyU" class="ident">KeyU</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"U"</span></code></span>
+<span class="codeline" id="line-131"><code>	<span class="comment">// KeyV represents the key V</span></code></span>
+<span class="codeline" id="line-132"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyV" class="ident">KeyV</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"V"</span></code></span>
+<span class="codeline" id="line-133"><code>	<span class="comment">// KeyW represents the key W</span></code></span>
+<span class="codeline" id="line-134"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyW" class="ident">KeyW</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"W"</span></code></span>
+<span class="codeline" id="line-135"><code>	<span class="comment">// KeyX represents the key X</span></code></span>
+<span class="codeline" id="line-136"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyX" class="ident">KeyX</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"X"</span></code></span>
+<span class="codeline" id="line-137"><code>	<span class="comment">// KeyY represents the key Y</span></code></span>
+<span class="codeline" id="line-138"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyY" class="ident">KeyY</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Y"</span></code></span>
+<span class="codeline" id="line-139"><code>	<span class="comment">// KeyZ represents the key Z</span></code></span>
+<span class="codeline" id="line-140"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyZ" class="ident">KeyZ</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Z"</span></code></span>
+<span class="codeline" id="line-141"><code></code></span>
+<span class="codeline" id="line-142"><code>	<span class="comment">// KeySpace is the space key</span></code></span>
+<span class="codeline" id="line-143"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeySpace" class="ident">KeySpace</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"Space"</span></code></span>
+<span class="codeline" id="line-144"><code>	<span class="comment">// KeyApostrophe is the key "'"</span></code></span>
+<span class="codeline" id="line-145"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyApostrophe" class="ident">KeyApostrophe</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"'"</span></code></span>
+<span class="codeline" id="line-146"><code>	<span class="comment">// KeyComma is the key ","</span></code></span>
+<span class="codeline" id="line-147"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyComma" class="ident">KeyComma</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">","</span></code></span>
+<span class="codeline" id="line-148"><code>	<span class="comment">// KeyMinus is the key "-"</span></code></span>
+<span class="codeline" id="line-149"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyMinus" class="ident">KeyMinus</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"-"</span></code></span>
+<span class="codeline" id="line-150"><code>	<span class="comment">// KeyPeriod is the key "." (full stop)</span></code></span>
+<span class="codeline" id="line-151"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyPeriod" class="ident">KeyPeriod</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"."</span></code></span>
+<span class="codeline" id="line-152"><code>	<span class="comment">// KeySlash is the key "/"</span></code></span>
+<span class="codeline" id="line-153"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeySlash" class="ident">KeySlash</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"/"</span></code></span>
+<span class="codeline" id="line-154"><code>	<span class="comment">// KeyBackslash is the key "\"</span></code></span>
+<span class="codeline" id="line-155"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyBackslash" class="ident">KeyBackslash</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"\\"</span></code></span>
+<span class="codeline" id="line-156"><code>	<span class="comment">// KeyLeftBracket is the key "["</span></code></span>
+<span class="codeline" id="line-157"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyLeftBracket" class="ident">KeyLeftBracket</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"["</span></code></span>
+<span class="codeline" id="line-158"><code>	<span class="comment">// KeyRightBracket is the key "]"</span></code></span>
+<span class="codeline" id="line-159"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyRightBracket" class="ident">KeyRightBracket</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"]"</span></code></span>
+<span class="codeline" id="line-160"><code>	<span class="comment">// KeySemicolon is the key ";"</span></code></span>
+<span class="codeline" id="line-161"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeySemicolon" class="ident">KeySemicolon</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">";"</span></code></span>
+<span class="codeline" id="line-162"><code>	<span class="comment">// KeyEqual is the key "="</span></code></span>
+<span class="codeline" id="line-163"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyEqual" class="ident">KeyEqual</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"="</span></code></span>
+<span class="codeline" id="line-164"><code>	<span class="comment">// KeyAsterisk is the keypad key "*"</span></code></span>
+<span class="codeline" id="line-165"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyAsterisk" class="ident">KeyAsterisk</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"*"</span></code></span>
+<span class="codeline" id="line-166"><code>	<span class="comment">// KeyPlus is the keypad key "+"</span></code></span>
+<span class="codeline" id="line-167"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyPlus" class="ident">KeyPlus</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"+"</span></code></span>
+<span class="codeline" id="line-168"><code>	<span class="comment">// KeyBackTick is the key "`" on a US keyboard</span></code></span>
+<span class="codeline" id="line-169"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyBackTick" class="ident">KeyBackTick</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">"`"</span></code></span>
+<span class="codeline" id="line-170"><code></code></span>
+<span class="codeline" id="line-171"><code>	<span class="comment">// KeyUnknown is used for key events where the underlying hardware generated an</span></code></span>
+<span class="codeline" id="line-172"><code><span class="comment">	// event that Fyne could not decode.</span></code></span>
+<span class="codeline" id="line-173"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-174"><code><span class="comment">	// Since: 2.1</span></code></span>
+<span class="codeline" id="line-175"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyUnknown" class="ident">KeyUnknown</a> <a href="#line-4" class="ident">KeyName</a> = <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-176"><code>)</code></span>
+<span class="codeline" id="line-177"><code></code></span>
+<span class="codeline" id="line-178"><code><span class="comment">// KeyModifier represents any modifier key (shift etc.) that is being pressed together with a key.</span></code></span>
+<span class="codeline" id="line-179"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-180"><code><span class="comment">// Since: 2.2</span></code></span>
+<span class="codeline" id="line-181"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyModifier" class="ident">KeyModifier</a> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-182"><code></code></span>
+<span class="codeline" id="line-183"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-184"><code>	<span class="comment">// KeyModifierShift represents a shift key being held</span></code></span>
+<span class="codeline" id="line-185"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-186"><code><span class="comment">	// Since: 2.2</span></code></span>
+<span class="codeline" id="line-187"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyModifierShift" class="ident">KeyModifierShift</a> <a href="#line-181" class="ident">KeyModifier</a> = <span class="lit-number">1</span> &lt;&lt; <a href="../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-188"><code>	<span class="comment">// KeyModifierControl represents the ctrl key being held</span></code></span>
+<span class="codeline" id="line-189"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-190"><code><span class="comment">	// Since: 2.2</span></code></span>
+<span class="codeline" id="line-191"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyModifierControl" class="ident">KeyModifierControl</a></code></span>
+<span class="codeline" id="line-192"><code>	<span class="comment">// KeyModifierAlt represents either alt keys being held</span></code></span>
+<span class="codeline" id="line-193"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-194"><code><span class="comment">	// Since: 2.2</span></code></span>
+<span class="codeline" id="line-195"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyModifierAlt" class="ident">KeyModifierAlt</a></code></span>
+<span class="codeline" id="line-196"><code>	<span class="comment">// KeyModifierSuper represents either super keys being held</span></code></span>
+<span class="codeline" id="line-197"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-198"><code><span class="comment">	// Since: 2.2</span></code></span>
+<span class="codeline" id="line-199"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-KeyModifierSuper" class="ident">KeyModifierSuper</a></code></span>
+<span class="codeline" id="line-200"><code>)</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

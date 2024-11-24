@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/fsnotify/fsnotify</title>
+<link href="../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>fsnotify</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-github.com/fsnotify/fsnotify">github.com/fsnotify/fsnotify</a><i> (on <a href="https://pkg.go.dev/github.com/fsnotify/fsnotify" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../dep/github.com/fsnotify/fsnotify.html">9 packages</a>, and imported by <a href="../../../dep/github.com/fsnotify/fsnotify.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html">backend_inotify.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-1-fold-content"><label for="file-1-fold-content">  <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#doc">d</a> <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html">fsnotify.go</a></label><span id='file-1-fold-content-items' class="fold-items">
+<span class="md-text">		Package fsnotify provides a cross-platform interface for file system
+		notifications.
+		
+		Currently supported systems:
+		
+			Linux 2.6.32+    via inotify
+			BSD, macOS       via kqueue
+			Windows          via ReadDirectoryChangesW
+			illumos          via FEN</span></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 7, in which 3 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Event" data-popularity="410">	<input type='checkbox' class="fold" id="Event-fold-content"><label for="Event-fold-content"> type <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-20">Event</a> <i>(struct)</i></label><span id='Event-fold-content-docs' class="fold-docs">
+<span class="md-text">		Event represents a file system notification.</span>
+
+		<input type='checkbox' class="fold" id="Event-fold-fields"><label for="Event-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='Event-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Event-fold-field-Name"><label for="Event-fold-field-Name"><a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-26">Name</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Event-fold-field-Name-docs' class="fold-docs">
+<span class="md-text">				Path to the file or directory.
+				
+				Paths are relative to the input; for example with Add("dir") the Name
+				will be set to "dir/file" if you create that file, but if you use
+				Add("/path/to/dir") it will be "/path/to/dir/file".</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Event-fold-field-Op"><label for="Event-fold-field-Op"><a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-32">Op</a> <i><a href="#name-Op">Op</a></i></label><span id='Event-fold-field-Op-docs' class="fold-docs">
+<span class="md-text">				File operation that triggered the event.
+				
+				This is a bitmask and some systems may send multiple operations at once.
+				Use the Event.Has() method instead of comparing with ==.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Event-fold-methods"><label for="Event-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='Event-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Event-fold-method-Has"><label for="Event-fold-method-Has">( Event) <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-99">Has</a>(op <a href="#name-Op">Op</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='Event-fold-method-Has-docs' class="fold-docs">
+<span class="md-text">				Has reports if this event has the given operation.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Event-fold-method-String"><label for="Event-fold-method-String">( Event) <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-102">String</a>() <a href="../../builtin.html#name-string">string</a></label><span id='Event-fold-method-String-docs' class="fold-docs">
+<span class="md-text">				String returns a string representation of the event with their path.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Event-fold-impls"><label for="Event-fold-impls">Implements (<i>at least 4, in which 1 is exported</i>)</label><span id='Event-fold-impls-items' class="fold-items"><span>
+			 Event : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="Event-showhide-impls"><i><label for="Event-showhide-impls" class="show-inline">/* 3+ unexporteds ... */</label><label for="Event-showhide-impls" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			 Event : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 Event : os/signal.<a href="../../os/signal.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 Event : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+		<input type='checkbox' class="fold" id="Event-fold-results"><label for="Event-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='Event-fold-results-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Event-showhide-inputofs"><i><label for="Event-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="Event-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Watcher">Watcher</a>).<a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-576">newEvent</a>(name <a href="../../builtin.html#name-string">string</a>, mask <a href="../../builtin.html#name-uint32">uint32</a>) <b>Event</b></i></span></span>
+		<input type='checkbox' class="fold" id="Event-fold-params"><label for="Event-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='Event-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Event-showhide-outputofs"><i><label for="Event-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Event-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Watcher">Watcher</a>).<a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-275">sendEvent</a>(e <b>Event</b>) <a href="../../builtin.html#name-bool">bool</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Op" data-popularity="385">	<input type='checkbox' class="fold" id="Op-fold-content"><label for="Op-fold-content"> type <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-36">Op</a> <a href="../../builtin.html#name-uint32">uint32</a> <i>(basic type)</i></label><span id='Op-fold-content-docs' class="fold-docs">
+<span class="md-text">		Op describes a set of file operations.</span>
+
+		<input type='checkbox' class="fold" id="Op-fold-methods"><label for="Op-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='Op-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Op-fold-method-Has"><label for="Op-fold-method-Has">( Op) <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-96">Has</a>(h <b>Op</b>) <a href="../../builtin.html#name-bool">bool</a></label><span id='Op-fold-method-Has-docs' class="fold-docs">
+<span class="md-text">				Has reports if this operation has the given operation.</span>
+</span></span><span>
+			<span class="nodocs">( Op) <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-72">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="Op-fold-impls"><label for="Op-fold-impls">Implements (<i>at least 4, in which 1 is exported</i>)</label><span id='Op-fold-impls-items' class="fold-items"><span>
+			 Op : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="Op-showhide-impls"><i><label for="Op-showhide-impls" class="show-inline">/* 3+ unexporteds ... */</label><label for="Op-showhide-impls" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			 Op : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 Op : os/signal.<a href="../../os/signal.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 Op : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+		<input type='checkbox' class="fold" id="Op-fold-params"><label for="Op-fold-params">As Inputs Of (<i>at least 2, both are exported</i>)</label><span id='Op-fold-params-items' class="fold-items"><span>
+			func <a href="#name-Event">Event</a>.<a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-99">Has</a>(op <b>Op</b>) <a href="../../builtin.html#name-bool">bool</a></span><span>
+			func Op.<a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-96">Has</a>(h <b>Op</b>) <a href="../../builtin.html#name-bool">bool</a></span></span>
+		<input type='checkbox' class="fold" id="Op-fold-values"><label for="Op-fold-values">As Types Of (<i>total 5, all are exported</i>)</label><span id='Op-fold-values-items' class="fold-items"><span>
+			const <a href="#name-Chmod">Chmod</a></span><span>
+			const <a href="#name-Create">Create</a></span><span>
+			const <a href="#name-Remove">Remove</a></span><span>
+			const <a href="#name-Rename">Rename</a></span><span>
+			const <a href="#name-Write">Write</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Watcher" data-popularity="860">	<input type='checkbox' class="fold" id="Watcher-fold-content"><label for="Watcher-fold-content"> type <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-87">Watcher</a> <i>(struct)</i></label><span id='Watcher-fold-content-docs' class="fold-docs">
+<span class="md-text">		Watcher watches a set of paths, delivering events on a channel.
+		
+		A watcher should not be copied (e.g. pass it by pointer, rather than by
+		value).
+		
+		# Linux notes
+		
+		When a file is removed a Remove event won't be emitted until all file
+		descriptors are closed, and deletes will always emit a Chmod. For example:
+		
+			fp := os.Open("file")
+			os.Remove("file")        // Triggers Chmod
+			fp.Close()               // Triggers Remove
+		
+		This is the event that inotify sends, so not much can be changed about this.
+		
+		The fs.inotify.max_user_watches sysctl variable specifies the upper limit
+		for the number of watches per user, and fs.inotify.max_user_instances
+		specifies the maximum number of inotify instances per user. Every Watcher you
+		create is an "instance", and every path you add is a "watch".
+		
+		These are also exposed in /proc as /proc/sys/fs/inotify/max_user_watches and
+		/proc/sys/fs/inotify/max_user_instances
+		
+		To increase them you can use sysctl or write the value to the /proc file:
+		
+			# Default values on Linux 5.18
+			sysctl fs.inotify.max_user_watches=124983
+			sysctl fs.inotify.max_user_instances=128
+		
+		To make the changes persist on reboot edit /etc/sysctl.conf or
+		/usr/lib/sysctl.d/50-default.conf (details differ per Linux distro; check
+		your distro's documentation):
+		
+			fs.inotify.max_user_watches=124983
+			fs.inotify.max_user_instances=128
+		
+		Reaching the limit will result in a "no space left on device" or "too many open
+		files" error.
+		
+		# kqueue notes (macOS, BSD)
+		
+		kqueue requires opening a file descriptor for every file that's being watched;
+		so if you're watching a directory with five files then that's six file
+		descriptors. You will run in to your system's "max open files" limit faster on
+		these platforms.
+		
+		The sysctl variables kern.maxfiles and kern.maxfilesperproc can be used to
+		control the maximum number of open files, as well as /etc/login.conf on BSD
+		systems.
+		
+		# Windows notes
+		
+		Paths can be added as "C:\path\to\dir", but forward slashes
+		("C:/path/to/dir") will also work.
+		
+		When a watched directory is removed it will always send an event for the
+		directory itself, but may not send events for all files in that directory.
+		Sometimes it will send events for all times, sometimes it will send no
+		events, and often only for some files.
+		
+		The default ReadDirectoryChangesW() buffer size is 64K, which is the largest
+		value that is guaranteed to work with SMB filesystems. If you have many
+		events in quick succession this may not be enough, and you will have to use
+		[WithBufferSize] to increase the value.</span>
+
+		<input type='checkbox' class="fold" id="Watcher-fold-fields"><label for="Watcher-fold-fields">Fields (<i>total 8, in which 2 are exported</i>)</label><span id='Watcher-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Watcher-fold-field-Errors"><label for="Watcher-fold-field-Errors"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-134">Errors</a> <i>chan <a href="../../builtin.html#name-error">error</a></i></label><span id='Watcher-fold-field-Errors-docs' class="fold-docs">
+<span class="md-text">				Errors sends any errors.
+				
+				ErrEventOverflow is used to indicate there are too many events:
+				
+				 - inotify:      There are too many queued events (fs.inotify.max_queued_events sysctl)
+				 - windows:      The buffer size is too small; WithBufferSize() can be used to increase it.
+				 - kqueue, fen:  Not used.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Watcher-fold-field-Events"><label for="Watcher-fold-field-Events"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-125">Events</a> <i>chan <a href="#name-Event">Event</a></i></label><span id='Watcher-fold-field-Events-docs' class="fold-docs">
+<span class="md-text">				Events sends the filesystem change events.
+				
+				fsnotify can send the following events; a "path" here can refer to a
+				file, directory, symbolic link, or special file like a FIFO.
+				
+				  fsnotify.Create    A new path was created; this may be followed by one
+				                     or more Write events if data also gets written to a
+				                     file.
+				
+				  fsnotify.Remove    A path was removed.
+				
+				  fsnotify.Rename    A path was renamed. A rename is always sent with the
+				                     old path as Event.Name, and a Create event will be
+				                     sent with the new name. Renames are only sent for
+				                     paths that are currently watched; e.g. moving an
+				                     unmonitored file into a monitored directory will
+				                     show up as just a Create. Similarly, renaming a file
+				                     to outside a monitored directory will show up as
+				                     only a Rename.
+				
+				  fsnotify.Write     A file or named pipe was written to. A Truncate will
+				                     also trigger a Write. A single "write action"
+				                     initiated by the user may show up as one or multiple
+				                     writes, depending on when the system syncs things to
+				                     disk. For example when compiling a large Go program
+				                     you may get hundreds of Write events, and you may
+				                     want to wait until you've stopped receiving them
+				                     (see the dedup example in cmd/fsnotify).
+				
+				                     Some systems may send Write event for directories
+				                     when the directory content changes.
+				
+				  fsnotify.Chmod     Attributes were changed. On Linux this is also sent
+				                     when a file is removed (or more accurately, when a
+				                     link to an inode is removed). On kqueue it's sent
+				                     when a file is truncated. On Windows it's never
+				                     sent.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Watcher-showhide-fields"><i><label for="Watcher-showhide-fields" class="show-inline">/* 6 unexporteds ... */</label><label for="Watcher-showhide-fields" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-142">closeMu</a> <i><a href="../../sync.html">sync</a>.<a href="../../sync.html#name-Mutex">Mutex</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Watcher-fold-field-done"><label for="Watcher-fold-field-done"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-141">done</a> <i>chan struct{}</i></label><span id='Watcher-fold-field-done-docs' class="fold-docs">
+<span class="md-text">				// Channel for sending a "quit message" to the reader goroutine</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Watcher-fold-field-doneResp"><label for="Watcher-fold-field-doneResp"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-143">doneResp</a> <i>chan struct{}</i></label><span id='Watcher-fold-field-doneResp-docs' class="fold-docs">
+<span class="md-text">				// Channel to respond to Close</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Watcher-fold-field-fd"><label for="Watcher-fold-field-fd"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-138">fd</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Watcher-fold-field-fd-docs' class="fold-docs">
+<span class="md-text">				Store fd here as os.File.Read() will no longer return on close after
+				calling Fd(). See: https://github.com/golang/go/issues/26439</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-139">inotifyFile</a> <i>*<a href="../../os.html">os</a>.<a href="../../os.html#name-File">File</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-140">watches</a> <i>*<a href="#name-watches">watches</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Watcher-fold-methods"><label for="Watcher-fold-methods">Methods (<i>total 11, in which 5 are exported</i>)</label><span id='Watcher-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Watcher-fold-method-Add"><label for="Watcher-fold-method-Add">(*Watcher) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-362">Add</a>(name <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Watcher-fold-method-Add-docs' class="fold-docs">
+<span class="md-text">				Add starts monitoring the path for changes.
+				
+				A path can only be watched once; watching it more than once is a no-op and will
+				not return an error. Paths that do not yet exist on the filesystem cannot be
+				watched.
+				
+				A watch will be automatically removed if the watched path is deleted or
+				renamed. The exception is the Windows backend, which doesn't remove the
+				watcher on renames.
+				
+				Notifications on network filesystems (NFS, SMB, FUSE, etc.) or special
+				filesystems (/proc, /sys, etc.) generally don't work.
+				
+				Returns [ErrClosed] if [Watcher.Close] was called.
+				
+				See [Watcher.AddWith] for a version that allows adding options.
+				
+				# Watching directories
+				
+				All files in a directory are monitored, including new files that are created
+				after the watcher is started. Subdirectories are not watched (i.e. it's
+				non-recursive).
+				
+				# Watching files
+				
+				Watching individual files (rather than directories) is generally not
+				recommended as many programs (especially editors) update files atomically: it
+				will write to a temporary file which is then moved to to destination,
+				overwriting the original (or some variant thereof). The watcher on the
+				original file is now lost, as that no longer exists.
+				
+				The upshot of this is that a power failure or crash won't leave a
+				half-written file.
+				
+				Watch the parent directory and use Event.Name to filter out files you're not
+				interested in. There is an example of this in cmd/fsnotify/file.go.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Watcher-fold-method-AddWith"><label for="Watcher-fold-method-AddWith">(*Watcher) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-371">AddWith</a>(name <a href="../../builtin.html#name-string">string</a>, opts ...<a href="#name-addOpt">addOpt</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Watcher-fold-method-AddWith-docs' class="fold-docs">
+<span class="md-text">				AddWith is like [Watcher.Add], but allows adding options. When using Add()
+				the defaults described below are used.
+				
+				Possible options are:
+				
+				  - [WithBufferSize] sets the buffer size for the Windows backend; no-op on
+				    other platforms. The default is 64K (65536 bytes).</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Watcher-fold-method-Close"><label for="Watcher-fold-method-Close">(*Watcher) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-304">Close</a>() <a href="../../builtin.html#name-error">error</a></label><span id='Watcher-fold-method-Close-docs' class="fold-docs">
+<span class="md-text">				Close removes all watches and closes the Events channel.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Watcher-fold-method-Remove"><label for="Watcher-fold-method-Remove">(*Watcher) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-415">Remove</a>(name <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Watcher-fold-method-Remove-docs' class="fold-docs">
+<span class="md-text">				Remove stops monitoring the path for changes.
+				
+				Directories are always removed non-recursively. For example, if you added
+				/tmp/dir and /tmp/dir/subdir then you will need to remove both.
+				
+				Removing a path that has not yet been added returns [ErrNonExistentWatch].
+				
+				Returns nil if [Watcher.Close] was called.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Watcher-fold-method-WatchList"><label for="Watcher-fold-method-WatchList">(*Watcher) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-449">WatchList</a>() []<a href="../../builtin.html#name-string">string</a></label><span id='Watcher-fold-method-WatchList-docs' class="fold-docs">
+<span class="md-text">				WatchList returns all paths explicitly added with [Watcher.Add] (and are not
+				yet removed).
+				
+				Returns nil if [Watcher.Close] was called.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Watcher-showhide-methods"><i><label for="Watcher-showhide-methods" class="show-inline">/* 6 unexporteds ... */</label><label for="Watcher-showhide-methods" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Watcher) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-294">isClosed</a>() <a href="../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Watcher-fold-method-newEvent"><label for="Watcher-fold-method-newEvent">(*Watcher) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-576">newEvent</a>(name <a href="../../builtin.html#name-string">string</a>, mask <a href="../../builtin.html#name-uint32">uint32</a>) <a href="#name-Event">Event</a></label><span id='Watcher-fold-method-newEvent-docs' class="fold-docs">
+<span class="md-text">				newEvent returns an platform-independent Event based on an inotify mask.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Watcher-fold-method-readEvents"><label for="Watcher-fold-method-readEvents">(*Watcher) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-466">readEvents</a>()</label><span id='Watcher-fold-method-readEvents-docs' class="fold-docs">
+<span class="md-text">				readEvents reads from the inotify file descriptor, converts the
+				received events into Event objects and sends them via the Events channel</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Watcher) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-422">remove</a>(name <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Watcher-fold-method-sendError"><label for="Watcher-fold-method-sendError">(*Watcher) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-285">sendError</a>(err <a href="../../builtin.html#name-error">error</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='Watcher-fold-method-sendError-docs' class="fold-docs">
+<span class="md-text">				Returns true if the error was sent, or false if watcher is closed.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Watcher-fold-method-sendEvent"><label for="Watcher-fold-method-sendEvent">(*Watcher) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-275">sendEvent</a>(e <a href="#name-Event">Event</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='Watcher-fold-method-sendEvent-docs' class="fold-docs">
+<span class="md-text">				Returns true if the event was sent, or false if watcher is closed.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Watcher-fold-impls"><label for="Watcher-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Watcher-fold-impls-items' class="fold-items"><span>
+			*Watcher : io.<a href="../../io.html#name-Closer">Closer</a></span></span>
+		<input type='checkbox' class="fold" id="Watcher-fold-results"><label for="Watcher-fold-results">As Outputs Of (<i>at least 3, in which 2 are exported</i>)</label><span id='Watcher-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewBufferedWatcher">NewBufferedWatcher</a>(sz <a href="../../builtin.html#name-uint">uint</a>) (*<b>Watcher</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-NewWatcher">NewWatcher</a>() (*<b>Watcher</b>, <a href="../../builtin.html#name-error">error</a>)</span>
+			<input type='checkbox' class="showhide" id="Watcher-showhide-inputofs"><i><label for="Watcher-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="Watcher-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/app.<a href="../../fyne.io/fyne/v2/app.html#name-watchFile">watchFile</a>(path <a href="../../builtin.html#name-string">string</a>, callback func()) *<b>Watcher</b></i></span></span>
+		<input type='checkbox' class="fold" id="Watcher-fold-params"><label for="Watcher-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='Watcher-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Watcher-showhide-outputofs"><i><label for="Watcher-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Watcher-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/app.<a href="../../fyne.io/fyne/v2/app.html#name-watchFileAddTarget">watchFileAddTarget</a>(watcher *<b>Watcher</b>, path <a href="../../builtin.html#name-string">string</a>)</i></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-addOpt" data-popularity="145">	<input type='checkbox' class="fold" id="addOpt-fold-content"><label for="addOpt-fold-content"> type <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-107">addOpt</a> <i>(func)</i></label><span id='addOpt-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="addOpt-fold-results"><label for="addOpt-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='addOpt-fold-results-items' class="fold-items"><span>
+			func <a href="#name-WithBufferSize">WithBufferSize</a>(bytes <a href="../../builtin.html#name-int">int</a>) <b>addOpt</b></span></span>
+		<input type='checkbox' class="fold" id="addOpt-fold-params"><label for="addOpt-fold-params">As Inputs Of (<i>at least 2, in which 1 is exported</i>)</label><span id='addOpt-fold-params-items' class="fold-items"><span>
+			func (*<a href="#name-Watcher">Watcher</a>).<a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-371">AddWith</a>(name <a href="../../builtin.html#name-string">string</a>, opts ...<b>addOpt</b>) <a href="../../builtin.html#name-error">error</a></span>
+			<input type='checkbox' checked class="showhide" id="addOpt-showhide-outputofs"><i><label for="addOpt-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="addOpt-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-getOptions">getOptions</a>(opts ...<b>addOpt</b>) <a href="#name-withOpts">withOpts</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-watch" data-popularity="0">	<input type='checkbox' class="fold" id="watch-fold-content"><label for="watch-fold-content"> type <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-152">watch</a> <i>(struct)</i></label><span id='watch-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="watch-fold-fields"><label for="watch-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='watch-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="watch-showhide-fields"><i><label for="watch-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="watch-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="watch-fold-field-flags"><label for="watch-fold-field-flags"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-154">flags</a> <i><a href="../../builtin.html#name-uint32">uint32</a></i></label><span id='watch-fold-field-flags-docs' class="fold-docs">
+<span class="md-text">				// inotify flags of this watch (see inotify(7) for the list of valid flags)</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="watch-fold-field-path"><label for="watch-fold-field-path"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-155">path</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='watch-fold-field-path-docs' class="fold-docs">
+<span class="md-text">				// Watch path.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="watch-fold-field-wd"><label for="watch-fold-field-wd"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-153">wd</a> <i><a href="../../builtin.html#name-uint32">uint32</a></i></label><span id='watch-fold-field-wd-docs' class="fold-docs">
+<span class="md-text">				// Watch descriptor (as returned by the inotify_add_watch() syscall)</span>
+</span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-watches" data-popularity="425">	<input type='checkbox' class="fold" id="watches-fold-content"><label for="watches-fold-content"> type <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-147">watches</a> <i>(struct)</i></label><span id='watches-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="watches-fold-fields"><label for="watches-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='watches-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="watches-showhide-fields"><i><label for="watches-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="watches-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-148">mu</a> <i><a href="../../sync.html">sync</a>.<a href="../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="watches-fold-field-path"><label for="watches-fold-field-path"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-150">path</a> <i>map[<a href="../../builtin.html#name-string">string</a>]<a href="../../builtin.html#name-uint32">uint32</a></i></label><span id='watches-fold-field-path-docs' class="fold-docs">
+<span class="md-text">				// pathname → wd</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="watches-fold-field-wd"><label for="watches-fold-field-wd"><a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-149">wd</a> <i>map[<a href="../../builtin.html#name-uint32">uint32</a>]*<a href="#name-watch">watch</a></i></label><span id='watches-fold-field-wd-docs' class="fold-docs">
+<span class="md-text">				// wd → watch</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="watches-fold-methods"><label for="watches-fold-methods">Methods (<i>total 7, none are exported</i>)</label><span id='watches-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="watches-showhide-methods"><i><label for="watches-showhide-methods" class="show-inline">/* 7 unexporteds ... */</label><label for="watches-showhide-methods" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*watches) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-172">add</a>(ww *<a href="#name-watch">watch</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*watches) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-201">byPath</a>(path <a href="../../builtin.html#name-string">string</a>) *<a href="#name-watch">watch</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*watches) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-207">byWd</a>(wd <a href="../../builtin.html#name-uint32">uint32</a>) *<a href="#name-watch">watch</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*watches) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-166">len</a>() <a href="../../builtin.html#name-int">int</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*watches) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-179">remove</a>(wd <a href="../../builtin.html#name-uint32">uint32</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*watches) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-186">removePath</a>(path <a href="../../builtin.html#name-string">string</a>) (<a href="../../builtin.html#name-uint32">uint32</a>, <a href="../../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*watches) <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-213">updatePath</a>(path <a href="../../builtin.html#name-string">string</a>, f func(*<a href="#name-watch">watch</a>) (*<a href="#name-watch">watch</a>, <a href="../../builtin.html#name-error">error</a>)) <a href="../../builtin.html#name-error">error</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="watches-fold-results"><label for="watches-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='watches-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="watches-showhide-inputofs"><i><label for="watches-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="watches-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-newWatches">newWatches</a>() *<b>watches</b></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-withOpts" data-popularity="80">	<input type='checkbox' class="fold" id="withOpts-fold-content"><label for="withOpts-fold-content"> type <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-108">withOpts</a> <i>(struct)</i></label><span id='withOpts-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="withOpts-fold-fields"><label for="withOpts-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='withOpts-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="withOpts-showhide-fields"><i><label for="withOpts-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="withOpts-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-109">bufsize</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="withOpts-fold-results"><label for="withOpts-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='withOpts-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="withOpts-showhide-inputofs"><i><label for="withOpts-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="withOpts-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-getOptions">getOptions</a>(opts ...<a href="#name-addOpt">addOpt</a>) <b>withOpts</b></i></span></span>
+		<input type='checkbox' class="fold" id="withOpts-fold-values"><label for="withOpts-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='withOpts-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="withOpts-showhide-values"><i><label for="withOpts-showhide-values" class="show-inline">/* one unexported ... */</label><label for="withOpts-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var <a href="#name-defaultOpts">defaultOpts</a></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 6, in which 3 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-NewBufferedWatcher">	<input type='checkbox' class="fold" id="NewBufferedWatcher-fold-content"><label for="NewBufferedWatcher-fold-content"> func <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-252">NewBufferedWatcher</a>(sz <a href="../../builtin.html#name-uint">uint</a>) (*<a href="#name-Watcher">Watcher</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='NewBufferedWatcher-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewBufferedWatcher creates a new Watcher with a buffered Watcher.Events
+		channel.
+		
+		The main use case for this is situations with a very large number of events
+		where the kernel buffer size can't be increased (e.g. due to lack of
+		permissions). An unbuffered Watcher will perform better for almost all use
+		cases, and whenever possible you will be better off increasing the kernel
+		buffers instead of adding a large userspace buffer.</span>
+
+</span></div><div class="anchor value-res" id="name-NewWatcher">	<input type='checkbox' class="fold" id="NewWatcher-fold-content"><label for="NewWatcher-fold-content"> func <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-240">NewWatcher</a>() (*<a href="#name-Watcher">Watcher</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='NewWatcher-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewWatcher creates a new Watcher.</span>
+
+</span></div><div class="anchor value-res" id="name-WithBufferSize">	<input type='checkbox' class="fold" id="WithBufferSize-fold-content"><label for="WithBufferSize-fold-content"> func <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-135">WithBufferSize</a>(bytes <a href="../../builtin.html#name-int">int</a>) <a href="#name-addOpt">addOpt</a></label><span id='WithBufferSize-fold-content-docs' class="fold-docs">
+<span class="md-text">		WithBufferSize sets the [ReadDirectoryChangesW] buffer size.
+		
+		This only has effect on Windows systems, and is a no-op for other backends.
+		
+		The default value is 64K (65536 bytes) which is the highest value that works
+		on all filesystems and should be enough for most applications, but if you
+		have a large burst of events it may not be enough. You can increase it if
+		you're hitting "queue or buffer overflow" errors ([ErrEventOverflow]).
+		
+		[ReadDirectoryChangesW]: https://learn.microsoft.com/en-gb/windows/win32/api/winbase/nf-winbase-readdirectorychangesw</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-getOptions"><i>	<span class="nodocs"> func <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-117">getOptions</a>(opts ...<a href="#name-addOpt">addOpt</a>) <a href="#name-withOpts">withOpts</a></span></i></div><div class="anchor value-res hidden" id="name-newWatches"><i>	<span class="nodocs"> func <a href="../../../src/github.com/fsnotify/fsnotify/backend_inotify.go.html#line-159">newWatches</a>() *<a href="#name-watches">watches</a></span></i></div><div class="anchor value-res hidden" id="name-recursivePath"><i>	<input type='checkbox' class="fold" id="recursivePath-fold-content"><label for="recursivePath-fold-content"> func <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-141">recursivePath</a>(path <a href="../../builtin.html#name-string">string</a>) (<a href="../../builtin.html#name-string">string</a>, <a href="../../builtin.html#name-bool">bool</a>)</label><span id='recursivePath-fold-content-docs' class="fold-docs">
+<span class="md-text">		Check if this path is recursive (ends with "/..." or "\..."), and return the
+		path with the /... stripped.</span>
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 4, in which 3 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ErrClosed">	<input type='checkbox' class="fold" id="ErrClosed-fold-content"><label for="ErrClosed-fold-content">  var <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-69">ErrClosed</a> <a href="../../builtin.html#name-error">error</a></label><span id='ErrClosed-fold-content-docs' class="fold-docs">
+<span class="md-text">		Common errors that can be reported.</span>
+
+</span></div><div class="anchor value-res" id="name-ErrEventOverflow">	<input type='checkbox' class="fold" id="ErrEventOverflow-fold-content"><label for="ErrEventOverflow-fold-content">  var <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-68">ErrEventOverflow</a> <a href="../../builtin.html#name-error">error</a></label><span id='ErrEventOverflow-fold-content-docs' class="fold-docs">
+<span class="md-text">		Common errors that can be reported.</span>
+
+</span></div><div class="anchor value-res" id="name-ErrNonExistentWatch">	<input type='checkbox' class="fold" id="ErrNonExistentWatch-fold-content"><label for="ErrNonExistentWatch-fold-content">  var <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-67">ErrNonExistentWatch</a> <a href="../../builtin.html#name-error">error</a></label><span id='ErrNonExistentWatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		Common errors that can be reported.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-defaultOpts"><i>	<span class="nodocs">  var <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-113">defaultOpts</a> <a href="#name-withOpts">withOpts</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 5, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Chmod">	<input type='checkbox' class="fold" id="Chmod-fold-content"><label for="Chmod-fold-content">const <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-62">Chmod</a> <a href="#name-Op">Op</a> = 16</label><span id='Chmod-fold-content-docs' class="fold-docs">
+<span class="md-text">		File attributes were changed.
+		
+		It's generally not recommended to take action on this event, as it may
+		get triggered very frequently by some software. For example, Spotlight
+		indexing on macOS, anti-virus software, backup software, etc.</span>
+
+</span></div><div class="anchor value-res" id="name-Create">	<input type='checkbox' class="fold" id="Create-fold-content"><label for="Create-fold-content">const <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-42">Create</a> <a href="#name-Op">Op</a> = 1</label><span id='Create-fold-content-docs' class="fold-docs">
+<span class="md-text">		A new pathname was created.</span>
+
+</span></div><div class="anchor value-res" id="name-Remove">	<input type='checkbox' class="fold" id="Remove-fold-content"><label for="Remove-fold-content">const <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-51">Remove</a> <a href="#name-Op">Op</a> = 4</label><span id='Remove-fold-content-docs' class="fold-docs">
+<span class="md-text">		The path was removed; any watches on it will be removed. Some "remove"
+		operations may trigger a Rename if the file is actually moved (for
+		example "remove to trash" is often a rename).</span>
+
+</span></div><div class="anchor value-res" id="name-Rename">	<input type='checkbox' class="fold" id="Rename-fold-content"><label for="Rename-fold-content">const <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-55">Rename</a> <a href="#name-Op">Op</a> = 8</label><span id='Rename-fold-content-docs' class="fold-docs">
+<span class="md-text">		The path was renamed to something else; any watched on it will be
+		removed.</span>
+
+</span></div><div class="anchor value-res" id="name-Write">	<input type='checkbox' class="fold" id="Write-fold-content"><label for="Write-fold-content">const <a href="../../../src/github.com/fsnotify/fsnotify/fsnotify.go.html#line-46">Write</a> <a href="#name-Op">Op</a> = 2</label><span id='Write-fold-content-docs' class="fold-docs">
+<span class="md-text">		The pathname was written to; this does *not* mean the write has finished,
+		and a write can be followed by more writes.</span>
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

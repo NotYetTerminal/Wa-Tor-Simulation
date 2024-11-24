@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/go-text/typesetting/font/cff/interpreter</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>psinterpreter</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../../index.html#pkg-github.com/go-text/typesetting/font/cff/interpreter">github.com/go-text/typesetting/font/cff/interpreter</a><i> (on <a href="https://pkg.go.dev/github.com/go-text/typesetting/font/cff/interpreter" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../../dep/github.com/go-text/typesetting/font/cff/interpreter.html">6 packages</a>, and imported by <a href="../../../../../../dep/github.com/go-text/typesetting/font/cff/interpreter.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html">charstrings.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-1-fold-content"><label for="file-1-fold-content">  <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#doc">d</a> <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html">interpreter.go</a></label><span id='file-1-fold-content-items' class="fold-items">
+<span class="md-text">		Package psinterpreter implement a Postscript interpreter
+		required to parse .CFF files, and Type1 and Type2 Charstrings.
+		This package provides the low-level mechanisms needed to
+		read such formats; the data is consumed in higher level packages,
+		which implement `PsOperatorHandler`.
+		It also provides helpers to interpret glyph outline descriptions,
+		shared between Type1 and CFF font formats.
+		
+		See https://adobe-type-tools.github.io/font-tech-notes/pdfs/5177.Type2.pdf</span></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 8, all are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-ArgStack" data-popularity="200">	<input type='checkbox' class="fold" id="ArgStack-fold-content"><label for="ArgStack-fold-content"> type <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-54">ArgStack</a> <i>(struct)</i></label><span id='ArgStack-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="ArgStack-fold-fields"><label for="ArgStack-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='ArgStack-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ArgStack-fold-field-Top"><label for="ArgStack-fold-field-Top"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-58">Top</a> <i><a href="../../../../../builtin.html#name-int32">int32</a></i></label><span id='ArgStack-fold-field-Top-docs' class="fold-docs">
+<span class="md-text">				Effecive size currently in use. The first value to
+				pop is at index Top-1</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ArgStack-fold-field-Vals"><label for="ArgStack-fold-field-Vals"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-55">Vals</a> <i>[513]<a href="../../../../../builtin.html#name-float64">float64</a></i></label><span id='ArgStack-fold-field-Vals-docs' class="fold-docs">
+<span class="md-text">				// we have to use float64 to properly store floats and int32 values</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="ArgStack-fold-methods"><label for="ArgStack-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='ArgStack-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ArgStack-fold-method-Clear"><label for="ArgStack-fold-method-Clear">(*ArgStack) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-73">Clear</a>()</label><span id='ArgStack-fold-method-Clear-docs' class="fold-docs">
+<span class="md-text">				Clear clears the stack</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ArgStack-fold-method-Pop"><label for="ArgStack-fold-method-Pop">(*ArgStack) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-67">Pop</a>() <a href="../../../../../builtin.html#name-float64">float64</a></label><span id='ArgStack-fold-method-Pop-docs' class="fold-docs">
+<span class="md-text">				Pop returns the top level value and decrease `Top`
+				It will panic if the stack is empty.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ArgStack-fold-method-PopN"><label for="ArgStack-fold-method-PopN">(*ArgStack) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-77">PopN</a>(numPop <a href="../../../../../builtin.html#name-int32">int32</a>) <a href="../../../../../builtin.html#name-error">error</a></label><span id='ArgStack-fold-method-PopN-docs' class="fold-docs">
+<span class="md-text">				PopN check and remove the n top levels entries.
+				Passing a negative `numPop` clears all the stack.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="ArgStack-fold-method-Uint16"><label for="ArgStack-fold-method-Uint16">(*ArgStack) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-63">Uint16</a>() <a href="../../../../../builtin.html#name-uint16">uint16</a></label><span id='ArgStack-fold-method-Uint16-docs' class="fold-docs">
+<span class="md-text">				Uint16 returns the top level value as uint16,
+				without popping the stack.</span>
+</span></span></span>
+
+</span></div><div class="anchor type-res" id="name-CharstringReader" data-popularity="1450">	<input type='checkbox' class="fold" id="CharstringReader-fold-content"><label for="CharstringReader-fold-content"> type <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-61">CharstringReader</a> <i>(struct)</i></label><span id='CharstringReader-fold-content-docs' class="fold-docs">
+<span class="md-text">		CharstringReader provides implementation
+		of the operators found in a font charstring.</span>
+
+		<input type='checkbox' class="fold" id="CharstringReader-fold-fields"><label for="CharstringReader-fold-fields">Fields (<i>total 10, in which 3 are exported</i>)</label><span id='CharstringReader-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="CharstringReader-fold-field-Bounds"><label for="CharstringReader-fold-field-Bounds"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-65">Bounds</a> <i><a href="#name-PathBounds">PathBounds</a></i></label><span id='CharstringReader-fold-field-Bounds-docs' class="fold-docs">
+<span class="md-text">				Acumulated bounds for the glyph outlines</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-71">CurrentPoint</a> <i><a href="#name-Point">Point</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="CharstringReader-fold-field-Segments"><label for="CharstringReader-fold-field-Segments"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-63">Segments</a> <i>[]<a href="../opentype.html">ot</a>.<a href="../opentype.html#name-Segment">Segment</a></i></label><span id='CharstringReader-fold-field-Segments-docs' class="fold-docs">
+<span class="md-text">				Acumulated segments for the glyph outlines</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="CharstringReader-showhide-fields"><i><label for="CharstringReader-showhide-fields" class="show-inline">/* 7 unexporteds ... */</label><label for="CharstringReader-showhide-fields" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CharstringReader-fold-field-firstPoint"><label for="CharstringReader-fold-field-firstPoint"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-72">firstPoint</a> <i><a href="#name-Point">Point</a></i></label><span id='CharstringReader-fold-field-firstPoint-docs' class="fold-docs">
+<span class="md-text">				// first point in path, required to check if a path is closed</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-69">hintmaskSize</a> <i><a href="../../../../../builtin.html#name-int32">int32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-68">hstemCount</a> <i><a href="../../../../../builtin.html#name-int32">int32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-73">isPathOpen</a> <i><a href="../../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-75">seenHintmask</a> <i><a href="../../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CharstringReader-fold-field-seenPoint"><label for="CharstringReader-fold-field-seenPoint"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-80">seenPoint</a> <i><a href="../../../../../builtin.html#name-bool">bool</a></i></label><span id='CharstringReader-fold-field-seenPoint-docs' class="fold-docs">
+<span class="md-text">				bounds for an empty path is {0,0,0,0}
+				however, for the first point in the path,
+				we must not compare the coordinates with {0,0,0,0}</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-67">vstemCount</a> <i><a href="../../../../../builtin.html#name-int32">int32</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="CharstringReader-fold-methods"><label for="CharstringReader-fold-methods">Methods (<i>total 29, in which 22 are exported</i>)</label><span id='CharstringReader-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="CharstringReader-fold-method-ClosePath"><label for="CharstringReader-fold-method-ClosePath">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-192">ClosePath</a>()</label><span id='CharstringReader-fold-method-ClosePath-docs' class="fold-docs">
+<span class="md-text">				ClosePath closes the current contour, adding
+				a segment to the first point if needed.</span>
+</span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-510">Flex</a>(state *<a href="#name-Machine">Machine</a>) <a href="../../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-554">Flex1</a>(state *<a href="#name-Machine">Machine</a>) <a href="../../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-487">Hflex</a>(state *<a href="#name-Machine">Machine</a>) <a href="../../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-532">Hflex1</a>(state *<a href="#name-Machine">Machine</a>) <a href="../../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-288">Hhcurveto</a>(state *<a href="#name-Machine">Machine</a>)</span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-109">Hintmask</a>(state *<a href="#name-Machine">Machine</a>)</span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-234">Hlineto</a>(state *<a href="#name-Machine">Machine</a>)</span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-216">Hmoveto</a>(state *<a href="#name-Machine">Machine</a>) <a href="../../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-93">Hstem</a>(state *<a href="#name-Machine">Machine</a>)</span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-364">Hvcurveto</a>(state *<a href="#name-Machine">Machine</a>)</span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-420">Rcurveline</a>(state *<a href="#name-Machine">Machine</a>) <a href="../../../../../builtin.html#name-error">error</a></span></span><span>
+			<input type='checkbox' class="fold" id="CharstringReader-fold-method-RelativeCurveTo"><label for="CharstringReader-fold-method-RelativeCurveTo">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-268">RelativeCurveTo</a>(arg1, arg2, arg3 <a href="#name-Point">Point</a>)</label><span id='CharstringReader-fold-method-RelativeCurveTo-docs' class="fold-docs">
+<span class="md-text">				RelativeCurveTo draws a curve with controls points computed from
+				the current point and `arg1`, `arg2`, `arg3`</span>
+</span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-445">Rlinecurve</a>(state *<a href="#name-Machine">Machine</a>) <a href="../../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-225">Rlineto</a>(state *<a href="#name-Machine">Machine</a>)</span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-197">Rmoveto</a>(state *<a href="#name-Machine">Machine</a>) <a href="../../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-278">Rrcurveto</a>(state *<a href="#name-Machine">Machine</a>)</span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-308">Vhcurveto</a>(state *<a href="#name-Machine">Machine</a>)</span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-250">Vlineto</a>(state *<a href="#name-Machine">Machine</a>)</span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-207">Vmoveto</a>(state *<a href="#name-Machine">Machine</a>) <a href="../../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-97">Vstem</a>(state *<a href="#name-Machine">Machine</a>)</span></span><span>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-469">Vvcurveto</a>(state *<a href="#name-Machine">Machine</a>)</span></span>
+			<input type='checkbox' class="showhide" id="CharstringReader-showhide-methods"><i><label for="CharstringReader-showhide-methods" class="show-inline">/* 7 unexporteds ... */</label><label for="CharstringReader-showhide-methods" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-140">curve</a>(pt1, pt2, pt3 <a href="#name-Point">Point</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-101">determineHintmaskSize</a>(state *<a href="#name-Machine">Machine</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-156">doubleCurve</a>(pt1, pt2, pt3, pt4, pt5, pt6 <a href="#name-Point">Point</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-161">ensureClosePath</a>()</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CharstringReader-fold-method-line"><label for="CharstringReader-fold-method-line">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-127">line</a>(pt <a href="#name-Point">Point</a>)</label><span id='CharstringReader-fold-method-line-docs' class="fold-docs">
+<span class="md-text">				pt is in absolute coordinates</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-114">move</a>(pt <a href="#name-Point">Point</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CharstringReader-fold-method-updateBounds"><label for="CharstringReader-fold-method-updateBounds">(*CharstringReader) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-84">updateBounds</a>(pt <a href="#name-Point">Point</a>)</label><span id='CharstringReader-fold-method-updateBounds-docs' class="fold-docs">
+<span class="md-text">				enlarges the current bounds to include the Point (x,y).</span>
+</span></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Context" data-popularity="90">	<input type='checkbox' class="fold" id="Context-fold-content"><label for="Context-fold-content"> type <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-45">Context</a> <a href="../../../../../builtin.html#name-uint32">uint32</a> <i>(basic type)</i></label><span id='Context-fold-content-docs' class="fold-docs">
+<span class="md-text">		Context is the flavour of the Postcript language.</span>
+
+		<input type='checkbox' class="fold" id="Context-fold-results"><label for="Context-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Context-fold-results-items' class="fold-items"><span>
+			func <a href="#name-OperatorHandler">OperatorHandler</a>.<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-363">Context</a>() <b>Context</b></span></span>
+		<input type='checkbox' class="fold" id="Context-fold-values"><label for="Context-fold-values">As Types Of (<i>total 4, all are exported</i>)</label><span id='Context-fold-values-items' class="fold-items"><span>
+			const <a href="#name-PrivateDict">PrivateDict</a></span><span>
+			const <a href="#name-TopDict">TopDict</a></span><span>
+			const <a href="#name-Type1Charstring">Type1Charstring</a></span><span>
+			const <a href="#name-Type2Charstring">Type2Charstring</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Machine" data-popularity="1125">	<input type='checkbox' class="fold" id="Machine-fold-content"><label for="Machine-fold-content"> type <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-91">Machine</a> <i>(struct)</i></label><span id='Machine-fold-content-docs' class="fold-docs">
+<span class="md-text">		Machine is a PostScript interpreter.
+		A same interpreter may be re-used using muliples `Run` calls.</span>
+
+		<input type='checkbox' class="fold" id="Machine-fold-fields"><label for="Machine-fold-fields">Fields (<i>total 7, in which 1 is exported</i>)</label><span id='Machine-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-101">ArgStack</a> <i><a href="#name-ArgStack">ArgStack</a></i></span></span>
+			<input type='checkbox' class="showhide" id="Machine-showhide-fields"><i><label for="Machine-showhide-fields" class="show-inline">/* 6 unexporteds ... */</label><label for="Machine-showhide-fields" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-97">callStack</a> <i>struct{vals [10][]<a href="../../../../../builtin.html#name-byte">byte</a>; top <a href="../../../../../builtin.html#name-int32">int32</a>}</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-104">ctx</a> <i><a href="#name-Context">Context</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-93">globalSubrs</a> <i>[][]<a href="../../../../../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-95">instructions</a> <i>[]<a href="../../../../../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-92">localSubrs</a> <i>[][]<a href="../../../../../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-103">parseNumberBuf</a> <i>[64]<a href="../../../../../builtin.html#name-byte">byte</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Machine-fold-methods"><label for="Machine-fold-methods">Methods (<i>total 5, in which 4 are exported</i>)</label><span id='Machine-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Machine-fold-method-CallSubroutine"><label for="Machine-fold-method-CallSubroutine">(*Machine) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-309">CallSubroutine</a>(index <a href="../../../../../builtin.html#name-int32">int32</a>, isLocal <a href="../../../../../builtin.html#name-bool">bool</a>) <a href="../../../../../builtin.html#name-error">error</a></label><span id='Machine-fold-method-CallSubroutine-docs' class="fold-docs">
+<span class="md-text">				CallSubroutine calls the subroutine, identified by its index, as found
+				in the instructions (that is, before applying the subroutine biased).
+				`isLocal` controls whether the local or global subroutines are used.
+				No argument stack modification is performed.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Machine-fold-method-Return"><label for="Machine-fold-method-Return">(*Machine) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-336">Return</a>() <a href="../../../../../builtin.html#name-error">error</a></label><span id='Machine-fold-method-Return-docs' class="fold-docs">
+<span class="md-text">				Return returns from a subroutine call.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Machine-fold-method-Run"><label for="Machine-fold-method-Run">(*Machine) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-123">Run</a>(instructions []<a href="../../../../../builtin.html#name-byte">byte</a>, localSubrs, globalSubrs [][]<a href="../../../../../builtin.html#name-byte">byte</a>, handler <a href="#name-OperatorHandler">OperatorHandler</a>) <a href="../../../../../builtin.html#name-error">error</a></label><span id='Machine-fold-method-Run-docs' class="fold-docs">
+<span class="md-text">				Run runs the instructions in the PostScript context asked by `handler`.
+				`localSubrs` and `globalSubrs` contains the subroutines that may be called in the instructions.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Machine-fold-method-SkipBytes"><label for="Machine-fold-method-SkipBytes">(*Machine) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-109">SkipBytes</a>(count <a href="../../../../../builtin.html#name-int32">int32</a>)</label><span id='Machine-fold-method-SkipBytes-docs' class="fold-docs">
+<span class="md-text">				SkipBytes skips the next `count` bytes from the instructions, and clears the argument stack.
+				It does nothing if `count` exceed the length of the instructions.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Machine-showhide-methods"><i><label for="Machine-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="Machine-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Machine-fold-method-parseNumber"><label for="Machine-fold-method-parseNumber">(*Machine) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-167">parseNumber</a>() (hasResult <a href="../../../../../builtin.html#name-bool">bool</a>, err <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='Machine-fold-method-parseNumber-docs' class="fold-docs">
+<span class="md-text">				See 5176.CFF.pdf section 4 "DICT Data".</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Machine-fold-params"><label for="Machine-fold-params">As Inputs Of (<i>at least 25, in which 23 are exported</i>)</label><span id='Machine-fold-params-items' class="fold-items"><span>
+			func <a href="#name-GlobalSubr">GlobalSubr</a>(state *<b>Machine</b>) <a href="../../../../../builtin.html#name-error">error</a></span><span>
+			func <a href="#name-LocalSubr">LocalSubr</a>(state *<b>Machine</b>) <a href="../../../../../builtin.html#name-error">error</a></span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-510">Flex</a>(state *<b>Machine</b>) <a href="../../../../../builtin.html#name-error">error</a></span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-554">Flex1</a>(state *<b>Machine</b>) <a href="../../../../../builtin.html#name-error">error</a></span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-487">Hflex</a>(state *<b>Machine</b>) <a href="../../../../../builtin.html#name-error">error</a></span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-532">Hflex1</a>(state *<b>Machine</b>) <a href="../../../../../builtin.html#name-error">error</a></span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-288">Hhcurveto</a>(state *<b>Machine</b>)</span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-109">Hintmask</a>(state *<b>Machine</b>)</span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-234">Hlineto</a>(state *<b>Machine</b>)</span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-216">Hmoveto</a>(state *<b>Machine</b>) <a href="../../../../../builtin.html#name-error">error</a></span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-93">Hstem</a>(state *<b>Machine</b>)</span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-364">Hvcurveto</a>(state *<b>Machine</b>)</span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-420">Rcurveline</a>(state *<b>Machine</b>) <a href="../../../../../builtin.html#name-error">error</a></span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-445">Rlinecurve</a>(state *<b>Machine</b>) <a href="../../../../../builtin.html#name-error">error</a></span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-225">Rlineto</a>(state *<b>Machine</b>)</span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-197">Rmoveto</a>(state *<b>Machine</b>) <a href="../../../../../builtin.html#name-error">error</a></span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-278">Rrcurveto</a>(state *<b>Machine</b>)</span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-308">Vhcurveto</a>(state *<b>Machine</b>)</span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-250">Vlineto</a>(state *<b>Machine</b>)</span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-207">Vmoveto</a>(state *<b>Machine</b>) <a href="../../../../../builtin.html#name-error">error</a></span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-97">Vstem</a>(state *<b>Machine</b>)</span><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-469">Vvcurveto</a>(state *<b>Machine</b>)</span><span>
+			func <a href="#name-OperatorHandler">OperatorHandler</a>.<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-369">Apply</a>(state *<b>Machine</b>, operator <a href="#name-Operator">Operator</a>) <a href="../../../../../builtin.html#name-error">error</a></span>
+			<input type='checkbox' class="showhide" id="Machine-showhide-outputofs"><i><label for="Machine-showhide-outputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="Machine-showhide-outputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-101">determineHintmaskSize</a>(state *<b>Machine</b>)</i></span><span class="hidden"><i>
+			func github.com/go-text/typesetting/font/cff.<a href="../cff.html#name-topDictNoOp">topDictNoOp</a>(*<a href="../cff.html">cff</a>.<a href="../cff.html#name-topDict">topDict</a>, *<b>Machine</b>) <a href="../../../../../builtin.html#name-error">error</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Operator" data-popularity="285">	<input type='checkbox' class="fold" id="Operator-fold-content"><label for="Operator-fold-content"> type <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-347">Operator</a> <i>(struct)</i></label><span id='Operator-fold-content-docs' class="fold-docs">
+<span class="md-text">		Operator is a postcript command, which may be escaped.</span>
+
+		<input type='checkbox' class="fold" id="Operator-fold-fields"><label for="Operator-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='Operator-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-349">IsEscaped</a> <i><a href="../../../../../builtin.html#name-bool">bool</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-348">Operator</a> <i><a href="../../../../../builtin.html#name-byte">byte</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Operator-fold-methods"><label for="Operator-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Operator-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Operator) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-352">String</a>() <a href="../../../../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="Operator-fold-impls"><label for="Operator-fold-impls">Implements (<i>at least 4, in which 1 is exported</i>)</label><span id='Operator-fold-impls-items' class="fold-items"><span>
+			 Operator : fmt.<a href="../../../../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="Operator-showhide-impls"><i><label for="Operator-showhide-impls" class="show-inline">/* 3+ unexporteds ... */</label><label for="Operator-showhide-impls" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			 Operator : context.<a href="../../../../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 Operator : os/signal.<a href="../../../../../os/signal.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 Operator : runtime.<a href="../../../../../runtime.html#name-stringer">stringer</a></i></span></span>
+		<input type='checkbox' class="fold" id="Operator-fold-params"><label for="Operator-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='Operator-fold-params-items' class="fold-items"><span>
+			func <a href="#name-OperatorHandler">OperatorHandler</a>.<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-369">Apply</a>(state *<a href="#name-Machine">Machine</a>, operator <b>Operator</b>) <a href="../../../../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-OperatorHandler" data-popularity="1185">	<input type='checkbox' class="fold" id="OperatorHandler-fold-content"><label for="OperatorHandler-fold-content"> type <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-360">OperatorHandler</a> <b><i>(interface)</i></b></label><span id='OperatorHandler-fold-content-docs' class="fold-docs">
+<span class="md-text">		OperatorHandler defines the behaviour of an operator.</span>
+
+		<input type='checkbox' class="fold" id="OperatorHandler-fold-methods"><label for="OperatorHandler-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='OperatorHandler-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="OperatorHandler-fold-method-Apply"><label for="OperatorHandler-fold-method-Apply">( OperatorHandler) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-369">Apply</a>(state *<a href="#name-Machine">Machine</a>, operator <a href="#name-Operator">Operator</a>) <a href="../../../../../builtin.html#name-error">error</a></label><span id='OperatorHandler-fold-method-Apply-docs' class="fold-docs">
+<span class="md-text">				Apply implements the operator defined by `operator` (which is the second byte if `escaped` is true).
+				
+				Returning `ErrInterrupt` stop the parsing of the instructions, without reporting an error.
+				It can be used as an optimization.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="OperatorHandler-fold-method-Context"><label for="OperatorHandler-fold-method-Context">( OperatorHandler) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-363">Context</a>() <a href="#name-Context">Context</a></label><span id='OperatorHandler-fold-method-Context-docs' class="fold-docs">
+<span class="md-text">				Context defines the precise behaviour of the interpreter,
+				which has small nuances depending on the context.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="OperatorHandler-fold-impledby"><label for="OperatorHandler-fold-impledby">Implemented By (<i>at least 7, none are exported</i>)</label><span id='OperatorHandler-fold-impledby-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="OperatorHandler-showhide-impedBys"><i><label for="OperatorHandler-showhide-impedBys" class="show-inline">/* 7+ unexporteds ... */</label><label for="OperatorHandler-showhide-impedBys" class="hide-inline">/* 7+ unexporteds: */</label></i><span class="hidden"><i>
+			*github.com/go-text/typesetting/font/cff.<a href="../cff.html#name-cff2CharstringHandler">cff2CharstringHandler</a></i></span><span class="hidden"><i>
+			*github.com/go-text/typesetting/font/cff.<a href="../cff.html#name-fontDict2">fontDict2</a></i></span><span class="hidden"><i>
+			*github.com/go-text/typesetting/font/cff.<a href="../cff.html#name-privateDict">privateDict</a></i></span><span class="hidden"><i>
+			*github.com/go-text/typesetting/font/cff.<a href="../cff.html#name-privateDict2">privateDict2</a></i></span><span class="hidden"><i>
+			*github.com/go-text/typesetting/font/cff.<a href="../cff.html#name-topDict">topDict</a></i></span><span class="hidden"><i>
+			*github.com/go-text/typesetting/font/cff.<a href="../cff.html#name-topDict2">topDict2</a></i></span><span class="hidden"><i>
+			*github.com/go-text/typesetting/font/cff.<a href="../cff.html#name-type2CharstringHandler">type2CharstringHandler</a></i></span></span>
+		<input type='checkbox' class="fold" id="OperatorHandler-fold-params"><label for="OperatorHandler-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='OperatorHandler-fold-params-items' class="fold-items"><span>
+			func (*<a href="#name-Machine">Machine</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-123">Run</a>(instructions []<a href="../../../../../builtin.html#name-byte">byte</a>, localSubrs, globalSubrs [][]<a href="../../../../../builtin.html#name-byte">byte</a>, handler <b>OperatorHandler</b>) <a href="../../../../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-PathBounds" data-popularity="250">	<input type='checkbox' class="fold" id="PathBounds-fold-content"><label for="PathBounds-fold-content"> type <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-15">PathBounds</a> <i>(struct)</i></label><span id='PathBounds-fold-content-docs' class="fold-docs">
+<span class="md-text">		PathBounds represents a control bounds for
+		a glyph outline (in font units).</span>
+
+		<input type='checkbox' class="fold" id="PathBounds-fold-fields"><label for="PathBounds-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='PathBounds-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-16">Max</a> <i><a href="#name-Point">Point</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-16">Min</a> <i><a href="#name-Point">Point</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="PathBounds-fold-methods"><label for="PathBounds-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='PathBounds-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="PathBounds-fold-method-Enlarge"><label for="PathBounds-fold-method-Enlarge">(*PathBounds) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-20">Enlarge</a>(pt <a href="#name-Point">Point</a>)</label><span id='PathBounds-fold-method-Enlarge-docs' class="fold-docs">
+<span class="md-text">				Enlarge enlarges the bounds to include pt</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="PathBounds-fold-method-ToExtents"><label for="PathBounds-fold-method-ToExtents">(*PathBounds) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-36">ToExtents</a>() <a href="../opentype.html">ot</a>.<a href="../opentype.html#name-GlyphExtents">GlyphExtents</a></label><span id='PathBounds-fold-method-ToExtents-docs' class="fold-docs">
+<span class="md-text">				ToExtents converts a path bounds to the corresponding glyph extents.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="PathBounds-fold-results"><label for="PathBounds-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='PathBounds-fold-results-items' class="fold-items"><span>
+			func github.com/go-text/typesetting/font/cff.(*<a href="../cff.html#name-CFF">CFF</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-16">LoadGlyph</a>(glyph <a href="../opentype/tables.html">tables</a>.<a href="../opentype/tables.html#name-GlyphID">GlyphID</a>) ([]<a href="../opentype.html">ot</a>.<a href="../opentype.html#name-Segment">Segment</a>, <b>PathBounds</b>, <a href="../../../../../builtin.html#name-error">error</a>)</span><span>
+			func github.com/go-text/typesetting/font/cff.(*<a href="../cff.html#name-CFF2">CFF2</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-147">LoadGlyph</a>(glyph <a href="../opentype/tables.html">tables</a>.<a href="../opentype/tables.html#name-GlyphID">GlyphID</a>, coords []<a href="../opentype/tables.html">tables</a>.<a href="../opentype/tables.html#name-Coord">Coord</a>) ([]<a href="../opentype.html">ot</a>.<a href="../opentype.html#name-Segment">Segment</a>, <b>PathBounds</b>, <a href="../../../../../builtin.html#name-error">error</a>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-Point" data-popularity="345">	<input type='checkbox' class="fold" id="Point-fold-content"><label for="Point-fold-content"> type <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-47">Point</a> <i>(struct)</i></label><span id='Point-fold-content-docs' class="fold-docs">
+<span class="md-text">		Point is a 2D Point in font units.</span>
+
+		<input type='checkbox' class="fold" id="Point-fold-fields"><label for="Point-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='Point-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-47">X</a> <i><a href="../../../../../builtin.html#name-float64">float64</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-47">Y</a> <i><a href="../../../../../builtin.html#name-float64">float64</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Point-fold-methods"><label for="Point-fold-methods">Methods (<i>total 2, in which 1 is exported</i>)</label><span id='Point-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Point-fold-method-Move"><label for="Point-fold-method-Move">(*Point) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-50">Move</a>(dx, dy <a href="../../../../../builtin.html#name-float64">float64</a>)</label><span id='Point-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move translates the Point.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Point-showhide-methods"><i><label for="Point-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="Point-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( Point) <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-55">toSP</a>() <a href="../opentype.html">ot</a>.<a href="../opentype.html#name-SegmentPoint">SegmentPoint</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="Point-fold-params"><label for="Point-fold-params">As Inputs Of (<i>at least 7, in which 2 are exported</i>)</label><span id='Point-fold-params-items' class="fold-items"><span>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-268">RelativeCurveTo</a>(arg1, arg2, arg3 <b>Point</b>)</span><span>
+			func (*<a href="#name-PathBounds">PathBounds</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-20">Enlarge</a>(pt <b>Point</b>)</span>
+			<input type='checkbox' class="showhide" id="Point-showhide-outputofs"><i><label for="Point-showhide-outputofs" class="show-inline">/* 5+ unexporteds ... */</label><label for="Point-showhide-outputofs" class="hide-inline">/* 5+ unexporteds: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-140">curve</a>(pt1, pt2, pt3 <b>Point</b>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-156">doubleCurve</a>(pt1, pt2, pt3, pt4, pt5, pt6 <b>Point</b>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-127">line</a>(pt <b>Point</b>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-114">move</a>(pt <b>Point</b>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-CharstringReader">CharstringReader</a>).<a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-84">updateBounds</a>(pt <b>Point</b>)</i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 3, in which 2 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-GlobalSubr">	<input type='checkbox' class="fold" id="GlobalSubr-fold-content"><label for="GlobalSubr-fold-content"> func <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-182">GlobalSubr</a>(state *<a href="#name-Machine">Machine</a>) <a href="../../../../../builtin.html#name-error">error</a></label><span id='GlobalSubr-fold-content-docs' class="fold-docs">
+<span class="md-text">		GlobalSubr pops the subroutine index and call it</span>
+
+</span></div><div class="anchor value-res" id="name-LocalSubr">	<input type='checkbox' class="fold" id="LocalSubr-fold-content"><label for="LocalSubr-fold-content"> func <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/charstrings.go.html#line-173">LocalSubr</a>(state *<a href="#name-Machine">Machine</a>) <a href="../../../../../builtin.html#name-error">error</a></label><span id='LocalSubr-fold-content-docs' class="fold-docs">
+<span class="md-text">		LocalSubr pops the subroutine index and call it</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-subrBias"><i>	<input type='checkbox' class="fold" id="subrBias-fold-content"><label for="subrBias-fold-content"> func <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-295">subrBias</a>(numSubroutines <a href="../../../../../builtin.html#name-int">int</a>) <a href="../../../../../builtin.html#name-int32">int32</a></label><span id='subrBias-fold-content-docs' class="fold-docs">
+<span class="md-text">		subrBias returns the subroutine index bias as per 5177.Type2.pdf section 4.7
+		"Subroutine Operators".</span>
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 5, in which 1 is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ErrInterrupt">	<input type='checkbox' class="fold" id="ErrInterrupt-fold-content"><label for="ErrInterrupt-fold-content">  var <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-24">ErrInterrupt</a> <a href="../../../../../builtin.html#name-error">error</a></label><span id='ErrInterrupt-fold-content-docs' class="fold-docs">
+<span class="md-text">		ErrInterrupt signals the interpreter to stop early, without erroring.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-be"><i>	<span class="nodocs">  var <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-29">be</a> <a href="../../../../../encoding/binary.html">binary</a>.<a href="../../../../../encoding/binary.html#name-bigEndian">bigEndian</a></span></i></div><div class="anchor value-res hidden" id="name-errInvalidCFFTable"><i>	<span class="nodocs">  var <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-26">errInvalidCFFTable</a> <a href="../../../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errUnsupportedRealNumberEncoding"><i>	<span class="nodocs">  var <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-27">errUnsupportedRealNumberEncoding</a> <a href="../../../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-nibbleDefs"><i>	<input type='checkbox' class="fold" id="nibbleDefs-fold-content"><label for="nibbleDefs-fold-content">  var <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-274">nibbleDefs</a> [16]<a href="../../../../../builtin.html#name-string">string</a></label><span id='nibbleDefs-fold-content-docs' class="fold-docs">
+<span class="md-text">		nibbleDefs encodes 5176.CFF.pdf Table 5 "Nibble Definitions".</span>
+
+</span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 9, in which 4 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-PrivateDict">	<span class="nodocs">const <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-49">PrivateDict</a> <a href="#name-Context">Context</a> = 1 // <span class="md-text">Private dict in CFF files</span></span></div><div class="anchor value-res" id="name-TopDict">	<span class="nodocs">const <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-48">TopDict</a> <a href="#name-Context">Context</a> = 0 // <span class="md-text">Top dict in CFF files</span></span></div><div class="anchor value-res" id="name-Type1Charstring">	<span class="nodocs">const <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-51">Type1Charstring</a> <a href="#name-Context">Context</a> = 3 // <span class="md-text">Charstring in Type1 font files</span></span></div><div class="anchor value-res" id="name-Type2Charstring">	<span class="nodocs">const <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-50">Type2Charstring</a> <a href="#name-Context">Context</a> = 2 // <span class="md-text">Charstring in CFF files</span></span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 5 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 5 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-escapeByte"><i>	<input type='checkbox' class="fold" id="escapeByte-fold-content"><label for="escapeByte-fold-content">const <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-119">escapeByte</a> = 12</label><span id='escapeByte-fold-content-docs' class="fold-docs">
+<span class="md-text">		5176.CFF.pdf section 4 "DICT Data" says that "Two-byte operators have an
+		initial escape byte of 12".</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-maxNibbleDefsLength"><i>	<span class="nodocs">const <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-271">maxNibbleDefsLength</a> <a href="../../../../../builtin.html#name-int">int</a> = 2</span></i></div><div class="anchor value-res hidden" id="name-maxRealNumberStrLen"><i>	<span class="nodocs">const <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-41">maxRealNumberStrLen</a> = 64 // <span class="md-text">Maximum length in bytes of the "-123.456E-7" representation.</span></span></i></div><div class="anchor value-res hidden" id="name-psArgStackSize"><i>	<input type='checkbox' class="fold" id="psArgStackSize-fold-content"><label for="psArgStackSize-fold-content">const <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-36">psArgStackSize</a> = 513</label><span id='psArgStackSize-fold-content-docs' class="fold-docs">
+<span class="md-text">		psArgStackSize is the argument stack size for a PostScript interpreter,
+		set to 513 in CFF2
+		See https://learn.microsoft.com/en-us/typography/opentype/spec/cff2#appendixD</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-psCallStackSize"><i>	<input type='checkbox' class="fold" id="psCallStackSize-fold-content"><label for="psCallStackSize-fold-content">const <a href="../../../../../../src/github.com/go-text/typesetting/font/cff/interpreter/interpreter.go.html#line-39">psCallStackSize</a> = 10</label><span id='psCallStackSize-fold-content-docs' class="fold-docs">
+<span class="md-text">		Similarly, Appendix B says "Subr nesting, stack limit 10".</span>
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

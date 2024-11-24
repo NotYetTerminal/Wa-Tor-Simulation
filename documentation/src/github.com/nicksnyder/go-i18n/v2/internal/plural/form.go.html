@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: form.go in package github.com/nicksnyder/go-i18n/v2/internal/plural</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	form.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html">github.com/nicksnyder/go-i18n/v2/internal/plural</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> plural</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// Form represents a language pluralization form as defined here:</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// http://cldr.unicode.org/index/cldr-spec/plural-rules</span></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html#name-Form" class="ident">Form</a> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// All defined plural forms.</span></code></span>
+<span class="codeline" id="line-8"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-9"><code>	<a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html#name-Invalid" class="ident">Invalid</a> <a href="#line-5" class="ident">Form</a> = <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-10"><code>	<a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html#name-Zero" class="ident">Zero</a>    <a href="#line-5" class="ident">Form</a> = <span class="lit-string">"zero"</span></code></span>
+<span class="codeline" id="line-11"><code>	<a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html#name-One" class="ident">One</a>     <a href="#line-5" class="ident">Form</a> = <span class="lit-string">"one"</span></code></span>
+<span class="codeline" id="line-12"><code>	<a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html#name-Two" class="ident">Two</a>     <a href="#line-5" class="ident">Form</a> = <span class="lit-string">"two"</span></code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html#name-Few" class="ident">Few</a>     <a href="#line-5" class="ident">Form</a> = <span class="lit-string">"few"</span></code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html#name-Many" class="ident">Many</a>    <a href="#line-5" class="ident">Form</a> = <span class="lit-string">"many"</span></code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../../../../../pkg/github.com/nicksnyder/go-i18n/v2/internal/plural.html#name-Other" class="ident">Other</a>   <a href="#line-5" class="ident">Form</a> = <span class="lit-string">"other"</span></code></span>
+<span class="codeline" id="line-16"><code>)</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

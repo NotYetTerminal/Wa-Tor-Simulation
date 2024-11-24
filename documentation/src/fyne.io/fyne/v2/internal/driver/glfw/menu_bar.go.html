@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: menu_bar.go in package fyne.io/fyne/v2/internal/driver/glfw</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	menu_bar.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html">fyne.io/fyne/v2/internal/driver/glfw</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> glfw</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"fyne.io/fyne/v2/canvas"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"fyne.io/fyne/v2/container"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i3"><span class="lit-string i3">"fyne.io/fyne/v2/driver/desktop"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i4"><span class="lit-string i4">"fyne.io/fyne/v2/internal/widget"</span></label></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i5"><span class="lit-string i5">"fyne.io/fyne/v2/theme"</span></label></code></span>
+<span class="codeline" id="line-10"><code>)</code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code><span class="keyword">var</span> _ <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../widget.go.html#line-6" class="ident">Widget</a> = (*<a href="#line-15" class="ident">MenuBar</a>)(<a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-13"><code></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">// MenuBar is a widget for displaying a fyne.MainMenu in a bar.</span></code></span>
+<span class="codeline" id="line-15"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-MenuBar" class="ident">MenuBar</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i4">widget</a>.<a href="../../widget/base.go.html#line-13" class="ident">Base</a></code></span>
+<span class="codeline" id="line-17"><code>	Items []<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../canvasobject.go.html#line-10" class="ident">CanvasObject</a></code></span>
+<span class="codeline" id="line-18"><code></code></span>
+<span class="codeline" id="line-19"><code>	active     <a href="../../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-20"><code>	activeItem *<a href="menu_bar_item.go.html#line-17" class="ident">menuBarItem</a></code></span>
+<span class="codeline" id="line-21"><code>	canvas     <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../canvas.go.html#line-7" class="ident">Canvas</a></code></span>
+<span class="codeline" id="line-22"><code>}</code></span>
+<span class="codeline" id="line-23"><code></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">// NewMenuBar creates a menu bar populated with items from the passed main menu structure.</span></code></span>
+<span class="codeline" id="line-25"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-NewMenuBar" class="ident">NewMenuBar</a></label>(<label for="r1" class="ident">mainMenu</label> *<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../menu.go.html#line-73" class="ident">MainMenu</a>, <label for="r2" class="ident">canvas</label> <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../canvas.go.html#line-7" class="ident">Canvas</a>) *<a href="#line-15" class="ident">MenuBar</a> {</code></span>
+<span class="codeline" id="line-26"><code>	<label for="r3" class="ident">items</label> := <a href="../../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../canvasobject.go.html#line-10" class="ident">CanvasObject</a>, <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r1" class="ident">mainMenu</label>.<a href="../../../menu.go.html#line-74" class="ident">Items</a>))</code></span>
+<span class="codeline" id="line-27"><code>	<label for="r4" class="ident">b</label> := &amp;<a href="#line-15" class="ident">MenuBar</a>{<a href="#line-17" class="ident">Items</a>: <label for="r3" class="ident">items</label>, <a href="#line-21" class="ident">canvas</a>: <label for="r2" class="ident">canvas</label>}</code></span>
+<span class="codeline" id="line-28"><code>	<label for="r4" class="ident">b</label>.<a href="../../widget/base.go.html#line-21" class="ident">ExtendBaseWidget</a>(<label for="r4" class="ident">b</label>)</code></span>
+<span class="codeline" id="line-29"><code>	<span class="keyword">for</span> <label for="r5" class="ident">i</label>, <label for="r6" class="ident">menu</label> := <span class="keyword">range</span> <label for="r1" class="ident">mainMenu</label>.<a href="../../../menu.go.html#line-74" class="ident">Items</a> {</code></span>
+<span class="codeline" id="line-30"><code>		<label for="r7" class="ident">barItem</label> := &amp;<a href="menu_bar_item.go.html#line-17" class="ident">menuBarItem</a>{<a href="menu_bar_item.go.html#line-19" class="ident">Menu</a>: <label for="r6" class="ident">menu</label>, <a href="menu_bar_item.go.html#line-20" class="ident">Parent</a>: <label for="r4" class="ident">b</label>}</code></span>
+<span class="codeline" id="line-31"><code>		<label for="r7" class="ident">barItem</label>.<a href="../../widget/base.go.html#line-21" class="ident">ExtendBaseWidget</a>(<label for="r7" class="ident">barItem</label>)</code></span>
+<span class="codeline" id="line-32"><code>		<label for="r3" class="ident">items</label>[<label for="r5" class="ident">i</label>] = <label for="r7" class="ident">barItem</label></code></span>
+<span class="codeline" id="line-33"><code>	}</code></span>
+<span class="codeline" id="line-34"><code>	<span class="keyword">return</span> <label for="r4" class="ident">b</label></code></span>
+<span class="codeline" id="line-35"><code>}</code></span>
+<span class="codeline" id="line-36"><code></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">// CreateRenderer returns a new renderer for the menu bar.</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">// Implements: fyne.Widget</span></code></span>
+<span class="codeline" id="line-40"><code><span class="keyword">func</span> (<label for="r8" class="ident">b</label> *<a href="#line-15" class="ident">MenuBar</a>) <label for="r9" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.MenuBar.html#name-.CreateRenderer" class="ident">CreateRenderer</a></label>() <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../widget.go.html#line-17" class="ident">WidgetRenderer</a> {</code></span>
+<span class="codeline" id="line-41"><code>	<label for="r10" class="ident">cont</label> := <a href="../../../../../../../pkg/fyne.io/fyne/v2/container.html" class="ident i2">container</a>.<a href="../../../container/layouts.go.html#line-86" class="ident">NewHBox</a>(<label for="r8" class="ident">b</label>.<a href="#line-17" class="ident">Items</a>...)</code></span>
+<span class="codeline" id="line-42"><code>	<label for="r11" class="ident">background</label> := <a href="../../../../../../../pkg/fyne.io/fyne/v2/canvas.html" class="ident i1">canvas</a>.<a href="../../../canvas/rectangle.go.html#line-60" class="ident">NewRectangle</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i5">theme</a>.<a href="../../../theme/color.go.html#line-262" class="ident">Color</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i5">theme</a>.<a href="../../../theme/color.go.html#line-48" class="ident">ColorNameBackground</a>))</code></span>
+<span class="codeline" id="line-43"><code>	<label for="r12" class="ident">underlay</label> := &amp;<a href="#line-169" class="ident">menuBarUnderlay</a>{<a href="#line-171" class="ident">action</a>: <label for="r8" class="ident">b</label>.<a href="#line-95" class="ident">deactivate</a>}</code></span>
+<span class="codeline" id="line-44"><code>	<label for="r12" class="ident">underlay</label>.<a href="../../widget/base.go.html#line-21" class="ident">ExtendBaseWidget</a>(<label for="r12" class="ident">underlay</label>)</code></span>
+<span class="codeline" id="line-45"><code>	<label for="r13" class="ident">objects</label> := []<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../canvasobject.go.html#line-10" class="ident">CanvasObject</a>{<label for="r12" class="ident">underlay</label>, <label for="r11" class="ident">background</label>, <label for="r10" class="ident">cont</label>}</code></span>
+<span class="codeline" id="line-46"><code>	<span class="keyword">for</span> <label for="r14" class="ident">_</label>, <label for="r15" class="ident">item</label> := <span class="keyword">range</span> <label for="r8" class="ident">b</label>.<a href="#line-17" class="ident">Items</a> {</code></span>
+<span class="codeline" id="line-47"><code>		<label for="r13" class="ident">objects</label> = <a href="../../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r13" class="ident">objects</label>, <label for="r15" class="ident">item</label>.(*<a href="menu_bar_item.go.html#line-17" class="ident">menuBarItem</a>).<a href="menu_bar_item.go.html#line-27" class="ident">Child</a>())</code></span>
+<span class="codeline" id="line-48"><code>	}</code></span>
+<span class="codeline" id="line-49"><code>	<span class="keyword">return</span> &amp;<a href="#line-122" class="ident">menuBarRenderer</a>{</code></span>
+<span class="codeline" id="line-50"><code>		<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i4">widget</a>.<a href="../../widget/shadowing_renderer.go.html#line-16" class="ident">NewShadowingRenderer</a>(<label for="r13" class="ident">objects</label>, <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i4">widget</a>.<a href="../../widget/shadow.go.html#line-29" class="ident">MenuLevel</a>),</code></span>
+<span class="codeline" id="line-51"><code>		<label for="r8" class="ident">b</label>,</code></span>
+<span class="codeline" id="line-52"><code>		<label for="r11" class="ident">background</label>,</code></span>
+<span class="codeline" id="line-53"><code>		<label for="r12" class="ident">underlay</label>,</code></span>
+<span class="codeline" id="line-54"><code>		<label for="r10" class="ident">cont</label>,</code></span>
+<span class="codeline" id="line-55"><code>	}</code></span>
+<span class="codeline" id="line-56"><code>}</code></span>
+<span class="codeline" id="line-57"><code></code></span>
+<span class="codeline" id="line-58"><code><span class="comment">// IsActive returns whether the menu bar is active or not.</span></code></span>
+<span class="codeline" id="line-59"><code><span class="comment">// An active menu bar shows the current selected menu and should have the focus.</span></code></span>
+<span class="codeline" id="line-60"><code><span class="keyword">func</span> (<label for="r16" class="ident">b</label> *<a href="#line-15" class="ident">MenuBar</a>) <label for="r17" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.MenuBar.html#name-.IsActive" class="ident">IsActive</a></label>() <a href="../../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-61"><code>	<span class="keyword">return</span> <label for="r16" class="ident">b</label>.<a href="#line-19" class="ident">active</a></code></span>
+<span class="codeline" id="line-62"><code>}</code></span>
+<span class="codeline" id="line-63"><code></code></span>
+<span class="codeline" id="line-64"><code><span class="comment">// Toggle changes the activation state of the menu bar.</span></code></span>
+<span class="codeline" id="line-65"><code><span class="comment">// On activation, the first item will become active.</span></code></span>
+<span class="codeline" id="line-66"><code><span class="keyword">func</span> (<label for="r18" class="ident">b</label> *<a href="#line-15" class="ident">MenuBar</a>) <label for="r19" class="ident">Toggle</label>() {</code></span>
+<span class="codeline" id="line-67"><code>	<label for="r18" class="ident">b</label>.<a href="#line-112" class="ident">toggle</a>(<label for="r18" class="ident">b</label>.<a href="#line-17" class="ident">Items</a>[<span class="lit-number">0</span>].(*<a href="menu_bar_item.go.html#line-17" class="ident">menuBarItem</a>))</code></span>
+<span class="codeline" id="line-68"><code>}</code></span>
+<span class="codeline" id="line-69"><code></code></span>
+<span class="codeline" id="line-70"><code><span class="keyword">func</span> (<label for="r20" class="ident">b</label> *<a href="#line-15" class="ident">MenuBar</a>) <label for="r21" class="ident">activateChild</label>(<label for="r22" class="ident">item</label> *<a href="menu_bar_item.go.html#line-17" class="ident">menuBarItem</a>) {</code></span>
+<span class="codeline" id="line-71"><code>	<label for="r20" class="ident">b</label>.<a href="#line-19" class="ident">active</a> = <a href="../../../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-72"><code>	<span class="keyword">if</span> <label for="r22" class="ident">item</label>.<a href="menu_bar_item.go.html#line-27" class="ident">Child</a>() != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-73"><code>		<label for="r22" class="ident">item</label>.<a href="menu_bar_item.go.html#line-27" class="ident">Child</a>().<a href="../../../widget/menu.go.html#line-121" class="ident">DeactivateChild</a>()</code></span>
+<span class="codeline" id="line-74"><code>	}</code></span>
+<span class="codeline" id="line-75"><code>	<span class="keyword">if</span> <label for="r20" class="ident">b</label>.<a href="#line-20" class="ident">activeItem</a> == <label for="r22" class="ident">item</label> {</code></span>
+<span class="codeline" id="line-76"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-77"><code>	}</code></span>
+<span class="codeline" id="line-78"><code></code></span>
+<span class="codeline" id="line-79"><code>	<span class="keyword">if</span> <label for="r20" class="ident">b</label>.<a href="#line-20" class="ident">activeItem</a> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-80"><code>		<span class="keyword">if</span> <label for="r23" class="ident">c</label> := <label for="r20" class="ident">b</label>.<a href="#line-20" class="ident">activeItem</a>.<a href="menu_bar_item.go.html#line-27" class="ident">Child</a>(); <label for="r23" class="ident">c</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-81"><code>			<label for="r23" class="ident">c</label>.<a href="../../../widget/widget.go.html#line-109" class="ident">Hide</a>()</code></span>
+<span class="codeline" id="line-82"><code>		}</code></span>
+<span class="codeline" id="line-83"><code>		<label for="r20" class="ident">b</label>.<a href="#line-20" class="ident">activeItem</a>.<a href="../../widget/base.go.html#line-109" class="ident">Refresh</a>()</code></span>
+<span class="codeline" id="line-84"><code>	}</code></span>
+<span class="codeline" id="line-85"><code>	<label for="r20" class="ident">b</label>.<a href="#line-20" class="ident">activeItem</a> = <label for="r22" class="ident">item</label></code></span>
+<span class="codeline" id="line-86"><code>	<span class="keyword">if</span> <label for="r22" class="ident">item</label> == <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-87"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-88"><code>	}</code></span>
+<span class="codeline" id="line-89"><code></code></span>
+<span class="codeline" id="line-90"><code>	<label for="r22" class="ident">item</label>.<a href="../../widget/base.go.html#line-109" class="ident">Refresh</a>()</code></span>
+<span class="codeline" id="line-91"><code>	<label for="r22" class="ident">item</label>.<a href="menu_bar_item.go.html#line-27" class="ident">Child</a>().<a href="../../../widget/widget.go.html#line-92" class="ident">Show</a>()</code></span>
+<span class="codeline" id="line-92"><code>	<label for="r20" class="ident">b</label>.<a href="../../widget/base.go.html#line-109" class="ident">Refresh</a>()</code></span>
+<span class="codeline" id="line-93"><code>}</code></span>
+<span class="codeline" id="line-94"><code></code></span>
+<span class="codeline" id="line-95"><code><span class="keyword">func</span> (<label for="r24" class="ident">b</label> *<a href="#line-15" class="ident">MenuBar</a>) <label for="r25" class="ident">deactivate</label>() {</code></span>
+<span class="codeline" id="line-96"><code>	<span class="keyword">if</span> !<label for="r24" class="ident">b</label>.<a href="#line-19" class="ident">active</a> {</code></span>
+<span class="codeline" id="line-97"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-98"><code>	}</code></span>
+<span class="codeline" id="line-99"><code></code></span>
+<span class="codeline" id="line-100"><code>	<label for="r24" class="ident">b</label>.<a href="#line-19" class="ident">active</a> = <a href="../../../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-101"><code>	<span class="keyword">if</span> <label for="r24" class="ident">b</label>.<a href="#line-20" class="ident">activeItem</a> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-102"><code>		<span class="keyword">if</span> <label for="r26" class="ident">c</label> := <label for="r24" class="ident">b</label>.<a href="#line-20" class="ident">activeItem</a>.<a href="menu_bar_item.go.html#line-27" class="ident">Child</a>(); <label for="r26" class="ident">c</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-103"><code>			<span class="keyword">defer</span> <label for="r26" class="ident">c</label>.<a href="../../../widget/menu.go.html#line-186" class="ident">Dismiss</a>()</code></span>
+<span class="codeline" id="line-104"><code>			<label for="r26" class="ident">c</label>.<a href="../../../widget/widget.go.html#line-109" class="ident">Hide</a>()</code></span>
+<span class="codeline" id="line-105"><code>		}</code></span>
+<span class="codeline" id="line-106"><code>		<label for="r24" class="ident">b</label>.<a href="#line-20" class="ident">activeItem</a>.<a href="../../widget/base.go.html#line-109" class="ident">Refresh</a>()</code></span>
+<span class="codeline" id="line-107"><code>		<label for="r24" class="ident">b</label>.<a href="#line-20" class="ident">activeItem</a> = <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-108"><code>	}</code></span>
+<span class="codeline" id="line-109"><code>	<label for="r24" class="ident">b</label>.<a href="../../widget/base.go.html#line-109" class="ident">Refresh</a>()</code></span>
+<span class="codeline" id="line-110"><code>}</code></span>
+<span class="codeline" id="line-111"><code></code></span>
+<span class="codeline" id="line-112"><code><span class="keyword">func</span> (<label for="r27" class="ident">b</label> *<a href="#line-15" class="ident">MenuBar</a>) <label for="r28" class="ident">toggle</label>(<label for="r29" class="ident">item</label> *<a href="menu_bar_item.go.html#line-17" class="ident">menuBarItem</a>) {</code></span>
+<span class="codeline" id="line-113"><code>	<span class="keyword">if</span> <label for="r27" class="ident">b</label>.<a href="#line-19" class="ident">active</a> {</code></span>
+<span class="codeline" id="line-114"><code>		<label for="r27" class="ident">b</label>.<a href="#line-21" class="ident">canvas</a>.<a href="../../../canvas.go.html#line-28" class="ident">Unfocus</a>()</code></span>
+<span class="codeline" id="line-115"><code>		<label for="r27" class="ident">b</label>.<a href="#line-95" class="ident">deactivate</a>()</code></span>
+<span class="codeline" id="line-116"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-117"><code>		<label for="r27" class="ident">b</label>.<a href="#line-70" class="ident">activateChild</a>(<label for="r29" class="ident">item</label>)</code></span>
+<span class="codeline" id="line-118"><code>		<label for="r27" class="ident">b</label>.<a href="#line-21" class="ident">canvas</a>.<a href="../../../canvas.go.html#line-15" class="ident">Focus</a>(<label for="r29" class="ident">item</label>)</code></span>
+<span class="codeline" id="line-119"><code>	}</code></span>
+<span class="codeline" id="line-120"><code>}</code></span>
+<span class="codeline" id="line-121"><code></code></span>
+<span class="codeline" id="line-122"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-menuBarRenderer" class="ident">menuBarRenderer</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-123"><code>	*<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i4">widget</a>.<a href="../../widget/shadowing_renderer.go.html#line-10" class="ident">ShadowingRenderer</a></code></span>
+<span class="codeline" id="line-124"><code>	b          *<a href="#line-15" class="ident">MenuBar</a></code></span>
+<span class="codeline" id="line-125"><code>	background *<a href="../../../../../../../pkg/fyne.io/fyne/v2/canvas.html" class="ident i1">canvas</a>.<a href="../../../canvas/rectangle.go.html#line-13" class="ident">Rectangle</a></code></span>
+<span class="codeline" id="line-126"><code>	underlay   *<a href="#line-169" class="ident">menuBarUnderlay</a></code></span>
+<span class="codeline" id="line-127"><code>	cont       *<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../container.go.html#line-10" class="ident">Container</a></code></span>
+<span class="codeline" id="line-128"><code>}</code></span>
+<span class="codeline" id="line-129"><code></code></span>
+<span class="codeline" id="line-130"><code><span class="keyword">func</span> (<label for="r30" class="ident">r</label> *<a href="#line-122" class="ident">menuBarRenderer</a>) <label for="r31" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.menuBarRenderer^8449c.html#name-.Layout" class="ident">Layout</a></label>(<label for="r32" class="ident">size</label> <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../geometry.go.html#line-91" class="ident">Size</a>) {</code></span>
+<span class="codeline" id="line-131"><code>	<label for="r30" class="ident">r</label>.<a href="../../widget/shadowing_renderer.go.html#line-27" class="ident">LayoutShadow</a>(<label for="r32" class="ident">size</label>, <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../geometry.go.html#line-43" class="ident">NewPos</a>(<span class="lit-number">0</span>, <span class="lit-number">0</span>))</code></span>
+<span class="codeline" id="line-132"><code>	<label for="r33" class="ident">minSize</label> := <label for="r30" class="ident">r</label>.<a href="#line-155" class="ident">MinSize</a>()</code></span>
+<span class="codeline" id="line-133"><code>	<span class="keyword">if</span> <label for="r32" class="ident">size</label>.<a href="../../../geometry.go.html#line-93" class="ident">Height</a> != <label for="r33" class="ident">minSize</label>.<a href="../../../geometry.go.html#line-93" class="ident">Height</a> || <label for="r32" class="ident">size</label>.<a href="../../../geometry.go.html#line-92" class="ident">Width</a> &lt; <label for="r33" class="ident">minSize</label>.<a href="../../../geometry.go.html#line-92" class="ident">Width</a> {</code></span>
+<span class="codeline" id="line-134"><code>		<label for="r30" class="ident">r</label>.<a href="#line-124" class="ident">b</a>.<a href="../../widget/base.go.html#line-37" class="ident">Resize</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../geometry.go.html#line-97" class="ident">NewSize</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../math.go.html#line-12" class="ident">Max</a>(<label for="r32" class="ident">size</label>.<a href="../../../geometry.go.html#line-92" class="ident">Width</a>, <label for="r33" class="ident">minSize</label>.<a href="../../../geometry.go.html#line-92" class="ident">Width</a>), <label for="r33" class="ident">minSize</label>.<a href="../../../geometry.go.html#line-93" class="ident">Height</a>))</code></span>
+<span class="codeline" id="line-135"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-136"><code>	}</code></span>
+<span class="codeline" id="line-137"><code></code></span>
+<span class="codeline" id="line-138"><code>	<span class="keyword">if</span> <label for="r30" class="ident">r</label>.<a href="#line-124" class="ident">b</a>.<a href="#line-19" class="ident">active</a> {</code></span>
+<span class="codeline" id="line-139"><code>		<label for="r30" class="ident">r</label>.<a href="#line-126" class="ident">underlay</a>.<a href="../../widget/base.go.html#line-37" class="ident">Resize</a>(<label for="r30" class="ident">r</label>.<a href="#line-124" class="ident">b</a>.<a href="#line-21" class="ident">canvas</a>.<a href="../../../canvas.go.html#line-32" class="ident">Size</a>())</code></span>
+<span class="codeline" id="line-140"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-141"><code>		<label for="r30" class="ident">r</label>.<a href="#line-126" class="ident">underlay</a>.<a href="../../widget/base.go.html#line-37" class="ident">Resize</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../geometry.go.html#line-97" class="ident">NewSize</a>(<span class="lit-number">0</span>, <span class="lit-number">0</span>))</code></span>
+<span class="codeline" id="line-142"><code>	}</code></span>
+<span class="codeline" id="line-143"><code>	<label for="r34" class="ident">innerPadding</label> := <a href="../../../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i5">theme</a>.<a href="../../../theme/size.go.html#line-95" class="ident">InnerPadding</a>()</code></span>
+<span class="codeline" id="line-144"><code>	<label for="r30" class="ident">r</label>.<a href="#line-127" class="ident">cont</a>.<a href="../../../container.go.html#line-162" class="ident">Resize</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../geometry.go.html#line-97" class="ident">NewSize</a>(<label for="r32" class="ident">size</label>.<a href="../../../geometry.go.html#line-92" class="ident">Width</a>-<span class="lit-number">2</span>*<label for="r34" class="ident">innerPadding</label>, <label for="r32" class="ident">size</label>.<a href="../../../geometry.go.html#line-93" class="ident">Height</a>))</code></span>
+<span class="codeline" id="line-145"><code>	<label for="r30" class="ident">r</label>.<a href="#line-127" class="ident">cont</a>.<a href="../../../container.go.html#line-102" class="ident">Move</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../geometry.go.html#line-43" class="ident">NewPos</a>(<label for="r34" class="ident">innerPadding</label>, <span class="lit-number">0</span>))</code></span>
+<span class="codeline" id="line-146"><code>	<span class="keyword">if</span> <label for="r35" class="ident">item</label> := <label for="r30" class="ident">r</label>.<a href="#line-124" class="ident">b</a>.<a href="#line-20" class="ident">activeItem</a>; <label for="r35" class="ident">item</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-147"><code>		<span class="keyword">if</span> <label for="r35" class="ident">item</label>.<a href="menu_bar_item.go.html#line-27" class="ident">Child</a>().<a href="../../../widget/widget.go.html#line-38" class="ident">Size</a>().<a href="../../../geometry.go.html#line-122" class="ident">IsZero</a>() {</code></span>
+<span class="codeline" id="line-148"><code>			<label for="r35" class="ident">item</label>.<a href="menu_bar_item.go.html#line-27" class="ident">Child</a>().<a href="../../../widget/widget.go.html#line-44" class="ident">Resize</a>(<label for="r35" class="ident">item</label>.<a href="menu_bar_item.go.html#line-27" class="ident">Child</a>().<a href="../../../widget/menu.go.html#line-145" class="ident">MinSize</a>())</code></span>
+<span class="codeline" id="line-149"><code>		}</code></span>
+<span class="codeline" id="line-150"><code>		<label for="r35" class="ident">item</label>.<a href="menu_bar_item.go.html#line-27" class="ident">Child</a>().<a href="../../../widget/widget.go.html#line-65" class="ident">Move</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../geometry.go.html#line-43" class="ident">NewPos</a>(<label for="r35" class="ident">item</label>.<a href="../../widget/base.go.html#line-52" class="ident">Position</a>().<a href="../../../geometry.go.html#line-38" class="ident">X</a>+<label for="r34" class="ident">innerPadding</label>, <label for="r35" class="ident">item</label>.<a href="../../widget/base.go.html#line-31" class="ident">Size</a>().<a href="../../../geometry.go.html#line-93" class="ident">Height</a>))</code></span>
+<span class="codeline" id="line-151"><code>	}</code></span>
+<span class="codeline" id="line-152"><code>	<label for="r30" class="ident">r</label>.<a href="#line-125" class="ident">background</a>.<a href="../../../canvas/rectangle.go.html#line-46" class="ident">Resize</a>(<label for="r32" class="ident">size</label>)</code></span>
+<span class="codeline" id="line-153"><code>}</code></span>
+<span class="codeline" id="line-154"><code></code></span>
+<span class="codeline" id="line-155"><code><span class="keyword">func</span> (<label for="r36" class="ident">r</label> *<a href="#line-122" class="ident">menuBarRenderer</a>) <label for="r37" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.menuBarRenderer^8449c.html#name-.MinSize" class="ident">MinSize</a></label>() <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../geometry.go.html#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-156"><code>	<span class="keyword">return</span> <label for="r36" class="ident">r</label>.<a href="#line-127" class="ident">cont</a>.<a href="../../../container.go.html#line-88" class="ident">MinSize</a>().<a href="../../../geometry.go.html#line-110" class="ident">Add</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../geometry.go.html#line-97" class="ident">NewSize</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i5">theme</a>.<a href="../../../theme/size.go.html#line-95" class="ident">InnerPadding</a>()*<span class="lit-number">2</span>, <span class="lit-number">0</span>))</code></span>
+<span class="codeline" id="line-157"><code>}</code></span>
+<span class="codeline" id="line-158"><code></code></span>
+<span class="codeline" id="line-159"><code><span class="keyword">func</span> (<label for="r38" class="ident">r</label> *<a href="#line-122" class="ident">menuBarRenderer</a>) <label for="r39" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.menuBarRenderer^8449c.html#name-.Refresh" class="ident">Refresh</a></label>() {</code></span>
+<span class="codeline" id="line-160"><code>	<label for="r38" class="ident">r</label>.<a href="#line-130" class="ident">Layout</a>(<label for="r38" class="ident">r</label>.<a href="#line-124" class="ident">b</a>.<a href="../../widget/base.go.html#line-31" class="ident">Size</a>())</code></span>
+<span class="codeline" id="line-161"><code>	<label for="r38" class="ident">r</label>.<a href="#line-125" class="ident">background</a>.<a href="../../../canvas/rectangle.go.html#line-16" class="ident">FillColor</a> = <a href="../../../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i5">theme</a>.<a href="../../../theme/color.go.html#line-262" class="ident">Color</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i5">theme</a>.<a href="../../../theme/color.go.html#line-48" class="ident">ColorNameBackground</a>)</code></span>
+<span class="codeline" id="line-162"><code>	<label for="r38" class="ident">r</label>.<a href="#line-125" class="ident">background</a>.<a href="../../../canvas/rectangle.go.html#line-40" class="ident">Refresh</a>()</code></span>
+<span class="codeline" id="line-163"><code>	<label for="r38" class="ident">r</label>.<a href="#line-123" class="ident">ShadowingRenderer</a>.<a href="../../widget/shadowing_renderer.go.html#line-44" class="ident">RefreshShadow</a>()</code></span>
+<span class="codeline" id="line-164"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/canvas.html" class="ident i1">canvas</a>.<a href="../../../canvas/canvas.go.html#line-6" class="ident">Refresh</a>(<label for="r38" class="ident">r</label>.<a href="#line-124" class="ident">b</a>)</code></span>
+<span class="codeline" id="line-165"><code>}</code></span>
+<span class="codeline" id="line-166"><code></code></span>
+<span class="codeline" id="line-167"><code><span class="comment">// Transparent underlay shown as soon as menu is active.</span></code></span>
+<span class="codeline" id="line-168"><code><span class="comment">// It catches mouse events outside the menu's objects.</span></code></span>
+<span class="codeline" id="line-169"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-menuBarUnderlay" class="ident">menuBarUnderlay</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-170"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i4">widget</a>.<a href="../../widget/base.go.html#line-13" class="ident">Base</a></code></span>
+<span class="codeline" id="line-171"><code>	action <span class="keyword">func</span>()</code></span>
+<span class="codeline" id="line-172"><code>}</code></span>
+<span class="codeline" id="line-173"><code></code></span>
+<span class="codeline" id="line-174"><code><span class="keyword">var</span> _ <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../widget.go.html#line-6" class="ident">Widget</a> = (*<a href="#line-169" class="ident">menuBarUnderlay</a>)(<a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-175"><code><span class="keyword">var</span> _ <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../canvasobject.go.html#line-105" class="ident">Tappable</a> = (*<a href="#line-169" class="ident">menuBarUnderlay</a>)(<a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)     <span class="comment">// deactivate menu on click outside</span></code></span>
+<span class="codeline" id="line-176"><code><span class="keyword">var</span> _ <a href="../../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html" class="ident i3">desktop</a>.<a href="../../../driver/desktop/mouse.go.html#line-51" class="ident">Hoverable</a> = (*<a href="#line-169" class="ident">menuBarUnderlay</a>)(<a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>) <span class="comment">// block hover events on main content</span></code></span>
+<span class="codeline" id="line-177"><code></code></span>
+<span class="codeline" id="line-178"><code><span class="keyword">func</span> (<label for="r40" class="ident">u</label> *<a href="#line-169" class="ident">menuBarUnderlay</a>) <label for="r41" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.menuBarUnderlay^4f5fb.html#name-.CreateRenderer" class="ident">CreateRenderer</a></label>() <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../widget.go.html#line-17" class="ident">WidgetRenderer</a> {</code></span>
+<span class="codeline" id="line-179"><code>	<span class="keyword">return</span> &amp;<a href="#line-195" class="ident">menuUnderlayRenderer</a>{}</code></span>
+<span class="codeline" id="line-180"><code>}</code></span>
+<span class="codeline" id="line-181"><code></code></span>
+<span class="codeline" id="line-182"><code><span class="keyword">func</span> (<label for="r42" class="ident">u</label> *<a href="#line-169" class="ident">menuBarUnderlay</a>) <label for="r43" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.menuBarUnderlay^4f5fb.html#name-.MouseIn" class="ident">MouseIn</a></label>(*<a href="../../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html" class="ident i3">desktop</a>.<a href="../../../driver/desktop/mouse.go.html#line-38" class="ident">MouseEvent</a>) {</code></span>
+<span class="codeline" id="line-183"><code>}</code></span>
+<span class="codeline" id="line-184"><code></code></span>
+<span class="codeline" id="line-185"><code><span class="keyword">func</span> (<label for="r44" class="ident">u</label> *<a href="#line-169" class="ident">menuBarUnderlay</a>) <label for="r45" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.menuBarUnderlay^4f5fb.html#name-.MouseOut" class="ident">MouseOut</a></label>() {</code></span>
+<span class="codeline" id="line-186"><code>}</code></span>
+<span class="codeline" id="line-187"><code></code></span>
+<span class="codeline" id="line-188"><code><span class="keyword">func</span> (<label for="r46" class="ident">u</label> *<a href="#line-169" class="ident">menuBarUnderlay</a>) <label for="r47" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.menuBarUnderlay^4f5fb.html#name-.MouseMoved" class="ident">MouseMoved</a></label>(*<a href="../../../../../../../pkg/fyne.io/fyne/v2/driver/desktop.html" class="ident i3">desktop</a>.<a href="../../../driver/desktop/mouse.go.html#line-38" class="ident">MouseEvent</a>) {</code></span>
+<span class="codeline" id="line-189"><code>}</code></span>
+<span class="codeline" id="line-190"><code></code></span>
+<span class="codeline" id="line-191"><code><span class="keyword">func</span> (<label for="r48" class="ident">u</label> *<a href="#line-169" class="ident">menuBarUnderlay</a>) <label for="r49" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.menuBarUnderlay^4f5fb.html#name-.Tapped" class="ident">Tapped</a></label>(*<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../event.go.html#line-20" class="ident">PointEvent</a>) {</code></span>
+<span class="codeline" id="line-192"><code>	<label for="r48" class="ident">u</label>.<a href="#line-171" class="ident">action</a>()</code></span>
+<span class="codeline" id="line-193"><code>}</code></span>
+<span class="codeline" id="line-194"><code></code></span>
+<span class="codeline" id="line-195"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-menuUnderlayRenderer" class="ident">menuUnderlayRenderer</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-196"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/widget.html" class="ident i4">widget</a>.<a href="../../widget/base_renderer.go.html#line-7" class="ident">BaseRenderer</a></code></span>
+<span class="codeline" id="line-197"><code>}</code></span>
+<span class="codeline" id="line-198"><code></code></span>
+<span class="codeline" id="line-199"><code><span class="keyword">var</span> _ <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../widget.go.html#line-17" class="ident">WidgetRenderer</a> = (*<a href="#line-195" class="ident">menuUnderlayRenderer</a>)(<a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-200"><code></code></span>
+<span class="codeline" id="line-201"><code><span class="keyword">func</span> (<label for="r50" class="ident">r</label> *<a href="#line-195" class="ident">menuUnderlayRenderer</a>) <label for="r51" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.menuUnderlayRenderer^a3f7f.html#name-.Layout" class="ident">Layout</a></label>(<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../geometry.go.html#line-91" class="ident">Size</a>) {</code></span>
+<span class="codeline" id="line-202"><code>}</code></span>
+<span class="codeline" id="line-203"><code></code></span>
+<span class="codeline" id="line-204"><code><span class="keyword">func</span> (<label for="r52" class="ident">r</label> *<a href="#line-195" class="ident">menuUnderlayRenderer</a>) <label for="r53" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.menuUnderlayRenderer^a3f7f.html#name-.MinSize" class="ident">MinSize</a></label>() <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../geometry.go.html#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-205"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../../../geometry.go.html#line-97" class="ident">NewSize</a>(<span class="lit-number">0</span>, <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-206"><code>}</code></span>
+<span class="codeline" id="line-207"><code></code></span>
+<span class="codeline" id="line-208"><code><span class="keyword">func</span> (<label for="r54" class="ident">r</label> *<a href="#line-195" class="ident">menuUnderlayRenderer</a>) <label for="r55" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.menuUnderlayRenderer^a3f7f.html#name-.Refresh" class="ident">Refresh</a></label>() {</code></span>
+<span class="codeline" id="line-209"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

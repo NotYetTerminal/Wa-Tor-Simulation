@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: aat_feat_src.go in package github.com/go-text/typesetting/font/opentype/tables</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	aat_feat_src.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html">github.com/go-text/typesetting/font/opentype/tables</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> tables</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// Feat is the feature name table.</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">// See - https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6feat.html</span></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-Feat" class="ident">Feat</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-8"><code>	version          <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>        <span class="comment">// 	Version number of the feature name table (0x00010000 for the current version).</span></code></span>
+<span class="codeline" id="line-9"><code>	featureNameCount <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>        <span class="comment">// 	The number of entries in the feature name array.</span></code></span>
+<span class="codeline" id="line-10"><code>	none1            <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>        <span class="comment">// 	Reserved (set to zero).</span></code></span>
+<span class="codeline" id="line-11"><code>	none2            <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>        <span class="comment">// 	Reserved (set to zero).</span></code></span>
+<span class="codeline" id="line-12"><code>	Names            []<a href="#line-15" class="ident">FeatureName</a> <span class="lit-string">`arrayCount:"ComputedField-featureNameCount"`</span> <span class="comment">//	The feature name array.</span></code></span>
+<span class="codeline" id="line-13"><code>}</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-FeatureName" class="ident">FeatureName</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-16"><code>	Feature      <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>               <span class="comment">// Feature type.</span></code></span>
+<span class="codeline" id="line-17"><code>	nSettings    <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>               <span class="comment">// The number of records in the setting name array.</span></code></span>
+<span class="codeline" id="line-18"><code>	SettingTable []<a href="#line-23" class="ident">FeatureSettingName</a> <span class="lit-string">`offsetSize:"Offset32" offsetRelativeTo:"Parent" arrayCount:"ComputedField-nSettings"`</span> <span class="comment">// Offset in bytes from the beginning of the 'feat' table to this feature's setting name array. The actual type of record this offset refers to will depend on the exclusivity value, as described below.</span></code></span>
+<span class="codeline" id="line-19"><code>	FeatureFlags <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>               <span class="comment">// Single-bit flags associated with the feature type.</span></code></span>
+<span class="codeline" id="line-20"><code>	NameIndex    <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>               <span class="comment">// The name table index for the feature's name. This index has values greater than 255 and less than 32768.</span></code></span>
+<span class="codeline" id="line-21"><code>}</code></span>
+<span class="codeline" id="line-22"><code></code></span>
+<span class="codeline" id="line-23"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-FeatureSettingName" class="ident">FeatureSettingName</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-24"><code>	Setting   <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="comment">//	The setting.</span></code></span>
+<span class="codeline" id="line-25"><code>	NameIndex <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="comment">//	The name table index for the setting's name. The nameIndex must be greater than 255 and less than 32768.</span></code></span>
+<span class="codeline" id="line-26"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

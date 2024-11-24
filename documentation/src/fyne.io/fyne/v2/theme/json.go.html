@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: json.go in package fyne.io/fyne/v2/theme</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	json.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/fyne.io/fyne/v2/theme.html">fyne.io/fyne/v2/theme</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5,
+input[id=i6]:checked ~pre .i6,
+input[id=i7]:checked ~pre .i7
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+<input id="i6" type="radio" name="i"/>
+<input id="i7" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> theme</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"encoding/hex"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"encoding/json"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"errors"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i3"><span class="lit-string i3">"image/color"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i4"><span class="lit-string i4">"io"</span></label></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i5"><span class="lit-string i5">"strings"</span></label></code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code>	<label for="i6"><span class="lit-string i6">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-12"><code>	<label for="i7"><span class="lit-string i7">"fyne.io/fyne/v2/storage"</span></label></code></span>
+<span class="codeline" id="line-13"><code>)</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// FromJSON returns a Theme created from the given JSON metadata.</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// Any values not present in the data will fall back to the default theme.</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// If a parse error occurs it will be returned along with a default theme.</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// Since: 2.2</span></code></span>
+<span class="codeline" id="line-20"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/fyne.io/fyne/v2/theme.html#name-FromJSON" class="ident">FromJSON</a></label>(<label for="r1" class="ident">data</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../theme.go.html#line-28" class="ident">Theme</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-21"><code>	<span class="keyword">return</span> <a href="#line-29" class="ident">FromJSONReader</a>(<a href="../../../../../pkg/strings.html" class="ident i5">strings</a>.<a href="../../../../strings/reader.go.html#line-160" class="ident">NewReader</a>(<label for="r1" class="ident">data</label>))</code></span>
+<span class="codeline" id="line-22"><code>}</code></span>
+<span class="codeline" id="line-23"><code></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">// FromJSONReader returns a Theme created from the given JSON metadata through the reader.</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// Any values not present in the data will fall back to the default theme.</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">// If a parse error occurs it will be returned along with a default theme.</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">// Since: 2.2</span></code></span>
+<span class="codeline" id="line-29"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../../../../pkg/fyne.io/fyne/v2/theme.html#name-FromJSONReader" class="ident">FromJSONReader</a></label>(<label for="r3" class="ident">r</label> <a href="../../../../../pkg/io.html" class="ident i4">io</a>.<a href="../../../../io/io.go.html#line-86" class="ident">Reader</a>) (<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../theme.go.html#line-28" class="ident">Theme</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-30"><code>	<span class="keyword">var</span> <label for="r4" class="ident">th</label> *<a href="#line-95" class="ident">schema</a></code></span>
+<span class="codeline" id="line-31"><code>	<span class="keyword">if</span> <label for="r5" class="ident">err</label> := <a href="../../../../../pkg/encoding/json.html" class="ident i1">json</a>.<a href="../../../../encoding/json/stream.go.html#line-31" class="ident">NewDecoder</a>(<label for="r3" class="ident">r</label>).<a href="../../../../encoding/json/stream.go.html#line-49" class="ident">Decode</a>(&amp;<label for="r4" class="ident">th</label>); <label for="r5" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-32"><code>		<span class="keyword">return</span> <a href="theme.go.html#line-43" class="ident">DefaultTheme</a>(), <label for="r5" class="ident">err</label></code></span>
+<span class="codeline" id="line-33"><code>	}</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code>	<span class="keyword">return</span> &amp;<a href="#line-105" class="ident">jsonTheme</a>{<a href="#line-106" class="ident">data</a>: <label for="r4" class="ident">th</label>, <a href="#line-107" class="ident">fallback</a>: <a href="theme.go.html#line-43" class="ident">DefaultTheme</a>()}, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-36"><code>}</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/theme.html#name-hexColor" class="ident">hexColor</a> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-39"><code></code></span>
+<span class="codeline" id="line-40"><code><span class="keyword">func</span> (<label for="r6" class="ident">h</label> <a href="#line-38" class="ident">hexColor</a>) <label for="r7" class="ident">color</label>() (<a href="../../../../../pkg/image/color.html" class="ident i3">color</a>.<a href="../../../../image/color/color.go.html#line-10" class="ident">Color</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-41"><code>	<label for="r8" class="ident">data</label> := <label for="r6" class="ident">h</label></code></span>
+<span class="codeline" id="line-42"><code>	<span class="keyword">switch</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>([]<a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>(<label for="r6" class="ident">h</label>)) {</code></span>
+<span class="codeline" id="line-43"><code>	<span class="keyword">case</span> <span class="lit-number">8</span>, <span class="lit-number">6</span>:</code></span>
+<span class="codeline" id="line-44"><code>	<span class="keyword">case</span> <span class="lit-number">9</span>, <span class="lit-number">7</span>: <span class="comment">// remove # prefix</span></code></span>
+<span class="codeline" id="line-45"><code>		<label for="r8" class="ident">data</label> = <label for="r6" class="ident">h</label>[<span class="lit-number">1</span>:]</code></span>
+<span class="codeline" id="line-46"><code>	<span class="keyword">case</span> <span class="lit-number">5</span>: <span class="comment">// remove # prefix, then double up</span></code></span>
+<span class="codeline" id="line-47"><code>		<label for="r8" class="ident">data</label> = <label for="r6" class="ident">h</label>[<span class="lit-number">1</span>:]</code></span>
+<span class="codeline" id="line-48"><code>		<span class="keyword">fallthrough</span></code></span>
+<span class="codeline" id="line-49"><code>	<span class="keyword">case</span> <span class="lit-number">4</span>: <span class="comment">// could be rgba or #rgb</span></code></span>
+<span class="codeline" id="line-50"><code>		<span class="keyword">if</span> <label for="r8" class="ident">data</label>[<span class="lit-number">0</span>] == <span class="lit-number">'#'</span> {</code></span>
+<span class="codeline" id="line-51"><code>			<label for="r9" class="ident">v</label> := []<a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>(<label for="r8" class="ident">data</label>[<span class="lit-number">1</span>:])</code></span>
+<span class="codeline" id="line-52"><code>			<label for="r8" class="ident">data</label> = <a href="#line-38" class="ident">hexColor</a>([]<a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>{<label for="r9" class="ident">v</label>[<span class="lit-number">0</span>], <label for="r9" class="ident">v</label>[<span class="lit-number">0</span>], <label for="r9" class="ident">v</label>[<span class="lit-number">1</span>], <label for="r9" class="ident">v</label>[<span class="lit-number">1</span>], <label for="r9" class="ident">v</label>[<span class="lit-number">2</span>], <label for="r9" class="ident">v</label>[<span class="lit-number">2</span>]})</code></span>
+<span class="codeline" id="line-53"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-54"><code>		}</code></span>
+<span class="codeline" id="line-55"><code></code></span>
+<span class="codeline" id="line-56"><code>		<label for="r10" class="ident">v</label> := []<a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>(<label for="r8" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-57"><code>		<label for="r8" class="ident">data</label> = <a href="#line-38" class="ident">hexColor</a>([]<a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>{<label for="r10" class="ident">v</label>[<span class="lit-number">0</span>], <label for="r10" class="ident">v</label>[<span class="lit-number">0</span>], <label for="r10" class="ident">v</label>[<span class="lit-number">1</span>], <label for="r10" class="ident">v</label>[<span class="lit-number">1</span>], <label for="r10" class="ident">v</label>[<span class="lit-number">2</span>], <label for="r10" class="ident">v</label>[<span class="lit-number">2</span>], <label for="r10" class="ident">v</label>[<span class="lit-number">3</span>], <label for="r10" class="ident">v</label>[<span class="lit-number">3</span>]})</code></span>
+<span class="codeline" id="line-58"><code>	<span class="keyword">case</span> <span class="lit-number">3</span>:</code></span>
+<span class="codeline" id="line-59"><code>		<label for="r11" class="ident">v</label> := []<a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>(<label for="r6" class="ident">h</label>)</code></span>
+<span class="codeline" id="line-60"><code>		<label for="r8" class="ident">data</label> = <a href="#line-38" class="ident">hexColor</a>([]<a href="../../../../../pkg/builtin.html#name-rune" class="ident">rune</a>{<label for="r11" class="ident">v</label>[<span class="lit-number">0</span>], <label for="r11" class="ident">v</label>[<span class="lit-number">0</span>], <label for="r11" class="ident">v</label>[<span class="lit-number">1</span>], <label for="r11" class="ident">v</label>[<span class="lit-number">1</span>], <label for="r11" class="ident">v</label>[<span class="lit-number">2</span>], <label for="r11" class="ident">v</label>[<span class="lit-number">2</span>]})</code></span>
+<span class="codeline" id="line-61"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-62"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/image/color.html" class="ident i3">color</a>.<a href="../../../../image/color/color.go.html#line-345" class="ident">Transparent</a>, <a href="../../../../../pkg/errors.html" class="ident i2">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"invalid color format: "</span> + <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r6" class="ident">h</label>))</code></span>
+<span class="codeline" id="line-63"><code>	}</code></span>
+<span class="codeline" id="line-64"><code></code></span>
+<span class="codeline" id="line-65"><code>	<label for="r12" class="ident">digits</label>, <label for="r13" class="ident">err</label> := <a href="../../../../../pkg/encoding/hex.html" class="ident i0">hex</a>.<a href="../../../../encoding/hex/hex.go.html#line-138" class="ident">DecodeString</a>(<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r8" class="ident">data</label>))</code></span>
+<span class="codeline" id="line-66"><code>	<span class="keyword">if</span> <label for="r13" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-67"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r13" class="ident">err</label></code></span>
+<span class="codeline" id="line-68"><code>	}</code></span>
+<span class="codeline" id="line-69"><code>	<label for="r14" class="ident">ret</label> := &amp;<a href="../../../../../pkg/image/color.html" class="ident i3">color</a>.<a href="../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../image/color/color.go.html#line-57" class="ident">R</a>: <label for="r12" class="ident">digits</label>[<span class="lit-number">0</span>], <a href="../../../../image/color/color.go.html#line-57" class="ident">G</a>: <label for="r12" class="ident">digits</label>[<span class="lit-number">1</span>], <a href="../../../../image/color/color.go.html#line-57" class="ident">B</a>: <label for="r12" class="ident">digits</label>[<span class="lit-number">2</span>]}</code></span>
+<span class="codeline" id="line-70"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r12" class="ident">digits</label>) == <span class="lit-number">4</span> {</code></span>
+<span class="codeline" id="line-71"><code>		<label for="r14" class="ident">ret</label>.<a href="../../../../image/color/color.go.html#line-57" class="ident">A</a> = <label for="r12" class="ident">digits</label>[<span class="lit-number">3</span>]</code></span>
+<span class="codeline" id="line-72"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-73"><code>		<label for="r14" class="ident">ret</label>.<a href="../../../../image/color/color.go.html#line-57" class="ident">A</a> = <span class="lit-number">0xff</span></code></span>
+<span class="codeline" id="line-74"><code>	}</code></span>
+<span class="codeline" id="line-75"><code></code></span>
+<span class="codeline" id="line-76"><code>	<span class="keyword">return</span> <label for="r14" class="ident">ret</label>, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-77"><code>}</code></span>
+<span class="codeline" id="line-78"><code></code></span>
+<span class="codeline" id="line-79"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/theme.html#name-uriString" class="ident">uriString</a> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-80"><code></code></span>
+<span class="codeline" id="line-81"><code><span class="keyword">func</span> (<label for="r15" class="ident">u</label> <a href="#line-79" class="ident">uriString</a>) <label for="r16" class="ident">resource</label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../resource.go.html#line-14" class="ident">Resource</a> {</code></span>
+<span class="codeline" id="line-82"><code>	<label for="r17" class="ident">uri</label>, <label for="r18" class="ident">err</label> := <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i7">storage</a>.<a href="../storage/uri.go.html#line-34" class="ident">ParseURI</a>(<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r15" class="ident">u</label>))</code></span>
+<span class="codeline" id="line-83"><code>	<span class="keyword">if</span> <label for="r18" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-84"><code>		<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../log.go.html#line-11" class="ident">LogError</a>(<span class="lit-string">"Failed to parse URI"</span>, <label for="r18" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-85"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-86"><code>	}</code></span>
+<span class="codeline" id="line-87"><code>	<label for="r19" class="ident">r</label>, <label for="r18" class="ident">err</label> := <a href="../../../../../pkg/fyne.io/fyne/v2/storage.html" class="ident i7">storage</a>.<a href="../storage/resource.go.html#line-12" class="ident">LoadResourceFromURI</a>(<label for="r17" class="ident">uri</label>)</code></span>
+<span class="codeline" id="line-88"><code>	<span class="keyword">if</span> <label for="r18" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-89"><code>		<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../log.go.html#line-11" class="ident">LogError</a>(<span class="lit-string">"Failed to load resource from URI"</span>, <label for="r18" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-90"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-91"><code>	}</code></span>
+<span class="codeline" id="line-92"><code>	<span class="keyword">return</span> <label for="r19" class="ident">r</label></code></span>
+<span class="codeline" id="line-93"><code>}</code></span>
+<span class="codeline" id="line-94"><code></code></span>
+<span class="codeline" id="line-95"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/theme.html#name-schema" class="ident">schema</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-96"><code>	Colors      <span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="#line-38" class="ident">hexColor</a> <span class="lit-string">`json:"Colors,omitempty"`</span></code></span>
+<span class="codeline" id="line-97"><code>	DarkColors  <span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="#line-38" class="ident">hexColor</a> <span class="lit-string">`json:"Colors-dark,omitempty"`</span></code></span>
+<span class="codeline" id="line-98"><code>	LightColors <span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="#line-38" class="ident">hexColor</a> <span class="lit-string">`json:"Colors-light,omitempty"`</span></code></span>
+<span class="codeline" id="line-99"><code>	Sizes       <span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>  <span class="lit-string">`json:"Sizes,omitempty"`</span></code></span>
+<span class="codeline" id="line-100"><code></code></span>
+<span class="codeline" id="line-101"><code>	Fonts <span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="#line-79" class="ident">uriString</a> <span class="lit-string">`json:"Fonts,omitempty"`</span></code></span>
+<span class="codeline" id="line-102"><code>	Icons <span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="#line-79" class="ident">uriString</a> <span class="lit-string">`json:"Icons,omitempty"`</span></code></span>
+<span class="codeline" id="line-103"><code>}</code></span>
+<span class="codeline" id="line-104"><code></code></span>
+<span class="codeline" id="line-105"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/theme.html#name-jsonTheme" class="ident">jsonTheme</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-106"><code>	data     *<a href="#line-95" class="ident">schema</a></code></span>
+<span class="codeline" id="line-107"><code>	fallback <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../theme.go.html#line-28" class="ident">Theme</a></code></span>
+<span class="codeline" id="line-108"><code>}</code></span>
+<span class="codeline" id="line-109"><code></code></span>
+<span class="codeline" id="line-110"><code><span class="keyword">func</span> (<label for="r20" class="ident">t</label> *<a href="#line-105" class="ident">jsonTheme</a>) <label for="r21" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/theme.jsonTheme^86bbf.html#name-.Color" class="ident">Color</a></label>(<label for="r22" class="ident">name</label> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../theme.go.html#line-13" class="ident">ThemeColorName</a>, <label for="r23" class="ident">variant</label> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../theme.go.html#line-8" class="ident">ThemeVariant</a>) <a href="../../../../../pkg/image/color.html" class="ident i3">color</a>.<a href="../../../../image/color/color.go.html#line-10" class="ident">Color</a> {</code></span>
+<span class="codeline" id="line-111"><code>	<span class="keyword">switch</span> <label for="r23" class="ident">variant</label> {</code></span>
+<span class="codeline" id="line-112"><code>	<span class="keyword">case</span> <a href="theme.go.html#line-24" class="ident">VariantLight</a>:</code></span>
+<span class="codeline" id="line-113"><code>		<span class="keyword">if</span> <label for="r24" class="ident">val</label>, <label for="r25" class="ident">ok</label> := <label for="r20" class="ident">t</label>.<a href="#line-106" class="ident">data</a>.<a href="#line-98" class="ident">LightColors</a>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">name</label>)]; <label for="r25" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-114"><code>			<label for="r26" class="ident">c</label>, <label for="r27" class="ident">err</label> := <label for="r24" class="ident">val</label>.<a href="#line-40" class="ident">color</a>()</code></span>
+<span class="codeline" id="line-115"><code>			<span class="keyword">if</span> <label for="r27" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-116"><code>				<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../log.go.html#line-11" class="ident">LogError</a>(<span class="lit-string">"Failed to parse color"</span>, <label for="r27" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-117"><code>			} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-118"><code>				<span class="keyword">return</span> <label for="r26" class="ident">c</label></code></span>
+<span class="codeline" id="line-119"><code>			}</code></span>
+<span class="codeline" id="line-120"><code>		}</code></span>
+<span class="codeline" id="line-121"><code>	<span class="keyword">case</span> <a href="theme.go.html#line-19" class="ident">VariantDark</a>:</code></span>
+<span class="codeline" id="line-122"><code>		<span class="keyword">if</span> <label for="r28" class="ident">val</label>, <label for="r29" class="ident">ok</label> := <label for="r20" class="ident">t</label>.<a href="#line-106" class="ident">data</a>.<a href="#line-97" class="ident">DarkColors</a>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">name</label>)]; <label for="r29" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-123"><code>			<label for="r30" class="ident">c</label>, <label for="r31" class="ident">err</label> := <label for="r28" class="ident">val</label>.<a href="#line-40" class="ident">color</a>()</code></span>
+<span class="codeline" id="line-124"><code>			<span class="keyword">if</span> <label for="r31" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-125"><code>				<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../log.go.html#line-11" class="ident">LogError</a>(<span class="lit-string">"Failed to parse color"</span>, <label for="r31" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-126"><code>			} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-127"><code>				<span class="keyword">return</span> <label for="r30" class="ident">c</label></code></span>
+<span class="codeline" id="line-128"><code>			}</code></span>
+<span class="codeline" id="line-129"><code>		}</code></span>
+<span class="codeline" id="line-130"><code>	}</code></span>
+<span class="codeline" id="line-131"><code></code></span>
+<span class="codeline" id="line-132"><code>	<span class="keyword">if</span> <label for="r32" class="ident">val</label>, <label for="r33" class="ident">ok</label> := <label for="r20" class="ident">t</label>.<a href="#line-106" class="ident">data</a>.<a href="#line-96" class="ident">Colors</a>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r22" class="ident">name</label>)]; <label for="r33" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-133"><code>		<label for="r34" class="ident">c</label>, <label for="r35" class="ident">err</label> := <label for="r32" class="ident">val</label>.<a href="#line-40" class="ident">color</a>()</code></span>
+<span class="codeline" id="line-134"><code>		<span class="keyword">if</span> <label for="r35" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-135"><code>			<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../log.go.html#line-11" class="ident">LogError</a>(<span class="lit-string">"Failed to parse color"</span>, <label for="r35" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-136"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-137"><code>			<span class="keyword">return</span> <label for="r34" class="ident">c</label></code></span>
+<span class="codeline" id="line-138"><code>		}</code></span>
+<span class="codeline" id="line-139"><code>	}</code></span>
+<span class="codeline" id="line-140"><code></code></span>
+<span class="codeline" id="line-141"><code>	<span class="keyword">return</span> <label for="r20" class="ident">t</label>.<a href="#line-107" class="ident">fallback</a>.<a href="../theme.go.html#line-29" class="ident">Color</a>(<label for="r22" class="ident">name</label>, <label for="r23" class="ident">variant</label>)</code></span>
+<span class="codeline" id="line-142"><code>}</code></span>
+<span class="codeline" id="line-143"><code></code></span>
+<span class="codeline" id="line-144"><code><span class="keyword">func</span> (<label for="r36" class="ident">t</label> *<a href="#line-105" class="ident">jsonTheme</a>) <label for="r37" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/theme.jsonTheme^86bbf.html#name-.Font" class="ident">Font</a></label>(<label for="r38" class="ident">style</label> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../text.go.html#line-56" class="ident">TextStyle</a>) <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../resource.go.html#line-14" class="ident">Resource</a> {</code></span>
+<span class="codeline" id="line-145"><code>	<span class="keyword">if</span> <label for="r39" class="ident">val</label>, <label for="r40" class="ident">ok</label> := <label for="r36" class="ident">t</label>.<a href="#line-106" class="ident">data</a>.<a href="#line-101" class="ident">Fonts</a>[<a href="#line-172" class="ident">styleString</a>(<label for="r38" class="ident">style</label>)]; <label for="r40" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-146"><code>		<label for="r41" class="ident">r</label> := <label for="r39" class="ident">val</label>.<a href="#line-81" class="ident">resource</a>()</code></span>
+<span class="codeline" id="line-147"><code>		<span class="keyword">if</span> <label for="r41" class="ident">r</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-148"><code>			<span class="keyword">return</span> <label for="r41" class="ident">r</label></code></span>
+<span class="codeline" id="line-149"><code>		}</code></span>
+<span class="codeline" id="line-150"><code>	}</code></span>
+<span class="codeline" id="line-151"><code>	<span class="keyword">return</span> <label for="r36" class="ident">t</label>.<a href="#line-107" class="ident">fallback</a>.<a href="../theme.go.html#line-30" class="ident">Font</a>(<label for="r38" class="ident">style</label>)</code></span>
+<span class="codeline" id="line-152"><code>}</code></span>
+<span class="codeline" id="line-153"><code></code></span>
+<span class="codeline" id="line-154"><code><span class="keyword">func</span> (<label for="r42" class="ident">t</label> *<a href="#line-105" class="ident">jsonTheme</a>) <label for="r43" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/theme.jsonTheme^86bbf.html#name-.Icon" class="ident">Icon</a></label>(<label for="r44" class="ident">name</label> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../theme.go.html#line-18" class="ident">ThemeIconName</a>) <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../resource.go.html#line-14" class="ident">Resource</a> {</code></span>
+<span class="codeline" id="line-155"><code>	<span class="keyword">if</span> <label for="r45" class="ident">val</label>, <label for="r46" class="ident">ok</label> := <label for="r42" class="ident">t</label>.<a href="#line-106" class="ident">data</a>.<a href="#line-102" class="ident">Icons</a>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r44" class="ident">name</label>)]; <label for="r46" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-156"><code>		<label for="r47" class="ident">r</label> := <label for="r45" class="ident">val</label>.<a href="#line-81" class="ident">resource</a>()</code></span>
+<span class="codeline" id="line-157"><code>		<span class="keyword">if</span> <label for="r47" class="ident">r</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-158"><code>			<span class="keyword">return</span> <label for="r47" class="ident">r</label></code></span>
+<span class="codeline" id="line-159"><code>		}</code></span>
+<span class="codeline" id="line-160"><code>	}</code></span>
+<span class="codeline" id="line-161"><code>	<span class="keyword">return</span> <label for="r42" class="ident">t</label>.<a href="#line-107" class="ident">fallback</a>.<a href="../theme.go.html#line-31" class="ident">Icon</a>(<label for="r44" class="ident">name</label>)</code></span>
+<span class="codeline" id="line-162"><code>}</code></span>
+<span class="codeline" id="line-163"><code></code></span>
+<span class="codeline" id="line-164"><code><span class="keyword">func</span> (<label for="r48" class="ident">t</label> *<a href="#line-105" class="ident">jsonTheme</a>) <label for="r49" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/theme.jsonTheme^86bbf.html#name-.Size" class="ident">Size</a></label>(<label for="r50" class="ident">name</label> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../theme.go.html#line-23" class="ident">ThemeSizeName</a>) <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a> {</code></span>
+<span class="codeline" id="line-165"><code>	<span class="keyword">if</span> <label for="r51" class="ident">val</label>, <label for="r52" class="ident">ok</label> := <label for="r48" class="ident">t</label>.<a href="#line-106" class="ident">data</a>.<a href="#line-99" class="ident">Sizes</a>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r50" class="ident">name</label>)]; <label for="r52" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-166"><code>		<span class="keyword">return</span> <label for="r51" class="ident">val</label></code></span>
+<span class="codeline" id="line-167"><code>	}</code></span>
+<span class="codeline" id="line-168"><code></code></span>
+<span class="codeline" id="line-169"><code>	<span class="keyword">return</span> <label for="r48" class="ident">t</label>.<a href="#line-107" class="ident">fallback</a>.<a href="../theme.go.html#line-32" class="ident">Size</a>(<label for="r50" class="ident">name</label>)</code></span>
+<span class="codeline" id="line-170"><code>}</code></span>
+<span class="codeline" id="line-171"><code></code></span>
+<span class="codeline" id="line-172"><code><span class="keyword">func</span> <label for="r53" class="ident"><a href="../../../../../pkg/fyne.io/fyne/v2/theme.html#name-styleString" class="ident">styleString</a></label>(<label for="r54" class="ident">s</label> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i6">fyne</a>.<a href="../text.go.html#line-56" class="ident">TextStyle</a>) <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-173"><code>	<span class="keyword">if</span> <label for="r54" class="ident">s</label>.<a href="../text.go.html#line-57" class="ident">Bold</a> {</code></span>
+<span class="codeline" id="line-174"><code>		<span class="keyword">if</span> <label for="r54" class="ident">s</label>.<a href="../text.go.html#line-58" class="ident">Italic</a> {</code></span>
+<span class="codeline" id="line-175"><code>			<span class="keyword">return</span> <span class="lit-string">"boldItalic"</span></code></span>
+<span class="codeline" id="line-176"><code>		}</code></span>
+<span class="codeline" id="line-177"><code>		<span class="keyword">return</span> <span class="lit-string">"bold"</span></code></span>
+<span class="codeline" id="line-178"><code>	}</code></span>
+<span class="codeline" id="line-179"><code>	<span class="keyword">if</span> <label for="r54" class="ident">s</label>.<a href="../text.go.html#line-59" class="ident">Monospace</a> {</code></span>
+<span class="codeline" id="line-180"><code>		<span class="keyword">return</span> <span class="lit-string">"monospace"</span></code></span>
+<span class="codeline" id="line-181"><code>	}</code></span>
+<span class="codeline" id="line-182"><code>	<span class="keyword">return</span> <span class="lit-string">"regular"</span></code></span>
+<span class="codeline" id="line-183"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

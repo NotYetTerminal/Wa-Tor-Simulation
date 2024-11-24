@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: driver.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	driver.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"time"</span></label></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// Driver defines an abstract concept of a Fyne render driver.</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">// Any implementation must provide at least these methods.</span></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Driver" class="ident">Driver</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-8"><code>	<span class="comment">// CreateWindow creates a new UI Window.</span></code></span>
+<span class="codeline" id="line-9"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Driver.html#name-CreateWindow" class="ident">CreateWindow</a>(<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="window.go.html#line-5" class="ident">Window</a></code></span>
+<span class="codeline" id="line-10"><code>	<span class="comment">// AllWindows returns a slice containing all app windows.</span></code></span>
+<span class="codeline" id="line-11"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Driver.html#name-AllWindows" class="ident">AllWindows</a>() []<a href="window.go.html#line-5" class="ident">Window</a></code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code>	<span class="comment">// RenderedTextSize returns the size required to render the given string of specified</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">	// font size and style. It also returns the height to text baseline, measured from the top.</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">	// If the source is specified it will be used, otherwise the current theme will be asked for the font.</span></code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Driver.html#name-RenderedTextSize" class="ident">RenderedTextSize</a>(text <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, fontSize <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>, style <a href="text.go.html#line-56" class="ident">TextStyle</a>, source <a href="resource.go.html#line-14" class="ident">Resource</a>) (size <a href="geometry.go.html#line-91" class="ident">Size</a>, baseline <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>)</code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code>	<span class="comment">// CanvasForObject returns the canvas that is associated with a given [CanvasObject].</span></code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Driver.html#name-CanvasForObject" class="ident">CanvasForObject</a>(<a href="canvasobject.go.html#line-10" class="ident">CanvasObject</a>) <a href="canvas.go.html#line-7" class="ident">Canvas</a></code></span>
+<span class="codeline" id="line-20"><code>	<span class="comment">// AbsolutePositionForObject returns the position of a given [CanvasObject] relative to the top/left of a canvas.</span></code></span>
+<span class="codeline" id="line-21"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Driver.html#name-AbsolutePositionForObject" class="ident">AbsolutePositionForObject</a>(<a href="canvasobject.go.html#line-10" class="ident">CanvasObject</a>) <a href="geometry.go.html#line-37" class="ident">Position</a></code></span>
+<span class="codeline" id="line-22"><code></code></span>
+<span class="codeline" id="line-23"><code>	<span class="comment">// Device returns the device that the application is currently running on.</span></code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Driver.html#name-Device" class="ident">Device</a>() <a href="device.go.html#line-28" class="ident">Device</a></code></span>
+<span class="codeline" id="line-25"><code>	<span class="comment">// Run starts the main event loop of the driver.</span></code></span>
+<span class="codeline" id="line-26"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Driver.html#name-Run" class="ident">Run</a>()</code></span>
+<span class="codeline" id="line-27"><code>	<span class="comment">// Quit closes the driver and open windows, then exit the application.</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">	// On some some operating systems this does nothing, for example iOS and Android.</span></code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Driver.html#name-Quit" class="ident">Quit</a>()</code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code>	<span class="comment">// StartAnimation registers a new animation with this driver and requests it be started.</span></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Driver.html#name-StartAnimation" class="ident">StartAnimation</a>(*<a href="animation.go.html#line-39" class="ident">Animation</a>)</code></span>
+<span class="codeline" id="line-33"><code>	<span class="comment">// StopAnimation stops an animation and unregisters from this driver.</span></code></span>
+<span class="codeline" id="line-34"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Driver.html#name-StopAnimation" class="ident">StopAnimation</a>(*<a href="animation.go.html#line-39" class="ident">Animation</a>)</code></span>
+<span class="codeline" id="line-35"><code></code></span>
+<span class="codeline" id="line-36"><code>	<span class="comment">// DoubleTapDelay returns the maximum duration where a second tap after a first one</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">	// will be considered a [DoubleTap] instead of two distinct [Tap] events.</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">	// Since: 2.5</span></code></span>
+<span class="codeline" id="line-40"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Driver.html#name-DoubleTapDelay" class="ident">DoubleTapDelay</a>() <a href="../../../../pkg/time.html" class="ident i0">time</a>.<a href="../../../time/time.go.html#line-632" class="ident">Duration</a></code></span>
+<span class="codeline" id="line-41"><code></code></span>
+<span class="codeline" id="line-42"><code>	<span class="comment">// SetDisableScreenBlanking allows an app to ask the device not to sleep/lock/blank displays</span></code></span>
+<span class="codeline" id="line-43"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-44"><code><span class="comment">	// Since: 2.5</span></code></span>
+<span class="codeline" id="line-45"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Driver.html#name-SetDisableScreenBlanking" class="ident">SetDisableScreenBlanking</a>(<a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>)</code></span>
+<span class="codeline" id="line-46"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

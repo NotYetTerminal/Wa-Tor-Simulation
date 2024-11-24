@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: stacklayout.go in package fyne.io/fyne/v2/layout</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	stacklayout.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/fyne.io/fyne/v2/layout.html">fyne.io/fyne/v2/layout</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Package layout defines the various layouts available to Fyne apps.</span></code></span></div><span class="codeline" id="line-2"><code><span class="keyword">package</span> layout <span class="comment">// import "fyne.io/fyne/v2/layout"</span></code></span>
+<span class="codeline" id="line-3"><code></code></span>
+<span class="codeline" id="line-4"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-5"><code></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">// Declare conformity with Layout interface</span></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">var</span> _ <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../layout.go.html#line-4" class="ident">Layout</a> = (*<a href="#line-9" class="ident">stackLayout</a>)(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">type</span> <a href="../../../../../pkg/fyne.io/fyne/v2/layout.html#name-stackLayout" class="ident">stackLayout</a> <span class="keyword">struct</span>{}</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// NewStackLayout returns a new StackLayout instance. Objects are stacked</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// on top of each other with later objects on top of those before.</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// Having only a single object has no impact as CanvasObjects will</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">// fill the available space even without a Stack.</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// Since: 2.4</span></code></span>
+<span class="codeline" id="line-17"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/fyne.io/fyne/v2/layout.html#name-NewStackLayout" class="ident">NewStackLayout</a></label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../layout.go.html#line-4" class="ident">Layout</a> {</code></span>
+<span class="codeline" id="line-18"><code>	<span class="keyword">return</span> <a href="#line-9" class="ident">stackLayout</a>{}</code></span>
+<span class="codeline" id="line-19"><code>}</code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">// NewMaxLayout creates a new MaxLayout instance</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">// Deprecated: Use layout.NewStackLayout() instead.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="keyword">func</span> <label for="r1" class="ident"><a href="../../../../../pkg/fyne.io/fyne/v2/layout.html#name-NewMaxLayout" class="ident">NewMaxLayout</a></label>() <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../layout.go.html#line-4" class="ident">Layout</a> {</code></span>
+<span class="codeline" id="line-25"><code>	<span class="keyword">return</span> <a href="#line-17" class="ident">NewStackLayout</a>()</code></span>
+<span class="codeline" id="line-26"><code>}</code></span>
+<span class="codeline" id="line-27"><code></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">// Layout is called to pack all child objects into a specified size.</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">// For StackLayout this sets all children to the full size passed.</span></code></span>
+<span class="codeline" id="line-30"><code><span class="keyword">func</span> (<label for="r2" class="ident">m</label> <a href="#line-9" class="ident">stackLayout</a>) <label for="r3" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/layout.stackLayout^5e617.html#name-.Layout" class="ident">Layout</a></label>(<label for="r4" class="ident">objects</label> []<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../canvasobject.go.html#line-10" class="ident">CanvasObject</a>, <label for="r5" class="ident">size</label> <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../geometry.go.html#line-91" class="ident">Size</a>) {</code></span>
+<span class="codeline" id="line-31"><code>	<label for="r6" class="ident">topLeft</label> := <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../geometry.go.html#line-43" class="ident">NewPos</a>(<span class="lit-number">0</span>, <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-32"><code>	<span class="keyword">for</span> <label for="r7" class="ident">_</label>, <label for="r8" class="ident">child</label> := <span class="keyword">range</span> <label for="r4" class="ident">objects</label> {</code></span>
+<span class="codeline" id="line-33"><code>		<label for="r8" class="ident">child</label>.<a href="../canvasobject.go.html#line-22" class="ident">Resize</a>(<label for="r5" class="ident">size</label>)</code></span>
+<span class="codeline" id="line-34"><code>		<label for="r8" class="ident">child</label>.<a href="../canvasobject.go.html#line-17" class="ident">Move</a>(<label for="r6" class="ident">topLeft</label>)</code></span>
+<span class="codeline" id="line-35"><code>	}</code></span>
+<span class="codeline" id="line-36"><code>}</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">// MinSize finds the smallest size that satisfies all the child objects.</span></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">// For StackLayout this is determined simply as the MinSize of the largest child.</span></code></span>
+<span class="codeline" id="line-40"><code><span class="keyword">func</span> (<label for="r9" class="ident">m</label> <a href="#line-9" class="ident">stackLayout</a>) <label for="r10" class="ident"><a href="../../../../../imp/fyne.io/fyne/v2/layout.stackLayout^5e617.html#name-.MinSize" class="ident">MinSize</a></label>(<label for="r11" class="ident">objects</label> []<a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../canvasobject.go.html#line-10" class="ident">CanvasObject</a>) <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../geometry.go.html#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-41"><code>	<label for="r12" class="ident">minSize</label> := <a href="../../../../../pkg/fyne.io/fyne/v2.html" class="ident i0">fyne</a>.<a href="../geometry.go.html#line-97" class="ident">NewSize</a>(<span class="lit-number">0</span>, <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-42"><code>	<span class="keyword">for</span> <label for="r13" class="ident">_</label>, <label for="r14" class="ident">child</label> := <span class="keyword">range</span> <label for="r11" class="ident">objects</label> {</code></span>
+<span class="codeline" id="line-43"><code>		<span class="keyword">if</span> !<label for="r14" class="ident">child</label>.<a href="../canvasobject.go.html#line-31" class="ident">Visible</a>() {</code></span>
+<span class="codeline" id="line-44"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-45"><code>		}</code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code>		<label for="r12" class="ident">minSize</label> = <label for="r12" class="ident">minSize</label>.<a href="../geometry.go.html#line-127" class="ident">Max</a>(<label for="r14" class="ident">child</label>.<a href="../canvasobject.go.html#line-14" class="ident">MinSize</a>())</code></span>
+<span class="codeline" id="line-48"><code>	}</code></span>
+<span class="codeline" id="line-49"><code></code></span>
+<span class="codeline" id="line-50"><code>	<span class="keyword">return</span> <label for="r12" class="ident">minSize</label></code></span>
+<span class="codeline" id="line-51"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

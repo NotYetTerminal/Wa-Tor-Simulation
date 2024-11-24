@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: theme.go in package fyne.io/fyne/v2/internal/theme</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	theme.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html">fyne.io/fyne/v2/internal/theme</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> theme</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"image/color"</span></label></code></span>
+<span class="codeline" id="line-5"><code></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i1"><span class="lit-string i1">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-7"><code>)</code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// Primary color names.</span></code></span>
+<span class="codeline" id="line-10"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-11"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-ColorBlue" class="ident">ColorBlue</a>   = <span class="lit-string">"blue"</span></code></span>
+<span class="codeline" id="line-12"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-ColorBrown" class="ident">ColorBrown</a>  = <span class="lit-string">"brown"</span></code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-ColorGray" class="ident">ColorGray</a>   = <span class="lit-string">"gray"</span></code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-ColorGreen" class="ident">ColorGreen</a>  = <span class="lit-string">"green"</span></code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-ColorOrange" class="ident">ColorOrange</a> = <span class="lit-string">"orange"</span></code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-ColorPurple" class="ident">ColorPurple</a> = <span class="lit-string">"purple"</span></code></span>
+<span class="codeline" id="line-17"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-ColorRed" class="ident">ColorRed</a>    = <span class="lit-string">"red"</span></code></span>
+<span class="codeline" id="line-18"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-ColorYellow" class="ident">ColorYellow</a> = <span class="lit-string">"yellow"</span></code></span>
+<span class="codeline" id="line-19"><code>)</code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">// Theme variants; the public available ones are defined in /theme/theme.go.</span></code></span>
+<span class="codeline" id="line-22"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-23"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-VariantDark" class="ident">VariantDark</a> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i1">fyne</a>.<a href="../../theme.go.html#line-8" class="ident">ThemeVariant</a> = <a href="../../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-VariantLight" class="ident">VariantLight</a></code></span>
+<span class="codeline" id="line-25"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-VariantNameUserPreference" class="ident">VariantNameUserPreference</a> <span class="comment">// locally used in builtinTheme for backward compatibility</span></code></span>
+<span class="codeline" id="line-26"><code>)</code></span>
+<span class="codeline" id="line-27"><code></code></span>
+<span class="codeline" id="line-28"><code><span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryBlue" class="ident">colorLightOnPrimaryBlue</a>   = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-30"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryBrown" class="ident">colorLightOnPrimaryBrown</a>  = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-31"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryGray" class="ident">colorLightOnPrimaryGray</a>   = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0x17</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0x17</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0x18</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryGreen" class="ident">colorLightOnPrimaryGreen</a>  = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0x17</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0x17</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0x18</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryOrange" class="ident">colorLightOnPrimaryOrange</a> = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0x17</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0x17</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0x18</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-34"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryPurple" class="ident">colorLightOnPrimaryPurple</a> = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-35"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryRed" class="ident">colorLightOnPrimaryRed</a>    = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-36"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryYellow" class="ident">colorLightOnPrimaryYellow</a> = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0x17</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0x17</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0x18</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-37"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryBlue" class="ident">colorLightPrimaryBlue</a>     = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0x29</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0x6f</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0xf6</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-38"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryBrown" class="ident">colorLightPrimaryBrown</a>    = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0x79</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0x55</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0x48</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-39"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryGray" class="ident">colorLightPrimaryGray</a>     = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0x9e</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0x9e</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0x9e</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-40"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryGreen" class="ident">colorLightPrimaryGreen</a>    = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0x8b</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0xc3</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0x4a</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-41"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryOrange" class="ident">colorLightPrimaryOrange</a>   = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0x98</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0x00</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-42"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryPurple" class="ident">colorLightPrimaryPurple</a>   = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0x9c</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0x27</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0xb0</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryRed" class="ident">colorLightPrimaryRed</a>      = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0xf4</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0x43</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0x36</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-44"><code>	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryYellow" class="ident">colorLightPrimaryYellow</a>   = <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<a href="../../../../../image/color/color.go.html#line-57" class="ident">R</a>: <span class="lit-number">0xff</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">G</a>: <span class="lit-number">0xeb</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">B</a>: <span class="lit-number">0x3b</span>, <a href="../../../../../image/color/color.go.html#line-57" class="ident">A</a>: <span class="lit-number">0xff</span>}</code></span>
+<span class="codeline" id="line-45"><code>)</code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">// ForegroundOnPrimaryColorNamed returns a theme specific color used for text and icons against the named primary color.</span></code></span>
+<span class="codeline" id="line-48"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-ForegroundOnPrimaryColorNamed" class="ident">ForegroundOnPrimaryColorNamed</a></label>(<label for="r1" class="ident">name</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-10" class="ident">Color</a> {</code></span>
+<span class="codeline" id="line-49"><code>	<span class="keyword">switch</span> <label for="r1" class="ident">name</label> {</code></span>
+<span class="codeline" id="line-50"><code>	<span class="keyword">case</span> <a href="#line-17" class="ident">ColorRed</a>:</code></span>
+<span class="codeline" id="line-51"><code>		<span class="keyword">return</span> <a href="#line-35" class="ident">colorLightOnPrimaryRed</a></code></span>
+<span class="codeline" id="line-52"><code>	<span class="keyword">case</span> <a href="#line-15" class="ident">ColorOrange</a>:</code></span>
+<span class="codeline" id="line-53"><code>		<span class="keyword">return</span> <a href="#line-33" class="ident">colorLightOnPrimaryOrange</a></code></span>
+<span class="codeline" id="line-54"><code>	<span class="keyword">case</span> <a href="#line-18" class="ident">ColorYellow</a>:</code></span>
+<span class="codeline" id="line-55"><code>		<span class="keyword">return</span> <a href="#line-36" class="ident">colorLightOnPrimaryYellow</a></code></span>
+<span class="codeline" id="line-56"><code>	<span class="keyword">case</span> <a href="#line-14" class="ident">ColorGreen</a>:</code></span>
+<span class="codeline" id="line-57"><code>		<span class="keyword">return</span> <a href="#line-32" class="ident">colorLightOnPrimaryGreen</a></code></span>
+<span class="codeline" id="line-58"><code>	<span class="keyword">case</span> <a href="#line-16" class="ident">ColorPurple</a>:</code></span>
+<span class="codeline" id="line-59"><code>		<span class="keyword">return</span> <a href="#line-34" class="ident">colorLightOnPrimaryPurple</a></code></span>
+<span class="codeline" id="line-60"><code>	<span class="keyword">case</span> <a href="#line-12" class="ident">ColorBrown</a>:</code></span>
+<span class="codeline" id="line-61"><code>		<span class="keyword">return</span> <a href="#line-30" class="ident">colorLightOnPrimaryBrown</a></code></span>
+<span class="codeline" id="line-62"><code>	<span class="keyword">case</span> <a href="#line-13" class="ident">ColorGray</a>:</code></span>
+<span class="codeline" id="line-63"><code>		<span class="keyword">return</span> <a href="#line-31" class="ident">colorLightOnPrimaryGray</a></code></span>
+<span class="codeline" id="line-64"><code>	}</code></span>
+<span class="codeline" id="line-65"><code></code></span>
+<span class="codeline" id="line-66"><code>	<span class="comment">// We return the “on” value for ColorBlue for every other value.</span></code></span>
+<span class="codeline" id="line-67"><code><span class="comment">	// There is no need to have it in the switch above.</span></code></span>
+<span class="codeline" id="line-68"><code>	<span class="keyword">return</span> <a href="#line-29" class="ident">colorLightOnPrimaryBlue</a></code></span>
+<span class="codeline" id="line-69"><code>}</code></span>
+<span class="codeline" id="line-70"><code></code></span>
+<span class="codeline" id="line-71"><code><span class="comment">// PrimaryColorNamed returns a theme specific color value for a named primary color.</span></code></span>
+<span class="codeline" id="line-72"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/internal/theme.html#name-PrimaryColorNamed" class="ident">PrimaryColorNamed</a></label>(<label for="r3" class="ident">name</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../../../image/color/color.go.html#line-10" class="ident">Color</a> {</code></span>
+<span class="codeline" id="line-73"><code>	<span class="keyword">switch</span> <label for="r3" class="ident">name</label> {</code></span>
+<span class="codeline" id="line-74"><code>	<span class="keyword">case</span> <a href="#line-17" class="ident">ColorRed</a>:</code></span>
+<span class="codeline" id="line-75"><code>		<span class="keyword">return</span> <a href="#line-43" class="ident">colorLightPrimaryRed</a></code></span>
+<span class="codeline" id="line-76"><code>	<span class="keyword">case</span> <a href="#line-15" class="ident">ColorOrange</a>:</code></span>
+<span class="codeline" id="line-77"><code>		<span class="keyword">return</span> <a href="#line-41" class="ident">colorLightPrimaryOrange</a></code></span>
+<span class="codeline" id="line-78"><code>	<span class="keyword">case</span> <a href="#line-18" class="ident">ColorYellow</a>:</code></span>
+<span class="codeline" id="line-79"><code>		<span class="keyword">return</span> <a href="#line-44" class="ident">colorLightPrimaryYellow</a></code></span>
+<span class="codeline" id="line-80"><code>	<span class="keyword">case</span> <a href="#line-14" class="ident">ColorGreen</a>:</code></span>
+<span class="codeline" id="line-81"><code>		<span class="keyword">return</span> <a href="#line-40" class="ident">colorLightPrimaryGreen</a></code></span>
+<span class="codeline" id="line-82"><code>	<span class="keyword">case</span> <a href="#line-16" class="ident">ColorPurple</a>:</code></span>
+<span class="codeline" id="line-83"><code>		<span class="keyword">return</span> <a href="#line-42" class="ident">colorLightPrimaryPurple</a></code></span>
+<span class="codeline" id="line-84"><code>	<span class="keyword">case</span> <a href="#line-12" class="ident">ColorBrown</a>:</code></span>
+<span class="codeline" id="line-85"><code>		<span class="keyword">return</span> <a href="#line-38" class="ident">colorLightPrimaryBrown</a></code></span>
+<span class="codeline" id="line-86"><code>	<span class="keyword">case</span> <a href="#line-13" class="ident">ColorGray</a>:</code></span>
+<span class="codeline" id="line-87"><code>		<span class="keyword">return</span> <a href="#line-39" class="ident">colorLightPrimaryGray</a></code></span>
+<span class="codeline" id="line-88"><code>	}</code></span>
+<span class="codeline" id="line-89"><code></code></span>
+<span class="codeline" id="line-90"><code>	<span class="comment">// We return the value for ColorBlue for every other value.</span></code></span>
+<span class="codeline" id="line-91"><code><span class="comment">	// There is no need to have it in the switch above.</span></code></span>
+<span class="codeline" id="line-92"><code>	<span class="keyword">return</span> <a href="#line-37" class="ident">colorLightPrimaryBlue</a></code></span>
+<span class="codeline" id="line-93"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

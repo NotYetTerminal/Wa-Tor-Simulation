@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/go-text/typesetting/di</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>di</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-github.com/go-text/typesetting/di">github.com/go-text/typesetting/di</a><i> (on <a href="https://pkg.go.dev/github.com/go-text/typesetting/di" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/github.com/go-text/typesetting/di.html">one package</a>, and imported by <a href="../../../../dep/github.com/go-text/typesetting/di.html#imported-by">3 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html">direction.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 3, all are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Axis" data-popularity="85">	<input type='checkbox' class="fold" id="Axis-fold-content"><label for="Axis-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-71">Axis</a> <a href="../../../builtin.html#name-bool">bool</a> <i>(basic type)</i></label><span id='Axis-fold-content-docs' class="fold-docs">
+<span class="md-text">		Axis indicates the axis of layout for a piece of text.</span>
+
+		<input type='checkbox' class="fold" id="Axis-fold-results"><label for="Axis-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Axis-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Direction">Direction</a>.<a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-42">Axis</a>() <b>Axis</b></span></span>
+		<input type='checkbox' class="fold" id="Axis-fold-values"><label for="Axis-fold-values">As Types Of (<i>total 2, both are exported</i>)</label><span id='Axis-fold-values-items' class="fold-items"><span>
+			const <a href="#name-Horizontal">Horizontal</a></span><span>
+			const <a href="#name-Vertical">Vertical</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Direction" data-popularity="715">	<input type='checkbox' class="fold" id="Direction-fold-content"><label for="Direction-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-8">Direction</a> <a href="../../../builtin.html#name-uint8">uint8</a> <i>(basic type)</i></label><span id='Direction-fold-content-docs' class="fold-docs">
+<span class="md-text">		Direction indicates the layout direction of a piece of text.</span>
+
+		<input type='checkbox' class="fold" id="Direction-fold-methods"><label for="Direction-fold-methods">Methods (<i>total 9, all are exported</i>)</label><span id='Direction-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Direction-fold-method-Axis"><label for="Direction-fold-method-Axis">( Direction) <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-42">Axis</a>() <a href="#name-Axis">Axis</a></label><span id='Direction-fold-method-Axis-docs' class="fold-docs">
+<span class="md-text">				Axis returns the layout axis for d.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Direction-fold-method-Harfbuzz"><label for="Direction-fold-method-Harfbuzz">( Direction) <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-119">Harfbuzz</a>() <a href="harfbuzz.html">harfbuzz</a>.<a href="harfbuzz.html#name-Direction">Direction</a></label><span id='Direction-fold-method-Harfbuzz-docs' class="fold-docs">
+<span class="md-text">				Harfbuzz returns the equivalent direction used by harfbuzz.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Direction-fold-method-HasVerticalOrientation"><label for="Direction-fold-method-HasVerticalOrientation">( Direction) <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-97">HasVerticalOrientation</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='Direction-fold-method-HasVerticalOrientation-docs' class="fold-docs">
+<span class="md-text">				HasVerticalOrientation returns true if the direction has set up
+				an orientation for vertical text (typically using [SetSideways] or [SetUpright])</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Direction-fold-method-IsSideways"><label for="Direction-fold-method-IsSideways">( Direction) <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-105">IsSideways</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='Direction-fold-method-IsSideways-docs' class="fold-docs">
+<span class="md-text">				IsSideways returns true if the direction is vertical with a 'sideways'
+				orientation.
+				
+				When shaping vertical text, 'sideways' means that the glyphs are rotated
+				by 90°, clock-wise. This flag should be used by renderers to properly
+				rotate the glyphs when drawing.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Direction-fold-method-IsVertical"><label for="Direction-fold-method-IsVertical">( Direction) <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-39">IsVertical</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='Direction-fold-method-IsVertical-docs' class="fold-docs">
+<span class="md-text">				IsVertical returns whether d is laid out on a vertical
+				axis. If the return value is false, d is on the horizontal
+				axis.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Direction-fold-method-Progression"><label for="Direction-fold-method-Progression">( Direction) <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-54">Progression</a>() <a href="#name-Progression">Progression</a></label><span id='Direction-fold-method-Progression-docs' class="fold-docs">
+<span class="md-text">				Progression returns the text layout progression for d.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Direction-fold-method-SetProgression"><label for="Direction-fold-method-SetProgression">(*Direction) <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-62">SetProgression</a>(p <a href="#name-Progression">Progression</a>)</label><span id='Direction-fold-method-SetProgression-docs' class="fold-docs">
+<span class="md-text">				SetProgression sets the progression, preserving the others bits.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Direction-fold-method-SetSideways"><label for="Direction-fold-method-SetSideways">(*Direction) <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-109">SetSideways</a>(sideways <a href="../../../builtin.html#name-bool">bool</a>)</label><span id='Direction-fold-method-SetSideways-docs' class="fold-docs">
+<span class="md-text">				SetSideways makes d vertical with 'sideways' or 'upright' orientation, preserving only the
+				progression.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Direction-fold-method-SwitchAxis"><label for="Direction-fold-method-SwitchAxis">( Direction) <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-51">SwitchAxis</a>() <b>Direction</b></label><span id='Direction-fold-method-SwitchAxis-docs' class="fold-docs">
+<span class="md-text">				SwitchAxis switches from horizontal to vertical (and vice versa), preserving
+				the progression.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Direction-fold-results"><label for="Direction-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Direction-fold-results-items' class="fold-items"><span>
+			func Direction.<a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-51">SwitchAxis</a>() <b>Direction</b></span></span>
+		<input type='checkbox' class="fold" id="Direction-fold-params"><label for="Direction-fold-params">As Inputs Of (<i>at least 5, none are exported</i>)</label><span id='Direction-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Direction-showhide-outputofs"><i><label for="Direction-showhide-outputofs" class="show-inline">/* 5+ unexporteds ... */</label><label for="Direction-showhide-outputofs" class="hide-inline">/* 5+ unexporteds: */</label></i><span class="hidden"><i>
+			func github.com/go-text/typesetting/shaping.<a href="shaping.html#name-inclusiveGlyphRange">inclusiveGlyphRange</a>(dir <b>Direction</b>, start, breakAfter <a href="../../../builtin.html#name-int">int</a>, runeToGlyph []<a href="../../../builtin.html#name-int">int</a>, numGlyphs <a href="../../../builtin.html#name-int">int</a>) (glyphStart, glyphEnd <a href="shaping.html">shaping</a>.<a href="shaping.html#name-glyphIndex">glyphIndex</a>)</i></span><span class="hidden"><i>
+			func github.com/go-text/typesetting/shaping.<a href="shaping.html#name-mapRunesToClusterIndices">mapRunesToClusterIndices</a>(dir <b>Direction</b>, runes <a href="shaping.html">shaping</a>.<a href="shaping.html#name-Range">Range</a>, glyphs []<a href="shaping.html">shaping</a>.<a href="shaping.html#name-Glyph">Glyph</a>, buf []<a href="shaping.html">shaping</a>.<a href="shaping.html#name-glyphIndex">glyphIndex</a>) []<a href="shaping.html">shaping</a>.<a href="shaping.html#name-glyphIndex">glyphIndex</a></i></span><span class="hidden"><i>
+			func github.com/go-text/typesetting/shaping.<a href="shaping.html#name-mapRunesToClusterIndices2">mapRunesToClusterIndices2</a>(dir <b>Direction</b>, runes <a href="shaping.html">shaping</a>.<a href="shaping.html#name-Range">Range</a>, glyphs []<a href="shaping.html">shaping</a>.<a href="shaping.html#name-Glyph">Glyph</a>, buf []<a href="shaping.html">shaping</a>.<a href="shaping.html#name-glyphIndex">glyphIndex</a>) []<a href="shaping.html">shaping</a>.<a href="shaping.html#name-glyphIndex">glyphIndex</a></i></span><span class="hidden"><i>
+			func github.com/go-text/typesetting/shaping.<a href="shaping.html#name-mapRunesToClusterIndices3">mapRunesToClusterIndices3</a>(dir <b>Direction</b>, runes <a href="shaping.html">shaping</a>.<a href="shaping.html#name-Range">Range</a>, glyphs []<a href="shaping.html">shaping</a>.<a href="shaping.html#name-Glyph">Glyph</a>, buf []<a href="shaping.html">shaping</a>.<a href="shaping.html#name-glyphIndex">glyphIndex</a>) []<a href="shaping.html">shaping</a>.<a href="shaping.html#name-glyphIndex">glyphIndex</a></i></span><span class="hidden"><i>
+			func github.com/go-text/typesetting/shaping.<a href="shaping.html#name-mapRuneToClusterIndex">mapRuneToClusterIndex</a>(dir <b>Direction</b>, runes <a href="shaping.html">shaping</a>.<a href="shaping.html#name-Range">Range</a>, glyphs []<a href="shaping.html">shaping</a>.<a href="shaping.html#name-Glyph">Glyph</a>, runeIdx <a href="../../../builtin.html#name-int">int</a>) <a href="shaping.html">shaping</a>.<a href="shaping.html#name-glyphIndex">glyphIndex</a></i></span></span>
+		<input type='checkbox' class="fold" id="Direction-fold-values"><label for="Direction-fold-values">As Types Of (<i>total 8, in which 4 are exported</i>)</label><span id='Direction-fold-values-items' class="fold-items"><span>
+			const <a href="#name-DirectionBTT">DirectionBTT</a></span><span>
+			const <a href="#name-DirectionLTR">DirectionLTR</a></span><span>
+			const <a href="#name-DirectionRTL">DirectionRTL</a></span><span>
+			const <a href="#name-DirectionTTB">DirectionTTB</a></span>
+			<input type='checkbox' class="showhide" id="Direction-showhide-values"><i><label for="Direction-showhide-values" class="show-inline">/* 4 unexporteds ... */</label><label for="Direction-showhide-values" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			const <a href="#name-axisVertical">axisVertical</a></i></span><span class="hidden"><i>
+			const <a href="#name-progression">progression</a></i></span><span class="hidden"><i>
+			const <a href="#name-verticalOrientationSet">verticalOrientationSet</a></i></span><span class="hidden"><i>
+			const <a href="#name-verticalSideways">verticalSideways</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Progression" data-popularity="155">	<input type='checkbox' class="fold" id="Progression-fold-content"><label for="Progression-fold-content"> type <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-80">Progression</a> <a href="../../../builtin.html#name-bool">bool</a> <i>(basic type)</i></label><span id='Progression-fold-content-docs' class="fold-docs">
+<span class="md-text">		Progression indicates how text is read within its Axis relative
+		to the top left corner.</span>
+
+		<input type='checkbox' class="fold" id="Progression-fold-results"><label for="Progression-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Progression-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Direction">Direction</a>.<a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-54">Progression</a>() <b>Progression</b></span></span>
+		<input type='checkbox' class="fold" id="Progression-fold-params"><label for="Progression-fold-params">As Inputs Of (<i>at least 2, in which 1 is exported</i>)</label><span id='Progression-fold-params-items' class="fold-items"><span>
+			func (*<a href="#name-Direction">Direction</a>).<a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-62">SetProgression</a>(p <b>Progression</b>)</span>
+			<input type='checkbox' class="showhide" id="Progression-showhide-outputofs"><i><label for="Progression-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Progression-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func github.com/go-text/typesetting/shaping.<a href="shaping.html#name-countClusters">countClusters</a>(glyphs []<a href="shaping.html">shaping</a>.<a href="shaping.html#name-Glyph">Glyph</a>, textLen <a href="../../../builtin.html#name-int">int</a>, dir <b>Progression</b>)</i></span></span>
+		<input type='checkbox' class="fold" id="Progression-fold-values"><label for="Progression-fold-values">As Types Of (<i>total 2, both are exported</i>)</label><span id='Progression-fold-values-items' class="fold-items"><span>
+			const <a href="#name-FromTopLeft">FromTopLeft</a></span><span>
+			const <a href="#name-TowardTopLeft">TowardTopLeft</a></span></span>
+
+</span></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 12, in which 8 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-DirectionBTT">	<input type='checkbox' class="fold" id="DirectionBTT-fold-content"><label for="DirectionBTT-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-18">DirectionBTT</a> <a href="#name-Direction">Direction</a> = 3</label><span id='DirectionBTT-fold-content-docs' class="fold-docs">
+<span class="md-text">		DirectionBTT is for Bottom-to-Top text.</span>
+
+</span></div><div class="anchor value-res" id="name-DirectionLTR">	<input type='checkbox' class="fold" id="DirectionLTR-fold-content"><label for="DirectionLTR-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-12">DirectionLTR</a> <a href="#name-Direction">Direction</a> = 0</label><span id='DirectionLTR-fold-content-docs' class="fold-docs">
+<span class="md-text">		DirectionLTR is for Left-to-Right text.</span>
+
+</span></div><div class="anchor value-res" id="name-DirectionRTL">	<input type='checkbox' class="fold" id="DirectionRTL-fold-content"><label for="DirectionRTL-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-14">DirectionRTL</a> <a href="#name-Direction">Direction</a> = 1</label><span id='DirectionRTL-fold-content-docs' class="fold-docs">
+<span class="md-text">		DirectionRTL is for Right-to-Left text.</span>
+
+</span></div><div class="anchor value-res" id="name-DirectionTTB">	<input type='checkbox' class="fold" id="DirectionTTB-fold-content"><label for="DirectionTTB-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-16">DirectionTTB</a> <a href="#name-Direction">Direction</a> = 2</label><span id='DirectionTTB-fold-content-docs' class="fold-docs">
+<span class="md-text">		DirectionTTB is for Top-to-Bottom text.</span>
+
+</span></div><div class="anchor value-res" id="name-FromTopLeft">	<input type='checkbox' class="fold" id="FromTopLeft-fold-content"><label for="FromTopLeft-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-87">FromTopLeft</a> <a href="#name-Progression">Progression</a> = false</label><span id='FromTopLeft-fold-content-docs' class="fold-docs">
+<span class="md-text">		FromTopLeft indicates text in which a reader starts reading
+		at the top left corner of the text and moves away from it.
+		DirectionLTR and DirectionTTB are examples of FromTopLeft
+		Progression.</span>
+
+</span></div><div class="anchor value-res" id="name-Horizontal">	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-74">Horizontal</a> <a href="#name-Axis">Axis</a> = false</span></div><div class="anchor value-res" id="name-TowardTopLeft">	<input type='checkbox' class="fold" id="TowardTopLeft-fold-content"><label for="TowardTopLeft-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-92">TowardTopLeft</a> <a href="#name-Progression">Progression</a> = true</label><span id='TowardTopLeft-fold-content-docs' class="fold-docs">
+<span class="md-text">		TowardTopLeft indicates text in which a reader starts reading
+		at the opposite end of the text's Axis from the top left corner
+		and moves towards it. DirectionRTL and DirectionBTT are examples
+		of TowardTopLeft progression.</span>
+
+</span></div><div class="anchor value-res" id="name-Vertical">	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-75">Vertical</a> <a href="#name-Axis">Axis</a> = true</span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-axisVertical"><i>	<input type='checkbox' class="fold" id="axisVertical-fold-content"><label for="axisVertical-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-24">axisVertical</a> <a href="#name-Direction">Direction</a> = 2</label><span id='axisVertical-fold-content-docs' class="fold-docs">
+<span class="md-text">		axisVertical is the bit for the axis, 0 for horizontal, 1 for vertical</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-progression"><i>	<span class="nodocs">const <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-22">progression</a> <a href="#name-Direction">Direction</a> = 1</span></i></div><div class="anchor value-res hidden" id="name-verticalOrientationSet"><i>	<input type='checkbox' class="fold" id="verticalOrientationSet-fold-content"><label for="verticalOrientationSet-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-30">verticalOrientationSet</a> <a href="#name-Direction">Direction</a> = 4</label><span id='verticalOrientationSet-fold-content-docs' class="fold-docs">
+<span class="md-text">		If this flag is set, the orientation is chosen
+		using the [verticalSideways] flag.
+		Otherwise, the segmenter will resolve the orientation based
+		on unicode properties</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-verticalSideways"><i>	<input type='checkbox' class="fold" id="verticalSideways-fold-content"><label for="verticalSideways-fold-content">const <a href="../../../../src/github.com/go-text/typesetting/di/direction.go.html#line-33">verticalSideways</a> <a href="#name-Direction">Direction</a> = 8</label><span id='verticalSideways-fold-content-docs' class="fold-docs">
+<span class="md-text">		verticalSideways is set for 'sideways', unset for 'upright'
+		It implies BVerticalOrientationSet is set</span>
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

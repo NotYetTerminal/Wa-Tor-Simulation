@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: text.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	text.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5]
+{background: #226; color: #ff8;}
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// TextAlign represents the horizontal alignment of text within a widget or</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// canvas object.</span></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextAlign" class="ident">TextAlign</a> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-8"><code>	<span class="comment">// TextAlignLeading specifies a left alignment for left-to-right languages.</span></code></span>
+<span class="codeline" id="line-9"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextAlignLeading" class="ident">TextAlignLeading</a> <a href="#line-5" class="ident">TextAlign</a> = <a href="../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-10"><code>	<span class="comment">// TextAlignCenter places the text centrally within the available space.</span></code></span>
+<span class="codeline" id="line-11"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextAlignCenter" class="ident">TextAlignCenter</a></code></span>
+<span class="codeline" id="line-12"><code>	<span class="comment">// TextAlignTrailing will align the text right for a left-to-right language.</span></code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextAlignTrailing" class="ident">TextAlignTrailing</a></code></span>
+<span class="codeline" id="line-14"><code>)</code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// TextTruncation controls how a `Label` or `Entry` will truncate its text.</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// The default value is `TextTruncateOff` which will not truncate.</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// Since: 2.4</span></code></span>
+<span class="codeline" id="line-20"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextTruncation" class="ident">TextTruncation</a> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-23"><code>	<span class="comment">// TextTruncateOff means no truncation will be applied, it is the default.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">	// This means that the minimum size of a text block will be the space required to display it fully.</span></code></span>
+<span class="codeline" id="line-25"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextTruncateOff" class="ident">TextTruncateOff</a> <a href="#line-20" class="ident">TextTruncation</a> = <a href="../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-26"><code>	<span class="comment">// TextTruncateClip will truncate text when it reaches the end of the available space.</span></code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextTruncateClip" class="ident">TextTruncateClip</a></code></span>
+<span class="codeline" id="line-28"><code>	<span class="comment">// TextTruncateEllipsis is like regular truncation except that an ellipses (…) will be inserted</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">	// wherever text has been shortened to fit.</span></code></span>
+<span class="codeline" id="line-30"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">	// Since: 2.4</span></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextTruncateEllipsis" class="ident">TextTruncateEllipsis</a></code></span>
+<span class="codeline" id="line-33"><code>)</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">// TextWrap represents how text longer than the widget's width will be wrapped.</span></code></span>
+<span class="codeline" id="line-36"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextWrap" class="ident">TextWrap</a> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-39"><code>	<span class="comment">// TextWrapOff extends the widget's width to fit the text, no wrapping is applied.</span></code></span>
+<span class="codeline" id="line-40"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextWrapOff" class="ident">TextWrapOff</a> <a href="#line-36" class="ident">TextWrap</a> = <a href="../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-41"><code>	<span class="comment">// TextTruncate trims the text to the widget's width, no wrapping is applied.</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">	// If an entry is asked to truncate it will provide scrolling capabilities.</span></code></span>
+<span class="codeline" id="line-43"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-44"><code><span class="comment">	// Deprecated: Use [TextTruncateClip] value of the widget `Truncation` field instead</span></code></span>
+<span class="codeline" id="line-45"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextTruncate" class="ident">TextTruncate</a></code></span>
+<span class="codeline" id="line-46"><code>	<span class="comment">// TextWrapBreak trims the line of characters to the widget's width adding the excess as new line.</span></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">	// An Entry with text wrapping will scroll vertically if there is not enough space for all the text.</span></code></span>
+<span class="codeline" id="line-48"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextWrapBreak" class="ident">TextWrapBreak</a></code></span>
+<span class="codeline" id="line-49"><code>	<span class="comment">// TextWrapWord trims the line of words to the widget's width adding the excess as new line.</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">	// An Entry with text wrapping will scroll vertically if there is not enough space for all the text.</span></code></span>
+<span class="codeline" id="line-51"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextWrapWord" class="ident">TextWrapWord</a></code></span>
+<span class="codeline" id="line-52"><code>)</code></span>
+<span class="codeline" id="line-53"><code></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">// TextStyle represents the styles that can be applied to a text canvas object</span></code></span>
+<span class="codeline" id="line-55"><code><span class="comment">// or text based widget.</span></code></span>
+<span class="codeline" id="line-56"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-TextStyle" class="ident">TextStyle</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-57"><code>	Bold      <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> <span class="comment">// Should text be bold</span></code></span>
+<span class="codeline" id="line-58"><code>	Italic    <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> <span class="comment">// Should text be italic</span></code></span>
+<span class="codeline" id="line-59"><code>	Monospace <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> <span class="comment">// Use the system monospace font instead of regular</span></code></span>
+<span class="codeline" id="line-60"><code>	<span class="comment">// Since: 2.2</span></code></span>
+<span class="codeline" id="line-61"><code>	Symbol <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> <span class="comment">// Use the system symbol font.</span></code></span>
+<span class="codeline" id="line-62"><code>	<span class="comment">// Since: 2.1</span></code></span>
+<span class="codeline" id="line-63"><code>	TabWidth <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a> <span class="comment">// Width of tabs in spaces</span></code></span>
+<span class="codeline" id="line-64"><code>	<span class="comment">// Since: 2.5</span></code></span>
+<span class="codeline" id="line-65"><code><span class="comment">	// Currently only supported by [fyne.io/fyne/v2/widget.TextGrid].</span></code></span>
+<span class="codeline" id="line-66"><code>	Underline <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> <span class="comment">// Should text be underlined.</span></code></span>
+<span class="codeline" id="line-67"><code>}</code></span>
+<span class="codeline" id="line-68"><code></code></span>
+<span class="codeline" id="line-69"><code><span class="comment">// MeasureText uses the current driver to calculate the size of text when rendered.</span></code></span>
+<span class="codeline" id="line-70"><code><span class="comment">// The font used will be read from the current app's theme.</span></code></span>
+<span class="codeline" id="line-71"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-MeasureText" class="ident">MeasureText</a></label>(<label for="r1" class="ident">text</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r2" class="ident">size</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>, <label for="r3" class="ident">style</label> <a href="#line-56" class="ident">TextStyle</a>) <a href="geometry.go.html#line-91" class="ident">Size</a> {</code></span>
+<span class="codeline" id="line-72"><code>	<label for="r4" class="ident">s</label>, <label for="r5" class="ident">_</label> := <a href="app.go.html#line-92" class="ident">CurrentApp</a>().<a href="app.go.html#line-43" class="ident">Driver</a>().<a href="driver.go.html#line-16" class="ident">RenderedTextSize</a>(<label for="r1" class="ident">text</label>, <label for="r2" class="ident">size</label>, <label for="r3" class="ident">style</label>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-73"><code>	<span class="keyword">return</span> <label for="r4" class="ident">s</label></code></span>
+<span class="codeline" id="line-74"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

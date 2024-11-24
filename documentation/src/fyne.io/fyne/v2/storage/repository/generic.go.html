@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: generic.go in package fyne.io/fyne/v2/storage/repository</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	generic.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html">fyne.io/fyne/v2/storage/repository</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> repository</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"io"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"strings"</span></label></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i2"><span class="lit-string i2">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-8"><code>)</code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">// splitNonEmpty works exactly like strings.Split(), but only returns non-empty</span></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// components.</span></code></span>
+<span class="codeline" id="line-12"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-splitNonEmpty" class="ident">splitNonEmpty</a></label>(<label for="r1" class="ident">str</label>, <label for="r2" class="ident">sep</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) []<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-13"><code>	<label for="r3" class="ident">components</label> := []<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>{}</code></span>
+<span class="codeline" id="line-14"><code>	<span class="keyword">for</span> <label for="r4" class="ident">_</label>, <label for="r5" class="ident">v</label> := <span class="keyword">range</span> <a href="../../../../../../pkg/strings.html" class="ident i1">strings</a>.<a href="../../../../../strings/strings.go.html#line-306" class="ident">Split</a>(<label for="r1" class="ident">str</label>, <label for="r2" class="ident">sep</label>) {</code></span>
+<span class="codeline" id="line-15"><code>		<span class="keyword">if</span> <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r5" class="ident">v</label>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-16"><code>			<label for="r3" class="ident">components</label> = <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r3" class="ident">components</label>, <label for="r5" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-17"><code>		}</code></span>
+<span class="codeline" id="line-18"><code>	}</code></span>
+<span class="codeline" id="line-19"><code>	<span class="keyword">return</span> <label for="r3" class="ident">components</label></code></span>
+<span class="codeline" id="line-20"><code>}</code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// GenericParent can be used as a common-case implementation of</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">// HierarchicalRepository.Parent(). It will create a parent URI based on</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">// IETF RFC3986.</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">// In short, the URI is separated into it's component parts, the path component</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">// is split along instances of '/', and the trailing element is removed. The</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">// result is concatenated and parsed as a new URI.</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-30"><code><span class="comment">// If the URI path is empty or '/', then a nil URI is returned, along with</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">// ErrURIRoot.</span></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">// NOTE: this function should not be called except by an implementation of</span></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">// the Repository interface - using this for unknown URIs may break.</span></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-37"><code><span class="keyword">func</span> <label for="r6" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-GenericParent" class="ident">GenericParent</a></label>(<label for="r7" class="ident">u</label> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) (<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-38"><code>	<label for="r8" class="ident">p</label> := <label for="r7" class="ident">u</label>.<a href="../../uri.go.html#line-70" class="ident">Path</a>()</code></span>
+<span class="codeline" id="line-39"><code></code></span>
+<span class="codeline" id="line-40"><code>	<span class="keyword">if</span> <label for="r8" class="ident">p</label> == <span class="lit-string">""</span> || <label for="r8" class="ident">p</label> == <span class="lit-string">"/"</span> {</code></span>
+<span class="codeline" id="line-41"><code>		<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="errors.go.html#line-23" class="ident">ErrURIRoot</a></code></span>
+<span class="codeline" id="line-42"><code>	}</code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code>	<label for="r9" class="ident">components</label> := <a href="#line-12" class="ident">splitNonEmpty</a>(<label for="r8" class="ident">p</label>, <span class="lit-string">"/"</span>)</code></span>
+<span class="codeline" id="line-45"><code></code></span>
+<span class="codeline" id="line-46"><code>	<label for="r10" class="ident">newURI</label> := <label for="r7" class="ident">u</label>.<a href="../../uri.go.html#line-55" class="ident">Scheme</a>() + <span class="lit-string">"://"</span> + <label for="r7" class="ident">u</label>.<a href="../../uri.go.html#line-65" class="ident">Authority</a>()</code></span>
+<span class="codeline" id="line-47"><code></code></span>
+<span class="codeline" id="line-48"><code>	<span class="comment">// there will be at least one component, since we know we don't have</span></code></span>
+<span class="codeline" id="line-49"><code><span class="comment">	// '/' or ''.</span></code></span>
+<span class="codeline" id="line-50"><code>	<label for="r10" class="ident">newURI</label> += <span class="lit-string">"/"</span></code></span>
+<span class="codeline" id="line-51"><code>	<span class="keyword">if</span> <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r9" class="ident">components</label>) &gt; <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-52"><code>		<label for="r10" class="ident">newURI</label> += <a href="../../../../../../pkg/strings.html" class="ident i1">strings</a>.<a href="../../../../../strings/strings.go.html#line-428" class="ident">Join</a>(<label for="r9" class="ident">components</label>[:<a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r9" class="ident">components</label>)-<span class="lit-number">1</span>], <span class="lit-string">"/"</span>)</code></span>
+<span class="codeline" id="line-53"><code>	}</code></span>
+<span class="codeline" id="line-54"><code></code></span>
+<span class="codeline" id="line-55"><code>	<span class="comment">// stick the query and fragment back on the end</span></code></span>
+<span class="codeline" id="line-56"><code>	<span class="keyword">if</span> <label for="r11" class="ident">q</label> := <label for="r7" class="ident">u</label>.<a href="../../uri.go.html#line-75" class="ident">Query</a>(); <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r11" class="ident">q</label>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-57"><code>		<label for="r10" class="ident">newURI</label> += <span class="lit-string">"?"</span> + <label for="r11" class="ident">q</label></code></span>
+<span class="codeline" id="line-58"><code>	}</code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code>	<span class="keyword">if</span> <label for="r12" class="ident">f</label> := <label for="r7" class="ident">u</label>.<a href="../../uri.go.html#line-81" class="ident">Fragment</a>(); <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r12" class="ident">f</label>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-61"><code>		<label for="r10" class="ident">newURI</label> += <span class="lit-string">"#"</span> + <label for="r12" class="ident">f</label></code></span>
+<span class="codeline" id="line-62"><code>	}</code></span>
+<span class="codeline" id="line-63"><code></code></span>
+<span class="codeline" id="line-64"><code>	<span class="comment">// NOTE: we specifically want to use ParseURI, rather than &amp;uri{},</span></code></span>
+<span class="codeline" id="line-65"><code><span class="comment">	// since the repository for the URI we just created might be a</span></code></span>
+<span class="codeline" id="line-66"><code><span class="comment">	// CustomURIRepository that implements it's own ParseURI.</span></code></span>
+<span class="codeline" id="line-67"><code>	<span class="keyword">return</span> <a href="parse.go.html#line-41" class="ident">ParseURI</a>(<label for="r10" class="ident">newURI</label>)</code></span>
+<span class="codeline" id="line-68"><code>}</code></span>
+<span class="codeline" id="line-69"><code></code></span>
+<span class="codeline" id="line-70"><code><span class="comment">// GenericChild can be used as a common-case implementation of</span></code></span>
+<span class="codeline" id="line-71"><code><span class="comment">// HierarchicalRepository.Child(). It will create a child URI by separating the</span></code></span>
+<span class="codeline" id="line-72"><code><span class="comment">// URI into it's component parts as described in IETF RFC 3986, then appending</span></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">// "/" + component to the path, then concatenating the result and parsing it as</span></code></span>
+<span class="codeline" id="line-74"><code><span class="comment">// a new URI.</span></code></span>
+<span class="codeline" id="line-75"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-76"><code><span class="comment">// NOTE: this function should not be called except by an implementation of</span></code></span>
+<span class="codeline" id="line-77"><code><span class="comment">// the Repository interface - using this for unknown URIs may break.</span></code></span>
+<span class="codeline" id="line-78"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-79"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-80"><code><span class="keyword">func</span> <label for="r13" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-GenericChild" class="ident">GenericChild</a></label>(<label for="r14" class="ident">u</label> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>, <label for="r15" class="ident">component</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-81"><code></code></span>
+<span class="codeline" id="line-82"><code>	<span class="comment">// split into components and add the new one</span></code></span>
+<span class="codeline" id="line-83"><code>	<label for="r16" class="ident">components</label> := <a href="#line-12" class="ident">splitNonEmpty</a>(<label for="r14" class="ident">u</label>.<a href="../../uri.go.html#line-70" class="ident">Path</a>(), <span class="lit-string">"/"</span>)</code></span>
+<span class="codeline" id="line-84"><code>	<label for="r16" class="ident">components</label> = <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r16" class="ident">components</label>, <label for="r15" class="ident">component</label>)</code></span>
+<span class="codeline" id="line-85"><code></code></span>
+<span class="codeline" id="line-86"><code>	<span class="comment">// generate the scheme, authority, and path</span></code></span>
+<span class="codeline" id="line-87"><code>	<label for="r17" class="ident">newURI</label> := <label for="r14" class="ident">u</label>.<a href="../../uri.go.html#line-55" class="ident">Scheme</a>() + <span class="lit-string">"://"</span> + <label for="r14" class="ident">u</label>.<a href="../../uri.go.html#line-65" class="ident">Authority</a>()</code></span>
+<span class="codeline" id="line-88"><code>	<label for="r17" class="ident">newURI</label> += <span class="lit-string">"/"</span> + <a href="../../../../../../pkg/strings.html" class="ident i1">strings</a>.<a href="../../../../../strings/strings.go.html#line-428" class="ident">Join</a>(<label for="r16" class="ident">components</label>, <span class="lit-string">"/"</span>)</code></span>
+<span class="codeline" id="line-89"><code></code></span>
+<span class="codeline" id="line-90"><code>	<span class="comment">// stick the query and fragment back on the end</span></code></span>
+<span class="codeline" id="line-91"><code>	<span class="keyword">if</span> <label for="r18" class="ident">q</label> := <label for="r14" class="ident">u</label>.<a href="../../uri.go.html#line-75" class="ident">Query</a>(); <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r18" class="ident">q</label>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-92"><code>		<label for="r17" class="ident">newURI</label> += <span class="lit-string">"?"</span> + <label for="r18" class="ident">q</label></code></span>
+<span class="codeline" id="line-93"><code>	}</code></span>
+<span class="codeline" id="line-94"><code>	<span class="keyword">if</span> <label for="r19" class="ident">f</label> := <label for="r14" class="ident">u</label>.<a href="../../uri.go.html#line-81" class="ident">Fragment</a>(); <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r19" class="ident">f</label>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-95"><code>		<label for="r17" class="ident">newURI</label> += <span class="lit-string">"#"</span> + <label for="r19" class="ident">f</label></code></span>
+<span class="codeline" id="line-96"><code>	}</code></span>
+<span class="codeline" id="line-97"><code></code></span>
+<span class="codeline" id="line-98"><code>	<span class="comment">// NOTE: we specifically want to use ParseURI, rather than &amp;uri{},</span></code></span>
+<span class="codeline" id="line-99"><code><span class="comment">	// since the repository for the URI we just created might be a</span></code></span>
+<span class="codeline" id="line-100"><code><span class="comment">	// CustomURIRepository that implements it's own ParseURI.</span></code></span>
+<span class="codeline" id="line-101"><code>	<span class="keyword">return</span> <a href="parse.go.html#line-41" class="ident">ParseURI</a>(<label for="r17" class="ident">newURI</label>)</code></span>
+<span class="codeline" id="line-102"><code>}</code></span>
+<span class="codeline" id="line-103"><code></code></span>
+<span class="codeline" id="line-104"><code><span class="comment">// GenericCopy can be used a common-case implementation of</span></code></span>
+<span class="codeline" id="line-105"><code><span class="comment">// CopyableRepository.Copy(). It will perform the copy by obtaining a reader</span></code></span>
+<span class="codeline" id="line-106"><code><span class="comment">// for the source URI, a writer for the destination URI, then writing the</span></code></span>
+<span class="codeline" id="line-107"><code><span class="comment">// contents of the source to the destination.</span></code></span>
+<span class="codeline" id="line-108"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-109"><code><span class="comment">// For obvious reasons, the destination URI must have a registered</span></code></span>
+<span class="codeline" id="line-110"><code><span class="comment">// WritableRepository.</span></code></span>
+<span class="codeline" id="line-111"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-112"><code><span class="comment">// NOTE: this function should not be called except by an implementation of</span></code></span>
+<span class="codeline" id="line-113"><code><span class="comment">// the Repository interface - using this for unknown URIs may break.</span></code></span>
+<span class="codeline" id="line-114"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-115"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-116"><code><span class="keyword">func</span> <label for="r20" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-GenericCopy" class="ident">GenericCopy</a></label>(<label for="r21" class="ident">source</label> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>, <label for="r22" class="ident">destination</label> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-117"><code>	<span class="comment">// Look up repositories for the source and destination.</span></code></span>
+<span class="codeline" id="line-118"><code>	<label for="r23" class="ident">srcrepo</label>, <label for="r24" class="ident">err</label> := <a href="repository.go.html#line-255" class="ident">ForURI</a>(<label for="r21" class="ident">source</label>)</code></span>
+<span class="codeline" id="line-119"><code>	<span class="keyword">if</span> <label for="r24" class="ident">err</label> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-120"><code>		<span class="keyword">return</span> <label for="r24" class="ident">err</label></code></span>
+<span class="codeline" id="line-121"><code>	}</code></span>
+<span class="codeline" id="line-122"><code></code></span>
+<span class="codeline" id="line-123"><code>	<label for="r25" class="ident">dstrepo</label>, <label for="r24" class="ident">err</label> := <a href="repository.go.html#line-255" class="ident">ForURI</a>(<label for="r22" class="ident">destination</label>)</code></span>
+<span class="codeline" id="line-124"><code>	<span class="keyword">if</span> <label for="r24" class="ident">err</label> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-125"><code>		<span class="keyword">return</span> <label for="r24" class="ident">err</label></code></span>
+<span class="codeline" id="line-126"><code>	}</code></span>
+<span class="codeline" id="line-127"><code></code></span>
+<span class="codeline" id="line-128"><code>	<span class="comment">// The destination must be writable.</span></code></span>
+<span class="codeline" id="line-129"><code>	<label for="r26" class="ident">destwrepo</label>, <label for="r27" class="ident">ok</label> := <label for="r25" class="ident">dstrepo</label>.(<a href="repository.go.html#line-102" class="ident">WritableRepository</a>)</code></span>
+<span class="codeline" id="line-130"><code>	<span class="keyword">if</span> !<label for="r27" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-131"><code>		<span class="keyword">return</span> <a href="errors.go.html#line-15" class="ident">ErrOperationNotSupported</a></code></span>
+<span class="codeline" id="line-132"><code>	}</code></span>
+<span class="codeline" id="line-133"><code></code></span>
+<span class="codeline" id="line-134"><code>	<span class="comment">// Create a reader and a writer.</span></code></span>
+<span class="codeline" id="line-135"><code>	<label for="r28" class="ident">srcReader</label>, <label for="r24" class="ident">err</label> := <label for="r23" class="ident">srcrepo</label>.<a href="repository.go.html#line-61" class="ident">Reader</a>(<label for="r21" class="ident">source</label>)</code></span>
+<span class="codeline" id="line-136"><code>	<span class="keyword">if</span> <label for="r24" class="ident">err</label> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-137"><code>		<span class="keyword">return</span> <label for="r24" class="ident">err</label></code></span>
+<span class="codeline" id="line-138"><code>	}</code></span>
+<span class="codeline" id="line-139"><code>	<span class="keyword">defer</span> <label for="r28" class="ident">srcReader</label>.<a href="../../../../../io/io.go.html#line-108" class="ident">Close</a>()</code></span>
+<span class="codeline" id="line-140"><code></code></span>
+<span class="codeline" id="line-141"><code>	<label for="r29" class="ident">dstWriter</label>, <label for="r24" class="ident">err</label> := <label for="r26" class="ident">destwrepo</label>.<a href="repository.go.html#line-109" class="ident">Writer</a>(<label for="r22" class="ident">destination</label>)</code></span>
+<span class="codeline" id="line-142"><code>	<span class="keyword">if</span> <label for="r24" class="ident">err</label> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-143"><code>		<span class="keyword">return</span> <label for="r24" class="ident">err</label></code></span>
+<span class="codeline" id="line-144"><code>	}</code></span>
+<span class="codeline" id="line-145"><code>	<span class="keyword">defer</span> <label for="r29" class="ident">dstWriter</label>.<a href="../../../../../io/io.go.html#line-108" class="ident">Close</a>()</code></span>
+<span class="codeline" id="line-146"><code></code></span>
+<span class="codeline" id="line-147"><code>	<span class="comment">// Perform the copy.</span></code></span>
+<span class="codeline" id="line-148"><code>	_, <label for="r24" class="ident">err</label> = <a href="../../../../../../pkg/io.html" class="ident i0">io</a>.<a href="../../../../../io/io.go.html#line-387" class="ident">Copy</a>(<label for="r29" class="ident">dstWriter</label>, <label for="r28" class="ident">srcReader</label>)</code></span>
+<span class="codeline" id="line-149"><code>	<span class="keyword">return</span> <label for="r24" class="ident">err</label></code></span>
+<span class="codeline" id="line-150"><code>}</code></span>
+<span class="codeline" id="line-151"><code></code></span>
+<span class="codeline" id="line-152"><code><span class="comment">// GenericMove can be used a common-case implementation of</span></code></span>
+<span class="codeline" id="line-153"><code><span class="comment">// MovableRepository.Move(). It will perform the move by obtaining a reader</span></code></span>
+<span class="codeline" id="line-154"><code><span class="comment">// for the source URI, a writer for the destination URI, then writing the</span></code></span>
+<span class="codeline" id="line-155"><code><span class="comment">// contents of the source to the destination. Following this, the source</span></code></span>
+<span class="codeline" id="line-156"><code><span class="comment">// will be deleted using WritableRepository.Delete.</span></code></span>
+<span class="codeline" id="line-157"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-158"><code><span class="comment">// For obvious reasons, the source and destination URIs must both be writable.</span></code></span>
+<span class="codeline" id="line-159"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-160"><code><span class="comment">// NOTE: this function should not be called except by an implementation of</span></code></span>
+<span class="codeline" id="line-161"><code><span class="comment">// the Repository interface - using this for unknown URIs may break.</span></code></span>
+<span class="codeline" id="line-162"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-163"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-164"><code><span class="keyword">func</span> <label for="r30" class="ident"><a href="../../../../../../pkg/fyne.io/fyne/v2/storage/repository.html#name-GenericMove" class="ident">GenericMove</a></label>(<label for="r31" class="ident">source</label> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>, <label for="r32" class="ident">destination</label> <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../uri.go.html#line-32" class="ident">URI</a>) <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-165"><code>	<span class="comment">// This looks a lot like GenericCopy(), but I duplicated the code</span></code></span>
+<span class="codeline" id="line-166"><code><span class="comment">	// to avoid having to look up the repositories more than once.</span></code></span>
+<span class="codeline" id="line-167"><code></code></span>
+<span class="codeline" id="line-168"><code>	<span class="comment">// Look up repositories for the source and destination.</span></code></span>
+<span class="codeline" id="line-169"><code>	<label for="r33" class="ident">srcrepo</label>, <label for="r34" class="ident">err</label> := <a href="repository.go.html#line-255" class="ident">ForURI</a>(<label for="r31" class="ident">source</label>)</code></span>
+<span class="codeline" id="line-170"><code>	<span class="keyword">if</span> <label for="r34" class="ident">err</label> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-171"><code>		<span class="keyword">return</span> <label for="r34" class="ident">err</label></code></span>
+<span class="codeline" id="line-172"><code>	}</code></span>
+<span class="codeline" id="line-173"><code></code></span>
+<span class="codeline" id="line-174"><code>	<label for="r35" class="ident">dstrepo</label>, <label for="r34" class="ident">err</label> := <a href="repository.go.html#line-255" class="ident">ForURI</a>(<label for="r32" class="ident">destination</label>)</code></span>
+<span class="codeline" id="line-175"><code>	<span class="keyword">if</span> <label for="r34" class="ident">err</label> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-176"><code>		<span class="keyword">return</span> <label for="r34" class="ident">err</label></code></span>
+<span class="codeline" id="line-177"><code>	}</code></span>
+<span class="codeline" id="line-178"><code></code></span>
+<span class="codeline" id="line-179"><code>	<span class="comment">// The source and destination must both be writable, since the source</span></code></span>
+<span class="codeline" id="line-180"><code><span class="comment">	// is being deleted, which requires WritableRepository.</span></code></span>
+<span class="codeline" id="line-181"><code>	<label for="r36" class="ident">destwrepo</label>, <label for="r37" class="ident">ok</label> := <label for="r35" class="ident">dstrepo</label>.(<a href="repository.go.html#line-102" class="ident">WritableRepository</a>)</code></span>
+<span class="codeline" id="line-182"><code>	<span class="keyword">if</span> !<label for="r37" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-183"><code>		<span class="keyword">return</span> <a href="errors.go.html#line-15" class="ident">ErrOperationNotSupported</a></code></span>
+<span class="codeline" id="line-184"><code>	}</code></span>
+<span class="codeline" id="line-185"><code></code></span>
+<span class="codeline" id="line-186"><code>	<label for="r38" class="ident">srcwrepo</label>, <label for="r37" class="ident">ok</label> := <label for="r33" class="ident">srcrepo</label>.(<a href="repository.go.html#line-102" class="ident">WritableRepository</a>)</code></span>
+<span class="codeline" id="line-187"><code>	<span class="keyword">if</span> !<label for="r37" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-188"><code>		<span class="keyword">return</span> <a href="errors.go.html#line-15" class="ident">ErrOperationNotSupported</a></code></span>
+<span class="codeline" id="line-189"><code>	}</code></span>
+<span class="codeline" id="line-190"><code></code></span>
+<span class="codeline" id="line-191"><code>	<span class="comment">// Create the reader and writer to perform the copy operation.</span></code></span>
+<span class="codeline" id="line-192"><code>	<label for="r39" class="ident">srcReader</label>, <label for="r34" class="ident">err</label> := <label for="r33" class="ident">srcrepo</label>.<a href="repository.go.html#line-61" class="ident">Reader</a>(<label for="r31" class="ident">source</label>)</code></span>
+<span class="codeline" id="line-193"><code>	<span class="keyword">if</span> <label for="r34" class="ident">err</label> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-194"><code>		<span class="keyword">return</span> <label for="r34" class="ident">err</label></code></span>
+<span class="codeline" id="line-195"><code>	}</code></span>
+<span class="codeline" id="line-196"><code></code></span>
+<span class="codeline" id="line-197"><code>	<label for="r40" class="ident">dstWriter</label>, <label for="r34" class="ident">err</label> := <label for="r36" class="ident">destwrepo</label>.<a href="repository.go.html#line-109" class="ident">Writer</a>(<label for="r32" class="ident">destination</label>)</code></span>
+<span class="codeline" id="line-198"><code>	<span class="keyword">if</span> <label for="r34" class="ident">err</label> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-199"><code>		<span class="keyword">return</span> <label for="r34" class="ident">err</label></code></span>
+<span class="codeline" id="line-200"><code>	}</code></span>
+<span class="codeline" id="line-201"><code>	<span class="keyword">defer</span> <label for="r40" class="ident">dstWriter</label>.<a href="../../../../../io/io.go.html#line-108" class="ident">Close</a>()</code></span>
+<span class="codeline" id="line-202"><code></code></span>
+<span class="codeline" id="line-203"><code>	<span class="comment">// Perform the copy.</span></code></span>
+<span class="codeline" id="line-204"><code>	_, <label for="r34" class="ident">err</label> = <a href="../../../../../../pkg/io.html" class="ident i0">io</a>.<a href="../../../../../io/io.go.html#line-387" class="ident">Copy</a>(<label for="r40" class="ident">dstWriter</label>, <label for="r39" class="ident">srcReader</label>)</code></span>
+<span class="codeline" id="line-205"><code>	<span class="keyword">if</span> <label for="r34" class="ident">err</label> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-206"><code>		<span class="keyword">return</span> <label for="r34" class="ident">err</label></code></span>
+<span class="codeline" id="line-207"><code>	}</code></span>
+<span class="codeline" id="line-208"><code></code></span>
+<span class="codeline" id="line-209"><code>	<span class="comment">// Finally, delete the source only if the move finished without error.</span></code></span>
+<span class="codeline" id="line-210"><code>	<label for="r39" class="ident">srcReader</label>.<a href="../../../../../io/io.go.html#line-108" class="ident">Close</a>()</code></span>
+<span class="codeline" id="line-211"><code>	<span class="keyword">return</span> <label for="r38" class="ident">srcwrepo</label>.<a href="repository.go.html#line-121" class="ident">Delete</a>(<label for="r31" class="ident">source</label>)</code></span>
+<span class="codeline" id="line-212"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

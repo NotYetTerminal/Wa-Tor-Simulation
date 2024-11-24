@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: uri.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	uri.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"fmt"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"io"</span></label></code></span>
+<span class="codeline" id="line-6"><code>)</code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// URIReadCloser represents a cross platform data stream from a file or provider of data.</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// It may refer to an item on a filesystem or data in another application that we have access to.</span></code></span>
+<span class="codeline" id="line-10"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-URIReadCloser" class="ident">URIReadCloser</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-11"><code>	<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/io.go.html#line-137" class="ident">ReadCloser</a></code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../../../imp/fyne.io/fyne/v2.URIReadCloser.html#name-URI" class="ident">URI</a>() <a href="#line-32" class="ident">URI</a></code></span>
+<span class="codeline" id="line-14"><code>}</code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// URIWriteCloser represents a cross platform data writer for a file resource.</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// This will normally refer to a local file resource.</span></code></span>
+<span class="codeline" id="line-18"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-URIWriteCloser" class="ident">URIWriteCloser</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/io.go.html#line-143" class="ident">WriteCloser</a></code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code>	<a href="../../../../imp/fyne.io/fyne/v2.URIWriteCloser.html#name-URI" class="ident">URI</a>() <a href="#line-32" class="ident">URI</a></code></span>
+<span class="codeline" id="line-22"><code>}</code></span>
+<span class="codeline" id="line-23"><code></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">// URI represents the identifier of a resource on a target system.  This</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// resource may be a file or another data source such as an app or file sharing</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">// system.</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">// In general, it is expected that URI implementations follow IETF RFC3896.</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">// Implementations are highly recommended to utilize [net/url] to implement URI</span></code></span>
+<span class="codeline" id="line-30"><code><span class="comment">// parsing methods, especially [net/url/url.Scheme], [net/url/url.Authority],</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">// [net/url/url.Path], [net/url/url.Query], and [net/url/url.Fragment].</span></code></span>
+<span class="codeline" id="line-32"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-URI" class="ident">URI</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/print.go.html#line-63" class="ident">Stringer</a></code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code>	<span class="comment">// Extension should return the file extension of the resource</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">	// (including the dot) referenced by the URI. For example, the</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">	// Extension() of 'file://foo/bar.baz' is '.baz'. May return an</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">	// empty string if the referenced resource has none.</span></code></span>
+<span class="codeline" id="line-39"><code>	<a href="../../../../imp/fyne.io/fyne/v2.URI.html#name-Extension" class="ident">Extension</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code>	<span class="comment">// Name should return the base name of the item referenced by the URI.</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">	// For example, the name of 'file://foo/bar.baz' is 'bar.baz'.</span></code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../../../imp/fyne.io/fyne/v2.URI.html#name-Name" class="ident">Name</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code>	<span class="comment">// MimeType should return the content type of the resource referenced</span></code></span>
+<span class="codeline" id="line-46"><code><span class="comment">	// by the URI. The returned string should be in the format described</span></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">	// by Section 5 of RFC2045 ("Content-Type Header Field").</span></code></span>
+<span class="codeline" id="line-48"><code>	<a href="../../../../imp/fyne.io/fyne/v2.URI.html#name-MimeType" class="ident">MimeType</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-49"><code></code></span>
+<span class="codeline" id="line-50"><code>	<span class="comment">// Scheme should return the URI scheme of the URI as defined by IETF</span></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">	// RFC3986. For example, the Scheme() of 'file://foo/bar.baz` is</span></code></span>
+<span class="codeline" id="line-52"><code><span class="comment">	// 'file'.</span></code></span>
+<span class="codeline" id="line-53"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">	// Scheme should always return the scheme in all lower-case characters.</span></code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../../../imp/fyne.io/fyne/v2.URI.html#name-Scheme" class="ident">Scheme</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code>	<span class="comment">// Authority should return the URI authority, as defined by IETF</span></code></span>
+<span class="codeline" id="line-58"><code><span class="comment">	// RFC3986.</span></code></span>
+<span class="codeline" id="line-59"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-60"><code><span class="comment">	// NOTE: the RFC3986 can be obtained by combining the [net/url.URL.User]</span></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">	// and [net/url.URL.Host]. Consult IETF RFC3986, section</span></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">	// 3.2, pp. 17.</span></code></span>
+<span class="codeline" id="line-63"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-64"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-65"><code>	<a href="../../../../imp/fyne.io/fyne/v2.URI.html#name-Authority" class="ident">Authority</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-66"><code></code></span>
+<span class="codeline" id="line-67"><code>	<span class="comment">// Path should return the URI path, as defined by IETF RFC3986.</span></code></span>
+<span class="codeline" id="line-68"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-69"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-70"><code>	<a href="../../../../imp/fyne.io/fyne/v2.URI.html#name-Path" class="ident">Path</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-71"><code></code></span>
+<span class="codeline" id="line-72"><code>	<span class="comment">// Query should return the URI query, as defined by IETF RFC3986.</span></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-74"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-75"><code>	<a href="../../../../imp/fyne.io/fyne/v2.URI.html#name-Query" class="ident">Query</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-76"><code></code></span>
+<span class="codeline" id="line-77"><code>	<span class="comment">// Fragment should return the URI fragment, as defined by IETF</span></code></span>
+<span class="codeline" id="line-78"><code><span class="comment">	// RFC3986.</span></code></span>
+<span class="codeline" id="line-79"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-80"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-81"><code>	<a href="../../../../imp/fyne.io/fyne/v2.URI.html#name-Fragment" class="ident">Fragment</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-82"><code>}</code></span>
+<span class="codeline" id="line-83"><code></code></span>
+<span class="codeline" id="line-84"><code><span class="comment">// ListableURI represents a [URI] that can have child items, most commonly a</span></code></span>
+<span class="codeline" id="line-85"><code><span class="comment">// directory on disk in the native filesystem.</span></code></span>
+<span class="codeline" id="line-86"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-87"><code><span class="comment">// Since: 1.4</span></code></span>
+<span class="codeline" id="line-88"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-ListableURI" class="ident">ListableURI</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-89"><code>	<a href="#line-32" class="ident">URI</a></code></span>
+<span class="codeline" id="line-90"><code></code></span>
+<span class="codeline" id="line-91"><code>	<span class="comment">// List returns a list of child URIs of this URI.</span></code></span>
+<span class="codeline" id="line-92"><code>	<a href="../../../../imp/fyne.io/fyne/v2.ListableURI.html#name-List" class="ident">List</a>() ([]<a href="#line-32" class="ident">URI</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-93"><code>}</code></span>
+<span class="codeline" id="line-94"><code></code></span>
+<span class="codeline" id="line-95"><code><span class="comment">// URIWithIcon describes a [URI] that should be rendered with a certain icon in file browsers.</span></code></span>
+<span class="codeline" id="line-96"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-97"><code><span class="comment">// Since: 2.5</span></code></span>
+<span class="codeline" id="line-98"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-URIWithIcon" class="ident">URIWithIcon</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-99"><code>	<a href="#line-32" class="ident">URI</a></code></span>
+<span class="codeline" id="line-100"><code></code></span>
+<span class="codeline" id="line-101"><code>	<a href="../../../../imp/fyne.io/fyne/v2.URIWithIcon.html#name-Icon" class="ident">Icon</a>() <a href="resource.go.html#line-14" class="ident">Resource</a></code></span>
+<span class="codeline" id="line-102"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

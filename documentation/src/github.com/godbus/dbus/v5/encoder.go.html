@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: encoder.go in package github.com/godbus/dbus/v5</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	encoder.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/godbus/dbus/v5.html">github.com/godbus/dbus/v5</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> dbus</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"bytes"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"encoding/binary"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"io"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i3"><span class="lit-string i3">"reflect"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i4"><span class="lit-string i4">"strings"</span></label></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i5"><span class="lit-string i5">"unicode/utf8"</span></label></code></span>
+<span class="codeline" id="line-10"><code>)</code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// An encoder encodes values to the D-Bus wire format.</span></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-encoder" class="ident">encoder</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-14"><code>	out   <a href="../../../../../pkg/io.html" class="ident i2">io</a>.<a href="../../../../io/io.go.html#line-99" class="ident">Writer</a></code></span>
+<span class="codeline" id="line-15"><code>	fds   []<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-16"><code>	order <a href="../../../../../pkg/encoding/binary.html" class="ident i1">binary</a>.<a href="../../../../encoding/binary/binary.go.html#line-39" class="ident">ByteOrder</a></code></span>
+<span class="codeline" id="line-17"><code>	pos   <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-18"><code>}</code></span>
+<span class="codeline" id="line-19"><code></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">// NewEncoder returns a new encoder that writes to out in the given byte order.</span></code></span>
+<span class="codeline" id="line-21"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-newEncoder" class="ident">newEncoder</a></label>(<label for="r1" class="ident">out</label> <a href="../../../../../pkg/io.html" class="ident i2">io</a>.<a href="../../../../io/io.go.html#line-99" class="ident">Writer</a>, <label for="r2" class="ident">order</label> <a href="../../../../../pkg/encoding/binary.html" class="ident i1">binary</a>.<a href="../../../../encoding/binary/binary.go.html#line-39" class="ident">ByteOrder</a>, <label for="r3" class="ident">fds</label> []<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) *<a href="#line-13" class="ident">encoder</a> {</code></span>
+<span class="codeline" id="line-22"><code>	<label for="r4" class="ident">enc</label> := <a href="#line-29" class="ident">newEncoderAtOffset</a>(<label for="r1" class="ident">out</label>, <span class="lit-number">0</span>, <label for="r2" class="ident">order</label>, <label for="r3" class="ident">fds</label>)</code></span>
+<span class="codeline" id="line-23"><code>	<span class="keyword">return</span> <label for="r4" class="ident">enc</label></code></span>
+<span class="codeline" id="line-24"><code>}</code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">// newEncoderAtOffset returns a new encoder that writes to out in the given</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">// byte order. Specify the offset to initialize pos for proper alignment</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">// computation.</span></code></span>
+<span class="codeline" id="line-29"><code><span class="keyword">func</span> <label for="r5" class="ident"><a href="../../../../../pkg/github.com/godbus/dbus/v5.html#name-newEncoderAtOffset" class="ident">newEncoderAtOffset</a></label>(<label for="r6" class="ident">out</label> <a href="../../../../../pkg/io.html" class="ident i2">io</a>.<a href="../../../../io/io.go.html#line-99" class="ident">Writer</a>, <label for="r7" class="ident">offset</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r8" class="ident">order</label> <a href="../../../../../pkg/encoding/binary.html" class="ident i1">binary</a>.<a href="../../../../encoding/binary/binary.go.html#line-39" class="ident">ByteOrder</a>, <label for="r9" class="ident">fds</label> []<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) *<a href="#line-13" class="ident">encoder</a> {</code></span>
+<span class="codeline" id="line-30"><code>	<label for="r10" class="ident">enc</label> := <a href="../../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="#line-13" class="ident">encoder</a>)</code></span>
+<span class="codeline" id="line-31"><code>	<label for="r10" class="ident">enc</label>.<a href="#line-14" class="ident">out</a> = <label for="r6" class="ident">out</label></code></span>
+<span class="codeline" id="line-32"><code>	<label for="r10" class="ident">enc</label>.<a href="#line-16" class="ident">order</a> = <label for="r8" class="ident">order</label></code></span>
+<span class="codeline" id="line-33"><code>	<label for="r10" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> = <label for="r7" class="ident">offset</label></code></span>
+<span class="codeline" id="line-34"><code>	<label for="r10" class="ident">enc</label>.<a href="#line-15" class="ident">fds</a> = <label for="r9" class="ident">fds</label></code></span>
+<span class="codeline" id="line-35"><code>	<span class="keyword">return</span> <label for="r10" class="ident">enc</label></code></span>
+<span class="codeline" id="line-36"><code>}</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">// Aligns the next output to be on a multiple of n. Panics on write errors.</span></code></span>
+<span class="codeline" id="line-39"><code><span class="keyword">func</span> (<label for="r11" class="ident">enc</label> *<a href="#line-13" class="ident">encoder</a>) <label for="r12" class="ident">align</label>(<label for="r13" class="ident">n</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-40"><code>	<label for="r14" class="ident">pad</label> := <label for="r11" class="ident">enc</label>.<a href="#line-52" class="ident">padding</a>(<span class="lit-number">0</span>, <label for="r13" class="ident">n</label>)</code></span>
+<span class="codeline" id="line-41"><code>	<span class="keyword">if</span> <label for="r14" class="ident">pad</label> &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-42"><code>		<label for="r15" class="ident">empty</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r14" class="ident">pad</label>)</code></span>
+<span class="codeline" id="line-43"><code>		<span class="keyword">if</span> <label for="r16" class="ident">_</label>, <label for="r17" class="ident">err</label> := <label for="r11" class="ident">enc</label>.<a href="#line-14" class="ident">out</a>.<a href="../../../../io/io.go.html#line-100" class="ident">Write</a>(<label for="r15" class="ident">empty</label>); <label for="r17" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-44"><code>			<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<label for="r17" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-45"><code>		}</code></span>
+<span class="codeline" id="line-46"><code>		<label for="r11" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> += <label for="r14" class="ident">pad</label></code></span>
+<span class="codeline" id="line-47"><code>	}</code></span>
+<span class="codeline" id="line-48"><code>}</code></span>
+<span class="codeline" id="line-49"><code></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">// pad returns the number of bytes of padding, based on current position and additional offset.</span></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">// and alignment.</span></code></span>
+<span class="codeline" id="line-52"><code><span class="keyword">func</span> (<label for="r18" class="ident">enc</label> *<a href="#line-13" class="ident">encoder</a>) <label for="r19" class="ident">padding</label>(<label for="r20" class="ident">offset</label>, <label for="r21" class="ident">algn</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-53"><code>	<label for="r22" class="ident">abs</label> := <label for="r18" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> + <label for="r20" class="ident">offset</label></code></span>
+<span class="codeline" id="line-54"><code>	<span class="keyword">if</span> <label for="r22" class="ident">abs</label>%<label for="r21" class="ident">algn</label> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-55"><code>		<label for="r23" class="ident">newabs</label> := (<label for="r22" class="ident">abs</label> + <label for="r21" class="ident">algn</label> - <span class="lit-number">1</span>) &amp; ^(<label for="r21" class="ident">algn</label> - <span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-56"><code>		<span class="keyword">return</span> <label for="r23" class="ident">newabs</label> - <label for="r22" class="ident">abs</label></code></span>
+<span class="codeline" id="line-57"><code>	}</code></span>
+<span class="codeline" id="line-58"><code>	<span class="keyword">return</span> <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-59"><code>}</code></span>
+<span class="codeline" id="line-60"><code></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">// Calls binary.Write(enc.out, enc.order, v) and panics on write errors.</span></code></span>
+<span class="codeline" id="line-62"><code><span class="keyword">func</span> (<label for="r24" class="ident">enc</label> *<a href="#line-13" class="ident">encoder</a>) <label for="r25" class="ident">binwrite</label>(<label for="r26" class="ident">v</label> <span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-63"><code>	<span class="keyword">if</span> <label for="r27" class="ident">err</label> := <a href="../../../../../pkg/encoding/binary.html" class="ident i1">binary</a>.<a href="../../../../encoding/binary/binary.go.html#line-392" class="ident">Write</a>(<label for="r24" class="ident">enc</label>.<a href="#line-14" class="ident">out</a>, <label for="r24" class="ident">enc</label>.<a href="#line-16" class="ident">order</a>, <label for="r26" class="ident">v</label>); <label for="r27" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-64"><code>		<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<label for="r27" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-65"><code>	}</code></span>
+<span class="codeline" id="line-66"><code>}</code></span>
+<span class="codeline" id="line-67"><code></code></span>
+<span class="codeline" id="line-68"><code><span class="comment">// Encode encodes the given values to the underlying reader. All written values</span></code></span>
+<span class="codeline" id="line-69"><code><span class="comment">// are aligned properly as required by the D-Bus spec.</span></code></span>
+<span class="codeline" id="line-70"><code><span class="keyword">func</span> (<label for="r28" class="ident">enc</label> *<a href="#line-13" class="ident">encoder</a>) <label for="r29" class="ident">Encode</label>(<label for="r30" class="ident">vs</label> ...<span class="keyword">interface</span>{}) (<label for="r31" class="ident">err</label> <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-71"><code>	<span class="keyword">defer</span> <span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-72"><code>		<label for="r31" class="ident">err</label>, _ = <a href="../../../../../pkg/builtin.html#name-recover" class="ident">recover</a>().(<a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-73"><code>	}()</code></span>
+<span class="codeline" id="line-74"><code>	<span class="keyword">for</span> <label for="r32" class="ident">_</label>, <label for="r33" class="ident">v</label> := <span class="keyword">range</span> <label for="r30" class="ident">vs</label> {</code></span>
+<span class="codeline" id="line-75"><code>		<label for="r28" class="ident">enc</label>.<a href="#line-82" class="ident">encode</a>(<a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/value.go.html#line-3262" class="ident">ValueOf</a>(<label for="r33" class="ident">v</label>), <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-76"><code>	}</code></span>
+<span class="codeline" id="line-77"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-78"><code>}</code></span>
+<span class="codeline" id="line-79"><code></code></span>
+<span class="codeline" id="line-80"><code><span class="comment">// encode encodes the given value to the writer and panics on error. depth holds</span></code></span>
+<span class="codeline" id="line-81"><code><span class="comment">// the depth of the container nesting.</span></code></span>
+<span class="codeline" id="line-82"><code><span class="keyword">func</span> (<label for="r34" class="ident">enc</label> *<a href="#line-13" class="ident">encoder</a>) <label for="r35" class="ident">encode</label>(<label for="r36" class="ident">v</label> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/value.go.html#line-39" class="ident">Value</a>, <label for="r37" class="ident">depth</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-83"><code>	<span class="keyword">if</span> <label for="r37" class="ident">depth</label> &gt; <span class="lit-number">64</span> {</code></span>
+<span class="codeline" id="line-84"><code>		<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="decoder.go.html#line-288" class="ident">FormatError</a>(<span class="lit-string">"input exceeds depth limitation"</span>))</code></span>
+<span class="codeline" id="line-85"><code>	}</code></span>
+<span class="codeline" id="line-86"><code>	<label for="r34" class="ident">enc</label>.<a href="#line-39" class="ident">align</a>(<a href="dbus.go.html#line-344" class="ident">alignment</a>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2678" class="ident">Type</a>()))</code></span>
+<span class="codeline" id="line-87"><code>	<span class="keyword">switch</span> <label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1747" class="ident">Kind</a>() {</code></span>
+<span class="codeline" id="line-88"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-281" class="ident">Uint8</a>:</code></span>
+<span class="codeline" id="line-89"><code>		<span class="keyword">var</span> <label for="r38" class="ident">b</label> [<span class="lit-number">1</span>]<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-90"><code>		<label for="r38" class="ident">b</label>[<span class="lit-number">0</span>] = <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2728" class="ident">Uint</a>())</code></span>
+<span class="codeline" id="line-91"><code>		<span class="keyword">if</span> <label for="r39" class="ident">_</label>, <label for="r40" class="ident">err</label> := <label for="r34" class="ident">enc</label>.<a href="#line-14" class="ident">out</a>.<a href="../../../../io/io.go.html#line-100" class="ident">Write</a>(<label for="r38" class="ident">b</label>[:]); <label for="r40" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-92"><code>			<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<label for="r40" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-93"><code>		}</code></span>
+<span class="codeline" id="line-94"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a>++</code></span>
+<span class="codeline" id="line-95"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-274" class="ident">Bool</a>:</code></span>
+<span class="codeline" id="line-96"><code>		<span class="keyword">if</span> <label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-278" class="ident">Bool</a>() {</code></span>
+<span class="codeline" id="line-97"><code>			<label for="r34" class="ident">enc</label>.<label for="r35" class="ident">encode</label>(<a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/value.go.html#line-3262" class="ident">ValueOf</a>(<a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<span class="lit-number">1</span>)), <label for="r37" class="ident">depth</label>)</code></span>
+<span class="codeline" id="line-98"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-99"><code>			<label for="r34" class="ident">enc</label>.<label for="r35" class="ident">encode</label>(<a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/value.go.html#line-3262" class="ident">ValueOf</a>(<a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<span class="lit-number">0</span>)), <label for="r37" class="ident">depth</label>)</code></span>
+<span class="codeline" id="line-100"><code>		}</code></span>
+<span class="codeline" id="line-101"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-277" class="ident">Int16</a>:</code></span>
+<span class="codeline" id="line-102"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-62" class="ident">binwrite</a>(<a href="../../../../../pkg/builtin.html#name-int16" class="ident">int16</a>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1447" class="ident">Int</a>()))</code></span>
+<span class="codeline" id="line-103"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> += <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-104"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-282" class="ident">Uint16</a>:</code></span>
+<span class="codeline" id="line-105"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-62" class="ident">binwrite</a>(<a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2728" class="ident">Uint</a>()))</code></span>
+<span class="codeline" id="line-106"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> += <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-107"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-275" class="ident">Int</a>, <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-278" class="ident">Int32</a>:</code></span>
+<span class="codeline" id="line-108"><code>		<span class="keyword">if</span> <label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2678" class="ident">Type</a>() == <a href="dbus.go.html#line-29" class="ident">unixFDType</a> {</code></span>
+<span class="codeline" id="line-109"><code>			<label for="r41" class="ident">fd</label> := <label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1447" class="ident">Int</a>()</code></span>
+<span class="codeline" id="line-110"><code>			<label for="r42" class="ident">idx</label> := <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r34" class="ident">enc</label>.<a href="#line-15" class="ident">fds</a>)</code></span>
+<span class="codeline" id="line-111"><code>			<label for="r34" class="ident">enc</label>.<a href="#line-15" class="ident">fds</a> = <a href="../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r34" class="ident">enc</label>.<a href="#line-15" class="ident">fds</a>, <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r41" class="ident">fd</label>))</code></span>
+<span class="codeline" id="line-112"><code>			<label for="r34" class="ident">enc</label>.<a href="#line-62" class="ident">binwrite</a>(<a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r42" class="ident">idx</label>))</code></span>
+<span class="codeline" id="line-113"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-114"><code>			<label for="r34" class="ident">enc</label>.<a href="#line-62" class="ident">binwrite</a>(<a href="../../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1447" class="ident">Int</a>()))</code></span>
+<span class="codeline" id="line-115"><code>		}</code></span>
+<span class="codeline" id="line-116"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> += <span class="lit-number">4</span></code></span>
+<span class="codeline" id="line-117"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-280" class="ident">Uint</a>, <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-283" class="ident">Uint32</a>:</code></span>
+<span class="codeline" id="line-118"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-62" class="ident">binwrite</a>(<a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2728" class="ident">Uint</a>()))</code></span>
+<span class="codeline" id="line-119"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> += <span class="lit-number">4</span></code></span>
+<span class="codeline" id="line-120"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-279" class="ident">Int64</a>:</code></span>
+<span class="codeline" id="line-121"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-62" class="ident">binwrite</a>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1447" class="ident">Int</a>())</code></span>
+<span class="codeline" id="line-122"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> += <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-123"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-284" class="ident">Uint64</a>:</code></span>
+<span class="codeline" id="line-124"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-62" class="ident">binwrite</a>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2728" class="ident">Uint</a>())</code></span>
+<span class="codeline" id="line-125"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> += <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-126"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-287" class="ident">Float64</a>:</code></span>
+<span class="codeline" id="line-127"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-62" class="ident">binwrite</a>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1376" class="ident">Float</a>())</code></span>
+<span class="codeline" id="line-128"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> += <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-129"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-297" class="ident">String</a>:</code></span>
+<span class="codeline" id="line-130"><code>		<label for="r43" class="ident">str</label> := <label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2639" class="ident">String</a>()</code></span>
+<span class="codeline" id="line-131"><code>		<span class="keyword">if</span> !<a href="../../../../../pkg/unicode/utf8.html" class="ident i5">utf8</a>.<a href="../../../../unicode/utf8/utf8.go.html#line-528" class="ident">ValidString</a>(<label for="r43" class="ident">str</label>) {</code></span>
+<span class="codeline" id="line-132"><code>			<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="decoder.go.html#line-288" class="ident">FormatError</a>(<span class="lit-string">"input has a not-utf8 char in string"</span>))</code></span>
+<span class="codeline" id="line-133"><code>		}</code></span>
+<span class="codeline" id="line-134"><code>		<span class="keyword">if</span> <a href="../../../../../pkg/strings.html" class="ident i4">strings</a>.<a href="../../../../strings/strings.go.html#line-118" class="ident">IndexByte</a>(<label for="r43" class="ident">str</label>, <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-number">0</span>)) != -<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-135"><code>			<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="decoder.go.html#line-288" class="ident">FormatError</a>(<span class="lit-string">"input has a null char('\\000') in string"</span>))</code></span>
+<span class="codeline" id="line-136"><code>		}</code></span>
+<span class="codeline" id="line-137"><code>		<span class="keyword">if</span> <label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2678" class="ident">Type</a>() == <a href="dbus.go.html#line-25" class="ident">objectPathType</a> {</code></span>
+<span class="codeline" id="line-138"><code>			<span class="keyword">if</span> !<a href="dbus.go.html#line-304" class="ident">ObjectPath</a>(<label for="r43" class="ident">str</label>).<a href="dbus.go.html#line-307" class="ident">IsValid</a>() {</code></span>
+<span class="codeline" id="line-139"><code>				<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="decoder.go.html#line-288" class="ident">FormatError</a>(<span class="lit-string">"invalid object path"</span>))</code></span>
+<span class="codeline" id="line-140"><code>			}</code></span>
+<span class="codeline" id="line-141"><code>		}</code></span>
+<span class="codeline" id="line-142"><code>		<label for="r34" class="ident">enc</label>.<label for="r35" class="ident">encode</label>(<a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/value.go.html#line-3262" class="ident">ValueOf</a>(<a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r43" class="ident">str</label>))), <label for="r37" class="ident">depth</label>)</code></span>
+<span class="codeline" id="line-143"><code>		<label for="r44" class="ident">b</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1753" class="ident">Len</a>()+<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-144"><code>		<a href="../../../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r44" class="ident">b</label>, <label for="r43" class="ident">str</label>)</code></span>
+<span class="codeline" id="line-145"><code>		<label for="r44" class="ident">b</label>[<a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r44" class="ident">b</label>)-<span class="lit-number">1</span>] = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-146"><code>		<label for="r45" class="ident">n</label>, <label for="r46" class="ident">err</label> := <label for="r34" class="ident">enc</label>.<a href="#line-14" class="ident">out</a>.<a href="../../../../io/io.go.html#line-100" class="ident">Write</a>(<label for="r44" class="ident">b</label>)</code></span>
+<span class="codeline" id="line-147"><code>		<span class="keyword">if</span> <label for="r46" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-148"><code>			<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<label for="r46" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-149"><code>		}</code></span>
+<span class="codeline" id="line-150"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> += <label for="r45" class="ident">n</label></code></span>
+<span class="codeline" id="line-151"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-303" class="ident">Ptr</a>:</code></span>
+<span class="codeline" id="line-152"><code>		<label for="r34" class="ident">enc</label>.<label for="r35" class="ident">encode</label>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1215" class="ident">Elem</a>(), <label for="r37" class="ident">depth</label>)</code></span>
+<span class="codeline" id="line-153"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-296" class="ident">Slice</a>, <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-290" class="ident">Array</a>:</code></span>
+<span class="codeline" id="line-154"><code>		<span class="comment">// Lookahead offset: 4 bytes for uint32 length (with alignment),</span></code></span>
+<span class="codeline" id="line-155"><code><span class="comment">		// plus alignment for elements.</span></code></span>
+<span class="codeline" id="line-156"><code>		<label for="r47" class="ident">n</label> := <label for="r34" class="ident">enc</label>.<a href="#line-52" class="ident">padding</a>(<span class="lit-number">0</span>, <span class="lit-number">4</span>) + <span class="lit-number">4</span></code></span>
+<span class="codeline" id="line-157"><code>		<label for="r48" class="ident">offset</label> := <label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> + <label for="r47" class="ident">n</label> + <label for="r34" class="ident">enc</label>.<a href="#line-52" class="ident">padding</a>(<label for="r47" class="ident">n</label>, <a href="dbus.go.html#line-344" class="ident">alignment</a>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2678" class="ident">Type</a>().<a href="../../../../reflect/type.go.html#line-160" class="ident">Elem</a>()))</code></span>
+<span class="codeline" id="line-158"><code></code></span>
+<span class="codeline" id="line-159"><code>		<span class="keyword">var</span> <label for="r49" class="ident">buf</label> <a href="../../../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../../../bytes/buffer.go.html#line-20" class="ident">Buffer</a></code></span>
+<span class="codeline" id="line-160"><code>		<label for="r50" class="ident">bufenc</label> := <a href="#line-29" class="ident">newEncoderAtOffset</a>(&amp;<label for="r49" class="ident">buf</label>, <label for="r48" class="ident">offset</label>, <label for="r34" class="ident">enc</label>.<a href="#line-16" class="ident">order</a>, <label for="r34" class="ident">enc</label>.<a href="#line-15" class="ident">fds</a>)</code></span>
+<span class="codeline" id="line-161"><code></code></span>
+<span class="codeline" id="line-162"><code>		<span class="keyword">for</span> <label for="r51" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r51" class="ident">i</label> &lt; <label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1753" class="ident">Len</a>(); <label for="r51" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-163"><code>			<label for="r50" class="ident">bufenc</label>.<label for="r35" class="ident">encode</label>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1391" class="ident">Index</a>(<label for="r51" class="ident">i</label>), <label for="r37" class="ident">depth</label>+<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-164"><code>		}</code></span>
+<span class="codeline" id="line-165"><code></code></span>
+<span class="codeline" id="line-166"><code>		<span class="keyword">if</span> <label for="r49" class="ident">buf</label>.<a href="../../../../bytes/buffer.go.html#line-79" class="ident">Len</a>() &gt; <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">26</span> {</code></span>
+<span class="codeline" id="line-167"><code>			<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="decoder.go.html#line-288" class="ident">FormatError</a>(<span class="lit-string">"input exceeds array size limitation"</span>))</code></span>
+<span class="codeline" id="line-168"><code>		}</code></span>
+<span class="codeline" id="line-169"><code></code></span>
+<span class="codeline" id="line-170"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-15" class="ident">fds</a> = <label for="r50" class="ident">bufenc</label>.<a href="#line-15" class="ident">fds</a></code></span>
+<span class="codeline" id="line-171"><code>		<label for="r34" class="ident">enc</label>.<label for="r35" class="ident">encode</label>(<a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/value.go.html#line-3262" class="ident">ValueOf</a>(<a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r49" class="ident">buf</label>.<a href="../../../../bytes/buffer.go.html#line-79" class="ident">Len</a>())), <label for="r37" class="ident">depth</label>)</code></span>
+<span class="codeline" id="line-172"><code>		<label for="r52" class="ident">length</label> := <label for="r49" class="ident">buf</label>.<a href="../../../../bytes/buffer.go.html#line-79" class="ident">Len</a>()</code></span>
+<span class="codeline" id="line-173"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-39" class="ident">align</a>(<a href="dbus.go.html#line-344" class="ident">alignment</a>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2678" class="ident">Type</a>().<a href="../../../../reflect/type.go.html#line-160" class="ident">Elem</a>()))</code></span>
+<span class="codeline" id="line-174"><code>		<span class="keyword">if</span> <label for="r53" class="ident">_</label>, <label for="r54" class="ident">err</label> := <label for="r49" class="ident">buf</label>.<a href="../../../../bytes/buffer.go.html#line-258" class="ident">WriteTo</a>(<label for="r34" class="ident">enc</label>.<a href="#line-14" class="ident">out</a>); <label for="r54" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-175"><code>			<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<label for="r54" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-176"><code>		}</code></span>
+<span class="codeline" id="line-177"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> += <label for="r52" class="ident">length</label></code></span>
+<span class="codeline" id="line-178"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-298" class="ident">Struct</a>:</code></span>
+<span class="codeline" id="line-179"><code>		<span class="keyword">switch</span> <label for="r55" class="ident">t</label> := <label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2678" class="ident">Type</a>(); <label for="r55" class="ident">t</label> {</code></span>
+<span class="codeline" id="line-180"><code>		<span class="keyword">case</span> <a href="dbus.go.html#line-24" class="ident">signatureType</a>:</code></span>
+<span class="codeline" id="line-181"><code>			<label for="r56" class="ident">str</label> := <label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1267" class="ident">Field</a>(<span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-182"><code>			<label for="r34" class="ident">enc</label>.<label for="r35" class="ident">encode</label>(<a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/value.go.html#line-3262" class="ident">ValueOf</a>(<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r56" class="ident">str</label>.<a href="../../../../reflect/value.go.html#line-1753" class="ident">Len</a>())), <label for="r37" class="ident">depth</label>)</code></span>
+<span class="codeline" id="line-183"><code>			<label for="r57" class="ident">b</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r56" class="ident">str</label>.<a href="../../../../reflect/value.go.html#line-1753" class="ident">Len</a>()+<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-184"><code>			<a href="../../../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r57" class="ident">b</label>, <label for="r56" class="ident">str</label>.<a href="../../../../reflect/value.go.html#line-2639" class="ident">String</a>())</code></span>
+<span class="codeline" id="line-185"><code>			<label for="r57" class="ident">b</label>[<a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r57" class="ident">b</label>)-<span class="lit-number">1</span>] = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-186"><code>			<label for="r58" class="ident">n</label>, <label for="r59" class="ident">err</label> := <label for="r34" class="ident">enc</label>.<a href="#line-14" class="ident">out</a>.<a href="../../../../io/io.go.html#line-100" class="ident">Write</a>(<label for="r57" class="ident">b</label>)</code></span>
+<span class="codeline" id="line-187"><code>			<span class="keyword">if</span> <label for="r59" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-188"><code>				<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<label for="r59" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-189"><code>			}</code></span>
+<span class="codeline" id="line-190"><code>			<label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> += <label for="r58" class="ident">n</label></code></span>
+<span class="codeline" id="line-191"><code>		<span class="keyword">case</span> <a href="dbus.go.html#line-26" class="ident">variantType</a>:</code></span>
+<span class="codeline" id="line-192"><code>			<label for="r60" class="ident">variant</label> := <label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1480" class="ident">Interface</a>().(<a href="variant.go.html#line-12" class="ident">Variant</a>)</code></span>
+<span class="codeline" id="line-193"><code>			<label for="r34" class="ident">enc</label>.<label for="r35" class="ident">encode</label>(<a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/value.go.html#line-3262" class="ident">ValueOf</a>(<label for="r60" class="ident">variant</label>.<a href="variant.go.html#line-13" class="ident">sig</a>), <label for="r37" class="ident">depth</label>+<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-194"><code>			<label for="r34" class="ident">enc</label>.<label for="r35" class="ident">encode</label>(<a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/value.go.html#line-3262" class="ident">ValueOf</a>(<label for="r60" class="ident">variant</label>.<a href="variant.go.html#line-14" class="ident">value</a>), <label for="r37" class="ident">depth</label>+<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-195"><code>		<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-196"><code>			<span class="keyword">for</span> <label for="r61" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r61" class="ident">i</label> &lt; <label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2678" class="ident">Type</a>().<a href="../../../../reflect/type.go.html#line-213" class="ident">NumField</a>(); <label for="r61" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-197"><code>				<label for="r62" class="ident">field</label> := <label for="r55" class="ident">t</label>.<a href="../../../../reflect/type.go.html#line-165" class="ident">Field</a>(<label for="r61" class="ident">i</label>)</code></span>
+<span class="codeline" id="line-198"><code>				<span class="keyword">if</span> <label for="r62" class="ident">field</label>.<a href="../../../../reflect/type.go.html#line-1019" class="ident">PkgPath</a> == <span class="lit-string">""</span> &amp;&amp; <label for="r62" class="ident">field</label>.<a href="../../../../reflect/type.go.html#line-1022" class="ident">Tag</a>.<a href="../../../../reflect/type.go.html#line-1048" class="ident">Get</a>(<span class="lit-string">"dbus"</span>) != <span class="lit-string">"-"</span> {</code></span>
+<span class="codeline" id="line-199"><code>					<label for="r34" class="ident">enc</label>.<label for="r35" class="ident">encode</label>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1267" class="ident">Field</a>(<label for="r61" class="ident">i</label>), <label for="r37" class="ident">depth</label>+<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-200"><code>				}</code></span>
+<span class="codeline" id="line-201"><code>			}</code></span>
+<span class="codeline" id="line-202"><code>		}</code></span>
+<span class="codeline" id="line-203"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-294" class="ident">Map</a>:</code></span>
+<span class="codeline" id="line-204"><code>		<span class="comment">// Maps are arrays of structures, so they actually increase the depth by</span></code></span>
+<span class="codeline" id="line-205"><code><span class="comment">		// 2.</span></code></span>
+<span class="codeline" id="line-206"><code>		<span class="keyword">if</span> !<a href="dbus.go.html#line-371" class="ident">isKeyType</a>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2678" class="ident">Type</a>().<a href="../../../../reflect/type.go.html#line-205" class="ident">Key</a>()) {</code></span>
+<span class="codeline" id="line-207"><code>			<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="dbus.go.html#line-36" class="ident">InvalidTypeError</a>{<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2678" class="ident">Type</a>()})</code></span>
+<span class="codeline" id="line-208"><code>		}</code></span>
+<span class="codeline" id="line-209"><code>		<label for="r63" class="ident">keys</label> := <label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1827" class="ident">MapKeys</a>()</code></span>
+<span class="codeline" id="line-210"><code>		<span class="comment">// Lookahead offset: 4 bytes for uint32 length (with alignment),</span></code></span>
+<span class="codeline" id="line-211"><code><span class="comment">		// plus 8-byte alignment</span></code></span>
+<span class="codeline" id="line-212"><code>		<label for="r64" class="ident">n</label> := <label for="r34" class="ident">enc</label>.<a href="#line-52" class="ident">padding</a>(<span class="lit-number">0</span>, <span class="lit-number">4</span>) + <span class="lit-number">4</span></code></span>
+<span class="codeline" id="line-213"><code>		<label for="r65" class="ident">offset</label> := <label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> + <label for="r64" class="ident">n</label> + <label for="r34" class="ident">enc</label>.<a href="#line-52" class="ident">padding</a>(<label for="r64" class="ident">n</label>, <span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-214"><code></code></span>
+<span class="codeline" id="line-215"><code>		<span class="keyword">var</span> <label for="r66" class="ident">buf</label> <a href="../../../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../../../bytes/buffer.go.html#line-20" class="ident">Buffer</a></code></span>
+<span class="codeline" id="line-216"><code>		<label for="r67" class="ident">bufenc</label> := <a href="#line-29" class="ident">newEncoderAtOffset</a>(&amp;<label for="r66" class="ident">buf</label>, <label for="r65" class="ident">offset</label>, <label for="r34" class="ident">enc</label>.<a href="#line-16" class="ident">order</a>, <label for="r34" class="ident">enc</label>.<a href="#line-15" class="ident">fds</a>)</code></span>
+<span class="codeline" id="line-217"><code>		<span class="keyword">for</span> <label for="r68" class="ident">_</label>, <label for="r69" class="ident">k</label> := <span class="keyword">range</span> <label for="r63" class="ident">keys</label> {</code></span>
+<span class="codeline" id="line-218"><code>			<label for="r67" class="ident">bufenc</label>.<a href="#line-39" class="ident">align</a>(<span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-219"><code>			<label for="r67" class="ident">bufenc</label>.<label for="r35" class="ident">encode</label>(<label for="r69" class="ident">k</label>, <label for="r37" class="ident">depth</label>+<span class="lit-number">2</span>)</code></span>
+<span class="codeline" id="line-220"><code>			<label for="r67" class="ident">bufenc</label>.<label for="r35" class="ident">encode</label>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1788" class="ident">MapIndex</a>(<label for="r69" class="ident">k</label>), <label for="r37" class="ident">depth</label>+<span class="lit-number">2</span>)</code></span>
+<span class="codeline" id="line-221"><code>		}</code></span>
+<span class="codeline" id="line-222"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-15" class="ident">fds</a> = <label for="r67" class="ident">bufenc</label>.<a href="#line-15" class="ident">fds</a></code></span>
+<span class="codeline" id="line-223"><code>		<label for="r34" class="ident">enc</label>.<label for="r35" class="ident">encode</label>(<a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/value.go.html#line-3262" class="ident">ValueOf</a>(<a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r66" class="ident">buf</label>.<a href="../../../../bytes/buffer.go.html#line-79" class="ident">Len</a>())), <label for="r37" class="ident">depth</label>)</code></span>
+<span class="codeline" id="line-224"><code>		<label for="r70" class="ident">length</label> := <label for="r66" class="ident">buf</label>.<a href="../../../../bytes/buffer.go.html#line-79" class="ident">Len</a>()</code></span>
+<span class="codeline" id="line-225"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-39" class="ident">align</a>(<span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-226"><code>		<span class="keyword">if</span> <label for="r71" class="ident">_</label>, <label for="r72" class="ident">err</label> := <label for="r66" class="ident">buf</label>.<a href="../../../../bytes/buffer.go.html#line-258" class="ident">WriteTo</a>(<label for="r34" class="ident">enc</label>.<a href="#line-14" class="ident">out</a>); <label for="r72" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-227"><code>			<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<label for="r72" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-228"><code>		}</code></span>
+<span class="codeline" id="line-229"><code>		<label for="r34" class="ident">enc</label>.<a href="#line-17" class="ident">pos</a> += <label for="r70" class="ident">length</label></code></span>
+<span class="codeline" id="line-230"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/type.go.html#line-293" class="ident">Interface</a>:</code></span>
+<span class="codeline" id="line-231"><code>		<label for="r34" class="ident">enc</label>.<label for="r35" class="ident">encode</label>(<a href="../../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../../reflect/value.go.html#line-3262" class="ident">ValueOf</a>(<a href="variant.go.html#line-19" class="ident">MakeVariant</a>(<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-1480" class="ident">Interface</a>())), <label for="r37" class="ident">depth</label>)</code></span>
+<span class="codeline" id="line-232"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-233"><code>		<a href="../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="dbus.go.html#line-36" class="ident">InvalidTypeError</a>{<label for="r36" class="ident">v</label>.<a href="../../../../reflect/value.go.html#line-2678" class="ident">Type</a>()})</code></span>
+<span class="codeline" id="line-234"><code>	}</code></span>
+<span class="codeline" id="line-235"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

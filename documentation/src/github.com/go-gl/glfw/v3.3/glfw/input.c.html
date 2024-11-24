@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: input.c in package github.com/go-gl/glfw/v3.3/glfw</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	input.c
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/github.com/go-gl/glfw/v3.3/glfw.html">github.com/go-gl/glfw/v3.3/glfw</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code>#include "_cgo_export.h"</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code>void glfwSetJoystickCallbackCB() {</code></span>
+<span class="codeline" id="line-4"><code>  glfwSetJoystickCallback((GLFWjoystickfun)goJoystickCB);</code></span>
+<span class="codeline" id="line-5"><code>}</code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code>void glfwSetKeyCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-8"><code>  glfwSetKeyCallback(window, (GLFWkeyfun)goKeyCB);</code></span>
+<span class="codeline" id="line-9"><code>}</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code>void glfwSetCharCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-12"><code>  glfwSetCharCallback(window, (GLFWcharfun)goCharCB);</code></span>
+<span class="codeline" id="line-13"><code>}</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code>void glfwSetCharModsCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-16"><code>  glfwSetCharModsCallback(window, (GLFWcharmodsfun)goCharModsCB);</code></span>
+<span class="codeline" id="line-17"><code>}</code></span>
+<span class="codeline" id="line-18"><code></code></span>
+<span class="codeline" id="line-19"><code>void glfwSetMouseButtonCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-20"><code>  glfwSetMouseButtonCallback(window, (GLFWmousebuttonfun)goMouseButtonCB);</code></span>
+<span class="codeline" id="line-21"><code>}</code></span>
+<span class="codeline" id="line-22"><code></code></span>
+<span class="codeline" id="line-23"><code>void glfwSetCursorPosCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-24"><code>  glfwSetCursorPosCallback(window, (GLFWcursorposfun)goCursorPosCB);</code></span>
+<span class="codeline" id="line-25"><code>}</code></span>
+<span class="codeline" id="line-26"><code></code></span>
+<span class="codeline" id="line-27"><code>void glfwSetCursorEnterCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-28"><code>  glfwSetCursorEnterCallback(window, (GLFWcursorenterfun)goCursorEnterCB);</code></span>
+<span class="codeline" id="line-29"><code>}</code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code>void glfwSetScrollCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-32"><code>  glfwSetScrollCallback(window, (GLFWscrollfun)goScrollCB);</code></span>
+<span class="codeline" id="line-33"><code>}</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code>void glfwSetDropCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-36"><code>  glfwSetDropCallback(window, (GLFWdropfun)goDropCB);</code></span>
+<span class="codeline" id="line-37"><code>}</code></span>
+<span class="codeline" id="line-38"><code></code></span>
+<span class="codeline" id="line-39"><code>float GetAxisAtIndex(float *axis, int i) { return axis[i]; }</code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code>unsigned char GetButtonsAtIndex(unsigned char *buttons, int i) {</code></span>
+<span class="codeline" id="line-42"><code>  return buttons[i];</code></span>
+<span class="codeline" id="line-43"><code>}</code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code>unsigned char GetGamepadButtonAtIndex(GLFWgamepadstate *gp, int i) {</code></span>
+<span class="codeline" id="line-46"><code>  return gp-&gt;buttons[i];</code></span>
+<span class="codeline" id="line-47"><code>}</code></span>
+<span class="codeline" id="line-48"><code></code></span>
+<span class="codeline" id="line-49"><code>float GetGamepadAxisAtIndex(GLFWgamepadstate *gp, int i) { return gp-&gt;axes[i]; }</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

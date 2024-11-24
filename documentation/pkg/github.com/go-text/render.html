@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/go-text/render</title>
+<link href="../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>render</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-github.com/go-text/render">github.com/go-text/render</a><i> (on <a href="https://pkg.go.dev/github.com/go-text/render" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../dep/github.com/go-text/render.html">16 packages</a>, and imported by <a href="../../../dep/github.com/go-text/render.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../src/github.com/go-text/render/bitmap.go.html">bitmap.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/go-text/render/render.go.html">render.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/go-text/render/svg.go.html">svg.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 2, in which 1 is exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Renderer" data-popularity="350">	<input type='checkbox' class="fold" id="Renderer-fold-content"><label for="Renderer-fold-content"> type <a href="../../../src/github.com/go-text/render/render.go.html#line-19">Renderer</a> <i>(struct)</i></label><span id='Renderer-fold-content-docs' class="fold-docs">
+<span class="md-text">		Renderer defines a type that can render strings to a bitmap canvas.
+		The size and look of output depends on the various fields in this struct.
+		Developers should provide suitable output images for their draw requests.
+		This type is not thread safe so instances should be used from only 1 goroutine.</span>
+
+		<input type='checkbox' class="fold" id="Renderer-fold-fields"><label for="Renderer-fold-fields">Fields (<i>total 7, in which 3 are exported</i>)</label><span id='Renderer-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Renderer-fold-field-Color"><label for="Renderer-fold-field-Color"><a href="../../../src/github.com/go-text/render/render.go.html#line-27">Color</a> <i><a href="../../image/color.html">color</a>.<a href="../../image/color.html#name-Color">Color</a></i></label><span id='Renderer-fold-field-Color-docs' class="fold-docs">
+<span class="md-text">				Color is the pen colour for rendering</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Renderer-fold-field-FontSize"><label for="Renderer-fold-field-FontSize"><a href="../../../src/github.com/go-text/render/render.go.html#line-21">FontSize</a> <i><a href="../../builtin.html#name-float32">float32</a></i></label><span id='Renderer-fold-field-FontSize-docs' class="fold-docs">
+<span class="md-text">				FontSize defines the point size of output text, commonly between 10 and 14 for regular text</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Renderer-fold-field-PixScale"><label for="Renderer-fold-field-PixScale"><a href="../../../src/github.com/go-text/render/render.go.html#line-25">PixScale</a> <i><a href="../../builtin.html#name-float32">float32</a></i></label><span id='Renderer-fold-field-PixScale-docs' class="fold-docs">
+<span class="md-text">				PixScale is used to indicate the pixel density of your output target.
+				For example on a hi-DPI (or "retina") display this may be 2.0.
+				Default value is 1.0, meaning 1 pixel on the image for each render pixel.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Renderer-showhide-fields"><i><label for="Renderer-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="Renderer-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/go-text/render/render.go.html#line-31">filler</a> <i>*<a href="../srwiley/rasterx.html">rasterx</a>.<a href="../srwiley/rasterx.html#name-Filler">Filler</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/go-text/render/render.go.html#line-32">fillerScale</a> <i><a href="../../builtin.html#name-float32">float32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/go-text/render/render.go.html#line-29">segmenter</a> <i><a href="typesetting/shaping.html">shaping</a>.<a href="typesetting/shaping.html#name-Segmenter">Segmenter</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/go-text/render/render.go.html#line-30">shaper</a> <i><a href="typesetting/shaping.html">shaping</a>.<a href="typesetting/shaping.html#name-HarfbuzzShaper">HarfbuzzShaper</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Renderer-fold-methods"><label for="Renderer-fold-methods">Methods (<i>total 7, in which 3 are exported</i>)</label><span id='Renderer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Renderer-fold-method-DrawShapedRunAt"><label for="Renderer-fold-method-DrawShapedRunAt">(*Renderer) <a href="../../../src/github.com/go-text/render/render.go.html#line-86">DrawShapedRunAt</a>(run <a href="typesetting/shaping.html">shaping</a>.<a href="typesetting/shaping.html#name-Output">Output</a>, img <a href="../../image/draw.html">draw</a>.<a href="../../image/draw.html#name-Image">Image</a>, startX, startY <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-int">int</a></label><span id='Renderer-fold-method-DrawShapedRunAt-docs' class="fold-docs">
+<span class="md-text">				DrawShapedRunAt will rasterise the given shaper run into the output image using font face referenced in the shaping.
+				The text will be drawn starting at the startX, startY pixel position.
+				Note that startX and startY are not multiplied by the `PixScale` value as they refer to output coordinates.
+				The return value is the X pixel position of the end of the drawn string.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Renderer-fold-method-DrawString"><label for="Renderer-fold-method-DrawString">(*Renderer) <a href="../../../src/github.com/go-text/render/render.go.html#line-61">DrawString</a>(str <a href="../../builtin.html#name-string">string</a>, img <a href="../../image/draw.html">draw</a>.<a href="../../image/draw.html#name-Image">Image</a>, face *<a href="typesetting/font.html">font</a>.<a href="typesetting/font.html#name-Face">Face</a>) <a href="../../builtin.html#name-int">int</a></label><span id='Renderer-fold-method-DrawString-docs' class="fold-docs">
+<span class="md-text">				DrawString will rasterise the given string into the output image using the specified font face.
+				The text will be drawn starting at the left edge, down from the image top by the
+				font ascent value, so that the text is all visible.
+				The return value is the X pixel position of the end of the drawn string.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Renderer-fold-method-DrawStringAt"><label for="Renderer-fold-method-DrawStringAt">(*Renderer) <a href="../../../src/github.com/go-text/render/render.go.html#line-74">DrawStringAt</a>(str <a href="../../builtin.html#name-string">string</a>, img <a href="../../image/draw.html">draw</a>.<a href="../../image/draw.html#name-Image">Image</a>, x, y <a href="../../builtin.html#name-int">int</a>, face *<a href="typesetting/font.html">font</a>.<a href="typesetting/font.html#name-Face">Face</a>) <a href="../../builtin.html#name-int">int</a></label><span id='Renderer-fold-method-DrawStringAt-docs' class="fold-docs">
+<span class="md-text">				DrawStringAt will rasterise the given string into the output image using the specified font face.
+				The text will be drawn starting at the x, y pixel position.
+				Note that x and y are not multiplied by the `PixScale` value as they refer to output coordinates.
+				The return value is the X pixel position of the end of the drawn string.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Renderer-showhide-methods"><i><label for="Renderer-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="Renderer-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Renderer) <a href="../../../src/github.com/go-text/render/bitmap.go.html#line-17">drawBitmap</a>(g <a href="typesetting/shaping.html">shaping</a>.<a href="typesetting/shaping.html#name-Glyph">Glyph</a>, bitmap <a href="typesetting/font.html">font</a>.<a href="typesetting/font.html#name-GlyphBitmap">GlyphBitmap</a>, img <a href="../../image/draw.html">draw</a>.<a href="../../image/draw.html#name-Image">Image</a>, x, y <a href="../../builtin.html#name-float32">float32</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Renderer) <a href="../../../src/github.com/go-text/render/render.go.html#line-120">drawOutline</a>(g <a href="typesetting/shaping.html">shaping</a>.<a href="typesetting/shaping.html#name-Glyph">Glyph</a>, bitmap <a href="typesetting/font.html">font</a>.<a href="typesetting/font.html#name-GlyphOutline">GlyphOutline</a>, f *<a href="../srwiley/rasterx.html">rasterx</a>.<a href="../srwiley/rasterx.html#name-Filler">Filler</a>, scale <a href="../../builtin.html#name-float32">float32</a>, x, y <a href="../../builtin.html#name-float32">float32</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Renderer) <a href="../../../src/github.com/go-text/render/svg.go.html#line-15">drawSVG</a>(g <a href="typesetting/shaping.html">shaping</a>.<a href="typesetting/shaping.html#name-Glyph">Glyph</a>, svg <a href="typesetting/font.html">font</a>.<a href="typesetting/font.html#name-GlyphSVG">GlyphSVG</a>, img <a href="../../image/draw.html">draw</a>.<a href="../../image/draw.html#name-Image">Image</a>, x, y <a href="../../builtin.html#name-float32">float32</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Renderer) <a href="../../../src/github.com/go-text/render/render.go.html#line-35">shape</a>(str <a href="../../builtin.html#name-string">string</a>, face *<a href="typesetting/font.html">font</a>.<a href="typesetting/font.html#name-Face">Face</a>) (_ <a href="typesetting/shaping.html">shaping</a>.<a href="typesetting/shaping.html#name-Line">Line</a>, ascent <a href="../../builtin.html#name-int">int</a>)</span></i></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor type-res hidden" id="name-singleFontMap" data-popularity="100">	<input type='checkbox' class="fold" id="singleFontMap-fold-content"><label for="singleFontMap-fold-content"> type <a href="../../../src/github.com/go-text/render/render.go.html#line-147">singleFontMap</a> <i>(struct)</i></label><span id='singleFontMap-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="singleFontMap-fold-fields"><label for="singleFontMap-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='singleFontMap-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="singleFontMap-showhide-fields"><i><label for="singleFontMap-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="singleFontMap-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/go-text/render/render.go.html#line-148">face</a> <i>*<a href="typesetting/font.html">font</a>.<a href="typesetting/font.html#name-Face">Face</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="singleFontMap-fold-methods"><label for="singleFontMap-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='singleFontMap-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( singleFontMap) <a href="../../../src/github.com/go-text/render/render.go.html#line-151">ResolveFace</a>(<a href="../../builtin.html#name-rune">rune</a>) *<a href="typesetting/font.html">font</a>.<a href="typesetting/font.html#name-Face">Face</a></span></span></span>
+		<input type='checkbox' class="fold" id="singleFontMap-fold-impls"><label for="singleFontMap-fold-impls">Implements (<i>at least one exported</i>)</label><span id='singleFontMap-fold-impls-items' class="fold-items"><span>
+			 singleFontMap : github.com/go-text/typesetting/shaping.<a href="typesetting/shaping.html#name-Fontmap">Fontmap</a></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 4, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-bitAt"><i>	<input type='checkbox' class="fold" id="bitAt-fold-content"><label for="bitAt-fold-content"> func <a href="../../../src/github.com/go-text/render/bitmap.go.html#line-50">bitAt</a>(b []<a href="../../builtin.html#name-byte">byte</a>, i <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-byte">byte</a></label><span id='bitAt-fold-content-docs' class="fold-docs">
+<span class="md-text">		bitAt returns the bit at the given index in the byte slice.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-fixed266ToFloat"><i>	<span class="nodocs"> func <a href="../../../src/github.com/go-text/render/render.go.html#line-139">fixed266ToFloat</a>(i <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a>) <a href="../../builtin.html#name-float32">float32</a></span></i></div><div class="anchor value-res hidden" id="name-floatToFixed266"><i>	<span class="nodocs"> func <a href="../../../src/github.com/go-text/render/render.go.html#line-143">floatToFixed266</a>(f <a href="../../builtin.html#name-float32">float32</a>) <a href="../../golang.org/x/image/math/fixed.html">fixed</a>.<a href="../../golang.org/x/image/math/fixed.html#name-Int26_6">Int26_6</a></span></i></div><div class="anchor value-res hidden" id="name-renderSVGStream"><i>	<span class="nodocs"> func <a href="../../../src/github.com/go-text/render/svg.go.html#line-31">renderSVGStream</a>(stream <a href="../../io.html">io</a>.<a href="../../io.html#name-Reader">Reader</a>, width, height <a href="../../builtin.html#name-int">int</a>) (*<a href="../../image.html">image</a>.<a href="../../image.html#name-NRGBA">NRGBA</a>, <a href="../../builtin.html#name-error">error</a>)</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

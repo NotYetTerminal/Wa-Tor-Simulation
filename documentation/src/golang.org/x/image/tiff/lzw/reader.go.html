@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: reader.go in package golang.org/x/image/tiff/lzw</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	reader.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/golang.org/x/image/tiff/lzw.html">golang.org/x/image/tiff/lzw</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// Copyright 2011 The Go Authors. All rights reserved.</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<div class="anchor" id="doc"><span class="codeline" id="line-5"><code><span class="comment">// Package lzw implements the Lempel-Ziv-Welch compressed data format,</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">// described in T. A. Welch, “A Technique for High-Performance Data</span></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// Compression”, Computer, 17(6) (June 1984), pp 8-19.</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// In particular, it implements LZW as used by the TIFF file format, including</span></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">// an "off by one" algorithmic difference when compared to standard LZW.</span></code></span></div><span class="codeline" id="line-11"><code><span class="keyword">package</span> lzw <span class="comment">// import "golang.org/x/image/tiff/lzw"</span></code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">/*</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">This file was branched from src/pkg/compress/lzw/reader.go in the</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">standard library. Differences from the original are marked with "NOTE".</span></code></span>
+<span class="codeline" id="line-16"><code></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">The tif_lzw.c file in the libtiff C library has this comment:</span></code></span>
+<span class="codeline" id="line-18"><code></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">----</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">The 5.0 spec describes a different algorithm than Aldus</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">implements. Specifically, Aldus does code length transitions</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">one code earlier than should be done (for real LZW).</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">Earlier versions of this library implemented the correct</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">LZW algorithm, but emitted codes in a bit order opposite</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">to the TIFF spec. Thus, to maintain compatibility w/ Aldus</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">we interpret MSB-LSB ordered codes to be images written w/</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">old versions of this library, but otherwise adhere to the</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">Aldus "off by one" algorithm.</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">----</span></code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">The Go code doesn't read (invalid) TIFF files written by old versions of</span></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">libtiff, but the LZW algorithm in this package still differs from the one in</span></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">Go's standard package library to accommodate this "off by one" in valid TIFFs.</span></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">*/</span></code></span>
+<span class="codeline" id="line-35"><code></code></span>
+<span class="codeline" id="line-36"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-37"><code>	<label for="i0"><span class="lit-string i0">"bufio"</span></label></code></span>
+<span class="codeline" id="line-38"><code>	<label for="i1"><span class="lit-string i1">"errors"</span></label></code></span>
+<span class="codeline" id="line-39"><code>	<label for="i2"><span class="lit-string i2">"fmt"</span></label></code></span>
+<span class="codeline" id="line-40"><code>	<label for="i3"><span class="lit-string i3">"io"</span></label></code></span>
+<span class="codeline" id="line-41"><code>)</code></span>
+<span class="codeline" id="line-42"><code></code></span>
+<span class="codeline" id="line-43"><code><span class="comment">// Order specifies the bit ordering in an LZW data stream.</span></code></span>
+<span class="codeline" id="line-44"><code><span class="keyword">type</span> <a href="../../../../../../pkg/golang.org/x/image/tiff/lzw.html#name-Order" class="ident">Order</a> <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-45"><code></code></span>
+<span class="codeline" id="line-46"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-47"><code>	<span class="comment">// LSB means Least Significant Bits first, as used in the GIF file format.</span></code></span>
+<span class="codeline" id="line-48"><code>	<a href="../../../../../../pkg/golang.org/x/image/tiff/lzw.html#name-LSB" class="ident">LSB</a> <a href="#line-44" class="ident">Order</a> = <a href="../../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-49"><code>	<span class="comment">// MSB means Most Significant Bits first, as used in the TIFF and PDF</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">	// file formats.</span></code></span>
+<span class="codeline" id="line-51"><code>	<a href="../../../../../../pkg/golang.org/x/image/tiff/lzw.html#name-MSB" class="ident">MSB</a></code></span>
+<span class="codeline" id="line-52"><code>)</code></span>
+<span class="codeline" id="line-53"><code></code></span>
+<span class="codeline" id="line-54"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../../../../../pkg/golang.org/x/image/tiff/lzw.html#name-maxWidth" class="ident">maxWidth</a>           = <span class="lit-number">12</span></code></span>
+<span class="codeline" id="line-56"><code>	<a href="../../../../../../pkg/golang.org/x/image/tiff/lzw.html#name-decoderInvalidCode" class="ident">decoderInvalidCode</a> = <span class="lit-number">0xffff</span></code></span>
+<span class="codeline" id="line-57"><code>	<a href="../../../../../../pkg/golang.org/x/image/tiff/lzw.html#name-flushBuffer" class="ident">flushBuffer</a>        = <span class="lit-number">1</span> &lt;&lt; <a href="#line-55" class="ident">maxWidth</a></code></span>
+<span class="codeline" id="line-58"><code>)</code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code><span class="comment">// decoder is the state from which the readXxx method converts a byte</span></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">// stream into a code stream.</span></code></span>
+<span class="codeline" id="line-62"><code><span class="keyword">type</span> <a href="../../../../../../pkg/golang.org/x/image/tiff/lzw.html#name-decoder" class="ident">decoder</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-63"><code>	r        <a href="../../../../../../pkg/io.html" class="ident i3">io</a>.<a href="../../../../../io/io.go.html#line-262" class="ident">ByteReader</a></code></span>
+<span class="codeline" id="line-64"><code>	bits     <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-65"><code>	nBits    <a href="../../../../../../pkg/builtin.html#name-uint" class="ident">uint</a></code></span>
+<span class="codeline" id="line-66"><code>	width    <a href="../../../../../../pkg/builtin.html#name-uint" class="ident">uint</a></code></span>
+<span class="codeline" id="line-67"><code>	read     <span class="keyword">func</span>(*<a href="#line-62" class="ident">decoder</a>) (<a href="../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) <span class="comment">// readLSB or readMSB</span></code></span>
+<span class="codeline" id="line-68"><code>	litWidth <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>                            <span class="comment">// width in bits of literal codes</span></code></span>
+<span class="codeline" id="line-69"><code>	err      <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-70"><code></code></span>
+<span class="codeline" id="line-71"><code>	<span class="comment">// The first 1&lt;&lt;litWidth codes are literal codes.</span></code></span>
+<span class="codeline" id="line-72"><code><span class="comment">	// The next two codes mean clear and EOF.</span></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">	// Other valid codes are in the range [lo, hi] where lo := clear + 2,</span></code></span>
+<span class="codeline" id="line-74"><code><span class="comment">	// with the upper bound incrementing on each code seen.</span></code></span>
+<span class="codeline" id="line-75"><code><span class="comment">	// overflow is the code at which hi overflows the code width. NOTE: TIFF's LZW is "off by one".</span></code></span>
+<span class="codeline" id="line-76"><code><span class="comment">	// last is the most recently seen code, or decoderInvalidCode.</span></code></span>
+<span class="codeline" id="line-77"><code>	clear, eof, hi, overflow, last <a href="../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-78"><code></code></span>
+<span class="codeline" id="line-79"><code>	<span class="comment">// Each code c in [lo, hi] expands to two or more bytes. For c != hi:</span></code></span>
+<span class="codeline" id="line-80"><code><span class="comment">	//   suffix[c] is the last of these bytes.</span></code></span>
+<span class="codeline" id="line-81"><code><span class="comment">	//   prefix[c] is the code for all but the last byte.</span></code></span>
+<span class="codeline" id="line-82"><code><span class="comment">	//   This code can either be a literal code or another code in [lo, c).</span></code></span>
+<span class="codeline" id="line-83"><code><span class="comment">	// The c == hi case is a special case.</span></code></span>
+<span class="codeline" id="line-84"><code>	suffix [<span class="lit-number">1</span> &lt;&lt; <a href="#line-55" class="ident">maxWidth</a>]<a href="../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a></code></span>
+<span class="codeline" id="line-85"><code>	prefix [<span class="lit-number">1</span> &lt;&lt; <a href="#line-55" class="ident">maxWidth</a>]<a href="../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-86"><code></code></span>
+<span class="codeline" id="line-87"><code>	<span class="comment">// output is the temporary output buffer.</span></code></span>
+<span class="codeline" id="line-88"><code><span class="comment">	// Literal codes are accumulated from the start of the buffer.</span></code></span>
+<span class="codeline" id="line-89"><code><span class="comment">	// Non-literal codes decode to a sequence of suffixes that are first</span></code></span>
+<span class="codeline" id="line-90"><code><span class="comment">	// written right-to-left from the end of the buffer before being copied</span></code></span>
+<span class="codeline" id="line-91"><code><span class="comment">	// to the start of the buffer.</span></code></span>
+<span class="codeline" id="line-92"><code><span class="comment">	// It is flushed when it contains &gt;= 1&lt;&lt;maxWidth bytes,</span></code></span>
+<span class="codeline" id="line-93"><code><span class="comment">	// so that there is always room to decode an entire code.</span></code></span>
+<span class="codeline" id="line-94"><code>	output [<span class="lit-number">2</span> * <span class="lit-number">1</span> &lt;&lt; <a href="#line-55" class="ident">maxWidth</a>]<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-95"><code>	o      <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// write index into output</span></code></span>
+<span class="codeline" id="line-96"><code>	toRead []<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="comment">// bytes to return from Read</span></code></span>
+<span class="codeline" id="line-97"><code>}</code></span>
+<span class="codeline" id="line-98"><code></code></span>
+<span class="codeline" id="line-99"><code><span class="comment">// readLSB returns the next code for "Least Significant Bits first" data.</span></code></span>
+<span class="codeline" id="line-100"><code><span class="keyword">func</span> (<label for="r0" class="ident">d</label> *<a href="#line-62" class="ident">decoder</a>) <label for="r1" class="ident">readLSB</label>() (<a href="../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-101"><code>	<span class="keyword">for</span> <label for="r0" class="ident">d</label>.<a href="#line-65" class="ident">nBits</a> &lt; <label for="r0" class="ident">d</label>.<a href="#line-66" class="ident">width</a> {</code></span>
+<span class="codeline" id="line-102"><code>		<label for="r2" class="ident">x</label>, <label for="r3" class="ident">err</label> := <label for="r0" class="ident">d</label>.<a href="#line-63" class="ident">r</a>.<a href="../../../../../io/io.go.html#line-263" class="ident">ReadByte</a>()</code></span>
+<span class="codeline" id="line-103"><code>		<span class="keyword">if</span> <label for="r3" class="ident">err</label> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-104"><code>			<span class="keyword">return</span> <span class="lit-number">0</span>, <label for="r3" class="ident">err</label></code></span>
+<span class="codeline" id="line-105"><code>		}</code></span>
+<span class="codeline" id="line-106"><code>		<label for="r0" class="ident">d</label>.<a href="#line-64" class="ident">bits</a> |= <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r2" class="ident">x</label>) &lt;&lt; <label for="r0" class="ident">d</label>.<a href="#line-65" class="ident">nBits</a></code></span>
+<span class="codeline" id="line-107"><code>		<label for="r0" class="ident">d</label>.<a href="#line-65" class="ident">nBits</a> += <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-108"><code>	}</code></span>
+<span class="codeline" id="line-109"><code>	<label for="r4" class="ident">code</label> := <a href="../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<label for="r0" class="ident">d</label>.<a href="#line-64" class="ident">bits</a> &amp; (<span class="lit-number">1</span>&lt;&lt;<label for="r0" class="ident">d</label>.<a href="#line-66" class="ident">width</a> - <span class="lit-number">1</span>))</code></span>
+<span class="codeline" id="line-110"><code>	<label for="r0" class="ident">d</label>.<a href="#line-64" class="ident">bits</a> &gt;&gt;= <label for="r0" class="ident">d</label>.<a href="#line-66" class="ident">width</a></code></span>
+<span class="codeline" id="line-111"><code>	<label for="r0" class="ident">d</label>.<a href="#line-65" class="ident">nBits</a> -= <label for="r0" class="ident">d</label>.<a href="#line-66" class="ident">width</a></code></span>
+<span class="codeline" id="line-112"><code>	<span class="keyword">return</span> <label for="r4" class="ident">code</label>, <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-113"><code>}</code></span>
+<span class="codeline" id="line-114"><code></code></span>
+<span class="codeline" id="line-115"><code><span class="comment">// readMSB returns the next code for "Most Significant Bits first" data.</span></code></span>
+<span class="codeline" id="line-116"><code><span class="keyword">func</span> (<label for="r5" class="ident">d</label> *<a href="#line-62" class="ident">decoder</a>) <label for="r6" class="ident">readMSB</label>() (<a href="../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-117"><code>	<span class="keyword">for</span> <label for="r5" class="ident">d</label>.<a href="#line-65" class="ident">nBits</a> &lt; <label for="r5" class="ident">d</label>.<a href="#line-66" class="ident">width</a> {</code></span>
+<span class="codeline" id="line-118"><code>		<label for="r7" class="ident">x</label>, <label for="r8" class="ident">err</label> := <label for="r5" class="ident">d</label>.<a href="#line-63" class="ident">r</a>.<a href="../../../../../io/io.go.html#line-263" class="ident">ReadByte</a>()</code></span>
+<span class="codeline" id="line-119"><code>		<span class="keyword">if</span> <label for="r8" class="ident">err</label> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-120"><code>			<span class="keyword">return</span> <span class="lit-number">0</span>, <label for="r8" class="ident">err</label></code></span>
+<span class="codeline" id="line-121"><code>		}</code></span>
+<span class="codeline" id="line-122"><code>		<label for="r5" class="ident">d</label>.<a href="#line-64" class="ident">bits</a> |= <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r7" class="ident">x</label>) &lt;&lt; (<span class="lit-number">24</span> - <label for="r5" class="ident">d</label>.<a href="#line-65" class="ident">nBits</a>)</code></span>
+<span class="codeline" id="line-123"><code>		<label for="r5" class="ident">d</label>.<a href="#line-65" class="ident">nBits</a> += <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-124"><code>	}</code></span>
+<span class="codeline" id="line-125"><code>	<label for="r9" class="ident">code</label> := <a href="../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<label for="r5" class="ident">d</label>.<a href="#line-64" class="ident">bits</a> &gt;&gt; (<span class="lit-number">32</span> - <label for="r5" class="ident">d</label>.<a href="#line-66" class="ident">width</a>))</code></span>
+<span class="codeline" id="line-126"><code>	<label for="r5" class="ident">d</label>.<a href="#line-64" class="ident">bits</a> &lt;&lt;= <label for="r5" class="ident">d</label>.<a href="#line-66" class="ident">width</a></code></span>
+<span class="codeline" id="line-127"><code>	<label for="r5" class="ident">d</label>.<a href="#line-65" class="ident">nBits</a> -= <label for="r5" class="ident">d</label>.<a href="#line-66" class="ident">width</a></code></span>
+<span class="codeline" id="line-128"><code>	<span class="keyword">return</span> <label for="r9" class="ident">code</label>, <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-129"><code>}</code></span>
+<span class="codeline" id="line-130"><code></code></span>
+<span class="codeline" id="line-131"><code><span class="keyword">func</span> (<label for="r10" class="ident">d</label> *<a href="#line-62" class="ident">decoder</a>) <label for="r11" class="ident"><a href="../../../../../../imp/golang.org/x/image/tiff/lzw.decoder^c9fbd.html#name-.Read" class="ident">Read</a></label>(<label for="r12" class="ident">b</label> []<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) (<a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-132"><code>	<span class="keyword">for</span> {</code></span>
+<span class="codeline" id="line-133"><code>		<span class="keyword">if</span> <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r10" class="ident">d</label>.<a href="#line-96" class="ident">toRead</a>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-134"><code>			<label for="r13" class="ident">n</label> := <a href="../../../../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r12" class="ident">b</label>, <label for="r10" class="ident">d</label>.<a href="#line-96" class="ident">toRead</a>)</code></span>
+<span class="codeline" id="line-135"><code>			<label for="r10" class="ident">d</label>.<a href="#line-96" class="ident">toRead</a> = <label for="r10" class="ident">d</label>.<a href="#line-96" class="ident">toRead</a>[<label for="r13" class="ident">n</label>:]</code></span>
+<span class="codeline" id="line-136"><code>			<span class="keyword">return</span> <label for="r13" class="ident">n</label>, <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-137"><code>		}</code></span>
+<span class="codeline" id="line-138"><code>		<span class="keyword">if</span> <label for="r10" class="ident">d</label>.<a href="#line-69" class="ident">err</a> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-139"><code>			<span class="keyword">return</span> <span class="lit-number">0</span>, <label for="r10" class="ident">d</label>.<a href="#line-69" class="ident">err</a></code></span>
+<span class="codeline" id="line-140"><code>		}</code></span>
+<span class="codeline" id="line-141"><code>		<label for="r10" class="ident">d</label>.<a href="#line-148" class="ident">decode</a>()</code></span>
+<span class="codeline" id="line-142"><code>	}</code></span>
+<span class="codeline" id="line-143"><code>}</code></span>
+<span class="codeline" id="line-144"><code></code></span>
+<span class="codeline" id="line-145"><code><span class="comment">// decode decompresses bytes from r and leaves them in d.toRead.</span></code></span>
+<span class="codeline" id="line-146"><code><span class="comment">// read specifies how to decode bytes into codes.</span></code></span>
+<span class="codeline" id="line-147"><code><span class="comment">// litWidth is the width in bits of literal codes.</span></code></span>
+<span class="codeline" id="line-148"><code><span class="keyword">func</span> (<label for="r14" class="ident">d</label> *<a href="#line-62" class="ident">decoder</a>) <label for="r15" class="ident">decode</label>() {</code></span>
+<span class="codeline" id="line-149"><code>	<span class="comment">// Loop over the code stream, converting codes into decompressed bytes.</span></code></span>
+<span class="codeline" id="line-150"><code><label for="r16" class="ident">loop</label>:</code></span>
+<span class="codeline" id="line-151"><code>	<span class="keyword">for</span> {</code></span>
+<span class="codeline" id="line-152"><code>		<label for="r17" class="ident">code</label>, <label for="r18" class="ident">err</label> := <label for="r14" class="ident">d</label>.<a href="#line-67" class="ident">read</a>(<label for="r14" class="ident">d</label>)</code></span>
+<span class="codeline" id="line-153"><code>		<span class="keyword">if</span> <label for="r18" class="ident">err</label> != <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-154"><code>			<span class="keyword">if</span> <label for="r18" class="ident">err</label> == <a href="../../../../../../pkg/io.html" class="ident i3">io</a>.<a href="../../../../../io/io.go.html#line-44" class="ident">EOF</a> {</code></span>
+<span class="codeline" id="line-155"><code>				<label for="r18" class="ident">err</label> = <a href="../../../../../../pkg/io.html" class="ident i3">io</a>.<a href="../../../../../io/io.go.html#line-48" class="ident">ErrUnexpectedEOF</a></code></span>
+<span class="codeline" id="line-156"><code>			}</code></span>
+<span class="codeline" id="line-157"><code>			<label for="r14" class="ident">d</label>.<a href="#line-69" class="ident">err</a> = <label for="r18" class="ident">err</label></code></span>
+<span class="codeline" id="line-158"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-159"><code>		}</code></span>
+<span class="codeline" id="line-160"><code>		<span class="keyword">switch</span> {</code></span>
+<span class="codeline" id="line-161"><code>		<span class="keyword">case</span> <label for="r17" class="ident">code</label> &lt; <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">clear</a>:</code></span>
+<span class="codeline" id="line-162"><code>			<span class="comment">// We have a literal code.</span></code></span>
+<span class="codeline" id="line-163"><code>			<label for="r14" class="ident">d</label>.<a href="#line-94" class="ident">output</a>[<label for="r14" class="ident">d</label>.<a href="#line-95" class="ident">o</a>] = <a href="../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r17" class="ident">code</label>)</code></span>
+<span class="codeline" id="line-164"><code>			<label for="r14" class="ident">d</label>.<a href="#line-95" class="ident">o</a>++</code></span>
+<span class="codeline" id="line-165"><code>			<span class="keyword">if</span> <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">last</a> != <a href="#line-56" class="ident">decoderInvalidCode</a> {</code></span>
+<span class="codeline" id="line-166"><code>				<span class="comment">// Save what the hi code expands to.</span></code></span>
+<span class="codeline" id="line-167"><code>				<label for="r14" class="ident">d</label>.<a href="#line-84" class="ident">suffix</a>[<label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">hi</a>] = <a href="../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r17" class="ident">code</label>)</code></span>
+<span class="codeline" id="line-168"><code>				<label for="r14" class="ident">d</label>.<a href="#line-85" class="ident">prefix</a>[<label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">hi</a>] = <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">last</a></code></span>
+<span class="codeline" id="line-169"><code>			}</code></span>
+<span class="codeline" id="line-170"><code>		<span class="keyword">case</span> <label for="r17" class="ident">code</label> == <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">clear</a>:</code></span>
+<span class="codeline" id="line-171"><code>			<label for="r14" class="ident">d</label>.<a href="#line-66" class="ident">width</a> = <span class="lit-number">1</span> + <a href="../../../../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r14" class="ident">d</label>.<a href="#line-68" class="ident">litWidth</a>)</code></span>
+<span class="codeline" id="line-172"><code>			<label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">hi</a> = <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">eof</a></code></span>
+<span class="codeline" id="line-173"><code>			<label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">overflow</a> = <span class="lit-number">1</span> &lt;&lt; <label for="r14" class="ident">d</label>.<a href="#line-66" class="ident">width</a></code></span>
+<span class="codeline" id="line-174"><code>			<label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">last</a> = <a href="#line-56" class="ident">decoderInvalidCode</a></code></span>
+<span class="codeline" id="line-175"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-176"><code>		<span class="keyword">case</span> <label for="r17" class="ident">code</label> == <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">eof</a>:</code></span>
+<span class="codeline" id="line-177"><code>			<label for="r14" class="ident">d</label>.<a href="#line-69" class="ident">err</a> = <a href="../../../../../../pkg/io.html" class="ident i3">io</a>.<a href="../../../../../io/io.go.html#line-44" class="ident">EOF</a></code></span>
+<span class="codeline" id="line-178"><code>			<span class="keyword">break</span> <label for="r16" class="ident">loop</label></code></span>
+<span class="codeline" id="line-179"><code>		<span class="keyword">case</span> <label for="r17" class="ident">code</label> &lt;= <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">hi</a>:</code></span>
+<span class="codeline" id="line-180"><code>			<label for="r19" class="ident">c</label>, <label for="r20" class="ident">i</label> := <label for="r17" class="ident">code</label>, <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r14" class="ident">d</label>.<a href="#line-94" class="ident">output</a>)-<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-181"><code>			<span class="keyword">if</span> <label for="r17" class="ident">code</label> == <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">hi</a> &amp;&amp; <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">last</a> != <a href="#line-56" class="ident">decoderInvalidCode</a> {</code></span>
+<span class="codeline" id="line-182"><code>				<span class="comment">// code == hi is a special case which expands to the last expansion</span></code></span>
+<span class="codeline" id="line-183"><code><span class="comment">				// followed by the head of the last expansion. To find the head, we walk</span></code></span>
+<span class="codeline" id="line-184"><code><span class="comment">				// the prefix chain until we find a literal code.</span></code></span>
+<span class="codeline" id="line-185"><code>				<label for="r19" class="ident">c</label> = <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">last</a></code></span>
+<span class="codeline" id="line-186"><code>				<span class="keyword">for</span> <label for="r19" class="ident">c</label> &gt;= <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">clear</a> {</code></span>
+<span class="codeline" id="line-187"><code>					<label for="r19" class="ident">c</label> = <label for="r14" class="ident">d</label>.<a href="#line-85" class="ident">prefix</a>[<label for="r19" class="ident">c</label>]</code></span>
+<span class="codeline" id="line-188"><code>				}</code></span>
+<span class="codeline" id="line-189"><code>				<label for="r14" class="ident">d</label>.<a href="#line-94" class="ident">output</a>[<label for="r20" class="ident">i</label>] = <a href="../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r19" class="ident">c</label>)</code></span>
+<span class="codeline" id="line-190"><code>				<label for="r20" class="ident">i</label>--</code></span>
+<span class="codeline" id="line-191"><code>				<label for="r19" class="ident">c</label> = <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">last</a></code></span>
+<span class="codeline" id="line-192"><code>			}</code></span>
+<span class="codeline" id="line-193"><code>			<span class="comment">// Copy the suffix chain into output and then write that to w.</span></code></span>
+<span class="codeline" id="line-194"><code>			<span class="keyword">for</span> <label for="r19" class="ident">c</label> &gt;= <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">clear</a> {</code></span>
+<span class="codeline" id="line-195"><code>				<label for="r14" class="ident">d</label>.<a href="#line-94" class="ident">output</a>[<label for="r20" class="ident">i</label>] = <label for="r14" class="ident">d</label>.<a href="#line-84" class="ident">suffix</a>[<label for="r19" class="ident">c</label>]</code></span>
+<span class="codeline" id="line-196"><code>				<label for="r20" class="ident">i</label>--</code></span>
+<span class="codeline" id="line-197"><code>				<label for="r19" class="ident">c</label> = <label for="r14" class="ident">d</label>.<a href="#line-85" class="ident">prefix</a>[<label for="r19" class="ident">c</label>]</code></span>
+<span class="codeline" id="line-198"><code>			}</code></span>
+<span class="codeline" id="line-199"><code>			<label for="r14" class="ident">d</label>.<a href="#line-94" class="ident">output</a>[<label for="r20" class="ident">i</label>] = <a href="../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r19" class="ident">c</label>)</code></span>
+<span class="codeline" id="line-200"><code>			<label for="r14" class="ident">d</label>.<a href="#line-95" class="ident">o</a> += <a href="../../../../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r14" class="ident">d</label>.<a href="#line-94" class="ident">output</a>[<label for="r14" class="ident">d</label>.<a href="#line-95" class="ident">o</a>:], <label for="r14" class="ident">d</label>.<a href="#line-94" class="ident">output</a>[<label for="r20" class="ident">i</label>:])</code></span>
+<span class="codeline" id="line-201"><code>			<span class="keyword">if</span> <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">last</a> != <a href="#line-56" class="ident">decoderInvalidCode</a> {</code></span>
+<span class="codeline" id="line-202"><code>				<span class="comment">// Save what the hi code expands to.</span></code></span>
+<span class="codeline" id="line-203"><code>				<label for="r14" class="ident">d</label>.<a href="#line-84" class="ident">suffix</a>[<label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">hi</a>] = <a href="../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r19" class="ident">c</label>)</code></span>
+<span class="codeline" id="line-204"><code>				<label for="r14" class="ident">d</label>.<a href="#line-85" class="ident">prefix</a>[<label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">hi</a>] = <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">last</a></code></span>
+<span class="codeline" id="line-205"><code>			}</code></span>
+<span class="codeline" id="line-206"><code>		<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-207"><code>			<label for="r14" class="ident">d</label>.<a href="#line-69" class="ident">err</a> = <a href="../../../../../../pkg/errors.html" class="ident i1">errors</a>.<a href="../../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"lzw: invalid code"</span>)</code></span>
+<span class="codeline" id="line-208"><code>			<span class="keyword">break</span> <label for="r16" class="ident">loop</label></code></span>
+<span class="codeline" id="line-209"><code>		}</code></span>
+<span class="codeline" id="line-210"><code>		<label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">last</a>, <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">hi</a> = <label for="r17" class="ident">code</label>, <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">hi</a>+<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-211"><code>		<span class="keyword">if</span> <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">hi</a>+<span class="lit-number">1</span> &gt;= <label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">overflow</a> { <span class="comment">// NOTE: the "+1" is where TIFF's LZW differs from the standard algorithm.</span></code></span>
+<span class="codeline" id="line-212"><code>			<span class="keyword">if</span> <label for="r14" class="ident">d</label>.<a href="#line-66" class="ident">width</a> == <a href="#line-55" class="ident">maxWidth</a> {</code></span>
+<span class="codeline" id="line-213"><code>				<label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">last</a> = <a href="#line-56" class="ident">decoderInvalidCode</a></code></span>
+<span class="codeline" id="line-214"><code>			} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-215"><code>				<label for="r14" class="ident">d</label>.<a href="#line-66" class="ident">width</a>++</code></span>
+<span class="codeline" id="line-216"><code>				<label for="r14" class="ident">d</label>.<a href="#line-77" class="ident">overflow</a> &lt;&lt;= <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-217"><code>			}</code></span>
+<span class="codeline" id="line-218"><code>		}</code></span>
+<span class="codeline" id="line-219"><code>		<span class="keyword">if</span> <label for="r14" class="ident">d</label>.<a href="#line-95" class="ident">o</a> &gt;= <a href="#line-57" class="ident">flushBuffer</a> {</code></span>
+<span class="codeline" id="line-220"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-221"><code>		}</code></span>
+<span class="codeline" id="line-222"><code>	}</code></span>
+<span class="codeline" id="line-223"><code>	<span class="comment">// Flush pending output.</span></code></span>
+<span class="codeline" id="line-224"><code>	<label for="r14" class="ident">d</label>.<a href="#line-96" class="ident">toRead</a> = <label for="r14" class="ident">d</label>.<a href="#line-94" class="ident">output</a>[:<label for="r14" class="ident">d</label>.<a href="#line-95" class="ident">o</a>]</code></span>
+<span class="codeline" id="line-225"><code>	<label for="r14" class="ident">d</label>.<a href="#line-95" class="ident">o</a> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-226"><code>}</code></span>
+<span class="codeline" id="line-227"><code></code></span>
+<span class="codeline" id="line-228"><code><span class="keyword">var</span> <a href="../../../../../../pkg/golang.org/x/image/tiff/lzw.html#name-errClosed" class="ident">errClosed</a> = <a href="../../../../../../pkg/errors.html" class="ident i1">errors</a>.<a href="../../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"lzw: reader/writer is closed"</span>)</code></span>
+<span class="codeline" id="line-229"><code></code></span>
+<span class="codeline" id="line-230"><code><span class="keyword">func</span> (<label for="r21" class="ident">d</label> *<a href="#line-62" class="ident">decoder</a>) <label for="r22" class="ident"><a href="../../../../../../imp/golang.org/x/image/tiff/lzw.decoder^c9fbd.html#name-.Close" class="ident">Close</a></label>() <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-231"><code>	<label for="r21" class="ident">d</label>.<a href="#line-69" class="ident">err</a> = <a href="#line-228" class="ident">errClosed</a> <span class="comment">// in case any Reads come along</span></code></span>
+<span class="codeline" id="line-232"><code>	<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-233"><code>}</code></span>
+<span class="codeline" id="line-234"><code></code></span>
+<span class="codeline" id="line-235"><code><span class="comment">// NewReader creates a new io.ReadCloser.</span></code></span>
+<span class="codeline" id="line-236"><code><span class="comment">// Reads from the returned io.ReadCloser read and decompress data from r.</span></code></span>
+<span class="codeline" id="line-237"><code><span class="comment">// If r does not also implement io.ByteReader,</span></code></span>
+<span class="codeline" id="line-238"><code><span class="comment">// the decompressor may read more data than necessary from r.</span></code></span>
+<span class="codeline" id="line-239"><code><span class="comment">// It is the caller's responsibility to call Close on the ReadCloser when</span></code></span>
+<span class="codeline" id="line-240"><code><span class="comment">// finished reading.</span></code></span>
+<span class="codeline" id="line-241"><code><span class="comment">// The number of bits to use for literal codes, litWidth, must be in the</span></code></span>
+<span class="codeline" id="line-242"><code><span class="comment">// range [2,8] and is typically 8. It must equal the litWidth</span></code></span>
+<span class="codeline" id="line-243"><code><span class="comment">// used during compression.</span></code></span>
+<span class="codeline" id="line-244"><code><span class="keyword">func</span> <label for="r23" class="ident"><a href="../../../../../../pkg/golang.org/x/image/tiff/lzw.html#name-NewReader" class="ident">NewReader</a></label>(<label for="r24" class="ident">r</label> <a href="../../../../../../pkg/io.html" class="ident i3">io</a>.<a href="../../../../../io/io.go.html#line-86" class="ident">Reader</a>, <label for="r25" class="ident">order</label> <a href="#line-44" class="ident">Order</a>, <label for="r26" class="ident">litWidth</label> <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../../../../pkg/io.html" class="ident i3">io</a>.<a href="../../../../../io/io.go.html#line-137" class="ident">ReadCloser</a> {</code></span>
+<span class="codeline" id="line-245"><code>	<label for="r27" class="ident">d</label> := <a href="../../../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="#line-62" class="ident">decoder</a>)</code></span>
+<span class="codeline" id="line-246"><code>	<span class="keyword">switch</span> <label for="r25" class="ident">order</label> {</code></span>
+<span class="codeline" id="line-247"><code>	<span class="keyword">case</span> <a href="#line-48" class="ident">LSB</a>:</code></span>
+<span class="codeline" id="line-248"><code>		<label for="r27" class="ident">d</label>.<a href="#line-67" class="ident">read</a> = (*<a href="#line-62" class="ident">decoder</a>).<a href="#line-100" class="ident">readLSB</a></code></span>
+<span class="codeline" id="line-249"><code>	<span class="keyword">case</span> <a href="#line-51" class="ident">MSB</a>:</code></span>
+<span class="codeline" id="line-250"><code>		<label for="r27" class="ident">d</label>.<a href="#line-67" class="ident">read</a> = (*<a href="#line-62" class="ident">decoder</a>).<a href="#line-116" class="ident">readMSB</a></code></span>
+<span class="codeline" id="line-251"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-252"><code>		<label for="r27" class="ident">d</label>.<a href="#line-69" class="ident">err</a> = <a href="../../../../../../pkg/errors.html" class="ident i1">errors</a>.<a href="../../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"lzw: unknown order"</span>)</code></span>
+<span class="codeline" id="line-253"><code>		<span class="keyword">return</span> <label for="r27" class="ident">d</label></code></span>
+<span class="codeline" id="line-254"><code>	}</code></span>
+<span class="codeline" id="line-255"><code>	<span class="keyword">if</span> <label for="r26" class="ident">litWidth</label> &lt; <span class="lit-number">2</span> || <span class="lit-number">8</span> &lt; <label for="r26" class="ident">litWidth</label> {</code></span>
+<span class="codeline" id="line-256"><code>		<label for="r27" class="ident">d</label>.<a href="#line-69" class="ident">err</a> = <a href="../../../../../../pkg/fmt.html" class="ident i2">fmt</a>.<a href="../../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"lzw: litWidth %d out of range"</span>, <label for="r26" class="ident">litWidth</label>)</code></span>
+<span class="codeline" id="line-257"><code>		<span class="keyword">return</span> <label for="r27" class="ident">d</label></code></span>
+<span class="codeline" id="line-258"><code>	}</code></span>
+<span class="codeline" id="line-259"><code>	<span class="keyword">if</span> <label for="r28" class="ident">br</label>, <label for="r29" class="ident">ok</label> := <label for="r24" class="ident">r</label>.(<a href="../../../../../../pkg/io.html" class="ident i3">io</a>.<a href="../../../../../io/io.go.html#line-262" class="ident">ByteReader</a>); <label for="r29" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-260"><code>		<label for="r27" class="ident">d</label>.<a href="#line-63" class="ident">r</a> = <label for="r28" class="ident">br</label></code></span>
+<span class="codeline" id="line-261"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-262"><code>		<label for="r27" class="ident">d</label>.<a href="#line-63" class="ident">r</a> = <a href="../../../../../../pkg/bufio.html" class="ident i0">bufio</a>.<a href="../../../../../bufio/bufio.go.html#line-59" class="ident">NewReader</a>(<label for="r24" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-263"><code>	}</code></span>
+<span class="codeline" id="line-264"><code>	<label for="r27" class="ident">d</label>.<a href="#line-68" class="ident">litWidth</a> = <label for="r26" class="ident">litWidth</label></code></span>
+<span class="codeline" id="line-265"><code>	<label for="r27" class="ident">d</label>.<a href="#line-66" class="ident">width</a> = <span class="lit-number">1</span> + <a href="../../../../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r26" class="ident">litWidth</label>)</code></span>
+<span class="codeline" id="line-266"><code>	<label for="r27" class="ident">d</label>.<a href="#line-77" class="ident">clear</a> = <a href="../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<span class="lit-number">1</span>) &lt;&lt; <a href="../../../../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r26" class="ident">litWidth</label>)</code></span>
+<span class="codeline" id="line-267"><code>	<label for="r27" class="ident">d</label>.<a href="#line-77" class="ident">eof</a>, <label for="r27" class="ident">d</label>.<a href="#line-77" class="ident">hi</a> = <label for="r27" class="ident">d</label>.<a href="#line-77" class="ident">clear</a>+<span class="lit-number">1</span>, <label for="r27" class="ident">d</label>.<a href="#line-77" class="ident">clear</a>+<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-268"><code>	<label for="r27" class="ident">d</label>.<a href="#line-77" class="ident">overflow</a> = <a href="../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<span class="lit-number">1</span>) &lt;&lt; <label for="r27" class="ident">d</label>.<a href="#line-66" class="ident">width</a></code></span>
+<span class="codeline" id="line-269"><code>	<label for="r27" class="ident">d</label>.<a href="#line-77" class="ident">last</a> = <a href="#line-56" class="ident">decoderInvalidCode</a></code></span>
+<span class="codeline" id="line-270"><code></code></span>
+<span class="codeline" id="line-271"><code>	<span class="keyword">return</span> <label for="r27" class="ident">d</label></code></span>
+<span class="codeline" id="line-272"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

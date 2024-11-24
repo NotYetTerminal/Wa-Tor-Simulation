@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: ot_gsub_src.go in package github.com/go-text/typesetting/font/opentype/tables</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	ot_gsub_src.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html">github.com/go-text/typesetting/font/opentype/tables</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7]
+{background: #226; color: #ff8;}
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> tables</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-SingleSubs" class="ident">SingleSubs</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-6"><code>	Data <a href="#line-9" class="ident">SingleSubstData</a></code></span>
+<span class="codeline" id="line-7"><code>}</code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-SingleSubstData" class="ident">SingleSubstData</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-10"><code>	<a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.SingleSubstData.html#name-github.com/go-text/typesetting/font/opentype/tables.isSingleSubstData" class="ident">isSingleSubstData</a>()</code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code>	<a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.SingleSubstData.html#name-Cov" class="ident">Cov</a>() <a href="ot_layout.go.html#line-19" class="ident">Coverage</a></code></span>
+<span class="codeline" id="line-13"><code>}</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="keyword">func</span> (<a href="#line-18" class="ident">SingleSubstData1</a>) <label for="r0" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.SingleSubstData1.html#name-isSingleSubstData" class="ident">isSingleSubstData</a></label>() {}</code></span>
+<span class="codeline" id="line-16"><code><span class="keyword">func</span> (<a href="#line-24" class="ident">SingleSubstData2</a>) <label for="r1" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.SingleSubstData2.html#name-isSingleSubstData" class="ident">isSingleSubstData</a></label>() {}</code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-SingleSubstData1" class="ident">SingleSubstData1</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-19"><code>	format       <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>   <span class="lit-string">`unionTag:"1"`</span></code></span>
+<span class="codeline" id="line-20"><code>	Coverage     <a href="ot_layout.go.html#line-19" class="ident">Coverage</a> <span class="lit-string">`offsetSize:"Offset16"`</span> <span class="comment">// Offset to Coverage table, from beginning of substitution subtable</span></code></span>
+<span class="codeline" id="line-21"><code>	DeltaGlyphID <a href="../../../../../../../pkg/builtin.html#name-int16" class="ident">int16</a>    <span class="comment">// Add to original glyph ID to get substitute glyph ID</span></code></span>
+<span class="codeline" id="line-22"><code>}</code></span>
+<span class="codeline" id="line-23"><code></code></span>
+<span class="codeline" id="line-24"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-SingleSubstData2" class="ident">SingleSubstData2</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-25"><code>	format             <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>    <span class="lit-string">`unionTag:"2"`</span></code></span>
+<span class="codeline" id="line-26"><code>	Coverage           <a href="ot_layout.go.html#line-19" class="ident">Coverage</a>  <span class="lit-string">`offsetSize:"Offset16"`</span>    <span class="comment">// Offset to Coverage table, from beginning of substitution subtable</span></code></span>
+<span class="codeline" id="line-27"><code>	SubstituteGlyphIDs []<a href="tables.go.html#line-9" class="ident">GlyphID</a> <span class="lit-string">`arrayCount:"FirstUint16"`</span> <span class="comment">//[glyphCount]	Array of substitute glyph IDs — ordered by Coverage index</span></code></span>
+<span class="codeline" id="line-28"><code>}</code></span>
+<span class="codeline" id="line-29"><code></code></span>
+<span class="codeline" id="line-30"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-MultipleSubs" class="ident">MultipleSubs</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-31"><code>	substFormat <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>     <span class="comment">// Format identifier: format = 1</span></code></span>
+<span class="codeline" id="line-32"><code>	Coverage    <a href="ot_layout.go.html#line-19" class="ident">Coverage</a>   <span class="lit-string">`offsetSize:"Offset16"`</span> <span class="comment">// Offset to Coverage table, from beginning of substitution subtable</span></code></span>
+<span class="codeline" id="line-33"><code>	Sequences   []<a href="#line-37" class="ident">Sequence</a> <span class="lit-string">`arrayCount:"FirstUint16"  offsetsArray:"Offset16"`</span></code></span>
+<span class="codeline" id="line-34"><code>	<span class="comment">//[sequenceCount]	Array of offsets to Sequence tables. Offsets are from beginning of substitution subtable, ordered by Coverage index</span></code></span>
+<span class="codeline" id="line-35"><code>}</code></span>
+<span class="codeline" id="line-36"><code></code></span>
+<span class="codeline" id="line-37"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-Sequence" class="ident">Sequence</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-38"><code>	SubstituteGlyphIDs []<a href="tables.go.html#line-9" class="ident">GlyphID</a> <span class="lit-string">`arrayCount:"FirstUint16"`</span> <span class="comment">// [glyphCount]	String of glyph IDs to substitute</span></code></span>
+<span class="codeline" id="line-39"><code>}</code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-AlternateSubs" class="ident">AlternateSubs</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-42"><code>	substFormat   <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>         <span class="comment">//	Format identifier: format = 1</span></code></span>
+<span class="codeline" id="line-43"><code>	Coverage      <a href="ot_layout.go.html#line-19" class="ident">Coverage</a>       <span class="lit-string">`offsetSize:"Offset16"`</span> <span class="comment">//	Offset to Coverage table, from beginning of substitution subtable</span></code></span>
+<span class="codeline" id="line-44"><code>	AlternateSets []<a href="#line-47" class="ident">AlternateSet</a> <span class="lit-string">`arrayCount:"FirstUint16"  offsetsArray:"Offset16"`</span></code></span>
+<span class="codeline" id="line-45"><code>}</code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-AlternateSet" class="ident">AlternateSet</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-48"><code>	AlternateGlyphIDs []<a href="tables.go.html#line-9" class="ident">GlyphID</a> <span class="lit-string">`arrayCount:"FirstUint16"`</span> <span class="comment">// Array of alternate glyph IDs, in arbitrary order</span></code></span>
+<span class="codeline" id="line-49"><code>}</code></span>
+<span class="codeline" id="line-50"><code></code></span>
+<span class="codeline" id="line-51"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-LigatureSubs" class="ident">LigatureSubs</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-52"><code>	substFormat  <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>        <span class="comment">// Format identifier: format = 1</span></code></span>
+<span class="codeline" id="line-53"><code>	Coverage     <a href="ot_layout.go.html#line-19" class="ident">Coverage</a>      <span class="lit-string">`offsetSize:"Offset16"`</span>                             <span class="comment">// Offset to Coverage table, from beginning of substitution subtable</span></code></span>
+<span class="codeline" id="line-54"><code>	LigatureSets []<a href="#line-58" class="ident">LigatureSet</a> <span class="lit-string">`arrayCount:"FirstUint16"  offsetsArray:"Offset16"`</span> <span class="comment">//[ligatureSetCount]	Array of offsets to LigatureSet tables. Offsets are from beginning of substitution subtable, ordered by Coverage index</span></code></span>
+<span class="codeline" id="line-55"><code>}</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code><span class="comment">// All ligatures beginning with the same glyph</span></code></span>
+<span class="codeline" id="line-58"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-LigatureSet" class="ident">LigatureSet</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-59"><code>	Ligatures []<a href="#line-63" class="ident">Ligature</a> <span class="lit-string">`arrayCount:"FirstUint16"  offsetsArray:"Offset16"`</span> <span class="comment">// [LigatureCount]	Array of offsets to Ligature tables. Offsets are from beginning of LigatureSet table, ordered by preference.</span></code></span>
+<span class="codeline" id="line-60"><code>}</code></span>
+<span class="codeline" id="line-61"><code></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">// Glyph components for one ligature</span></code></span>
+<span class="codeline" id="line-63"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-Ligature" class="ident">Ligature</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-64"><code>	LigatureGlyph     <a href="tables.go.html#line-9" class="ident">GlyphID</a>   <span class="comment">//	glyph ID of ligature to substitute</span></code></span>
+<span class="codeline" id="line-65"><code>	componentCount    <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>    <span class="comment">//	Number of components in the ligature</span></code></span>
+<span class="codeline" id="line-66"><code>	ComponentGlyphIDs []<a href="tables.go.html#line-9" class="ident">GlyphID</a> <span class="lit-string">`arrayCount:"ComputedField-componentCount-1"`</span> <span class="comment">//  [componentCount - 1]	Array of component glyph IDs — start with the second component, ordered in writing direction</span></code></span>
+<span class="codeline" id="line-67"><code>}</code></span>
+<span class="codeline" id="line-68"><code></code></span>
+<span class="codeline" id="line-69"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-ContextualSubs" class="ident">ContextualSubs</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-70"><code>	Data <a href="#line-73" class="ident">ContextualSubsITF</a></code></span>
+<span class="codeline" id="line-71"><code>}</code></span>
+<span class="codeline" id="line-72"><code></code></span>
+<span class="codeline" id="line-73"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-ContextualSubsITF" class="ident">ContextualSubsITF</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-74"><code>	<a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.ContextualSubsITF.html#name-github.com/go-text/typesetting/font/opentype/tables.isContextualSubsITF" class="ident">isContextualSubsITF</a>()</code></span>
+<span class="codeline" id="line-75"><code></code></span>
+<span class="codeline" id="line-76"><code>	<a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.ContextualSubsITF.html#name-Cov" class="ident">Cov</a>() <a href="ot_layout.go.html#line-19" class="ident">Coverage</a></code></span>
+<span class="codeline" id="line-77"><code>}</code></span>
+<span class="codeline" id="line-78"><code></code></span>
+<span class="codeline" id="line-79"><code><span class="keyword">type</span> (</code></span>
+<span class="codeline" id="line-80"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-ContextualSubs1" class="ident">ContextualSubs1</a> <a href="ot_layout.go.html#line-92" class="ident">SequenceContextFormat1</a></code></span>
+<span class="codeline" id="line-81"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-ContextualSubs2" class="ident">ContextualSubs2</a> <a href="ot_layout.go.html#line-132" class="ident">SequenceContextFormat2</a></code></span>
+<span class="codeline" id="line-82"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-ContextualSubs3" class="ident">ContextualSubs3</a> <a href="ot_layout.go.html#line-143" class="ident">SequenceContextFormat3</a></code></span>
+<span class="codeline" id="line-83"><code>)</code></span>
+<span class="codeline" id="line-84"><code></code></span>
+<span class="codeline" id="line-85"><code><span class="keyword">func</span> (<a href="#line-80" class="ident">ContextualSubs1</a>) <label for="r2" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.ContextualSubs1.html#name-isContextualSubsITF" class="ident">isContextualSubsITF</a></label>() {}</code></span>
+<span class="codeline" id="line-86"><code><span class="keyword">func</span> (<a href="#line-81" class="ident">ContextualSubs2</a>) <label for="r3" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.ContextualSubs2.html#name-isContextualSubsITF" class="ident">isContextualSubsITF</a></label>() {}</code></span>
+<span class="codeline" id="line-87"><code><span class="keyword">func</span> (<a href="#line-82" class="ident">ContextualSubs3</a>) <label for="r4" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.ContextualSubs3.html#name-isContextualSubsITF" class="ident">isContextualSubsITF</a></label>() {}</code></span>
+<span class="codeline" id="line-88"><code></code></span>
+<span class="codeline" id="line-89"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-ChainedContextualSubs" class="ident">ChainedContextualSubs</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-90"><code>	Data <a href="#line-93" class="ident">ChainedContextualSubsITF</a></code></span>
+<span class="codeline" id="line-91"><code>}</code></span>
+<span class="codeline" id="line-92"><code></code></span>
+<span class="codeline" id="line-93"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-ChainedContextualSubsITF" class="ident">ChainedContextualSubsITF</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-94"><code>	<a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.ChainedContextualSubsITF.html#name-github.com/go-text/typesetting/font/opentype/tables.isChainedContextualSubsITF" class="ident">isChainedContextualSubsITF</a>()</code></span>
+<span class="codeline" id="line-95"><code></code></span>
+<span class="codeline" id="line-96"><code>	<a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.ChainedContextualSubsITF.html#name-Cov" class="ident">Cov</a>() <a href="ot_layout.go.html#line-19" class="ident">Coverage</a></code></span>
+<span class="codeline" id="line-97"><code>}</code></span>
+<span class="codeline" id="line-98"><code></code></span>
+<span class="codeline" id="line-99"><code><span class="keyword">type</span> (</code></span>
+<span class="codeline" id="line-100"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-ChainedContextualSubs1" class="ident">ChainedContextualSubs1</a> <a href="ot_layout.go.html#line-151" class="ident">ChainedSequenceContextFormat1</a></code></span>
+<span class="codeline" id="line-101"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-ChainedContextualSubs2" class="ident">ChainedContextualSubs2</a> <a href="ot_layout.go.html#line-169" class="ident">ChainedSequenceContextFormat2</a></code></span>
+<span class="codeline" id="line-102"><code>	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-ChainedContextualSubs3" class="ident">ChainedContextualSubs3</a> <a href="ot_layout.go.html#line-182" class="ident">ChainedSequenceContextFormat3</a></code></span>
+<span class="codeline" id="line-103"><code>)</code></span>
+<span class="codeline" id="line-104"><code></code></span>
+<span class="codeline" id="line-105"><code><span class="keyword">func</span> (<a href="#line-100" class="ident">ChainedContextualSubs1</a>) <label for="r5" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.ChainedContextualSubs1.html#name-isChainedContextualSubsITF" class="ident">isChainedContextualSubsITF</a></label>() {}</code></span>
+<span class="codeline" id="line-106"><code><span class="keyword">func</span> (<a href="#line-101" class="ident">ChainedContextualSubs2</a>) <label for="r6" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.ChainedContextualSubs2.html#name-isChainedContextualSubsITF" class="ident">isChainedContextualSubsITF</a></label>() {}</code></span>
+<span class="codeline" id="line-107"><code><span class="keyword">func</span> (<a href="#line-102" class="ident">ChainedContextualSubs3</a>) <label for="r7" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.ChainedContextualSubs3.html#name-isChainedContextualSubsITF" class="ident">isChainedContextualSubsITF</a></label>() {}</code></span>
+<span class="codeline" id="line-108"><code></code></span>
+<span class="codeline" id="line-109"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-ExtensionSubs" class="ident">ExtensionSubs</a> <a href="ot_layout.go.html#line-190" class="ident">Extension</a></code></span>
+<span class="codeline" id="line-110"><code></code></span>
+<span class="codeline" id="line-111"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-ReverseChainSingleSubs" class="ident">ReverseChainSingleSubs</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-112"><code>	substFormat        <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>     <span class="comment">// Format identifier: format = 1</span></code></span>
+<span class="codeline" id="line-113"><code>	coverage           <a href="ot_layout.go.html#line-19" class="ident">Coverage</a>   <span class="lit-string">`offsetSize:"Offset16"`</span>                             <span class="comment">// Offset to Coverage table, from beginning of substitution subtable.</span></code></span>
+<span class="codeline" id="line-114"><code>	BacktrackCoverages []<a href="ot_layout.go.html#line-19" class="ident">Coverage</a> <span class="lit-string">`arrayCount:"FirstUint16"  offsetsArray:"Offset16"`</span> <span class="comment">//[backtrackGlyphCount]	Array of offsets to coverage tables in backtrack sequence, in glyph sequence order.</span></code></span>
+<span class="codeline" id="line-115"><code>	LookaheadCoverages []<a href="ot_layout.go.html#line-19" class="ident">Coverage</a> <span class="lit-string">`arrayCount:"FirstUint16"  offsetsArray:"Offset16"`</span> <span class="comment">//[lookaheadGlyphCount]	Array of offsets to coverage tables in lookahead sequence, in glyph sequence order.</span></code></span>
+<span class="codeline" id="line-116"><code>	SubstituteGlyphIDs []<a href="tables.go.html#line-9" class="ident">GlyphID</a>  <span class="lit-string">`arrayCount:"FirstUint16"`</span>                          <span class="comment">//[glyphCount]	Array of substitute glyph IDs — ordered by Coverage index.</span></code></span>
+<span class="codeline" id="line-117"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

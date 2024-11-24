@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: storage.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	storage.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// Storage is used to manage file storage inside an application sandbox.</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// The files managed by this interface are unique to the current application.</span></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Storage" class="ident">Storage</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-6"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Storage.html#name-RootURI" class="ident">RootURI</a>() <a href="uri.go.html#line-32" class="ident">URI</a></code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Storage.html#name-Create" class="ident">Create</a>(name <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="uri.go.html#line-18" class="ident">URIWriteCloser</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-9"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Storage.html#name-Open" class="ident">Open</a>(name <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="uri.go.html#line-10" class="ident">URIReadCloser</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-10"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Storage.html#name-Save" class="ident">Save</a>(name <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="uri.go.html#line-18" class="ident">URIWriteCloser</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-11"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Storage.html#name-Remove" class="ident">Remove</a>(name <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Storage.html#name-List" class="ident">List</a>() []<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-14"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

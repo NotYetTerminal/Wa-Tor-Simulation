@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: driver_desktop.go in package fyne.io/fyne/v2/internal/driver/glfw</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	driver_desktop.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html">fyne.io/fyne/v2/internal/driver/glfw</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5,
+input[id=i6]:checked ~pre .i6,
+input[id=i7]:checked ~pre .i7,
+input[id=i8]:checked ~pre .i8,
+input[id=i9]:checked ~pre .i9,
+input[id=i10]:checked ~pre .i10,
+input[id=i11]:checked ~pre .i11,
+input[id=i12]:checked ~pre .i12,
+input[id=i13]:checked ~pre .i13,
+input[id=i14]:checked ~pre .i14
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+<input id="i6" type="radio" name="i"/>
+<input id="i7" type="radio" name="i"/>
+<input id="i8" type="radio" name="i"/>
+<input id="i9" type="radio" name="i"/>
+<input id="i10" type="radio" name="i"/>
+<input id="i11" type="radio" name="i"/>
+<input id="i12" type="radio" name="i"/>
+<input id="i13" type="radio" name="i"/>
+<input id="i14" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">//go:build !wasm &amp;&amp; !test_web_driver</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> glfw</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<label for="i0"><span class="lit-string i0">"bytes"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i1"><span class="lit-string i1">"image/png"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i2"><span class="lit-string i2">"os"</span></label></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i3"><span class="lit-string i3">"os/signal"</span></label></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i4"><span class="lit-string i4">"runtime"</span></label></code></span>
+<span class="codeline" id="line-11"><code>	<label for="i5"><span class="lit-string i5">"sync"</span></label></code></span>
+<span class="codeline" id="line-12"><code>	<label for="i6"><span class="lit-string i6">"syscall"</span></label></code></span>
+<span class="codeline" id="line-13"><code>	<label for="i7"><span class="lit-string i7">"time"</span></label></code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code>	<label for="i8"><span class="lit-string i8">"fyne.io/fyne/v2/canvas"</span></label></code></span>
+<span class="codeline" id="line-16"><code>	<label for="i9"><span class="lit-string i9">"fyne.io/fyne/v2/internal/painter"</span></label></code></span>
+<span class="codeline" id="line-17"><code>	<label for="i10"><span class="lit-string i10">"fyne.io/fyne/v2/internal/svg"</span></label></code></span>
+<span class="codeline" id="line-18"><code>	<label for="i11"><span class="lit-string i11">"fyne.io/fyne/v2/lang"</span></label></code></span>
+<span class="codeline" id="line-19"><code>	<label for="i12"><span class="lit-string i12">"fyne.io/systray"</span></label></code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code>	<label for="i13"><span class="lit-string i13">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-22"><code>	<label for="i14"><span class="lit-string i14">"fyne.io/fyne/v2/theme"</span></label></code></span>
+<span class="codeline" id="line-23"><code>)</code></span>
+<span class="codeline" id="line-24"><code></code></span>
+<span class="codeline" id="line-25"><code><span class="keyword">const</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-desktopDefaultDoubleTapDelay" class="ident">desktopDefaultDoubleTapDelay</a> = <span class="lit-number">300</span> * <a href="../../../../../../../pkg/time.html" class="ident i7">time</a>.<a href="../../../../../../time/time.go.html#line-654" class="ident">Millisecond</a></code></span>
+<span class="codeline" id="line-26"><code></code></span>
+<span class="codeline" id="line-27"><code><span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-28"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-systrayIcon" class="ident">systrayIcon</a> <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../resource.go.html#line-14" class="ident">Resource</a></code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-setup" class="ident">setup</a>       <a href="../../../../../../../pkg/sync.html" class="ident i5">sync</a>.<a href="../../../../../../sync/once.go.html#line-20" class="ident">Once</a></code></span>
+<span class="codeline" id="line-30"><code>)</code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-goroutineID" class="ident">goroutineID</a></label>() (<label for="r1" class="ident">id</label> <a href="../../../../../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>) {</code></span>
+<span class="codeline" id="line-33"><code>	<span class="keyword">var</span> <label for="r2" class="ident">buf</label> [<span class="lit-number">30</span>]<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-34"><code>	<a href="../../../../../../../pkg/runtime.html" class="ident i4">runtime</a>.<a href="../../../../../../runtime/mprof.go.html#line-1690" class="ident">Stack</a>(<label for="r2" class="ident">buf</label>[:], <a href="../../../../../../../pkg/builtin.html#name-false" class="ident">false</a>)</code></span>
+<span class="codeline" id="line-35"><code>	<span class="keyword">for</span> <label for="r3" class="ident">i</label> := <span class="lit-number">10</span>; <label for="r2" class="ident">buf</label>[<label for="r3" class="ident">i</label>] != <span class="lit-number">' '</span>; <label for="r3" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-36"><code>		<label for="r1" class="ident">id</label> = <label for="r1" class="ident">id</label>*<span class="lit-number">10</span> + <a href="../../../../../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r2" class="ident">buf</label>[<label for="r3" class="ident">i</label>]&amp;<span class="lit-number">15</span>)</code></span>
+<span class="codeline" id="line-37"><code>	}</code></span>
+<span class="codeline" id="line-38"><code>	<span class="keyword">return</span> <label for="r1" class="ident">id</label></code></span>
+<span class="codeline" id="line-39"><code>}</code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code><span class="keyword">func</span> (<label for="r4" class="ident">d</label> *<a href="driver.go.html#line-38" class="ident">gLDriver</a>) <label for="r5" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.gLDriver^28260.html#name-.SetSystemTrayMenu" class="ident">SetSystemTrayMenu</a></label>(<label for="r6" class="ident">m</label> *<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../menu.go.html#line-11" class="ident">Menu</a>) {</code></span>
+<span class="codeline" id="line-42"><code>	<a href="#line-29" class="ident">setup</a>.<a href="../../../../../../sync/once.go.html#line-50" class="ident">Do</a>(<span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-43"><code>		<label for="r4" class="ident">d</label>.<a href="driver.go.html#line-49" class="ident">trayStart</a>, <label for="r4" class="ident">d</label>.<a href="driver.go.html#line-49" class="ident">trayStop</a> = <a href="../../../../../../../pkg/fyne.io/systray.html" class="ident i12">systray</a>.<a href="../../../../../systray/systray.go.html#line-90" class="ident">RunWithExternalLoop</a>(<span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-44"><code>			<span class="keyword">if</span> <a href="#line-28" class="ident">systrayIcon</a> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-45"><code>				<label for="r4" class="ident">d</label>.<a href="#line-169" class="ident">SetSystemTrayIcon</a>(<a href="#line-28" class="ident">systrayIcon</a>)</code></span>
+<span class="codeline" id="line-46"><code>			} <span class="keyword">else</span> <span class="keyword">if</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../app.go.html#line-92" class="ident">CurrentApp</a>().<a href="../../../app.go.html#line-25" class="ident">Icon</a>() != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-47"><code>				<label for="r4" class="ident">d</label>.<a href="#line-169" class="ident">SetSystemTrayIcon</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../app.go.html#line-92" class="ident">CurrentApp</a>().<a href="../../../app.go.html#line-25" class="ident">Icon</a>())</code></span>
+<span class="codeline" id="line-48"><code>			} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-49"><code>				<label for="r4" class="ident">d</label>.<a href="#line-169" class="ident">SetSystemTrayIcon</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i14">theme</a>.<a href="../../../theme/icons.go.html#line-1008" class="ident">BrokenImageIcon</a>())</code></span>
+<span class="codeline" id="line-50"><code>			}</code></span>
+<span class="codeline" id="line-51"><code></code></span>
+<span class="codeline" id="line-52"><code>			<span class="comment">// Some XDG systray crash without a title (See #3678)</span></code></span>
+<span class="codeline" id="line-53"><code>			<span class="keyword">if</span> <a href="../../../../../../../pkg/runtime.html" class="ident i4">runtime</a>.<a href="../../../../../../runtime/extern.go.html#line-367" class="ident">GOOS</a> == <span class="lit-string">"linux"</span> || <a href="../../../../../../../pkg/runtime.html" class="ident i4">runtime</a>.<a href="../../../../../../runtime/extern.go.html#line-367" class="ident">GOOS</a> == <span class="lit-string">"openbsd"</span> || <a href="../../../../../../../pkg/runtime.html" class="ident i4">runtime</a>.<a href="../../../../../../runtime/extern.go.html#line-367" class="ident">GOOS</a> == <span class="lit-string">"freebsd"</span> || <a href="../../../../../../../pkg/runtime.html" class="ident i4">runtime</a>.<a href="../../../../../../runtime/extern.go.html#line-367" class="ident">GOOS</a> == <span class="lit-string">"netbsd"</span> {</code></span>
+<span class="codeline" id="line-54"><code>				<label for="r7" class="ident">app</label> := <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../app.go.html#line-92" class="ident">CurrentApp</a>()</code></span>
+<span class="codeline" id="line-55"><code>				<label for="r8" class="ident">title</label> := <label for="r7" class="ident">app</label>.<a href="../../../app.go.html#line-69" class="ident">Metadata</a>().<a href="../../../app.go.html#line-108" class="ident">Name</a></code></span>
+<span class="codeline" id="line-56"><code>				<span class="keyword">if</span> <label for="r8" class="ident">title</label> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-57"><code>					<label for="r8" class="ident">title</label> = <label for="r7" class="ident">app</label>.<a href="../../../app.go.html#line-47" class="ident">UniqueID</a>()</code></span>
+<span class="codeline" id="line-58"><code>				}</code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code>				<a href="../../../../../../../pkg/fyne.io/systray.html" class="ident i12">systray</a>.<a href="../../../../../systray/systray_unix.go.html#line-79" class="ident">SetTitle</a>(<label for="r8" class="ident">title</label>)</code></span>
+<span class="codeline" id="line-61"><code>			}</code></span>
+<span class="codeline" id="line-62"><code></code></span>
+<span class="codeline" id="line-63"><code>			<span class="comment">// it must be refreshed after init, so an earlier call would have been ineffective</span></code></span>
+<span class="codeline" id="line-64"><code>			<label for="r4" class="ident">d</label>.<a href="#line-137" class="ident">refreshSystray</a>(<label for="r6" class="ident">m</label>)</code></span>
+<span class="codeline" id="line-65"><code>		}, <span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-66"><code>			<span class="comment">// anything required for tear-down</span></code></span>
+<span class="codeline" id="line-67"><code>		})</code></span>
+<span class="codeline" id="line-68"><code></code></span>
+<span class="codeline" id="line-69"><code>		<span class="comment">// the only way we know the app was asked to quit is if this window is asked to close...</span></code></span>
+<span class="codeline" id="line-70"><code>		<label for="r9" class="ident">w</label> := <label for="r4" class="ident">d</label>.<a href="window.go.html#line-951" class="ident">CreateWindow</a>(<span class="lit-string">"SystrayMonitor"</span>)</code></span>
+<span class="codeline" id="line-71"><code>		<label for="r9" class="ident">w</label>.(*<a href="window_desktop.go.html#line-63" class="ident">window</a>).<a href="window_desktop.go.html#line-718" class="ident">create</a>()</code></span>
+<span class="codeline" id="line-72"><code>		<label for="r9" class="ident">w</label>.<a href="../../../window.go.html#line-71" class="ident">SetCloseIntercept</a>(<label for="r4" class="ident">d</label>.<a href="driver.go.html#line-93" class="ident">Quit</a>)</code></span>
+<span class="codeline" id="line-73"><code>		<label for="r9" class="ident">w</label>.<a href="../../../window.go.html#line-65" class="ident">SetOnClosed</a>(<a href="../../../../../../../pkg/fyne.io/systray.html" class="ident i12">systray</a>.<a href="../../../../../systray/systray.go.html#line-142" class="ident">Quit</a>)</code></span>
+<span class="codeline" id="line-74"><code>	})</code></span>
+<span class="codeline" id="line-75"><code></code></span>
+<span class="codeline" id="line-76"><code>	<label for="r4" class="ident">d</label>.<a href="#line-137" class="ident">refreshSystray</a>(<label for="r6" class="ident">m</label>)</code></span>
+<span class="codeline" id="line-77"><code>}</code></span>
+<span class="codeline" id="line-78"><code></code></span>
+<span class="codeline" id="line-79"><code><span class="keyword">func</span> <label for="r10" class="ident"><a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-itemForMenuItem" class="ident">itemForMenuItem</a></label>(<label for="r11" class="ident">i</label> *<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../menu.go.html#line-45" class="ident">MenuItem</a>, <label for="r12" class="ident">parent</label> *<a href="../../../../../../../pkg/fyne.io/systray.html" class="ident i12">systray</a>.<a href="../../../../../systray/systray.go.html#line-38" class="ident">MenuItem</a>) *<a href="../../../../../../../pkg/fyne.io/systray.html" class="ident i12">systray</a>.<a href="../../../../../systray/systray.go.html#line-38" class="ident">MenuItem</a> {</code></span>
+<span class="codeline" id="line-80"><code>	<span class="keyword">if</span> <label for="r11" class="ident">i</label>.<a href="../../../menu.go.html#line-49" class="ident">IsSeparator</a> {</code></span>
+<span class="codeline" id="line-81"><code>		<span class="keyword">if</span> <label for="r12" class="ident">parent</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-82"><code>			<label for="r12" class="ident">parent</label>.<a href="../../../../../systray/systray.go.html#line-172" class="ident">AddSeparator</a>()</code></span>
+<span class="codeline" id="line-83"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-84"><code>			<a href="../../../../../../../pkg/fyne.io/systray.html" class="ident i12">systray</a>.<a href="../../../../../systray/systray.go.html#line-167" class="ident">AddSeparator</a>()</code></span>
+<span class="codeline" id="line-85"><code>		}</code></span>
+<span class="codeline" id="line-86"><code>		<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-87"><code>	}</code></span>
+<span class="codeline" id="line-88"><code></code></span>
+<span class="codeline" id="line-89"><code>	<span class="keyword">var</span> <label for="r13" class="ident">item</label> *<a href="../../../../../../../pkg/fyne.io/systray.html" class="ident i12">systray</a>.<a href="../../../../../systray/systray.go.html#line-38" class="ident">MenuItem</a></code></span>
+<span class="codeline" id="line-90"><code>	<span class="keyword">if</span> <label for="r11" class="ident">i</label>.<a href="../../../menu.go.html#line-55" class="ident">Checked</a> {</code></span>
+<span class="codeline" id="line-91"><code>		<span class="keyword">if</span> <label for="r12" class="ident">parent</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-92"><code>			<label for="r13" class="ident">item</label> = <label for="r12" class="ident">parent</label>.<a href="../../../../../systray/systray.go.html#line-188" class="ident">AddSubMenuItemCheckbox</a>(<label for="r11" class="ident">i</label>.<a href="../../../menu.go.html#line-50" class="ident">Label</a>, <span class="lit-string">""</span>, <a href="../../../../../../../pkg/builtin.html#name-true" class="ident">true</a>)</code></span>
+<span class="codeline" id="line-93"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-94"><code>			<label for="r13" class="ident">item</label> = <a href="../../../../../../../pkg/fyne.io/systray.html" class="ident i12">systray</a>.<a href="../../../../../systray/systray.go.html#line-158" class="ident">AddMenuItemCheckbox</a>(<label for="r11" class="ident">i</label>.<a href="../../../menu.go.html#line-50" class="ident">Label</a>, <span class="lit-string">""</span>, <a href="../../../../../../../pkg/builtin.html#name-true" class="ident">true</a>)</code></span>
+<span class="codeline" id="line-95"><code>		}</code></span>
+<span class="codeline" id="line-96"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-97"><code>		<span class="keyword">if</span> <label for="r12" class="ident">parent</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-98"><code>			<label for="r13" class="ident">item</label> = <label for="r12" class="ident">parent</label>.<a href="../../../../../systray/systray.go.html#line-179" class="ident">AddSubMenuItem</a>(<label for="r11" class="ident">i</label>.<a href="../../../menu.go.html#line-50" class="ident">Label</a>, <span class="lit-string">""</span>)</code></span>
+<span class="codeline" id="line-99"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-100"><code>			<label for="r13" class="ident">item</label> = <a href="../../../../../../../pkg/fyne.io/systray.html" class="ident i12">systray</a>.<a href="../../../../../systray/systray.go.html#line-149" class="ident">AddMenuItem</a>(<label for="r11" class="ident">i</label>.<a href="../../../menu.go.html#line-50" class="ident">Label</a>, <span class="lit-string">""</span>)</code></span>
+<span class="codeline" id="line-101"><code>		}</code></span>
+<span class="codeline" id="line-102"><code>	}</code></span>
+<span class="codeline" id="line-103"><code>	<span class="keyword">if</span> <label for="r11" class="ident">i</label>.<a href="../../../menu.go.html#line-53" class="ident">Disabled</a> {</code></span>
+<span class="codeline" id="line-104"><code>		<label for="r13" class="ident">item</label>.<a href="../../../../../systray/systray.go.html#line-220" class="ident">Disable</a>()</code></span>
+<span class="codeline" id="line-105"><code>	}</code></span>
+<span class="codeline" id="line-106"><code>	<span class="keyword">if</span> <label for="r11" class="ident">i</label>.<a href="../../../menu.go.html#line-57" class="ident">Icon</a> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-107"><code>		<label for="r14" class="ident">data</label> := <label for="r11" class="ident">i</label>.<a href="../../../menu.go.html#line-57" class="ident">Icon</a>.<a href="../../../resource.go.html#line-16" class="ident">Content</a>()</code></span>
+<span class="codeline" id="line-108"><code>		<span class="keyword">if</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/svg.html" class="ident i10">svg</a>.<a href="../../svg/svg.go.html#line-102" class="ident">IsResourceSVG</a>(<label for="r11" class="ident">i</label>.<a href="../../../menu.go.html#line-57" class="ident">Icon</a>) {</code></span>
+<span class="codeline" id="line-109"><code>			<label for="r15" class="ident">b</label> := &amp;<a href="../../../../../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../../../../../bytes/buffer.go.html#line-20" class="ident">Buffer</a>{}</code></span>
+<span class="codeline" id="line-110"><code>			<label for="r16" class="ident">res</label> := <label for="r11" class="ident">i</label>.<a href="../../../menu.go.html#line-57" class="ident">Icon</a></code></span>
+<span class="codeline" id="line-111"><code>			<span class="keyword">if</span> <a href="../../../../../../../pkg/runtime.html" class="ident i4">runtime</a>.<a href="../../../../../../runtime/extern.go.html#line-367" class="ident">GOOS</a> == <span class="lit-string">"windows"</span> &amp;&amp; <a href="driver_notwindows.go.html#line-11" class="ident">isDark</a>() { <span class="comment">// windows menus don't match dark mode so invert icons</span></code></span>
+<span class="codeline" id="line-112"><code>				<label for="r16" class="ident">res</label> = <a href="../../../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i14">theme</a>.<a href="../../../theme/icons.go.html#line-720" class="ident">NewInvertedThemedResource</a>(<label for="r11" class="ident">i</label>.<a href="../../../menu.go.html#line-57" class="ident">Icon</a>)</code></span>
+<span class="codeline" id="line-113"><code>			}</code></span>
+<span class="codeline" id="line-114"><code>			<label for="r17" class="ident">img</label> := <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter.html" class="ident i9">painter</a>.<a href="../../painter/image.go.html#line-18" class="ident">PaintImage</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2/canvas.html" class="ident i8">canvas</a>.<a href="../../../canvas/image.go.html#line-248" class="ident">NewImageFromResource</a>(<label for="r16" class="ident">res</label>), <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <span class="lit-number">64</span>, <span class="lit-number">64</span>)</code></span>
+<span class="codeline" id="line-115"><code>			<label for="r18" class="ident">err</label> := <a href="../../../../../../../pkg/image/png.html" class="ident i1">png</a>.<a href="../../../../../../image/png/writer.go.html#line-584" class="ident">Encode</a>(<label for="r15" class="ident">b</label>, <label for="r17" class="ident">img</label>)</code></span>
+<span class="codeline" id="line-116"><code>			<span class="keyword">if</span> <label for="r18" class="ident">err</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-117"><code>				<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../log.go.html#line-11" class="ident">LogError</a>(<span class="lit-string">"Failed to encode SVG icon for menu"</span>, <label for="r18" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-118"><code>			} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-119"><code>				<label for="r14" class="ident">data</label> = <label for="r15" class="ident">b</label>.<a href="../../../../../../bytes/buffer.go.html#line-54" class="ident">Bytes</a>()</code></span>
+<span class="codeline" id="line-120"><code>			}</code></span>
+<span class="codeline" id="line-121"><code>		}</code></span>
+<span class="codeline" id="line-122"><code></code></span>
+<span class="codeline" id="line-123"><code>		<label for="r19" class="ident">img</label>, <label for="r20" class="ident">err</label> := <a href="driver.go.html#line-53" class="ident">toOSIcon</a>(<label for="r14" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-124"><code>		<span class="keyword">if</span> <label for="r20" class="ident">err</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-125"><code>			<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../log.go.html#line-11" class="ident">LogError</a>(<span class="lit-string">"Failed to convert systray icon"</span>, <label for="r20" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-126"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-127"><code>			<span class="keyword">if</span> <label for="r21" class="ident">_</label>, <label for="r22" class="ident">ok</label> := <label for="r11" class="ident">i</label>.<a href="../../../menu.go.html#line-57" class="ident">Icon</a>.(*<a href="../../../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i14">theme</a>.<a href="../../../theme/icons.go.html#line-636" class="ident">ThemedResource</a>); <label for="r22" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-128"><code>				<label for="r13" class="ident">item</label>.<a href="../../../../../systray/systray_unix.go.html#line-133" class="ident">SetTemplateIcon</a>(<label for="r19" class="ident">img</label>, <label for="r19" class="ident">img</label>)</code></span>
+<span class="codeline" id="line-129"><code>			} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-130"><code>				<label for="r13" class="ident">item</label>.<a href="../../../../../systray/systray_menu_unix.go.html#line-16" class="ident">SetIcon</a>(<label for="r19" class="ident">img</label>)</code></span>
+<span class="codeline" id="line-131"><code>			}</code></span>
+<span class="codeline" id="line-132"><code>		}</code></span>
+<span class="codeline" id="line-133"><code>	}</code></span>
+<span class="codeline" id="line-134"><code>	<span class="keyword">return</span> <label for="r13" class="ident">item</label></code></span>
+<span class="codeline" id="line-135"><code>}</code></span>
+<span class="codeline" id="line-136"><code></code></span>
+<span class="codeline" id="line-137"><code><span class="keyword">func</span> (<label for="r23" class="ident">d</label> *<a href="driver.go.html#line-38" class="ident">gLDriver</a>) <label for="r24" class="ident">refreshSystray</label>(<label for="r25" class="ident">m</label> *<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../menu.go.html#line-11" class="ident">Menu</a>) {</code></span>
+<span class="codeline" id="line-138"><code>	<a href="loop.go.html#line-41" class="ident">runOnMain</a>(<span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-139"><code>		<label for="r23" class="ident">d</label>.<a href="driver.go.html#line-50" class="ident">systrayMenu</a> = <label for="r25" class="ident">m</label></code></span>
+<span class="codeline" id="line-140"><code></code></span>
+<span class="codeline" id="line-141"><code>		<a href="../../../../../../../pkg/fyne.io/systray.html" class="ident i12">systray</a>.<a href="../../../../../systray/systray.go.html#line-129" class="ident">ResetMenu</a>()</code></span>
+<span class="codeline" id="line-142"><code>		<label for="r23" class="ident">d</label>.<a href="#line-148" class="ident">refreshSystrayMenu</a>(<label for="r25" class="ident">m</label>, <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-143"><code></code></span>
+<span class="codeline" id="line-144"><code>		<a href="#line-203" class="ident">addMissingQuitForMenu</a>(<label for="r25" class="ident">m</label>, <label for="r23" class="ident">d</label>)</code></span>
+<span class="codeline" id="line-145"><code>	})</code></span>
+<span class="codeline" id="line-146"><code>}</code></span>
+<span class="codeline" id="line-147"><code></code></span>
+<span class="codeline" id="line-148"><code><span class="keyword">func</span> (<label for="r26" class="ident">d</label> *<a href="driver.go.html#line-38" class="ident">gLDriver</a>) <label for="r27" class="ident">refreshSystrayMenu</label>(<label for="r28" class="ident">m</label> *<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../menu.go.html#line-11" class="ident">Menu</a>, <label for="r29" class="ident">parent</label> *<a href="../../../../../../../pkg/fyne.io/systray.html" class="ident i12">systray</a>.<a href="../../../../../systray/systray.go.html#line-38" class="ident">MenuItem</a>) {</code></span>
+<span class="codeline" id="line-149"><code>	<span class="keyword">for</span> <label for="r30" class="ident">_</label>, <label for="r31" class="ident">i</label> := <span class="keyword">range</span> <label for="r28" class="ident">m</label>.<a href="../../../menu.go.html#line-13" class="ident">Items</a> {</code></span>
+<span class="codeline" id="line-150"><code>		<label for="r32" class="ident">item</label> := <a href="#line-79" class="ident">itemForMenuItem</a>(<label for="r31" class="ident">i</label>, <label for="r29" class="ident">parent</label>)</code></span>
+<span class="codeline" id="line-151"><code>		<span class="keyword">if</span> <label for="r32" class="ident">item</label> == <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-152"><code>			<span class="keyword">continue</span> <span class="comment">// separator</span></code></span>
+<span class="codeline" id="line-153"><code>		}</code></span>
+<span class="codeline" id="line-154"><code>		<span class="keyword">if</span> <label for="r31" class="ident">i</label>.<a href="../../../menu.go.html#line-46" class="ident">ChildMenu</a> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-155"><code>			<label for="r26" class="ident">d</label>.<label for="r27" class="ident">refreshSystrayMenu</label>(<label for="r31" class="ident">i</label>.<a href="../../../menu.go.html#line-46" class="ident">ChildMenu</a>, <label for="r32" class="ident">item</label>)</code></span>
+<span class="codeline" id="line-156"><code>		}</code></span>
+<span class="codeline" id="line-157"><code></code></span>
+<span class="codeline" id="line-158"><code>		<label for="r33" class="ident">fn</label> := <label for="r31" class="ident">i</label>.<a href="../../../menu.go.html#line-51" class="ident">Action</a></code></span>
+<span class="codeline" id="line-159"><code>		<span class="keyword">go</span> <span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-160"><code>			<span class="keyword">for</span> <span class="keyword">range</span> <label for="r32" class="ident">item</label>.<a href="../../../../../systray/systray.go.html#line-40" class="ident">ClickedCh</a> {</code></span>
+<span class="codeline" id="line-161"><code>				<span class="keyword">if</span> <label for="r33" class="ident">fn</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-162"><code>					<label for="r33" class="ident">fn</label>()</code></span>
+<span class="codeline" id="line-163"><code>				}</code></span>
+<span class="codeline" id="line-164"><code>			}</code></span>
+<span class="codeline" id="line-165"><code>		}()</code></span>
+<span class="codeline" id="line-166"><code>	}</code></span>
+<span class="codeline" id="line-167"><code>}</code></span>
+<span class="codeline" id="line-168"><code></code></span>
+<span class="codeline" id="line-169"><code><span class="keyword">func</span> (<label for="r34" class="ident">d</label> *<a href="driver.go.html#line-38" class="ident">gLDriver</a>) <label for="r35" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.gLDriver^28260.html#name-.SetSystemTrayIcon" class="ident">SetSystemTrayIcon</a></label>(<label for="r36" class="ident">resource</label> <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../resource.go.html#line-14" class="ident">Resource</a>) {</code></span>
+<span class="codeline" id="line-170"><code>	<a href="#line-28" class="ident">systrayIcon</a> = <label for="r36" class="ident">resource</label> <span class="comment">// in case we need it later</span></code></span>
+<span class="codeline" id="line-171"><code></code></span>
+<span class="codeline" id="line-172"><code>	<label for="r37" class="ident">img</label>, <label for="r38" class="ident">err</label> := <a href="driver.go.html#line-53" class="ident">toOSIcon</a>(<label for="r36" class="ident">resource</label>.<a href="../../../resource.go.html#line-16" class="ident">Content</a>())</code></span>
+<span class="codeline" id="line-173"><code>	<span class="keyword">if</span> <label for="r38" class="ident">err</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-174"><code>		<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../log.go.html#line-11" class="ident">LogError</a>(<span class="lit-string">"Failed to convert systray icon"</span>, <label for="r38" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-175"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-176"><code>	}</code></span>
+<span class="codeline" id="line-177"><code></code></span>
+<span class="codeline" id="line-178"><code>	<a href="loop.go.html#line-41" class="ident">runOnMain</a>(<span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-179"><code>		<span class="keyword">if</span> <label for="r39" class="ident">_</label>, <label for="r40" class="ident">ok</label> := <label for="r36" class="ident">resource</label>.(*<a href="../../../../../../../pkg/fyne.io/fyne/v2/theme.html" class="ident i14">theme</a>.<a href="../../../theme/icons.go.html#line-636" class="ident">ThemedResource</a>); <label for="r40" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-180"><code>			<a href="../../../../../../../pkg/fyne.io/systray.html" class="ident i12">systray</a>.<a href="../../../../../systray/systray_unix.go.html#line-43" class="ident">SetTemplateIcon</a>(<label for="r37" class="ident">img</label>, <label for="r37" class="ident">img</label>)</code></span>
+<span class="codeline" id="line-181"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-182"><code>			<a href="../../../../../../../pkg/fyne.io/systray.html" class="ident i12">systray</a>.<a href="../../../../../systray/systray_unix.go.html#line-51" class="ident">SetIcon</a>(<label for="r37" class="ident">img</label>)</code></span>
+<span class="codeline" id="line-183"><code>		}</code></span>
+<span class="codeline" id="line-184"><code>	})</code></span>
+<span class="codeline" id="line-185"><code>}</code></span>
+<span class="codeline" id="line-186"><code></code></span>
+<span class="codeline" id="line-187"><code><span class="keyword">func</span> (<label for="r41" class="ident">d</label> *<a href="driver.go.html#line-38" class="ident">gLDriver</a>) <label for="r42" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.gLDriver^28260.html#name-.SystemTrayMenu" class="ident">SystemTrayMenu</a></label>() *<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../menu.go.html#line-11" class="ident">Menu</a> {</code></span>
+<span class="codeline" id="line-188"><code>	<span class="keyword">return</span> <label for="r41" class="ident">d</label>.<a href="driver.go.html#line-50" class="ident">systrayMenu</a></code></span>
+<span class="codeline" id="line-189"><code>}</code></span>
+<span class="codeline" id="line-190"><code></code></span>
+<span class="codeline" id="line-191"><code><span class="keyword">func</span> (<label for="r43" class="ident">d</label> *<a href="driver.go.html#line-38" class="ident">gLDriver</a>) <label for="r44" class="ident"><a href="../../../../../../../imp/fyne.io/fyne/v2/internal/driver/glfw.gLDriver^28260.html#name-.CurrentKeyModifiers" class="ident">CurrentKeyModifiers</a></label>() <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../key.go.html#line-181" class="ident">KeyModifier</a> {</code></span>
+<span class="codeline" id="line-192"><code>	<span class="keyword">return</span> <label for="r43" class="ident">d</label>.<a href="driver.go.html#line-47" class="ident">currentKeyModifiers</a></code></span>
+<span class="codeline" id="line-193"><code>}</code></span>
+<span class="codeline" id="line-194"><code></code></span>
+<span class="codeline" id="line-195"><code><span class="keyword">func</span> (<label for="r45" class="ident">d</label> *<a href="driver.go.html#line-38" class="ident">gLDriver</a>) <label for="r46" class="ident">catchTerm</label>() {</code></span>
+<span class="codeline" id="line-196"><code>	<label for="r47" class="ident">terminateSignal</label> := <a href="../../../../../../runtime/chan.go.html#line-73">make</a>(<span class="keyword">chan</span> <a href="../../../../../../../pkg/os.html" class="ident i2">os</a>.<a href="../../../../../../os/exec.go.html#line-280" class="ident">Signal</a>, <span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-197"><code>	<a href="../../../../../../../pkg/os/signal.html" class="ident i3">signal</a>.<a href="../../../../../../os/signal/signal.go.html#line-121" class="ident">Notify</a>(<label for="r47" class="ident">terminateSignal</label>, <a href="../../../../../../../pkg/syscall.html" class="ident i6">syscall</a>.<a href="../../../../../../syscall/zerrors_linux_amd64.go.html#line-1330" class="ident">SIGINT</a>, <a href="../../../../../../../pkg/syscall.html" class="ident i6">syscall</a>.<a href="../../../../../../syscall/zerrors_linux_amd64.go.html#line-1343" class="ident">SIGTERM</a>)</code></span>
+<span class="codeline" id="line-198"><code></code></span>
+<span class="codeline" id="line-199"><code>	&lt;-<label for="r47" class="ident">terminateSignal</label></code></span>
+<span class="codeline" id="line-200"><code>	<label for="r45" class="ident">d</label>.<a href="driver.go.html#line-93" class="ident">Quit</a>()</code></span>
+<span class="codeline" id="line-201"><code>}</code></span>
+<span class="codeline" id="line-202"><code></code></span>
+<span class="codeline" id="line-203"><code><span class="keyword">func</span> <label for="r48" class="ident"><a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-addMissingQuitForMenu" class="ident">addMissingQuitForMenu</a></label>(<label for="r49" class="ident">menu</label> *<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../menu.go.html#line-11" class="ident">Menu</a>, <label for="r50" class="ident">d</label> *<a href="driver.go.html#line-38" class="ident">gLDriver</a>) {</code></span>
+<span class="codeline" id="line-204"><code>	<label for="r51" class="ident">localQuit</label> := <a href="../../../../../../../pkg/fyne.io/fyne/v2/lang.html" class="ident i11">lang</a>.<a href="../../../lang/lang.go.html#line-24" class="ident">L</a>(<span class="lit-string">"Quit"</span>)</code></span>
+<span class="codeline" id="line-205"><code>	<span class="keyword">var</span> <label for="r52" class="ident">lastItem</label> *<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../menu.go.html#line-45" class="ident">MenuItem</a></code></span>
+<span class="codeline" id="line-206"><code>	<span class="keyword">if</span> <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r49" class="ident">menu</label>.<a href="../../../menu.go.html#line-13" class="ident">Items</a>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-207"><code>		<label for="r52" class="ident">lastItem</label> = <label for="r49" class="ident">menu</label>.<a href="../../../menu.go.html#line-13" class="ident">Items</a>[<a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r49" class="ident">menu</label>.<a href="../../../menu.go.html#line-13" class="ident">Items</a>)-<span class="lit-number">1</span>]</code></span>
+<span class="codeline" id="line-208"><code>		<span class="keyword">if</span> <label for="r52" class="ident">lastItem</label>.<a href="../../../menu.go.html#line-50" class="ident">Label</a> == <label for="r51" class="ident">localQuit</label> {</code></span>
+<span class="codeline" id="line-209"><code>			<label for="r52" class="ident">lastItem</label>.<a href="../../../menu.go.html#line-48" class="ident">IsQuit</a> = <a href="../../../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-210"><code>		}</code></span>
+<span class="codeline" id="line-211"><code>	}</code></span>
+<span class="codeline" id="line-212"><code>	<span class="keyword">if</span> <label for="r52" class="ident">lastItem</label> == <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> || !<label for="r52" class="ident">lastItem</label>.<a href="../../../menu.go.html#line-48" class="ident">IsQuit</a> { <span class="comment">// make sure the menu always has a quit option</span></code></span>
+<span class="codeline" id="line-213"><code>		<label for="r53" class="ident">quitItem</label> := <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../menu.go.html#line-63" class="ident">NewMenuItem</a>(<label for="r51" class="ident">localQuit</label>, <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-214"><code>		<label for="r53" class="ident">quitItem</label>.<a href="../../../menu.go.html#line-48" class="ident">IsQuit</a> = <a href="../../../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-215"><code>		<label for="r49" class="ident">menu</label>.<a href="../../../menu.go.html#line-13" class="ident">Items</a> = <a href="../../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r49" class="ident">menu</label>.<a href="../../../menu.go.html#line-13" class="ident">Items</a>, <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i13">fyne</a>.<a href="../../../menu.go.html#line-68" class="ident">NewMenuItemSeparator</a>(), <label for="r53" class="ident">quitItem</label>)</code></span>
+<span class="codeline" id="line-216"><code>	}</code></span>
+<span class="codeline" id="line-217"><code>	<span class="keyword">for</span> <label for="r54" class="ident">_</label>, <label for="r55" class="ident">item</label> := <span class="keyword">range</span> <label for="r49" class="ident">menu</label>.<a href="../../../menu.go.html#line-13" class="ident">Items</a> {</code></span>
+<span class="codeline" id="line-218"><code>		<span class="keyword">if</span> <label for="r55" class="ident">item</label>.<a href="../../../menu.go.html#line-48" class="ident">IsQuit</a> &amp;&amp; <label for="r55" class="ident">item</label>.<a href="../../../menu.go.html#line-51" class="ident">Action</a> == <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-219"><code>			<label for="r55" class="ident">item</label>.<a href="../../../menu.go.html#line-51" class="ident">Action</a> = <label for="r50" class="ident">d</label>.<a href="driver.go.html#line-93" class="ident">Quit</a></code></span>
+<span class="codeline" id="line-220"><code>		}</code></span>
+<span class="codeline" id="line-221"><code>	}</code></span>
+<span class="codeline" id="line-222"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

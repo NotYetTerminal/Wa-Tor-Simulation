@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method Implmentations: github.com/yuin/goldmark/text.Reader</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+<pre><code><span style="font-size:x-large;">type <a href="../../../../pkg/github.com/yuin/goldmark/text.html">github.com/yuin/goldmark/text</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-18">Reader</a></b></span><span style="font-size:large;"> <b><i>(interface)</i></b></span>
+
+<code><span class="title">Method Implmentations<span class="title-stat"><i></i></span></span>
+
+<div class="anchor" id="name-Advance">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-52">Advance</a>(<a href="../../../../pkg/builtin.html#name-int">int</a>)
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-52">Advance</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-419">Advance</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-194">Advance</a></b></div>
+<div class="anchor" id="name-AdvanceAndSetPadding">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-56">AdvanceAndSetPadding</a>(<a href="../../../../pkg/builtin.html#name-int">int</a>, <a href="../../../../pkg/builtin.html#name-int">int</a>)
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-56">AdvanceAndSetPadding</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-440">AdvanceAndSetPadding</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-216">AdvanceAndSetPadding</a></b></div>
+<div class="anchor" id="name-AdvanceLine">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-59">AdvanceLine</a>()
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-59">AdvanceLine</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-447">AdvanceLine</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-223">AdvanceLine</a></b></div>
+<div class="anchor" id="name-FindClosure">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-76">FindClosure</a>(opener, closer <a href="../../../../pkg/builtin.html#name-byte">byte</a>, options <a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-FindClosureOptions">FindClosureOptions</a>) (*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-Segments">Segments</a>, <a href="../../../../pkg/builtin.html#name-bool">bool</a>)
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-76">FindClosure</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-302">FindClosure</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-118">FindClosure</a></b></div>
+<div class="anchor" id="name-FindSubMatch">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-73">FindSubMatch</a>(reg *<a href="../../../../pkg/regexp.html">regexp</a>.<a href="../../../../pkg/regexp.html#name-Regexp">Regexp</a>) [][]<a href="../../../../pkg/builtin.html#name-byte">byte</a>
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-73">FindSubMatch</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-491">FindSubMatch</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-269">FindSubMatch</a></b></div>
+<div class="anchor" id="name-LineOffset">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-40">LineOffset</a>() <a href="../../../../pkg/builtin.html#name-int">int</a>
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-40">LineOffset</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-387">LineOffset</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-162">LineOffset</a></b></div>
+<div class="anchor" id="name-Match">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-70">Match</a>(reg *<a href="../../../../pkg/regexp.html">regexp</a>.<a href="../../../../pkg/regexp.html#name-Regexp">Regexp</a>) <a href="../../../../pkg/builtin.html#name-bool">bool</a>
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-70">Match</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-487">Match</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-265">Match</a></b></div>
+<div class="anchor" id="name-Peek">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-28">Peek</a>() <a href="../../../../pkg/builtin.html#name-byte">byte</a>
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-28">Peek</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-402">Peek</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-137">Peek</a></b></div>
+<div class="anchor" id="name-PeekLine">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-31">PeekLine</a>() ([]<a href="../../../../pkg/builtin.html#name-byte">byte</a>, <a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-Segment">Segment</a>)
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-31">PeekLine</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-412">PeekLine</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-147">PeekLine</a></b></div>
+<div class="anchor" id="name-Position">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-43">Position</a>() (<a href="../../../../pkg/builtin.html#name-int">int</a>, <a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-Segment">Segment</a>)
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-43">Position</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-452">Position</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-243">Position</a></b></div>
+<div class="anchor" id="name-PrecendingCharacter">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-34">PrecendingCharacter</a>() <a href="../../../../pkg/builtin.html#name-rune">rune</a>
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-34">PrecendingCharacter</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-362">PrecendingCharacter</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-177">PrecendingCharacter</a></b></div>
+<div class="anchor" id="name-ReadRune">	<a href="../../../../src/io/io.go.html#line-290">ReadRune</a>() (r <a href="../../../../pkg/builtin.html#name-rune">rune</a>, size <a href="../../../../pkg/builtin.html#name-int">int</a>, err <a href="../../../../pkg/builtin.html#name-error">error</a>)
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/io/io.go.html#line-290">ReadRune</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-358">ReadRune</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-158">ReadRune</a></b></div>
+<div class="anchor" id="name-ResetPosition">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-25">ResetPosition</a>()
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-25">ResetPosition</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-306">ResetPosition</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-122">ResetPosition</a></b></div>
+<div class="anchor" id="name-SetPadding">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-49">SetPadding</a>(<a href="../../../../pkg/builtin.html#name-int">int</a>)
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-49">SetPadding</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-474">SetPadding</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-253">SetPadding</a></b></div>
+<div class="anchor" id="name-SetPosition">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-46">SetPosition</a>(<a href="../../../../pkg/builtin.html#name-int">int</a>, <a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-Segment">Segment</a>)
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-46">SetPosition</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-456">SetPosition</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-247">SetPosition</a></b></div>
+<div class="anchor" id="name-SkipBlankLines">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-67">SkipBlankLines</a>() (<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-Segment">Segment</a>, <a href="../../../../pkg/builtin.html#name-int">int</a>, <a href="../../../../pkg/builtin.html#name-bool">bool</a>)
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-67">SkipBlankLines</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-483">SkipBlankLines</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-261">SkipBlankLines</a></b></div>
+<div class="anchor" id="name-SkipSpaces">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-63">SkipSpaces</a>() (<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-Segment">Segment</a>, <a href="../../../../pkg/builtin.html#name-int">int</a>, <a href="../../../../pkg/builtin.html#name-bool">bool</a>)
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-63">SkipSpaces</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-479">SkipSpaces</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-257">SkipSpaces</a></b></div>
+<div class="anchor" id="name-Source">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-22">Source</a>() []<a href="../../../../pkg/builtin.html#name-byte">byte</a>
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-22">Source</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-327">Source</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-129">Source</a></b></div>
+<div class="anchor" id="name-Value">	<a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-37">Value</a>(<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-Segment">Segment</a>) []<a href="../../../../pkg/builtin.html#name-byte">byte</a>
+		<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-BlockReader">BlockReader</a>.<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-37">Value</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-blockReader">blockReader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-331">Value</a></b>
+		(*<a href="../../../../pkg/github.com/yuin/goldmark/text.html#name-reader">reader</a>).<b><a href="../../../../src/github.com/yuin/goldmark/text/reader.go.html#line-133">Value</a></b></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

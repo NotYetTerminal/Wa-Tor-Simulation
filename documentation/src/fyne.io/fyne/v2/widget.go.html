@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: widget.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	widget.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// Widget defines the standard behaviours of any widget. This extends</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// [CanvasObject]. A widget behaves in the same basic way but will encapsulate</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// many child objects to create the rendered widget.</span></code></span>
+<span class="codeline" id="line-6"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Widget" class="ident">Widget</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-7"><code>	<a href="canvasobject.go.html#line-10" class="ident">CanvasObject</a></code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code>	<span class="comment">// CreateRenderer returns a new [WidgetRenderer] for this widget.</span></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">	// This should not be called by regular code, it is used internally to render a widget.</span></code></span>
+<span class="codeline" id="line-11"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Widget.html#name-CreateRenderer" class="ident">CreateRenderer</a>() <a href="#line-17" class="ident">WidgetRenderer</a></code></span>
+<span class="codeline" id="line-12"><code>}</code></span>
+<span class="codeline" id="line-13"><code></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">// WidgetRenderer defines the behaviour of a widget's implementation.</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// This is returned from a widget's declarative object through [Widget.CreateRenderer]</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// and should be exactly one instance per widget in memory.</span></code></span>
+<span class="codeline" id="line-17"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-WidgetRenderer" class="ident">WidgetRenderer</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-18"><code>	<span class="comment">// Destroy is a hook that is called when the renderer is being destroyed.</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">	// This happens at some time after the widget is no longer visible, and</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">	// once destroyed, a renderer will not be reused.</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">	// Renderers should dispose and clean up any related resources, if necessary.</span></code></span>
+<span class="codeline" id="line-22"><code>	<a href="../../../../imp/fyne.io/fyne/v2.WidgetRenderer.html#name-Destroy" class="ident">Destroy</a>()</code></span>
+<span class="codeline" id="line-23"><code>	<span class="comment">// Layout is a hook that is called if the widget needs to be laid out.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">	// This should never call [Refresh].</span></code></span>
+<span class="codeline" id="line-25"><code>	<a href="../../../../imp/fyne.io/fyne/v2.WidgetRenderer.html#name-Layout" class="ident">Layout</a>(<a href="geometry.go.html#line-91" class="ident">Size</a>)</code></span>
+<span class="codeline" id="line-26"><code>	<span class="comment">// MinSize returns the minimum size of the widget that is rendered by this renderer.</span></code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../../../imp/fyne.io/fyne/v2.WidgetRenderer.html#name-MinSize" class="ident">MinSize</a>() <a href="geometry.go.html#line-91" class="ident">Size</a></code></span>
+<span class="codeline" id="line-28"><code>	<span class="comment">// Objects returns all objects that should be drawn.</span></code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../imp/fyne.io/fyne/v2.WidgetRenderer.html#name-Objects" class="ident">Objects</a>() []<a href="canvasobject.go.html#line-10" class="ident">CanvasObject</a></code></span>
+<span class="codeline" id="line-30"><code>	<span class="comment">// Refresh is a hook that is called if the widget has updated and needs to be redrawn.</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">	// This might trigger a [Layout].</span></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../imp/fyne.io/fyne/v2.WidgetRenderer.html#name-Refresh" class="ident">Refresh</a>()</code></span>
+<span class="codeline" id="line-33"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: animation.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	animation.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"time"</span></label></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// AnimationCurve represents an animation algorithm for calculating the progress through a timeline.</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">// Custom animations can be provided by implementing the "func(float32) float32" definition.</span></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// The input parameter will start at 0.0 when an animation starts and travel up to 1.0 at which point it will end.</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// A linear animation would return the same output value as is passed in.</span></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-AnimationCurve" class="ident">AnimationCurve</a> <span class="keyword">func</span>(<a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// AnimationRepeatForever is an AnimationCount value that indicates it should not stop looping.</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-14"><code><span class="keyword">const</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-AnimationRepeatForever" class="ident">AnimationRepeatForever</a> = -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code><span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-17"><code>	<span class="comment">// AnimationEaseInOut is the default easing, it starts slowly, accelerates to the middle and slows to the end.</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-20"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-AnimationEaseInOut" class="ident">AnimationEaseInOut</a> = <a href="#line-70" class="ident">animationEaseInOut</a></code></span>
+<span class="codeline" id="line-21"><code>	<span class="comment">// AnimationEaseIn starts slowly and accelerates to the end.</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-AnimationEaseIn" class="ident">AnimationEaseIn</a> = <a href="#line-66" class="ident">animationEaseIn</a></code></span>
+<span class="codeline" id="line-25"><code>	<span class="comment">// AnimationEaseOut starts at speed and slows to the end.</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-28"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-AnimationEaseOut" class="ident">AnimationEaseOut</a> = <a href="#line-78" class="ident">animationEaseOut</a></code></span>
+<span class="codeline" id="line-29"><code>	<span class="comment">// AnimationLinear is a linear mapping for animations that progress uniformly through their duration.</span></code></span>
+<span class="codeline" id="line-30"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">	// Since: 2.0</span></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../pkg/fyne.io/fyne/v2.html#name-AnimationLinear" class="ident">AnimationLinear</a> = <a href="#line-82" class="ident">animationLinear</a></code></span>
+<span class="codeline" id="line-33"><code>)</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">// Animation represents an animated element within a Fyne canvas.</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// These animations may control individual objects or entire scenes.</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-39"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Animation" class="ident">Animation</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-40"><code>	AutoReverse <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-41"><code>	Curve       <a href="#line-9" class="ident">AnimationCurve</a></code></span>
+<span class="codeline" id="line-42"><code>	Duration    <a href="../../../../pkg/time.html" class="ident i0">time</a>.<a href="../../../time/time.go.html#line-632" class="ident">Duration</a></code></span>
+<span class="codeline" id="line-43"><code>	RepeatCount <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-44"><code>	Tick        <span class="keyword">func</span>(<a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>)</code></span>
+<span class="codeline" id="line-45"><code>}</code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">// NewAnimation creates a very basic animation where the callback function will be called for every</span></code></span>
+<span class="codeline" id="line-48"><code><span class="comment">// rendered frame between [time.Now] and the specified duration. The callback values start at 0.0 and</span></code></span>
+<span class="codeline" id="line-49"><code><span class="comment">// will be 1.0 when the animation completes.</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">// Since: 2.0</span></code></span>
+<span class="codeline" id="line-52"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-NewAnimation" class="ident">NewAnimation</a></label>(<label for="r1" class="ident">d</label> <a href="../../../../pkg/time.html" class="ident i0">time</a>.<a href="../../../time/time.go.html#line-632" class="ident">Duration</a>, <label for="r2" class="ident">fn</label> <span class="keyword">func</span>(<a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>)) *<a href="#line-39" class="ident">Animation</a> {</code></span>
+<span class="codeline" id="line-53"><code>	<span class="keyword">return</span> &amp;<a href="#line-39" class="ident">Animation</a>{<a href="#line-42" class="ident">Duration</a>: <label for="r1" class="ident">d</label>, <a href="#line-44" class="ident">Tick</a>: <label for="r2" class="ident">fn</label>}</code></span>
+<span class="codeline" id="line-54"><code>}</code></span>
+<span class="codeline" id="line-55"><code></code></span>
+<span class="codeline" id="line-56"><code><span class="comment">// Start registers the animation with the application run-loop and starts its execution.</span></code></span>
+<span class="codeline" id="line-57"><code><span class="keyword">func</span> (<label for="r3" class="ident">a</label> *<a href="#line-39" class="ident">Animation</a>) <label for="r4" class="ident">Start</label>() {</code></span>
+<span class="codeline" id="line-58"><code>	<a href="app.go.html#line-92" class="ident">CurrentApp</a>().<a href="app.go.html#line-43" class="ident">Driver</a>().<a href="driver.go.html#line-32" class="ident">StartAnimation</a>(<label for="r3" class="ident">a</label>)</code></span>
+<span class="codeline" id="line-59"><code>}</code></span>
+<span class="codeline" id="line-60"><code></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">// Stop will end this animation and remove it from the run-loop.</span></code></span>
+<span class="codeline" id="line-62"><code><span class="keyword">func</span> (<label for="r5" class="ident">a</label> *<a href="#line-39" class="ident">Animation</a>) <label for="r6" class="ident">Stop</label>() {</code></span>
+<span class="codeline" id="line-63"><code>	<a href="app.go.html#line-92" class="ident">CurrentApp</a>().<a href="app.go.html#line-43" class="ident">Driver</a>().<a href="driver.go.html#line-34" class="ident">StopAnimation</a>(<label for="r5" class="ident">a</label>)</code></span>
+<span class="codeline" id="line-64"><code>}</code></span>
+<span class="codeline" id="line-65"><code></code></span>
+<span class="codeline" id="line-66"><code><span class="keyword">func</span> <label for="r7" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-animationEaseIn" class="ident">animationEaseIn</a></label>(<label for="r8" class="ident">val</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a> {</code></span>
+<span class="codeline" id="line-67"><code>	<span class="keyword">return</span> <label for="r8" class="ident">val</label> * <label for="r8" class="ident">val</label></code></span>
+<span class="codeline" id="line-68"><code>}</code></span>
+<span class="codeline" id="line-69"><code></code></span>
+<span class="codeline" id="line-70"><code><span class="keyword">func</span> <label for="r9" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-animationEaseInOut" class="ident">animationEaseInOut</a></label>(<label for="r10" class="ident">val</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a> {</code></span>
+<span class="codeline" id="line-71"><code>	<span class="keyword">if</span> <label for="r10" class="ident">val</label> &lt;= <span class="lit-number">0.5</span> {</code></span>
+<span class="codeline" id="line-72"><code>		<span class="keyword">return</span> <label for="r10" class="ident">val</label> * <label for="r10" class="ident">val</label> * <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-73"><code>	}</code></span>
+<span class="codeline" id="line-74"><code></code></span>
+<span class="codeline" id="line-75"><code>	<span class="keyword">return</span> -<span class="lit-number">1</span> + (<span class="lit-number">4</span>-<label for="r10" class="ident">val</label>*<span class="lit-number">2</span>)*<label for="r10" class="ident">val</label></code></span>
+<span class="codeline" id="line-76"><code>}</code></span>
+<span class="codeline" id="line-77"><code></code></span>
+<span class="codeline" id="line-78"><code><span class="keyword">func</span> <label for="r11" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-animationEaseOut" class="ident">animationEaseOut</a></label>(<label for="r12" class="ident">val</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a> {</code></span>
+<span class="codeline" id="line-79"><code>	<span class="keyword">return</span> <label for="r12" class="ident">val</label> * (<span class="lit-number">2</span> - <label for="r12" class="ident">val</label>)</code></span>
+<span class="codeline" id="line-80"><code>}</code></span>
+<span class="codeline" id="line-81"><code></code></span>
+<span class="codeline" id="line-82"><code><span class="keyword">func</span> <label for="r13" class="ident"><a href="../../../../pkg/fyne.io/fyne/v2.html#name-animationLinear" class="ident">animationLinear</a></label>(<label for="r14" class="ident">val</label> <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>) <a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a> {</code></span>
+<span class="codeline" id="line-83"><code>	<span class="keyword">return</span> <label for="r14" class="ident">val</label></code></span>
+<span class="codeline" id="line-84"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

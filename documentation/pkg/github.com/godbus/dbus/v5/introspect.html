@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/godbus/dbus/v5/introspect</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>introspect</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-github.com/godbus/dbus/v5/introspect">github.com/godbus/dbus/v5/introspect</a><i> (on <a href="https://pkg.go.dev/github.com/godbus/dbus/v5/introspect" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/github.com/godbus/dbus/v5/introspect.html">4 packages</a>, and imported by <a href="../../../../../dep/github.com/godbus/dbus/v5/introspect.html#imported-by">4 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/call.go.html">call.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-1-fold-content"><label for="file-1-fold-content">  <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#doc">d</a> <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html">introspect.go</a></label><span id='file-1-fold-content-items' class="fold-items">
+<span class="md-text">		Package introspect provides some utilities for dealing with the DBus
+		introspection format.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspectable.go.html">introspectable.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 8, all are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Annotation" data-popularity="0">	<input type='checkbox' class="fold" id="Annotation-fold-content"><label for="Annotation-fold-content"> type <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-83">Annotation</a> <i>(struct)</i></label><span id='Annotation-fold-content-docs' class="fold-docs">
+<span class="md-text">		Annotation is an annotation in the introspection format.</span>
+
+		<input type='checkbox' class="fold" id="Annotation-fold-fields"><label for="Annotation-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='Annotation-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-84">Name</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-85">Value</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span></span>
+
+</span></div><div class="anchor type-res" id="name-Arg" data-popularity="0">	<input type='checkbox' class="fold" id="Arg-fold-content"><label for="Arg-fold-content"> type <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-76">Arg</a> <i>(struct)</i></label><span id='Arg-fold-content-docs' class="fold-docs">
+<span class="md-text">		Arg represents an argument of a method or a signal.</span>
+
+		<input type='checkbox' class="fold" id="Arg-fold-fields"><label for="Arg-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='Arg-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-79">Direction</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-77">Name</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-78">Type</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span></span>
+
+</span></div><div class="anchor type-res" id="name-Interface" data-popularity="15">	<input type='checkbox' class="fold" id="Interface-fold-content"><label for="Interface-fold-content"> type <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-45">Interface</a> <i>(struct)</i></label><span id='Interface-fold-content-docs' class="fold-docs">
+<span class="md-text">		Interface describes a DBus interface that is available on the message bus.</span>
+
+		<input type='checkbox' class="fold" id="Interface-fold-fields"><label for="Interface-fold-fields">Fields (<i>total 5, all are exported</i>)</label><span id='Interface-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-50">Annotations</a> <i>[]<a href="#name-Annotation">Annotation</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-47">Methods</a> <i>[]<a href="#name-Method">Method</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-46">Name</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-49">Properties</a> <i>[]<a href="#name-Property">Property</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-48">Signals</a> <i>[]<a href="#name-Signal">Signal</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Interface-fold-values"><label for="Interface-fold-values">As Types Of (<i>total 4, all are exported</i>)</label><span id='Interface-fold-values-items' class="fold-items"><span>
+			  var <a href="#name-IntrospectData">IntrospectData</a></span><span>
+			  var github.com/godbus/dbus/v5/prop.<a href="prop.html#name-IntrospectData">IntrospectData</a></span><span>
+			  var fyne.io/systray/internal/generated/menu.<a href="../../../../fyne.io/systray/internal/generated/menu.html#name-IntrospectDataDbusmenu">IntrospectDataDbusmenu</a></span><span>
+			  var fyne.io/systray/internal/generated/notifier.<a href="../../../../fyne.io/systray/internal/generated/notifier.html#name-IntrospectDataStatusNotifierItem">IntrospectDataStatusNotifierItem</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Introspectable" data-popularity="125">	<input type='checkbox' class="fold" id="Introspectable-fold-content"><label for="Introspectable-fold-content"> type <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspectable.go.html#line-16">Introspectable</a> <a href="../../../../builtin.html#name-string">string</a> <i>(basic type)</i></label><span id='Introspectable-fold-content-docs' class="fold-docs">
+<span class="md-text">		Introspectable implements org.freedesktop.Introspectable.
+		
+		You can create it by converting the XML-formatted introspection data from a
+		string to an Introspectable or call NewIntrospectable with a Node. Then,
+		export it as org.freedesktop.Introspectable on you object.</span>
+
+		<input type='checkbox' class="fold" id="Introspectable-fold-methods"><label for="Introspectable-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Introspectable-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Introspectable-fold-method-Introspect"><label for="Introspectable-fold-method-Introspect">( Introspectable) <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspectable.go.html#line-40">Introspect</a>() (<a href="../../../../builtin.html#name-string">string</a>, *<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Error">Error</a>)</label><span id='Introspectable-fold-method-Introspect-docs' class="fold-docs">
+<span class="md-text">				Introspect implements org.freedesktop.Introspectable.Introspect.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Introspectable-fold-results"><label for="Introspectable-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Introspectable-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewIntrospectable">NewIntrospectable</a>(n *<a href="#name-Node">Node</a>) <b>Introspectable</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-Method" data-popularity="75">	<input type='checkbox' class="fold" id="Method-fold-content"><label for="Method-fold-content"> type <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-54">Method</a> <i>(struct)</i></label><span id='Method-fold-content-docs' class="fold-docs">
+<span class="md-text">		Method describes a Method on an Interface as returned by an introspection.</span>
+
+		<input type='checkbox' class="fold" id="Method-fold-fields"><label for="Method-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='Method-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-57">Annotations</a> <i>[]<a href="#name-Annotation">Annotation</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-56">Args</a> <i>[]<a href="#name-Arg">Arg</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-55">Name</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Method-fold-results"><label for="Method-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Method-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Methods">Methods</a>(v interface{}) []<b>Method</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-Node" data-popularity="110">	<input type='checkbox' class="fold" id="Node-fold-content"><label for="Node-fold-content"> type <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-37">Node</a> <i>(struct)</i></label><span id='Node-fold-content-docs' class="fold-docs">
+<span class="md-text">		Node is the root element of an introspection.</span>
+
+		<input type='checkbox' class="fold" id="Node-fold-fields"><label for="Node-fold-fields">Fields (<i>total 4, all are exported</i>)</label><span id='Node-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-41">Children</a> <i>[]<b>Node</b></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-40">Interfaces</a> <i>[]<a href="#name-Interface">Interface</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-39">Name</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-38">XMLName</a> <i><a href="../../../../encoding/xml.html">xml</a>.<a href="../../../../encoding/xml.html#name-Name">Name</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Node-fold-results"><label for="Node-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Node-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Call">Call</a>(o <a href="../v5.html">dbus</a>.<a href="../v5.html#name-BusObject">BusObject</a>) (*<b>Node</b>, <a href="../../../../builtin.html#name-error">error</a>)</span></span>
+		<input type='checkbox' class="fold" id="Node-fold-params"><label for="Node-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='Node-fold-params-items' class="fold-items"><span>
+			func <a href="#name-NewIntrospectable">NewIntrospectable</a>(n *<b>Node</b>) <a href="#name-Introspectable">Introspectable</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Property" data-popularity="150">	<input type='checkbox' class="fold" id="Property-fold-content"><label for="Property-fold-content"> type <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-68">Property</a> <i>(struct)</i></label><span id='Property-fold-content-docs' class="fold-docs">
+<span class="md-text">		Property describes a property of an Interface.</span>
+
+		<input type='checkbox' class="fold" id="Property-fold-fields"><label for="Property-fold-fields">Fields (<i>total 4, all are exported</i>)</label><span id='Property-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-71">Access</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-72">Annotations</a> <i>[]<a href="#name-Annotation">Annotation</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-69">Name</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-70">Type</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Property-fold-results"><label for="Property-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='Property-fold-results-items' class="fold-items"><span>
+			func github.com/godbus/dbus/v5/prop.(*<a href="prop.html#name-Prop">Prop</a>).<a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-150">Introspection</a>(name <a href="../../../../builtin.html#name-string">string</a>) <b>Property</b></span><span>
+			func github.com/godbus/dbus/v5/prop.(*<a href="prop.html#name-Properties">Properties</a>).<a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-268">Introspection</a>(iface <a href="../../../../builtin.html#name-string">string</a>) []<b>Property</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-Signal" data-popularity="0">	<input type='checkbox' class="fold" id="Signal-fold-content"><label for="Signal-fold-content"> type <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-61">Signal</a> <i>(struct)</i></label><span id='Signal-fold-content-docs' class="fold-docs">
+<span class="md-text">		Signal describes a Signal emitted on an Interface.</span>
+
+		<input type='checkbox' class="fold" id="Signal-fold-fields"><label for="Signal-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='Signal-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-57">Annotations</a> <i>[]<a href="#name-Annotation">Annotation</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-56">Args</a> <i>[]<a href="#name-Arg">Arg</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-55">Name</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 3, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Call">	<input type='checkbox' class="fold" id="Call-fold-content"><label for="Call-fold-content"> func <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/call.go.html#line-12">Call</a>(o <a href="../v5.html">dbus</a>.<a href="../v5.html#name-BusObject">BusObject</a>) (*<a href="#name-Node">Node</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Call-fold-content-docs' class="fold-docs">
+<span class="md-text">		Call calls org.freedesktop.Introspectable.Introspect on a remote object
+		and returns the introspection data.</span>
+
+</span></div><div class="anchor value-res" id="name-Methods">	<input type='checkbox' class="fold" id="Methods-fold-content"><label for="Methods-fold-content"> func <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspectable.go.html#line-46">Methods</a>(v interface{}) []<a href="#name-Method">Method</a></label><span id='Methods-fold-content-docs' class="fold-docs">
+<span class="md-text">		Methods returns the description of the methods of v. This can be used to
+		create a Node which can be passed to NewIntrospectable.</span>
+
+</span></div><div class="anchor value-res" id="name-NewIntrospectable">	<input type='checkbox' class="fold" id="NewIntrospectable-fold-content"><label for="NewIntrospectable-fold-content"> func <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspectable.go.html#line-21">NewIntrospectable</a>(n *<a href="#name-Node">Node</a>) <a href="#name-Introspectable">Introspectable</a></label><span id='NewIntrospectable-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewIntrospectable returns an Introspectable that returns the introspection
+		data that corresponds to the given Node. If n.Interfaces doesn't contain the
+		data for org.freedesktop.DBus.Introspectable, it is added automatically.</span>
+
+</span></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (only one, which is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-IntrospectData">	<input type='checkbox' class="fold" id="IntrospectData-fold-content"><label for="IntrospectData-fold-content">  var <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-8">IntrospectData</a> <a href="#name-Interface">Interface</a></label><span id='IntrospectData-fold-content-docs' class="fold-docs">
+<span class="md-text">		The introspection data for the org.freedesktop.DBus.Introspectable interface.</span>
+
+</span></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 2, both are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-IntrospectDataString">	<input type='checkbox' class="fold" id="IntrospectDataString-fold-content"><label for="IntrospectDataString-fold-content">const <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-28">IntrospectDataString</a> = "\n\t<interface name=\"org.freedesktop.DBus.Introspectable\">\n\t\t<m...</label><span id='IntrospectDataString-fold-content-docs' class="fold-docs">
+<span class="md-text">		The introspection data for the org.freedesktop.DBus.Introspectable interface,
+		as a string.</span>
+
+</span></div><div class="anchor value-res" id="name-IntrospectDeclarationString">	<input type='checkbox' class="fold" id="IntrospectDeclarationString-fold-content"><label for="IntrospectDeclarationString-fold-content">const <a href="../../../../../src/github.com/godbus/dbus/v5/introspect/introspect.go.html#line-21">IntrospectDeclarationString</a> = "\n\t<!DOCTYPE node PUBLIC \"-//freedesktop//DTD D-BUS Object Introsp...</label><span id='IntrospectDeclarationString-fold-content-docs' class="fold-docs">
+<span class="md-text">		XML document type declaration of the introspection format version 1.0</span>
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

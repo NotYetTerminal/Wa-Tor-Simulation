@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: markdown.go in package github.com/yuin/goldmark</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	markdown.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/yuin/goldmark.html">github.com/yuin/goldmark</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Package goldmark implements functions to convert markdown text to a desired format.</span></code></span></div><span class="codeline" id="line-2"><code><span class="keyword">package</span> goldmark</code></span>
+<span class="codeline" id="line-3"><code></code></span>
+<span class="codeline" id="line-4"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-5"><code>	<label for="i0"><span class="lit-string i0">"github.com/yuin/goldmark/parser"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i1"><span class="lit-string i1">"github.com/yuin/goldmark/renderer"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i2"><span class="lit-string i2">"github.com/yuin/goldmark/renderer/html"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i3"><span class="lit-string i3">"github.com/yuin/goldmark/text"</span></label></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i4"><span class="lit-string i4">"github.com/yuin/goldmark/util"</span></label></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i5"><span class="lit-string i5">"io"</span></label></code></span>
+<span class="codeline" id="line-11"><code>)</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// DefaultParser returns a new Parser that is configured by default values.</span></code></span>
+<span class="codeline" id="line-14"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/yuin/goldmark.html#name-DefaultParser" class="ident">DefaultParser</a></label>() <a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-472" class="ident">Parser</a> {</code></span>
+<span class="codeline" id="line-15"><code>	<span class="keyword">return</span> <a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-729" class="ident">NewParser</a>(<a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-655" class="ident">WithBlockParsers</a>(<a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-581" class="ident">DefaultBlockParsers</a>()...),</code></span>
+<span class="codeline" id="line-16"><code>		<a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-669" class="ident">WithInlineParsers</a>(<a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-604" class="ident">DefaultInlineParsers</a>()...),</code></span>
+<span class="codeline" id="line-17"><code>		<a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-683" class="ident">WithParagraphTransformers</a>(<a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-618" class="ident">DefaultParagraphTransformers</a>()...),</code></span>
+<span class="codeline" id="line-18"><code>	)</code></span>
+<span class="codeline" id="line-19"><code>}</code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">// DefaultRenderer returns a new Renderer that is configured by default values.</span></code></span>
+<span class="codeline" id="line-22"><code><span class="keyword">func</span> <label for="r1" class="ident"><a href="../../../../pkg/github.com/yuin/goldmark.html#name-DefaultRenderer" class="ident">DefaultRenderer</a></label>() <a href="../../../../pkg/github.com/yuin/goldmark/renderer.html" class="ident i1">renderer</a>.<a href="renderer/renderer.go.html#line-89" class="ident">Renderer</a> {</code></span>
+<span class="codeline" id="line-23"><code>	<span class="keyword">return</span> <a href="../../../../pkg/github.com/yuin/goldmark/renderer.html" class="ident i1">renderer</a>.<a href="renderer/renderer.go.html#line-106" class="ident">NewRenderer</a>(<a href="../../../../pkg/github.com/yuin/goldmark/renderer.html" class="ident i1">renderer</a>.<a href="renderer/renderer.go.html#line-45" class="ident">WithNodeRenderers</a>(<a href="../../../../pkg/github.com/yuin/goldmark/util.html" class="ident i4">util</a>.<a href="util/util.go.html#line-885" class="ident">Prioritized</a>(<a href="../../../../pkg/github.com/yuin/goldmark/renderer/html.html" class="ident i2">html</a>.<a href="renderer/html/html.go.html#line-250" class="ident">NewRenderer</a>(), <span class="lit-number">1000</span>)))</code></span>
+<span class="codeline" id="line-24"><code>}</code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/yuin/goldmark.html#name-defaultMarkdown" class="ident">defaultMarkdown</a> = <a href="#line-99" class="ident">New</a>()</code></span>
+<span class="codeline" id="line-27"><code></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">// Convert interprets a UTF-8 bytes source in Markdown and</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">// write rendered contents to a writer w.</span></code></span>
+<span class="codeline" id="line-30"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../../../pkg/github.com/yuin/goldmark.html#name-Convert" class="ident">Convert</a></label>(<label for="r3" class="ident">source</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r4" class="ident">w</label> <a href="../../../../pkg/io.html" class="ident i5">io</a>.<a href="../../../io/io.go.html#line-99" class="ident">Writer</a>, <label for="r5" class="ident">opts</label> ...<a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-830" class="ident">ParseOption</a>) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-31"><code>	<span class="keyword">return</span> <a href="#line-26" class="ident">defaultMarkdown</a>.<a href="#line-39" class="ident">Convert</a>(<label for="r3" class="ident">source</label>, <label for="r4" class="ident">w</label>, <label for="r5" class="ident">opts</label>...)</code></span>
+<span class="codeline" id="line-32"><code>}</code></span>
+<span class="codeline" id="line-33"><code></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">// A Markdown interface offers functions to convert Markdown text to</span></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">// a desired format.</span></code></span>
+<span class="codeline" id="line-36"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/yuin/goldmark.html#name-Markdown" class="ident">Markdown</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-37"><code>	<span class="comment">// Convert interprets a UTF-8 bytes source in Markdown and write rendered</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">	// contents to a writer w.</span></code></span>
+<span class="codeline" id="line-39"><code>	<a href="../../../../imp/github.com/yuin/goldmark.Markdown.html#name-Convert" class="ident">Convert</a>(source []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, writer <a href="../../../../pkg/io.html" class="ident i5">io</a>.<a href="../../../io/io.go.html#line-99" class="ident">Writer</a>, opts ...<a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-830" class="ident">ParseOption</a>) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code>	<span class="comment">// Parser returns a Parser that will be used for conversion.</span></code></span>
+<span class="codeline" id="line-42"><code>	<a href="../../../../imp/github.com/yuin/goldmark.Markdown.html#name-Parser" class="ident">Parser</a>() <a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-472" class="ident">Parser</a></code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code>	<span class="comment">// SetParser sets a Parser to this object.</span></code></span>
+<span class="codeline" id="line-45"><code>	<a href="../../../../imp/github.com/yuin/goldmark.Markdown.html#name-SetParser" class="ident">SetParser</a>(<a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-472" class="ident">Parser</a>)</code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code>	<span class="comment">// Parser returns a Renderer that will be used for conversion.</span></code></span>
+<span class="codeline" id="line-48"><code>	<a href="../../../../imp/github.com/yuin/goldmark.Markdown.html#name-Renderer" class="ident">Renderer</a>() <a href="../../../../pkg/github.com/yuin/goldmark/renderer.html" class="ident i1">renderer</a>.<a href="renderer/renderer.go.html#line-89" class="ident">Renderer</a></code></span>
+<span class="codeline" id="line-49"><code></code></span>
+<span class="codeline" id="line-50"><code>	<span class="comment">// SetRenderer sets a Renderer to this object.</span></code></span>
+<span class="codeline" id="line-51"><code>	<a href="../../../../imp/github.com/yuin/goldmark.Markdown.html#name-SetRenderer" class="ident">SetRenderer</a>(<a href="../../../../pkg/github.com/yuin/goldmark/renderer.html" class="ident i1">renderer</a>.<a href="renderer/renderer.go.html#line-89" class="ident">Renderer</a>)</code></span>
+<span class="codeline" id="line-52"><code>}</code></span>
+<span class="codeline" id="line-53"><code></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">// Option is a functional option type for Markdown objects.</span></code></span>
+<span class="codeline" id="line-55"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/yuin/goldmark.html#name-Option" class="ident">Option</a> <span class="keyword">func</span>(*<a href="#line-92" class="ident">markdown</a>)</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code><span class="comment">// WithExtensions adds extensions.</span></code></span>
+<span class="codeline" id="line-58"><code><span class="keyword">func</span> <label for="r6" class="ident"><a href="../../../../pkg/github.com/yuin/goldmark.html#name-WithExtensions" class="ident">WithExtensions</a></label>(<label for="r7" class="ident">ext</label> ...<a href="#line-137" class="ident">Extender</a>) <a href="#line-55" class="ident">Option</a> {</code></span>
+<span class="codeline" id="line-59"><code>	<span class="keyword">return</span> <span class="keyword">func</span>(<label for="r8" class="ident">m</label> *<a href="#line-92" class="ident">markdown</a>) {</code></span>
+<span class="codeline" id="line-60"><code>		<label for="r8" class="ident">m</label>.<a href="#line-95" class="ident">extensions</a> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r8" class="ident">m</label>.<a href="#line-95" class="ident">extensions</a>, <label for="r7" class="ident">ext</label>...)</code></span>
+<span class="codeline" id="line-61"><code>	}</code></span>
+<span class="codeline" id="line-62"><code>}</code></span>
+<span class="codeline" id="line-63"><code></code></span>
+<span class="codeline" id="line-64"><code><span class="comment">// WithParser allows you to override the default parser.</span></code></span>
+<span class="codeline" id="line-65"><code><span class="keyword">func</span> <label for="r9" class="ident"><a href="../../../../pkg/github.com/yuin/goldmark.html#name-WithParser" class="ident">WithParser</a></label>(<label for="r10" class="ident">p</label> <a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-472" class="ident">Parser</a>) <a href="#line-55" class="ident">Option</a> {</code></span>
+<span class="codeline" id="line-66"><code>	<span class="keyword">return</span> <span class="keyword">func</span>(<label for="r11" class="ident">m</label> *<a href="#line-92" class="ident">markdown</a>) {</code></span>
+<span class="codeline" id="line-67"><code>		<label for="r11" class="ident">m</label>.<a href="#line-93" class="ident">parser</a> = <label for="r10" class="ident">p</label></code></span>
+<span class="codeline" id="line-68"><code>	}</code></span>
+<span class="codeline" id="line-69"><code>}</code></span>
+<span class="codeline" id="line-70"><code></code></span>
+<span class="codeline" id="line-71"><code><span class="comment">// WithParserOptions applies options for the parser.</span></code></span>
+<span class="codeline" id="line-72"><code><span class="keyword">func</span> <label for="r12" class="ident"><a href="../../../../pkg/github.com/yuin/goldmark.html#name-WithParserOptions" class="ident">WithParserOptions</a></label>(<label for="r13" class="ident">opts</label> ...<a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-449" class="ident">Option</a>) <a href="#line-55" class="ident">Option</a> {</code></span>
+<span class="codeline" id="line-73"><code>	<span class="keyword">return</span> <span class="keyword">func</span>(<label for="r14" class="ident">m</label> *<a href="#line-92" class="ident">markdown</a>) {</code></span>
+<span class="codeline" id="line-74"><code>		<label for="r14" class="ident">m</label>.<a href="#line-93" class="ident">parser</a>.<a href="parser/parser.go.html#line-477" class="ident">AddOptions</a>(<label for="r13" class="ident">opts</label>...)</code></span>
+<span class="codeline" id="line-75"><code>	}</code></span>
+<span class="codeline" id="line-76"><code>}</code></span>
+<span class="codeline" id="line-77"><code></code></span>
+<span class="codeline" id="line-78"><code><span class="comment">// WithRenderer allows you to override the default renderer.</span></code></span>
+<span class="codeline" id="line-79"><code><span class="keyword">func</span> <label for="r15" class="ident"><a href="../../../../pkg/github.com/yuin/goldmark.html#name-WithRenderer" class="ident">WithRenderer</a></label>(<label for="r16" class="ident">r</label> <a href="../../../../pkg/github.com/yuin/goldmark/renderer.html" class="ident i1">renderer</a>.<a href="renderer/renderer.go.html#line-89" class="ident">Renderer</a>) <a href="#line-55" class="ident">Option</a> {</code></span>
+<span class="codeline" id="line-80"><code>	<span class="keyword">return</span> <span class="keyword">func</span>(<label for="r17" class="ident">m</label> *<a href="#line-92" class="ident">markdown</a>) {</code></span>
+<span class="codeline" id="line-81"><code>		<label for="r17" class="ident">m</label>.<a href="#line-94" class="ident">renderer</a> = <label for="r16" class="ident">r</label></code></span>
+<span class="codeline" id="line-82"><code>	}</code></span>
+<span class="codeline" id="line-83"><code>}</code></span>
+<span class="codeline" id="line-84"><code></code></span>
+<span class="codeline" id="line-85"><code><span class="comment">// WithRendererOptions applies options for the renderer.</span></code></span>
+<span class="codeline" id="line-86"><code><span class="keyword">func</span> <label for="r18" class="ident"><a href="../../../../pkg/github.com/yuin/goldmark.html#name-WithRendererOptions" class="ident">WithRendererOptions</a></label>(<label for="r19" class="ident">opts</label> ...<a href="../../../../pkg/github.com/yuin/goldmark/renderer.html" class="ident i1">renderer</a>.<a href="renderer/renderer.go.html#line-31" class="ident">Option</a>) <a href="#line-55" class="ident">Option</a> {</code></span>
+<span class="codeline" id="line-87"><code>	<span class="keyword">return</span> <span class="keyword">func</span>(<label for="r20" class="ident">m</label> *<a href="#line-92" class="ident">markdown</a>) {</code></span>
+<span class="codeline" id="line-88"><code>		<label for="r20" class="ident">m</label>.<a href="#line-94" class="ident">renderer</a>.<a href="renderer/renderer.go.html#line-93" class="ident">AddOptions</a>(<label for="r19" class="ident">opts</label>...)</code></span>
+<span class="codeline" id="line-89"><code>	}</code></span>
+<span class="codeline" id="line-90"><code>}</code></span>
+<span class="codeline" id="line-91"><code></code></span>
+<span class="codeline" id="line-92"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/yuin/goldmark.html#name-markdown" class="ident">markdown</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-93"><code>	parser     <a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-472" class="ident">Parser</a></code></span>
+<span class="codeline" id="line-94"><code>	renderer   <a href="../../../../pkg/github.com/yuin/goldmark/renderer.html" class="ident i1">renderer</a>.<a href="renderer/renderer.go.html#line-89" class="ident">Renderer</a></code></span>
+<span class="codeline" id="line-95"><code>	extensions []<a href="#line-137" class="ident">Extender</a></code></span>
+<span class="codeline" id="line-96"><code>}</code></span>
+<span class="codeline" id="line-97"><code></code></span>
+<span class="codeline" id="line-98"><code><span class="comment">// New returns a new Markdown with given options.</span></code></span>
+<span class="codeline" id="line-99"><code><span class="keyword">func</span> <label for="r21" class="ident"><a href="../../../../pkg/github.com/yuin/goldmark.html#name-New" class="ident">New</a></label>(<label for="r22" class="ident">options</label> ...<a href="#line-55" class="ident">Option</a>) <a href="#line-36" class="ident">Markdown</a> {</code></span>
+<span class="codeline" id="line-100"><code>	<label for="r23" class="ident">md</label> := &amp;<a href="#line-92" class="ident">markdown</a>{</code></span>
+<span class="codeline" id="line-101"><code>		<a href="#line-93" class="ident">parser</a>:     <a href="#line-14" class="ident">DefaultParser</a>(),</code></span>
+<span class="codeline" id="line-102"><code>		<a href="#line-94" class="ident">renderer</a>:   <a href="#line-22" class="ident">DefaultRenderer</a>(),</code></span>
+<span class="codeline" id="line-103"><code>		<a href="#line-95" class="ident">extensions</a>: []<a href="#line-137" class="ident">Extender</a>{},</code></span>
+<span class="codeline" id="line-104"><code>	}</code></span>
+<span class="codeline" id="line-105"><code>	<span class="keyword">for</span> <label for="r24" class="ident">_</label>, <label for="r25" class="ident">opt</label> := <span class="keyword">range</span> <label for="r22" class="ident">options</label> {</code></span>
+<span class="codeline" id="line-106"><code>		<label for="r25" class="ident">opt</label>(<label for="r23" class="ident">md</label>)</code></span>
+<span class="codeline" id="line-107"><code>	}</code></span>
+<span class="codeline" id="line-108"><code>	<span class="keyword">for</span> <label for="r26" class="ident">_</label>, <label for="r27" class="ident">e</label> := <span class="keyword">range</span> <label for="r23" class="ident">md</label>.<a href="#line-95" class="ident">extensions</a> {</code></span>
+<span class="codeline" id="line-109"><code>		<label for="r27" class="ident">e</label>.<a href="#line-139" class="ident">Extend</a>(<label for="r23" class="ident">md</label>)</code></span>
+<span class="codeline" id="line-110"><code>	}</code></span>
+<span class="codeline" id="line-111"><code>	<span class="keyword">return</span> <label for="r23" class="ident">md</label></code></span>
+<span class="codeline" id="line-112"><code>}</code></span>
+<span class="codeline" id="line-113"><code></code></span>
+<span class="codeline" id="line-114"><code><span class="keyword">func</span> (<label for="r28" class="ident">m</label> *<a href="#line-92" class="ident">markdown</a>) <label for="r29" class="ident"><a href="../../../../imp/github.com/yuin/goldmark.markdown^bc18f.html#name-.Convert" class="ident">Convert</a></label>(<label for="r30" class="ident">source</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r31" class="ident">writer</label> <a href="../../../../pkg/io.html" class="ident i5">io</a>.<a href="../../../io/io.go.html#line-99" class="ident">Writer</a>, <label for="r32" class="ident">opts</label> ...<a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-830" class="ident">ParseOption</a>) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-115"><code>	<label for="r33" class="ident">reader</label> := <a href="../../../../pkg/github.com/yuin/goldmark/text.html" class="ident i3">text</a>.<a href="text/reader.go.html#line-109" class="ident">NewReader</a>(<label for="r30" class="ident">source</label>)</code></span>
+<span class="codeline" id="line-116"><code>	<label for="r34" class="ident">doc</label> := <label for="r28" class="ident">m</label>.<a href="#line-93" class="ident">parser</a>.<a href="parser/parser.go.html#line-474" class="ident">Parse</a>(<label for="r33" class="ident">reader</label>, <label for="r32" class="ident">opts</label>...)</code></span>
+<span class="codeline" id="line-117"><code>	<span class="keyword">return</span> <label for="r28" class="ident">m</label>.<a href="#line-94" class="ident">renderer</a>.<a href="renderer/renderer.go.html#line-90" class="ident">Render</a>(<label for="r31" class="ident">writer</label>, <label for="r30" class="ident">source</label>, <label for="r34" class="ident">doc</label>)</code></span>
+<span class="codeline" id="line-118"><code>}</code></span>
+<span class="codeline" id="line-119"><code></code></span>
+<span class="codeline" id="line-120"><code><span class="keyword">func</span> (<label for="r35" class="ident">m</label> *<a href="#line-92" class="ident">markdown</a>) <label for="r36" class="ident"><a href="../../../../imp/github.com/yuin/goldmark.markdown^bc18f.html#name-.Parser" class="ident">Parser</a></label>() <a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-472" class="ident">Parser</a> {</code></span>
+<span class="codeline" id="line-121"><code>	<span class="keyword">return</span> <label for="r35" class="ident">m</label>.<a href="#line-93" class="ident">parser</a></code></span>
+<span class="codeline" id="line-122"><code>}</code></span>
+<span class="codeline" id="line-123"><code></code></span>
+<span class="codeline" id="line-124"><code><span class="keyword">func</span> (<label for="r37" class="ident">m</label> *<a href="#line-92" class="ident">markdown</a>) <label for="r38" class="ident"><a href="../../../../imp/github.com/yuin/goldmark.markdown^bc18f.html#name-.SetParser" class="ident">SetParser</a></label>(<label for="r39" class="ident">v</label> <a href="../../../../pkg/github.com/yuin/goldmark/parser.html" class="ident i0">parser</a>.<a href="parser/parser.go.html#line-472" class="ident">Parser</a>) {</code></span>
+<span class="codeline" id="line-125"><code>	<label for="r37" class="ident">m</label>.<a href="#line-93" class="ident">parser</a> = <label for="r39" class="ident">v</label></code></span>
+<span class="codeline" id="line-126"><code>}</code></span>
+<span class="codeline" id="line-127"><code></code></span>
+<span class="codeline" id="line-128"><code><span class="keyword">func</span> (<label for="r40" class="ident">m</label> *<a href="#line-92" class="ident">markdown</a>) <label for="r41" class="ident"><a href="../../../../imp/github.com/yuin/goldmark.markdown^bc18f.html#name-.Renderer" class="ident">Renderer</a></label>() <a href="../../../../pkg/github.com/yuin/goldmark/renderer.html" class="ident i1">renderer</a>.<a href="renderer/renderer.go.html#line-89" class="ident">Renderer</a> {</code></span>
+<span class="codeline" id="line-129"><code>	<span class="keyword">return</span> <label for="r40" class="ident">m</label>.<a href="#line-94" class="ident">renderer</a></code></span>
+<span class="codeline" id="line-130"><code>}</code></span>
+<span class="codeline" id="line-131"><code></code></span>
+<span class="codeline" id="line-132"><code><span class="keyword">func</span> (<label for="r42" class="ident">m</label> *<a href="#line-92" class="ident">markdown</a>) <label for="r43" class="ident"><a href="../../../../imp/github.com/yuin/goldmark.markdown^bc18f.html#name-.SetRenderer" class="ident">SetRenderer</a></label>(<label for="r44" class="ident">v</label> <a href="../../../../pkg/github.com/yuin/goldmark/renderer.html" class="ident i1">renderer</a>.<a href="renderer/renderer.go.html#line-89" class="ident">Renderer</a>) {</code></span>
+<span class="codeline" id="line-133"><code>	<label for="r42" class="ident">m</label>.<a href="#line-94" class="ident">renderer</a> = <label for="r44" class="ident">v</label></code></span>
+<span class="codeline" id="line-134"><code>}</code></span>
+<span class="codeline" id="line-135"><code></code></span>
+<span class="codeline" id="line-136"><code><span class="comment">// An Extender interface is used for extending Markdown.</span></code></span>
+<span class="codeline" id="line-137"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/yuin/goldmark.html#name-Extender" class="ident">Extender</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-138"><code>	<span class="comment">// Extend extends the Markdown.</span></code></span>
+<span class="codeline" id="line-139"><code>	<a href="../../../../imp/github.com/yuin/goldmark.Extender.html#name-Extend" class="ident">Extend</a>(<a href="#line-36" class="ident">Markdown</a>)</code></span>
+<span class="codeline" id="line-140"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

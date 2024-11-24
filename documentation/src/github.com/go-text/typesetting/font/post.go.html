@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: post.go in package github.com/go-text/typesetting/font</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	post.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/go-text/typesetting/font.html">github.com/go-text/typesetting/font</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> font</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<label for="i0"><span class="lit-string i0">"errors"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i1"><span class="lit-string i1">"fmt"</span></label></code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i2"><span class="lit-string i2">"github.com/go-text/typesetting/font/opentype/tables"</span></label></code></span>
+<span class="codeline" id="line-10"><code>)</code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-numBuiltInPostNames" class="ident">numBuiltInPostNames</a> = <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<a href="#line-16" class="ident">builtInPostNames</a>)</code></span>
+<span class="codeline" id="line-13"><code></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">// names is the built-in post table names listed at</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6post.html</span></code></span>
+<span class="codeline" id="line-16"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-builtInPostNames" class="ident">builtInPostNames</a> = [...]<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>{</code></span>
+<span class="codeline" id="line-17"><code>	<span class="lit-string">".notdef"</span>,</code></span>
+<span class="codeline" id="line-18"><code>	<span class="lit-string">".null"</span>,</code></span>
+<span class="codeline" id="line-19"><code>	<span class="lit-string">"nonmarkingreturn"</span>,</code></span>
+<span class="codeline" id="line-20"><code>	<span class="lit-string">"space"</span>,</code></span>
+<span class="codeline" id="line-21"><code>	<span class="lit-string">"exclam"</span>,</code></span>
+<span class="codeline" id="line-22"><code>	<span class="lit-string">"quotedbl"</span>,</code></span>
+<span class="codeline" id="line-23"><code>	<span class="lit-string">"numbersign"</span>,</code></span>
+<span class="codeline" id="line-24"><code>	<span class="lit-string">"dollar"</span>,</code></span>
+<span class="codeline" id="line-25"><code>	<span class="lit-string">"percent"</span>,</code></span>
+<span class="codeline" id="line-26"><code>	<span class="lit-string">"ampersand"</span>,</code></span>
+<span class="codeline" id="line-27"><code>	<span class="lit-string">"quotesingle"</span>,</code></span>
+<span class="codeline" id="line-28"><code>	<span class="lit-string">"parenleft"</span>,</code></span>
+<span class="codeline" id="line-29"><code>	<span class="lit-string">"parenright"</span>,</code></span>
+<span class="codeline" id="line-30"><code>	<span class="lit-string">"asterisk"</span>,</code></span>
+<span class="codeline" id="line-31"><code>	<span class="lit-string">"plus"</span>,</code></span>
+<span class="codeline" id="line-32"><code>	<span class="lit-string">"comma"</span>,</code></span>
+<span class="codeline" id="line-33"><code>	<span class="lit-string">"hyphen"</span>,</code></span>
+<span class="codeline" id="line-34"><code>	<span class="lit-string">"period"</span>,</code></span>
+<span class="codeline" id="line-35"><code>	<span class="lit-string">"slash"</span>,</code></span>
+<span class="codeline" id="line-36"><code>	<span class="lit-string">"zero"</span>,</code></span>
+<span class="codeline" id="line-37"><code>	<span class="lit-string">"one"</span>,</code></span>
+<span class="codeline" id="line-38"><code>	<span class="lit-string">"two"</span>,</code></span>
+<span class="codeline" id="line-39"><code>	<span class="lit-string">"three"</span>,</code></span>
+<span class="codeline" id="line-40"><code>	<span class="lit-string">"four"</span>,</code></span>
+<span class="codeline" id="line-41"><code>	<span class="lit-string">"five"</span>,</code></span>
+<span class="codeline" id="line-42"><code>	<span class="lit-string">"six"</span>,</code></span>
+<span class="codeline" id="line-43"><code>	<span class="lit-string">"seven"</span>,</code></span>
+<span class="codeline" id="line-44"><code>	<span class="lit-string">"eight"</span>,</code></span>
+<span class="codeline" id="line-45"><code>	<span class="lit-string">"nine"</span>,</code></span>
+<span class="codeline" id="line-46"><code>	<span class="lit-string">"colon"</span>,</code></span>
+<span class="codeline" id="line-47"><code>	<span class="lit-string">"semicolon"</span>,</code></span>
+<span class="codeline" id="line-48"><code>	<span class="lit-string">"less"</span>,</code></span>
+<span class="codeline" id="line-49"><code>	<span class="lit-string">"equal"</span>,</code></span>
+<span class="codeline" id="line-50"><code>	<span class="lit-string">"greater"</span>,</code></span>
+<span class="codeline" id="line-51"><code>	<span class="lit-string">"question"</span>,</code></span>
+<span class="codeline" id="line-52"><code>	<span class="lit-string">"at"</span>,</code></span>
+<span class="codeline" id="line-53"><code>	<span class="lit-string">"A"</span>,</code></span>
+<span class="codeline" id="line-54"><code>	<span class="lit-string">"B"</span>,</code></span>
+<span class="codeline" id="line-55"><code>	<span class="lit-string">"C"</span>,</code></span>
+<span class="codeline" id="line-56"><code>	<span class="lit-string">"D"</span>,</code></span>
+<span class="codeline" id="line-57"><code>	<span class="lit-string">"E"</span>,</code></span>
+<span class="codeline" id="line-58"><code>	<span class="lit-string">"F"</span>,</code></span>
+<span class="codeline" id="line-59"><code>	<span class="lit-string">"G"</span>,</code></span>
+<span class="codeline" id="line-60"><code>	<span class="lit-string">"H"</span>,</code></span>
+<span class="codeline" id="line-61"><code>	<span class="lit-string">"I"</span>,</code></span>
+<span class="codeline" id="line-62"><code>	<span class="lit-string">"J"</span>,</code></span>
+<span class="codeline" id="line-63"><code>	<span class="lit-string">"K"</span>,</code></span>
+<span class="codeline" id="line-64"><code>	<span class="lit-string">"L"</span>,</code></span>
+<span class="codeline" id="line-65"><code>	<span class="lit-string">"M"</span>,</code></span>
+<span class="codeline" id="line-66"><code>	<span class="lit-string">"N"</span>,</code></span>
+<span class="codeline" id="line-67"><code>	<span class="lit-string">"O"</span>,</code></span>
+<span class="codeline" id="line-68"><code>	<span class="lit-string">"P"</span>,</code></span>
+<span class="codeline" id="line-69"><code>	<span class="lit-string">"Q"</span>,</code></span>
+<span class="codeline" id="line-70"><code>	<span class="lit-string">"R"</span>,</code></span>
+<span class="codeline" id="line-71"><code>	<span class="lit-string">"S"</span>,</code></span>
+<span class="codeline" id="line-72"><code>	<span class="lit-string">"T"</span>,</code></span>
+<span class="codeline" id="line-73"><code>	<span class="lit-string">"U"</span>,</code></span>
+<span class="codeline" id="line-74"><code>	<span class="lit-string">"V"</span>,</code></span>
+<span class="codeline" id="line-75"><code>	<span class="lit-string">"W"</span>,</code></span>
+<span class="codeline" id="line-76"><code>	<span class="lit-string">"X"</span>,</code></span>
+<span class="codeline" id="line-77"><code>	<span class="lit-string">"Y"</span>,</code></span>
+<span class="codeline" id="line-78"><code>	<span class="lit-string">"Z"</span>,</code></span>
+<span class="codeline" id="line-79"><code>	<span class="lit-string">"bracketleft"</span>,</code></span>
+<span class="codeline" id="line-80"><code>	<span class="lit-string">"backslash"</span>,</code></span>
+<span class="codeline" id="line-81"><code>	<span class="lit-string">"bracketright"</span>,</code></span>
+<span class="codeline" id="line-82"><code>	<span class="lit-string">"asciicircum"</span>,</code></span>
+<span class="codeline" id="line-83"><code>	<span class="lit-string">"underscore"</span>,</code></span>
+<span class="codeline" id="line-84"><code>	<span class="lit-string">"grave"</span>,</code></span>
+<span class="codeline" id="line-85"><code>	<span class="lit-string">"a"</span>,</code></span>
+<span class="codeline" id="line-86"><code>	<span class="lit-string">"b"</span>,</code></span>
+<span class="codeline" id="line-87"><code>	<span class="lit-string">"c"</span>,</code></span>
+<span class="codeline" id="line-88"><code>	<span class="lit-string">"d"</span>,</code></span>
+<span class="codeline" id="line-89"><code>	<span class="lit-string">"e"</span>,</code></span>
+<span class="codeline" id="line-90"><code>	<span class="lit-string">"f"</span>,</code></span>
+<span class="codeline" id="line-91"><code>	<span class="lit-string">"g"</span>,</code></span>
+<span class="codeline" id="line-92"><code>	<span class="lit-string">"h"</span>,</code></span>
+<span class="codeline" id="line-93"><code>	<span class="lit-string">"i"</span>,</code></span>
+<span class="codeline" id="line-94"><code>	<span class="lit-string">"j"</span>,</code></span>
+<span class="codeline" id="line-95"><code>	<span class="lit-string">"k"</span>,</code></span>
+<span class="codeline" id="line-96"><code>	<span class="lit-string">"l"</span>,</code></span>
+<span class="codeline" id="line-97"><code>	<span class="lit-string">"m"</span>,</code></span>
+<span class="codeline" id="line-98"><code>	<span class="lit-string">"n"</span>,</code></span>
+<span class="codeline" id="line-99"><code>	<span class="lit-string">"o"</span>,</code></span>
+<span class="codeline" id="line-100"><code>	<span class="lit-string">"p"</span>,</code></span>
+<span class="codeline" id="line-101"><code>	<span class="lit-string">"q"</span>,</code></span>
+<span class="codeline" id="line-102"><code>	<span class="lit-string">"r"</span>,</code></span>
+<span class="codeline" id="line-103"><code>	<span class="lit-string">"s"</span>,</code></span>
+<span class="codeline" id="line-104"><code>	<span class="lit-string">"t"</span>,</code></span>
+<span class="codeline" id="line-105"><code>	<span class="lit-string">"u"</span>,</code></span>
+<span class="codeline" id="line-106"><code>	<span class="lit-string">"v"</span>,</code></span>
+<span class="codeline" id="line-107"><code>	<span class="lit-string">"w"</span>,</code></span>
+<span class="codeline" id="line-108"><code>	<span class="lit-string">"x"</span>,</code></span>
+<span class="codeline" id="line-109"><code>	<span class="lit-string">"y"</span>,</code></span>
+<span class="codeline" id="line-110"><code>	<span class="lit-string">"z"</span>,</code></span>
+<span class="codeline" id="line-111"><code>	<span class="lit-string">"braceleft"</span>,</code></span>
+<span class="codeline" id="line-112"><code>	<span class="lit-string">"bar"</span>,</code></span>
+<span class="codeline" id="line-113"><code>	<span class="lit-string">"braceright"</span>,</code></span>
+<span class="codeline" id="line-114"><code>	<span class="lit-string">"asciitilde"</span>,</code></span>
+<span class="codeline" id="line-115"><code>	<span class="lit-string">"Adieresis"</span>,</code></span>
+<span class="codeline" id="line-116"><code>	<span class="lit-string">"Aring"</span>,</code></span>
+<span class="codeline" id="line-117"><code>	<span class="lit-string">"Ccedilla"</span>,</code></span>
+<span class="codeline" id="line-118"><code>	<span class="lit-string">"Eacute"</span>,</code></span>
+<span class="codeline" id="line-119"><code>	<span class="lit-string">"Ntilde"</span>,</code></span>
+<span class="codeline" id="line-120"><code>	<span class="lit-string">"Odieresis"</span>,</code></span>
+<span class="codeline" id="line-121"><code>	<span class="lit-string">"Udieresis"</span>,</code></span>
+<span class="codeline" id="line-122"><code>	<span class="lit-string">"aacute"</span>,</code></span>
+<span class="codeline" id="line-123"><code>	<span class="lit-string">"agrave"</span>,</code></span>
+<span class="codeline" id="line-124"><code>	<span class="lit-string">"acircumflex"</span>,</code></span>
+<span class="codeline" id="line-125"><code>	<span class="lit-string">"adieresis"</span>,</code></span>
+<span class="codeline" id="line-126"><code>	<span class="lit-string">"atilde"</span>,</code></span>
+<span class="codeline" id="line-127"><code>	<span class="lit-string">"aring"</span>,</code></span>
+<span class="codeline" id="line-128"><code>	<span class="lit-string">"ccedilla"</span>,</code></span>
+<span class="codeline" id="line-129"><code>	<span class="lit-string">"eacute"</span>,</code></span>
+<span class="codeline" id="line-130"><code>	<span class="lit-string">"egrave"</span>,</code></span>
+<span class="codeline" id="line-131"><code>	<span class="lit-string">"ecircumflex"</span>,</code></span>
+<span class="codeline" id="line-132"><code>	<span class="lit-string">"edieresis"</span>,</code></span>
+<span class="codeline" id="line-133"><code>	<span class="lit-string">"iacute"</span>,</code></span>
+<span class="codeline" id="line-134"><code>	<span class="lit-string">"igrave"</span>,</code></span>
+<span class="codeline" id="line-135"><code>	<span class="lit-string">"icircumflex"</span>,</code></span>
+<span class="codeline" id="line-136"><code>	<span class="lit-string">"idieresis"</span>,</code></span>
+<span class="codeline" id="line-137"><code>	<span class="lit-string">"ntilde"</span>,</code></span>
+<span class="codeline" id="line-138"><code>	<span class="lit-string">"oacute"</span>,</code></span>
+<span class="codeline" id="line-139"><code>	<span class="lit-string">"ograve"</span>,</code></span>
+<span class="codeline" id="line-140"><code>	<span class="lit-string">"ocircumflex"</span>,</code></span>
+<span class="codeline" id="line-141"><code>	<span class="lit-string">"odieresis"</span>,</code></span>
+<span class="codeline" id="line-142"><code>	<span class="lit-string">"otilde"</span>,</code></span>
+<span class="codeline" id="line-143"><code>	<span class="lit-string">"uacute"</span>,</code></span>
+<span class="codeline" id="line-144"><code>	<span class="lit-string">"ugrave"</span>,</code></span>
+<span class="codeline" id="line-145"><code>	<span class="lit-string">"ucircumflex"</span>,</code></span>
+<span class="codeline" id="line-146"><code>	<span class="lit-string">"udieresis"</span>,</code></span>
+<span class="codeline" id="line-147"><code>	<span class="lit-string">"dagger"</span>,</code></span>
+<span class="codeline" id="line-148"><code>	<span class="lit-string">"degree"</span>,</code></span>
+<span class="codeline" id="line-149"><code>	<span class="lit-string">"cent"</span>,</code></span>
+<span class="codeline" id="line-150"><code>	<span class="lit-string">"sterling"</span>,</code></span>
+<span class="codeline" id="line-151"><code>	<span class="lit-string">"section"</span>,</code></span>
+<span class="codeline" id="line-152"><code>	<span class="lit-string">"bullet"</span>,</code></span>
+<span class="codeline" id="line-153"><code>	<span class="lit-string">"paragraph"</span>,</code></span>
+<span class="codeline" id="line-154"><code>	<span class="lit-string">"germandbls"</span>,</code></span>
+<span class="codeline" id="line-155"><code>	<span class="lit-string">"registered"</span>,</code></span>
+<span class="codeline" id="line-156"><code>	<span class="lit-string">"copyright"</span>,</code></span>
+<span class="codeline" id="line-157"><code>	<span class="lit-string">"trademark"</span>,</code></span>
+<span class="codeline" id="line-158"><code>	<span class="lit-string">"acute"</span>,</code></span>
+<span class="codeline" id="line-159"><code>	<span class="lit-string">"dieresis"</span>,</code></span>
+<span class="codeline" id="line-160"><code>	<span class="lit-string">"notequal"</span>,</code></span>
+<span class="codeline" id="line-161"><code>	<span class="lit-string">"AE"</span>,</code></span>
+<span class="codeline" id="line-162"><code>	<span class="lit-string">"Oslash"</span>,</code></span>
+<span class="codeline" id="line-163"><code>	<span class="lit-string">"infinity"</span>,</code></span>
+<span class="codeline" id="line-164"><code>	<span class="lit-string">"plusminus"</span>,</code></span>
+<span class="codeline" id="line-165"><code>	<span class="lit-string">"lessequal"</span>,</code></span>
+<span class="codeline" id="line-166"><code>	<span class="lit-string">"greaterequal"</span>,</code></span>
+<span class="codeline" id="line-167"><code>	<span class="lit-string">"yen"</span>,</code></span>
+<span class="codeline" id="line-168"><code>	<span class="lit-string">"mu"</span>,</code></span>
+<span class="codeline" id="line-169"><code>	<span class="lit-string">"partialdiff"</span>,</code></span>
+<span class="codeline" id="line-170"><code>	<span class="lit-string">"summation"</span>,</code></span>
+<span class="codeline" id="line-171"><code>	<span class="lit-string">"product"</span>,</code></span>
+<span class="codeline" id="line-172"><code>	<span class="lit-string">"pi"</span>,</code></span>
+<span class="codeline" id="line-173"><code>	<span class="lit-string">"integral"</span>,</code></span>
+<span class="codeline" id="line-174"><code>	<span class="lit-string">"ordfeminine"</span>,</code></span>
+<span class="codeline" id="line-175"><code>	<span class="lit-string">"ordmasculine"</span>,</code></span>
+<span class="codeline" id="line-176"><code>	<span class="lit-string">"Omega"</span>,</code></span>
+<span class="codeline" id="line-177"><code>	<span class="lit-string">"ae"</span>,</code></span>
+<span class="codeline" id="line-178"><code>	<span class="lit-string">"oslash"</span>,</code></span>
+<span class="codeline" id="line-179"><code>	<span class="lit-string">"questiondown"</span>,</code></span>
+<span class="codeline" id="line-180"><code>	<span class="lit-string">"exclamdown"</span>,</code></span>
+<span class="codeline" id="line-181"><code>	<span class="lit-string">"logicalnot"</span>,</code></span>
+<span class="codeline" id="line-182"><code>	<span class="lit-string">"radical"</span>,</code></span>
+<span class="codeline" id="line-183"><code>	<span class="lit-string">"florin"</span>,</code></span>
+<span class="codeline" id="line-184"><code>	<span class="lit-string">"approxequal"</span>,</code></span>
+<span class="codeline" id="line-185"><code>	<span class="lit-string">"Delta"</span>,</code></span>
+<span class="codeline" id="line-186"><code>	<span class="lit-string">"guillemotleft"</span>,</code></span>
+<span class="codeline" id="line-187"><code>	<span class="lit-string">"guillemotright"</span>,</code></span>
+<span class="codeline" id="line-188"><code>	<span class="lit-string">"ellipsis"</span>,</code></span>
+<span class="codeline" id="line-189"><code>	<span class="lit-string">"nonbreakingspace"</span>,</code></span>
+<span class="codeline" id="line-190"><code>	<span class="lit-string">"Agrave"</span>,</code></span>
+<span class="codeline" id="line-191"><code>	<span class="lit-string">"Atilde"</span>,</code></span>
+<span class="codeline" id="line-192"><code>	<span class="lit-string">"Otilde"</span>,</code></span>
+<span class="codeline" id="line-193"><code>	<span class="lit-string">"OE"</span>,</code></span>
+<span class="codeline" id="line-194"><code>	<span class="lit-string">"oe"</span>,</code></span>
+<span class="codeline" id="line-195"><code>	<span class="lit-string">"endash"</span>,</code></span>
+<span class="codeline" id="line-196"><code>	<span class="lit-string">"emdash"</span>,</code></span>
+<span class="codeline" id="line-197"><code>	<span class="lit-string">"quotedblleft"</span>,</code></span>
+<span class="codeline" id="line-198"><code>	<span class="lit-string">"quotedblright"</span>,</code></span>
+<span class="codeline" id="line-199"><code>	<span class="lit-string">"quoteleft"</span>,</code></span>
+<span class="codeline" id="line-200"><code>	<span class="lit-string">"quoteright"</span>,</code></span>
+<span class="codeline" id="line-201"><code>	<span class="lit-string">"divide"</span>,</code></span>
+<span class="codeline" id="line-202"><code>	<span class="lit-string">"lozenge"</span>,</code></span>
+<span class="codeline" id="line-203"><code>	<span class="lit-string">"ydieresis"</span>,</code></span>
+<span class="codeline" id="line-204"><code>	<span class="lit-string">"Ydieresis"</span>,</code></span>
+<span class="codeline" id="line-205"><code>	<span class="lit-string">"fraction"</span>,</code></span>
+<span class="codeline" id="line-206"><code>	<span class="lit-string">"currency"</span>,</code></span>
+<span class="codeline" id="line-207"><code>	<span class="lit-string">"guilsinglleft"</span>,</code></span>
+<span class="codeline" id="line-208"><code>	<span class="lit-string">"guilsinglright"</span>,</code></span>
+<span class="codeline" id="line-209"><code>	<span class="lit-string">"fi"</span>,</code></span>
+<span class="codeline" id="line-210"><code>	<span class="lit-string">"fl"</span>,</code></span>
+<span class="codeline" id="line-211"><code>	<span class="lit-string">"daggerdbl"</span>,</code></span>
+<span class="codeline" id="line-212"><code>	<span class="lit-string">"periodcentered"</span>,</code></span>
+<span class="codeline" id="line-213"><code>	<span class="lit-string">"quotesinglbase"</span>,</code></span>
+<span class="codeline" id="line-214"><code>	<span class="lit-string">"quotedblbase"</span>,</code></span>
+<span class="codeline" id="line-215"><code>	<span class="lit-string">"perthousand"</span>,</code></span>
+<span class="codeline" id="line-216"><code>	<span class="lit-string">"Acircumflex"</span>,</code></span>
+<span class="codeline" id="line-217"><code>	<span class="lit-string">"Ecircumflex"</span>,</code></span>
+<span class="codeline" id="line-218"><code>	<span class="lit-string">"Aacute"</span>,</code></span>
+<span class="codeline" id="line-219"><code>	<span class="lit-string">"Edieresis"</span>,</code></span>
+<span class="codeline" id="line-220"><code>	<span class="lit-string">"Egrave"</span>,</code></span>
+<span class="codeline" id="line-221"><code>	<span class="lit-string">"Iacute"</span>,</code></span>
+<span class="codeline" id="line-222"><code>	<span class="lit-string">"Icircumflex"</span>,</code></span>
+<span class="codeline" id="line-223"><code>	<span class="lit-string">"Idieresis"</span>,</code></span>
+<span class="codeline" id="line-224"><code>	<span class="lit-string">"Igrave"</span>,</code></span>
+<span class="codeline" id="line-225"><code>	<span class="lit-string">"Oacute"</span>,</code></span>
+<span class="codeline" id="line-226"><code>	<span class="lit-string">"Ocircumflex"</span>,</code></span>
+<span class="codeline" id="line-227"><code>	<span class="lit-string">"apple"</span>,</code></span>
+<span class="codeline" id="line-228"><code>	<span class="lit-string">"Ograve"</span>,</code></span>
+<span class="codeline" id="line-229"><code>	<span class="lit-string">"Uacute"</span>,</code></span>
+<span class="codeline" id="line-230"><code>	<span class="lit-string">"Ucircumflex"</span>,</code></span>
+<span class="codeline" id="line-231"><code>	<span class="lit-string">"Ugrave"</span>,</code></span>
+<span class="codeline" id="line-232"><code>	<span class="lit-string">"dotlessi"</span>,</code></span>
+<span class="codeline" id="line-233"><code>	<span class="lit-string">"circumflex"</span>,</code></span>
+<span class="codeline" id="line-234"><code>	<span class="lit-string">"tilde"</span>,</code></span>
+<span class="codeline" id="line-235"><code>	<span class="lit-string">"macron"</span>,</code></span>
+<span class="codeline" id="line-236"><code>	<span class="lit-string">"breve"</span>,</code></span>
+<span class="codeline" id="line-237"><code>	<span class="lit-string">"dotaccent"</span>,</code></span>
+<span class="codeline" id="line-238"><code>	<span class="lit-string">"ring"</span>,</code></span>
+<span class="codeline" id="line-239"><code>	<span class="lit-string">"cedilla"</span>,</code></span>
+<span class="codeline" id="line-240"><code>	<span class="lit-string">"hungarumlaut"</span>,</code></span>
+<span class="codeline" id="line-241"><code>	<span class="lit-string">"ogonek"</span>,</code></span>
+<span class="codeline" id="line-242"><code>	<span class="lit-string">"caron"</span>,</code></span>
+<span class="codeline" id="line-243"><code>	<span class="lit-string">"Lslash"</span>,</code></span>
+<span class="codeline" id="line-244"><code>	<span class="lit-string">"lslash"</span>,</code></span>
+<span class="codeline" id="line-245"><code>	<span class="lit-string">"Scaron"</span>,</code></span>
+<span class="codeline" id="line-246"><code>	<span class="lit-string">"scaron"</span>,</code></span>
+<span class="codeline" id="line-247"><code>	<span class="lit-string">"Zcaron"</span>,</code></span>
+<span class="codeline" id="line-248"><code>	<span class="lit-string">"zcaron"</span>,</code></span>
+<span class="codeline" id="line-249"><code>	<span class="lit-string">"brokenbar"</span>,</code></span>
+<span class="codeline" id="line-250"><code>	<span class="lit-string">"Eth"</span>,</code></span>
+<span class="codeline" id="line-251"><code>	<span class="lit-string">"eth"</span>,</code></span>
+<span class="codeline" id="line-252"><code>	<span class="lit-string">"Yacute"</span>,</code></span>
+<span class="codeline" id="line-253"><code>	<span class="lit-string">"yacute"</span>,</code></span>
+<span class="codeline" id="line-254"><code>	<span class="lit-string">"Thorn"</span>,</code></span>
+<span class="codeline" id="line-255"><code>	<span class="lit-string">"thorn"</span>,</code></span>
+<span class="codeline" id="line-256"><code>	<span class="lit-string">"minus"</span>,</code></span>
+<span class="codeline" id="line-257"><code>	<span class="lit-string">"multiply"</span>,</code></span>
+<span class="codeline" id="line-258"><code>	<span class="lit-string">"onesuperior"</span>,</code></span>
+<span class="codeline" id="line-259"><code>	<span class="lit-string">"twosuperior"</span>,</code></span>
+<span class="codeline" id="line-260"><code>	<span class="lit-string">"threesuperior"</span>,</code></span>
+<span class="codeline" id="line-261"><code>	<span class="lit-string">"onehalf"</span>,</code></span>
+<span class="codeline" id="line-262"><code>	<span class="lit-string">"onequarter"</span>,</code></span>
+<span class="codeline" id="line-263"><code>	<span class="lit-string">"threequarters"</span>,</code></span>
+<span class="codeline" id="line-264"><code>	<span class="lit-string">"franc"</span>,</code></span>
+<span class="codeline" id="line-265"><code>	<span class="lit-string">"Gbreve"</span>,</code></span>
+<span class="codeline" id="line-266"><code>	<span class="lit-string">"gbreve"</span>,</code></span>
+<span class="codeline" id="line-267"><code>	<span class="lit-string">"Idotaccent"</span>,</code></span>
+<span class="codeline" id="line-268"><code>	<span class="lit-string">"Scedilla"</span>,</code></span>
+<span class="codeline" id="line-269"><code>	<span class="lit-string">"scedilla"</span>,</code></span>
+<span class="codeline" id="line-270"><code>	<span class="lit-string">"Cacute"</span>,</code></span>
+<span class="codeline" id="line-271"><code>	<span class="lit-string">"cacute"</span>,</code></span>
+<span class="codeline" id="line-272"><code>	<span class="lit-string">"Ccaron"</span>,</code></span>
+<span class="codeline" id="line-273"><code>	<span class="lit-string">"ccaron"</span>,</code></span>
+<span class="codeline" id="line-274"><code>	<span class="lit-string">"dcroat"</span>,</code></span>
+<span class="codeline" id="line-275"><code>}</code></span>
+<span class="codeline" id="line-276"><code></code></span>
+<span class="codeline" id="line-277"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-post" class="ident">post</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-278"><code>	<span class="comment">// suggested distance of the top of the</span></code></span>
+<span class="codeline" id="line-279"><code><span class="comment">	// underline from the baseline (negative values indicate below baseline).</span></code></span>
+<span class="codeline" id="line-280"><code>	underlinePosition <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-281"><code>	<span class="comment">// suggested values for the underline thickness.</span></code></span>
+<span class="codeline" id="line-282"><code>	underlineThickness <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-283"><code></code></span>
+<span class="codeline" id="line-284"><code>	names <a href="#line-311" class="ident">postGlyphNames</a></code></span>
+<span class="codeline" id="line-285"><code></code></span>
+<span class="codeline" id="line-286"><code>	isFixedPitch <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-287"><code>}</code></span>
+<span class="codeline" id="line-288"><code></code></span>
+<span class="codeline" id="line-289"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newPost" class="ident">newPost</a></label>(<label for="r1" class="ident">pst</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i2">tables</a>.<a href="opentype/tables/post_src.go.html#line-7" class="ident">Post</a>) (<a href="#line-277" class="ident">post</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-290"><code>	<label for="r2" class="ident">out</label> := <a href="#line-277" class="ident">post</a>{</code></span>
+<span class="codeline" id="line-291"><code>		<a href="#line-280" class="ident">underlinePosition</a>:  <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">pst</label>.<a href="opentype/tables/post_src.go.html#line-12" class="ident">UnderlinePosition</a>),</code></span>
+<span class="codeline" id="line-292"><code>		<a href="#line-282" class="ident">underlineThickness</a>: <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">pst</label>.<a href="opentype/tables/post_src.go.html#line-14" class="ident">UnderlineThickness</a>),</code></span>
+<span class="codeline" id="line-293"><code>		<a href="#line-286" class="ident">isFixedPitch</a>:       <label for="r1" class="ident">pst</label>.<a href="opentype/tables/post_src.go.html#line-17" class="ident">IsFixedPitch</a> != <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-294"><code>	}</code></span>
+<span class="codeline" id="line-295"><code>	<span class="keyword">switch</span> names := <label for="r1" class="ident">pst</label>.<a href="opentype/tables/post_src.go.html#line-19" class="ident">Names</a>.(<span class="keyword">type</span>) {</code></span>
+<span class="codeline" id="line-296"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i2">tables</a>.<a href="opentype/tables/post_src.go.html#line-38" class="ident">PostNames10</a>:</code></span>
+<span class="codeline" id="line-297"><code>		<label for="r2" class="ident">out</label>.<a href="#line-284" class="ident">names</a> = <a href="#line-317" class="ident">postNames10or30</a>{}</code></span>
+<span class="codeline" id="line-298"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i2">tables</a>.<a href="opentype/tables/post_src.go.html#line-40" class="ident">PostNames20</a>:</code></span>
+<span class="codeline" id="line-299"><code>		<span class="keyword">var</span> <label for="r3" class="ident">err</label> <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-300"><code>		<label for="r2" class="ident">out</label>.<a href="#line-284" class="ident">names</a>, <label for="r3" class="ident">err</label> = <a href="#line-344" class="ident">newPostNames20</a>(<label for="r4" class="ident">names</label>)</code></span>
+<span class="codeline" id="line-301"><code>		<span class="keyword">if</span> <label for="r3" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-302"><code>			<span class="keyword">return</span> <label for="r2" class="ident">out</label>, <label for="r3" class="ident">err</label></code></span>
+<span class="codeline" id="line-303"><code>		}</code></span>
+<span class="codeline" id="line-304"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i2">tables</a>.<a href="opentype/tables/post_src.go.html#line-45" class="ident">PostNames30</a>:</code></span>
+<span class="codeline" id="line-305"><code>		<span class="comment">// no-op, do not use the post name tables</span></code></span>
+<span class="codeline" id="line-306"><code>	}</code></span>
+<span class="codeline" id="line-307"><code>	<span class="keyword">return</span> <label for="r2" class="ident">out</label>, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-308"><code>}</code></span>
+<span class="codeline" id="line-309"><code></code></span>
+<span class="codeline" id="line-310"><code><span class="comment">// postGlyphNames stores the names of a 'post' table.</span></code></span>
+<span class="codeline" id="line-311"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-postGlyphNames" class="ident">postGlyphNames</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-312"><code>	<span class="comment">// GlyphName return the postscript name of a</span></code></span>
+<span class="codeline" id="line-313"><code><span class="comment">	// glyph, or an empty string if it not found</span></code></span>
+<span class="codeline" id="line-314"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/font.postGlyphNames^fe852.html#name-github.com/go-text/typesetting/font.glyphName" class="ident">glyphName</a>(x <a href="font.go.html#line-24" class="ident">GID</a>) <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-315"><code>}</code></span>
+<span class="codeline" id="line-316"><code></code></span>
+<span class="codeline" id="line-317"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-postNames10or30" class="ident">postNames10or30</a> <span class="keyword">struct</span>{}</code></span>
+<span class="codeline" id="line-318"><code></code></span>
+<span class="codeline" id="line-319"><code><span class="keyword">func</span> (<label for="r5" class="ident">p</label> <a href="#line-317" class="ident">postNames10or30</a>) <label for="r6" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.postNames10or30^50348.html#name-glyphName" class="ident">glyphName</a></label>(<label for="r7" class="ident">x</label> <a href="font.go.html#line-24" class="ident">GID</a>) <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-320"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r7" class="ident">x</label>) &gt;= <a href="#line-12" class="ident">numBuiltInPostNames</a> {</code></span>
+<span class="codeline" id="line-321"><code>		<span class="keyword">return</span> <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-322"><code>	}</code></span>
+<span class="codeline" id="line-323"><code>	<span class="comment">// https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6post.html</span></code></span>
+<span class="codeline" id="line-324"><code>	<span class="keyword">return</span> <a href="#line-16" class="ident">builtInPostNames</a>[<label for="r7" class="ident">x</label>]</code></span>
+<span class="codeline" id="line-325"><code>}</code></span>
+<span class="codeline" id="line-326"><code></code></span>
+<span class="codeline" id="line-327"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-postNames20" class="ident">postNames20</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-328"><code>	glyphNameIndexes []<a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="comment">// size numGlyph</span></code></span>
+<span class="codeline" id="line-329"><code>	names            []<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-330"><code>}</code></span>
+<span class="codeline" id="line-331"><code></code></span>
+<span class="codeline" id="line-332"><code><span class="keyword">func</span> (<label for="r8" class="ident">p</label> <a href="#line-327" class="ident">postNames20</a>) <label for="r9" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.postNames20^c39fb.html#name-glyphName" class="ident">glyphName</a></label>(<label for="r10" class="ident">x</label> <a href="font.go.html#line-24" class="ident">GID</a>) <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-333"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r10" class="ident">x</label>) &gt;= <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r8" class="ident">p</label>.<a href="#line-328" class="ident">glyphNameIndexes</a>) {</code></span>
+<span class="codeline" id="line-334"><code>		<span class="keyword">return</span> <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-335"><code>	}</code></span>
+<span class="codeline" id="line-336"><code>	<label for="r11" class="ident">u</label> := <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r8" class="ident">p</label>.<a href="#line-328" class="ident">glyphNameIndexes</a>[<label for="r10" class="ident">x</label>])</code></span>
+<span class="codeline" id="line-337"><code>	<span class="keyword">if</span> <label for="r11" class="ident">u</label> &lt; <a href="#line-12" class="ident">numBuiltInPostNames</a> {</code></span>
+<span class="codeline" id="line-338"><code>		<span class="keyword">return</span> <a href="#line-16" class="ident">builtInPostNames</a>[<label for="r11" class="ident">u</label>]</code></span>
+<span class="codeline" id="line-339"><code>	}</code></span>
+<span class="codeline" id="line-340"><code>	<label for="r11" class="ident">u</label> -= <a href="#line-12" class="ident">numBuiltInPostNames</a></code></span>
+<span class="codeline" id="line-341"><code>	<span class="keyword">return</span> <label for="r8" class="ident">p</label>.<a href="#line-329" class="ident">names</a>[<label for="r11" class="ident">u</label>]</code></span>
+<span class="codeline" id="line-342"><code>}</code></span>
+<span class="codeline" id="line-343"><code></code></span>
+<span class="codeline" id="line-344"><code><span class="keyword">func</span> <label for="r12" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newPostNames20" class="ident">newPostNames20</a></label>(<label for="r13" class="ident">names</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i2">tables</a>.<a href="opentype/tables/post_src.go.html#line-40" class="ident">PostNames20</a>) (<a href="#line-327" class="ident">postNames20</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-345"><code>	<label for="r14" class="ident">out</label> := <a href="#line-327" class="ident">postNames20</a>{<a href="#line-328" class="ident">glyphNameIndexes</a>: <label for="r13" class="ident">names</label>.<a href="opentype/tables/post_src.go.html#line-41" class="ident">GlyphNameIndexes</a>}</code></span>
+<span class="codeline" id="line-346"><code>	<span class="comment">// we check at parse time that all the indexes are valid:</span></code></span>
+<span class="codeline" id="line-347"><code><span class="comment">	// we find the maximum</span></code></span>
+<span class="codeline" id="line-348"><code>	<span class="keyword">var</span> <label for="r15" class="ident">maxIndex</label> <a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-349"><code>	<span class="keyword">for</span> <label for="r16" class="ident">_</label>, <label for="r17" class="ident">u</label> := <span class="keyword">range</span> <label for="r13" class="ident">names</label>.<a href="opentype/tables/post_src.go.html#line-41" class="ident">GlyphNameIndexes</a> {</code></span>
+<span class="codeline" id="line-350"><code>		<span class="comment">// https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6post.html</span></code></span>
+<span class="codeline" id="line-351"><code><span class="comment">		// says that "32768 through 65535 are reserved for future use".</span></code></span>
+<span class="codeline" id="line-352"><code>		<span class="keyword">if</span> <label for="r17" class="ident">u</label> &gt; <span class="lit-number">32767</span> {</code></span>
+<span class="codeline" id="line-353"><code>			<span class="keyword">return</span> <a href="#line-327" class="ident">postNames20</a>{}, <a href="../../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"invalid index in Postscript names table format 20"</span>)</code></span>
+<span class="codeline" id="line-354"><code>		}</code></span>
+<span class="codeline" id="line-355"><code>		<span class="keyword">if</span> <label for="r17" class="ident">u</label> &gt; <label for="r15" class="ident">maxIndex</label> {</code></span>
+<span class="codeline" id="line-356"><code>			<label for="r15" class="ident">maxIndex</label> = <label for="r17" class="ident">u</label></code></span>
+<span class="codeline" id="line-357"><code>		}</code></span>
+<span class="codeline" id="line-358"><code>	}</code></span>
+<span class="codeline" id="line-359"><code></code></span>
+<span class="codeline" id="line-360"><code>	<span class="comment">// read all the string data until the end of the table</span></code></span>
+<span class="codeline" id="line-361"><code><span class="comment">	// quoting the spec</span></code></span>
+<span class="codeline" id="line-362"><code><span class="comment">	// "Strings are in Pascal string format, meaning that the first byte of</span></code></span>
+<span class="codeline" id="line-363"><code><span class="comment">	// a given string is a length: the number of characters in that string.</span></code></span>
+<span class="codeline" id="line-364"><code><span class="comment">	// The length byte is not included; for example, a length byte of 8 indicates</span></code></span>
+<span class="codeline" id="line-365"><code><span class="comment">	// that the 8 bytes following the length byte comprise the string character data."</span></code></span>
+<span class="codeline" id="line-366"><code>	<span class="keyword">for</span> <label for="r18" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r18" class="ident">i</label> &lt; <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r13" class="ident">names</label>.<a href="opentype/tables/post_src.go.html#line-42" class="ident">StringData</a>); {</code></span>
+<span class="codeline" id="line-367"><code>		<label for="r19" class="ident">length</label> := <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r13" class="ident">names</label>.<a href="opentype/tables/post_src.go.html#line-42" class="ident">StringData</a>[<label for="r18" class="ident">i</label>]) <span class="comment">// read the length</span></code></span>
+<span class="codeline" id="line-368"><code>		<label for="r20" class="ident">E</label>, <label for="r21" class="ident">L</label> := <label for="r18" class="ident">i</label>+<span class="lit-number">1</span>+<label for="r19" class="ident">length</label>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r13" class="ident">names</label>.<a href="opentype/tables/post_src.go.html#line-42" class="ident">StringData</a>)</code></span>
+<span class="codeline" id="line-369"><code>		<span class="keyword">if</span> <label for="r21" class="ident">L</label> &lt; <label for="r20" class="ident">E</label> {</code></span>
+<span class="codeline" id="line-370"><code>			<span class="keyword">return</span> <a href="#line-327" class="ident">postNames20</a>{}, <a href="../../../../../pkg/fmt.html" class="ident i1">fmt</a>.<a href="../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"invalid Postscript names tables format 20: EOF: expected %d, got %d"</span>, <label for="r20" class="ident">E</label>, <label for="r21" class="ident">L</label>)</code></span>
+<span class="codeline" id="line-371"><code>		}</code></span>
+<span class="codeline" id="line-372"><code>		<label for="r14" class="ident">out</label>.<a href="#line-329" class="ident">names</a> = <a href="../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r14" class="ident">out</label>.<a href="#line-329" class="ident">names</a>, <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r13" class="ident">names</label>.<a href="opentype/tables/post_src.go.html#line-42" class="ident">StringData</a>[<label for="r18" class="ident">i</label>+<span class="lit-number">1</span>:<label for="r20" class="ident">E</label>]))</code></span>
+<span class="codeline" id="line-373"><code>		<label for="r18" class="ident">i</label> = <label for="r20" class="ident">E</label></code></span>
+<span class="codeline" id="line-374"><code>	}</code></span>
+<span class="codeline" id="line-375"><code></code></span>
+<span class="codeline" id="line-376"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r15" class="ident">maxIndex</label>) &gt;= <a href="#line-12" class="ident">numBuiltInPostNames</a> &amp;&amp; <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r14" class="ident">out</label>.<a href="#line-329" class="ident">names</a>) &lt; (<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r15" class="ident">maxIndex</label>)-<a href="#line-12" class="ident">numBuiltInPostNames</a>) {</code></span>
+<span class="codeline" id="line-377"><code>		<span class="keyword">return</span> <a href="#line-327" class="ident">postNames20</a>{}, <a href="../../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"invalid index in Postscript names table format 20"</span>)</code></span>
+<span class="codeline" id="line-378"><code>	}</code></span>
+<span class="codeline" id="line-379"><code>	<span class="keyword">return</span> <label for="r14" class="ident">out</label>, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-380"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

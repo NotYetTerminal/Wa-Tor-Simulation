@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/fyne/v2/driver</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>driver</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-fyne.io/fyne/v2/driver">fyne.io/fyne/v2/driver</a><i> (on <a href="https://pkg.go.dev/fyne.io/fyne/v2/driver" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports 0 packages, and imported by <a href="../../../../dep/fyne.io/fyne/v2/driver.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html">native.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/driver/native_other.go.html">native_other.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 8, all are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-AndroidContext" data-popularity="0">	<input type='checkbox' class="fold" id="AndroidContext-fold-content"><label for="AndroidContext-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-17">AndroidContext</a> <i>(struct)</i></label><span id='AndroidContext-fold-content-docs' class="fold-docs">
+<span class="md-text">		AndroidContext is passed to the RunNative callback when it is executed on an Android device.
+		The VM, Env and Ctx pointers are required to make various calls into JVM methods.
+		
+		Since: 2.3</span>
+
+		<input type='checkbox' class="fold" id="AndroidContext-fold-fields"><label for="AndroidContext-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='AndroidContext-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-18">Ctx</a> <i><a href="../../../builtin.html#name-uintptr">uintptr</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-18">Env</a> <i><a href="../../../builtin.html#name-uintptr">uintptr</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-18">VM</a> <i><a href="../../../builtin.html#name-uintptr">uintptr</a></i></span></span></span>
+
+</span></div><div class="anchor type-res" id="name-AndroidWindowContext" data-popularity="0">	<input type='checkbox' class="fold" id="AndroidWindowContext-fold-content"><label for="AndroidWindowContext-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-26">AndroidWindowContext</a> <i>(struct)</i></label><span id='AndroidWindowContext-fold-content-docs' class="fold-docs">
+<span class="md-text">		AndroidWindowContext is passed to the NativeWindow.RunNative callback when it is executed
+		on an Android device. The NativeWindow field is of type `*C.ANativeWindow`.
+		The VM, Env and Ctx pointers are required to make various calls into JVM methods.
+		
+		Since: 2.5</span>
+
+		<input type='checkbox' class="fold" id="AndroidWindowContext-fold-fields"><label for="AndroidWindowContext-fold-fields">Fields (<i>total 5, all are exported</i>)</label><span id='AndroidWindowContext-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-27">AndroidContext</a> <i><a href="#name-AndroidContext">AndroidContext</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-27" class="path-duplicate">AndroidContext</a>.<a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-18">Ctx</a> <i><a href="../../../builtin.html#name-uintptr">uintptr</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-27" class="path-duplicate">AndroidContext</a>.<a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-18">Env</a> <i><a href="../../../builtin.html#name-uintptr">uintptr</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-27" class="path-duplicate">AndroidContext</a>.<a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-18">VM</a> <i><a href="../../../builtin.html#name-uintptr">uintptr</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-28">NativeWindow</a> <i><a href="../../../builtin.html#name-uintptr">uintptr</a></i></span></span></span>
+
+</span></div><div class="anchor type-res" id="name-MacWindowContext" data-popularity="0">	<input type='checkbox' class="fold" id="MacWindowContext-fold-content"><label for="MacWindowContext-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-50">MacWindowContext</a> <i>(struct)</i></label><span id='MacWindowContext-fold-content-docs' class="fold-docs">
+<span class="md-text">		MacWindowContext is passed to the NativeWindow.RunNative callback
+		when it is executed on a macOS device.
+		
+		Since: 2.5</span>
+
+		<input type='checkbox' class="fold" id="MacWindowContext-fold-fields"><label for="MacWindowContext-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='MacWindowContext-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="MacWindowContext-fold-field-NSWindow"><label for="MacWindowContext-fold-field-NSWindow"><a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-52">NSWindow</a> <i><a href="../../../builtin.html#name-uintptr">uintptr</a></i></label><span id='MacWindowContext-fold-field-NSWindow-docs' class="fold-docs">
+<span class="md-text">				NSWindow is the window handle for the native window.</span>
+</span></span></span>
+
+</span></div><div class="anchor type-res" id="name-NativeWindow" data-popularity="200">	<input type='checkbox' class="fold" id="NativeWindow-fold-content"><label for="NativeWindow-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-7">NativeWindow</a> <b><i>(interface)</i></b></label><span id='NativeWindow-fold-content-docs' class="fold-docs">
+<span class="md-text">		NativeWindow is an extension interface for `fyne.Window` that gives access
+		to platform-native features of application windows.
+		
+		Since: 2.5</span>
+
+		<input type='checkbox' class="fold" id="NativeWindow-fold-methods"><label for="NativeWindow-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='NativeWindow-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="NativeWindow-fold-method-RunNative"><label for="NativeWindow-fold-method-RunNative">( NativeWindow) <a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-10">RunNative</a>(func(context <a href="../../../builtin.html#name-any">any</a>))</label><span id='NativeWindow-fold-method-RunNative-docs' class="fold-docs">
+<span class="md-text">				RunNative  provides a way to execute code within the platform-specific runtime context for a window.
+				The context types are defined in the `driver` package and the specific context passed will differ by platform.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="NativeWindow-fold-impledby"><label for="NativeWindow-fold-impledby">Implemented By (<i>at least one unexported</i>)</label><span id='NativeWindow-fold-impledby-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="NativeWindow-showhide-impedBys"><i><label for="NativeWindow-showhide-impedBys" class="show-inline">/* at least one unexported ... */</label><label for="NativeWindow-showhide-impedBys" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			*fyne.io/fyne/v2/internal/driver/glfw.<a href="internal/driver/glfw.html#name-window">window</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-UnknownContext" data-popularity="0">	<input type='checkbox' class="fold" id="UnknownContext-fold-content"><label for="UnknownContext-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-35">UnknownContext</a> <i>(struct)</i></label><span id='UnknownContext-fold-content-docs' class="fold-docs">
+<span class="md-text">		UnknownContext is passed to the RunNative callback when it is executed
+		on devices or windows without special native context.
+		
+		Since: 2.3</span>
+
+</span></div><div class="anchor type-res" id="name-WaylandWindowContext" data-popularity="0">	<input type='checkbox' class="fold" id="WaylandWindowContext-fold-content"><label for="WaylandWindowContext-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-68">WaylandWindowContext</a> <i>(struct)</i></label><span id='WaylandWindowContext-fold-content-docs' class="fold-docs">
+<span class="md-text">		WaylandWindowContext is passed to the NativeWindow.RunNative callback
+		when it is executed on a device with the Wayland windowing system.
+		
+		Since: 2.5</span>
+
+		<input type='checkbox' class="fold" id="WaylandWindowContext-fold-fields"><label for="WaylandWindowContext-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='WaylandWindowContext-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="WaylandWindowContext-fold-field-WaylandSurface"><label for="WaylandWindowContext-fold-field-WaylandSurface"><a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-70">WaylandSurface</a> <i><a href="../../../builtin.html#name-uintptr">uintptr</a></i></label><span id='WaylandWindowContext-fold-field-WaylandSurface-docs' class="fold-docs">
+<span class="md-text">				WaylandSurface is the handle to the native Wayland surface.</span>
+</span></span></span>
+
+</span></div><div class="anchor type-res" id="name-WindowsWindowContext" data-popularity="0">	<input type='checkbox' class="fold" id="WindowsWindowContext-fold-content"><label for="WindowsWindowContext-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-41">WindowsWindowContext</a> <i>(struct)</i></label><span id='WindowsWindowContext-fold-content-docs' class="fold-docs">
+<span class="md-text">		WindowsWindowContext is passed to the NativeWindow.RunNative callback
+		when it is executed on a Microsoft Windows device.
+		
+		Since: 2.5</span>
+
+		<input type='checkbox' class="fold" id="WindowsWindowContext-fold-fields"><label for="WindowsWindowContext-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='WindowsWindowContext-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="WindowsWindowContext-fold-field-HWND"><label for="WindowsWindowContext-fold-field-HWND"><a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-43">HWND</a> <i><a href="../../../builtin.html#name-uintptr">uintptr</a></i></label><span id='WindowsWindowContext-fold-field-HWND-docs' class="fold-docs">
+<span class="md-text">				HWND is the window handle for the native window.</span>
+</span></span></span>
+
+</span></div><div class="anchor type-res" id="name-X11WindowContext" data-popularity="0">	<input type='checkbox' class="fold" id="X11WindowContext-fold-content"><label for="X11WindowContext-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-59">X11WindowContext</a> <i>(struct)</i></label><span id='X11WindowContext-fold-content-docs' class="fold-docs">
+<span class="md-text">		X11WindowContext is passed to the NativeWindow.RunNative callback
+		when it is executed on a device with the X11 windowing system.
+		
+		Since: 2.5</span>
+
+		<input type='checkbox' class="fold" id="X11WindowContext-fold-fields"><label for="X11WindowContext-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='X11WindowContext-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="X11WindowContext-fold-field-WindowHandle"><label for="X11WindowContext-fold-field-WindowHandle"><a href="../../../../src/fyne.io/fyne/v2/driver/native.go.html#line-61">WindowHandle</a> <i><a href="../../../builtin.html#name-uintptr">uintptr</a></i></label><span id='X11WindowContext-fold-field-WindowHandle-docs' class="fold-docs">
+<span class="md-text">				WindowHandle is the window handle for the native X11 window.</span>
+</span></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (only one, which is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-RunNative">	<input type='checkbox' class="fold" id="RunNative-fold-content"><label for="RunNative-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/driver/native_other.go.html#line-10">RunNative</a>(fn func(<a href="../../../builtin.html#name-any">any</a>) <a href="../../../builtin.html#name-error">error</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='RunNative-fold-content-docs' class="fold-docs">
+<span class="md-text">		RunNative provides a way to execute code within the platform-specific runtime context for various runtimes.
+		This is mostly useful for Android where the JVM provides functionality that is not accessible directly in CGo.
+		The call for most platforms will just execute passing an `UnknownContext` and returning any error reported.
+		
+		Since: 2.3</span>
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

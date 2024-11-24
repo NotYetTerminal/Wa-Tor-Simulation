@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: loop.go in package fyne.io/fyne/v2/internal/driver/glfw</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	loop.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html">fyne.io/fyne/v2/internal/driver/glfw</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5,
+input[id=i6]:checked ~pre .i6,
+input[id=i7]:checked ~pre .i7,
+input[id=i8]:checked ~pre .i8,
+input[id=i9]:checked ~pre .i9
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+<input id="i6" type="radio" name="i"/>
+<input id="i7" type="radio" name="i"/>
+<input id="i8" type="radio" name="i"/>
+<input id="i9" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> glfw</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"runtime"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"sync"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"sync/atomic"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i3"><span class="lit-string i3">"time"</span></label></code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i4"><span class="lit-string i4">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i5"><span class="lit-string i5">"fyne.io/fyne/v2/internal/app"</span></label></code></span>
+<span class="codeline" id="line-11"><code>	<label for="i6"><span class="lit-string i6">"fyne.io/fyne/v2/internal/cache"</span></label></code></span>
+<span class="codeline" id="line-12"><code>	<label for="i7"><span class="lit-string i7">"fyne.io/fyne/v2/internal/driver/common"</span></label></code></span>
+<span class="codeline" id="line-13"><code>	<label for="i8"><span class="lit-string i8">"fyne.io/fyne/v2/internal/painter"</span></label></code></span>
+<span class="codeline" id="line-14"><code>	<label for="i9"><span class="lit-string i9">"fyne.io/fyne/v2/internal/scale"</span></label></code></span>
+<span class="codeline" id="line-15"><code>)</code></span>
+<span class="codeline" id="line-16"><code></code></span>
+<span class="codeline" id="line-17"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-funcData" class="ident">funcData</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-18"><code>	f    <span class="keyword">func</span>()</code></span>
+<span class="codeline" id="line-19"><code>	done <span class="keyword">chan</span> <span class="keyword">struct</span>{} <span class="comment">// Zero allocation signalling channel</span></code></span>
+<span class="codeline" id="line-20"><code>}</code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-drawData" class="ident">drawData</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-23"><code>	f    <span class="keyword">func</span>()</code></span>
+<span class="codeline" id="line-24"><code>	win  *<a href="window_desktop.go.html#line-63" class="ident">window</a></code></span>
+<span class="codeline" id="line-25"><code>	done <span class="keyword">chan</span> <span class="keyword">struct</span>{} <span class="comment">// Zero allocation signalling channel</span></code></span>
+<span class="codeline" id="line-26"><code>}</code></span>
+<span class="codeline" id="line-27"><code></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">// channel for queuing functions on the main thread</span></code></span>
+<span class="codeline" id="line-29"><code><span class="keyword">var</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-funcQueue" class="ident">funcQueue</a> = <a href="../../../../../../runtime/chan.go.html#line-73">make</a>(<span class="keyword">chan</span> <a href="#line-17" class="ident">funcData</a>)</code></span>
+<span class="codeline" id="line-30"><code><span class="keyword">var</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-drawFuncQueue" class="ident">drawFuncQueue</a> = <a href="../../../../../../runtime/chan.go.html#line-73">make</a>(<span class="keyword">chan</span> <a href="#line-22" class="ident">drawData</a>)</code></span>
+<span class="codeline" id="line-31"><code><span class="keyword">var</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-running" class="ident">running</a> <a href="../../../../../../../pkg/sync/atomic.html" class="ident i2">atomic</a>.<a href="../../../../../../sync/atomic/type.go.html#line-11" class="ident">Bool</a></code></span>
+<span class="codeline" id="line-32"><code><span class="keyword">var</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-initOnce" class="ident">initOnce</a> = &amp;<a href="../../../../../../../pkg/sync.html" class="ident i1">sync</a>.<a href="../../../../../../sync/once.go.html#line-20" class="ident">Once</a>{}</code></span>
+<span class="codeline" id="line-33"><code></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">// Arrange that main.main runs on main thread.</span></code></span>
+<span class="codeline" id="line-35"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-init" class="ident">init</a></label>() {</code></span>
+<span class="codeline" id="line-36"><code>	<a href="../../../../../../../pkg/runtime.html" class="ident i0">runtime</a>.<a href="../../../../../../runtime/proc.go.html#line-5293" class="ident">LockOSThread</a>()</code></span>
+<span class="codeline" id="line-37"><code>	<a href="driver.go.html#line-28" class="ident">mainGoroutineID</a> = <a href="driver_desktop.go.html#line-32" class="ident">goroutineID</a>()</code></span>
+<span class="codeline" id="line-38"><code>}</code></span>
+<span class="codeline" id="line-39"><code></code></span>
+<span class="codeline" id="line-40"><code><span class="comment">// force a function f to run on the main thread</span></code></span>
+<span class="codeline" id="line-41"><code><span class="keyword">func</span> <label for="r1" class="ident"><a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-runOnMain" class="ident">runOnMain</a></label>(<label for="r2" class="ident">f</label> <span class="keyword">func</span>()) {</code></span>
+<span class="codeline" id="line-42"><code>	<span class="comment">// If we are on main just execute - otherwise add it to the main queue and wait.</span></code></span>
+<span class="codeline" id="line-43"><code><span class="comment">	// The "running" variable is normally false when we are on the main thread.</span></code></span>
+<span class="codeline" id="line-44"><code>	<span class="keyword">if</span> !<a href="#line-31" class="ident">running</a>.<a href="../../../../../../sync/atomic/type.go.html#line-17" class="ident">Load</a>() {</code></span>
+<span class="codeline" id="line-45"><code>		<label for="r2" class="ident">f</label>()</code></span>
+<span class="codeline" id="line-46"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-47"><code>	}</code></span>
+<span class="codeline" id="line-48"><code></code></span>
+<span class="codeline" id="line-49"><code>	<label for="r3" class="ident">done</label> := <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/common.html" class="ident i7">common</a>.<a href="../common/window.go.html#line-48" class="ident">DonePool</a>.<a href="../../../../../../sync/pool.go.html#line-131" class="ident">Get</a>().(<span class="keyword">chan</span> <span class="keyword">struct</span>{})</code></span>
+<span class="codeline" id="line-50"><code>	<span class="keyword">defer</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/common.html" class="ident i7">common</a>.<a href="../common/window.go.html#line-48" class="ident">DonePool</a>.<a href="../../../../../../sync/pool.go.html#line-99" class="ident">Put</a>(<label for="r3" class="ident">done</label>)</code></span>
+<span class="codeline" id="line-51"><code></code></span>
+<span class="codeline" id="line-52"><code>	<a href="#line-29" class="ident">funcQueue</a> &lt;- <a href="#line-17" class="ident">funcData</a>{<a href="#line-18" class="ident">f</a>: <label for="r2" class="ident">f</label>, <a href="#line-19" class="ident">done</a>: <label for="r3" class="ident">done</label>}</code></span>
+<span class="codeline" id="line-53"><code></code></span>
+<span class="codeline" id="line-54"><code>	&lt;-<label for="r3" class="ident">done</label></code></span>
+<span class="codeline" id="line-55"><code>}</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code><span class="comment">// force a function f to run on the draw thread</span></code></span>
+<span class="codeline" id="line-58"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-runOnDraw" class="ident">runOnDraw</a></label>(<label for="r5" class="ident">w</label> *<a href="window_desktop.go.html#line-63" class="ident">window</a>, <label for="r6" class="ident">f</label> <span class="keyword">func</span>()) {</code></span>
+<span class="codeline" id="line-59"><code>	<span class="keyword">if</span> <a href="driver.go.html#line-36" class="ident">drawOnMainThread</a> {</code></span>
+<span class="codeline" id="line-60"><code>		<a href="#line-41" class="ident">runOnMain</a>(<span class="keyword">func</span>() { <label for="r5" class="ident">w</label>.<a href="window.go.html#line-923" class="ident">RunWithContext</a>(<label for="r6" class="ident">f</label>) })</code></span>
+<span class="codeline" id="line-61"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-62"><code>	}</code></span>
+<span class="codeline" id="line-63"><code>	<label for="r7" class="ident">done</label> := <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/common.html" class="ident i7">common</a>.<a href="../common/window.go.html#line-48" class="ident">DonePool</a>.<a href="../../../../../../sync/pool.go.html#line-131" class="ident">Get</a>().(<span class="keyword">chan</span> <span class="keyword">struct</span>{})</code></span>
+<span class="codeline" id="line-64"><code>	<span class="keyword">defer</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/common.html" class="ident i7">common</a>.<a href="../common/window.go.html#line-48" class="ident">DonePool</a>.<a href="../../../../../../sync/pool.go.html#line-99" class="ident">Put</a>(<label for="r7" class="ident">done</label>)</code></span>
+<span class="codeline" id="line-65"><code></code></span>
+<span class="codeline" id="line-66"><code>	<a href="#line-30" class="ident">drawFuncQueue</a> &lt;- <a href="#line-22" class="ident">drawData</a>{<a href="#line-23" class="ident">f</a>: <label for="r6" class="ident">f</label>, <a href="#line-24" class="ident">win</a>: <label for="r5" class="ident">w</label>, <a href="#line-25" class="ident">done</a>: <label for="r7" class="ident">done</label>}</code></span>
+<span class="codeline" id="line-67"><code>	&lt;-<label for="r7" class="ident">done</label></code></span>
+<span class="codeline" id="line-68"><code>}</code></span>
+<span class="codeline" id="line-69"><code></code></span>
+<span class="codeline" id="line-70"><code><span class="comment">// Preallocate to avoid allocations on every drawSingleFrame.</span></code></span>
+<span class="codeline" id="line-71"><code><span class="comment">// Note that the capacity of this slice can only grow,</span></code></span>
+<span class="codeline" id="line-72"><code><span class="comment">// but its length will never be longer than the total number of</span></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">// window canvases that are dirty on a single frame.</span></code></span>
+<span class="codeline" id="line-74"><code><span class="comment">// So its memory impact should be negligible and does not</span></code></span>
+<span class="codeline" id="line-75"><code><span class="comment">// need periodic shrinking.</span></code></span>
+<span class="codeline" id="line-76"><code><span class="keyword">var</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-refreshingCanvases" class="ident">refreshingCanvases</a> []<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i4">fyne</a>.<a href="../../../canvas.go.html#line-7" class="ident">Canvas</a></code></span>
+<span class="codeline" id="line-77"><code></code></span>
+<span class="codeline" id="line-78"><code><span class="keyword">func</span> (<label for="r8" class="ident">d</label> *<a href="driver.go.html#line-38" class="ident">gLDriver</a>) <label for="r9" class="ident">drawSingleFrame</label>() {</code></span>
+<span class="codeline" id="line-79"><code>	<span class="keyword">for</span> <label for="r10" class="ident">_</label>, <label for="r11" class="ident">win</label> := <span class="keyword">range</span> <label for="r8" class="ident">d</label>.<a href="driver.go.html#line-142" class="ident">windowList</a>() {</code></span>
+<span class="codeline" id="line-80"><code>		<label for="r12" class="ident">w</label> := <label for="r11" class="ident">win</label>.(*<a href="window_desktop.go.html#line-63" class="ident">window</a>)</code></span>
+<span class="codeline" id="line-81"><code>		<label for="r12" class="ident">w</label>.<a href="window_desktop.go.html#line-67" class="ident">viewLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-65" class="ident">RLock</a>()</code></span>
+<span class="codeline" id="line-82"><code>		<label for="r13" class="ident">canvas</label> := <label for="r12" class="ident">w</label>.<a href="window_desktop.go.html#line-75" class="ident">canvas</a></code></span>
+<span class="codeline" id="line-83"><code>		<label for="r14" class="ident">closing</label> := <label for="r12" class="ident">w</label>.<a href="window_desktop.go.html#line-70" class="ident">closing</a></code></span>
+<span class="codeline" id="line-84"><code>		<label for="r15" class="ident">visible</label> := <label for="r12" class="ident">w</label>.<a href="window_desktop.go.html#line-84" class="ident">visible</a></code></span>
+<span class="codeline" id="line-85"><code>		<label for="r12" class="ident">w</label>.<a href="window_desktop.go.html#line-67" class="ident">viewLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-112" class="ident">RUnlock</a>()</code></span>
+<span class="codeline" id="line-86"><code></code></span>
+<span class="codeline" id="line-87"><code>		<span class="comment">// CheckDirtyAndClear must be checked after visibility,</span></code></span>
+<span class="codeline" id="line-88"><code><span class="comment">		// because when a window becomes visible, it could be</span></code></span>
+<span class="codeline" id="line-89"><code><span class="comment">		// showing old content without a dirty flag set to true.</span></code></span>
+<span class="codeline" id="line-90"><code><span class="comment">		// Do the clear if and only if the window is visible.</span></code></span>
+<span class="codeline" id="line-91"><code>		<span class="keyword">if</span> <label for="r14" class="ident">closing</label> || !<label for="r15" class="ident">visible</label> || !<label for="r13" class="ident">canvas</label>.<a href="../common/canvas.go.html#line-382" class="ident">CheckDirtyAndClear</a>() {</code></span>
+<span class="codeline" id="line-92"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-93"><code>		}</code></span>
+<span class="codeline" id="line-94"><code></code></span>
+<span class="codeline" id="line-95"><code>		<label for="r8" class="ident">d</label>.<a href="#line-207" class="ident">repaintWindow</a>(<label for="r12" class="ident">w</label>)</code></span>
+<span class="codeline" id="line-96"><code>		<a href="#line-76" class="ident">refreshingCanvases</a> = <a href="../../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<a href="#line-76" class="ident">refreshingCanvases</a>, <label for="r13" class="ident">canvas</label>)</code></span>
+<span class="codeline" id="line-97"><code>	}</code></span>
+<span class="codeline" id="line-98"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/cache.html" class="ident i6">cache</a>.<a href="../../cache/base.go.html#line-98" class="ident">CleanCanvases</a>(<a href="#line-76" class="ident">refreshingCanvases</a>)</code></span>
+<span class="codeline" id="line-99"><code></code></span>
+<span class="codeline" id="line-100"><code>	<span class="comment">// cleanup refreshingCanvases slice</span></code></span>
+<span class="codeline" id="line-101"><code>	<span class="keyword">for</span> <label for="r16" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r16" class="ident">i</label> &lt; <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<a href="#line-76" class="ident">refreshingCanvases</a>); <label for="r16" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-102"><code>		<a href="#line-76" class="ident">refreshingCanvases</a>[<label for="r16" class="ident">i</label>] = <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-103"><code>	}</code></span>
+<span class="codeline" id="line-104"><code>	<a href="#line-76" class="ident">refreshingCanvases</a> = <a href="#line-76" class="ident">refreshingCanvases</a>[:<span class="lit-number">0</span>]</code></span>
+<span class="codeline" id="line-105"><code>}</code></span>
+<span class="codeline" id="line-106"><code></code></span>
+<span class="codeline" id="line-107"><code><span class="keyword">func</span> (<label for="r17" class="ident">d</label> *<a href="driver.go.html#line-38" class="ident">gLDriver</a>) <label for="r18" class="ident">runGL</label>() {</code></span>
+<span class="codeline" id="line-108"><code>	<span class="keyword">if</span> !<a href="#line-31" class="ident">running</a>.<a href="../../../../../../sync/atomic/type.go.html#line-26" class="ident">CompareAndSwap</a>(<a href="../../../../../../../pkg/builtin.html#name-false" class="ident">false</a>, <a href="../../../../../../../pkg/builtin.html#name-true" class="ident">true</a>) {</code></span>
+<span class="codeline" id="line-109"><code>		<span class="keyword">return</span> <span class="comment">// Run was called twice.</span></code></span>
+<span class="codeline" id="line-110"><code>	}</code></span>
+<span class="codeline" id="line-111"><code>	<a href="../../../../../../../pkg/builtin.html#name-close" class="ident">close</a>(<label for="r17" class="ident">d</label>.<a href="driver.go.html#line-43" class="ident">waitForStart</a>) <span class="comment">// Signal that execution can continue.</span></code></span>
+<span class="codeline" id="line-112"><code></code></span>
+<span class="codeline" id="line-113"><code>	<label for="r17" class="ident">d</label>.<a href="loop_desktop.go.html#line-11" class="ident">initGLFW</a>()</code></span>
+<span class="codeline" id="line-114"><code>	<span class="keyword">if</span> <label for="r17" class="ident">d</label>.<a href="driver.go.html#line-49" class="ident">trayStart</a> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-115"><code>		<label for="r17" class="ident">d</label>.<a href="driver.go.html#line-49" class="ident">trayStart</a>()</code></span>
+<span class="codeline" id="line-116"><code>	}</code></span>
+<span class="codeline" id="line-117"><code>	<span class="keyword">if</span> <label for="r19" class="ident">f</label> := <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i4">fyne</a>.<a href="../../../app.go.html#line-92" class="ident">CurrentApp</a>().<a href="../../../app.go.html#line-64" class="ident">Lifecycle</a>().(*<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/app.html" class="ident i5">app</a>.<a href="../../app/lifecycle.go.html#line-15" class="ident">Lifecycle</a>).<a href="../../app/lifecycle.go.html#line-75" class="ident">OnStarted</a>(); <label for="r19" class="ident">f</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-118"><code>		<span class="keyword">go</span> <label for="r19" class="ident">f</label>() <span class="comment">// don't block main, we don't have window event queue</span></code></span>
+<span class="codeline" id="line-119"><code>	}</code></span>
+<span class="codeline" id="line-120"><code>	<label for="r20" class="ident">eventTick</label> := <a href="../../../../../../../pkg/time.html" class="ident i3">time</a>.<a href="../../../../../../time/tick.go.html#line-36" class="ident">NewTicker</a>(<a href="../../../../../../../pkg/time.html" class="ident i3">time</a>.<a href="../../../../../../time/time.go.html#line-655" class="ident">Second</a> / <span class="lit-number">60</span>)</code></span>
+<span class="codeline" id="line-121"><code>	<span class="keyword">for</span> {</code></span>
+<span class="codeline" id="line-122"><code>		<a href="../../../../../../runtime/select.go.html#line-121"><span class="keyword">select</span></a> {</code></span>
+<span class="codeline" id="line-123"><code>		<span class="keyword">case</span> <a href="../../../../../../runtime/chan.go.html#line-488">&lt;-</a><label for="r17" class="ident">d</label>.<a href="driver.go.html#line-41" class="ident">done</a>:</code></span>
+<span class="codeline" id="line-124"><code>			<label for="r20" class="ident">eventTick</label>.<a href="../../../../../../time/tick.go.html#line-52" class="ident">Stop</a>()</code></span>
+<span class="codeline" id="line-125"><code>			<label for="r17" class="ident">d</label>.<a href="driver.go.html#line-42" class="ident">drawDone</a> &lt;- <span class="keyword">struct</span>{}{} <span class="comment">// wait for draw thread to stop</span></code></span>
+<span class="codeline" id="line-126"><code>			<label for="r17" class="ident">d</label>.<a href="loop_desktop.go.html#line-28" class="ident">Terminate</a>()</code></span>
+<span class="codeline" id="line-127"><code>			<label for="r21" class="ident">l</label> := <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i4">fyne</a>.<a href="../../../app.go.html#line-92" class="ident">CurrentApp</a>().<a href="../../../app.go.html#line-64" class="ident">Lifecycle</a>().(*<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/app.html" class="ident i5">app</a>.<a href="../../app/lifecycle.go.html#line-15" class="ident">Lifecycle</a>)</code></span>
+<span class="codeline" id="line-128"><code>			<span class="keyword">if</span> <label for="r22" class="ident">f</label> := <label for="r21" class="ident">l</label>.<a href="../../app/lifecycle.go.html#line-85" class="ident">OnStopped</a>(); <label for="r22" class="ident">f</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-129"><code>				<label for="r21" class="ident">l</label>.<a href="../../app/lifecycle.go.html#line-120" class="ident">QueueEvent</a>(<label for="r22" class="ident">f</label>)</code></span>
+<span class="codeline" id="line-130"><code>			}</code></span>
+<span class="codeline" id="line-131"><code>			<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-132"><code>		<span class="keyword">case</span> <label for="r23" class="ident">f</label> := <a href="../../../../../../runtime/chan.go.html#line-488">&lt;-</a><a href="#line-29" class="ident">funcQueue</a>:</code></span>
+<span class="codeline" id="line-133"><code>			<label for="r23" class="ident">f</label>.<a href="#line-18" class="ident">f</a>()</code></span>
+<span class="codeline" id="line-134"><code>			<label for="r23" class="ident">f</label>.<a href="#line-19" class="ident">done</a> &lt;- <span class="keyword">struct</span>{}{}</code></span>
+<span class="codeline" id="line-135"><code>		<span class="keyword">case</span> <a href="../../../../../../runtime/chan.go.html#line-488">&lt;-</a><label for="r20" class="ident">eventTick</label>.<a href="../../../../../../time/tick.go.html#line-17" class="ident">C</a>:</code></span>
+<span class="codeline" id="line-136"><code>			<label for="r17" class="ident">d</label>.<a href="loop_desktop.go.html#line-24" class="ident">pollEvents</a>()</code></span>
+<span class="codeline" id="line-137"><code>			<label for="r24" class="ident">windowsToRemove</label> := <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-138"><code>			<span class="keyword">for</span> <label for="r25" class="ident">_</label>, <label for="r26" class="ident">win</label> := <span class="keyword">range</span> <label for="r17" class="ident">d</label>.<a href="driver.go.html#line-142" class="ident">windowList</a>() {</code></span>
+<span class="codeline" id="line-139"><code>				<label for="r27" class="ident">w</label> := <label for="r26" class="ident">win</label>.(*<a href="window_desktop.go.html#line-63" class="ident">window</a>)</code></span>
+<span class="codeline" id="line-140"><code>				<span class="keyword">if</span> <label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-66" class="ident">viewport</a> == <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-141"><code>					<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-142"><code>				}</code></span>
+<span class="codeline" id="line-143"><code></code></span>
+<span class="codeline" id="line-144"><code>				<span class="keyword">if</span> <label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-66" class="ident">viewport</a>.<a href="../../../../../../github.com/go-gl/glfw/v3.3/glfw/window.go.html#line-371" class="ident">ShouldClose</a>() {</code></span>
+<span class="codeline" id="line-145"><code>					<label for="r24" class="ident">windowsToRemove</label>++</code></span>
+<span class="codeline" id="line-146"><code>					<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-147"><code>				}</code></span>
+<span class="codeline" id="line-148"><code></code></span>
+<span class="codeline" id="line-149"><code>				<label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-67" class="ident">viewLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-65" class="ident">RLock</a>()</code></span>
+<span class="codeline" id="line-150"><code>				<label for="r28" class="ident">expand</label> := <label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-110" class="ident">shouldExpand</a></code></span>
+<span class="codeline" id="line-151"><code>				<label for="r29" class="ident">fullScreen</label> := <label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-82" class="ident">fullScreen</a></code></span>
+<span class="codeline" id="line-152"><code>				<label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-67" class="ident">viewLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-112" class="ident">RUnlock</a>()</code></span>
+<span class="codeline" id="line-153"><code></code></span>
+<span class="codeline" id="line-154"><code>				<span class="keyword">if</span> <label for="r28" class="ident">expand</label> &amp;&amp; !<label for="r29" class="ident">fullScreen</label> {</code></span>
+<span class="codeline" id="line-155"><code>					<label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-239" class="ident">fitContent</a>()</code></span>
+<span class="codeline" id="line-156"><code>					<label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-67" class="ident">viewLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-157"><code>					<label for="r30" class="ident">shouldExpand</label> := <label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-110" class="ident">shouldExpand</a></code></span>
+<span class="codeline" id="line-158"><code>					<label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-110" class="ident">shouldExpand</a> = <a href="../../../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-159"><code>					<label for="r31" class="ident">view</label> := <label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-66" class="ident">viewport</a></code></span>
+<span class="codeline" id="line-160"><code>					<label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-67" class="ident">viewLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-161"><code>					<span class="keyword">if</span> <label for="r30" class="ident">shouldExpand</label> &amp;&amp; <a href="../../../../../../../pkg/runtime.html" class="ident i0">runtime</a>.<a href="../../../../../../runtime/extern.go.html#line-367" class="ident">GOOS</a> != <span class="lit-string">"js"</span> {</code></span>
+<span class="codeline" id="line-162"><code>						<label for="r31" class="ident">view</label>.<a href="../../../../../../github.com/go-gl/glfw/v3.3/glfw/window.go.html#line-480" class="ident">SetSize</a>(<label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-109" class="ident">shouldWidth</a>, <label for="r27" class="ident">w</label>.<a href="window_desktop.go.html#line-109" class="ident">shouldHeight</a>)</code></span>
+<span class="codeline" id="line-163"><code>					}</code></span>
+<span class="codeline" id="line-164"><code>				}</code></span>
+<span class="codeline" id="line-165"><code></code></span>
+<span class="codeline" id="line-166"><code>				<span class="keyword">if</span> <a href="driver.go.html#line-36" class="ident">drawOnMainThread</a> {</code></span>
+<span class="codeline" id="line-167"><code>					<label for="r17" class="ident">d</label>.<a href="#line-78" class="ident">drawSingleFrame</a>()</code></span>
+<span class="codeline" id="line-168"><code>				}</code></span>
+<span class="codeline" id="line-169"><code>			}</code></span>
+<span class="codeline" id="line-170"><code>			<span class="keyword">if</span> <label for="r24" class="ident">windowsToRemove</label> &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-171"><code>				<label for="r32" class="ident">oldWindows</label> := <label for="r17" class="ident">d</label>.<a href="driver.go.html#line-142" class="ident">windowList</a>()</code></span>
+<span class="codeline" id="line-172"><code>				<label for="r33" class="ident">newWindows</label> := <a href="../../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i4">fyne</a>.<a href="../../../window.go.html#line-5" class="ident">Window</a>, <span class="lit-number">0</span>, <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r32" class="ident">oldWindows</label>)-<label for="r24" class="ident">windowsToRemove</label>)</code></span>
+<span class="codeline" id="line-173"><code></code></span>
+<span class="codeline" id="line-174"><code>				<span class="keyword">for</span> <label for="r34" class="ident">_</label>, <label for="r35" class="ident">win</label> := <span class="keyword">range</span> <label for="r32" class="ident">oldWindows</label> {</code></span>
+<span class="codeline" id="line-175"><code>					<label for="r36" class="ident">w</label> := <label for="r35" class="ident">win</label>.(*<a href="window_desktop.go.html#line-63" class="ident">window</a>)</code></span>
+<span class="codeline" id="line-176"><code>					<span class="keyword">if</span> <label for="r36" class="ident">w</label>.<a href="window_desktop.go.html#line-66" class="ident">viewport</a> == <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-177"><code>						<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-178"><code>					}</code></span>
+<span class="codeline" id="line-179"><code></code></span>
+<span class="codeline" id="line-180"><code>					<span class="keyword">if</span> <label for="r36" class="ident">w</label>.<a href="window_desktop.go.html#line-66" class="ident">viewport</a>.<a href="../../../../../../github.com/go-gl/glfw/v3.3/glfw/window.go.html#line-371" class="ident">ShouldClose</a>() {</code></span>
+<span class="codeline" id="line-181"><code>						<label for="r36" class="ident">w</label>.<a href="window_desktop.go.html#line-67" class="ident">viewLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-182"><code>						<label for="r36" class="ident">w</label>.<a href="window_desktop.go.html#line-84" class="ident">visible</a> = <a href="../../../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-183"><code>						<label for="r37" class="ident">v</label> := <label for="r36" class="ident">w</label>.<a href="window_desktop.go.html#line-66" class="ident">viewport</a></code></span>
+<span class="codeline" id="line-184"><code>						<label for="r36" class="ident">w</label>.<a href="window_desktop.go.html#line-67" class="ident">viewLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-185"><code></code></span>
+<span class="codeline" id="line-186"><code>						<span class="comment">// remove window from window list</span></code></span>
+<span class="codeline" id="line-187"><code>						<label for="r37" class="ident">v</label>.<a href="../../../../../../github.com/go-gl/glfw/v3.3/glfw/window.go.html#line-364" class="ident">Destroy</a>()</code></span>
+<span class="codeline" id="line-188"><code>						<label for="r36" class="ident">w</label>.<a href="window.go.html#line-279" class="ident">destroy</a>(<label for="r17" class="ident">d</label>)</code></span>
+<span class="codeline" id="line-189"><code>						<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-190"><code>					}</code></span>
+<span class="codeline" id="line-191"><code></code></span>
+<span class="codeline" id="line-192"><code>					<label for="r33" class="ident">newWindows</label> = <a href="../../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r33" class="ident">newWindows</label>, <label for="r35" class="ident">win</label>)</code></span>
+<span class="codeline" id="line-193"><code>				}</code></span>
+<span class="codeline" id="line-194"><code></code></span>
+<span class="codeline" id="line-195"><code>				<label for="r17" class="ident">d</label>.<a href="driver.go.html#line-39" class="ident">windowLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-196"><code>				<label for="r17" class="ident">d</label>.<a href="driver.go.html#line-40" class="ident">windows</a> = <label for="r33" class="ident">newWindows</label></code></span>
+<span class="codeline" id="line-197"><code>				<label for="r17" class="ident">d</label>.<a href="driver.go.html#line-39" class="ident">windowLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-198"><code></code></span>
+<span class="codeline" id="line-199"><code>				<span class="keyword">if</span> <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r33" class="ident">newWindows</label>) == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-200"><code>					<label for="r17" class="ident">d</label>.<a href="driver.go.html#line-93" class="ident">Quit</a>()</code></span>
+<span class="codeline" id="line-201"><code>				}</code></span>
+<span class="codeline" id="line-202"><code>			}</code></span>
+<span class="codeline" id="line-203"><code>		}</code></span>
+<span class="codeline" id="line-204"><code>	}</code></span>
+<span class="codeline" id="line-205"><code>}</code></span>
+<span class="codeline" id="line-206"><code></code></span>
+<span class="codeline" id="line-207"><code><span class="keyword">func</span> (<label for="r38" class="ident">d</label> *<a href="driver.go.html#line-38" class="ident">gLDriver</a>) <label for="r39" class="ident">repaintWindow</label>(<label for="r40" class="ident">w</label> *<a href="window_desktop.go.html#line-63" class="ident">window</a>) {</code></span>
+<span class="codeline" id="line-208"><code>	<label for="r41" class="ident">canvas</label> := <label for="r40" class="ident">w</label>.<a href="window_desktop.go.html#line-75" class="ident">canvas</a></code></span>
+<span class="codeline" id="line-209"><code>	<label for="r40" class="ident">w</label>.<a href="window.go.html#line-923" class="ident">RunWithContext</a>(<span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-210"><code>		<span class="keyword">if</span> <label for="r41" class="ident">canvas</label>.<a href="../common/canvas.go.html#line-86" class="ident">EnsureMinSize</a>() {</code></span>
+<span class="codeline" id="line-211"><code>			<label for="r40" class="ident">w</label>.<a href="window_desktop.go.html#line-67" class="ident">viewLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-212"><code>			<label for="r40" class="ident">w</label>.<a href="window_desktop.go.html#line-110" class="ident">shouldExpand</a> = <a href="../../../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-213"><code>			<label for="r40" class="ident">w</label>.<a href="window_desktop.go.html#line-67" class="ident">viewLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-214"><code>		}</code></span>
+<span class="codeline" id="line-215"><code>		<label for="r41" class="ident">canvas</label>.<a href="../common/canvas.go.html#line-233" class="ident">FreeDirtyTextures</a>()</code></span>
+<span class="codeline" id="line-216"><code></code></span>
+<span class="codeline" id="line-217"><code>		<a href="#line-274" class="ident">updateGLContext</a>(<label for="r40" class="ident">w</label>)</code></span>
+<span class="codeline" id="line-218"><code>		<label for="r41" class="ident">canvas</label>.<a href="canvas.go.html#line-280" class="ident">paint</a>(<label for="r41" class="ident">canvas</label>.<a href="canvas.go.html#line-214" class="ident">Size</a>())</code></span>
+<span class="codeline" id="line-219"><code></code></span>
+<span class="codeline" id="line-220"><code>		<label for="r40" class="ident">w</label>.<a href="window_desktop.go.html#line-67" class="ident">viewLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-65" class="ident">RLock</a>()</code></span>
+<span class="codeline" id="line-221"><code>		<label for="r42" class="ident">view</label> := <label for="r40" class="ident">w</label>.<a href="window_desktop.go.html#line-66" class="ident">viewport</a></code></span>
+<span class="codeline" id="line-222"><code>		<label for="r43" class="ident">visible</label> := <label for="r40" class="ident">w</label>.<a href="window_desktop.go.html#line-84" class="ident">visible</a></code></span>
+<span class="codeline" id="line-223"><code>		<label for="r40" class="ident">w</label>.<a href="window_desktop.go.html#line-67" class="ident">viewLock</a>.<a href="../../../../../../sync/rwmutex.go.html#line-112" class="ident">RUnlock</a>()</code></span>
+<span class="codeline" id="line-224"><code></code></span>
+<span class="codeline" id="line-225"><code>		<span class="keyword">if</span> <label for="r42" class="ident">view</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <label for="r43" class="ident">visible</label> {</code></span>
+<span class="codeline" id="line-226"><code>			<label for="r42" class="ident">view</label>.<a href="../../../../../../github.com/go-gl/glfw/v3.3/glfw/context.go.html#line-43" class="ident">SwapBuffers</a>()</code></span>
+<span class="codeline" id="line-227"><code>		}</code></span>
+<span class="codeline" id="line-228"><code>	})</code></span>
+<span class="codeline" id="line-229"><code>}</code></span>
+<span class="codeline" id="line-230"><code></code></span>
+<span class="codeline" id="line-231"><code><span class="keyword">func</span> (<label for="r44" class="ident">d</label> *<a href="driver.go.html#line-38" class="ident">gLDriver</a>) <label for="r45" class="ident">startDrawThread</label>() {</code></span>
+<span class="codeline" id="line-232"><code>	<label for="r46" class="ident">settingsChange</label> := <a href="../../../../../../runtime/chan.go.html#line-73">make</a>(<span class="keyword">chan</span> <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i4">fyne</a>.<a href="../../../settings.go.html#line-17" class="ident">Settings</a>)</code></span>
+<span class="codeline" id="line-233"><code>	<a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i4">fyne</a>.<a href="../../../app.go.html#line-92" class="ident">CurrentApp</a>().<a href="../../../app.go.html#line-53" class="ident">Settings</a>().<a href="../../../settings.go.html#line-30" class="ident">AddChangeListener</a>(<label for="r46" class="ident">settingsChange</label>)</code></span>
+<span class="codeline" id="line-234"><code>	<span class="keyword">var</span> <label for="r47" class="ident">drawCh</label> &lt;-<span class="keyword">chan</span> <a href="../../../../../../../pkg/time.html" class="ident i3">time</a>.<a href="../../../../../../time/time.go.html#line-139" class="ident">Time</a></code></span>
+<span class="codeline" id="line-235"><code>	<span class="keyword">if</span> <a href="driver.go.html#line-36" class="ident">drawOnMainThread</a> {</code></span>
+<span class="codeline" id="line-236"><code>		<label for="r47" class="ident">drawCh</label> = <a href="../../../../../../runtime/chan.go.html#line-73">make</a>(<span class="keyword">chan</span> <a href="../../../../../../../pkg/time.html" class="ident i3">time</a>.<a href="../../../../../../time/time.go.html#line-139" class="ident">Time</a>) <span class="comment">// don't tick when on M1</span></code></span>
+<span class="codeline" id="line-237"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-238"><code>		<label for="r47" class="ident">drawCh</label> = <a href="../../../../../../../pkg/time.html" class="ident i3">time</a>.<a href="../../../../../../time/tick.go.html#line-36" class="ident">NewTicker</a>(<a href="../../../../../../../pkg/time.html" class="ident i3">time</a>.<a href="../../../../../../time/time.go.html#line-655" class="ident">Second</a> / <span class="lit-number">60</span>).<a href="../../../../../../time/tick.go.html#line-17" class="ident">C</a></code></span>
+<span class="codeline" id="line-239"><code>	}</code></span>
+<span class="codeline" id="line-240"><code></code></span>
+<span class="codeline" id="line-241"><code>	<span class="keyword">go</span> <span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-242"><code>		<a href="../../../../../../../pkg/runtime.html" class="ident i0">runtime</a>.<a href="../../../../../../runtime/proc.go.html#line-5293" class="ident">LockOSThread</a>()</code></span>
+<span class="codeline" id="line-243"><code></code></span>
+<span class="codeline" id="line-244"><code>		<span class="keyword">for</span> {</code></span>
+<span class="codeline" id="line-245"><code>			<a href="../../../../../../runtime/select.go.html#line-121"><span class="keyword">select</span></a> {</code></span>
+<span class="codeline" id="line-246"><code>			<span class="keyword">case</span> <a href="../../../../../../runtime/chan.go.html#line-488">&lt;-</a><label for="r44" class="ident">d</label>.<a href="driver.go.html#line-42" class="ident">drawDone</a>:</code></span>
+<span class="codeline" id="line-247"><code>				<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-248"><code>			<span class="keyword">case</span> <label for="r48" class="ident">f</label> := <a href="../../../../../../runtime/chan.go.html#line-488">&lt;-</a><a href="#line-30" class="ident">drawFuncQueue</a>:</code></span>
+<span class="codeline" id="line-249"><code>				<label for="r48" class="ident">f</label>.<a href="#line-24" class="ident">win</a>.<a href="window.go.html#line-923" class="ident">RunWithContext</a>(<label for="r48" class="ident">f</label>.<a href="#line-23" class="ident">f</a>)</code></span>
+<span class="codeline" id="line-250"><code>				<label for="r48" class="ident">f</label>.<a href="#line-25" class="ident">done</a> &lt;- <span class="keyword">struct</span>{}{}</code></span>
+<span class="codeline" id="line-251"><code>			<span class="keyword">case</span> <label for="r49" class="ident">set</label> := <a href="../../../../../../runtime/chan.go.html#line-488">&lt;-</a><label for="r46" class="ident">settingsChange</label>:</code></span>
+<span class="codeline" id="line-252"><code>				<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/painter.html" class="ident i8">painter</a>.<a href="../../painter/font.go.html#line-164" class="ident">ClearFontCache</a>()</code></span>
+<span class="codeline" id="line-253"><code>				<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/cache.html" class="ident i6">cache</a>.<a href="../../cache/base.go.html#line-151" class="ident">ResetThemeCaches</a>()</code></span>
+<span class="codeline" id="line-254"><code>				<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/app.html" class="ident i5">app</a>.<a href="../../app/theme.go.html#line-41" class="ident">ApplySettingsWithCallback</a>(<label for="r49" class="ident">set</label>, <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i4">fyne</a>.<a href="../../../app.go.html#line-92" class="ident">CurrentApp</a>(), <span class="keyword">func</span>(<label for="r50" class="ident">w</label> <a href="../../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i4">fyne</a>.<a href="../../../window.go.html#line-5" class="ident">Window</a>) {</code></span>
+<span class="codeline" id="line-255"><code>					<label for="r51" class="ident">c</label>, <label for="r52" class="ident">ok</label> := <label for="r50" class="ident">w</label>.<a href="../../../window.go.html#line-101" class="ident">Canvas</a>().(*<a href="canvas.go.html#line-22" class="ident">glCanvas</a>)</code></span>
+<span class="codeline" id="line-256"><code>					<span class="keyword">if</span> !<label for="r52" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-257"><code>						<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-258"><code>					}</code></span>
+<span class="codeline" id="line-259"><code>					<label for="r51" class="ident">c</label>.<a href="canvas.go.html#line-333" class="ident">applyThemeOutOfTreeObjects</a>()</code></span>
+<span class="codeline" id="line-260"><code>					<span class="keyword">go</span> <label for="r51" class="ident">c</label>.<a href="canvas.go.html#line-197" class="ident">reloadScale</a>()</code></span>
+<span class="codeline" id="line-261"><code>				})</code></span>
+<span class="codeline" id="line-262"><code>			<span class="keyword">case</span> <a href="../../../../../../runtime/chan.go.html#line-488">&lt;-</a><label for="r47" class="ident">drawCh</label>:</code></span>
+<span class="codeline" id="line-263"><code>				<label for="r44" class="ident">d</label>.<a href="#line-78" class="ident">drawSingleFrame</a>()</code></span>
+<span class="codeline" id="line-264"><code>			}</code></span>
+<span class="codeline" id="line-265"><code>		}</code></span>
+<span class="codeline" id="line-266"><code>	}()</code></span>
+<span class="codeline" id="line-267"><code>}</code></span>
+<span class="codeline" id="line-268"><code></code></span>
+<span class="codeline" id="line-269"><code><span class="comment">// refreshWindow requests that the specified window be redrawn</span></code></span>
+<span class="codeline" id="line-270"><code><span class="keyword">func</span> <label for="r53" class="ident"><a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-refreshWindow" class="ident">refreshWindow</a></label>(<label for="r54" class="ident">w</label> *<a href="window_desktop.go.html#line-63" class="ident">window</a>) {</code></span>
+<span class="codeline" id="line-271"><code>	<label for="r54" class="ident">w</label>.<a href="window_desktop.go.html#line-75" class="ident">canvas</a>.<a href="../common/canvas.go.html#line-387" class="ident">SetDirty</a>()</code></span>
+<span class="codeline" id="line-272"><code>}</code></span>
+<span class="codeline" id="line-273"><code></code></span>
+<span class="codeline" id="line-274"><code><span class="keyword">func</span> <label for="r55" class="ident"><a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/driver/glfw.html#name-updateGLContext" class="ident">updateGLContext</a></label>(<label for="r56" class="ident">w</label> *<a href="window_desktop.go.html#line-63" class="ident">window</a>) {</code></span>
+<span class="codeline" id="line-275"><code>	<label for="r57" class="ident">canvas</label> := <label for="r56" class="ident">w</label>.<a href="window_desktop.go.html#line-75" class="ident">canvas</a></code></span>
+<span class="codeline" id="line-276"><code>	<label for="r58" class="ident">size</label> := <label for="r57" class="ident">canvas</label>.<a href="canvas.go.html#line-214" class="ident">Size</a>()</code></span>
+<span class="codeline" id="line-277"><code></code></span>
+<span class="codeline" id="line-278"><code>	<span class="comment">// w.width and w.height are not correct if we are maximised, so figure from canvas</span></code></span>
+<span class="codeline" id="line-279"><code>	<label for="r59" class="ident">winWidth</label> := <a href="../../../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/scale.html" class="ident i9">scale</a>.<a href="../../scale/scale.go.html#line-10" class="ident">ToScreenCoordinate</a>(<label for="r57" class="ident">canvas</label>, <label for="r58" class="ident">size</label>.<a href="../../../geometry.go.html#line-92" class="ident">Width</a>)) * <label for="r57" class="ident">canvas</label>.<a href="canvas.go.html#line-36" class="ident">texScale</a></code></span>
+<span class="codeline" id="line-280"><code>	<label for="r60" class="ident">winHeight</label> := <a href="../../../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<a href="../../../../../../../pkg/fyne.io/fyne/v2/internal/scale.html" class="ident i9">scale</a>.<a href="../../scale/scale.go.html#line-10" class="ident">ToScreenCoordinate</a>(<label for="r57" class="ident">canvas</label>, <label for="r58" class="ident">size</label>.<a href="../../../geometry.go.html#line-93" class="ident">Height</a>)) * <label for="r57" class="ident">canvas</label>.<a href="canvas.go.html#line-36" class="ident">texScale</a></code></span>
+<span class="codeline" id="line-281"><code></code></span>
+<span class="codeline" id="line-282"><code>	<label for="r57" class="ident">canvas</label>.<a href="../common/canvas.go.html#line-333" class="ident">Painter</a>().<a href="../../painter/gl/painter.go.html#line-48" class="ident">SetFrameBufferScale</a>(<label for="r57" class="ident">canvas</label>.<a href="canvas.go.html#line-36" class="ident">texScale</a>)</code></span>
+<span class="codeline" id="line-283"><code>	<label for="r56" class="ident">w</label>.<a href="window_desktop.go.html#line-75" class="ident">canvas</a>.<a href="../common/canvas.go.html#line-333" class="ident">Painter</a>().<a href="../../painter/gl/painter.go.html#line-50" class="ident">SetOutputSize</a>(<a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r59" class="ident">winWidth</label>), <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r60" class="ident">winHeight</label>))</code></span>
+<span class="codeline" id="line-284"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

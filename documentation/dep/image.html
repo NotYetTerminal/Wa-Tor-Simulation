@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dependency Relation: image</title>
+<link href="../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:xx-large;">package <b>image</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../pkg/image.html">image</a>
+
+<span class="title">Imports</span><div id="packages">
+<code>     <span class="order">1</span>. <a href="../pkg/bufio.html">bufio</a></code>
+<code>     <span class="order">2</span>. <a href="../pkg/errors.html">errors</a></code>
+<code>     <span class="order">3</span>. <a href="../pkg/image/color.html">image/color</a></code>
+<code>     <span class="order">4</span>. <a href="../pkg/io.html">io</a></code>
+<code>     <span class="order">5</span>. <a href="../pkg/math/bits.html">math/bits</a></code>
+<code>     <span class="order">6</span>. <a href="../pkg/strconv.html">strconv</a></code>
+<code>     <span class="order">7</span>. <a href="../pkg/sync.html">sync</a></code>
+<code>     <span class="order">8</span>. <a href="../pkg/sync/atomic.html" class="path-duplicate">sync</a><a href="../pkg/sync/atomic.html">/atomic</a></code></div>
+<span class="title" id="imported-by">Imported By</span><div id="packages">
+<code>     <span class="order"> 1</span>. <a href="../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a></code>
+<code>     <span class="order"> 2</span>. <a href="../pkg/fyne.io/fyne/v2/canvas.html" class="path-duplicate">fyne.io/fyne/v2</a><a href="../pkg/fyne.io/fyne/v2/canvas.html">/canvas</a></code>
+<code>     <span class="order"> 3</span>. <a href="../pkg/fyne.io/fyne/v2/driver/desktop.html" class="path-duplicate">fyne.io/fyne/v2</a><a href="../pkg/fyne.io/fyne/v2/driver/desktop.html">/driver/desktop</a></code>
+<code>     <span class="order"> 4</span>. <a href="../pkg/fyne.io/fyne/v2/internal/cache.html" class="path-duplicate">fyne.io/fyne/v2</a><a href="../pkg/fyne.io/fyne/v2/internal/cache.html">/internal/cache</a></code>
+<code>     <span class="order"> 5</span>. <a href="../pkg/fyne.io/fyne/v2/internal/driver/glfw.html" class="path-duplicate">fyne.io/fyne/v2/internal</a><a href="../pkg/fyne.io/fyne/v2/internal/driver/glfw.html">/driver/glfw</a></code>
+<code>     <span class="order"> 6</span>. <a href="../pkg/fyne.io/fyne/v2/internal/painter.html" class="path-duplicate">fyne.io/fyne/v2/internal</a><a href="../pkg/fyne.io/fyne/v2/internal/painter.html">/painter</a></code>
+<code>     <span class="order"> 7</span>. <a href="../pkg/fyne.io/fyne/v2/internal/painter/gl.html" class="path-duplicate">fyne.io/fyne/v2/internal/painter</a><a href="../pkg/fyne.io/fyne/v2/internal/painter/gl.html">/gl</a></code>
+<code>     <span class="order"> 8</span>. <a href="../pkg/fyne.io/fyne/v2/internal/svg.html" class="path-duplicate">fyne.io/fyne/v2/internal</a><a href="../pkg/fyne.io/fyne/v2/internal/svg.html">/svg</a></code>
+<code>     <span class="order"> 9</span>. <a href="../pkg/fyne.io/systray.html" class="path-duplicate">fyne.io</a><a href="../pkg/fyne.io/systray.html">/systray</a></code>
+<code>   <a href="../src/github.com/NotYetTerminal^af4a3/Wa-Tor-Simulation^c994f/source/main.go.html#line-166">m</a> <span class="order">10</span>. <a href="../pkg/github.com/NotYetTerminal^af4a3/Wa-Tor-Simulation^c994f/source.html">github.com/NotYetTerminal/Wa-Tor-Simulation/source</a></code>
+<code>     <span class="order">11</span>. <a href="../pkg/github.com/fyne-io/image/ico.html" class="path-duplicate">github.com</a><a href="../pkg/github.com/fyne-io/image/ico.html">/fyne-io/image/ico</a></code>
+<code>     <span class="order">12</span>. <a href="../pkg/github.com/go-gl/glfw/v3.3/glfw.html" class="path-duplicate">github.com</a><a href="../pkg/github.com/go-gl/glfw/v3.3/glfw.html">/go-gl/glfw/v3.3/glfw</a></code>
+<code>     <span class="order">13</span>. <a href="../pkg/github.com/go-text/render.html" class="path-duplicate">github.com</a><a href="../pkg/github.com/go-text/render.html">/go-text/render</a></code>
+<code>     <span class="order">14</span>. <a href="../pkg/github.com/go-text/typesetting/font.html" class="path-duplicate">github.com/go-text</a><a href="../pkg/github.com/go-text/typesetting/font.html">/typesetting/font</a></code>
+<code>     <span class="order">15</span>. <a href="../pkg/github.com/jsummers/gobmp.html" class="path-duplicate">github.com</a><a href="../pkg/github.com/jsummers/gobmp.html">/jsummers/gobmp</a></code>
+<code>     <span class="order">16</span>. <a href="../pkg/github.com/srwiley/rasterx.html" class="path-duplicate">github.com</a><a href="../pkg/github.com/srwiley/rasterx.html">/srwiley/rasterx</a></code>
+<code>     <span class="order">17</span>. <a href="../pkg/golang.org/x/image/ccitt.html">golang.org/x/image/ccitt</a></code>
+<code>     <span class="order">18</span>. <a href="../pkg/golang.org/x/image/draw.html" class="path-duplicate">golang.org/x/image</a><a href="../pkg/golang.org/x/image/draw.html">/draw</a></code>
+<code>     <span class="order">19</span>. <a href="../pkg/golang.org/x/image/tiff.html" class="path-duplicate">golang.org/x/image</a><a href="../pkg/golang.org/x/image/tiff.html">/tiff</a></code>
+<code>     <span class="order">20</span>. <a href="../pkg/golang.org/x/image/vector.html" class="path-duplicate">golang.org/x/image</a><a href="../pkg/golang.org/x/image/vector.html">/vector</a></code>
+<code>     <span class="order">21</span>. <a href="../pkg/image/draw.html">image/draw</a></code>
+<code>     <span class="order">22</span>. <a href="../pkg/image/internal/imageutil.html" class="path-duplicate">image</a><a href="../pkg/image/internal/imageutil.html">/internal/imageutil</a></code>
+<code>     <span class="order">23</span>. <a href="../pkg/image/jpeg.html" class="path-duplicate">image</a><a href="../pkg/image/jpeg.html">/jpeg</a></code>
+<code>     <span class="order">24</span>. <a href="../pkg/image/png.html" class="path-duplicate">image</a><a href="../pkg/image/png.html">/png</a></code></div><pre id="footer">
+<table><tr><td><img src="../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

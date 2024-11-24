@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: ot_layout.go in package github.com/go-text/typesetting/font</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	ot_layout.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/go-text/typesetting/font.html">github.com/go-text/typesetting/font</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> font</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"github.com/go-text/typesetting/font/opentype/tables"</span></label></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// shared between GSUB and GPOS</span></code></span>
+<span class="codeline" id="line-8"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-Layout" class="ident">Layout</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-9"><code>	Scripts           []<a href="#line-51" class="ident">Script</a></code></span>
+<span class="codeline" id="line-10"><code>	Features          []<a href="#line-56" class="ident">Feature</a></code></span>
+<span class="codeline" id="line-11"><code>	FeatureVariations []<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_layout_src.go.html#line-146" class="ident">FeatureVariationRecord</a></code></span>
+<span class="codeline" id="line-12"><code>}</code></span>
+<span class="codeline" id="line-13"><code></code></span>
+<span class="codeline" id="line-14"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newLayout" class="ident">newLayout</a></label>(<label for="r1" class="ident">table</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_layout_src.go.html#line-17" class="ident">Layout</a>) <a href="#line-8" class="ident">Layout</a> {</code></span>
+<span class="codeline" id="line-15"><code>	<label for="r2" class="ident">fCount</label> := <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r1" class="ident">table</label>.<a href="opentype/tables/ot_layout_src.go.html#line-21" class="ident">FeatureList</a>.<a href="opentype/tables/ot_layout_src.go.html#line-104" class="ident">Features</a>)</code></span>
+<span class="codeline" id="line-16"><code>	<label for="r3" class="ident">out</label> := <a href="#line-8" class="ident">Layout</a>{</code></span>
+<span class="codeline" id="line-17"><code>		<a href="#line-9" class="ident">Scripts</a>:  <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="#line-51" class="ident">Script</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r1" class="ident">table</label>.<a href="opentype/tables/ot_layout_src.go.html#line-20" class="ident">ScriptList</a>.<a href="opentype/tables/ot_layout_src.go.html#line-57" class="ident">Scripts</a>)),</code></span>
+<span class="codeline" id="line-18"><code>		<a href="#line-10" class="ident">Features</a>: <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="#line-56" class="ident">Feature</a>, <label for="r2" class="ident">fCount</label>),</code></span>
+<span class="codeline" id="line-19"><code>	}</code></span>
+<span class="codeline" id="line-20"><code>	<span class="keyword">for</span> <label for="r4" class="ident">i</label>, <label for="r5" class="ident">s</label> := <span class="keyword">range</span> <label for="r1" class="ident">table</label>.<a href="opentype/tables/ot_layout_src.go.html#line-20" class="ident">ScriptList</a>.<a href="opentype/tables/ot_layout_src.go.html#line-57" class="ident">Scripts</a> {</code></span>
+<span class="codeline" id="line-21"><code>		<span class="keyword">if</span> <label for="r6" class="ident">langSys</label> := <label for="r5" class="ident">s</label>.<a href="opentype/tables/ot_layout_src.go.html#line-76" class="ident">DefaultLangSys</a>; <label for="r6" class="ident">langSys</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-22"><code>			<a href="#line-44" class="ident">sanitizeLangSys</a>(<label for="r6" class="ident">langSys</label>, <label for="r2" class="ident">fCount</label>)</code></span>
+<span class="codeline" id="line-23"><code>		}</code></span>
+<span class="codeline" id="line-24"><code>		<span class="keyword">for</span> <label for="r7" class="ident">i</label> := <span class="keyword">range</span> <label for="r5" class="ident">s</label>.<a href="opentype/tables/ot_layout_src.go.html#line-78" class="ident">LangSys</a> {</code></span>
+<span class="codeline" id="line-25"><code>			<a href="#line-44" class="ident">sanitizeLangSys</a>(&amp;<label for="r5" class="ident">s</label>.<a href="opentype/tables/ot_layout_src.go.html#line-78" class="ident">LangSys</a>[<label for="r7" class="ident">i</label>], <label for="r2" class="ident">fCount</label>)</code></span>
+<span class="codeline" id="line-26"><code>		}</code></span>
+<span class="codeline" id="line-27"><code>		<label for="r3" class="ident">out</label>.<a href="#line-9" class="ident">Scripts</a>[<label for="r4" class="ident">i</label>] = <a href="#line-51" class="ident">Script</a>{</code></span>
+<span class="codeline" id="line-28"><code>			<a href="#line-52" class="ident">Script</a>: <label for="r5" class="ident">s</label>,</code></span>
+<span class="codeline" id="line-29"><code>			<a href="#line-53" class="ident">Tag</a>:    <label for="r1" class="ident">table</label>.<a href="opentype/tables/ot_layout_src.go.html#line-20" class="ident">ScriptList</a>.<a href="opentype/tables/ot_layout_src.go.html#line-56" class="ident">Records</a>[<label for="r4" class="ident">i</label>].<a href="opentype/tables/ot_layout_src.go.html#line-51" class="ident">Tag</a>,</code></span>
+<span class="codeline" id="line-30"><code>		}</code></span>
+<span class="codeline" id="line-31"><code>	}</code></span>
+<span class="codeline" id="line-32"><code>	<span class="keyword">for</span> <label for="r8" class="ident">i</label>, <label for="r9" class="ident">f</label> := <span class="keyword">range</span> <label for="r1" class="ident">table</label>.<a href="opentype/tables/ot_layout_src.go.html#line-21" class="ident">FeatureList</a>.<a href="opentype/tables/ot_layout_src.go.html#line-104" class="ident">Features</a> {</code></span>
+<span class="codeline" id="line-33"><code>		<label for="r3" class="ident">out</label>.<a href="#line-10" class="ident">Features</a>[<label for="r8" class="ident">i</label>] = <a href="#line-56" class="ident">Feature</a>{</code></span>
+<span class="codeline" id="line-34"><code>			<a href="#line-57" class="ident">Feature</a>: <label for="r9" class="ident">f</label>,</code></span>
+<span class="codeline" id="line-35"><code>			<a href="#line-58" class="ident">Tag</a>:     <label for="r1" class="ident">table</label>.<a href="opentype/tables/ot_layout_src.go.html#line-21" class="ident">FeatureList</a>.<a href="opentype/tables/ot_layout_src.go.html#line-103" class="ident">Records</a>[<label for="r8" class="ident">i</label>].<a href="opentype/tables/ot_layout_src.go.html#line-51" class="ident">Tag</a>,</code></span>
+<span class="codeline" id="line-36"><code>		}</code></span>
+<span class="codeline" id="line-37"><code>	}</code></span>
+<span class="codeline" id="line-38"><code>	<span class="keyword">if</span> <label for="r1" class="ident">table</label>.<a href="opentype/tables/ot_layout_src.go.html#line-23" class="ident">FeatureVariations</a> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-39"><code>		<label for="r3" class="ident">out</label>.<a href="#line-11" class="ident">FeatureVariations</a> = <label for="r1" class="ident">table</label>.<a href="opentype/tables/ot_layout_src.go.html#line-23" class="ident">FeatureVariations</a>.<a href="opentype/tables/ot_layout_src.go.html#line-143" class="ident">FeatureVariationRecords</a></code></span>
+<span class="codeline" id="line-40"><code>	}</code></span>
+<span class="codeline" id="line-41"><code>	<span class="keyword">return</span> <label for="r3" class="ident">out</label></code></span>
+<span class="codeline" id="line-42"><code>}</code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code><span class="keyword">func</span> <label for="r10" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-sanitizeLangSys" class="ident">sanitizeLangSys</a></label>(<label for="r11" class="ident">langSys</label> *<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_layout_src.go.html#line-96" class="ident">LangSys</a>, <label for="r12" class="ident">featuresCount</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-45"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r11" class="ident">langSys</label>.<a href="opentype/tables/ot_layout_src.go.html#line-98" class="ident">RequiredFeatureIndex</a>) &gt;= <label for="r12" class="ident">featuresCount</label> {</code></span>
+<span class="codeline" id="line-46"><code>		<span class="comment">// invalid index : replace it by the sentinel value</span></code></span>
+<span class="codeline" id="line-47"><code>		<label for="r11" class="ident">langSys</label>.<a href="opentype/tables/ot_layout_src.go.html#line-98" class="ident">RequiredFeatureIndex</a> = <span class="lit-number">0xFFFF</span></code></span>
+<span class="codeline" id="line-48"><code>	}</code></span>
+<span class="codeline" id="line-49"><code>}</code></span>
+<span class="codeline" id="line-50"><code></code></span>
+<span class="codeline" id="line-51"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-Script" class="ident">Script</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-52"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_layout_src.go.html#line-75" class="ident">Script</a></code></span>
+<span class="codeline" id="line-53"><code>	Tag <a href="font.go.html#line-30" class="ident">Tag</a></code></span>
+<span class="codeline" id="line-54"><code>}</code></span>
+<span class="codeline" id="line-55"><code></code></span>
+<span class="codeline" id="line-56"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-Feature" class="ident">Feature</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-57"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_layout_src.go.html#line-122" class="ident">Feature</a></code></span>
+<span class="codeline" id="line-58"><code>	Tag <a href="font.go.html#line-30" class="ident">Tag</a></code></span>
+<span class="codeline" id="line-59"><code>}</code></span>
+<span class="codeline" id="line-60"><code></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">// FindScript looks for [script] and return its index into the Scripts slice,</span></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">// or -1 if the tag is not found.</span></code></span>
+<span class="codeline" id="line-63"><code><span class="keyword">func</span> (<label for="r13" class="ident">la</label> *<a href="#line-8" class="ident">Layout</a>) <label for="r14" class="ident">FindScript</label>(<label for="r15" class="ident">script</label> <a href="font.go.html#line-30" class="ident">Tag</a>) <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-64"><code>	<span class="comment">// Scripts is sorted: binary search</span></code></span>
+<span class="codeline" id="line-65"><code>	<label for="r16" class="ident">low</label>, <label for="r17" class="ident">high</label> := <span class="lit-number">0</span>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r13" class="ident">la</label>.<a href="#line-9" class="ident">Scripts</a>)</code></span>
+<span class="codeline" id="line-66"><code>	<span class="keyword">for</span> <label for="r16" class="ident">low</label> &lt; <label for="r17" class="ident">high</label> {</code></span>
+<span class="codeline" id="line-67"><code>		<label for="r18" class="ident">mid</label> := <label for="r16" class="ident">low</label> + (<label for="r17" class="ident">high</label>-<label for="r16" class="ident">low</label>)/<span class="lit-number">2</span> <span class="comment">// avoid overflow when computing mid</span></code></span>
+<span class="codeline" id="line-68"><code>		<label for="r19" class="ident">p</label> := <label for="r13" class="ident">la</label>.<a href="#line-9" class="ident">Scripts</a>[<label for="r18" class="ident">mid</label>].<a href="#line-53" class="ident">Tag</a></code></span>
+<span class="codeline" id="line-69"><code>		<span class="keyword">if</span> <label for="r15" class="ident">script</label> &lt; <label for="r19" class="ident">p</label> {</code></span>
+<span class="codeline" id="line-70"><code>			<label for="r17" class="ident">high</label> = <label for="r18" class="ident">mid</label></code></span>
+<span class="codeline" id="line-71"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r15" class="ident">script</label> &gt; <label for="r19" class="ident">p</label> {</code></span>
+<span class="codeline" id="line-72"><code>			<label for="r16" class="ident">low</label> = <label for="r18" class="ident">mid</label> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-73"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-74"><code>			<span class="keyword">return</span> <label for="r18" class="ident">mid</label></code></span>
+<span class="codeline" id="line-75"><code>		}</code></span>
+<span class="codeline" id="line-76"><code>	}</code></span>
+<span class="codeline" id="line-77"><code>	<span class="keyword">return</span> -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-78"><code>}</code></span>
+<span class="codeline" id="line-79"><code></code></span>
+<span class="codeline" id="line-80"><code><span class="comment">// FindVariationIndex returns the first feature variation matching</span></code></span>
+<span class="codeline" id="line-81"><code><span class="comment">// the specified variation coordinates, as an index in the</span></code></span>
+<span class="codeline" id="line-82"><code><span class="comment">// `FeatureVariations` field.</span></code></span>
+<span class="codeline" id="line-83"><code><span class="comment">// It returns `-1` if not found.</span></code></span>
+<span class="codeline" id="line-84"><code><span class="keyword">func</span> (<label for="r20" class="ident">la</label> *<a href="#line-8" class="ident">Layout</a>) <label for="r21" class="ident">FindVariationIndex</label>(<label for="r22" class="ident">coords</label> []<a href="font.go.html#line-34" class="ident">VarCoord</a>) <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-85"><code>	<span class="keyword">for</span> <label for="r23" class="ident">i</label>, <label for="r24" class="ident">record</label> := <span class="keyword">range</span> <label for="r20" class="ident">la</label>.<a href="#line-11" class="ident">FeatureVariations</a> {</code></span>
+<span class="codeline" id="line-86"><code>		<span class="keyword">if</span> <a href="#line-94" class="ident">evaluateVarRec</a>(<label for="r24" class="ident">record</label>, <label for="r22" class="ident">coords</label>) {</code></span>
+<span class="codeline" id="line-87"><code>			<span class="keyword">return</span> <label for="r23" class="ident">i</label></code></span>
+<span class="codeline" id="line-88"><code>		}</code></span>
+<span class="codeline" id="line-89"><code>	}</code></span>
+<span class="codeline" id="line-90"><code>	<span class="keyword">return</span> -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-91"><code>}</code></span>
+<span class="codeline" id="line-92"><code></code></span>
+<span class="codeline" id="line-93"><code><span class="comment">// returns `true` if the feature is concerned by the `coords`</span></code></span>
+<span class="codeline" id="line-94"><code><span class="keyword">func</span> <label for="r25" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-evaluateVarRec" class="ident">evaluateVarRec</a></label>(<label for="r26" class="ident">fv</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_layout_src.go.html#line-146" class="ident">FeatureVariationRecord</a>, <label for="r27" class="ident">coords</label> []<a href="font.go.html#line-34" class="ident">VarCoord</a>) <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-95"><code>	<span class="keyword">for</span> <label for="r28" class="ident">_</label>, <label for="r29" class="ident">c</label> := <span class="keyword">range</span> <label for="r26" class="ident">fv</label>.<a href="opentype/tables/ot_layout_src.go.html#line-147" class="ident">ConditionSet</a>.<a href="opentype/tables/ot_layout_src.go.html#line-153" class="ident">Conditions</a> {</code></span>
+<span class="codeline" id="line-96"><code>		<span class="keyword">if</span> !<a href="#line-104" class="ident">evaluateCondition</a>(<label for="r29" class="ident">c</label>, <label for="r27" class="ident">coords</label>) {</code></span>
+<span class="codeline" id="line-97"><code>			<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-98"><code>		}</code></span>
+<span class="codeline" id="line-99"><code>	}</code></span>
+<span class="codeline" id="line-100"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-101"><code>}</code></span>
+<span class="codeline" id="line-102"><code></code></span>
+<span class="codeline" id="line-103"><code><span class="comment">// returns `true` if `coords` match the condition `c`</span></code></span>
+<span class="codeline" id="line-104"><code><span class="keyword">func</span> <label for="r30" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-evaluateCondition" class="ident">evaluateCondition</a></label>(<label for="r31" class="ident">c</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_layout_src.go.html#line-156" class="ident">ConditionFormat1</a>, <label for="r32" class="ident">coords</label> []<a href="font.go.html#line-34" class="ident">VarCoord</a>) <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-105"><code>	<span class="keyword">var</span> <label for="r33" class="ident">coord</label> <a href="font.go.html#line-34" class="ident">VarCoord</a></code></span>
+<span class="codeline" id="line-106"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r31" class="ident">c</label>.<a href="opentype/tables/ot_layout_src.go.html#line-158" class="ident">AxisIndex</a>) &lt; <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r32" class="ident">coords</label>) {</code></span>
+<span class="codeline" id="line-107"><code>		<label for="r33" class="ident">coord</label> = <label for="r32" class="ident">coords</label>[<label for="r31" class="ident">c</label>.<a href="opentype/tables/ot_layout_src.go.html#line-158" class="ident">AxisIndex</a>]</code></span>
+<span class="codeline" id="line-108"><code>	}</code></span>
+<span class="codeline" id="line-109"><code>	<span class="keyword">return</span> <label for="r31" class="ident">c</label>.<a href="opentype/tables/ot_layout_src.go.html#line-159" class="ident">FilterRangeMinValue</a> &lt;= <label for="r33" class="ident">coord</label> &amp;&amp; <label for="r33" class="ident">coord</label> &lt;= <label for="r31" class="ident">c</label>.<a href="opentype/tables/ot_layout_src.go.html#line-160" class="ident">FilterRangeMaxValue</a></code></span>
+<span class="codeline" id="line-110"><code>}</code></span>
+<span class="codeline" id="line-111"><code></code></span>
+<span class="codeline" id="line-112"><code><span class="comment">// FindFeatureIndex fetches the index for a given feature tag in the GSUB or GPOS table.</span></code></span>
+<span class="codeline" id="line-113"><code><span class="comment">// Returns false if not found</span></code></span>
+<span class="codeline" id="line-114"><code><span class="keyword">func</span> (<label for="r34" class="ident">la</label> *<a href="#line-8" class="ident">Layout</a>) <label for="r35" class="ident">FindFeatureIndex</label>(<label for="r36" class="ident">featureTag</label> <a href="font.go.html#line-30" class="ident">Tag</a>) (<a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>, <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-115"><code>	<span class="keyword">for</span> <label for="r37" class="ident">i</label>, <label for="r38" class="ident">feat</label> := <span class="keyword">range</span> <label for="r34" class="ident">la</label>.<a href="#line-10" class="ident">Features</a> { <span class="comment">// i fits in uint16</span></code></span>
+<span class="codeline" id="line-116"><code>		<span class="keyword">if</span> <label for="r36" class="ident">featureTag</label> == <label for="r38" class="ident">feat</label>.<a href="#line-58" class="ident">Tag</a> {</code></span>
+<span class="codeline" id="line-117"><code>			<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<label for="r37" class="ident">i</label>), <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-118"><code>		}</code></span>
+<span class="codeline" id="line-119"><code>	}</code></span>
+<span class="codeline" id="line-120"><code>	<span class="keyword">return</span> <span class="lit-number">0</span>, <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-121"><code>}</code></span>
+<span class="codeline" id="line-122"><code></code></span>
+<span class="codeline" id="line-123"><code><span class="comment">// ---------------------------------- GSUB ----------------------------------</span></code></span>
+<span class="codeline" id="line-124"><code></code></span>
+<span class="codeline" id="line-125"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-GSUB" class="ident">GSUB</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-126"><code>	<a href="#line-8" class="ident">Layout</a></code></span>
+<span class="codeline" id="line-127"><code>	Lookups []<a href="#line-150" class="ident">GSUBLookup</a></code></span>
+<span class="codeline" id="line-128"><code>}</code></span>
+<span class="codeline" id="line-129"><code></code></span>
+<span class="codeline" id="line-130"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-LookupOptions" class="ident">LookupOptions</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-131"><code>	<span class="comment">// Lookup qualifiers.</span></code></span>
+<span class="codeline" id="line-132"><code>	Flag <a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-133"><code>	<span class="comment">// Index (base 0) into GDEF mark glyph sets structure,</span></code></span>
+<span class="codeline" id="line-134"><code><span class="comment">	// meaningfull only if UseMarkFilteringSet is set.</span></code></span>
+<span class="codeline" id="line-135"><code>	MarkFilteringSet <a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-136"><code>}</code></span>
+<span class="codeline" id="line-137"><code></code></span>
+<span class="codeline" id="line-138"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-UseMarkFilteringSet" class="ident">UseMarkFilteringSet</a> = <span class="lit-number">1</span> &lt;&lt; <span class="lit-number">4</span></code></span>
+<span class="codeline" id="line-139"><code></code></span>
+<span class="codeline" id="line-140"><code><span class="comment">// Props returns a 32-bit integer where the lower 16-bit is `Flag` and</span></code></span>
+<span class="codeline" id="line-141"><code><span class="comment">// the higher 16-bit is `MarkFilteringSet` if the lookup uses one.</span></code></span>
+<span class="codeline" id="line-142"><code><span class="keyword">func</span> (<label for="r39" class="ident">lo</label> <a href="#line-130" class="ident">LookupOptions</a>) <label for="r40" class="ident">Props</label>() <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a> {</code></span>
+<span class="codeline" id="line-143"><code>	<label for="r41" class="ident">flag</label> := <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r39" class="ident">lo</label>.<a href="#line-132" class="ident">Flag</a>)</code></span>
+<span class="codeline" id="line-144"><code>	<span class="keyword">if</span> <label for="r39" class="ident">lo</label>.<a href="#line-132" class="ident">Flag</a>&amp;<a href="#line-138" class="ident">UseMarkFilteringSet</a> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-145"><code>		<label for="r41" class="ident">flag</label> |= <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r39" class="ident">lo</label>.<a href="#line-135" class="ident">MarkFilteringSet</a>) &lt;&lt; <span class="lit-number">16</span></code></span>
+<span class="codeline" id="line-146"><code>	}</code></span>
+<span class="codeline" id="line-147"><code>	<span class="keyword">return</span> <label for="r41" class="ident">flag</label></code></span>
+<span class="codeline" id="line-148"><code>}</code></span>
+<span class="codeline" id="line-149"><code></code></span>
+<span class="codeline" id="line-150"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-GSUBLookup" class="ident">GSUBLookup</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-151"><code>	<a href="#line-130" class="ident">LookupOptions</a></code></span>
+<span class="codeline" id="line-152"><code>	Subtables []<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_layout.go.html#line-205" class="ident">GSUBLookup</a></code></span>
+<span class="codeline" id="line-153"><code>}</code></span>
+<span class="codeline" id="line-154"><code></code></span>
+<span class="codeline" id="line-155"><code><span class="keyword">func</span> <label for="r42" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newGSUB" class="ident">newGSUB</a></label>(<label for="r43" class="ident">table</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_layout_src.go.html#line-17" class="ident">Layout</a>) (<a href="#line-125" class="ident">GSUB</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-156"><code>	<label for="r44" class="ident">out</label> := <a href="#line-125" class="ident">GSUB</a>{</code></span>
+<span class="codeline" id="line-157"><code>		<a href="#line-126" class="ident">Layout</a>:  <a href="#line-14" class="ident">newLayout</a>(<label for="r43" class="ident">table</label>),</code></span>
+<span class="codeline" id="line-158"><code>		<a href="#line-127" class="ident">Lookups</a>: <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="#line-150" class="ident">GSUBLookup</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r43" class="ident">table</label>.<a href="opentype/tables/ot_layout_src.go.html#line-22" class="ident">LookupList</a>.<a href="opentype/tables/ot_layout_src.go.html#line-128" class="ident">Lookups</a>)),</code></span>
+<span class="codeline" id="line-159"><code>	}</code></span>
+<span class="codeline" id="line-160"><code>	<span class="keyword">for</span> <label for="r45" class="ident">i</label>, <label for="r46" class="ident">lk</label> := <span class="keyword">range</span> <label for="r43" class="ident">table</label>.<a href="opentype/tables/ot_layout_src.go.html#line-22" class="ident">LookupList</a>.<a href="opentype/tables/ot_layout_src.go.html#line-128" class="ident">Lookups</a> {</code></span>
+<span class="codeline" id="line-161"><code>		<label for="r47" class="ident">subtables</label>, <label for="r48" class="ident">err</label> := <label for="r46" class="ident">lk</label>.<a href="opentype/tables/ot_layout.go.html#line-289" class="ident">AsGSUBLookups</a>()</code></span>
+<span class="codeline" id="line-162"><code>		<span class="keyword">if</span> <label for="r48" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-163"><code>			<span class="keyword">return</span> <a href="#line-125" class="ident">GSUB</a>{}, <label for="r48" class="ident">err</label></code></span>
+<span class="codeline" id="line-164"><code>		}</code></span>
+<span class="codeline" id="line-165"><code>		<span class="keyword">for</span> <label for="r49" class="ident">j</label>, <label for="r50" class="ident">subtable</label> := <span class="keyword">range</span> <label for="r47" class="ident">subtables</label> {</code></span>
+<span class="codeline" id="line-166"><code>			<span class="comment">// start by resolving extension</span></code></span>
+<span class="codeline" id="line-167"><code>			<span class="keyword">if</span> <label for="r51" class="ident">ext</label>, <label for="r52" class="ident">isExt</label> := <label for="r50" class="ident">subtable</label>.(<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_gsub_src.go.html#line-109" class="ident">ExtensionSubs</a>); <label for="r52" class="ident">isExt</label> {</code></span>
+<span class="codeline" id="line-168"><code>				<label for="r47" class="ident">subtables</label>[<label for="r49" class="ident">j</label>], <label for="r48" class="ident">err</label> = <label for="r51" class="ident">ext</label>.<a href="opentype/tables/ot_layout.go.html#line-250" class="ident">Resolve</a>()</code></span>
+<span class="codeline" id="line-169"><code>				<span class="keyword">if</span> <label for="r48" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-170"><code>					<span class="keyword">return</span> <a href="#line-125" class="ident">GSUB</a>{}, <label for="r48" class="ident">err</label></code></span>
+<span class="codeline" id="line-171"><code>				}</code></span>
+<span class="codeline" id="line-172"><code>			}</code></span>
+<span class="codeline" id="line-173"><code></code></span>
+<span class="codeline" id="line-174"><code>			<span class="comment">// sanitize each lookup</span></code></span>
+<span class="codeline" id="line-175"><code>			<span class="keyword">switch</span> subtable := <label for="r50" class="ident">subtable</label>.(<span class="keyword">type</span>) {</code></span>
+<span class="codeline" id="line-176"><code>			<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_gsub_src.go.html#line-30" class="ident">MultipleSubs</a>:</code></span>
+<span class="codeline" id="line-177"><code>				<label for="r48" class="ident">err</label> = <label for="r53" class="ident">subtable</label>.<a href="opentype/tables/ot_layout.go.html#line-222" class="ident">Sanitize</a>()</code></span>
+<span class="codeline" id="line-178"><code>			<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_gsub_src.go.html#line-51" class="ident">LigatureSubs</a>:</code></span>
+<span class="codeline" id="line-179"><code>				<label for="r48" class="ident">err</label> = <label for="r54" class="ident">subtable</label>.<a href="opentype/tables/ot_layout.go.html#line-229" class="ident">Sanitize</a>()</code></span>
+<span class="codeline" id="line-180"><code>			<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_gsub_src.go.html#line-69" class="ident">ContextualSubs</a>:</code></span>
+<span class="codeline" id="line-181"><code>				<label for="r48" class="ident">err</label> = <label for="r55" class="ident">subtable</label>.<a href="opentype/tables/ot_layout.go.html#line-236" class="ident">Sanitize</a>(<a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r44" class="ident">out</label>.<a href="#line-127" class="ident">Lookups</a>)))</code></span>
+<span class="codeline" id="line-182"><code>			<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_gsub_src.go.html#line-111" class="ident">ReverseChainSingleSubs</a>:</code></span>
+<span class="codeline" id="line-183"><code>				<label for="r48" class="ident">err</label> = <label for="r56" class="ident">subtable</label>.<a href="opentype/tables/ot_layout.go.html#line-243" class="ident">Sanitize</a>()</code></span>
+<span class="codeline" id="line-184"><code>			}</code></span>
+<span class="codeline" id="line-185"><code>			<span class="keyword">if</span> <label for="r48" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-186"><code>				<span class="keyword">return</span> <a href="#line-125" class="ident">GSUB</a>{}, <label for="r48" class="ident">err</label></code></span>
+<span class="codeline" id="line-187"><code>			}</code></span>
+<span class="codeline" id="line-188"><code>		}</code></span>
+<span class="codeline" id="line-189"><code>		<label for="r44" class="ident">out</label>.<a href="#line-127" class="ident">Lookups</a>[<label for="r45" class="ident">i</label>] = <a href="#line-150" class="ident">GSUBLookup</a>{</code></span>
+<span class="codeline" id="line-190"><code>			<a href="#line-151" class="ident">LookupOptions</a>: <a href="#line-130" class="ident">LookupOptions</a>{</code></span>
+<span class="codeline" id="line-191"><code>				<a href="#line-132" class="ident">Flag</a>:             <label for="r46" class="ident">lk</label>.<a href="opentype/tables/ot_layout_src.go.html#line-134" class="ident">LookupFlag</a>,</code></span>
+<span class="codeline" id="line-192"><code>				<a href="#line-135" class="ident">MarkFilteringSet</a>: <label for="r46" class="ident">lk</label>.<a href="opentype/tables/ot_layout_src.go.html#line-136" class="ident">MarkFilteringSet</a>,</code></span>
+<span class="codeline" id="line-193"><code>			},</code></span>
+<span class="codeline" id="line-194"><code>			<a href="#line-152" class="ident">Subtables</a>: <label for="r47" class="ident">subtables</label>,</code></span>
+<span class="codeline" id="line-195"><code>		}</code></span>
+<span class="codeline" id="line-196"><code>	}</code></span>
+<span class="codeline" id="line-197"><code>	<span class="keyword">return</span> <label for="r44" class="ident">out</label>, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-198"><code>}</code></span>
+<span class="codeline" id="line-199"><code></code></span>
+<span class="codeline" id="line-200"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-GPOS" class="ident">GPOS</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-201"><code>	<a href="#line-8" class="ident">Layout</a></code></span>
+<span class="codeline" id="line-202"><code>	Lookups []<a href="#line-205" class="ident">GPOSLookup</a></code></span>
+<span class="codeline" id="line-203"><code>}</code></span>
+<span class="codeline" id="line-204"><code></code></span>
+<span class="codeline" id="line-205"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-GPOSLookup" class="ident">GPOSLookup</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-206"><code>	<a href="#line-130" class="ident">LookupOptions</a></code></span>
+<span class="codeline" id="line-207"><code>	Subtables []<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_layout.go.html#line-314" class="ident">GPOSLookup</a></code></span>
+<span class="codeline" id="line-208"><code>}</code></span>
+<span class="codeline" id="line-209"><code></code></span>
+<span class="codeline" id="line-210"><code><span class="keyword">func</span> <label for="r57" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newGPOS" class="ident">newGPOS</a></label>(<label for="r58" class="ident">table</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_layout_src.go.html#line-17" class="ident">Layout</a>) (<a href="#line-200" class="ident">GPOS</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-211"><code>	<label for="r59" class="ident">out</label> := <a href="#line-200" class="ident">GPOS</a>{</code></span>
+<span class="codeline" id="line-212"><code>		<a href="#line-201" class="ident">Layout</a>:  <a href="#line-14" class="ident">newLayout</a>(<label for="r58" class="ident">table</label>),</code></span>
+<span class="codeline" id="line-213"><code>		<a href="#line-202" class="ident">Lookups</a>: <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="#line-205" class="ident">GPOSLookup</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r58" class="ident">table</label>.<a href="opentype/tables/ot_layout_src.go.html#line-22" class="ident">LookupList</a>.<a href="opentype/tables/ot_layout_src.go.html#line-128" class="ident">Lookups</a>)),</code></span>
+<span class="codeline" id="line-214"><code>	}</code></span>
+<span class="codeline" id="line-215"><code>	<span class="keyword">for</span> <label for="r60" class="ident">i</label>, <label for="r61" class="ident">lk</label> := <span class="keyword">range</span> <label for="r58" class="ident">table</label>.<a href="opentype/tables/ot_layout_src.go.html#line-22" class="ident">LookupList</a>.<a href="opentype/tables/ot_layout_src.go.html#line-128" class="ident">Lookups</a> {</code></span>
+<span class="codeline" id="line-216"><code>		<label for="r62" class="ident">subtables</label>, <label for="r63" class="ident">err</label> := <label for="r61" class="ident">lk</label>.<a href="opentype/tables/ot_layout.go.html#line-431" class="ident">AsGPOSLookups</a>()</code></span>
+<span class="codeline" id="line-217"><code>		<span class="keyword">if</span> <label for="r63" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-218"><code>			<span class="keyword">return</span> <a href="#line-200" class="ident">GPOS</a>{}, <label for="r63" class="ident">err</label></code></span>
+<span class="codeline" id="line-219"><code>		}</code></span>
+<span class="codeline" id="line-220"><code>		<span class="keyword">for</span> <label for="r64" class="ident">j</label>, <label for="r65" class="ident">subtable</label> := <span class="keyword">range</span> <label for="r62" class="ident">subtables</label> {</code></span>
+<span class="codeline" id="line-221"><code>			<span class="comment">// start by resolving extension</span></code></span>
+<span class="codeline" id="line-222"><code>			<span class="keyword">if</span> <label for="r66" class="ident">ext</label>, <label for="r67" class="ident">isExt</label> := <label for="r65" class="ident">subtable</label>.(<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_gpos_src.go.html#line-276" class="ident">ExtensionPos</a>); <label for="r67" class="ident">isExt</label> {</code></span>
+<span class="codeline" id="line-223"><code>				<label for="r62" class="ident">subtables</label>[<label for="r64" class="ident">j</label>], <label for="r63" class="ident">err</label> = <label for="r66" class="ident">ext</label>.<a href="opentype/tables/ot_layout.go.html#line-390" class="ident">Resolve</a>()</code></span>
+<span class="codeline" id="line-224"><code>				<span class="keyword">if</span> <label for="r63" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-225"><code>					<span class="keyword">return</span> <a href="#line-200" class="ident">GPOS</a>{}, <label for="r63" class="ident">err</label></code></span>
+<span class="codeline" id="line-226"><code>				}</code></span>
+<span class="codeline" id="line-227"><code>			}</code></span>
+<span class="codeline" id="line-228"><code></code></span>
+<span class="codeline" id="line-229"><code>			<span class="comment">// sanitize each lookup</span></code></span>
+<span class="codeline" id="line-230"><code>			<span class="keyword">switch</span> subtable := <label for="r65" class="ident">subtable</label>.(<span class="keyword">type</span>) {</code></span>
+<span class="codeline" id="line-231"><code>			<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_gpos_src.go.html#line-9" class="ident">SinglePos</a>:</code></span>
+<span class="codeline" id="line-232"><code>				<label for="r63" class="ident">err</label> = <label for="r68" class="ident">subtable</label>.<a href="opentype/tables/ot_layout.go.html#line-332" class="ident">Sanitize</a>()</code></span>
+<span class="codeline" id="line-233"><code>			<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_gpos_src.go.html#line-55" class="ident">PairPos</a>:</code></span>
+<span class="codeline" id="line-234"><code>				<label for="r63" class="ident">err</label> = <label for="r69" class="ident">subtable</label>.<a href="opentype/tables/ot_layout.go.html#line-341" class="ident">Sanitize</a>()</code></span>
+<span class="codeline" id="line-235"><code>			<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_gpos_src.go.html#line-176" class="ident">MarkBasePos</a>:</code></span>
+<span class="codeline" id="line-236"><code>				<label for="r63" class="ident">err</label> = <label for="r70" class="ident">subtable</label>.<a href="opentype/tables/ot_layout.go.html#line-358" class="ident">Sanitize</a>()</code></span>
+<span class="codeline" id="line-237"><code>			<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_gpos_src.go.html#line-196" class="ident">MarkLigPos</a>:</code></span>
+<span class="codeline" id="line-238"><code>				<label for="r63" class="ident">err</label> = <label for="r71" class="ident">subtable</label>.<a href="opentype/tables/ot_layout.go.html#line-372" class="ident">Sanitize</a>()</code></span>
+<span class="codeline" id="line-239"><code>			<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i0">tables</a>.<a href="opentype/tables/ot_gpos_src.go.html#line-236" class="ident">ContextualPos</a>:</code></span>
+<span class="codeline" id="line-240"><code>				<label for="r63" class="ident">err</label> = <label for="r72" class="ident">subtable</label>.<a href="opentype/tables/ot_layout.go.html#line-383" class="ident">Sanitize</a>(<a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r59" class="ident">out</label>.<a href="#line-202" class="ident">Lookups</a>)))</code></span>
+<span class="codeline" id="line-241"><code>			}</code></span>
+<span class="codeline" id="line-242"><code>			<span class="keyword">if</span> <label for="r63" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-243"><code>				<span class="keyword">return</span> <a href="#line-200" class="ident">GPOS</a>{}, <label for="r63" class="ident">err</label></code></span>
+<span class="codeline" id="line-244"><code>			}</code></span>
+<span class="codeline" id="line-245"><code>		}</code></span>
+<span class="codeline" id="line-246"><code>		<label for="r59" class="ident">out</label>.<a href="#line-202" class="ident">Lookups</a>[<label for="r60" class="ident">i</label>] = <a href="#line-205" class="ident">GPOSLookup</a>{</code></span>
+<span class="codeline" id="line-247"><code>			<a href="#line-206" class="ident">LookupOptions</a>: <a href="#line-130" class="ident">LookupOptions</a>{</code></span>
+<span class="codeline" id="line-248"><code>				<a href="#line-132" class="ident">Flag</a>:             <label for="r61" class="ident">lk</label>.<a href="opentype/tables/ot_layout_src.go.html#line-134" class="ident">LookupFlag</a>,</code></span>
+<span class="codeline" id="line-249"><code>				<a href="#line-135" class="ident">MarkFilteringSet</a>: <label for="r61" class="ident">lk</label>.<a href="opentype/tables/ot_layout_src.go.html#line-136" class="ident">MarkFilteringSet</a>,</code></span>
+<span class="codeline" id="line-250"><code>			},</code></span>
+<span class="codeline" id="line-251"><code>			<a href="#line-207" class="ident">Subtables</a>: <label for="r62" class="ident">subtables</label>,</code></span>
+<span class="codeline" id="line-252"><code>		}</code></span>
+<span class="codeline" id="line-253"><code>	}</code></span>
+<span class="codeline" id="line-254"><code>	<span class="keyword">return</span> <label for="r59" class="ident">out</label>, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-255"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

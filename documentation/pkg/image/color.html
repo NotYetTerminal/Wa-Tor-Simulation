@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: image/color</title>
+<link href="../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>color</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../index.html#pkg-image/color">image/color</a><i> (on <a href="https://pkg.go.dev/image/color" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports 0 packages, and imported by <a href="../../dep/image/color.html#imported-by">28 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../src/image/color/color.go.html#doc">d</a> <a href="../../src/image/color/color.go.html">color.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package color implements a basic color library.</span>
+</span>
+	<span class="nodocs">    <a href="../../src/image/color/ycbcr.go.html">ycbcr.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 15, in which 14 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Alpha" data-popularity="210">	<input type='checkbox' class="fold" id="Alpha-fold-content"><label for="Alpha-fold-content"> type <a href="../../src/image/color/color.go.html#line-99">Alpha</a> <i>(struct)</i></label><span id='Alpha-fold-content-docs' class="fold-docs">
+<span class="md-text">		Alpha represents an 8-bit alpha color.</span>
+
+		<input type='checkbox' class="fold" id="Alpha-fold-fields"><label for="Alpha-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='Alpha-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-100">A</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Alpha-fold-methods"><label for="Alpha-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Alpha-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Alpha) <a href="../../src/image/color/color.go.html#line-103">RGBA</a>() (r, g, b, a <a href="../builtin.html#name-uint32">uint32</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="Alpha-fold-impls"><label for="Alpha-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Alpha-fold-impls-items' class="fold-items"><span>
+			 Alpha : <a href="#name-Color">Color</a></span></span>
+		<input type='checkbox' class="fold" id="Alpha-fold-results"><label for="Alpha-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Alpha-fold-results-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-Alpha">Alpha</a>).<a href="../../src/image/image.go.html#line-648">AlphaAt</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Alpha</b></span></span>
+		<input type='checkbox' class="fold" id="Alpha-fold-params"><label for="Alpha-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='Alpha-fold-params-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-Alpha">Alpha</a>).<a href="../../src/image/image.go.html#line-678">SetAlpha</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Alpha</b>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-Alpha16" data-popularity="225">	<input type='checkbox' class="fold" id="Alpha16-fold-content"><label for="Alpha16-fold-content"> type <a href="../../src/image/color/color.go.html#line-110">Alpha16</a> <i>(struct)</i></label><span id='Alpha16-fold-content-docs' class="fold-docs">
+<span class="md-text">		Alpha16 represents a 16-bit alpha color.</span>
+
+		<input type='checkbox' class="fold" id="Alpha16-fold-fields"><label for="Alpha16-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='Alpha16-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-111">A</a> <i><a href="../builtin.html#name-uint16">uint16</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Alpha16-fold-methods"><label for="Alpha16-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Alpha16-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Alpha16) <a href="../../src/image/color/color.go.html#line-114">RGBA</a>() (r, g, b, a <a href="../builtin.html#name-uint32">uint32</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="Alpha16-fold-impls"><label for="Alpha16-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Alpha16-fold-impls-items' class="fold-items"><span>
+			 Alpha16 : <a href="#name-Color">Color</a></span></span>
+		<input type='checkbox' class="fold" id="Alpha16-fold-results"><label for="Alpha16-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Alpha16-fold-results-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-Alpha16">Alpha16</a>).<a href="../../src/image/image.go.html#line-755">Alpha16At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Alpha16</b></span></span>
+		<input type='checkbox' class="fold" id="Alpha16-fold-params"><label for="Alpha16-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='Alpha16-fold-params-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-Alpha16">Alpha16</a>).<a href="../../src/image/image.go.html#line-788">SetAlpha16</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Alpha16</b>)</span></span>
+		<input type='checkbox' class="fold" id="Alpha16-fold-values"><label for="Alpha16-fold-values">As Types Of (<i>total 3, in which 2 are exported</i>)</label><span id='Alpha16-fold-values-items' class="fold-items"><span>
+			  var <a href="#name-Opaque">Opaque</a></span><span>
+			  var <a href="#name-Transparent">Transparent</a></span>
+			<input type='checkbox' class="showhide" id="Alpha16-showhide-values"><i><label for="Alpha16-showhide-values" class="show-inline">/* one unexported ... */</label><label for="Alpha16-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-fallbackColor">fallbackColor</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-CMYK" data-popularity="210">	<input type='checkbox' class="fold" id="CMYK-fold-content"><label for="CMYK-fold-content"> type <a href="../../src/image/color/ycbcr.go.html#line-348">CMYK</a> <i>(struct)</i></label><span id='CMYK-fold-content-docs' class="fold-docs">
+<span class="md-text">		CMYK represents a fully opaque CMYK color, having 8 bits for each of cyan,
+		magenta, yellow and black.
+		
+		It is not associated with any particular color profile.</span>
+
+		<input type='checkbox' class="fold" id="CMYK-fold-fields"><label for="CMYK-fold-fields">Fields (<i>total 4, all are exported</i>)</label><span id='CMYK-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/image/color/ycbcr.go.html#line-349">C</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/ycbcr.go.html#line-349">K</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/ycbcr.go.html#line-349">M</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/ycbcr.go.html#line-349">Y</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="CMYK-fold-methods"><label for="CMYK-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='CMYK-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( CMYK) <a href="../../src/image/color/ycbcr.go.html#line-352">RGBA</a>() (<a href="../builtin.html#name-uint32">uint32</a>, <a href="../builtin.html#name-uint32">uint32</a>, <a href="../builtin.html#name-uint32">uint32</a>, <a href="../builtin.html#name-uint32">uint32</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="CMYK-fold-impls"><label for="CMYK-fold-impls">Implements (<i>at least one exported</i>)</label><span id='CMYK-fold-impls-items' class="fold-items"><span>
+			 CMYK : <a href="#name-Color">Color</a></span></span>
+		<input type='checkbox' class="fold" id="CMYK-fold-results"><label for="CMYK-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='CMYK-fold-results-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-CMYK">CMYK</a>).<a href="../../src/image/image.go.html#line-1063">CMYKAt</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>CMYK</b></span></span>
+		<input type='checkbox' class="fold" id="CMYK-fold-params"><label for="CMYK-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='CMYK-fold-params-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-CMYK">CMYK</a>).<a href="../../src/image/image.go.html#line-1104">SetCMYK</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>CMYK</b>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-Color" data-popularity="11385">	<input type='checkbox' class="fold" id="Color-fold-content"><label for="Color-fold-content"> type <a href="../../src/image/color/color.go.html#line-10">Color</a> <b><i>(interface)</i></b></label><span id='Color-fold-content-docs' class="fold-docs">
+<span class="md-text">		Color can convert itself to alpha-premultiplied 16-bits per channel RGBA.
+		The conversion may be lossy.</span>
+
+		<input type='checkbox' class="fold" id="Color-fold-methods"><label for="Color-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Color-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Color-fold-method-RGBA"><label for="Color-fold-method-RGBA">( Color) <a href="../../src/image/color/color.go.html#line-18">RGBA</a>() (r, g, b, a <a href="../builtin.html#name-uint32">uint32</a>)</label><span id='Color-fold-method-RGBA-docs' class="fold-docs">
+<span class="md-text">				RGBA returns the alpha-premultiplied red, green, blue and alpha values
+				for the color. Each value ranges within [0, 0xffff], but is represented
+				by a uint32 so that multiplying by a blend factor up to 0xffff will not
+				overflow.
+				
+				An alpha-premultiplied color component c has been scaled by alpha (a),
+				so has valid values 0 &lt;= c &lt;= a.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Color-fold-impledby"><label for="Color-fold-impledby">Implemented By (<i>at least 14, all are exported</i>)</label><span id='Color-fold-impledby-items' class="fold-items"><span>
+			 <a href="#name-Alpha">Alpha</a></span><span>
+			 <a href="#name-Alpha16">Alpha16</a></span><span>
+			 <a href="#name-CMYK">CMYK</a></span><span>
+			 <a href="#name-Gray">Gray</a></span><span>
+			 <a href="#name-Gray16">Gray16</a></span><span>
+			 <a href="#name-NRGBA">NRGBA</a></span><span>
+			 <a href="#name-NRGBA64">NRGBA64</a></span><span>
+			 <a href="#name-NYCbCrA">NYCbCrA</a></span><span>
+			 <a href="#name-RGBA">RGBA</a></span><span>
+			 <a href="#name-RGBA64">RGBA64</a></span><span>
+			 <a href="#name-YCbCr">YCbCr</a></span><span>
+			*image.<a href="../image.html#name-Uniform">Uniform</a></span><span>
+			*github.com/srwiley/rasterx.<a href="../github.com/srwiley/rasterx.html#name-ClipImage">ClipImage</a></span><span>
+			*github.com/srwiley/rasterx.<a href="../github.com/srwiley/rasterx.html#name-ColorFuncImage">ColorFuncImage</a></span></span>
+		<input type='checkbox' class="fold" id="Color-fold-results"><label for="Color-fold-results">As Outputs Of (<i>at least 97, in which 75 are exported</i>)</label><span id='Color-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Model">Model</a>.<a href="../../src/image/color/color.go.html#line-143">Convert</a>(c <b>Color</b>) <b>Color</b></span><span>
+			func <a href="#name-Palette">Palette</a>.<a href="../../src/image/color/color.go.html#line-283">Convert</a>(c <b>Color</b>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-Alpha">Alpha</a>).<a href="../../src/image/image.go.html#line-638">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-Alpha16">Alpha16</a>).<a href="../../src/image/image.go.html#line-746">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-CMYK">CMYK</a>).<a href="../../src/image/image.go.html#line-1054">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-Gray">Gray</a>).<a href="../../src/image/image.go.html#line-857">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-Gray16">Gray16</a>).<a href="../../src/image/image.go.html#line-954">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.<a href="../image.html#name-Image">Image</a>.<a href="../../src/image/image.go.html#line-61">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-NRGBA">NRGBA</a>).<a href="../../src/image/image.go.html#line-367">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-NRGBA64">NRGBA64</a>).<a href="../../src/image/image.go.html#line-494">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-NYCbCrA">NYCbCrA</a>).<a href="../../src/image/ycbcr.go.html#line-215">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-Paletted">Paletted</a>).<a href="../../src/image/image.go.html#line-1165">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.<a href="../image.html#name-PalettedImage">PalettedImage</a>.<a href="../../src/image/image.go.html#line-61">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.<a href="../image.html#name-Rectangle">Rectangle</a>.<a href="../../src/image/geom.go.html#line-242">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-RGBA">RGBA</a>).<a href="../../src/image/image.go.html#line-116">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-RGBA64">RGBA64</a>).<a href="../../src/image/image.go.html#line-250">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.<a href="../image.html#name-RGBA64Image">RGBA64Image</a>.<a href="../../src/image/image.go.html#line-61">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-Uniform">Uniform</a>).<a href="../../src/image/names.go.html#line-42">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-Uniform">Uniform</a>).<a href="../../src/image/names.go.html#line-36">Convert</a>(<b>Color</b>) <b>Color</b></span><span>
+			func image.(*<a href="../image.html#name-YCbCr">YCbCr</a>).<a href="../../src/image/ycbcr.go.html#line-71">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image/draw.<a href="draw.html#name-Image">Image</a>.<a href="../../src/image/image.go.html#line-61">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func image/draw.<a href="draw.html#name-RGBA64Image">RGBA64Image</a>.<a href="../../src/image/image.go.html#line-61">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func fyne.io/fyne/v2.<a href="../fyne.io/fyne/v2.html#name-LegacyTheme">LegacyTheme</a>.<a href="../../src/fyne.io/fyne/v2/theme.go.html#line-40">BackgroundColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2.<a href="../fyne.io/fyne/v2.html#name-LegacyTheme">LegacyTheme</a>.<a href="../../src/fyne.io/fyne/v2/theme.go.html#line-41">ButtonColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2.<a href="../fyne.io/fyne/v2.html#name-LegacyTheme">LegacyTheme</a>.<a href="../../src/fyne.io/fyne/v2/theme.go.html#line-42">DisabledButtonColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2.<a href="../fyne.io/fyne/v2.html#name-LegacyTheme">LegacyTheme</a>.<a href="../../src/fyne.io/fyne/v2/theme.go.html#line-44">DisabledTextColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2.<a href="../fyne.io/fyne/v2.html#name-LegacyTheme">LegacyTheme</a>.<a href="../../src/fyne.io/fyne/v2/theme.go.html#line-48">FocusColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2.<a href="../fyne.io/fyne/v2.html#name-LegacyTheme">LegacyTheme</a>.<a href="../../src/fyne.io/fyne/v2/theme.go.html#line-47">HoverColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2.<a href="../fyne.io/fyne/v2.html#name-LegacyTheme">LegacyTheme</a>.<a href="../../src/fyne.io/fyne/v2/theme.go.html#line-45">PlaceHolderColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2.<a href="../fyne.io/fyne/v2.html#name-LegacyTheme">LegacyTheme</a>.<a href="../../src/fyne.io/fyne/v2/theme.go.html#line-46">PrimaryColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2.<a href="../fyne.io/fyne/v2.html#name-LegacyTheme">LegacyTheme</a>.<a href="../../src/fyne.io/fyne/v2/theme.go.html#line-49">ScrollBarColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2.<a href="../fyne.io/fyne/v2.html#name-LegacyTheme">LegacyTheme</a>.<a href="../../src/fyne.io/fyne/v2/theme.go.html#line-50">ShadowColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2.<a href="../fyne.io/fyne/v2.html#name-LegacyTheme">LegacyTheme</a>.<a href="../../src/fyne.io/fyne/v2/theme.go.html#line-43">TextColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2.<a href="../fyne.io/fyne/v2.html#name-Theme">Theme</a>.<a href="../../src/fyne.io/fyne/v2/theme.go.html#line-29">Color</a>(<a href="../fyne.io/fyne/v2.html">fyne</a>.<a href="../fyne.io/fyne/v2.html#name-ThemeColorName">ThemeColorName</a>, <a href="../fyne.io/fyne/v2.html">fyne</a>.<a href="../fyne.io/fyne/v2.html#name-ThemeVariant">ThemeVariant</a>) <b>Color</b></span><span>
+			func fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-ForegroundOnPrimaryColorNamed">ForegroundOnPrimaryColorNamed</a>(name <a href="../builtin.html#name-string">string</a>) <b>Color</b></span><span>
+			func fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-PrimaryColorNamed">PrimaryColorNamed</a>(name <a href="../builtin.html#name-string">string</a>) <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-BackgroundColor">BackgroundColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-ButtonColor">ButtonColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-Color">Color</a>(name <a href="../fyne.io/fyne/v2.html">fyne</a>.<a href="../fyne.io/fyne/v2.html#name-ThemeColorName">ThemeColorName</a>) <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-ColorForWidget">ColorForWidget</a>(name <a href="../fyne.io/fyne/v2.html">fyne</a>.<a href="../fyne.io/fyne/v2.html#name-ThemeColorName">ThemeColorName</a>, w <a href="../fyne.io/fyne/v2.html">fyne</a>.<a href="../fyne.io/fyne/v2.html#name-Widget">Widget</a>) <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-DisabledButtonColor">DisabledButtonColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-DisabledColor">DisabledColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-DisabledTextColor">DisabledTextColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-ErrorColor">ErrorColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-FocusColor">FocusColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-ForegroundColor">ForegroundColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-HeaderBackgroundColor">HeaderBackgroundColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-HoverColor">HoverColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-HyperlinkColor">HyperlinkColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-InputBackgroundColor">InputBackgroundColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-InputBorderColor">InputBorderColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-MenuBackgroundColor">MenuBackgroundColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-OverlayBackgroundColor">OverlayBackgroundColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-PlaceHolderColor">PlaceHolderColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-PressedColor">PressedColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-PrimaryColor">PrimaryColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-PrimaryColorNamed">PrimaryColorNamed</a>(name <a href="../builtin.html#name-string">string</a>) <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-ScrollBarColor">ScrollBarColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-SelectionColor">SelectionColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-SeparatorColor">SeparatorColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-ShadowColor">ShadowColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-SuccessColor">SuccessColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-TextColor">TextColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-WarningColor">WarningColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../fyne.io/fyne/v2/widget.html#name-CustomTextGridStyle">CustomTextGridStyle</a>).<a href="../../src/fyne.io/fyne/v2/widget/textgrid.go.html#line-64">BackgroundColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="../fyne.io/fyne/v2/widget.html#name-CustomTextGridStyle">CustomTextGridStyle</a>).<a href="../../src/fyne.io/fyne/v2/widget/textgrid.go.html#line-59">TextColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/widget.<a href="../fyne.io/fyne/v2/widget.html#name-TextGridStyle">TextGridStyle</a>.<a href="../../src/fyne.io/fyne/v2/widget/textgrid.go.html#line-48">BackgroundColor</a>() <b>Color</b></span><span>
+			func fyne.io/fyne/v2/widget.<a href="../fyne.io/fyne/v2/widget.html#name-TextGridStyle">TextGridStyle</a>.<a href="../../src/fyne.io/fyne/v2/widget/textgrid.go.html#line-47">TextColor</a>() <b>Color</b></span><span>
+			func github.com/srwiley/oksvg.<a href="../github.com/srwiley/oksvg.html#name-ParseSVGColor">ParseSVGColor</a>(colorStr <a href="../builtin.html#name-string">string</a>) (<b>Color</b>, <a href="../builtin.html#name-error">error</a>)</span><span>
+			func github.com/srwiley/oksvg.(*<a href="../github.com/srwiley/oksvg.html#name-SvgPath">SvgPath</a>).<a href="../../src/github.com/srwiley/oksvg/svg_path.go.html#line-92">GetFillColor</a>() <b>Color</b></span><span>
+			func github.com/srwiley/oksvg.(*<a href="../github.com/srwiley/oksvg.html#name-SvgPath">SvgPath</a>).<a href="../../src/github.com/srwiley/oksvg/svg_path.go.html#line-97">GetLineColor</a>() <b>Color</b></span><span>
+			func github.com/srwiley/rasterx.(*<a href="../github.com/srwiley/rasterx.html#name-ClipImage">ClipImage</a>).<a href="../../src/github.com/srwiley/rasterx/scan.go.html#line-62">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func github.com/srwiley/rasterx.(*<a href="../github.com/srwiley/rasterx.html#name-ColorFuncImage">ColorFuncImage</a>).<a href="../../src/github.com/srwiley/rasterx/scan.go.html#line-23">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func golang.org/x/image/draw.<a href="../golang.org/x/image/draw.html#name-Image">Image</a>.<a href="../../src/image/image.go.html#line-61">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span><span>
+			func golang.org/x/image/draw.<a href="../golang.org/x/image/draw.html#name-RGBA64Image">RGBA64Image</a>.<a href="../../src/image/image.go.html#line-61">At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Color</b></span>
+			<input type='checkbox' class="showhide" id="Color-showhide-inputofs"><i><label for="Color-showhide-inputofs" class="show-inline">/* 22+ unexporteds ... */</label><label for="Color-showhide-inputofs" class="hide-inline">/* 22+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-alpha16Model">alpha16Model</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-alphaModel">alphaModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-cmykModel">cmykModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-gray16Model">gray16Model</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-grayModel">grayModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-nrgba64Model">nrgba64Model</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-nrgbaModel">nrgbaModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-nYCbCrAModel">nYCbCrAModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-rgba64Model">rgba64Model</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-rgbaModel">rgbaModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-yCbCrModel">yCbCrModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/canvas.<a href="../fyne.io/fyne/v2/canvas.html#name-calculatePixel">calculatePixel</a>(d <a href="../builtin.html#name-float64">float64</a>, startColor, endColor <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-darkPaletteColorNamed">darkPaletteColorNamed</a>(name <a href="../fyne.io/fyne/v2.html">fyne</a>.<a href="../fyne.io/fyne/v2.html#name-ThemeColorName">ThemeColorName</a>) <b>Color</b></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-lightPaletteColorNamed">lightPaletteColorNamed</a>(name <a href="../fyne.io/fyne/v2.html">fyne</a>.<a href="../fyne.io/fyne/v2.html#name-ThemeColorName">ThemeColorName</a>) <b>Color</b></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-safeColorLookup">safeColorLookup</a>(n <a href="../fyne.io/fyne/v2.html">fyne</a>.<a href="../fyne.io/fyne/v2.html#name-ThemeColorName">ThemeColorName</a>, v <a href="../fyne.io/fyne/v2.html">fyne</a>.<a href="../fyne.io/fyne/v2.html#name-ThemeVariant">ThemeVariant</a>) <b>Color</b></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/widget.<a href="../fyne.io/fyne/v2/widget.html#name-blendColor">blendColor</a>(under, over <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/widget.<a href="../fyne.io/fyne/v2/widget.html#name-progressBlendColor">progressBlendColor</a>(clr <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/widget.<a href="../fyne.io/fyne/v2/widget.html#name-shortcutColor">shortcutColor</a>(th <a href="../fyne.io/fyne/v2.html">fyne</a>.<a href="../fyne.io/fyne/v2.html#name-Theme">Theme</a>) <b>Color</b></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/widget.(*<a href="../fyne.io/fyne/v2/widget.html#name-TextSegment">TextSegment</a>).<a href="../../src/fyne.io/fyne/v2/widget/richtext_objects.go.html#line-443">color</a>() <b>Color</b></i></span><span class="hidden"><i>
+			func github.com/srwiley/oksvg.<a href="../github.com/srwiley/oksvg.html#name-getColor">getColor</a>(clr interface{}) <b>Color</b></i></span><span class="hidden"><i>
+			func github.com/srwiley/rasterx.(*<a href="../github.com/srwiley/rasterx.html#name-Gradient">Gradient</a>).<a href="../../src/github.com/srwiley/rasterx/gradient.go.html#line-132">blendStops</a>(t, opacity <a href="../builtin.html#name-float64">float64</a>, s1, s2 <a href="../github.com/srwiley/rasterx.html">rasterx</a>.<a href="../github.com/srwiley/rasterx.html#name-GradStop">GradStop</a>, flip <a href="../builtin.html#name-bool">bool</a>) <b>Color</b></i></span><span class="hidden"><i>
+			func github.com/srwiley/rasterx.(*<a href="../github.com/srwiley/rasterx.html#name-Gradient">Gradient</a>).<a href="../../src/github.com/srwiley/rasterx/gradient.go.html#line-60">tColor</a>(t, opacity <a href="../builtin.html#name-float64">float64</a>) <b>Color</b></i></span></span>
+		<input type='checkbox' class="fold" id="Color-fold-params"><label for="Color-fold-params">As Inputs Of (<i>at least 56, in which 35 are exported</i>)</label><span id='Color-fold-params-items' class="fold-items"><span>
+			func <a href="#name-Model">Model</a>.<a href="../../src/image/color/color.go.html#line-143">Convert</a>(c <b>Color</b>) <b>Color</b></span><span>
+			func <a href="#name-Palette">Palette</a>.<a href="../../src/image/color/color.go.html#line-283">Convert</a>(c <b>Color</b>) <b>Color</b></span><span>
+			func <a href="#name-Palette">Palette</a>.<a href="../../src/image/color/color.go.html#line-292">Index</a>(c <b>Color</b>) <a href="../builtin.html#name-int">int</a></span><span>
+			func image.<a href="../image.html#name-NewUniform">NewUniform</a>(c <b>Color</b>) *<a href="../image.html">image</a>.<a href="../image.html#name-Uniform">Uniform</a></span><span>
+			func image.(*<a href="../image.html#name-Alpha">Alpha</a>).<a href="../../src/image/image.go.html#line-662">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span><span>
+			func image.(*<a href="../image.html#name-Alpha16">Alpha16</a>).<a href="../../src/image/image.go.html#line-769">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span><span>
+			func image.(*<a href="../image.html#name-CMYK">CMYK</a>).<a href="../../src/image/image.go.html#line-1078">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span><span>
+			func image.(*<a href="../image.html#name-Gray">Gray</a>).<a href="../../src/image/image.go.html#line-881">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span><span>
+			func image.(*<a href="../image.html#name-Gray16">Gray16</a>).<a href="../../src/image/image.go.html#line-977">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span><span>
+			func image.(*<a href="../image.html#name-NRGBA">NRGBA</a>).<a href="../../src/image/image.go.html#line-391">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span><span>
+			func image.(*<a href="../image.html#name-NRGBA64">NRGBA64</a>).<a href="../../src/image/image.go.html#line-523">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span><span>
+			func image.(*<a href="../image.html#name-Paletted">Paletted</a>).<a href="../../src/image/image.go.html#line-1202">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span><span>
+			func image.(*<a href="../image.html#name-RGBA">RGBA</a>).<a href="../../src/image/image.go.html#line-153">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span><span>
+			func image.(*<a href="../image.html#name-RGBA64">RGBA64</a>).<a href="../../src/image/image.go.html#line-274">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span><span>
+			func image.(*<a href="../image.html#name-Uniform">Uniform</a>).<a href="../../src/image/names.go.html#line-36">Convert</a>(<b>Color</b>) <b>Color</b></span><span>
+			func image/draw.<a href="draw.html#name-Image">Image</a>.<a href="../../src/image/draw/draw.go.html#line-23">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span><span>
+			func image/draw.<a href="draw.html#name-RGBA64Image">RGBA64Image</a>.<a href="../../src/image/draw/draw.go.html#line-32">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span><span>
+			func fyne.io/fyne/v2/canvas.<a href="../fyne.io/fyne/v2/canvas.html#name-NewCircle">NewCircle</a>(color <b>Color</b>) *<a href="../fyne.io/fyne/v2/canvas.html">canvas</a>.<a href="../fyne.io/fyne/v2/canvas.html#name-Circle">Circle</a></span><span>
+			func fyne.io/fyne/v2/canvas.<a href="../fyne.io/fyne/v2/canvas.html#name-NewColorRGBAAnimation">NewColorRGBAAnimation</a>(start, stop <b>Color</b>, d <a href="../time.html">time</a>.<a href="../time.html#name-Duration">Duration</a>, fn func(<b>Color</b>)) *<a href="../fyne.io/fyne/v2.html">fyne</a>.<a href="../fyne.io/fyne/v2.html#name-Animation">Animation</a></span><span>
+			func fyne.io/fyne/v2/canvas.<a href="../fyne.io/fyne/v2/canvas.html#name-NewHorizontalGradient">NewHorizontalGradient</a>(start, end <b>Color</b>) *<a href="../fyne.io/fyne/v2/canvas.html">canvas</a>.<a href="../fyne.io/fyne/v2/canvas.html#name-LinearGradient">LinearGradient</a></span><span>
+			func fyne.io/fyne/v2/canvas.<a href="../fyne.io/fyne/v2/canvas.html#name-NewLine">NewLine</a>(color <b>Color</b>) *<a href="../fyne.io/fyne/v2/canvas.html">canvas</a>.<a href="../fyne.io/fyne/v2/canvas.html#name-Line">Line</a></span><span>
+			func fyne.io/fyne/v2/canvas.<a href="../fyne.io/fyne/v2/canvas.html#name-NewLinearGradient">NewLinearGradient</a>(start, end <b>Color</b>, angle <a href="../builtin.html#name-float64">float64</a>) *<a href="../fyne.io/fyne/v2/canvas.html">canvas</a>.<a href="../fyne.io/fyne/v2/canvas.html#name-LinearGradient">LinearGradient</a></span><span>
+			func fyne.io/fyne/v2/canvas.<a href="../fyne.io/fyne/v2/canvas.html#name-NewRadialGradient">NewRadialGradient</a>(start, end <b>Color</b>) *<a href="../fyne.io/fyne/v2/canvas.html">canvas</a>.<a href="../fyne.io/fyne/v2/canvas.html#name-RadialGradient">RadialGradient</a></span><span>
+			func fyne.io/fyne/v2/canvas.<a href="../fyne.io/fyne/v2/canvas.html#name-NewRectangle">NewRectangle</a>(color <b>Color</b>) *<a href="../fyne.io/fyne/v2/canvas.html">canvas</a>.<a href="../fyne.io/fyne/v2/canvas.html#name-Rectangle">Rectangle</a></span><span>
+			func fyne.io/fyne/v2/canvas.<a href="../fyne.io/fyne/v2/canvas.html#name-NewText">NewText</a>(text <a href="../builtin.html#name-string">string</a>, color <b>Color</b>) *<a href="../fyne.io/fyne/v2/canvas.html">canvas</a>.<a href="../fyne.io/fyne/v2/canvas.html#name-Text">Text</a></span><span>
+			func fyne.io/fyne/v2/canvas.<a href="../fyne.io/fyne/v2/canvas.html#name-NewVerticalGradient">NewVerticalGradient</a>(start <b>Color</b>, end <b>Color</b>) *<a href="../fyne.io/fyne/v2/canvas.html">canvas</a>.<a href="../fyne.io/fyne/v2/canvas.html#name-LinearGradient">LinearGradient</a></span><span>
+			func fyne.io/fyne/v2/canvas.<a href="../fyne.io/fyne/v2/canvas.html#name-NewVerticalGradient">NewVerticalGradient</a>(start <b>Color</b>, end <b>Color</b>) *<a href="../fyne.io/fyne/v2/canvas.html">canvas</a>.<a href="../fyne.io/fyne/v2/canvas.html#name-LinearGradient">LinearGradient</a></span><span>
+			func fyne.io/fyne/v2/internal/color.<a href="../fyne.io/fyne/v2/internal/color.html#name-ToNRGBA">ToNRGBA</a>(c <b>Color</b>) (r, g, b, a <a href="../builtin.html#name-int">int</a>)</span><span>
+			func fyne.io/fyne/v2/internal/painter.<a href="../fyne.io/fyne/v2/internal/painter.html#name-DrawString">DrawString</a>(dst <a href="draw.html">draw</a>.<a href="draw.html#name-Image">Image</a>, s <a href="../builtin.html#name-string">string</a>, color <b>Color</b>, f <a href="../github.com/go-text/typesetting/shaping.html">shaping</a>.<a href="../github.com/go-text/typesetting/shaping.html#name-Fontmap">Fontmap</a>, fontSize, scale <a href="../builtin.html#name-float32">float32</a>, style <a href="../fyne.io/fyne/v2.html">fyne</a>.<a href="../fyne.io/fyne/v2.html#name-TextStyle">TextStyle</a>)</span><span>
+			func fyne.io/fyne/v2/internal/svg.<a href="../fyne.io/fyne/v2/internal/svg.html#name-Colorize">Colorize</a>(src []<a href="../builtin.html#name-byte">byte</a>, clr <b>Color</b>) []<a href="../builtin.html#name-byte">byte</a></span><span>
+			func github.com/srwiley/oksvg.(*<a href="../github.com/srwiley/oksvg.html#name-SvgPath">SvgPath</a>).<a href="../../src/github.com/srwiley/oksvg/svg_path.go.html#line-102">SetFillColor</a>(clr <b>Color</b>)</span><span>
+			func github.com/srwiley/oksvg.(*<a href="../github.com/srwiley/oksvg.html#name-SvgPath">SvgPath</a>).<a href="../../src/github.com/srwiley/oksvg/svg_path.go.html#line-107">SetLineColor</a>(clr <b>Color</b>)</span><span>
+			func github.com/srwiley/rasterx.<a href="../github.com/srwiley/rasterx.html#name-ApplyOpacity">ApplyOpacity</a>(c <b>Color</b>, opacity <a href="../builtin.html#name-float64">float64</a>) <a href="#name-NRGBA">NRGBA</a></span><span>
+			func golang.org/x/image/draw.<a href="../golang.org/x/image/draw.html#name-Image">Image</a>.<a href="../../src/image/draw/draw.go.html#line-23">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span><span>
+			func golang.org/x/image/draw.<a href="../golang.org/x/image/draw.html#name-RGBA64Image">RGBA64Image</a>.<a href="../../src/image/draw/draw.go.html#line-32">Set</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Color</b>)</span>
+			<input type='checkbox' class="showhide" id="Color-showhide-outputofs"><i><label for="Color-showhide-outputofs" class="show-inline">/* 21+ unexporteds ... */</label><label for="Color-showhide-outputofs" class="hide-inline">/* 21+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-alpha16Model">alpha16Model</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-alphaModel">alphaModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-cmykModel">cmykModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-gray16Model">gray16Model</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-grayModel">grayModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-nrgba64Model">nrgba64Model</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-nrgbaModel">nrgbaModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-nYCbCrAModel">nYCbCrAModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-rgba64Model">rgba64Model</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-rgbaModel">rgbaModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func <a href="#name-yCbCrModel">yCbCrModel</a>(c <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/canvas.<a href="../fyne.io/fyne/v2/canvas.html#name-calculatePixel">calculatePixel</a>(d <a href="../builtin.html#name-float64">float64</a>, startColor, endColor <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/canvas.<a href="../fyne.io/fyne/v2/canvas.html#name-computeGradient">computeGradient</a>(generator func(x, y <a href="../builtin.html#name-float64">float64</a>) <a href="../builtin.html#name-float64">float64</a>, w, h <a href="../builtin.html#name-int">int</a>, startColor, endColor <b>Color</b>) <a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/color.<a href="../fyne.io/fyne/v2/internal/color.html#name-unmultiplyAlpha">unmultiplyAlpha</a>(c <b>Color</b>) (r, g, b, a <a href="../builtin.html#name-int">int</a>)</i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/painter/gl.<a href="../fyne.io/fyne/v2/internal/painter/gl.html#name-getFragmentColor">getFragmentColor</a>(col <b>Color</b>) (<a href="../builtin.html#name-float32">float32</a>, <a href="../builtin.html#name-float32">float32</a>, <a href="../builtin.html#name-float32">float32</a>, <a href="../builtin.html#name-float32">float32</a>)</i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/svg.<a href="../fyne.io/fyne/v2/internal/svg.html#name-colorToHexAndOpacity">colorToHexAndOpacity</a>(color <b>Color</b>) (hexStr, aStr <a href="../builtin.html#name-string">string</a>)</i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/widget.<a href="../fyne.io/fyne/v2/internal/widget.html#name-updateShadowEnd">updateShadowEnd</a>(g *<a href="../fyne.io/fyne/v2/canvas.html">canvas</a>.<a href="../fyne.io/fyne/v2/canvas.html#name-LinearGradient">LinearGradient</a>, fg <b>Color</b>)</i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/widget.<a href="../fyne.io/fyne/v2/internal/widget.html#name-updateShadowRadial">updateShadowRadial</a>(g *<a href="../fyne.io/fyne/v2/canvas.html">canvas</a>.<a href="../fyne.io/fyne/v2/canvas.html#name-RadialGradient">RadialGradient</a>, fg <b>Color</b>)</i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/widget.<a href="../fyne.io/fyne/v2/internal/widget.html#name-updateShadowStart">updateShadowStart</a>(g *<a href="../fyne.io/fyne/v2/canvas.html">canvas</a>.<a href="../fyne.io/fyne/v2/canvas.html#name-LinearGradient">LinearGradient</a>, fg <b>Color</b>)</i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/widget.<a href="../fyne.io/fyne/v2/widget.html#name-blendColor">blendColor</a>(under, over <b>Color</b>) <b>Color</b></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/widget.<a href="../fyne.io/fyne/v2/widget.html#name-progressBlendColor">progressBlendColor</a>(clr <b>Color</b>) <b>Color</b></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Gray" data-popularity="210">	<input type='checkbox' class="fold" id="Gray-fold-content"><label for="Gray-fold-content"> type <a href="../../src/image/color/color.go.html#line-120">Gray</a> <i>(struct)</i></label><span id='Gray-fold-content-docs' class="fold-docs">
+<span class="md-text">		Gray represents an 8-bit grayscale color.</span>
+
+		<input type='checkbox' class="fold" id="Gray-fold-fields"><label for="Gray-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='Gray-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-121">Y</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Gray-fold-methods"><label for="Gray-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Gray-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Gray) <a href="../../src/image/color/color.go.html#line-124">RGBA</a>() (r, g, b, a <a href="../builtin.html#name-uint32">uint32</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="Gray-fold-impls"><label for="Gray-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Gray-fold-impls-items' class="fold-items"><span>
+			 Gray : <a href="#name-Color">Color</a></span></span>
+		<input type='checkbox' class="fold" id="Gray-fold-results"><label for="Gray-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Gray-fold-results-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-Gray">Gray</a>).<a href="../../src/image/image.go.html#line-867">GrayAt</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Gray</b></span></span>
+		<input type='checkbox' class="fold" id="Gray-fold-params"><label for="Gray-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='Gray-fold-params-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-Gray">Gray</a>).<a href="../../src/image/image.go.html#line-899">SetGray</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Gray</b>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-Gray16" data-popularity="220">	<input type='checkbox' class="fold" id="Gray16-fold-content"><label for="Gray16-fold-content"> type <a href="../../src/image/color/color.go.html#line-131">Gray16</a> <i>(struct)</i></label><span id='Gray16-fold-content-docs' class="fold-docs">
+<span class="md-text">		Gray16 represents a 16-bit grayscale color.</span>
+
+		<input type='checkbox' class="fold" id="Gray16-fold-fields"><label for="Gray16-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='Gray16-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-132">Y</a> <i><a href="../builtin.html#name-uint16">uint16</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Gray16-fold-methods"><label for="Gray16-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Gray16-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Gray16) <a href="../../src/image/color/color.go.html#line-135">RGBA</a>() (r, g, b, a <a href="../builtin.html#name-uint32">uint32</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="Gray16-fold-impls"><label for="Gray16-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Gray16-fold-impls-items' class="fold-items"><span>
+			 Gray16 : <a href="#name-Color">Color</a></span></span>
+		<input type='checkbox' class="fold" id="Gray16-fold-results"><label for="Gray16-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Gray16-fold-results-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-Gray16">Gray16</a>).<a href="../../src/image/image.go.html#line-963">Gray16At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>Gray16</b></span></span>
+		<input type='checkbox' class="fold" id="Gray16-fold-params"><label for="Gray16-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='Gray16-fold-params-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-Gray16">Gray16</a>).<a href="../../src/image/image.go.html#line-998">SetGray16</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>Gray16</b>)</span></span>
+		<input type='checkbox' class="fold" id="Gray16-fold-values"><label for="Gray16-fold-values">As Types Of (<i>total 2, both are exported</i>)</label><span id='Gray16-fold-values-items' class="fold-items"><span>
+			  var <a href="#name-Black">Black</a></span><span>
+			  var <a href="#name-White">White</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Model" data-popularity="2465">	<input type='checkbox' class="fold" id="Model-fold-content"><label for="Model-fold-content"> type <a href="../../src/image/color/color.go.html#line-142">Model</a> <b><i>(interface)</i></b></label><span id='Model-fold-content-docs' class="fold-docs">
+<span class="md-text">		Model can convert any [Color] to one from its own color model. The conversion
+		may be lossy.</span>
+
+		<input type='checkbox' class="fold" id="Model-fold-methods"><label for="Model-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Model-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Model) <a href="../../src/image/color/color.go.html#line-143">Convert</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></span></span></span>
+		<input type='checkbox' class="fold" id="Model-fold-impledby"><label for="Model-fold-impledby">Implemented By (<i>at least 5, in which 4 are exported</i>)</label><span id='Model-fold-impledby-items' class="fold-items"><span>
+			 <a href="#name-Palette">Palette</a></span><span>
+			*image.<a href="../image.html#name-Uniform">Uniform</a></span><span>
+			*github.com/srwiley/rasterx.<a href="../github.com/srwiley/rasterx.html#name-ClipImage">ClipImage</a></span><span>
+			*github.com/srwiley/rasterx.<a href="../github.com/srwiley/rasterx.html#name-ColorFuncImage">ColorFuncImage</a></span>
+			<input type='checkbox' class="showhide" id="Model-showhide-impedBys"><i><label for="Model-showhide-impedBys" class="show-inline">/* at least one unexported ... */</label><label for="Model-showhide-impedBys" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			*<a href="#name-modelFunc">modelFunc</a></i></span></span>
+		<input type='checkbox' class="fold" id="Model-fold-results"><label for="Model-fold-results">As Outputs Of (<i>at least 22, all are exported</i>)</label><span id='Model-fold-results-items' class="fold-items"><span>
+			func <a href="#name-ModelFunc">ModelFunc</a>(f func(<a href="#name-Color">Color</a>) <a href="#name-Color">Color</a>) <b>Model</b></span><span>
+			func image.(*<a href="../image.html#name-Alpha">Alpha</a>).<a href="../../src/image/image.go.html#line-634">ColorModel</a>() <b>Model</b></span><span>
+			func image.(*<a href="../image.html#name-Alpha16">Alpha16</a>).<a href="../../src/image/image.go.html#line-742">ColorModel</a>() <b>Model</b></span><span>
+			func image.(*<a href="../image.html#name-CMYK">CMYK</a>).<a href="../../src/image/image.go.html#line-1050">ColorModel</a>() <b>Model</b></span><span>
+			func image.(*<a href="../image.html#name-Gray">Gray</a>).<a href="../../src/image/image.go.html#line-853">ColorModel</a>() <b>Model</b></span><span>
+			func image.(*<a href="../image.html#name-Gray16">Gray16</a>).<a href="../../src/image/image.go.html#line-950">ColorModel</a>() <b>Model</b></span><span>
+			func image.<a href="../image.html#name-Image">Image</a>.<a href="../../src/image/image.go.html#line-54">ColorModel</a>() <b>Model</b></span><span>
+			func image.(*<a href="../image.html#name-NRGBA">NRGBA</a>).<a href="../../src/image/image.go.html#line-363">ColorModel</a>() <b>Model</b></span><span>
+			func image.(*<a href="../image.html#name-NRGBA64">NRGBA64</a>).<a href="../../src/image/image.go.html#line-490">ColorModel</a>() <b>Model</b></span><span>
+			func image.(*<a href="../image.html#name-NYCbCrA">NYCbCrA</a>).<a href="../../src/image/ycbcr.go.html#line-211">ColorModel</a>() <b>Model</b></span><span>
+			func image.(*<a href="../image.html#name-Paletted">Paletted</a>).<a href="../../src/image/image.go.html#line-1161">ColorModel</a>() <b>Model</b></span><span>
+			func image.<a href="../image.html#name-PalettedImage">PalettedImage</a>.<a href="../../src/image/image.go.html#line-54">ColorModel</a>() <b>Model</b></span><span>
+			func image.<a href="../image.html#name-Rectangle">Rectangle</a>.<a href="../../src/image/geom.go.html#line-263">ColorModel</a>() <b>Model</b></span><span>
+			func image.(*<a href="../image.html#name-RGBA">RGBA</a>).<a href="../../src/image/image.go.html#line-112">ColorModel</a>() <b>Model</b></span><span>
+			func image.(*<a href="../image.html#name-RGBA64">RGBA64</a>).<a href="../../src/image/image.go.html#line-246">ColorModel</a>() <b>Model</b></span><span>
+			func image.<a href="../image.html#name-RGBA64Image">RGBA64Image</a>.<a href="../../src/image/image.go.html#line-54">ColorModel</a>() <b>Model</b></span><span>
+			func image.(*<a href="../image.html#name-Uniform">Uniform</a>).<a href="../../src/image/names.go.html#line-32">ColorModel</a>() <b>Model</b></span><span>
+			func image.(*<a href="../image.html#name-YCbCr">YCbCr</a>).<a href="../../src/image/ycbcr.go.html#line-63">ColorModel</a>() <b>Model</b></span><span>
+			func image/draw.<a href="draw.html#name-Image">Image</a>.<a href="../../src/image/image.go.html#line-54">ColorModel</a>() <b>Model</b></span><span>
+			func image/draw.<a href="draw.html#name-RGBA64Image">RGBA64Image</a>.<a href="../../src/image/image.go.html#line-54">ColorModel</a>() <b>Model</b></span><span>
+			func golang.org/x/image/draw.<a href="../golang.org/x/image/draw.html#name-Image">Image</a>.<a href="../../src/image/image.go.html#line-54">ColorModel</a>() <b>Model</b></span><span>
+			func golang.org/x/image/draw.<a href="../golang.org/x/image/draw.html#name-RGBA64Image">RGBA64Image</a>.<a href="../../src/image/image.go.html#line-54">ColorModel</a>() <b>Model</b></span></span>
+		<input type='checkbox' class="fold" id="Model-fold-values"><label for="Model-fold-values">As Types Of (<i>total 11, all are exported</i>)</label><span id='Model-fold-values-items' class="fold-items"><span>
+			  var <a href="#name-Alpha16Model">Alpha16Model</a></span><span>
+			  var <a href="#name-AlphaModel">AlphaModel</a></span><span>
+			  var <a href="#name-CMYKModel">CMYKModel</a></span><span>
+			  var <a href="#name-Gray16Model">Gray16Model</a></span><span>
+			  var <a href="#name-GrayModel">GrayModel</a></span><span>
+			  var <a href="#name-NRGBA64Model">NRGBA64Model</a></span><span>
+			  var <a href="#name-NRGBAModel">NRGBAModel</a></span><span>
+			  var <a href="#name-NYCbCrAModel">NYCbCrAModel</a></span><span>
+			  var <a href="#name-RGBA64Model">RGBA64Model</a></span><span>
+			  var <a href="#name-RGBAModel">RGBAModel</a></span><span>
+			  var <a href="#name-YCbCrModel">YCbCrModel</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-NRGBA" data-popularity="450">	<input type='checkbox' class="fold" id="NRGBA-fold-content"><label for="NRGBA-fold-content"> type <a href="../../src/image/color/color.go.html#line-56">NRGBA</a> <i>(struct)</i></label><span id='NRGBA-fold-content-docs' class="fold-docs">
+<span class="md-text">		NRGBA represents a non-alpha-premultiplied 32-bit color.</span>
+
+		<input type='checkbox' class="fold" id="NRGBA-fold-fields"><label for="NRGBA-fold-fields">Fields (<i>total 4, all are exported</i>)</label><span id='NRGBA-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-27">A</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-27">B</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-27">G</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-27">R</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="NRGBA-fold-methods"><label for="NRGBA-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='NRGBA-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( NRGBA) <a href="../../src/image/color/color.go.html#line-60">RGBA</a>() (r, g, b, a <a href="../builtin.html#name-uint32">uint32</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="NRGBA-fold-impls"><label for="NRGBA-fold-impls">Implements (<i>at least one exported</i>)</label><span id='NRGBA-fold-impls-items' class="fold-items"><span>
+			 NRGBA : <a href="#name-Color">Color</a></span></span>
+		<input type='checkbox' class="fold" id="NRGBA-fold-results"><label for="NRGBA-fold-results">As Outputs Of (<i>at least 4, in which 2 are exported</i>)</label><span id='NRGBA-fold-results-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-NRGBA">NRGBA</a>).<a href="../../src/image/image.go.html#line-376">NRGBAAt</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>NRGBA</b></span><span>
+			func github.com/srwiley/rasterx.<a href="../github.com/srwiley/rasterx.html#name-ApplyOpacity">ApplyOpacity</a>(c <a href="#name-Color">Color</a>, opacity <a href="../builtin.html#name-float64">float64</a>) <b>NRGBA</b></span>
+			<input type='checkbox' class="showhide" id="NRGBA-showhide-inputofs"><i><label for="NRGBA-showhide-inputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="NRGBA-showhide-inputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-focusColorNamed">focusColorNamed</a>(name <a href="../builtin.html#name-string">string</a>) <b>NRGBA</b></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-selectionColorNamed">selectionColorNamed</a>(name <a href="../builtin.html#name-string">string</a>) <b>NRGBA</b></i></span></span>
+		<input type='checkbox' class="fold" id="NRGBA-fold-params"><label for="NRGBA-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='NRGBA-fold-params-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-NRGBA">NRGBA</a>).<a href="../../src/image/image.go.html#line-422">SetNRGBA</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>NRGBA</b>)</span></span>
+		<input type='checkbox' class="fold" id="NRGBA-fold-values"><label for="NRGBA-fold-values">As Types Of (<i>total 76, none are exported</i>)</label><span id='NRGBA-fold-values-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="NRGBA-showhide-values"><i><label for="NRGBA-showhide-values" class="show-inline">/* 76 unexporteds ... */</label><label for="NRGBA-showhide-values" class="hide-inline">/* 76 unexporteds: */</label></i><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryBlue">colorLightOnPrimaryBlue</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryBrown">colorLightOnPrimaryBrown</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryGray">colorLightOnPrimaryGray</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryGreen">colorLightOnPrimaryGreen</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryOrange">colorLightOnPrimaryOrange</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryPurple">colorLightOnPrimaryPurple</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryRed">colorLightOnPrimaryRed</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightOnPrimaryYellow">colorLightOnPrimaryYellow</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryBlue">colorLightPrimaryBlue</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryBrown">colorLightPrimaryBrown</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryGray">colorLightPrimaryGray</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryGreen">colorLightPrimaryGreen</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryOrange">colorLightPrimaryOrange</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryPurple">colorLightPrimaryPurple</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryRed">colorLightPrimaryRed</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/internal/theme.<a href="../fyne.io/fyne/v2/internal/theme.html#name-colorLightPrimaryYellow">colorLightPrimaryYellow</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkBackground">colorDarkBackground</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkButton">colorDarkButton</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkDisabled">colorDarkDisabled</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkDisabledButton">colorDarkDisabledButton</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkError">colorDarkError</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkForeground">colorDarkForeground</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkForegroundOnError">colorDarkForegroundOnError</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkForegroundOnSuccess">colorDarkForegroundOnSuccess</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkForegroundOnWarning">colorDarkForegroundOnWarning</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkHeaderBackground">colorDarkHeaderBackground</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkHover">colorDarkHover</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkInputBackground">colorDarkInputBackground</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkInputBorder">colorDarkInputBorder</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkMenuBackground">colorDarkMenuBackground</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkOverlayBackground">colorDarkOverlayBackground</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkPlaceholder">colorDarkPlaceholder</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkPressed">colorDarkPressed</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkScrollBar">colorDarkScrollBar</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkSeparator">colorDarkSeparator</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkShadow">colorDarkShadow</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkSuccess">colorDarkSuccess</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorDarkWarning">colorDarkWarning</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightBackground">colorLightBackground</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightButton">colorLightButton</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightDisabled">colorLightDisabled</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightDisabledButton">colorLightDisabledButton</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightError">colorLightError</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightFocusBlue">colorLightFocusBlue</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightFocusBrown">colorLightFocusBrown</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightFocusGray">colorLightFocusGray</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightFocusGreen">colorLightFocusGreen</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightFocusOrange">colorLightFocusOrange</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightFocusPurple">colorLightFocusPurple</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightFocusRed">colorLightFocusRed</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightFocusYellow">colorLightFocusYellow</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightForeground">colorLightForeground</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightForegroundOnError">colorLightForegroundOnError</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightForegroundOnSuccess">colorLightForegroundOnSuccess</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightForegroundOnWarning">colorLightForegroundOnWarning</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightHeaderBackground">colorLightHeaderBackground</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightHover">colorLightHover</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightInputBackground">colorLightInputBackground</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightInputBorder">colorLightInputBorder</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightMenuBackground">colorLightMenuBackground</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightOverlayBackground">colorLightOverlayBackground</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightPlaceholder">colorLightPlaceholder</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightPressed">colorLightPressed</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightScrollBar">colorLightScrollBar</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightSelectionBlue">colorLightSelectionBlue</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightSelectionBrown">colorLightSelectionBrown</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightSelectionGray">colorLightSelectionGray</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightSelectionGreen">colorLightSelectionGreen</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightSelectionOrange">colorLightSelectionOrange</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightSelectionPurple">colorLightSelectionPurple</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightSelectionRed">colorLightSelectionRed</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightSelectionYellow">colorLightSelectionYellow</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightSeparator">colorLightSeparator</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightShadow">colorLightShadow</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightSuccess">colorLightSuccess</a></i></span><span class="hidden"><i>
+			  var fyne.io/fyne/v2/theme.<a href="../fyne.io/fyne/v2/theme.html#name-colorLightWarning">colorLightWarning</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-NRGBA64" data-popularity="210">	<input type='checkbox' class="fold" id="NRGBA64-fold-content"><label for="NRGBA64-fold-content"> type <a href="../../src/image/color/color.go.html#line-80">NRGBA64</a> <i>(struct)</i></label><span id='NRGBA64-fold-content-docs' class="fold-docs">
+<span class="md-text">		NRGBA64 represents a non-alpha-premultiplied 64-bit color,
+		having 16 bits for each of red, green, blue and alpha.</span>
+
+		<input type='checkbox' class="fold" id="NRGBA64-fold-fields"><label for="NRGBA64-fold-fields">Fields (<i>total 4, all are exported</i>)</label><span id='NRGBA64-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-48">A</a> <i><a href="../builtin.html#name-uint16">uint16</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-48">B</a> <i><a href="../builtin.html#name-uint16">uint16</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-48">G</a> <i><a href="../builtin.html#name-uint16">uint16</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-48">R</a> <i><a href="../builtin.html#name-uint16">uint16</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="NRGBA64-fold-methods"><label for="NRGBA64-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='NRGBA64-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( NRGBA64) <a href="../../src/image/color/color.go.html#line-84">RGBA</a>() (r, g, b, a <a href="../builtin.html#name-uint32">uint32</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="NRGBA64-fold-impls"><label for="NRGBA64-fold-impls">Implements (<i>at least one exported</i>)</label><span id='NRGBA64-fold-impls-items' class="fold-items"><span>
+			 NRGBA64 : <a href="#name-Color">Color</a></span></span>
+		<input type='checkbox' class="fold" id="NRGBA64-fold-results"><label for="NRGBA64-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='NRGBA64-fold-results-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-NRGBA64">NRGBA64</a>).<a href="../../src/image/image.go.html#line-503">NRGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>NRGBA64</b></span></span>
+		<input type='checkbox' class="fold" id="NRGBA64-fold-params"><label for="NRGBA64-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='NRGBA64-fold-params-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-NRGBA64">NRGBA64</a>).<a href="../../src/image/image.go.html#line-562">SetNRGBA64</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>NRGBA64</b>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-NYCbCrA" data-popularity="175">	<input type='checkbox' class="fold" id="NYCbCrA-fold-content"><label for="NYCbCrA-fold-content"> type <a href="../../src/image/color/ycbcr.go.html#line-242">NYCbCrA</a> <i>(struct)</i></label><span id='NYCbCrA-fold-content-docs' class="fold-docs">
+<span class="md-text">		NYCbCrA represents a non-alpha-premultiplied Y'CbCr-with-alpha color, having
+		8 bits each for one luma, two chroma and one alpha component.</span>
+
+		<input type='checkbox' class="fold" id="NYCbCrA-fold-fields"><label for="NYCbCrA-fold-fields">Fields (<i>total 5, all are exported</i>)</label><span id='NYCbCrA-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/image/color/ycbcr.go.html#line-244">A</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/ycbcr.go.html#line-243">YCbCr</a> <i><a href="#name-YCbCr">YCbCr</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/ycbcr.go.html#line-243" class="path-duplicate">YCbCr</a>.<a href="../../src/image/color/ycbcr.go.html#line-168">Cb</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/ycbcr.go.html#line-243" class="path-duplicate">YCbCr</a>.<a href="../../src/image/color/ycbcr.go.html#line-168">Cr</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/ycbcr.go.html#line-243" class="path-duplicate">YCbCr</a>.<a href="../../src/image/color/ycbcr.go.html#line-168">Y</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="NYCbCrA-fold-methods"><label for="NYCbCrA-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='NYCbCrA-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( NYCbCrA) <a href="../../src/image/color/ycbcr.go.html#line-247">RGBA</a>() (<a href="../builtin.html#name-uint32">uint32</a>, <a href="../builtin.html#name-uint32">uint32</a>, <a href="../builtin.html#name-uint32">uint32</a>, <a href="../builtin.html#name-uint32">uint32</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="NYCbCrA-fold-impls"><label for="NYCbCrA-fold-impls">Implements (<i>at least one exported</i>)</label><span id='NYCbCrA-fold-impls-items' class="fold-items"><span>
+			 NYCbCrA : <a href="#name-Color">Color</a></span></span>
+		<input type='checkbox' class="fold" id="NYCbCrA-fold-results"><label for="NYCbCrA-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='NYCbCrA-fold-results-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-NYCbCrA">NYCbCrA</a>).<a href="../../src/image/ycbcr.go.html#line-224">NYCbCrAAt</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>NYCbCrA</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-Palette" data-popularity="405">	<input type='checkbox' class="fold" id="Palette-fold-content"><label for="Palette-fold-content"> type <a href="../../src/image/color/color.go.html#line-280">Palette</a> <i>([])</i></label><span id='Palette-fold-content-docs' class="fold-docs">
+<span class="md-text">		Palette is a palette of colors.</span>
+
+		<input type='checkbox' class="fold" id="Palette-fold-methods"><label for="Palette-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='Palette-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Palette-fold-method-Convert"><label for="Palette-fold-method-Convert">( Palette) <a href="../../src/image/color/color.go.html#line-283">Convert</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></label><span id='Palette-fold-method-Convert-docs' class="fold-docs">
+<span class="md-text">				Convert returns the palette color closest to c in Euclidean R,G,B space.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Palette-fold-method-Index"><label for="Palette-fold-method-Index">( Palette) <a href="../../src/image/color/color.go.html#line-292">Index</a>(c <a href="#name-Color">Color</a>) <a href="../builtin.html#name-int">int</a></label><span id='Palette-fold-method-Index-docs' class="fold-docs">
+<span class="md-text">				Index returns the index of the palette color closest to c in Euclidean
+				R,G,B,A space.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Palette-fold-impls"><label for="Palette-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Palette-fold-impls-items' class="fold-items"><span>
+			 Palette : <a href="#name-Model">Model</a></span></span>
+		<input type='checkbox' class="fold" id="Palette-fold-results"><label for="Palette-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='Palette-fold-results-items' class="fold-items"><span>
+			func image/draw.<a href="draw.html#name-Quantizer">Quantizer</a>.<a href="../../src/image/draw/draw.go.html#line-40">Quantize</a>(p <b>Palette</b>, m <a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>) <b>Palette</b></span><span>
+			func golang.org/x/image/draw.<a href="../golang.org/x/image/draw.html#name-Quantizer">Quantizer</a>.<a href="../../src/image/draw/draw.go.html#line-40">Quantize</a>(p <b>Palette</b>, m <a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>) <b>Palette</b></span></span>
+		<input type='checkbox' class="fold" id="Palette-fold-params"><label for="Palette-fold-params">As Inputs Of (<i>at least 3, all are exported</i>)</label><span id='Palette-fold-params-items' class="fold-items"><span>
+			func image.<a href="../image.html#name-NewPaletted">NewPaletted</a>(r <a href="../image.html">image</a>.<a href="../image.html#name-Rectangle">Rectangle</a>, p <b>Palette</b>) *<a href="../image.html">image</a>.<a href="../image.html#name-Paletted">Paletted</a></span><span>
+			func image/draw.<a href="draw.html#name-Quantizer">Quantizer</a>.<a href="../../src/image/draw/draw.go.html#line-40">Quantize</a>(p <b>Palette</b>, m <a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>) <b>Palette</b></span><span>
+			func golang.org/x/image/draw.<a href="../golang.org/x/image/draw.html#name-Quantizer">Quantizer</a>.<a href="../../src/image/draw/draw.go.html#line-40">Quantize</a>(p <b>Palette</b>, m <a href="../image.html">image</a>.<a href="../image.html#name-Image">Image</a>) <b>Palette</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-RGBA" data-popularity="375">	<input type='checkbox' class="fold" id="RGBA-fold-content"><label for="RGBA-fold-content"> type <a href="../../src/image/color/color.go.html#line-26">RGBA</a> <i>(struct)</i></label><span id='RGBA-fold-content-docs' class="fold-docs">
+<span class="md-text">		RGBA represents a traditional 32-bit alpha-premultiplied color, having 8
+		bits for each of red, green, blue and alpha.
+		
+		An alpha-premultiplied color component C has been scaled by alpha (A), so
+		has valid values 0 &lt;= C &lt;= A.</span>
+
+		<input type='checkbox' class="fold" id="RGBA-fold-fields"><label for="RGBA-fold-fields">Fields (<i>total 4, all are exported</i>)</label><span id='RGBA-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-27">A</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-27">B</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-27">G</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-27">R</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="RGBA-fold-methods"><label for="RGBA-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='RGBA-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( RGBA) <a href="../../src/image/color/color.go.html#line-30">RGBA</a>() (r, g, b, a <a href="../builtin.html#name-uint32">uint32</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="RGBA-fold-impls"><label for="RGBA-fold-impls">Implements (<i>at least one exported</i>)</label><span id='RGBA-fold-impls-items' class="fold-items"><span>
+			 RGBA : <a href="#name-Color">Color</a></span></span>
+		<input type='checkbox' class="fold" id="RGBA-fold-results"><label for="RGBA-fold-results">As Outputs Of (<i>at least 3, in which 2 are exported</i>)</label><span id='RGBA-fold-results-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-RGBA">RGBA</a>).<a href="../../src/image/image.go.html#line-138">RGBAAt</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA</b></span><span>
+			func github.com/rymdport/portal/settings/appearance.<a href="../github.com/rymdport/portal/settings/appearance.html#name-GetAccentColor">GetAccentColor</a>() (*<b>RGBA</b>, <a href="../builtin.html#name-error">error</a>)</span>
+			<input type='checkbox' class="showhide" id="RGBA-showhide-inputofs"><i><label for="RGBA-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="RGBA-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func github.com/NotYetTerminal/Wa-Tor-Simulation/source.<a href="../github.com/NotYetTerminal^af4a3/Wa-Tor-Simulation^c994f/source.html#name-convertAnimalToColour">convertAnimalToColour</a>(animal *<a href="../github.com/NotYetTerminal^af4a3/Wa-Tor-Simulation^c994f/source.html">main</a>.<a href="../github.com/NotYetTerminal^af4a3/Wa-Tor-Simulation^c994f/source.html#name-swimmingAnimal">swimmingAnimal</a>) <b>RGBA</b></i></span></span>
+		<input type='checkbox' class="fold" id="RGBA-fold-params"><label for="RGBA-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='RGBA-fold-params-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-RGBA">RGBA</a>).<a href="../../src/image/image.go.html#line-178">SetRGBA</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>RGBA</b>)</span></span>
+		<input type='checkbox' class="fold" id="RGBA-fold-values"><label for="RGBA-fold-values">As Types Of (<i>total 148, in which 147 are exported</i>)</label><span id='RGBA-fold-values-items' class="fold-items"><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Aliceblue">Aliceblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Antiquewhite">Antiquewhite</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Aqua">Aqua</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Aquamarine">Aquamarine</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Azure">Azure</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Beige">Beige</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Bisque">Bisque</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Black">Black</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Blanchedalmond">Blanchedalmond</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Blue">Blue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Blueviolet">Blueviolet</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Brown">Brown</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Burlywood">Burlywood</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Cadetblue">Cadetblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Chartreuse">Chartreuse</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Chocolate">Chocolate</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Coral">Coral</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Cornflowerblue">Cornflowerblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Cornsilk">Cornsilk</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Crimson">Crimson</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Cyan">Cyan</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkblue">Darkblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkcyan">Darkcyan</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkgoldenrod">Darkgoldenrod</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkgray">Darkgray</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkgreen">Darkgreen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkgrey">Darkgrey</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkkhaki">Darkkhaki</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkmagenta">Darkmagenta</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkolivegreen">Darkolivegreen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkorange">Darkorange</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkorchid">Darkorchid</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkred">Darkred</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darksalmon">Darksalmon</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkseagreen">Darkseagreen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkslateblue">Darkslateblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkslategray">Darkslategray</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkslategrey">Darkslategrey</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkturquoise">Darkturquoise</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Darkviolet">Darkviolet</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Deeppink">Deeppink</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Deepskyblue">Deepskyblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Dimgray">Dimgray</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Dimgrey">Dimgrey</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Dodgerblue">Dodgerblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Firebrick">Firebrick</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Floralwhite">Floralwhite</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Forestgreen">Forestgreen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Fuchsia">Fuchsia</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Gainsboro">Gainsboro</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Ghostwhite">Ghostwhite</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Gold">Gold</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Goldenrod">Goldenrod</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Gray">Gray</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Green">Green</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Greenyellow">Greenyellow</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Grey">Grey</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Honeydew">Honeydew</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Hotpink">Hotpink</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Indianred">Indianred</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Indigo">Indigo</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Ivory">Ivory</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Khaki">Khaki</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lavender">Lavender</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lavenderblush">Lavenderblush</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lawngreen">Lawngreen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lemonchiffon">Lemonchiffon</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightblue">Lightblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightcoral">Lightcoral</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightcyan">Lightcyan</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightgoldenrodyellow">Lightgoldenrodyellow</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightgray">Lightgray</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightgreen">Lightgreen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightgrey">Lightgrey</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightpink">Lightpink</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightsalmon">Lightsalmon</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightseagreen">Lightseagreen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightskyblue">Lightskyblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightslategray">Lightslategray</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightslategrey">Lightslategrey</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightsteelblue">Lightsteelblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lightyellow">Lightyellow</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Lime">Lime</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Limegreen">Limegreen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Linen">Linen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Magenta">Magenta</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Maroon">Maroon</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Mediumaquamarine">Mediumaquamarine</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Mediumblue">Mediumblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Mediumorchid">Mediumorchid</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Mediumpurple">Mediumpurple</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Mediumseagreen">Mediumseagreen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Mediumslateblue">Mediumslateblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Mediumspringgreen">Mediumspringgreen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Mediumturquoise">Mediumturquoise</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Mediumvioletred">Mediumvioletred</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Midnightblue">Midnightblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Mintcream">Mintcream</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Mistyrose">Mistyrose</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Moccasin">Moccasin</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Navajowhite">Navajowhite</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Navy">Navy</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Oldlace">Oldlace</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Olive">Olive</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Olivedrab">Olivedrab</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Orange">Orange</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Orangered">Orangered</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Orchid">Orchid</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Palegoldenrod">Palegoldenrod</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Palegreen">Palegreen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Paleturquoise">Paleturquoise</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Palevioletred">Palevioletred</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Papayawhip">Papayawhip</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Peachpuff">Peachpuff</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Peru">Peru</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Pink">Pink</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Plum">Plum</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Powderblue">Powderblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Purple">Purple</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Red">Red</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Rosybrown">Rosybrown</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Royalblue">Royalblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Saddlebrown">Saddlebrown</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Salmon">Salmon</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Sandybrown">Sandybrown</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Seagreen">Seagreen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Seashell">Seashell</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Sienna">Sienna</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Silver">Silver</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Skyblue">Skyblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Slateblue">Slateblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Slategray">Slategray</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Slategrey">Slategrey</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Snow">Snow</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Springgreen">Springgreen</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Steelblue">Steelblue</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Tan">Tan</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Teal">Teal</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Thistle">Thistle</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Tomato">Tomato</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Turquoise">Turquoise</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Violet">Violet</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Wheat">Wheat</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-White">White</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Whitesmoke">Whitesmoke</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Yellow">Yellow</a></span><span>
+			  var golang.org/x/image/colornames.<a href="../golang.org/x/image/colornames.html#name-Yellowgreen">Yellowgreen</a></span>
+			<input type='checkbox' class="showhide" id="RGBA-showhide-values"><i><label for="RGBA-showhide-values" class="show-inline">/* one unexported ... */</label><label for="RGBA-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var github.com/srwiley/rasterx.<a href="../github.com/srwiley/rasterx.html#name-noApha">noApha</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-RGBA64" data-popularity="1795">	<input type='checkbox' class="fold" id="RGBA64-fold-content"><label for="RGBA64-fold-content"> type <a href="../../src/image/color/color.go.html#line-47">RGBA64</a> <i>(struct)</i></label><span id='RGBA64-fold-content-docs' class="fold-docs">
+<span class="md-text">		RGBA64 represents a 64-bit alpha-premultiplied color, having 16 bits for
+		each of red, green, blue and alpha.
+		
+		An alpha-premultiplied color component C has been scaled by alpha (A), so
+		has valid values 0 &lt;= C &lt;= A.</span>
+
+		<input type='checkbox' class="fold" id="RGBA64-fold-fields"><label for="RGBA64-fold-fields">Fields (<i>total 4, all are exported</i>)</label><span id='RGBA64-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-48">A</a> <i><a href="../builtin.html#name-uint16">uint16</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-48">B</a> <i><a href="../builtin.html#name-uint16">uint16</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-48">G</a> <i><a href="../builtin.html#name-uint16">uint16</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-48">R</a> <i><a href="../builtin.html#name-uint16">uint16</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="RGBA64-fold-methods"><label for="RGBA64-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='RGBA64-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( RGBA64) <a href="../../src/image/color/color.go.html#line-51">RGBA</a>() (r, g, b, a <a href="../builtin.html#name-uint32">uint32</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="RGBA64-fold-impls"><label for="RGBA64-fold-impls">Implements (<i>at least one exported</i>)</label><span id='RGBA64-fold-impls-items' class="fold-items"><span>
+			 RGBA64 : <a href="#name-Color">Color</a></span></span>
+		<input type='checkbox' class="fold" id="RGBA64-fold-results"><label for="RGBA64-fold-results">As Outputs Of (<i>at least 17, all are exported</i>)</label><span id='RGBA64-fold-results-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-Alpha">Alpha</a>).<a href="../../src/image/image.go.html#line-642">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.(*<a href="../image.html#name-Alpha16">Alpha16</a>).<a href="../../src/image/image.go.html#line-750">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.(*<a href="../image.html#name-CMYK">CMYK</a>).<a href="../../src/image/image.go.html#line-1058">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.(*<a href="../image.html#name-Gray">Gray</a>).<a href="../../src/image/image.go.html#line-861">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.(*<a href="../image.html#name-Gray16">Gray16</a>).<a href="../../src/image/image.go.html#line-958">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.(*<a href="../image.html#name-NRGBA">NRGBA</a>).<a href="../../src/image/image.go.html#line-371">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.(*<a href="../image.html#name-NRGBA64">NRGBA64</a>).<a href="../../src/image/image.go.html#line-498">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.(*<a href="../image.html#name-NYCbCrA">NYCbCrA</a>).<a href="../../src/image/ycbcr.go.html#line-219">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.(*<a href="../image.html#name-Paletted">Paletted</a>).<a href="../../src/image/image.go.html#line-1176">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.<a href="../image.html#name-Rectangle">Rectangle</a>.<a href="../../src/image/geom.go.html#line-250">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.(*<a href="../image.html#name-RGBA">RGBA</a>).<a href="../../src/image/image.go.html#line-120">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.(*<a href="../image.html#name-RGBA64">RGBA64</a>).<a href="../../src/image/image.go.html#line-254">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.<a href="../image.html#name-RGBA64Image">RGBA64Image</a>.<a href="../../src/image/image.go.html#line-71">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.(*<a href="../image.html#name-Uniform">Uniform</a>).<a href="../../src/image/names.go.html#line-44">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image.(*<a href="../image.html#name-YCbCr">YCbCr</a>).<a href="../../src/image/ycbcr.go.html#line-75">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func image/draw.<a href="draw.html#name-RGBA64Image">RGBA64Image</a>.<a href="../../src/image/image.go.html#line-71">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span><span>
+			func golang.org/x/image/draw.<a href="../golang.org/x/image/draw.html#name-RGBA64Image">RGBA64Image</a>.<a href="../../src/image/image.go.html#line-71">RGBA64At</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>RGBA64</b></span></span>
+		<input type='checkbox' class="fold" id="RGBA64-fold-params"><label for="RGBA64-fold-params">As Inputs Of (<i>at least 12, all are exported</i>)</label><span id='RGBA64-fold-params-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-Alpha">Alpha</a>).<a href="../../src/image/image.go.html#line-670">SetRGBA64</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>RGBA64</b>)</span><span>
+			func image.(*<a href="../image.html#name-Alpha16">Alpha16</a>).<a href="../../src/image/image.go.html#line-779">SetRGBA64</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>RGBA64</b>)</span><span>
+			func image.(*<a href="../image.html#name-CMYK">CMYK</a>).<a href="../../src/image/image.go.html#line-1091">SetRGBA64</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>RGBA64</b>)</span><span>
+			func image.(*<a href="../image.html#name-Gray">Gray</a>).<a href="../../src/image/image.go.html#line-889">SetRGBA64</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>RGBA64</b>)</span><span>
+			func image.(*<a href="../image.html#name-Gray16">Gray16</a>).<a href="../../src/image/image.go.html#line-987">SetRGBA64</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>RGBA64</b>)</span><span>
+			func image.(*<a href="../image.html#name-NRGBA">NRGBA</a>).<a href="../../src/image/image.go.html#line-404">SetRGBA64</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>RGBA64</b>)</span><span>
+			func image.(*<a href="../image.html#name-NRGBA64">NRGBA64</a>).<a href="../../src/image/image.go.html#line-540">SetRGBA64</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>RGBA64</b>)</span><span>
+			func image.(*<a href="../image.html#name-Paletted">Paletted</a>).<a href="../../src/image/image.go.html#line-1210">SetRGBA64</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>RGBA64</b>)</span><span>
+			func image.(*<a href="../image.html#name-RGBA">RGBA</a>).<a href="../../src/image/image.go.html#line-166">SetRGBA64</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>RGBA64</b>)</span><span>
+			func image.(*<a href="../image.html#name-RGBA64">RGBA64</a>).<a href="../../src/image/image.go.html#line-291">SetRGBA64</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>RGBA64</b>)</span><span>
+			func image/draw.<a href="draw.html#name-RGBA64Image">RGBA64Image</a>.<a href="../../src/image/draw/draw.go.html#line-33">SetRGBA64</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>RGBA64</b>)</span><span>
+			func golang.org/x/image/draw.<a href="../golang.org/x/image/draw.html#name-RGBA64Image">RGBA64Image</a>.<a href="../../src/image/draw/draw.go.html#line-33">SetRGBA64</a>(x, y <a href="../builtin.html#name-int">int</a>, c <b>RGBA64</b>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-YCbCr" data-popularity="175">	<input type='checkbox' class="fold" id="YCbCr-fold-content"><label for="YCbCr-fold-content"> type <a href="../../src/image/color/ycbcr.go.html#line-167">YCbCr</a> <i>(struct)</i></label><span id='YCbCr-fold-content-docs' class="fold-docs">
+<span class="md-text">		YCbCr represents a fully opaque 24-bit Y'CbCr color, having 8 bits each for
+		one luma and two chroma components.
+		
+		JPEG, VP8, the MPEG family and other codecs use this color model. Such
+		codecs often use the terms YUV and Y'CbCr interchangeably, but strictly
+		speaking, the term YUV applies only to analog video signals, and Y' (luma)
+		is Y (luminance) after applying gamma correction.
+		
+		Conversion between RGB and Y'CbCr is lossy and there are multiple, slightly
+		different formulae for converting between the two. This package follows
+		the JFIF specification at https://www.w3.org/Graphics/JPEG/jfif3.pdf.</span>
+
+		<input type='checkbox' class="fold" id="YCbCr-fold-fields"><label for="YCbCr-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='YCbCr-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/image/color/ycbcr.go.html#line-168">Cb</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/ycbcr.go.html#line-168">Cr</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/image/color/ycbcr.go.html#line-168">Y</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="YCbCr-fold-methods"><label for="YCbCr-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='YCbCr-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( YCbCr) <a href="../../src/image/color/ycbcr.go.html#line-171">RGBA</a>() (<a href="../builtin.html#name-uint32">uint32</a>, <a href="../builtin.html#name-uint32">uint32</a>, <a href="../builtin.html#name-uint32">uint32</a>, <a href="../builtin.html#name-uint32">uint32</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="YCbCr-fold-impls"><label for="YCbCr-fold-impls">Implements (<i>at least one exported</i>)</label><span id='YCbCr-fold-impls-items' class="fold-items"><span>
+			 YCbCr : <a href="#name-Color">Color</a></span></span>
+		<input type='checkbox' class="fold" id="YCbCr-fold-results"><label for="YCbCr-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='YCbCr-fold-results-items' class="fold-items"><span>
+			func image.(*<a href="../image.html#name-YCbCr">YCbCr</a>).<a href="../../src/image/ycbcr.go.html#line-80">YCbCrAt</a>(x, y <a href="../builtin.html#name-int">int</a>) <b>YCbCr</b></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor type-res hidden" id="name-modelFunc" data-popularity="100">	<input type='checkbox' class="fold" id="modelFunc-fold-content"><label for="modelFunc-fold-content"> type <a href="../../src/image/color/color.go.html#line-156">modelFunc</a> <i>(struct)</i></label><span id='modelFunc-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="modelFunc-fold-fields"><label for="modelFunc-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='modelFunc-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="modelFunc-showhide-fields"><i><label for="modelFunc-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="modelFunc-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/image/color/color.go.html#line-157">f</a> <i>func(<a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="modelFunc-fold-methods"><label for="modelFunc-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='modelFunc-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*modelFunc) <a href="../../src/image/color/color.go.html#line-160">Convert</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></span></span></span>
+		<input type='checkbox' class="fold" id="modelFunc-fold-impls"><label for="modelFunc-fold-impls">Implements (<i>at least one exported</i>)</label><span id='modelFunc-fold-impls-items' class="fold-items"><span>
+			*modelFunc : <a href="#name-Model">Model</a></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 17, in which 5 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-CMYKToRGB">	<input type='checkbox' class="fold" id="CMYKToRGB-fold-content"><label for="CMYKToRGB-fold-content"> func <a href="../../src/image/color/ycbcr.go.html#line-336">CMYKToRGB</a>(c, m, y, k <a href="../builtin.html#name-uint8">uint8</a>) (<a href="../builtin.html#name-uint8">uint8</a>, <a href="../builtin.html#name-uint8">uint8</a>, <a href="../builtin.html#name-uint8">uint8</a>)</label><span id='CMYKToRGB-fold-content-docs' class="fold-docs">
+<span class="md-text">		CMYKToRGB converts a [CMYK] quadruple to an RGB triple.</span>
+
+</span></div><div class="anchor value-res" id="name-ModelFunc">	<input type='checkbox' class="fold" id="ModelFunc-fold-content"><label for="ModelFunc-fold-content"> func <a href="../../src/image/color/color.go.html#line-147">ModelFunc</a>(f func(<a href="#name-Color">Color</a>) <a href="#name-Color">Color</a>) <a href="#name-Model">Model</a></label><span id='ModelFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		ModelFunc returns a [Model] that invokes f to implement the conversion.</span>
+
+</span></div><div class="anchor value-res" id="name-RGBToCMYK">	<input type='checkbox' class="fold" id="RGBToCMYK-fold-content"><label for="RGBToCMYK-fold-content"> func <a href="../../src/image/color/ycbcr.go.html#line-315">RGBToCMYK</a>(r, g, b <a href="../builtin.html#name-uint8">uint8</a>) (<a href="../builtin.html#name-uint8">uint8</a>, <a href="../builtin.html#name-uint8">uint8</a>, <a href="../builtin.html#name-uint8">uint8</a>, <a href="../builtin.html#name-uint8">uint8</a>)</label><span id='RGBToCMYK-fold-content-docs' class="fold-docs">
+<span class="md-text">		RGBToCMYK converts an RGB triple to a CMYK quadruple.</span>
+
+</span></div><div class="anchor value-res" id="name-RGBToYCbCr">	<input type='checkbox' class="fold" id="RGBToYCbCr-fold-content"><label for="RGBToYCbCr-fold-content"> func <a href="../../src/image/color/ycbcr.go.html#line-8">RGBToYCbCr</a>(r, g, b <a href="../builtin.html#name-uint8">uint8</a>) (<a href="../builtin.html#name-uint8">uint8</a>, <a href="../builtin.html#name-uint8">uint8</a>, <a href="../builtin.html#name-uint8">uint8</a>)</label><span id='RGBToYCbCr-fold-content-docs' class="fold-docs">
+<span class="md-text">		RGBToYCbCr converts an RGB triple to a Y'CbCr triple.</span>
+
+</span></div><div class="anchor value-res" id="name-YCbCrToRGB">	<input type='checkbox' class="fold" id="YCbCrToRGB-fold-content"><label for="YCbCrToRGB-fold-content"> func <a href="../../src/image/color/ycbcr.go.html#line-58">YCbCrToRGB</a>(y, cb, cr <a href="../builtin.html#name-uint8">uint8</a>) (<a href="../builtin.html#name-uint8">uint8</a>, <a href="../builtin.html#name-uint8">uint8</a>, <a href="../builtin.html#name-uint8">uint8</a>)</label><span id='YCbCrToRGB-fold-content-docs' class="fold-docs">
+<span class="md-text">		YCbCrToRGB converts a Y'CbCr triple to an RGB triple.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 12 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 12 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-alpha16Model"><i>	<span class="nodocs"> func <a href="../../src/image/color/color.go.html#line-236">alpha16Model</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></span></i></div><div class="anchor value-res hidden" id="name-alphaModel"><i>	<span class="nodocs"> func <a href="../../src/image/color/color.go.html#line-228">alphaModel</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></span></i></div><div class="anchor value-res hidden" id="name-cmykModel"><i>	<span class="nodocs"> func <a href="../../src/image/color/ycbcr.go.html#line-366">cmykModel</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></span></i></div><div class="anchor value-res hidden" id="name-gray16Model"><i>	<span class="nodocs"> func <a href="../../src/image/color/color.go.html#line-263">gray16Model</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></span></i></div><div class="anchor value-res hidden" id="name-grayModel"><i>	<span class="nodocs"> func <a href="../../src/image/color/color.go.html#line-244">grayModel</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></span></i></div><div class="anchor value-res hidden" id="name-nrgba64Model"><i>	<span class="nodocs"> func <a href="../../src/image/color/color.go.html#line-210">nrgba64Model</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></span></i></div><div class="anchor value-res hidden" id="name-nrgbaModel"><i>	<span class="nodocs"> func <a href="../../src/image/color/color.go.html#line-192">nrgbaModel</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></span></i></div><div class="anchor value-res hidden" id="name-nYCbCrAModel"><i>	<span class="nodocs"> func <a href="../../src/image/color/ycbcr.go.html#line-294">nYCbCrAModel</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></span></i></div><div class="anchor value-res hidden" id="name-rgba64Model"><i>	<span class="nodocs"> func <a href="../../src/image/color/color.go.html#line-184">rgba64Model</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></span></i></div><div class="anchor value-res hidden" id="name-rgbaModel"><i>	<span class="nodocs"> func <a href="../../src/image/color/color.go.html#line-176">rgbaModel</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></span></i></div><div class="anchor value-res hidden" id="name-sqDiff"><i>	<input type='checkbox' class="fold" id="sqDiff-fold-content"><label for="sqDiff-fold-content"> func <a href="../../src/image/color/color.go.html#line-314">sqDiff</a>(x, y <a href="../builtin.html#name-uint32">uint32</a>) <a href="../builtin.html#name-uint32">uint32</a></label><span id='sqDiff-fold-content-docs' class="fold-docs">
+<span class="md-text">		sqDiff returns the squared-difference of x and y, shifted by 2 so that
+		adding four of those won't overflow a uint32.
+		
+		x and y are both assumed to be in the range [0, 0xffff].</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-yCbCrModel"><i>	<span class="nodocs"> func <a href="../../src/image/color/ycbcr.go.html#line-231">yCbCrModel</a>(c <a href="#name-Color">Color</a>) <a href="#name-Color">Color</a></span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 15, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Alpha16Model">	<input type='checkbox' class="fold" id="Alpha16Model-fold-content"><label for="Alpha16Model-fold-content">  var <a href="../../src/image/color/color.go.html#line-171">Alpha16Model</a> <a href="#name-Model">Model</a></label><span id='Alpha16Model-fold-content-docs' class="fold-docs">
+<span class="md-text">		Models for the standard color types.</span>
+
+</span></div><div class="anchor value-res" id="name-AlphaModel">	<input type='checkbox' class="fold" id="AlphaModel-fold-content"><label for="AlphaModel-fold-content">  var <a href="../../src/image/color/color.go.html#line-170">AlphaModel</a> <a href="#name-Model">Model</a></label><span id='AlphaModel-fold-content-docs' class="fold-docs">
+<span class="md-text">		Models for the standard color types.</span>
+
+</span></div><div class="anchor value-res" id="name-Black">	<input type='checkbox' class="fold" id="Black-fold-content"><label for="Black-fold-content">  var <a href="../../src/image/color/color.go.html#line-343">Black</a> <a href="#name-Gray16">Gray16</a></label><span id='Black-fold-content-docs' class="fold-docs">
+<span class="md-text">		Standard colors.</span>
+
+</span></div><div class="anchor value-res" id="name-CMYKModel">	<input type='checkbox' class="fold" id="CMYKModel-fold-content"><label for="CMYKModel-fold-content">  var <a href="../../src/image/color/ycbcr.go.html#line-364">CMYKModel</a> <a href="#name-Model">Model</a></label><span id='CMYKModel-fold-content-docs' class="fold-docs">
+<span class="md-text">		CMYKModel is the [Model] for CMYK colors.</span>
+
+</span></div><div class="anchor value-res" id="name-Gray16Model">	<input type='checkbox' class="fold" id="Gray16Model-fold-content"><label for="Gray16Model-fold-content">  var <a href="../../src/image/color/color.go.html#line-173">Gray16Model</a> <a href="#name-Model">Model</a></label><span id='Gray16Model-fold-content-docs' class="fold-docs">
+<span class="md-text">		Models for the standard color types.</span>
+
+</span></div><div class="anchor value-res" id="name-GrayModel">	<input type='checkbox' class="fold" id="GrayModel-fold-content"><label for="GrayModel-fold-content">  var <a href="../../src/image/color/color.go.html#line-172">GrayModel</a> <a href="#name-Model">Model</a></label><span id='GrayModel-fold-content-docs' class="fold-docs">
+<span class="md-text">		Models for the standard color types.</span>
+
+</span></div><div class="anchor value-res" id="name-NRGBA64Model">	<input type='checkbox' class="fold" id="NRGBA64Model-fold-content"><label for="NRGBA64Model-fold-content">  var <a href="../../src/image/color/color.go.html#line-169">NRGBA64Model</a> <a href="#name-Model">Model</a></label><span id='NRGBA64Model-fold-content-docs' class="fold-docs">
+<span class="md-text">		Models for the standard color types.</span>
+
+</span></div><div class="anchor value-res" id="name-NRGBAModel">	<input type='checkbox' class="fold" id="NRGBAModel-fold-content"><label for="NRGBAModel-fold-content">  var <a href="../../src/image/color/color.go.html#line-168">NRGBAModel</a> <a href="#name-Model">Model</a></label><span id='NRGBAModel-fold-content-docs' class="fold-docs">
+<span class="md-text">		Models for the standard color types.</span>
+
+</span></div><div class="anchor value-res" id="name-NYCbCrAModel">	<input type='checkbox' class="fold" id="NYCbCrAModel-fold-content"><label for="NYCbCrAModel-fold-content">  var <a href="../../src/image/color/ycbcr.go.html#line-292">NYCbCrAModel</a> <a href="#name-Model">Model</a></label><span id='NYCbCrAModel-fold-content-docs' class="fold-docs">
+<span class="md-text">		NYCbCrAModel is the [Model] for non-alpha-premultiplied Y'CbCr-with-alpha
+		colors.</span>
+
+</span></div><div class="anchor value-res" id="name-Opaque">	<input type='checkbox' class="fold" id="Opaque-fold-content"><label for="Opaque-fold-content">  var <a href="../../src/image/color/color.go.html#line-346">Opaque</a> <a href="#name-Alpha16">Alpha16</a></label><span id='Opaque-fold-content-docs' class="fold-docs">
+<span class="md-text">		Standard colors.</span>
+
+</span></div><div class="anchor value-res" id="name-RGBA64Model">	<input type='checkbox' class="fold" id="RGBA64Model-fold-content"><label for="RGBA64Model-fold-content">  var <a href="../../src/image/color/color.go.html#line-167">RGBA64Model</a> <a href="#name-Model">Model</a></label><span id='RGBA64Model-fold-content-docs' class="fold-docs">
+<span class="md-text">		Models for the standard color types.</span>
+
+</span></div><div class="anchor value-res" id="name-RGBAModel">	<input type='checkbox' class="fold" id="RGBAModel-fold-content"><label for="RGBAModel-fold-content">  var <a href="../../src/image/color/color.go.html#line-166">RGBAModel</a> <a href="#name-Model">Model</a></label><span id='RGBAModel-fold-content-docs' class="fold-docs">
+<span class="md-text">		Models for the standard color types.</span>
+
+</span></div><div class="anchor value-res" id="name-Transparent">	<input type='checkbox' class="fold" id="Transparent-fold-content"><label for="Transparent-fold-content">  var <a href="../../src/image/color/color.go.html#line-345">Transparent</a> <a href="#name-Alpha16">Alpha16</a></label><span id='Transparent-fold-content-docs' class="fold-docs">
+<span class="md-text">		Standard colors.</span>
+
+</span></div><div class="anchor value-res" id="name-White">	<input type='checkbox' class="fold" id="White-fold-content"><label for="White-fold-content">  var <a href="../../src/image/color/color.go.html#line-344">White</a> <a href="#name-Gray16">Gray16</a></label><span id='White-fold-content-docs' class="fold-docs">
+<span class="md-text">		Standard colors.</span>
+
+</span></div><div class="anchor value-res" id="name-YCbCrModel">	<input type='checkbox' class="fold" id="YCbCrModel-fold-content"><label for="YCbCrModel-fold-content">  var <a href="../../src/image/color/ycbcr.go.html#line-229">YCbCrModel</a> <a href="#name-Model">Model</a></label><span id='YCbCrModel-fold-content-docs' class="fold-docs">
+<span class="md-text">		YCbCrModel is the [Model] for Y'CbCr colors.</span>
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

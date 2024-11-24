@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: aat_ankr_src.go in package github.com/go-text/typesetting/font/opentype/tables</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	aat_ankr_src.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html">github.com/go-text/typesetting/font/opentype/tables</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> tables</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"encoding/binary"</span></label></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// Ankr is the anchor point table</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// See - https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6ankr.html</span></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-Ankr" class="ident">Ankr</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-10"><code>	version <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="comment">// Version number (set to zero)</span></code></span>
+<span class="codeline" id="line-11"><code>	flags   <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="comment">// Flags (currently unused; set to zero)</span></code></span>
+<span class="codeline" id="line-12"><code>	<span class="comment">// Offset to the table's lookup table; currently this is always 0x0000000C</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">	// The lookup table returns uint16 offset from the beginning of the glyph data table, not indices.</span></code></span>
+<span class="codeline" id="line-14"><code>	lookupTable <a href="aat_common.go.html#line-201" class="ident">AATLookup</a> <span class="lit-string">`offsetSize:"Offset32"`</span></code></span>
+<span class="codeline" id="line-15"><code>	<span class="comment">// Offset to the glyph data table</span></code></span>
+<span class="codeline" id="line-16"><code>	glyphDataTable []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="lit-string">`offsetSize:"Offset32" arrayCount:"ToEnd"`</span></code></span>
+<span class="codeline" id="line-17"><code>}</code></span>
+<span class="codeline" id="line-18"><code></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// GetAnchor return the i-th anchor for `glyph`, or {0,0} if not found.</span></code></span>
+<span class="codeline" id="line-20"><code><span class="keyword">func</span> (<label for="r0" class="ident">ank</label> <a href="#line-9" class="ident">Ankr</a>) <label for="r1" class="ident">GetAnchor</label>(<label for="r2" class="ident">glyph</label> <a href="tables.go.html#line-9" class="ident">GlyphID</a>, <label for="r3" class="ident">index</label> <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>) (<label for="r4" class="ident">anchor</label> <a href="#line-42" class="ident">AnkrAnchor</a>) {</code></span>
+<span class="codeline" id="line-21"><code>	<label for="r5" class="ident">offset</label>, <label for="r6" class="ident">ok</label> := <label for="r0" class="ident">ank</label>.<a href="#line-14" class="ident">lookupTable</a>.<a href="aat_common.go.html#line-208" class="ident">Class</a>(<label for="r2" class="ident">glyph</label>)</code></span>
+<span class="codeline" id="line-22"><code>	<span class="keyword">if</span> !<label for="r6" class="ident">ok</label> || <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r5" class="ident">offset</label>)+<span class="lit-number">4</span> &gt;= <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r0" class="ident">ank</label>.<a href="#line-16" class="ident">glyphDataTable</a>) {</code></span>
+<span class="codeline" id="line-23"><code>		<span class="keyword">return</span> <label for="r4" class="ident">anchor</label></code></span>
+<span class="codeline" id="line-24"><code>	}</code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code>	<label for="r7" class="ident">count</label> := <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="../../../../../../../pkg/encoding/binary.html" class="ident i0">binary</a>.<a href="../../../../../../encoding/binary/binary.go.html#line-64" class="ident">BigEndian</a>.<a href="../../../../../../encoding/binary/binary.go.html#line-163" class="ident">Uint32</a>(<label for="r0" class="ident">ank</label>.<a href="#line-16" class="ident">glyphDataTable</a>[<label for="r5" class="ident">offset</label>:]))</code></span>
+<span class="codeline" id="line-27"><code>	<span class="keyword">if</span> <label for="r3" class="ident">index</label> &gt;= <label for="r7" class="ident">count</label> {</code></span>
+<span class="codeline" id="line-28"><code>		<span class="keyword">return</span> <label for="r4" class="ident">anchor</label> <span class="comment">// invalid index</span></code></span>
+<span class="codeline" id="line-29"><code>	}</code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code>	<label for="r8" class="ident">indexStart</label> := <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r5" class="ident">offset</label>) + <span class="lit-number">4</span> + <span class="lit-number">4</span>*<label for="r3" class="ident">index</label></code></span>
+<span class="codeline" id="line-32"><code>	<span class="keyword">if</span> <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r0" class="ident">ank</label>.<a href="#line-16" class="ident">glyphDataTable</a>) &lt; <label for="r8" class="ident">indexStart</label>+<span class="lit-number">4</span> {</code></span>
+<span class="codeline" id="line-33"><code>		<span class="keyword">return</span> <label for="r4" class="ident">anchor</label> <span class="comment">// invalid table</span></code></span>
+<span class="codeline" id="line-34"><code>	}</code></span>
+<span class="codeline" id="line-35"><code>	<label for="r4" class="ident">anchor</label>.<a href="#line-43" class="ident">X</a> = <a href="../../../../../../../pkg/builtin.html#name-int16" class="ident">int16</a>(<a href="../../../../../../../pkg/encoding/binary.html" class="ident i0">binary</a>.<a href="../../../../../../encoding/binary/binary.go.html#line-64" class="ident">BigEndian</a>.<a href="../../../../../../encoding/binary/binary.go.html#line-145" class="ident">Uint16</a>(<label for="r0" class="ident">ank</label>.<a href="#line-16" class="ident">glyphDataTable</a>[<label for="r8" class="ident">indexStart</label>:]))</code></span>
+<span class="codeline" id="line-36"><code>	<label for="r4" class="ident">anchor</label>.<a href="#line-43" class="ident">Y</a> = <a href="../../../../../../../pkg/builtin.html#name-int16" class="ident">int16</a>(<a href="../../../../../../../pkg/encoding/binary.html" class="ident i0">binary</a>.<a href="../../../../../../encoding/binary/binary.go.html#line-64" class="ident">BigEndian</a>.<a href="../../../../../../encoding/binary/binary.go.html#line-145" class="ident">Uint16</a>(<label for="r0" class="ident">ank</label>.<a href="#line-16" class="ident">glyphDataTable</a>[<label for="r8" class="ident">indexStart</label>+<span class="lit-number">2</span>:]))</code></span>
+<span class="codeline" id="line-37"><code>	<span class="keyword">return</span> <label for="r4" class="ident">anchor</label></code></span>
+<span class="codeline" id="line-38"><code>}</code></span>
+<span class="codeline" id="line-39"><code></code></span>
+<span class="codeline" id="line-40"><code><span class="comment">// AnkrAnchor is a point within the coordinate space of a given glyph</span></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">// independent of the control points used to render the glyph</span></code></span>
+<span class="codeline" id="line-42"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-AnkrAnchor" class="ident">AnkrAnchor</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-43"><code>	X, Y <a href="../../../../../../../pkg/builtin.html#name-int16" class="ident">int16</a></code></span>
+<span class="codeline" id="line-44"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

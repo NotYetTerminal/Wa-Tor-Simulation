@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: ot_khmer_machine.go in package github.com/go-text/typesetting/harfbuzz</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	ot_khmer_machine.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html">github.com/go-text/typesetting/harfbuzz</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26]
+{background: #226; color: #ff8;}
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> harfbuzz</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// Code generated with ragel -Z -o ot_khmer_machine.go ot_khmer_machine.rl ; sed -i '/^\/\/line/ d' ot_khmer_machine.go ; goimports -w ot_khmer_machine.go  DO NOT EDIT.</span></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// ported from harfbuzz/src/hb-ot-shape-complex-khmer-machine.rl Copyright © 2015 Google, Inc. Behdad Esfahbod</span></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-8"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmerConsonantSyllable" class="ident">khmerConsonantSyllable</a> = <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-9"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmerBrokenCluster" class="ident">khmerBrokenCluster</a></code></span>
+<span class="codeline" id="line-10"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmerNonKhmerCluster" class="ident">khmerNonKhmerCluster</a></code></span>
+<span class="codeline" id="line-11"><code>)</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_C" class="ident">khmSM_ex_C</a> = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-14"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_DOTTEDCIRCLE" class="ident">khmSM_ex_DOTTEDCIRCLE</a> = <span class="lit-number">11</span></code></span>
+<span class="codeline" id="line-15"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_H" class="ident">khmSM_ex_H</a> = <span class="lit-number">4</span></code></span>
+<span class="codeline" id="line-16"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_PLACEHOLDER" class="ident">khmSM_ex_PLACEHOLDER</a> = <span class="lit-number">10</span></code></span>
+<span class="codeline" id="line-17"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_Ra" class="ident">khmSM_ex_Ra</a> = <span class="lit-number">15</span></code></span>
+<span class="codeline" id="line-18"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_Robatic" class="ident">khmSM_ex_Robatic</a> = <span class="lit-number">25</span></code></span>
+<span class="codeline" id="line-19"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_V" class="ident">khmSM_ex_V</a> = <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-20"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_VAbv" class="ident">khmSM_ex_VAbv</a> = <span class="lit-number">20</span></code></span>
+<span class="codeline" id="line-21"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_VBlw" class="ident">khmSM_ex_VBlw</a> = <span class="lit-number">21</span></code></span>
+<span class="codeline" id="line-22"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_VPre" class="ident">khmSM_ex_VPre</a> = <span class="lit-number">22</span></code></span>
+<span class="codeline" id="line-23"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_VPst" class="ident">khmSM_ex_VPst</a> = <span class="lit-number">23</span></code></span>
+<span class="codeline" id="line-24"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_Xgroup" class="ident">khmSM_ex_Xgroup</a> = <span class="lit-number">26</span></code></span>
+<span class="codeline" id="line-25"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_Ygroup" class="ident">khmSM_ex_Ygroup</a> = <span class="lit-number">27</span></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_ZWJ" class="ident">khmSM_ex_ZWJ</a> = <span class="lit-number">6</span></code></span>
+<span class="codeline" id="line-27"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_ex_ZWNJ" class="ident">khmSM_ex_ZWNJ</a> = <span class="lit-number">5</span></code></span>
+<span class="codeline" id="line-28"><code></code></span>
+<span class="codeline" id="line-29"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-_khmSM_actions" class="ident">_khmSM_actions</a> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> = []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{</code></span>
+<span class="codeline" id="line-30"><code>	<span class="lit-number">0</span>, <span class="lit-number">1</span>, <span class="lit-number">0</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">1</span>, <span class="lit-number">5</span>,</code></span>
+<span class="codeline" id="line-31"><code>	<span class="lit-number">1</span>, <span class="lit-number">6</span>, <span class="lit-number">1</span>, <span class="lit-number">7</span>, <span class="lit-number">1</span>, <span class="lit-number">8</span>, <span class="lit-number">1</span>, <span class="lit-number">9</span>,</code></span>
+<span class="codeline" id="line-32"><code>	<span class="lit-number">1</span>, <span class="lit-number">10</span>, <span class="lit-number">1</span>, <span class="lit-number">11</span>, <span class="lit-number">2</span>, <span class="lit-number">2</span>, <span class="lit-number">3</span>, <span class="lit-number">2</span>,</code></span>
+<span class="codeline" id="line-33"><code>	<span class="lit-number">2</span>, <span class="lit-number">4</span>,</code></span>
+<span class="codeline" id="line-34"><code>}</code></span>
+<span class="codeline" id="line-35"><code></code></span>
+<span class="codeline" id="line-36"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-_khmSM_key_offsets" class="ident">_khmSM_key_offsets</a> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> = []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{</code></span>
+<span class="codeline" id="line-37"><code>	<span class="lit-number">0</span>, <span class="lit-number">5</span>, <span class="lit-number">8</span>, <span class="lit-number">11</span>, <span class="lit-number">15</span>, <span class="lit-number">18</span>, <span class="lit-number">21</span>, <span class="lit-number">25</span>,</code></span>
+<span class="codeline" id="line-38"><code>	<span class="lit-number">28</span>, <span class="lit-number">32</span>, <span class="lit-number">35</span>, <span class="lit-number">40</span>, <span class="lit-number">45</span>, <span class="lit-number">48</span>, <span class="lit-number">51</span>, <span class="lit-number">55</span>,</code></span>
+<span class="codeline" id="line-39"><code>	<span class="lit-number">58</span>, <span class="lit-number">61</span>, <span class="lit-number">65</span>, <span class="lit-number">68</span>, <span class="lit-number">72</span>, <span class="lit-number">75</span>, <span class="lit-number">90</span>, <span class="lit-number">100</span>,</code></span>
+<span class="codeline" id="line-40"><code>	<span class="lit-number">103</span>, <span class="lit-number">113</span>, <span class="lit-number">122</span>, <span class="lit-number">123</span>, <span class="lit-number">129</span>, <span class="lit-number">134</span>, <span class="lit-number">141</span>, <span class="lit-number">149</span>,</code></span>
+<span class="codeline" id="line-41"><code>	<span class="lit-number">158</span>, <span class="lit-number">168</span>, <span class="lit-number">171</span>, <span class="lit-number">181</span>, <span class="lit-number">190</span>, <span class="lit-number">191</span>, <span class="lit-number">197</span>, <span class="lit-number">202</span>,</code></span>
+<span class="codeline" id="line-42"><code>	<span class="lit-number">209</span>, <span class="lit-number">217</span>, <span class="lit-number">226</span>,</code></span>
+<span class="codeline" id="line-43"><code>}</code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-_khmSM_trans_keys" class="ident">_khmSM_trans_keys</a> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> = []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{</code></span>
+<span class="codeline" id="line-46"><code>	<span class="lit-number">20</span>, <span class="lit-number">25</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>,</code></span>
+<span class="codeline" id="line-47"><code>	<span class="lit-number">15</span>, <span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">20</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">26</span>,</code></span>
+<span class="codeline" id="line-48"><code>	<span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">20</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>,</code></span>
+<span class="codeline" id="line-49"><code>	<span class="lit-number">6</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">20</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>,</code></span>
+<span class="codeline" id="line-50"><code>	<span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">20</span>, <span class="lit-number">25</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>,</code></span>
+<span class="codeline" id="line-51"><code>	<span class="lit-number">20</span>, <span class="lit-number">25</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>,</code></span>
+<span class="codeline" id="line-52"><code>	<span class="lit-number">15</span>, <span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">20</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">26</span>,</code></span>
+<span class="codeline" id="line-53"><code>	<span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">20</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>,</code></span>
+<span class="codeline" id="line-54"><code>	<span class="lit-number">6</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">20</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>,</code></span>
+<span class="codeline" id="line-55"><code>	<span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">4</span>, <span class="lit-number">15</span>, <span class="lit-number">20</span>, <span class="lit-number">21</span>, <span class="lit-number">22</span>,</code></span>
+<span class="codeline" id="line-56"><code>	<span class="lit-number">23</span>, <span class="lit-number">25</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>,</code></span>
+<span class="codeline" id="line-57"><code>	<span class="lit-number">10</span>, <span class="lit-number">11</span>, <span class="lit-number">4</span>, <span class="lit-number">20</span>, <span class="lit-number">21</span>, <span class="lit-number">22</span>, <span class="lit-number">23</span>, <span class="lit-number">25</span>,</code></span>
+<span class="codeline" id="line-58"><code>	<span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">15</span>, <span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">4</span>,</code></span>
+<span class="codeline" id="line-59"><code>	<span class="lit-number">20</span>, <span class="lit-number">21</span>, <span class="lit-number">22</span>, <span class="lit-number">23</span>, <span class="lit-number">25</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">5</span>,</code></span>
+<span class="codeline" id="line-60"><code>	<span class="lit-number">6</span>, <span class="lit-number">4</span>, <span class="lit-number">20</span>, <span class="lit-number">21</span>, <span class="lit-number">22</span>, <span class="lit-number">23</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>,</code></span>
+<span class="codeline" id="line-61"><code>	<span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">27</span>, <span class="lit-number">4</span>, <span class="lit-number">23</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">5</span>,</code></span>
+<span class="codeline" id="line-62"><code>	<span class="lit-number">6</span>, <span class="lit-number">4</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">4</span>, <span class="lit-number">20</span>,</code></span>
+<span class="codeline" id="line-63"><code>	<span class="lit-number">23</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">4</span>, <span class="lit-number">20</span>, <span class="lit-number">21</span>,</code></span>
+<span class="codeline" id="line-64"><code>	<span class="lit-number">23</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">4</span>, <span class="lit-number">20</span>, <span class="lit-number">21</span>,</code></span>
+<span class="codeline" id="line-65"><code>	<span class="lit-number">22</span>, <span class="lit-number">23</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">4</span>, <span class="lit-number">20</span>,</code></span>
+<span class="codeline" id="line-66"><code>	<span class="lit-number">21</span>, <span class="lit-number">22</span>, <span class="lit-number">23</span>, <span class="lit-number">25</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>,</code></span>
+<span class="codeline" id="line-67"><code>	<span class="lit-number">15</span>, <span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">4</span>, <span class="lit-number">20</span>, <span class="lit-number">21</span>, <span class="lit-number">22</span>, <span class="lit-number">23</span>,</code></span>
+<span class="codeline" id="line-68"><code>	<span class="lit-number">25</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">4</span>, <span class="lit-number">20</span>, <span class="lit-number">21</span>,</code></span>
+<span class="codeline" id="line-69"><code>	<span class="lit-number">22</span>, <span class="lit-number">23</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">27</span>, <span class="lit-number">4</span>,</code></span>
+<span class="codeline" id="line-70"><code>	<span class="lit-number">23</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">4</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>,</code></span>
+<span class="codeline" id="line-71"><code>	<span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">4</span>, <span class="lit-number">20</span>, <span class="lit-number">23</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">5</span>,</code></span>
+<span class="codeline" id="line-72"><code>	<span class="lit-number">6</span>, <span class="lit-number">4</span>, <span class="lit-number">20</span>, <span class="lit-number">21</span>, <span class="lit-number">23</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">5</span>,</code></span>
+<span class="codeline" id="line-73"><code>	<span class="lit-number">6</span>, <span class="lit-number">4</span>, <span class="lit-number">20</span>, <span class="lit-number">21</span>, <span class="lit-number">22</span>, <span class="lit-number">23</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>,</code></span>
+<span class="codeline" id="line-74"><code>	<span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">20</span>, <span class="lit-number">26</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>,</code></span>
+<span class="codeline" id="line-75"><code>}</code></span>
+<span class="codeline" id="line-76"><code></code></span>
+<span class="codeline" id="line-77"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-_khmSM_single_lengths" class="ident">_khmSM_single_lengths</a> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> = []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{</code></span>
+<span class="codeline" id="line-78"><code>	<span class="lit-number">3</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">1</span>,</code></span>
+<span class="codeline" id="line-79"><code>	<span class="lit-number">2</span>, <span class="lit-number">1</span>, <span class="lit-number">3</span>, <span class="lit-number">3</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">1</span>,</code></span>
+<span class="codeline" id="line-80"><code>	<span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">1</span>, <span class="lit-number">9</span>, <span class="lit-number">8</span>, <span class="lit-number">1</span>,</code></span>
+<span class="codeline" id="line-81"><code>	<span class="lit-number">8</span>, <span class="lit-number">7</span>, <span class="lit-number">1</span>, <span class="lit-number">4</span>, <span class="lit-number">3</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">7</span>,</code></span>
+<span class="codeline" id="line-82"><code>	<span class="lit-number">8</span>, <span class="lit-number">1</span>, <span class="lit-number">8</span>, <span class="lit-number">7</span>, <span class="lit-number">1</span>, <span class="lit-number">4</span>, <span class="lit-number">3</span>, <span class="lit-number">5</span>,</code></span>
+<span class="codeline" id="line-83"><code>	<span class="lit-number">6</span>, <span class="lit-number">7</span>, <span class="lit-number">2</span>,</code></span>
+<span class="codeline" id="line-84"><code>}</code></span>
+<span class="codeline" id="line-85"><code></code></span>
+<span class="codeline" id="line-86"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-_khmSM_range_lengths" class="ident">_khmSM_range_lengths</a> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> = []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{</code></span>
+<span class="codeline" id="line-87"><code>	<span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>,</code></span>
+<span class="codeline" id="line-88"><code>	<span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>,</code></span>
+<span class="codeline" id="line-89"><code>	<span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">3</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>,</code></span>
+<span class="codeline" id="line-90"><code>	<span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">0</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>,</code></span>
+<span class="codeline" id="line-91"><code>	<span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">0</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>,</code></span>
+<span class="codeline" id="line-92"><code>	<span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>,</code></span>
+<span class="codeline" id="line-93"><code>}</code></span>
+<span class="codeline" id="line-94"><code></code></span>
+<span class="codeline" id="line-95"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-_khmSM_index_offsets" class="ident">_khmSM_index_offsets</a> []<a href="../../../../../pkg/builtin.html#name-int16" class="ident">int16</a> = []<a href="../../../../../pkg/builtin.html#name-int16" class="ident">int16</a>{</code></span>
+<span class="codeline" id="line-96"><code>	<span class="lit-number">0</span>, <span class="lit-number">5</span>, <span class="lit-number">8</span>, <span class="lit-number">11</span>, <span class="lit-number">15</span>, <span class="lit-number">18</span>, <span class="lit-number">21</span>, <span class="lit-number">25</span>,</code></span>
+<span class="codeline" id="line-97"><code>	<span class="lit-number">28</span>, <span class="lit-number">32</span>, <span class="lit-number">35</span>, <span class="lit-number">40</span>, <span class="lit-number">45</span>, <span class="lit-number">48</span>, <span class="lit-number">51</span>, <span class="lit-number">55</span>,</code></span>
+<span class="codeline" id="line-98"><code>	<span class="lit-number">58</span>, <span class="lit-number">61</span>, <span class="lit-number">65</span>, <span class="lit-number">68</span>, <span class="lit-number">72</span>, <span class="lit-number">75</span>, <span class="lit-number">88</span>, <span class="lit-number">98</span>,</code></span>
+<span class="codeline" id="line-99"><code>	<span class="lit-number">101</span>, <span class="lit-number">111</span>, <span class="lit-number">120</span>, <span class="lit-number">122</span>, <span class="lit-number">128</span>, <span class="lit-number">133</span>, <span class="lit-number">140</span>, <span class="lit-number">148</span>,</code></span>
+<span class="codeline" id="line-100"><code>	<span class="lit-number">157</span>, <span class="lit-number">167</span>, <span class="lit-number">170</span>, <span class="lit-number">180</span>, <span class="lit-number">189</span>, <span class="lit-number">191</span>, <span class="lit-number">197</span>, <span class="lit-number">202</span>,</code></span>
+<span class="codeline" id="line-101"><code>	<span class="lit-number">209</span>, <span class="lit-number">217</span>, <span class="lit-number">226</span>,</code></span>
+<span class="codeline" id="line-102"><code>}</code></span>
+<span class="codeline" id="line-103"><code></code></span>
+<span class="codeline" id="line-104"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-_khmSM_indicies" class="ident">_khmSM_indicies</a> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> = []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{</code></span>
+<span class="codeline" id="line-105"><code>	<span class="lit-number">2</span>, <span class="lit-number">3</span>, <span class="lit-number">4</span>, <span class="lit-number">1</span>, <span class="lit-number">0</span>, <span class="lit-number">4</span>, <span class="lit-number">1</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-106"><code>	<span class="lit-number">5</span>, <span class="lit-number">5</span>, <span class="lit-number">0</span>, <span class="lit-number">2</span>, <span class="lit-number">4</span>, <span class="lit-number">1</span>, <span class="lit-number">0</span>, <span class="lit-number">2</span>,</code></span>
+<span class="codeline" id="line-107"><code>	<span class="lit-number">6</span>, <span class="lit-number">0</span>, <span class="lit-number">8</span>, <span class="lit-number">7</span>, <span class="lit-number">0</span>, <span class="lit-number">2</span>, <span class="lit-number">10</span>, <span class="lit-number">9</span>,</code></span>
+<span class="codeline" id="line-108"><code>	<span class="lit-number">0</span>, <span class="lit-number">10</span>, <span class="lit-number">9</span>, <span class="lit-number">0</span>, <span class="lit-number">2</span>, <span class="lit-number">12</span>, <span class="lit-number">11</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-109"><code>	<span class="lit-number">12</span>, <span class="lit-number">11</span>, <span class="lit-number">0</span>, <span class="lit-number">2</span>, <span class="lit-number">13</span>, <span class="lit-number">4</span>, <span class="lit-number">1</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-110"><code>	<span class="lit-number">16</span>, <span class="lit-number">17</span>, <span class="lit-number">18</span>, <span class="lit-number">15</span>, <span class="lit-number">14</span>, <span class="lit-number">18</span>, <span class="lit-number">15</span>, <span class="lit-number">19</span>,</code></span>
+<span class="codeline" id="line-111"><code>	<span class="lit-number">20</span>, <span class="lit-number">20</span>, <span class="lit-number">14</span>, <span class="lit-number">16</span>, <span class="lit-number">18</span>, <span class="lit-number">15</span>, <span class="lit-number">14</span>, <span class="lit-number">16</span>,</code></span>
+<span class="codeline" id="line-112"><code>	<span class="lit-number">21</span>, <span class="lit-number">14</span>, <span class="lit-number">23</span>, <span class="lit-number">22</span>, <span class="lit-number">14</span>, <span class="lit-number">16</span>, <span class="lit-number">25</span>, <span class="lit-number">24</span>,</code></span>
+<span class="codeline" id="line-113"><code>	<span class="lit-number">14</span>, <span class="lit-number">25</span>, <span class="lit-number">24</span>, <span class="lit-number">14</span>, <span class="lit-number">16</span>, <span class="lit-number">27</span>, <span class="lit-number">26</span>, <span class="lit-number">14</span>,</code></span>
+<span class="codeline" id="line-114"><code>	<span class="lit-number">27</span>, <span class="lit-number">26</span>, <span class="lit-number">14</span>, <span class="lit-number">30</span>, <span class="lit-number">29</span>, <span class="lit-number">16</span>, <span class="lit-number">25</span>, <span class="lit-number">27</span>,</code></span>
+<span class="codeline" id="line-115"><code>	<span class="lit-number">23</span>, <span class="lit-number">17</span>, <span class="lit-number">18</span>, <span class="lit-number">20</span>, <span class="lit-number">29</span>, <span class="lit-number">31</span>, <span class="lit-number">13</span>, <span class="lit-number">28</span>,</code></span>
+<span class="codeline" id="line-116"><code>	<span class="lit-number">33</span>, <span class="lit-number">2</span>, <span class="lit-number">10</span>, <span class="lit-number">12</span>, <span class="lit-number">8</span>, <span class="lit-number">13</span>, <span class="lit-number">4</span>, <span class="lit-number">5</span>,</code></span>
+<span class="codeline" id="line-117"><code>	<span class="lit-number">34</span>, <span class="lit-number">32</span>, <span class="lit-number">35</span>, <span class="lit-number">35</span>, <span class="lit-number">32</span>, <span class="lit-number">33</span>, <span class="lit-number">2</span>, <span class="lit-number">10</span>,</code></span>
+<span class="codeline" id="line-118"><code>	<span class="lit-number">12</span>, <span class="lit-number">8</span>, <span class="lit-number">3</span>, <span class="lit-number">4</span>, <span class="lit-number">5</span>, <span class="lit-number">36</span>, <span class="lit-number">32</span>, <span class="lit-number">37</span>,</code></span>
+<span class="codeline" id="line-119"><code>	<span class="lit-number">2</span>, <span class="lit-number">10</span>, <span class="lit-number">12</span>, <span class="lit-number">8</span>, <span class="lit-number">4</span>, <span class="lit-number">5</span>, <span class="lit-number">38</span>, <span class="lit-number">32</span>,</code></span>
+<span class="codeline" id="line-120"><code>	<span class="lit-number">5</span>, <span class="lit-number">32</span>, <span class="lit-number">37</span>, <span class="lit-number">8</span>, <span class="lit-number">2</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">32</span>,</code></span>
+<span class="codeline" id="line-121"><code>	<span class="lit-number">37</span>, <span class="lit-number">8</span>, <span class="lit-number">5</span>, <span class="lit-number">7</span>, <span class="lit-number">32</span>, <span class="lit-number">37</span>, <span class="lit-number">2</span>, <span class="lit-number">8</span>,</code></span>
+<span class="codeline" id="line-122"><code>	<span class="lit-number">10</span>, <span class="lit-number">5</span>, <span class="lit-number">39</span>, <span class="lit-number">32</span>, <span class="lit-number">37</span>, <span class="lit-number">2</span>, <span class="lit-number">10</span>, <span class="lit-number">8</span>,</code></span>
+<span class="codeline" id="line-123"><code>	<span class="lit-number">12</span>, <span class="lit-number">5</span>, <span class="lit-number">40</span>, <span class="lit-number">32</span>, <span class="lit-number">33</span>, <span class="lit-number">2</span>, <span class="lit-number">10</span>, <span class="lit-number">12</span>,</code></span>
+<span class="codeline" id="line-124"><code>	<span class="lit-number">8</span>, <span class="lit-number">4</span>, <span class="lit-number">5</span>, <span class="lit-number">38</span>, <span class="lit-number">32</span>, <span class="lit-number">33</span>, <span class="lit-number">2</span>, <span class="lit-number">10</span>,</code></span>
+<span class="codeline" id="line-125"><code>	<span class="lit-number">12</span>, <span class="lit-number">8</span>, <span class="lit-number">3</span>, <span class="lit-number">4</span>, <span class="lit-number">5</span>, <span class="lit-number">38</span>, <span class="lit-number">32</span>, <span class="lit-number">42</span>,</code></span>
+<span class="codeline" id="line-126"><code>	<span class="lit-number">42</span>, <span class="lit-number">41</span>, <span class="lit-number">30</span>, <span class="lit-number">16</span>, <span class="lit-number">25</span>, <span class="lit-number">27</span>, <span class="lit-number">23</span>, <span class="lit-number">17</span>,</code></span>
+<span class="codeline" id="line-127"><code>	<span class="lit-number">18</span>, <span class="lit-number">20</span>, <span class="lit-number">43</span>, <span class="lit-number">41</span>, <span class="lit-number">44</span>, <span class="lit-number">16</span>, <span class="lit-number">25</span>, <span class="lit-number">27</span>,</code></span>
+<span class="codeline" id="line-128"><code>	<span class="lit-number">23</span>, <span class="lit-number">18</span>, <span class="lit-number">20</span>, <span class="lit-number">45</span>, <span class="lit-number">41</span>, <span class="lit-number">20</span>, <span class="lit-number">41</span>, <span class="lit-number">44</span>,</code></span>
+<span class="codeline" id="line-129"><code>	<span class="lit-number">23</span>, <span class="lit-number">16</span>, <span class="lit-number">20</span>, <span class="lit-number">21</span>, <span class="lit-number">41</span>, <span class="lit-number">44</span>, <span class="lit-number">23</span>, <span class="lit-number">20</span>,</code></span>
+<span class="codeline" id="line-130"><code>	<span class="lit-number">22</span>, <span class="lit-number">41</span>, <span class="lit-number">44</span>, <span class="lit-number">16</span>, <span class="lit-number">23</span>, <span class="lit-number">25</span>, <span class="lit-number">20</span>, <span class="lit-number">46</span>,</code></span>
+<span class="codeline" id="line-131"><code>	<span class="lit-number">41</span>, <span class="lit-number">44</span>, <span class="lit-number">16</span>, <span class="lit-number">25</span>, <span class="lit-number">23</span>, <span class="lit-number">27</span>, <span class="lit-number">20</span>, <span class="lit-number">47</span>,</code></span>
+<span class="codeline" id="line-132"><code>	<span class="lit-number">41</span>, <span class="lit-number">30</span>, <span class="lit-number">16</span>, <span class="lit-number">25</span>, <span class="lit-number">27</span>, <span class="lit-number">23</span>, <span class="lit-number">18</span>, <span class="lit-number">20</span>,</code></span>
+<span class="codeline" id="line-133"><code>	<span class="lit-number">45</span>, <span class="lit-number">41</span>, <span class="lit-number">16</span>, <span class="lit-number">18</span>, <span class="lit-number">15</span>, <span class="lit-number">48</span>,</code></span>
+<span class="codeline" id="line-134"><code>}</code></span>
+<span class="codeline" id="line-135"><code></code></span>
+<span class="codeline" id="line-136"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-_khmSM_trans_targs" class="ident">_khmSM_trans_targs</a> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> = []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{</code></span>
+<span class="codeline" id="line-137"><code>	<span class="lit-number">21</span>, <span class="lit-number">1</span>, <span class="lit-number">27</span>, <span class="lit-number">31</span>, <span class="lit-number">25</span>, <span class="lit-number">26</span>, <span class="lit-number">4</span>, <span class="lit-number">5</span>,</code></span>
+<span class="codeline" id="line-138"><code>	<span class="lit-number">28</span>, <span class="lit-number">7</span>, <span class="lit-number">29</span>, <span class="lit-number">9</span>, <span class="lit-number">30</span>, <span class="lit-number">32</span>, <span class="lit-number">21</span>, <span class="lit-number">12</span>,</code></span>
+<span class="codeline" id="line-139"><code>	<span class="lit-number">37</span>, <span class="lit-number">41</span>, <span class="lit-number">35</span>, <span class="lit-number">21</span>, <span class="lit-number">36</span>, <span class="lit-number">15</span>, <span class="lit-number">16</span>, <span class="lit-number">38</span>,</code></span>
+<span class="codeline" id="line-140"><code>	<span class="lit-number">18</span>, <span class="lit-number">39</span>, <span class="lit-number">20</span>, <span class="lit-number">40</span>, <span class="lit-number">21</span>, <span class="lit-number">22</span>, <span class="lit-number">33</span>, <span class="lit-number">42</span>,</code></span>
+<span class="codeline" id="line-141"><code>	<span class="lit-number">21</span>, <span class="lit-number">23</span>, <span class="lit-number">10</span>, <span class="lit-number">24</span>, <span class="lit-number">0</span>, <span class="lit-number">2</span>, <span class="lit-number">3</span>, <span class="lit-number">6</span>,</code></span>
+<span class="codeline" id="line-142"><code>	<span class="lit-number">8</span>, <span class="lit-number">21</span>, <span class="lit-number">34</span>, <span class="lit-number">11</span>, <span class="lit-number">13</span>, <span class="lit-number">14</span>, <span class="lit-number">17</span>, <span class="lit-number">19</span>,</code></span>
+<span class="codeline" id="line-143"><code>	<span class="lit-number">21</span>,</code></span>
+<span class="codeline" id="line-144"><code>}</code></span>
+<span class="codeline" id="line-145"><code></code></span>
+<span class="codeline" id="line-146"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-_khmSM_trans_actions" class="ident">_khmSM_trans_actions</a> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> = []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{</code></span>
+<span class="codeline" id="line-147"><code>	<span class="lit-number">15</span>, <span class="lit-number">0</span>, <span class="lit-number">5</span>, <span class="lit-number">5</span>, <span class="lit-number">5</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-148"><code>	<span class="lit-number">5</span>, <span class="lit-number">0</span>, <span class="lit-number">5</span>, <span class="lit-number">0</span>, <span class="lit-number">5</span>, <span class="lit-number">5</span>, <span class="lit-number">17</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-149"><code>	<span class="lit-number">5</span>, <span class="lit-number">21</span>, <span class="lit-number">21</span>, <span class="lit-number">19</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">5</span>,</code></span>
+<span class="codeline" id="line-150"><code>	<span class="lit-number">0</span>, <span class="lit-number">5</span>, <span class="lit-number">0</span>, <span class="lit-number">5</span>, <span class="lit-number">7</span>, <span class="lit-number">5</span>, <span class="lit-number">0</span>, <span class="lit-number">24</span>,</code></span>
+<span class="codeline" id="line-151"><code>	<span class="lit-number">9</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">5</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-152"><code>	<span class="lit-number">0</span>, <span class="lit-number">11</span>, <span class="lit-number">21</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-153"><code>	<span class="lit-number">13</span>,</code></span>
+<span class="codeline" id="line-154"><code>}</code></span>
+<span class="codeline" id="line-155"><code></code></span>
+<span class="codeline" id="line-156"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-_khmSM_to_state_actions" class="ident">_khmSM_to_state_actions</a> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> = []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{</code></span>
+<span class="codeline" id="line-157"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-158"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-159"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">1</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-160"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-161"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-162"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-163"><code>}</code></span>
+<span class="codeline" id="line-164"><code></code></span>
+<span class="codeline" id="line-165"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-_khmSM_from_state_actions" class="ident">_khmSM_from_state_actions</a> []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> = []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{</code></span>
+<span class="codeline" id="line-166"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-167"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-168"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">3</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-169"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-170"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-171"><code>	<span class="lit-number">0</span>, <span class="lit-number">0</span>, <span class="lit-number">0</span>,</code></span>
+<span class="codeline" id="line-172"><code>}</code></span>
+<span class="codeline" id="line-173"><code></code></span>
+<span class="codeline" id="line-174"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-_khmSM_eof_trans" class="ident">_khmSM_eof_trans</a> []<a href="../../../../../pkg/builtin.html#name-int16" class="ident">int16</a> = []<a href="../../../../../pkg/builtin.html#name-int16" class="ident">int16</a>{</code></span>
+<span class="codeline" id="line-175"><code>	<span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>,</code></span>
+<span class="codeline" id="line-176"><code>	<span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">15</span>, <span class="lit-number">20</span>, <span class="lit-number">15</span>, <span class="lit-number">15</span>, <span class="lit-number">15</span>,</code></span>
+<span class="codeline" id="line-177"><code>	<span class="lit-number">15</span>, <span class="lit-number">15</span>, <span class="lit-number">15</span>, <span class="lit-number">15</span>, <span class="lit-number">15</span>, <span class="lit-number">0</span>, <span class="lit-number">33</span>, <span class="lit-number">33</span>,</code></span>
+<span class="codeline" id="line-178"><code>	<span class="lit-number">33</span>, <span class="lit-number">33</span>, <span class="lit-number">33</span>, <span class="lit-number">33</span>, <span class="lit-number">33</span>, <span class="lit-number">33</span>, <span class="lit-number">33</span>, <span class="lit-number">33</span>,</code></span>
+<span class="codeline" id="line-179"><code>	<span class="lit-number">33</span>, <span class="lit-number">42</span>, <span class="lit-number">42</span>, <span class="lit-number">42</span>, <span class="lit-number">42</span>, <span class="lit-number">42</span>, <span class="lit-number">42</span>, <span class="lit-number">42</span>,</code></span>
+<span class="codeline" id="line-180"><code>	<span class="lit-number">42</span>, <span class="lit-number">42</span>, <span class="lit-number">49</span>,</code></span>
+<span class="codeline" id="line-181"><code>}</code></span>
+<span class="codeline" id="line-182"><code></code></span>
+<span class="codeline" id="line-183"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_start" class="ident">khmSM_start</a> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a> = <span class="lit-number">21</span></code></span>
+<span class="codeline" id="line-184"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_first_final" class="ident">khmSM_first_final</a> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a> = <span class="lit-number">21</span></code></span>
+<span class="codeline" id="line-185"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_error" class="ident">khmSM_error</a> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a> = -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-186"><code></code></span>
+<span class="codeline" id="line-187"><code><span class="keyword">const</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-khmSM_en_main" class="ident">khmSM_en_main</a> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a> = <span class="lit-number">21</span></code></span>
+<span class="codeline" id="line-188"><code></code></span>
+<span class="codeline" id="line-189"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html#name-findSyllablesKhmer" class="ident">findSyllablesKhmer</a></label>(<label for="r1" class="ident">buffer</label> *<a href="buffer.go.html#line-56" class="ident">Buffer</a>) {</code></span>
+<span class="codeline" id="line-190"><code>	<span class="keyword">var</span> <label for="r2" class="ident">p</label>, <label for="r3" class="ident">ts</label>, <label for="r4" class="ident">te</label>, <label for="r5" class="ident">act</label>, <label for="r6" class="ident">cs</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-191"><code>	<label for="r7" class="ident">info</label> := <label for="r1" class="ident">buffer</label>.<a href="buffer.go.html#line-60" class="ident">Info</a></code></span>
+<span class="codeline" id="line-192"><code></code></span>
+<span class="codeline" id="line-193"><code>	{</code></span>
+<span class="codeline" id="line-194"><code>		<label for="r6" class="ident">cs</label> = <a href="#line-183" class="ident">khmSM_start</a></code></span>
+<span class="codeline" id="line-195"><code>		<label for="r3" class="ident">ts</label> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-196"><code>		<label for="r4" class="ident">te</label> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-197"><code>		<label for="r5" class="ident">act</label> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-198"><code>	}</code></span>
+<span class="codeline" id="line-199"><code></code></span>
+<span class="codeline" id="line-200"><code>	<label for="r8" class="ident">pe</label> := <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r7" class="ident">info</label>)</code></span>
+<span class="codeline" id="line-201"><code>	<label for="r9" class="ident">eof</label> := <label for="r8" class="ident">pe</label></code></span>
+<span class="codeline" id="line-202"><code></code></span>
+<span class="codeline" id="line-203"><code>	<span class="keyword">var</span> <label for="r10" class="ident">syllableSerial</label> <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a> = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-204"><code></code></span>
+<span class="codeline" id="line-205"><code>	{</code></span>
+<span class="codeline" id="line-206"><code>		<span class="keyword">var</span> <label for="r11" class="ident">_klen</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-207"><code>		<span class="keyword">var</span> <label for="r12" class="ident">_trans</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-208"><code>		<span class="keyword">var</span> <label for="r13" class="ident">_acts</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-209"><code>		<span class="keyword">var</span> <label for="r14" class="ident">_nacts</label> <a href="../../../../../pkg/builtin.html#name-uint" class="ident">uint</a></code></span>
+<span class="codeline" id="line-210"><code>		<span class="keyword">var</span> <label for="r15" class="ident">_keys</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-211"><code>		<span class="keyword">if</span> <label for="r2" class="ident">p</label> == <label for="r8" class="ident">pe</label> {</code></span>
+<span class="codeline" id="line-212"><code>			<span class="keyword">goto</span> <label for="r16" class="ident">_test_eof</label></code></span>
+<span class="codeline" id="line-213"><code>		}</code></span>
+<span class="codeline" id="line-214"><code>	<label for="r17" class="ident">_resume</label>:</code></span>
+<span class="codeline" id="line-215"><code>		<label for="r13" class="ident">_acts</label> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="#line-165" class="ident">_khmSM_from_state_actions</a>[<label for="r6" class="ident">cs</label>])</code></span>
+<span class="codeline" id="line-216"><code>		<label for="r14" class="ident">_nacts</label> = <a href="../../../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<a href="#line-29" class="ident">_khmSM_actions</a>[<label for="r13" class="ident">_acts</label>])</code></span>
+<span class="codeline" id="line-217"><code>		<label for="r13" class="ident">_acts</label>++</code></span>
+<span class="codeline" id="line-218"><code>		<span class="keyword">for</span> ; <label for="r14" class="ident">_nacts</label> &gt; <span class="lit-number">0</span>; <label for="r14" class="ident">_nacts</label>-- {</code></span>
+<span class="codeline" id="line-219"><code>			<label for="r13" class="ident">_acts</label>++</code></span>
+<span class="codeline" id="line-220"><code>			<span class="keyword">switch</span> <a href="#line-29" class="ident">_khmSM_actions</a>[<label for="r13" class="ident">_acts</label>-<span class="lit-number">1</span>] {</code></span>
+<span class="codeline" id="line-221"><code>			<span class="keyword">case</span> <span class="lit-number">1</span>:</code></span>
+<span class="codeline" id="line-222"><code>				<label for="r3" class="ident">ts</label> = <label for="r2" class="ident">p</label></code></span>
+<span class="codeline" id="line-223"><code></code></span>
+<span class="codeline" id="line-224"><code>			}</code></span>
+<span class="codeline" id="line-225"><code>		}</code></span>
+<span class="codeline" id="line-226"><code></code></span>
+<span class="codeline" id="line-227"><code>		<label for="r15" class="ident">_keys</label> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="#line-36" class="ident">_khmSM_key_offsets</a>[<label for="r6" class="ident">cs</label>])</code></span>
+<span class="codeline" id="line-228"><code>		<label for="r12" class="ident">_trans</label> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="#line-95" class="ident">_khmSM_index_offsets</a>[<label for="r6" class="ident">cs</label>])</code></span>
+<span class="codeline" id="line-229"><code></code></span>
+<span class="codeline" id="line-230"><code>		<label for="r11" class="ident">_klen</label> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="#line-77" class="ident">_khmSM_single_lengths</a>[<label for="r6" class="ident">cs</label>])</code></span>
+<span class="codeline" id="line-231"><code>		<span class="keyword">if</span> <label for="r11" class="ident">_klen</label> &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-232"><code>			<label for="r18" class="ident">_lower</label> := <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r15" class="ident">_keys</label>)</code></span>
+<span class="codeline" id="line-233"><code>			<span class="keyword">var</span> <label for="r19" class="ident">_mid</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-234"><code>			<label for="r20" class="ident">_upper</label> := <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r15" class="ident">_keys</label> + <label for="r11" class="ident">_klen</label> - <span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-235"><code>			<span class="keyword">for</span> {</code></span>
+<span class="codeline" id="line-236"><code>				<span class="keyword">if</span> <label for="r20" class="ident">_upper</label> &lt; <label for="r18" class="ident">_lower</label> {</code></span>
+<span class="codeline" id="line-237"><code>					<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-238"><code>				}</code></span>
+<span class="codeline" id="line-239"><code></code></span>
+<span class="codeline" id="line-240"><code>				<label for="r19" class="ident">_mid</label> = <label for="r18" class="ident">_lower</label> + ((<label for="r20" class="ident">_upper</label> - <label for="r18" class="ident">_lower</label>) &gt;&gt; <span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-241"><code>				<span class="keyword">switch</span> {</code></span>
+<span class="codeline" id="line-242"><code>				<span class="keyword">case</span> (<label for="r7" class="ident">info</label>[<label for="r2" class="ident">p</label>].<a href="glyph.go.html#line-189" class="ident">complexCategory</a>) &lt; <a href="#line-45" class="ident">_khmSM_trans_keys</a>[<label for="r19" class="ident">_mid</label>]:</code></span>
+<span class="codeline" id="line-243"><code>					<label for="r20" class="ident">_upper</label> = <label for="r19" class="ident">_mid</label> - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-244"><code>				<span class="keyword">case</span> (<label for="r7" class="ident">info</label>[<label for="r2" class="ident">p</label>].<a href="glyph.go.html#line-189" class="ident">complexCategory</a>) &gt; <a href="#line-45" class="ident">_khmSM_trans_keys</a>[<label for="r19" class="ident">_mid</label>]:</code></span>
+<span class="codeline" id="line-245"><code>					<label for="r18" class="ident">_lower</label> = <label for="r19" class="ident">_mid</label> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-246"><code>				<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-247"><code>					<label for="r12" class="ident">_trans</label> += <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r19" class="ident">_mid</label> - <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r15" class="ident">_keys</label>))</code></span>
+<span class="codeline" id="line-248"><code>					<span class="keyword">goto</span> <label for="r21" class="ident">_match</label></code></span>
+<span class="codeline" id="line-249"><code>				}</code></span>
+<span class="codeline" id="line-250"><code>			}</code></span>
+<span class="codeline" id="line-251"><code>			<label for="r15" class="ident">_keys</label> += <label for="r11" class="ident">_klen</label></code></span>
+<span class="codeline" id="line-252"><code>			<label for="r12" class="ident">_trans</label> += <label for="r11" class="ident">_klen</label></code></span>
+<span class="codeline" id="line-253"><code>		}</code></span>
+<span class="codeline" id="line-254"><code></code></span>
+<span class="codeline" id="line-255"><code>		<label for="r11" class="ident">_klen</label> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="#line-86" class="ident">_khmSM_range_lengths</a>[<label for="r6" class="ident">cs</label>])</code></span>
+<span class="codeline" id="line-256"><code>		<span class="keyword">if</span> <label for="r11" class="ident">_klen</label> &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-257"><code>			<label for="r22" class="ident">_lower</label> := <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r15" class="ident">_keys</label>)</code></span>
+<span class="codeline" id="line-258"><code>			<span class="keyword">var</span> <label for="r23" class="ident">_mid</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-259"><code>			<label for="r24" class="ident">_upper</label> := <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r15" class="ident">_keys</label> + (<label for="r11" class="ident">_klen</label> &lt;&lt; <span class="lit-number">1</span>) - <span class="lit-number">2</span>)</code></span>
+<span class="codeline" id="line-260"><code>			<span class="keyword">for</span> {</code></span>
+<span class="codeline" id="line-261"><code>				<span class="keyword">if</span> <label for="r24" class="ident">_upper</label> &lt; <label for="r22" class="ident">_lower</label> {</code></span>
+<span class="codeline" id="line-262"><code>					<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-263"><code>				}</code></span>
+<span class="codeline" id="line-264"><code></code></span>
+<span class="codeline" id="line-265"><code>				<label for="r23" class="ident">_mid</label> = <label for="r22" class="ident">_lower</label> + (((<label for="r24" class="ident">_upper</label> - <label for="r22" class="ident">_lower</label>) &gt;&gt; <span class="lit-number">1</span>) &amp; ^<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-266"><code>				<span class="keyword">switch</span> {</code></span>
+<span class="codeline" id="line-267"><code>				<span class="keyword">case</span> (<label for="r7" class="ident">info</label>[<label for="r2" class="ident">p</label>].<a href="glyph.go.html#line-189" class="ident">complexCategory</a>) &lt; <a href="#line-45" class="ident">_khmSM_trans_keys</a>[<label for="r23" class="ident">_mid</label>]:</code></span>
+<span class="codeline" id="line-268"><code>					<label for="r24" class="ident">_upper</label> = <label for="r23" class="ident">_mid</label> - <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-269"><code>				<span class="keyword">case</span> (<label for="r7" class="ident">info</label>[<label for="r2" class="ident">p</label>].<a href="glyph.go.html#line-189" class="ident">complexCategory</a>) &gt; <a href="#line-45" class="ident">_khmSM_trans_keys</a>[<label for="r23" class="ident">_mid</label>+<span class="lit-number">1</span>]:</code></span>
+<span class="codeline" id="line-270"><code>					<label for="r22" class="ident">_lower</label> = <label for="r23" class="ident">_mid</label> + <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-271"><code>				<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-272"><code>					<label for="r12" class="ident">_trans</label> += <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>((<label for="r23" class="ident">_mid</label> - <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r15" class="ident">_keys</label>)) &gt;&gt; <span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-273"><code>					<span class="keyword">goto</span> <label for="r21" class="ident">_match</label></code></span>
+<span class="codeline" id="line-274"><code>				}</code></span>
+<span class="codeline" id="line-275"><code>			}</code></span>
+<span class="codeline" id="line-276"><code>			<label for="r12" class="ident">_trans</label> += <label for="r11" class="ident">_klen</label></code></span>
+<span class="codeline" id="line-277"><code>		}</code></span>
+<span class="codeline" id="line-278"><code></code></span>
+<span class="codeline" id="line-279"><code>	<label for="r21" class="ident">_match</label>:</code></span>
+<span class="codeline" id="line-280"><code>		<label for="r12" class="ident">_trans</label> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="#line-104" class="ident">_khmSM_indicies</a>[<label for="r12" class="ident">_trans</label>])</code></span>
+<span class="codeline" id="line-281"><code>	<label for="r25" class="ident">_eof_trans</label>:</code></span>
+<span class="codeline" id="line-282"><code>		<label for="r6" class="ident">cs</label> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="#line-136" class="ident">_khmSM_trans_targs</a>[<label for="r12" class="ident">_trans</label>])</code></span>
+<span class="codeline" id="line-283"><code></code></span>
+<span class="codeline" id="line-284"><code>		<span class="keyword">if</span> <a href="#line-146" class="ident">_khmSM_trans_actions</a>[<label for="r12" class="ident">_trans</label>] == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-285"><code>			<span class="keyword">goto</span> <label for="r26" class="ident">_again</label></code></span>
+<span class="codeline" id="line-286"><code>		}</code></span>
+<span class="codeline" id="line-287"><code></code></span>
+<span class="codeline" id="line-288"><code>		<label for="r13" class="ident">_acts</label> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="#line-146" class="ident">_khmSM_trans_actions</a>[<label for="r12" class="ident">_trans</label>])</code></span>
+<span class="codeline" id="line-289"><code>		<label for="r14" class="ident">_nacts</label> = <a href="../../../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<a href="#line-29" class="ident">_khmSM_actions</a>[<label for="r13" class="ident">_acts</label>])</code></span>
+<span class="codeline" id="line-290"><code>		<label for="r13" class="ident">_acts</label>++</code></span>
+<span class="codeline" id="line-291"><code>		<span class="keyword">for</span> ; <label for="r14" class="ident">_nacts</label> &gt; <span class="lit-number">0</span>; <label for="r14" class="ident">_nacts</label>-- {</code></span>
+<span class="codeline" id="line-292"><code>			<label for="r13" class="ident">_acts</label>++</code></span>
+<span class="codeline" id="line-293"><code>			<span class="keyword">switch</span> <a href="#line-29" class="ident">_khmSM_actions</a>[<label for="r13" class="ident">_acts</label>-<span class="lit-number">1</span>] {</code></span>
+<span class="codeline" id="line-294"><code>			<span class="keyword">case</span> <span class="lit-number">2</span>:</code></span>
+<span class="codeline" id="line-295"><code>				<label for="r4" class="ident">te</label> = <label for="r2" class="ident">p</label> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-296"><code></code></span>
+<span class="codeline" id="line-297"><code>			<span class="keyword">case</span> <span class="lit-number">3</span>:</code></span>
+<span class="codeline" id="line-298"><code>				<label for="r5" class="ident">act</label> = <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-299"><code>			<span class="keyword">case</span> <span class="lit-number">4</span>:</code></span>
+<span class="codeline" id="line-300"><code>				<label for="r5" class="ident">act</label> = <span class="lit-number">3</span></code></span>
+<span class="codeline" id="line-301"><code>			<span class="keyword">case</span> <span class="lit-number">5</span>:</code></span>
+<span class="codeline" id="line-302"><code>				<label for="r4" class="ident">te</label> = <label for="r2" class="ident">p</label> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-303"><code>				{</code></span>
+<span class="codeline" id="line-304"><code>					<a href="ot_khmer.go.html#line-149" class="ident">foundSyllableKhmer</a>(<a href="#line-10" class="ident">khmerNonKhmerCluster</a>, <label for="r3" class="ident">ts</label>, <label for="r4" class="ident">te</label>, <label for="r7" class="ident">info</label>, &amp;<label for="r10" class="ident">syllableSerial</label>)</code></span>
+<span class="codeline" id="line-305"><code>				}</code></span>
+<span class="codeline" id="line-306"><code>			<span class="keyword">case</span> <span class="lit-number">6</span>:</code></span>
+<span class="codeline" id="line-307"><code>				<label for="r4" class="ident">te</label> = <label for="r2" class="ident">p</label></code></span>
+<span class="codeline" id="line-308"><code>				<label for="r2" class="ident">p</label>--</code></span>
+<span class="codeline" id="line-309"><code>				{</code></span>
+<span class="codeline" id="line-310"><code>					<a href="ot_khmer.go.html#line-149" class="ident">foundSyllableKhmer</a>(<a href="#line-8" class="ident">khmerConsonantSyllable</a>, <label for="r3" class="ident">ts</label>, <label for="r4" class="ident">te</label>, <label for="r7" class="ident">info</label>, &amp;<label for="r10" class="ident">syllableSerial</label>)</code></span>
+<span class="codeline" id="line-311"><code>				}</code></span>
+<span class="codeline" id="line-312"><code>			<span class="keyword">case</span> <span class="lit-number">7</span>:</code></span>
+<span class="codeline" id="line-313"><code>				<label for="r4" class="ident">te</label> = <label for="r2" class="ident">p</label></code></span>
+<span class="codeline" id="line-314"><code>				<label for="r2" class="ident">p</label>--</code></span>
+<span class="codeline" id="line-315"><code>				{</code></span>
+<span class="codeline" id="line-316"><code>					<a href="ot_khmer.go.html#line-149" class="ident">foundSyllableKhmer</a>(<a href="#line-9" class="ident">khmerBrokenCluster</a>, <label for="r3" class="ident">ts</label>, <label for="r4" class="ident">te</label>, <label for="r7" class="ident">info</label>, &amp;<label for="r10" class="ident">syllableSerial</label>)</code></span>
+<span class="codeline" id="line-317"><code>					<label for="r1" class="ident">buffer</label>.<a href="buffer.go.html#line-104" class="ident">scratchFlags</a> |= <a href="buffer.go.html#line-34" class="ident">bsfHasBrokenSyllable</a></code></span>
+<span class="codeline" id="line-318"><code>				}</code></span>
+<span class="codeline" id="line-319"><code>			<span class="keyword">case</span> <span class="lit-number">8</span>:</code></span>
+<span class="codeline" id="line-320"><code>				<label for="r4" class="ident">te</label> = <label for="r2" class="ident">p</label></code></span>
+<span class="codeline" id="line-321"><code>				<label for="r2" class="ident">p</label>--</code></span>
+<span class="codeline" id="line-322"><code>				{</code></span>
+<span class="codeline" id="line-323"><code>					<a href="ot_khmer.go.html#line-149" class="ident">foundSyllableKhmer</a>(<a href="#line-10" class="ident">khmerNonKhmerCluster</a>, <label for="r3" class="ident">ts</label>, <label for="r4" class="ident">te</label>, <label for="r7" class="ident">info</label>, &amp;<label for="r10" class="ident">syllableSerial</label>)</code></span>
+<span class="codeline" id="line-324"><code>				}</code></span>
+<span class="codeline" id="line-325"><code>			<span class="keyword">case</span> <span class="lit-number">9</span>:</code></span>
+<span class="codeline" id="line-326"><code>				<label for="r2" class="ident">p</label> = (<label for="r4" class="ident">te</label>) - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-327"><code>				{</code></span>
+<span class="codeline" id="line-328"><code>					<a href="ot_khmer.go.html#line-149" class="ident">foundSyllableKhmer</a>(<a href="#line-8" class="ident">khmerConsonantSyllable</a>, <label for="r3" class="ident">ts</label>, <label for="r4" class="ident">te</label>, <label for="r7" class="ident">info</label>, &amp;<label for="r10" class="ident">syllableSerial</label>)</code></span>
+<span class="codeline" id="line-329"><code>				}</code></span>
+<span class="codeline" id="line-330"><code>			<span class="keyword">case</span> <span class="lit-number">10</span>:</code></span>
+<span class="codeline" id="line-331"><code>				<label for="r2" class="ident">p</label> = (<label for="r4" class="ident">te</label>) - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-332"><code>				{</code></span>
+<span class="codeline" id="line-333"><code>					<a href="ot_khmer.go.html#line-149" class="ident">foundSyllableKhmer</a>(<a href="#line-9" class="ident">khmerBrokenCluster</a>, <label for="r3" class="ident">ts</label>, <label for="r4" class="ident">te</label>, <label for="r7" class="ident">info</label>, &amp;<label for="r10" class="ident">syllableSerial</label>)</code></span>
+<span class="codeline" id="line-334"><code>					<label for="r1" class="ident">buffer</label>.<a href="buffer.go.html#line-104" class="ident">scratchFlags</a> |= <a href="buffer.go.html#line-34" class="ident">bsfHasBrokenSyllable</a></code></span>
+<span class="codeline" id="line-335"><code>				}</code></span>
+<span class="codeline" id="line-336"><code>			<span class="keyword">case</span> <span class="lit-number">11</span>:</code></span>
+<span class="codeline" id="line-337"><code>				<span class="keyword">switch</span> <label for="r5" class="ident">act</label> {</code></span>
+<span class="codeline" id="line-338"><code>				<span class="keyword">case</span> <span class="lit-number">2</span>:</code></span>
+<span class="codeline" id="line-339"><code>					{</code></span>
+<span class="codeline" id="line-340"><code>						<label for="r2" class="ident">p</label> = (<label for="r4" class="ident">te</label>) - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-341"><code>						<a href="ot_khmer.go.html#line-149" class="ident">foundSyllableKhmer</a>(<a href="#line-9" class="ident">khmerBrokenCluster</a>, <label for="r3" class="ident">ts</label>, <label for="r4" class="ident">te</label>, <label for="r7" class="ident">info</label>, &amp;<label for="r10" class="ident">syllableSerial</label>)</code></span>
+<span class="codeline" id="line-342"><code>						<label for="r1" class="ident">buffer</label>.<a href="buffer.go.html#line-104" class="ident">scratchFlags</a> |= <a href="buffer.go.html#line-34" class="ident">bsfHasBrokenSyllable</a></code></span>
+<span class="codeline" id="line-343"><code>					}</code></span>
+<span class="codeline" id="line-344"><code>				<span class="keyword">case</span> <span class="lit-number">3</span>:</code></span>
+<span class="codeline" id="line-345"><code>					{</code></span>
+<span class="codeline" id="line-346"><code>						<label for="r2" class="ident">p</label> = (<label for="r4" class="ident">te</label>) - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-347"><code>						<a href="ot_khmer.go.html#line-149" class="ident">foundSyllableKhmer</a>(<a href="#line-10" class="ident">khmerNonKhmerCluster</a>, <label for="r3" class="ident">ts</label>, <label for="r4" class="ident">te</label>, <label for="r7" class="ident">info</label>, &amp;<label for="r10" class="ident">syllableSerial</label>)</code></span>
+<span class="codeline" id="line-348"><code>					}</code></span>
+<span class="codeline" id="line-349"><code>				}</code></span>
+<span class="codeline" id="line-350"><code></code></span>
+<span class="codeline" id="line-351"><code>			}</code></span>
+<span class="codeline" id="line-352"><code>		}</code></span>
+<span class="codeline" id="line-353"><code></code></span>
+<span class="codeline" id="line-354"><code>	<label for="r26" class="ident">_again</label>:</code></span>
+<span class="codeline" id="line-355"><code>		<label for="r13" class="ident">_acts</label> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="#line-156" class="ident">_khmSM_to_state_actions</a>[<label for="r6" class="ident">cs</label>])</code></span>
+<span class="codeline" id="line-356"><code>		<label for="r14" class="ident">_nacts</label> = <a href="../../../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<a href="#line-29" class="ident">_khmSM_actions</a>[<label for="r13" class="ident">_acts</label>])</code></span>
+<span class="codeline" id="line-357"><code>		<label for="r13" class="ident">_acts</label>++</code></span>
+<span class="codeline" id="line-358"><code>		<span class="keyword">for</span> ; <label for="r14" class="ident">_nacts</label> &gt; <span class="lit-number">0</span>; <label for="r14" class="ident">_nacts</label>-- {</code></span>
+<span class="codeline" id="line-359"><code>			<label for="r13" class="ident">_acts</label>++</code></span>
+<span class="codeline" id="line-360"><code>			<span class="keyword">switch</span> <a href="#line-29" class="ident">_khmSM_actions</a>[<label for="r13" class="ident">_acts</label>-<span class="lit-number">1</span>] {</code></span>
+<span class="codeline" id="line-361"><code>			<span class="keyword">case</span> <span class="lit-number">0</span>:</code></span>
+<span class="codeline" id="line-362"><code>				<label for="r3" class="ident">ts</label> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-363"><code></code></span>
+<span class="codeline" id="line-364"><code>			}</code></span>
+<span class="codeline" id="line-365"><code>		}</code></span>
+<span class="codeline" id="line-366"><code></code></span>
+<span class="codeline" id="line-367"><code>		<label for="r2" class="ident">p</label>++</code></span>
+<span class="codeline" id="line-368"><code>		<span class="keyword">if</span> <label for="r2" class="ident">p</label> != <label for="r8" class="ident">pe</label> {</code></span>
+<span class="codeline" id="line-369"><code>			<span class="keyword">goto</span> <label for="r17" class="ident">_resume</label></code></span>
+<span class="codeline" id="line-370"><code>		}</code></span>
+<span class="codeline" id="line-371"><code>	<label for="r16" class="ident">_test_eof</label>:</code></span>
+<span class="codeline" id="line-372"><code>		{</code></span>
+<span class="codeline" id="line-373"><code>		}</code></span>
+<span class="codeline" id="line-374"><code>		<span class="keyword">if</span> <label for="r2" class="ident">p</label> == <label for="r9" class="ident">eof</label> {</code></span>
+<span class="codeline" id="line-375"><code>			<span class="keyword">if</span> <a href="#line-174" class="ident">_khmSM_eof_trans</a>[<label for="r6" class="ident">cs</label>] &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-376"><code>				<label for="r12" class="ident">_trans</label> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="#line-174" class="ident">_khmSM_eof_trans</a>[<label for="r6" class="ident">cs</label>] - <span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-377"><code>				<span class="keyword">goto</span> <label for="r25" class="ident">_eof_trans</label></code></span>
+<span class="codeline" id="line-378"><code>			}</code></span>
+<span class="codeline" id="line-379"><code>		}</code></span>
+<span class="codeline" id="line-380"><code></code></span>
+<span class="codeline" id="line-381"><code>	}</code></span>
+<span class="codeline" id="line-382"><code></code></span>
+<span class="codeline" id="line-383"><code>	_ = <label for="r5" class="ident">act</label> <span class="comment">// needed by Ragel, but unused</span></code></span>
+<span class="codeline" id="line-384"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

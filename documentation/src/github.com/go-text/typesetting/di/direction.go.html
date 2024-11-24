@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: direction.go in package github.com/go-text/typesetting/di</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	direction.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/go-text/typesetting/di.html">github.com/go-text/typesetting/di</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> di</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"github.com/go-text/typesetting/harfbuzz"</span></label></code></span>
+<span class="codeline" id="line-5"><code>)</code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// Direction indicates the layout direction of a piece of text.</span></code></span>
+<span class="codeline" id="line-8"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-Direction" class="ident">Direction</a> <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a></code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-11"><code>	<span class="comment">// DirectionLTR is for Left-to-Right text.</span></code></span>
+<span class="codeline" id="line-12"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-DirectionLTR" class="ident">DirectionLTR</a> <a href="#line-8" class="ident">Direction</a> = <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-13"><code>	<span class="comment">// DirectionRTL is for Right-to-Left text.</span></code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-DirectionRTL" class="ident">DirectionRTL</a></code></span>
+<span class="codeline" id="line-15"><code>	<span class="comment">// DirectionTTB is for Top-to-Bottom text.</span></code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-DirectionTTB" class="ident">DirectionTTB</a></code></span>
+<span class="codeline" id="line-17"><code>	<span class="comment">// DirectionBTT is for Bottom-to-Top text.</span></code></span>
+<span class="codeline" id="line-18"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-DirectionBTT" class="ident">DirectionBTT</a></code></span>
+<span class="codeline" id="line-19"><code>)</code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-22"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-progression" class="ident">progression</a> <a href="#line-8" class="ident">Direction</a> = <span class="lit-number">1</span> &lt;&lt; <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-23"><code>	<span class="comment">// axisVertical is the bit for the axis, 0 for horizontal, 1 for vertical</span></code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-axisVertical" class="ident">axisVertical</a></code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code>	<span class="comment">// If this flag is set, the orientation is chosen</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">	// using the [verticalSideways] flag.</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">	// Otherwise, the segmenter will resolve the orientation based</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">	// on unicode properties</span></code></span>
+<span class="codeline" id="line-30"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-verticalOrientationSet" class="ident">verticalOrientationSet</a></code></span>
+<span class="codeline" id="line-31"><code>	<span class="comment">// verticalSideways is set for 'sideways', unset for 'upright'</span></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">	// It implies BVerticalOrientationSet is set</span></code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-verticalSideways" class="ident">verticalSideways</a></code></span>
+<span class="codeline" id="line-34"><code>)</code></span>
+<span class="codeline" id="line-35"><code></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// IsVertical returns whether d is laid out on a vertical</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">// axis. If the return value is false, d is on the horizontal</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">// axis.</span></code></span>
+<span class="codeline" id="line-39"><code><span class="keyword">func</span> (<label for="r0" class="ident">d</label> <a href="#line-8" class="ident">Direction</a>) <label for="r1" class="ident">IsVertical</label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r0" class="ident">d</label>&amp;<a href="#line-24" class="ident">axisVertical</a> != <span class="lit-number">0</span> }</code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">// Axis returns the layout axis for d.</span></code></span>
+<span class="codeline" id="line-42"><code><span class="keyword">func</span> (<label for="r2" class="ident">d</label> <a href="#line-8" class="ident">Direction</a>) <label for="r3" class="ident">Axis</label>() <a href="#line-71" class="ident">Axis</a> {</code></span>
+<span class="codeline" id="line-43"><code>	<span class="keyword">if</span> <label for="r2" class="ident">d</label>.<a href="#line-39" class="ident">IsVertical</a>() {</code></span>
+<span class="codeline" id="line-44"><code>		<span class="keyword">return</span> <a href="#line-75" class="ident">Vertical</a></code></span>
+<span class="codeline" id="line-45"><code>	}</code></span>
+<span class="codeline" id="line-46"><code>	<span class="keyword">return</span> <a href="#line-74" class="ident">Horizontal</a></code></span>
+<span class="codeline" id="line-47"><code>}</code></span>
+<span class="codeline" id="line-48"><code></code></span>
+<span class="codeline" id="line-49"><code><span class="comment">// SwitchAxis switches from horizontal to vertical (and vice versa), preserving</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">// the progression.</span></code></span>
+<span class="codeline" id="line-51"><code><span class="keyword">func</span> (<label for="r4" class="ident">d</label> <a href="#line-8" class="ident">Direction</a>) <label for="r5" class="ident">SwitchAxis</label>() <a href="#line-8" class="ident">Direction</a> { <span class="keyword">return</span> <label for="r4" class="ident">d</label> ^ <a href="#line-24" class="ident">axisVertical</a> }</code></span>
+<span class="codeline" id="line-52"><code></code></span>
+<span class="codeline" id="line-53"><code><span class="comment">// Progression returns the text layout progression for d.</span></code></span>
+<span class="codeline" id="line-54"><code><span class="keyword">func</span> (<label for="r6" class="ident">d</label> <a href="#line-8" class="ident">Direction</a>) <label for="r7" class="ident">Progression</label>() <a href="#line-80" class="ident">Progression</a> {</code></span>
+<span class="codeline" id="line-55"><code>	<span class="keyword">if</span> <label for="r6" class="ident">d</label>&amp;<a href="#line-22" class="ident">progression</a> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-56"><code>		<span class="keyword">return</span> <a href="#line-87" class="ident">FromTopLeft</a></code></span>
+<span class="codeline" id="line-57"><code>	}</code></span>
+<span class="codeline" id="line-58"><code>	<span class="keyword">return</span> <a href="#line-92" class="ident">TowardTopLeft</a></code></span>
+<span class="codeline" id="line-59"><code>}</code></span>
+<span class="codeline" id="line-60"><code></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">// SetProgression sets the progression, preserving the others bits.</span></code></span>
+<span class="codeline" id="line-62"><code><span class="keyword">func</span> (<label for="r8" class="ident">d</label> *<a href="#line-8" class="ident">Direction</a>) <label for="r9" class="ident">SetProgression</label>(<label for="r10" class="ident">p</label> <a href="#line-80" class="ident">Progression</a>) {</code></span>
+<span class="codeline" id="line-63"><code>	<span class="keyword">if</span> <label for="r10" class="ident">p</label> == <a href="#line-87" class="ident">FromTopLeft</a> {</code></span>
+<span class="codeline" id="line-64"><code>		*<label for="r8" class="ident">d</label> &amp;= ^<a href="#line-22" class="ident">progression</a></code></span>
+<span class="codeline" id="line-65"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-66"><code>		*<label for="r8" class="ident">d</label> |= <a href="#line-22" class="ident">progression</a></code></span>
+<span class="codeline" id="line-67"><code>	}</code></span>
+<span class="codeline" id="line-68"><code>}</code></span>
+<span class="codeline" id="line-69"><code></code></span>
+<span class="codeline" id="line-70"><code><span class="comment">// Axis indicates the axis of layout for a piece of text.</span></code></span>
+<span class="codeline" id="line-71"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-Axis" class="ident">Axis</a> <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-72"><code></code></span>
+<span class="codeline" id="line-73"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-74"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-Horizontal" class="ident">Horizontal</a> <a href="#line-71" class="ident">Axis</a> = <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-75"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-Vertical" class="ident">Vertical</a>   <a href="#line-71" class="ident">Axis</a> = <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-76"><code>)</code></span>
+<span class="codeline" id="line-77"><code></code></span>
+<span class="codeline" id="line-78"><code><span class="comment">// Progression indicates how text is read within its Axis relative</span></code></span>
+<span class="codeline" id="line-79"><code><span class="comment">// to the top left corner.</span></code></span>
+<span class="codeline" id="line-80"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-Progression" class="ident">Progression</a> <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-81"><code></code></span>
+<span class="codeline" id="line-82"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-83"><code>	<span class="comment">// FromTopLeft indicates text in which a reader starts reading</span></code></span>
+<span class="codeline" id="line-84"><code><span class="comment">	// at the top left corner of the text and moves away from it.</span></code></span>
+<span class="codeline" id="line-85"><code><span class="comment">	// DirectionLTR and DirectionTTB are examples of FromTopLeft</span></code></span>
+<span class="codeline" id="line-86"><code><span class="comment">	// Progression.</span></code></span>
+<span class="codeline" id="line-87"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-FromTopLeft" class="ident">FromTopLeft</a> <a href="#line-80" class="ident">Progression</a> = <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-88"><code>	<span class="comment">// TowardTopLeft indicates text in which a reader starts reading</span></code></span>
+<span class="codeline" id="line-89"><code><span class="comment">	// at the opposite end of the text's Axis from the top left corner</span></code></span>
+<span class="codeline" id="line-90"><code><span class="comment">	// and moves towards it. DirectionRTL and DirectionBTT are examples</span></code></span>
+<span class="codeline" id="line-91"><code><span class="comment">	// of TowardTopLeft progression.</span></code></span>
+<span class="codeline" id="line-92"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/di.html#name-TowardTopLeft" class="ident">TowardTopLeft</a> <a href="#line-80" class="ident">Progression</a> = <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-93"><code>)</code></span>
+<span class="codeline" id="line-94"><code></code></span>
+<span class="codeline" id="line-95"><code><span class="comment">// HasVerticalOrientation returns true if the direction has set up</span></code></span>
+<span class="codeline" id="line-96"><code><span class="comment">// an orientation for vertical text (typically using [SetSideways] or [SetUpright])</span></code></span>
+<span class="codeline" id="line-97"><code><span class="keyword">func</span> (<label for="r11" class="ident">d</label> <a href="#line-8" class="ident">Direction</a>) <label for="r12" class="ident">HasVerticalOrientation</label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r11" class="ident">d</label>&amp;<a href="#line-30" class="ident">verticalOrientationSet</a> != <span class="lit-number">0</span> }</code></span>
+<span class="codeline" id="line-98"><code></code></span>
+<span class="codeline" id="line-99"><code><span class="comment">// IsSideways returns true if the direction is vertical with a 'sideways'</span></code></span>
+<span class="codeline" id="line-100"><code><span class="comment">// orientation.</span></code></span>
+<span class="codeline" id="line-101"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-102"><code><span class="comment">// When shaping vertical text, 'sideways' means that the glyphs are rotated</span></code></span>
+<span class="codeline" id="line-103"><code><span class="comment">// by 90°, clock-wise. This flag should be used by renderers to properly</span></code></span>
+<span class="codeline" id="line-104"><code><span class="comment">// rotate the glyphs when drawing.</span></code></span>
+<span class="codeline" id="line-105"><code><span class="keyword">func</span> (<label for="r13" class="ident">d</label> <a href="#line-8" class="ident">Direction</a>) <label for="r14" class="ident">IsSideways</label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r13" class="ident">d</label>.<a href="#line-39" class="ident">IsVertical</a>() &amp;&amp; <label for="r13" class="ident">d</label>&amp;<a href="#line-33" class="ident">verticalSideways</a> != <span class="lit-number">0</span> }</code></span>
+<span class="codeline" id="line-106"><code></code></span>
+<span class="codeline" id="line-107"><code><span class="comment">// SetSideways makes d vertical with 'sideways' or 'upright' orientation, preserving only the</span></code></span>
+<span class="codeline" id="line-108"><code><span class="comment">// progression.</span></code></span>
+<span class="codeline" id="line-109"><code><span class="keyword">func</span> (<label for="r15" class="ident">d</label> *<a href="#line-8" class="ident">Direction</a>) <label for="r16" class="ident">SetSideways</label>(<label for="r17" class="ident">sideways</label> <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-110"><code>	*<label for="r15" class="ident">d</label> |= <a href="#line-24" class="ident">axisVertical</a> | <a href="#line-30" class="ident">verticalOrientationSet</a></code></span>
+<span class="codeline" id="line-111"><code>	<span class="keyword">if</span> <label for="r17" class="ident">sideways</label> {</code></span>
+<span class="codeline" id="line-112"><code>		*<label for="r15" class="ident">d</label> |= <a href="#line-33" class="ident">verticalSideways</a></code></span>
+<span class="codeline" id="line-113"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-114"><code>		*<label for="r15" class="ident">d</label> &amp;= ^<a href="#line-33" class="ident">verticalSideways</a></code></span>
+<span class="codeline" id="line-115"><code>	}</code></span>
+<span class="codeline" id="line-116"><code>}</code></span>
+<span class="codeline" id="line-117"><code></code></span>
+<span class="codeline" id="line-118"><code><span class="comment">// Harfbuzz returns the equivalent direction used by harfbuzz.</span></code></span>
+<span class="codeline" id="line-119"><code><span class="keyword">func</span> (<label for="r18" class="ident">d</label> <a href="#line-8" class="ident">Direction</a>) <label for="r19" class="ident">Harfbuzz</label>() <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html" class="ident i0">harfbuzz</a>.<a href="../harfbuzz/harfbuzz.go.html#line-37" class="ident">Direction</a> {</code></span>
+<span class="codeline" id="line-120"><code>	<span class="keyword">switch</span> <label for="r18" class="ident">d</label> &amp; (<a href="#line-22" class="ident">progression</a> | <a href="#line-24" class="ident">axisVertical</a>) {</code></span>
+<span class="codeline" id="line-121"><code>	<span class="keyword">case</span> <a href="#line-14" class="ident">DirectionRTL</a>:</code></span>
+<span class="codeline" id="line-122"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html" class="ident i0">harfbuzz</a>.<a href="../harfbuzz/harfbuzz.go.html#line-41" class="ident">RightToLeft</a></code></span>
+<span class="codeline" id="line-123"><code>	<span class="keyword">case</span> <a href="#line-18" class="ident">DirectionBTT</a>:</code></span>
+<span class="codeline" id="line-124"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html" class="ident i0">harfbuzz</a>.<a href="../harfbuzz/harfbuzz.go.html#line-43" class="ident">BottomToTop</a></code></span>
+<span class="codeline" id="line-125"><code>	<span class="keyword">case</span> <a href="#line-16" class="ident">DirectionTTB</a>:</code></span>
+<span class="codeline" id="line-126"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html" class="ident i0">harfbuzz</a>.<a href="../harfbuzz/harfbuzz.go.html#line-42" class="ident">TopToBottom</a></code></span>
+<span class="codeline" id="line-127"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-128"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/github.com/go-text/typesetting/harfbuzz.html" class="ident i0">harfbuzz</a>.<a href="../harfbuzz/harfbuzz.go.html#line-40" class="ident">LeftToRight</a></code></span>
+<span class="codeline" id="line-129"><code>	}</code></span>
+<span class="codeline" id="line-130"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

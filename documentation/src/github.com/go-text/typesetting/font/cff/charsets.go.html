@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: charsets.go in package github.com/go-text/typesetting/font/cff</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	charsets.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/github.com/go-text/typesetting/font/cff.html">github.com/go-text/typesetting/font/cff</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> cff</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<a href="../../../../../../pkg/github.com/go-text/typesetting/font/cff.html#name-charsetISOAdobe" class="ident">charsetISOAdobe</a> = [<span class="lit-number">229</span>]<a href="../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>{</code></span>
+<span class="codeline" id="line-7"><code>		<span class="lit-number">0</span>, <span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">3</span>, <span class="lit-number">4</span>, <span class="lit-number">5</span>, <span class="lit-number">6</span>, <span class="lit-number">7</span>, <span class="lit-number">8</span>, <span class="lit-number">9</span>, <span class="lit-number">10</span>, <span class="lit-number">11</span>, <span class="lit-number">12</span>, <span class="lit-number">13</span>, <span class="lit-number">14</span>, <span class="lit-number">15</span>, <span class="lit-number">16</span>, <span class="lit-number">17</span>, <span class="lit-number">18</span>, <span class="lit-number">19</span>, <span class="lit-number">20</span>, <span class="lit-number">21</span>, <span class="lit-number">22</span>, <span class="lit-number">23</span>, <span class="lit-number">24</span>, <span class="lit-number">25</span>, <span class="lit-number">26</span>, <span class="lit-number">27</span>, <span class="lit-number">28</span>, <span class="lit-number">29</span>, <span class="lit-number">30</span>, <span class="lit-number">31</span>, <span class="lit-number">32</span>,</code></span>
+<span class="codeline" id="line-8"><code>		<span class="lit-number">33</span>, <span class="lit-number">34</span>, <span class="lit-number">35</span>, <span class="lit-number">36</span>, <span class="lit-number">37</span>, <span class="lit-number">38</span>, <span class="lit-number">39</span>, <span class="lit-number">40</span>, <span class="lit-number">41</span>, <span class="lit-number">42</span>, <span class="lit-number">43</span>, <span class="lit-number">44</span>, <span class="lit-number">45</span>, <span class="lit-number">46</span>, <span class="lit-number">47</span>, <span class="lit-number">48</span>, <span class="lit-number">49</span>, <span class="lit-number">50</span>, <span class="lit-number">51</span>, <span class="lit-number">52</span>, <span class="lit-number">53</span>, <span class="lit-number">54</span>, <span class="lit-number">55</span>, <span class="lit-number">56</span>, <span class="lit-number">57</span>, <span class="lit-number">58</span>, <span class="lit-number">59</span>, <span class="lit-number">60</span>, <span class="lit-number">61</span>, <span class="lit-number">62</span>, <span class="lit-number">63</span>, <span class="lit-number">64</span>, <span class="lit-number">65</span>,</code></span>
+<span class="codeline" id="line-9"><code>		<span class="lit-number">66</span>, <span class="lit-number">67</span>, <span class="lit-number">68</span>, <span class="lit-number">69</span>, <span class="lit-number">70</span>, <span class="lit-number">71</span>, <span class="lit-number">72</span>, <span class="lit-number">73</span>, <span class="lit-number">74</span>, <span class="lit-number">75</span>, <span class="lit-number">76</span>, <span class="lit-number">77</span>, <span class="lit-number">78</span>, <span class="lit-number">79</span>, <span class="lit-number">80</span>, <span class="lit-number">81</span>, <span class="lit-number">82</span>, <span class="lit-number">83</span>, <span class="lit-number">84</span>, <span class="lit-number">85</span>, <span class="lit-number">86</span>, <span class="lit-number">87</span>, <span class="lit-number">88</span>, <span class="lit-number">89</span>, <span class="lit-number">90</span>, <span class="lit-number">91</span>, <span class="lit-number">92</span>, <span class="lit-number">93</span>, <span class="lit-number">94</span>, <span class="lit-number">95</span>, <span class="lit-number">96</span>, <span class="lit-number">97</span>, <span class="lit-number">98</span>,</code></span>
+<span class="codeline" id="line-10"><code>		<span class="lit-number">99</span>, <span class="lit-number">100</span>, <span class="lit-number">101</span>, <span class="lit-number">102</span>, <span class="lit-number">103</span>, <span class="lit-number">104</span>, <span class="lit-number">105</span>, <span class="lit-number">106</span>, <span class="lit-number">107</span>, <span class="lit-number">108</span>, <span class="lit-number">109</span>, <span class="lit-number">110</span>, <span class="lit-number">111</span>, <span class="lit-number">112</span>, <span class="lit-number">113</span>, <span class="lit-number">114</span>, <span class="lit-number">115</span>, <span class="lit-number">116</span>, <span class="lit-number">117</span>, <span class="lit-number">118</span>, <span class="lit-number">119</span>, <span class="lit-number">120</span>, <span class="lit-number">121</span>, <span class="lit-number">122</span>, <span class="lit-number">123</span>, <span class="lit-number">124</span>, <span class="lit-number">125</span>, <span class="lit-number">126</span>, <span class="lit-number">127</span>, <span class="lit-number">128</span>, <span class="lit-number">129</span>, <span class="lit-number">130</span>, <span class="lit-number">131</span>,</code></span>
+<span class="codeline" id="line-11"><code>		<span class="lit-number">132</span>, <span class="lit-number">133</span>, <span class="lit-number">134</span>, <span class="lit-number">135</span>, <span class="lit-number">136</span>, <span class="lit-number">137</span>, <span class="lit-number">138</span>, <span class="lit-number">139</span>, <span class="lit-number">140</span>, <span class="lit-number">141</span>, <span class="lit-number">142</span>, <span class="lit-number">143</span>, <span class="lit-number">144</span>, <span class="lit-number">145</span>, <span class="lit-number">146</span>, <span class="lit-number">147</span>, <span class="lit-number">148</span>, <span class="lit-number">149</span>, <span class="lit-number">150</span>, <span class="lit-number">151</span>, <span class="lit-number">152</span>, <span class="lit-number">153</span>, <span class="lit-number">154</span>, <span class="lit-number">155</span>, <span class="lit-number">156</span>, <span class="lit-number">157</span>, <span class="lit-number">158</span>, <span class="lit-number">159</span>, <span class="lit-number">160</span>, <span class="lit-number">161</span>, <span class="lit-number">162</span>, <span class="lit-number">163</span>, <span class="lit-number">164</span>,</code></span>
+<span class="codeline" id="line-12"><code>		<span class="lit-number">165</span>, <span class="lit-number">166</span>, <span class="lit-number">167</span>, <span class="lit-number">168</span>, <span class="lit-number">169</span>, <span class="lit-number">170</span>, <span class="lit-number">171</span>, <span class="lit-number">172</span>, <span class="lit-number">173</span>, <span class="lit-number">174</span>, <span class="lit-number">175</span>, <span class="lit-number">176</span>, <span class="lit-number">177</span>, <span class="lit-number">178</span>, <span class="lit-number">179</span>, <span class="lit-number">180</span>, <span class="lit-number">181</span>, <span class="lit-number">182</span>, <span class="lit-number">183</span>, <span class="lit-number">184</span>, <span class="lit-number">185</span>, <span class="lit-number">186</span>, <span class="lit-number">187</span>, <span class="lit-number">188</span>, <span class="lit-number">189</span>, <span class="lit-number">190</span>, <span class="lit-number">191</span>, <span class="lit-number">192</span>, <span class="lit-number">193</span>, <span class="lit-number">194</span>, <span class="lit-number">195</span>, <span class="lit-number">196</span>, <span class="lit-number">197</span>,</code></span>
+<span class="codeline" id="line-13"><code>		<span class="lit-number">198</span>, <span class="lit-number">199</span>, <span class="lit-number">200</span>, <span class="lit-number">201</span>, <span class="lit-number">202</span>, <span class="lit-number">203</span>, <span class="lit-number">204</span>, <span class="lit-number">205</span>, <span class="lit-number">206</span>, <span class="lit-number">207</span>, <span class="lit-number">208</span>, <span class="lit-number">209</span>, <span class="lit-number">210</span>, <span class="lit-number">211</span>, <span class="lit-number">212</span>, <span class="lit-number">213</span>, <span class="lit-number">214</span>, <span class="lit-number">215</span>, <span class="lit-number">216</span>, <span class="lit-number">217</span>, <span class="lit-number">218</span>, <span class="lit-number">219</span>, <span class="lit-number">220</span>, <span class="lit-number">221</span>, <span class="lit-number">222</span>, <span class="lit-number">223</span>, <span class="lit-number">224</span>, <span class="lit-number">225</span>, <span class="lit-number">226</span>, <span class="lit-number">227</span>, <span class="lit-number">228</span>,</code></span>
+<span class="codeline" id="line-14"><code>	}</code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../../../../../pkg/github.com/go-text/typesetting/font/cff.html#name-charsetExpert" class="ident">charsetExpert</a> = [<span class="lit-number">166</span>]<a href="../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>{</code></span>
+<span class="codeline" id="line-17"><code>		<span class="lit-number">0</span>, <span class="lit-number">1</span>, <span class="lit-number">229</span>, <span class="lit-number">230</span>, <span class="lit-number">231</span>, <span class="lit-number">232</span>, <span class="lit-number">233</span>, <span class="lit-number">234</span>, <span class="lit-number">235</span>, <span class="lit-number">236</span>, <span class="lit-number">237</span>, <span class="lit-number">238</span>, <span class="lit-number">13</span>, <span class="lit-number">14</span>, <span class="lit-number">15</span>, <span class="lit-number">99</span>, <span class="lit-number">239</span>, <span class="lit-number">240</span>, <span class="lit-number">241</span>, <span class="lit-number">242</span>, <span class="lit-number">243</span>, <span class="lit-number">244</span>, <span class="lit-number">245</span>, <span class="lit-number">246</span>, <span class="lit-number">247</span>, <span class="lit-number">248</span>, <span class="lit-number">27</span>, <span class="lit-number">28</span>, <span class="lit-number">249</span>, <span class="lit-number">250</span>, <span class="lit-number">251</span>, <span class="lit-number">252</span>, <span class="lit-number">253</span>, <span class="lit-number">254</span>,</code></span>
+<span class="codeline" id="line-18"><code>		<span class="lit-number">255</span>, <span class="lit-number">256</span>, <span class="lit-number">257</span>, <span class="lit-number">258</span>, <span class="lit-number">259</span>, <span class="lit-number">260</span>, <span class="lit-number">261</span>, <span class="lit-number">262</span>, <span class="lit-number">263</span>, <span class="lit-number">264</span>, <span class="lit-number">265</span>, <span class="lit-number">266</span>, <span class="lit-number">109</span>, <span class="lit-number">110</span>, <span class="lit-number">267</span>, <span class="lit-number">268</span>, <span class="lit-number">269</span>, <span class="lit-number">270</span>, <span class="lit-number">271</span>, <span class="lit-number">272</span>, <span class="lit-number">273</span>, <span class="lit-number">274</span>, <span class="lit-number">275</span>, <span class="lit-number">276</span>, <span class="lit-number">277</span>, <span class="lit-number">278</span>, <span class="lit-number">279</span>, <span class="lit-number">280</span>, <span class="lit-number">281</span>, <span class="lit-number">282</span>, <span class="lit-number">283</span>, <span class="lit-number">284</span>, <span class="lit-number">285</span>, <span class="lit-number">286</span>,</code></span>
+<span class="codeline" id="line-19"><code>		<span class="lit-number">287</span>, <span class="lit-number">288</span>, <span class="lit-number">289</span>, <span class="lit-number">290</span>, <span class="lit-number">291</span>, <span class="lit-number">292</span>, <span class="lit-number">293</span>, <span class="lit-number">294</span>, <span class="lit-number">295</span>, <span class="lit-number">296</span>, <span class="lit-number">297</span>, <span class="lit-number">298</span>, <span class="lit-number">299</span>, <span class="lit-number">300</span>, <span class="lit-number">301</span>, <span class="lit-number">302</span>, <span class="lit-number">303</span>, <span class="lit-number">304</span>, <span class="lit-number">305</span>, <span class="lit-number">306</span>, <span class="lit-number">307</span>, <span class="lit-number">308</span>, <span class="lit-number">309</span>, <span class="lit-number">310</span>, <span class="lit-number">311</span>, <span class="lit-number">312</span>, <span class="lit-number">313</span>, <span class="lit-number">314</span>, <span class="lit-number">315</span>, <span class="lit-number">316</span>, <span class="lit-number">317</span>, <span class="lit-number">318</span>, <span class="lit-number">158</span>, <span class="lit-number">155</span>,</code></span>
+<span class="codeline" id="line-20"><code>		<span class="lit-number">163</span>, <span class="lit-number">319</span>, <span class="lit-number">320</span>, <span class="lit-number">321</span>, <span class="lit-number">322</span>, <span class="lit-number">323</span>, <span class="lit-number">324</span>, <span class="lit-number">325</span>, <span class="lit-number">326</span>, <span class="lit-number">150</span>, <span class="lit-number">164</span>, <span class="lit-number">169</span>, <span class="lit-number">327</span>, <span class="lit-number">328</span>, <span class="lit-number">329</span>, <span class="lit-number">330</span>, <span class="lit-number">331</span>, <span class="lit-number">332</span>, <span class="lit-number">333</span>, <span class="lit-number">334</span>, <span class="lit-number">335</span>, <span class="lit-number">336</span>, <span class="lit-number">337</span>, <span class="lit-number">338</span>, <span class="lit-number">339</span>, <span class="lit-number">340</span>, <span class="lit-number">341</span>, <span class="lit-number">342</span>, <span class="lit-number">343</span>, <span class="lit-number">344</span>, <span class="lit-number">345</span>, <span class="lit-number">346</span>, <span class="lit-number">347</span>, <span class="lit-number">348</span>,</code></span>
+<span class="codeline" id="line-21"><code>		<span class="lit-number">349</span>, <span class="lit-number">350</span>, <span class="lit-number">351</span>, <span class="lit-number">352</span>, <span class="lit-number">353</span>, <span class="lit-number">354</span>, <span class="lit-number">355</span>, <span class="lit-number">356</span>, <span class="lit-number">357</span>, <span class="lit-number">358</span>, <span class="lit-number">359</span>, <span class="lit-number">360</span>, <span class="lit-number">361</span>, <span class="lit-number">362</span>, <span class="lit-number">363</span>, <span class="lit-number">364</span>, <span class="lit-number">365</span>, <span class="lit-number">366</span>, <span class="lit-number">367</span>, <span class="lit-number">368</span>, <span class="lit-number">369</span>, <span class="lit-number">370</span>, <span class="lit-number">371</span>, <span class="lit-number">372</span>, <span class="lit-number">373</span>, <span class="lit-number">374</span>, <span class="lit-number">375</span>, <span class="lit-number">376</span>, <span class="lit-number">377</span>, <span class="lit-number">378</span>,</code></span>
+<span class="codeline" id="line-22"><code>	}</code></span>
+<span class="codeline" id="line-23"><code></code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../../../../../pkg/github.com/go-text/typesetting/font/cff.html#name-charsetExpertSubset" class="ident">charsetExpertSubset</a> = [<span class="lit-number">87</span>]<a href="../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>{</code></span>
+<span class="codeline" id="line-25"><code>		<span class="lit-number">0</span>, <span class="lit-number">1</span>, <span class="lit-number">231</span>, <span class="lit-number">232</span>, <span class="lit-number">235</span>, <span class="lit-number">236</span>, <span class="lit-number">237</span>, <span class="lit-number">238</span>, <span class="lit-number">13</span>, <span class="lit-number">14</span>, <span class="lit-number">15</span>, <span class="lit-number">99</span>, <span class="lit-number">239</span>, <span class="lit-number">240</span>, <span class="lit-number">241</span>, <span class="lit-number">242</span>, <span class="lit-number">243</span>, <span class="lit-number">244</span>, <span class="lit-number">245</span>, <span class="lit-number">246</span>, <span class="lit-number">247</span>, <span class="lit-number">248</span>, <span class="lit-number">27</span>, <span class="lit-number">28</span>, <span class="lit-number">249</span>, <span class="lit-number">250</span>, <span class="lit-number">251</span>, <span class="lit-number">253</span>, <span class="lit-number">254</span>,</code></span>
+<span class="codeline" id="line-26"><code>		<span class="lit-number">255</span>, <span class="lit-number">256</span>, <span class="lit-number">257</span>, <span class="lit-number">258</span>, <span class="lit-number">259</span>, <span class="lit-number">260</span>, <span class="lit-number">261</span>, <span class="lit-number">262</span>, <span class="lit-number">263</span>, <span class="lit-number">264</span>, <span class="lit-number">265</span>, <span class="lit-number">266</span>, <span class="lit-number">109</span>, <span class="lit-number">110</span>, <span class="lit-number">267</span>, <span class="lit-number">268</span>, <span class="lit-number">269</span>, <span class="lit-number">270</span>, <span class="lit-number">272</span>, <span class="lit-number">300</span>, <span class="lit-number">301</span>, <span class="lit-number">302</span>, <span class="lit-number">305</span>, <span class="lit-number">314</span>, <span class="lit-number">315</span>, <span class="lit-number">158</span>, <span class="lit-number">155</span>, <span class="lit-number">163</span>, <span class="lit-number">320</span>,</code></span>
+<span class="codeline" id="line-27"><code>		<span class="lit-number">321</span>, <span class="lit-number">322</span>, <span class="lit-number">323</span>, <span class="lit-number">324</span>, <span class="lit-number">325</span>, <span class="lit-number">326</span>, <span class="lit-number">150</span>, <span class="lit-number">164</span>, <span class="lit-number">169</span>, <span class="lit-number">327</span>, <span class="lit-number">328</span>, <span class="lit-number">329</span>, <span class="lit-number">330</span>, <span class="lit-number">331</span>, <span class="lit-number">332</span>, <span class="lit-number">333</span>, <span class="lit-number">334</span>, <span class="lit-number">335</span>, <span class="lit-number">336</span>, <span class="lit-number">337</span>, <span class="lit-number">338</span>, <span class="lit-number">339</span>, <span class="lit-number">340</span>, <span class="lit-number">341</span>, <span class="lit-number">342</span>, <span class="lit-number">343</span>, <span class="lit-number">344</span>, <span class="lit-number">345</span>, <span class="lit-number">346</span>,</code></span>
+<span class="codeline" id="line-28"><code>	}</code></span>
+<span class="codeline" id="line-29"><code>)</code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code><span class="keyword">var</span> <a href="../../../../../../pkg/github.com/go-text/typesetting/font/cff.html#name-stdStrings" class="ident">stdStrings</a> = [<span class="lit-number">391</span>]<a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>{</code></span>
+<span class="codeline" id="line-32"><code>	<span class="lit-string">".notdef"</span>,</code></span>
+<span class="codeline" id="line-33"><code>	<span class="lit-string">"space"</span>,</code></span>
+<span class="codeline" id="line-34"><code>	<span class="lit-string">"exclam"</span>,</code></span>
+<span class="codeline" id="line-35"><code>	<span class="lit-string">"quotedbl"</span>,</code></span>
+<span class="codeline" id="line-36"><code>	<span class="lit-string">"numbersign"</span>,</code></span>
+<span class="codeline" id="line-37"><code>	<span class="lit-string">"dollar"</span>,</code></span>
+<span class="codeline" id="line-38"><code>	<span class="lit-string">"percent"</span>,</code></span>
+<span class="codeline" id="line-39"><code>	<span class="lit-string">"ampersand"</span>,</code></span>
+<span class="codeline" id="line-40"><code>	<span class="lit-string">"quoteright"</span>,</code></span>
+<span class="codeline" id="line-41"><code>	<span class="lit-string">"parenleft"</span>,</code></span>
+<span class="codeline" id="line-42"><code>	<span class="lit-string">"parenright"</span>,</code></span>
+<span class="codeline" id="line-43"><code>	<span class="lit-string">"asterisk"</span>,</code></span>
+<span class="codeline" id="line-44"><code>	<span class="lit-string">"plus"</span>,</code></span>
+<span class="codeline" id="line-45"><code>	<span class="lit-string">"comma"</span>,</code></span>
+<span class="codeline" id="line-46"><code>	<span class="lit-string">"hyphen"</span>,</code></span>
+<span class="codeline" id="line-47"><code>	<span class="lit-string">"period"</span>,</code></span>
+<span class="codeline" id="line-48"><code>	<span class="lit-string">"slash"</span>,</code></span>
+<span class="codeline" id="line-49"><code>	<span class="lit-string">"zero"</span>,</code></span>
+<span class="codeline" id="line-50"><code>	<span class="lit-string">"one"</span>,</code></span>
+<span class="codeline" id="line-51"><code>	<span class="lit-string">"two"</span>,</code></span>
+<span class="codeline" id="line-52"><code>	<span class="lit-string">"three"</span>,</code></span>
+<span class="codeline" id="line-53"><code>	<span class="lit-string">"four"</span>,</code></span>
+<span class="codeline" id="line-54"><code>	<span class="lit-string">"five"</span>,</code></span>
+<span class="codeline" id="line-55"><code>	<span class="lit-string">"six"</span>,</code></span>
+<span class="codeline" id="line-56"><code>	<span class="lit-string">"seven"</span>,</code></span>
+<span class="codeline" id="line-57"><code>	<span class="lit-string">"eight"</span>,</code></span>
+<span class="codeline" id="line-58"><code>	<span class="lit-string">"nine"</span>,</code></span>
+<span class="codeline" id="line-59"><code>	<span class="lit-string">"colon"</span>,</code></span>
+<span class="codeline" id="line-60"><code>	<span class="lit-string">"semicolon"</span>,</code></span>
+<span class="codeline" id="line-61"><code>	<span class="lit-string">"less"</span>,</code></span>
+<span class="codeline" id="line-62"><code>	<span class="lit-string">"equal"</span>,</code></span>
+<span class="codeline" id="line-63"><code>	<span class="lit-string">"greater"</span>,</code></span>
+<span class="codeline" id="line-64"><code>	<span class="lit-string">"question"</span>,</code></span>
+<span class="codeline" id="line-65"><code>	<span class="lit-string">"at"</span>,</code></span>
+<span class="codeline" id="line-66"><code>	<span class="lit-string">"A"</span>,</code></span>
+<span class="codeline" id="line-67"><code>	<span class="lit-string">"B"</span>,</code></span>
+<span class="codeline" id="line-68"><code>	<span class="lit-string">"C"</span>,</code></span>
+<span class="codeline" id="line-69"><code>	<span class="lit-string">"D"</span>,</code></span>
+<span class="codeline" id="line-70"><code>	<span class="lit-string">"E"</span>,</code></span>
+<span class="codeline" id="line-71"><code>	<span class="lit-string">"F"</span>,</code></span>
+<span class="codeline" id="line-72"><code>	<span class="lit-string">"G"</span>,</code></span>
+<span class="codeline" id="line-73"><code>	<span class="lit-string">"H"</span>,</code></span>
+<span class="codeline" id="line-74"><code>	<span class="lit-string">"I"</span>,</code></span>
+<span class="codeline" id="line-75"><code>	<span class="lit-string">"J"</span>,</code></span>
+<span class="codeline" id="line-76"><code>	<span class="lit-string">"K"</span>,</code></span>
+<span class="codeline" id="line-77"><code>	<span class="lit-string">"L"</span>,</code></span>
+<span class="codeline" id="line-78"><code>	<span class="lit-string">"M"</span>,</code></span>
+<span class="codeline" id="line-79"><code>	<span class="lit-string">"N"</span>,</code></span>
+<span class="codeline" id="line-80"><code>	<span class="lit-string">"O"</span>,</code></span>
+<span class="codeline" id="line-81"><code>	<span class="lit-string">"P"</span>,</code></span>
+<span class="codeline" id="line-82"><code>	<span class="lit-string">"Q"</span>,</code></span>
+<span class="codeline" id="line-83"><code>	<span class="lit-string">"R"</span>,</code></span>
+<span class="codeline" id="line-84"><code>	<span class="lit-string">"S"</span>,</code></span>
+<span class="codeline" id="line-85"><code>	<span class="lit-string">"T"</span>,</code></span>
+<span class="codeline" id="line-86"><code>	<span class="lit-string">"U"</span>,</code></span>
+<span class="codeline" id="line-87"><code>	<span class="lit-string">"V"</span>,</code></span>
+<span class="codeline" id="line-88"><code>	<span class="lit-string">"W"</span>,</code></span>
+<span class="codeline" id="line-89"><code>	<span class="lit-string">"X"</span>,</code></span>
+<span class="codeline" id="line-90"><code>	<span class="lit-string">"Y"</span>,</code></span>
+<span class="codeline" id="line-91"><code>	<span class="lit-string">"Z"</span>,</code></span>
+<span class="codeline" id="line-92"><code>	<span class="lit-string">"bracketleft"</span>,</code></span>
+<span class="codeline" id="line-93"><code>	<span class="lit-string">"backslash"</span>,</code></span>
+<span class="codeline" id="line-94"><code>	<span class="lit-string">"bracketright"</span>,</code></span>
+<span class="codeline" id="line-95"><code>	<span class="lit-string">"asciicircum"</span>,</code></span>
+<span class="codeline" id="line-96"><code>	<span class="lit-string">"underscore"</span>,</code></span>
+<span class="codeline" id="line-97"><code>	<span class="lit-string">"quoteleft"</span>,</code></span>
+<span class="codeline" id="line-98"><code>	<span class="lit-string">"a"</span>,</code></span>
+<span class="codeline" id="line-99"><code>	<span class="lit-string">"b"</span>,</code></span>
+<span class="codeline" id="line-100"><code>	<span class="lit-string">"c"</span>,</code></span>
+<span class="codeline" id="line-101"><code>	<span class="lit-string">"d"</span>,</code></span>
+<span class="codeline" id="line-102"><code>	<span class="lit-string">"e"</span>,</code></span>
+<span class="codeline" id="line-103"><code>	<span class="lit-string">"f"</span>,</code></span>
+<span class="codeline" id="line-104"><code>	<span class="lit-string">"g"</span>,</code></span>
+<span class="codeline" id="line-105"><code>	<span class="lit-string">"h"</span>,</code></span>
+<span class="codeline" id="line-106"><code>	<span class="lit-string">"i"</span>,</code></span>
+<span class="codeline" id="line-107"><code>	<span class="lit-string">"j"</span>,</code></span>
+<span class="codeline" id="line-108"><code>	<span class="lit-string">"k"</span>,</code></span>
+<span class="codeline" id="line-109"><code>	<span class="lit-string">"l"</span>,</code></span>
+<span class="codeline" id="line-110"><code>	<span class="lit-string">"m"</span>,</code></span>
+<span class="codeline" id="line-111"><code>	<span class="lit-string">"n"</span>,</code></span>
+<span class="codeline" id="line-112"><code>	<span class="lit-string">"o"</span>,</code></span>
+<span class="codeline" id="line-113"><code>	<span class="lit-string">"p"</span>,</code></span>
+<span class="codeline" id="line-114"><code>	<span class="lit-string">"q"</span>,</code></span>
+<span class="codeline" id="line-115"><code>	<span class="lit-string">"r"</span>,</code></span>
+<span class="codeline" id="line-116"><code>	<span class="lit-string">"s"</span>,</code></span>
+<span class="codeline" id="line-117"><code>	<span class="lit-string">"t"</span>,</code></span>
+<span class="codeline" id="line-118"><code>	<span class="lit-string">"u"</span>,</code></span>
+<span class="codeline" id="line-119"><code>	<span class="lit-string">"v"</span>,</code></span>
+<span class="codeline" id="line-120"><code>	<span class="lit-string">"w"</span>,</code></span>
+<span class="codeline" id="line-121"><code>	<span class="lit-string">"x"</span>,</code></span>
+<span class="codeline" id="line-122"><code>	<span class="lit-string">"y"</span>,</code></span>
+<span class="codeline" id="line-123"><code>	<span class="lit-string">"z"</span>,</code></span>
+<span class="codeline" id="line-124"><code>	<span class="lit-string">"braceleft"</span>,</code></span>
+<span class="codeline" id="line-125"><code>	<span class="lit-string">"bar"</span>,</code></span>
+<span class="codeline" id="line-126"><code>	<span class="lit-string">"braceright"</span>,</code></span>
+<span class="codeline" id="line-127"><code>	<span class="lit-string">"asciitilde"</span>,</code></span>
+<span class="codeline" id="line-128"><code>	<span class="lit-string">"exclamdown"</span>,</code></span>
+<span class="codeline" id="line-129"><code>	<span class="lit-string">"cent"</span>,</code></span>
+<span class="codeline" id="line-130"><code>	<span class="lit-string">"sterling"</span>,</code></span>
+<span class="codeline" id="line-131"><code>	<span class="lit-string">"fraction"</span>,</code></span>
+<span class="codeline" id="line-132"><code>	<span class="lit-string">"yen"</span>,</code></span>
+<span class="codeline" id="line-133"><code>	<span class="lit-string">"florin"</span>,</code></span>
+<span class="codeline" id="line-134"><code>	<span class="lit-string">"section"</span>,</code></span>
+<span class="codeline" id="line-135"><code>	<span class="lit-string">"currency"</span>,</code></span>
+<span class="codeline" id="line-136"><code>	<span class="lit-string">"quotesingle"</span>,</code></span>
+<span class="codeline" id="line-137"><code>	<span class="lit-string">"quotedblleft"</span>,</code></span>
+<span class="codeline" id="line-138"><code>	<span class="lit-string">"guillemotleft"</span>,</code></span>
+<span class="codeline" id="line-139"><code>	<span class="lit-string">"guilsinglleft"</span>,</code></span>
+<span class="codeline" id="line-140"><code>	<span class="lit-string">"guilsinglright"</span>,</code></span>
+<span class="codeline" id="line-141"><code>	<span class="lit-string">"fi"</span>,</code></span>
+<span class="codeline" id="line-142"><code>	<span class="lit-string">"fl"</span>,</code></span>
+<span class="codeline" id="line-143"><code>	<span class="lit-string">"endash"</span>,</code></span>
+<span class="codeline" id="line-144"><code>	<span class="lit-string">"dagger"</span>,</code></span>
+<span class="codeline" id="line-145"><code>	<span class="lit-string">"daggerdbl"</span>,</code></span>
+<span class="codeline" id="line-146"><code>	<span class="lit-string">"periodcentered"</span>,</code></span>
+<span class="codeline" id="line-147"><code>	<span class="lit-string">"paragraph"</span>,</code></span>
+<span class="codeline" id="line-148"><code>	<span class="lit-string">"bullet"</span>,</code></span>
+<span class="codeline" id="line-149"><code>	<span class="lit-string">"quotesinglbase"</span>,</code></span>
+<span class="codeline" id="line-150"><code>	<span class="lit-string">"quotedblbase"</span>,</code></span>
+<span class="codeline" id="line-151"><code>	<span class="lit-string">"quotedblright"</span>,</code></span>
+<span class="codeline" id="line-152"><code>	<span class="lit-string">"guillemotright"</span>,</code></span>
+<span class="codeline" id="line-153"><code>	<span class="lit-string">"ellipsis"</span>,</code></span>
+<span class="codeline" id="line-154"><code>	<span class="lit-string">"perthousand"</span>,</code></span>
+<span class="codeline" id="line-155"><code>	<span class="lit-string">"questiondown"</span>,</code></span>
+<span class="codeline" id="line-156"><code>	<span class="lit-string">"grave"</span>,</code></span>
+<span class="codeline" id="line-157"><code>	<span class="lit-string">"acute"</span>,</code></span>
+<span class="codeline" id="line-158"><code>	<span class="lit-string">"circumflex"</span>,</code></span>
+<span class="codeline" id="line-159"><code>	<span class="lit-string">"tilde"</span>,</code></span>
+<span class="codeline" id="line-160"><code>	<span class="lit-string">"macron"</span>,</code></span>
+<span class="codeline" id="line-161"><code>	<span class="lit-string">"breve"</span>,</code></span>
+<span class="codeline" id="line-162"><code>	<span class="lit-string">"dotaccent"</span>,</code></span>
+<span class="codeline" id="line-163"><code>	<span class="lit-string">"dieresis"</span>,</code></span>
+<span class="codeline" id="line-164"><code>	<span class="lit-string">"ring"</span>,</code></span>
+<span class="codeline" id="line-165"><code>	<span class="lit-string">"cedilla"</span>,</code></span>
+<span class="codeline" id="line-166"><code>	<span class="lit-string">"hungarumlaut"</span>,</code></span>
+<span class="codeline" id="line-167"><code>	<span class="lit-string">"ogonek"</span>,</code></span>
+<span class="codeline" id="line-168"><code>	<span class="lit-string">"caron"</span>,</code></span>
+<span class="codeline" id="line-169"><code>	<span class="lit-string">"emdash"</span>,</code></span>
+<span class="codeline" id="line-170"><code>	<span class="lit-string">"AE"</span>,</code></span>
+<span class="codeline" id="line-171"><code>	<span class="lit-string">"ordfeminine"</span>,</code></span>
+<span class="codeline" id="line-172"><code>	<span class="lit-string">"Lslash"</span>,</code></span>
+<span class="codeline" id="line-173"><code>	<span class="lit-string">"Oslash"</span>,</code></span>
+<span class="codeline" id="line-174"><code>	<span class="lit-string">"OE"</span>,</code></span>
+<span class="codeline" id="line-175"><code>	<span class="lit-string">"ordmasculine"</span>,</code></span>
+<span class="codeline" id="line-176"><code>	<span class="lit-string">"ae"</span>,</code></span>
+<span class="codeline" id="line-177"><code>	<span class="lit-string">"dotlessi"</span>,</code></span>
+<span class="codeline" id="line-178"><code>	<span class="lit-string">"lslash"</span>,</code></span>
+<span class="codeline" id="line-179"><code>	<span class="lit-string">"oslash"</span>,</code></span>
+<span class="codeline" id="line-180"><code>	<span class="lit-string">"oe"</span>,</code></span>
+<span class="codeline" id="line-181"><code>	<span class="lit-string">"germandbls"</span>,</code></span>
+<span class="codeline" id="line-182"><code>	<span class="lit-string">"onesuperior"</span>,</code></span>
+<span class="codeline" id="line-183"><code>	<span class="lit-string">"logicalnot"</span>,</code></span>
+<span class="codeline" id="line-184"><code>	<span class="lit-string">"mu"</span>,</code></span>
+<span class="codeline" id="line-185"><code>	<span class="lit-string">"trademark"</span>,</code></span>
+<span class="codeline" id="line-186"><code>	<span class="lit-string">"Eth"</span>,</code></span>
+<span class="codeline" id="line-187"><code>	<span class="lit-string">"onehalf"</span>,</code></span>
+<span class="codeline" id="line-188"><code>	<span class="lit-string">"plusminus"</span>,</code></span>
+<span class="codeline" id="line-189"><code>	<span class="lit-string">"Thorn"</span>,</code></span>
+<span class="codeline" id="line-190"><code>	<span class="lit-string">"onequarter"</span>,</code></span>
+<span class="codeline" id="line-191"><code>	<span class="lit-string">"divide"</span>,</code></span>
+<span class="codeline" id="line-192"><code>	<span class="lit-string">"brokenbar"</span>,</code></span>
+<span class="codeline" id="line-193"><code>	<span class="lit-string">"degree"</span>,</code></span>
+<span class="codeline" id="line-194"><code>	<span class="lit-string">"thorn"</span>,</code></span>
+<span class="codeline" id="line-195"><code>	<span class="lit-string">"threequarters"</span>,</code></span>
+<span class="codeline" id="line-196"><code>	<span class="lit-string">"twosuperior"</span>,</code></span>
+<span class="codeline" id="line-197"><code>	<span class="lit-string">"registered"</span>,</code></span>
+<span class="codeline" id="line-198"><code>	<span class="lit-string">"minus"</span>,</code></span>
+<span class="codeline" id="line-199"><code>	<span class="lit-string">"eth"</span>,</code></span>
+<span class="codeline" id="line-200"><code>	<span class="lit-string">"multiply"</span>,</code></span>
+<span class="codeline" id="line-201"><code>	<span class="lit-string">"threesuperior"</span>,</code></span>
+<span class="codeline" id="line-202"><code>	<span class="lit-string">"copyright"</span>,</code></span>
+<span class="codeline" id="line-203"><code>	<span class="lit-string">"Aacute"</span>,</code></span>
+<span class="codeline" id="line-204"><code>	<span class="lit-string">"Acircumflex"</span>,</code></span>
+<span class="codeline" id="line-205"><code>	<span class="lit-string">"Adieresis"</span>,</code></span>
+<span class="codeline" id="line-206"><code>	<span class="lit-string">"Agrave"</span>,</code></span>
+<span class="codeline" id="line-207"><code>	<span class="lit-string">"Aring"</span>,</code></span>
+<span class="codeline" id="line-208"><code>	<span class="lit-string">"Atilde"</span>,</code></span>
+<span class="codeline" id="line-209"><code>	<span class="lit-string">"Ccedilla"</span>,</code></span>
+<span class="codeline" id="line-210"><code>	<span class="lit-string">"Eacute"</span>,</code></span>
+<span class="codeline" id="line-211"><code>	<span class="lit-string">"Ecircumflex"</span>,</code></span>
+<span class="codeline" id="line-212"><code>	<span class="lit-string">"Edieresis"</span>,</code></span>
+<span class="codeline" id="line-213"><code>	<span class="lit-string">"Egrave"</span>,</code></span>
+<span class="codeline" id="line-214"><code>	<span class="lit-string">"Iacute"</span>,</code></span>
+<span class="codeline" id="line-215"><code>	<span class="lit-string">"Icircumflex"</span>,</code></span>
+<span class="codeline" id="line-216"><code>	<span class="lit-string">"Idieresis"</span>,</code></span>
+<span class="codeline" id="line-217"><code>	<span class="lit-string">"Igrave"</span>,</code></span>
+<span class="codeline" id="line-218"><code>	<span class="lit-string">"Ntilde"</span>,</code></span>
+<span class="codeline" id="line-219"><code>	<span class="lit-string">"Oacute"</span>,</code></span>
+<span class="codeline" id="line-220"><code>	<span class="lit-string">"Ocircumflex"</span>,</code></span>
+<span class="codeline" id="line-221"><code>	<span class="lit-string">"Odieresis"</span>,</code></span>
+<span class="codeline" id="line-222"><code>	<span class="lit-string">"Ograve"</span>,</code></span>
+<span class="codeline" id="line-223"><code>	<span class="lit-string">"Otilde"</span>,</code></span>
+<span class="codeline" id="line-224"><code>	<span class="lit-string">"Scaron"</span>,</code></span>
+<span class="codeline" id="line-225"><code>	<span class="lit-string">"Uacute"</span>,</code></span>
+<span class="codeline" id="line-226"><code>	<span class="lit-string">"Ucircumflex"</span>,</code></span>
+<span class="codeline" id="line-227"><code>	<span class="lit-string">"Udieresis"</span>,</code></span>
+<span class="codeline" id="line-228"><code>	<span class="lit-string">"Ugrave"</span>,</code></span>
+<span class="codeline" id="line-229"><code>	<span class="lit-string">"Yacute"</span>,</code></span>
+<span class="codeline" id="line-230"><code>	<span class="lit-string">"Ydieresis"</span>,</code></span>
+<span class="codeline" id="line-231"><code>	<span class="lit-string">"Zcaron"</span>,</code></span>
+<span class="codeline" id="line-232"><code>	<span class="lit-string">"aacute"</span>,</code></span>
+<span class="codeline" id="line-233"><code>	<span class="lit-string">"acircumflex"</span>,</code></span>
+<span class="codeline" id="line-234"><code>	<span class="lit-string">"adieresis"</span>,</code></span>
+<span class="codeline" id="line-235"><code>	<span class="lit-string">"agrave"</span>,</code></span>
+<span class="codeline" id="line-236"><code>	<span class="lit-string">"aring"</span>,</code></span>
+<span class="codeline" id="line-237"><code>	<span class="lit-string">"atilde"</span>,</code></span>
+<span class="codeline" id="line-238"><code>	<span class="lit-string">"ccedilla"</span>,</code></span>
+<span class="codeline" id="line-239"><code>	<span class="lit-string">"eacute"</span>,</code></span>
+<span class="codeline" id="line-240"><code>	<span class="lit-string">"ecircumflex"</span>,</code></span>
+<span class="codeline" id="line-241"><code>	<span class="lit-string">"edieresis"</span>,</code></span>
+<span class="codeline" id="line-242"><code>	<span class="lit-string">"egrave"</span>,</code></span>
+<span class="codeline" id="line-243"><code>	<span class="lit-string">"iacute"</span>,</code></span>
+<span class="codeline" id="line-244"><code>	<span class="lit-string">"icircumflex"</span>,</code></span>
+<span class="codeline" id="line-245"><code>	<span class="lit-string">"idieresis"</span>,</code></span>
+<span class="codeline" id="line-246"><code>	<span class="lit-string">"igrave"</span>,</code></span>
+<span class="codeline" id="line-247"><code>	<span class="lit-string">"ntilde"</span>,</code></span>
+<span class="codeline" id="line-248"><code>	<span class="lit-string">"oacute"</span>,</code></span>
+<span class="codeline" id="line-249"><code>	<span class="lit-string">"ocircumflex"</span>,</code></span>
+<span class="codeline" id="line-250"><code>	<span class="lit-string">"odieresis"</span>,</code></span>
+<span class="codeline" id="line-251"><code>	<span class="lit-string">"ograve"</span>,</code></span>
+<span class="codeline" id="line-252"><code>	<span class="lit-string">"otilde"</span>,</code></span>
+<span class="codeline" id="line-253"><code>	<span class="lit-string">"scaron"</span>,</code></span>
+<span class="codeline" id="line-254"><code>	<span class="lit-string">"uacute"</span>,</code></span>
+<span class="codeline" id="line-255"><code>	<span class="lit-string">"ucircumflex"</span>,</code></span>
+<span class="codeline" id="line-256"><code>	<span class="lit-string">"udieresis"</span>,</code></span>
+<span class="codeline" id="line-257"><code>	<span class="lit-string">"ugrave"</span>,</code></span>
+<span class="codeline" id="line-258"><code>	<span class="lit-string">"yacute"</span>,</code></span>
+<span class="codeline" id="line-259"><code>	<span class="lit-string">"ydieresis"</span>,</code></span>
+<span class="codeline" id="line-260"><code>	<span class="lit-string">"zcaron"</span>,</code></span>
+<span class="codeline" id="line-261"><code>	<span class="lit-string">"exclamsmall"</span>,</code></span>
+<span class="codeline" id="line-262"><code>	<span class="lit-string">"Hungarumlautsmall"</span>,</code></span>
+<span class="codeline" id="line-263"><code>	<span class="lit-string">"dollaroldstyle"</span>,</code></span>
+<span class="codeline" id="line-264"><code>	<span class="lit-string">"dollarsuperior"</span>,</code></span>
+<span class="codeline" id="line-265"><code>	<span class="lit-string">"ampersandsmall"</span>,</code></span>
+<span class="codeline" id="line-266"><code>	<span class="lit-string">"Acutesmall"</span>,</code></span>
+<span class="codeline" id="line-267"><code>	<span class="lit-string">"parenleftsuperior"</span>,</code></span>
+<span class="codeline" id="line-268"><code>	<span class="lit-string">"parenrightsuperior"</span>,</code></span>
+<span class="codeline" id="line-269"><code>	<span class="lit-string">"twodotenleader"</span>,</code></span>
+<span class="codeline" id="line-270"><code>	<span class="lit-string">"onedotenleader"</span>,</code></span>
+<span class="codeline" id="line-271"><code>	<span class="lit-string">"zerooldstyle"</span>,</code></span>
+<span class="codeline" id="line-272"><code>	<span class="lit-string">"oneoldstyle"</span>,</code></span>
+<span class="codeline" id="line-273"><code>	<span class="lit-string">"twooldstyle"</span>,</code></span>
+<span class="codeline" id="line-274"><code>	<span class="lit-string">"threeoldstyle"</span>,</code></span>
+<span class="codeline" id="line-275"><code>	<span class="lit-string">"fouroldstyle"</span>,</code></span>
+<span class="codeline" id="line-276"><code>	<span class="lit-string">"fiveoldstyle"</span>,</code></span>
+<span class="codeline" id="line-277"><code>	<span class="lit-string">"sixoldstyle"</span>,</code></span>
+<span class="codeline" id="line-278"><code>	<span class="lit-string">"sevenoldstyle"</span>,</code></span>
+<span class="codeline" id="line-279"><code>	<span class="lit-string">"eightoldstyle"</span>,</code></span>
+<span class="codeline" id="line-280"><code>	<span class="lit-string">"nineoldstyle"</span>,</code></span>
+<span class="codeline" id="line-281"><code>	<span class="lit-string">"commasuperior"</span>,</code></span>
+<span class="codeline" id="line-282"><code>	<span class="lit-string">"threequartersemdash"</span>,</code></span>
+<span class="codeline" id="line-283"><code>	<span class="lit-string">"periodsuperior"</span>,</code></span>
+<span class="codeline" id="line-284"><code>	<span class="lit-string">"questionsmall"</span>,</code></span>
+<span class="codeline" id="line-285"><code>	<span class="lit-string">"asuperior"</span>,</code></span>
+<span class="codeline" id="line-286"><code>	<span class="lit-string">"bsuperior"</span>,</code></span>
+<span class="codeline" id="line-287"><code>	<span class="lit-string">"centsuperior"</span>,</code></span>
+<span class="codeline" id="line-288"><code>	<span class="lit-string">"dsuperior"</span>,</code></span>
+<span class="codeline" id="line-289"><code>	<span class="lit-string">"esuperior"</span>,</code></span>
+<span class="codeline" id="line-290"><code>	<span class="lit-string">"isuperior"</span>,</code></span>
+<span class="codeline" id="line-291"><code>	<span class="lit-string">"lsuperior"</span>,</code></span>
+<span class="codeline" id="line-292"><code>	<span class="lit-string">"msuperior"</span>,</code></span>
+<span class="codeline" id="line-293"><code>	<span class="lit-string">"nsuperior"</span>,</code></span>
+<span class="codeline" id="line-294"><code>	<span class="lit-string">"osuperior"</span>,</code></span>
+<span class="codeline" id="line-295"><code>	<span class="lit-string">"rsuperior"</span>,</code></span>
+<span class="codeline" id="line-296"><code>	<span class="lit-string">"ssuperior"</span>,</code></span>
+<span class="codeline" id="line-297"><code>	<span class="lit-string">"tsuperior"</span>,</code></span>
+<span class="codeline" id="line-298"><code>	<span class="lit-string">"ff"</span>,</code></span>
+<span class="codeline" id="line-299"><code>	<span class="lit-string">"ffi"</span>,</code></span>
+<span class="codeline" id="line-300"><code>	<span class="lit-string">"ffl"</span>,</code></span>
+<span class="codeline" id="line-301"><code>	<span class="lit-string">"parenleftinferior"</span>,</code></span>
+<span class="codeline" id="line-302"><code>	<span class="lit-string">"parenrightinferior"</span>,</code></span>
+<span class="codeline" id="line-303"><code>	<span class="lit-string">"Circumflexsmall"</span>,</code></span>
+<span class="codeline" id="line-304"><code>	<span class="lit-string">"hyphensuperior"</span>,</code></span>
+<span class="codeline" id="line-305"><code>	<span class="lit-string">"Gravesmall"</span>,</code></span>
+<span class="codeline" id="line-306"><code>	<span class="lit-string">"Asmall"</span>,</code></span>
+<span class="codeline" id="line-307"><code>	<span class="lit-string">"Bsmall"</span>,</code></span>
+<span class="codeline" id="line-308"><code>	<span class="lit-string">"Csmall"</span>,</code></span>
+<span class="codeline" id="line-309"><code>	<span class="lit-string">"Dsmall"</span>,</code></span>
+<span class="codeline" id="line-310"><code>	<span class="lit-string">"Esmall"</span>,</code></span>
+<span class="codeline" id="line-311"><code>	<span class="lit-string">"Fsmall"</span>,</code></span>
+<span class="codeline" id="line-312"><code>	<span class="lit-string">"Gsmall"</span>,</code></span>
+<span class="codeline" id="line-313"><code>	<span class="lit-string">"Hsmall"</span>,</code></span>
+<span class="codeline" id="line-314"><code>	<span class="lit-string">"Ismall"</span>,</code></span>
+<span class="codeline" id="line-315"><code>	<span class="lit-string">"Jsmall"</span>,</code></span>
+<span class="codeline" id="line-316"><code>	<span class="lit-string">"Ksmall"</span>,</code></span>
+<span class="codeline" id="line-317"><code>	<span class="lit-string">"Lsmall"</span>,</code></span>
+<span class="codeline" id="line-318"><code>	<span class="lit-string">"Msmall"</span>,</code></span>
+<span class="codeline" id="line-319"><code>	<span class="lit-string">"Nsmall"</span>,</code></span>
+<span class="codeline" id="line-320"><code>	<span class="lit-string">"Osmall"</span>,</code></span>
+<span class="codeline" id="line-321"><code>	<span class="lit-string">"Psmall"</span>,</code></span>
+<span class="codeline" id="line-322"><code>	<span class="lit-string">"Qsmall"</span>,</code></span>
+<span class="codeline" id="line-323"><code>	<span class="lit-string">"Rsmall"</span>,</code></span>
+<span class="codeline" id="line-324"><code>	<span class="lit-string">"Ssmall"</span>,</code></span>
+<span class="codeline" id="line-325"><code>	<span class="lit-string">"Tsmall"</span>,</code></span>
+<span class="codeline" id="line-326"><code>	<span class="lit-string">"Usmall"</span>,</code></span>
+<span class="codeline" id="line-327"><code>	<span class="lit-string">"Vsmall"</span>,</code></span>
+<span class="codeline" id="line-328"><code>	<span class="lit-string">"Wsmall"</span>,</code></span>
+<span class="codeline" id="line-329"><code>	<span class="lit-string">"Xsmall"</span>,</code></span>
+<span class="codeline" id="line-330"><code>	<span class="lit-string">"Ysmall"</span>,</code></span>
+<span class="codeline" id="line-331"><code>	<span class="lit-string">"Zsmall"</span>,</code></span>
+<span class="codeline" id="line-332"><code>	<span class="lit-string">"colonmonetary"</span>,</code></span>
+<span class="codeline" id="line-333"><code>	<span class="lit-string">"onefitted"</span>,</code></span>
+<span class="codeline" id="line-334"><code>	<span class="lit-string">"rupiah"</span>,</code></span>
+<span class="codeline" id="line-335"><code>	<span class="lit-string">"Tildesmall"</span>,</code></span>
+<span class="codeline" id="line-336"><code>	<span class="lit-string">"exclamdownsmall"</span>,</code></span>
+<span class="codeline" id="line-337"><code>	<span class="lit-string">"centoldstyle"</span>,</code></span>
+<span class="codeline" id="line-338"><code>	<span class="lit-string">"Lslashsmall"</span>,</code></span>
+<span class="codeline" id="line-339"><code>	<span class="lit-string">"Scaronsmall"</span>,</code></span>
+<span class="codeline" id="line-340"><code>	<span class="lit-string">"Zcaronsmall"</span>,</code></span>
+<span class="codeline" id="line-341"><code>	<span class="lit-string">"Dieresissmall"</span>,</code></span>
+<span class="codeline" id="line-342"><code>	<span class="lit-string">"Brevesmall"</span>,</code></span>
+<span class="codeline" id="line-343"><code>	<span class="lit-string">"Caronsmall"</span>,</code></span>
+<span class="codeline" id="line-344"><code>	<span class="lit-string">"Dotaccentsmall"</span>,</code></span>
+<span class="codeline" id="line-345"><code>	<span class="lit-string">"Macronsmall"</span>,</code></span>
+<span class="codeline" id="line-346"><code>	<span class="lit-string">"figuredash"</span>,</code></span>
+<span class="codeline" id="line-347"><code>	<span class="lit-string">"hypheninferior"</span>,</code></span>
+<span class="codeline" id="line-348"><code>	<span class="lit-string">"Ogoneksmall"</span>,</code></span>
+<span class="codeline" id="line-349"><code>	<span class="lit-string">"Ringsmall"</span>,</code></span>
+<span class="codeline" id="line-350"><code>	<span class="lit-string">"Cedillasmall"</span>,</code></span>
+<span class="codeline" id="line-351"><code>	<span class="lit-string">"questiondownsmall"</span>,</code></span>
+<span class="codeline" id="line-352"><code>	<span class="lit-string">"oneeighth"</span>,</code></span>
+<span class="codeline" id="line-353"><code>	<span class="lit-string">"threeeighths"</span>,</code></span>
+<span class="codeline" id="line-354"><code>	<span class="lit-string">"fiveeighths"</span>,</code></span>
+<span class="codeline" id="line-355"><code>	<span class="lit-string">"seveneighths"</span>,</code></span>
+<span class="codeline" id="line-356"><code>	<span class="lit-string">"onethird"</span>,</code></span>
+<span class="codeline" id="line-357"><code>	<span class="lit-string">"twothirds"</span>,</code></span>
+<span class="codeline" id="line-358"><code>	<span class="lit-string">"zerosuperior"</span>,</code></span>
+<span class="codeline" id="line-359"><code>	<span class="lit-string">"foursuperior"</span>,</code></span>
+<span class="codeline" id="line-360"><code>	<span class="lit-string">"fivesuperior"</span>,</code></span>
+<span class="codeline" id="line-361"><code>	<span class="lit-string">"sixsuperior"</span>,</code></span>
+<span class="codeline" id="line-362"><code>	<span class="lit-string">"sevensuperior"</span>,</code></span>
+<span class="codeline" id="line-363"><code>	<span class="lit-string">"eightsuperior"</span>,</code></span>
+<span class="codeline" id="line-364"><code>	<span class="lit-string">"ninesuperior"</span>,</code></span>
+<span class="codeline" id="line-365"><code>	<span class="lit-string">"zeroinferior"</span>,</code></span>
+<span class="codeline" id="line-366"><code>	<span class="lit-string">"oneinferior"</span>,</code></span>
+<span class="codeline" id="line-367"><code>	<span class="lit-string">"twoinferior"</span>,</code></span>
+<span class="codeline" id="line-368"><code>	<span class="lit-string">"threeinferior"</span>,</code></span>
+<span class="codeline" id="line-369"><code>	<span class="lit-string">"fourinferior"</span>,</code></span>
+<span class="codeline" id="line-370"><code>	<span class="lit-string">"fiveinferior"</span>,</code></span>
+<span class="codeline" id="line-371"><code>	<span class="lit-string">"sixinferior"</span>,</code></span>
+<span class="codeline" id="line-372"><code>	<span class="lit-string">"seveninferior"</span>,</code></span>
+<span class="codeline" id="line-373"><code>	<span class="lit-string">"eightinferior"</span>,</code></span>
+<span class="codeline" id="line-374"><code>	<span class="lit-string">"nineinferior"</span>,</code></span>
+<span class="codeline" id="line-375"><code>	<span class="lit-string">"centinferior"</span>,</code></span>
+<span class="codeline" id="line-376"><code>	<span class="lit-string">"dollarinferior"</span>,</code></span>
+<span class="codeline" id="line-377"><code>	<span class="lit-string">"periodinferior"</span>,</code></span>
+<span class="codeline" id="line-378"><code>	<span class="lit-string">"commainferior"</span>,</code></span>
+<span class="codeline" id="line-379"><code>	<span class="lit-string">"Agravesmall"</span>,</code></span>
+<span class="codeline" id="line-380"><code>	<span class="lit-string">"Aacutesmall"</span>,</code></span>
+<span class="codeline" id="line-381"><code>	<span class="lit-string">"Acircumflexsmall"</span>,</code></span>
+<span class="codeline" id="line-382"><code>	<span class="lit-string">"Atildesmall"</span>,</code></span>
+<span class="codeline" id="line-383"><code>	<span class="lit-string">"Adieresissmall"</span>,</code></span>
+<span class="codeline" id="line-384"><code>	<span class="lit-string">"Aringsmall"</span>,</code></span>
+<span class="codeline" id="line-385"><code>	<span class="lit-string">"AEsmall"</span>,</code></span>
+<span class="codeline" id="line-386"><code>	<span class="lit-string">"Ccedillasmall"</span>,</code></span>
+<span class="codeline" id="line-387"><code>	<span class="lit-string">"Egravesmall"</span>,</code></span>
+<span class="codeline" id="line-388"><code>	<span class="lit-string">"Eacutesmall"</span>,</code></span>
+<span class="codeline" id="line-389"><code>	<span class="lit-string">"Ecircumflexsmall"</span>,</code></span>
+<span class="codeline" id="line-390"><code>	<span class="lit-string">"Edieresissmall"</span>,</code></span>
+<span class="codeline" id="line-391"><code>	<span class="lit-string">"Igravesmall"</span>,</code></span>
+<span class="codeline" id="line-392"><code>	<span class="lit-string">"Iacutesmall"</span>,</code></span>
+<span class="codeline" id="line-393"><code>	<span class="lit-string">"Icircumflexsmall"</span>,</code></span>
+<span class="codeline" id="line-394"><code>	<span class="lit-string">"Idieresissmall"</span>,</code></span>
+<span class="codeline" id="line-395"><code>	<span class="lit-string">"Ethsmall"</span>,</code></span>
+<span class="codeline" id="line-396"><code>	<span class="lit-string">"Ntildesmall"</span>,</code></span>
+<span class="codeline" id="line-397"><code>	<span class="lit-string">"Ogravesmall"</span>,</code></span>
+<span class="codeline" id="line-398"><code>	<span class="lit-string">"Oacutesmall"</span>,</code></span>
+<span class="codeline" id="line-399"><code>	<span class="lit-string">"Ocircumflexsmall"</span>,</code></span>
+<span class="codeline" id="line-400"><code>	<span class="lit-string">"Otildesmall"</span>,</code></span>
+<span class="codeline" id="line-401"><code>	<span class="lit-string">"Odieresissmall"</span>,</code></span>
+<span class="codeline" id="line-402"><code>	<span class="lit-string">"OEsmall"</span>,</code></span>
+<span class="codeline" id="line-403"><code>	<span class="lit-string">"Oslashsmall"</span>,</code></span>
+<span class="codeline" id="line-404"><code>	<span class="lit-string">"Ugravesmall"</span>,</code></span>
+<span class="codeline" id="line-405"><code>	<span class="lit-string">"Uacutesmall"</span>,</code></span>
+<span class="codeline" id="line-406"><code>	<span class="lit-string">"Ucircumflexsmall"</span>,</code></span>
+<span class="codeline" id="line-407"><code>	<span class="lit-string">"Udieresissmall"</span>,</code></span>
+<span class="codeline" id="line-408"><code>	<span class="lit-string">"Yacutesmall"</span>,</code></span>
+<span class="codeline" id="line-409"><code>	<span class="lit-string">"Thornsmall"</span>,</code></span>
+<span class="codeline" id="line-410"><code>	<span class="lit-string">"Ydieresissmall"</span>,</code></span>
+<span class="codeline" id="line-411"><code>	<span class="lit-string">"001.000"</span>,</code></span>
+<span class="codeline" id="line-412"><code>	<span class="lit-string">"001.001"</span>,</code></span>
+<span class="codeline" id="line-413"><code>	<span class="lit-string">"001.002"</span>,</code></span>
+<span class="codeline" id="line-414"><code>	<span class="lit-string">"001.003"</span>,</code></span>
+<span class="codeline" id="line-415"><code>	<span class="lit-string">"Black"</span>,</code></span>
+<span class="codeline" id="line-416"><code>	<span class="lit-string">"Bold"</span>,</code></span>
+<span class="codeline" id="line-417"><code>	<span class="lit-string">"Book"</span>,</code></span>
+<span class="codeline" id="line-418"><code>	<span class="lit-string">"Light"</span>,</code></span>
+<span class="codeline" id="line-419"><code>	<span class="lit-string">"Medium"</span>,</code></span>
+<span class="codeline" id="line-420"><code>	<span class="lit-string">"Regular"</span>,</code></span>
+<span class="codeline" id="line-421"><code>	<span class="lit-string">"Roman"</span>,</code></span>
+<span class="codeline" id="line-422"><code>	<span class="lit-string">"Semibold"</span>,</code></span>
+<span class="codeline" id="line-423"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

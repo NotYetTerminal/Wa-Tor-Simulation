@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/fyne/v2/canvas</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>canvas</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-fyne.io/fyne/v2/canvas">fyne.io/fyne/v2/canvas</a><i> (on <a href="https://pkg.go.dev/fyne.io/fyne/v2/canvas" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/fyne.io/fyne/v2/canvas.html">20 packages</a>, and imported by <a href="../../../../dep/fyne.io/fyne/v2/canvas.html#imported-by">9 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/canvas/animation.go.html">animation.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-1-fold-content"><label for="file-1-fold-content">  <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#doc">d</a> <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html">base.go</a></label><span id='file-1-fold-content-items' class="fold-items">
+<span class="md-text">		Package canvas contains all of the primitive CanvasObjects that make up a Fyne GUI.
+		
+		The types implemented in this package are used as building blocks in order
+		to build higher order functionality. These types are designed to be
+		non-interactive, by design. If additional functionality is required,
+		it's usually a sign that this type should be used as part of a custom
+		widget.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/canvas/canvas.go.html">canvas.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html">circle.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html">gradient.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html">image.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html">line.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html">raster.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html">rectangle.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html">text.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 13, in which 10 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Circle" data-popularity="610">	<input type='checkbox' class="fold" id="Circle-fold-content"><label for="Circle-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-14">Circle</a> <i>(struct)</i></label><span id='Circle-fold-content-docs' class="fold-docs">
+<span class="md-text">		Circle describes a colored circle primitive in a Fyne canvas</span>
+
+		<input type='checkbox' class="fold" id="Circle-fold-fields"><label for="Circle-fold-fields">Fields (<i>total 6, all are exported</i>)</label><span id='Circle-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Circle-fold-field-FillColor"><label for="Circle-fold-field-FillColor"><a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-19">FillColor</a> <i><a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a></i></label><span id='Circle-fold-field-FillColor-docs' class="fold-docs">
+<span class="md-text">				// The circle fill color</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Circle-fold-field-Hidden"><label for="Circle-fold-field-Hidden"><a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-17">Hidden</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='Circle-fold-field-Hidden-docs' class="fold-docs">
+<span class="md-text">				// Is this circle currently hidden</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Circle-fold-field-Position1"><label for="Circle-fold-field-Position1"><a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-15">Position1</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></i></label><span id='Circle-fold-field-Position1-docs' class="fold-docs">
+<span class="md-text">				// The current top-left position of the Circle</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Circle-fold-field-Position2"><label for="Circle-fold-field-Position2"><a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-16">Position2</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></i></label><span id='Circle-fold-field-Position2-docs' class="fold-docs">
+<span class="md-text">				// The current bottomright position of the Circle</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Circle-fold-field-StrokeColor"><label for="Circle-fold-field-StrokeColor"><a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-20">StrokeColor</a> <i><a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a></i></label><span id='Circle-fold-field-StrokeColor-docs' class="fold-docs">
+<span class="md-text">				// The circle stroke color</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Circle-fold-field-StrokeWidth"><label for="Circle-fold-field-StrokeWidth"><a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-21">StrokeWidth</a> <i><a href="../../../builtin.html#name-float32">float32</a></i></label><span id='Circle-fold-field-StrokeWidth-docs' class="fold-docs">
+<span class="md-text">				// The stroke width of the circle</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Circle-fold-methods"><label for="Circle-fold-methods">Methods (<i>total 9, all are exported</i>)</label><span id='Circle-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Circle-fold-method-Hide"><label for="Circle-fold-method-Hide">(*Circle) <a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-32">Hide</a>()</label><span id='Circle-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide will set this circle to not be visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Circle-fold-method-MinSize"><label for="Circle-fold-method-MinSize">(*Circle) <a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-40">MinSize</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Circle-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize for a Circle simply returns Size{1, 1} as there is no
+				explicit content</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Circle-fold-method-Move"><label for="Circle-fold-method-Move">(*Circle) <a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-45">Move</a>(pos <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>)</label><span id='Circle-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the circle object to a new position, relative to its parent / canvas</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Circle-fold-method-Position"><label for="Circle-fold-method-Position">(*Circle) <a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-53">Position</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></label><span id='Circle-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current top-left position of this circle object, relative to its parent / canvas</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Circle-fold-method-Refresh"><label for="Circle-fold-method-Refresh">(*Circle) <a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-58">Refresh</a>()</label><span id='Circle-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this object to be redrawn with its configured state.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Circle-fold-method-Resize"><label for="Circle-fold-method-Resize">(*Circle) <a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-64">Resize</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='Circle-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize sets a new bottom-right position for the circle object
+				If it has a stroke width this will cause it to Refresh.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Circle-fold-method-Show"><label for="Circle-fold-method-Show">(*Circle) <a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-75">Show</a>()</label><span id='Circle-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show will set this circle to be visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Circle-fold-method-Size"><label for="Circle-fold-method-Size">(*Circle) <a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-82">Size</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Circle-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the current size of bounding box for this circle object</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Circle-fold-method-Visible"><label for="Circle-fold-method-Visible">(*Circle) <a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-88">Visible</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='Circle-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns true if this circle is visible, false otherwise</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Circle-fold-impls"><label for="Circle-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Circle-fold-impls-items' class="fold-items"><span>
+			*Circle : fyne.io/fyne/v2.<a href="../v2.html#name-CanvasObject">CanvasObject</a></span></span>
+		<input type='checkbox' class="fold" id="Circle-fold-results"><label for="Circle-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Circle-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewCircle">NewCircle</a>(color <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<b>Circle</b></span></span>
+		<input type='checkbox' class="fold" id="Circle-fold-params"><label for="Circle-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='Circle-fold-params-items' class="fold-items"><span>
+			func fyne.io/fyne/v2/internal/painter.<a href="internal/painter.html#name-DrawCircle">DrawCircle</a>(circle *<b>Circle</b>, vectorPad <a href="../../../builtin.html#name-float32">float32</a>, scale func(<a href="../../../builtin.html#name-float32">float32</a>) <a href="../../../builtin.html#name-float32">float32</a>) *<a href="../../../image.html">image</a>.<a href="../../../image.html#name-RGBA">RGBA</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Image" data-popularity="1380">	<input type='checkbox' class="fold" id="Image-fold-content"><label for="Image-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-59">Image</a> <i>(struct)</i></label><span id='Image-fold-content-docs' class="fold-docs">
+<span class="md-text">		Image describes a drawable image area that can render in a Fyne canvas
+		The image may be a vector or a bitmap representation, it will fill the area.
+		The fill mode can be changed by setting FillMode to a different ImageFill.</span>
+
+		<input type='checkbox' class="fold" id="Image-fold-fields"><label for="Image-fold-fields">Fields (<i>total 16, in which 7 are exported</i>)</label><span id='Image-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Image-fold-field-Hidden"><label for="Image-fold-field-Hidden"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-60">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-20">Hidden</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='Image-fold-field-Hidden-docs' class="fold-docs">
+<span class="md-text">				// Is this object currently hidden</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-field-File"><label for="Image-fold-field-File"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-68">File</a> <i><a href="../../../builtin.html#name-string">string</a></i></label><span id='Image-fold-field-File-docs' class="fold-docs">
+<span class="md-text">				one of the following sources will provide our image data</span>
+<span class="md-text">				// Load the image from a file</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-field-FillMode"><label for="Image-fold-field-FillMode"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-73">FillMode</a> <i><a href="#name-ImageFill">ImageFill</a></i></label><span id='Image-fold-field-FillMode-docs' class="fold-docs">
+<span class="md-text">				// Specify how the image should expand to fill or fit the available space</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-field-Image"><label for="Image-fold-field-Image"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-70">Image</a> <i><a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a></i></label><span id='Image-fold-field-Image-docs' class="fold-docs">
+<span class="md-text">				// Specify a loaded image to use in this canvas object</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-field-Resource"><label for="Image-fold-field-Resource"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-69">Resource</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-Resource">Resource</a></i></label><span id='Image-fold-field-Resource-docs' class="fold-docs">
+<span class="md-text">				// Load the image from an in-memory resource</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-field-ScaleMode"><label for="Image-fold-field-ScaleMode"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-74">ScaleMode</a> <i><a href="#name-ImageScale">ImageScale</a></i></label><span id='Image-fold-field-ScaleMode-docs' class="fold-docs">
+<span class="md-text">				// Specify the type of scaling interpolation applied to the image</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-field-Translucency"><label for="Image-fold-field-Translucency"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-72">Translucency</a> <i><a href="../../../builtin.html#name-float64">float64</a></i></label><span id='Image-fold-field-Translucency-docs' class="fold-docs">
+<span class="md-text">				// Set a translucency value &gt; 0.0 to fade the image</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Image-showhide-fields"><i><label for="Image-showhide-fields" class="show-inline">/* 9 unexporteds ... */</label><label for="Image-showhide-fields" class="hide-inline">/* 9 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-62">aspect</a> <i><a href="../../../builtin.html#name-float32">float32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-60">baseObject</a> <i><a href="#name-baseObject">baseObject</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Image-fold-field-min"><label for="Image-fold-field-min"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-60" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-22">min</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='Image-fold-field-min-docs' class="fold-docs">
+<span class="md-text">				// The minimum size this object can be</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Image-fold-field-position"><label for="Image-fold-field-position"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-60" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-19">position</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Position">Position</a></i></label><span id='Image-fold-field-position-docs' class="fold-docs">
+<span class="md-text">				// The current position of the object</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-60" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-24">propertyLock</a> <i><a href="../../../sync.html">sync</a>.<a href="../../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Image-fold-field-size"><label for="Image-fold-field-size"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-60" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-18">size</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='Image-fold-field-size-docs' class="fold-docs">
+<span class="md-text">				// The current size of the canvas object</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-63">icon</a> <i>*<a href="internal/svg.html">svg</a>.<a href="internal/svg.html#name-Decoder">Decoder</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-64">isSVG</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-65">lock</a> <i><a href="../../../sync.html">sync</a>.<a href="../../../sync.html#name-Mutex">Mutex</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Image-fold-methods"><label for="Image-fold-methods">Methods (<i>total 17, in which 12 are exported</i>)</label><span id='Image-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Image-fold-method-Alpha"><label for="Image-fold-method-Alpha">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-79">Alpha</a>() <a href="../../../builtin.html#name-float64">float64</a></label><span id='Image-fold-method-Alpha-docs' class="fold-docs">
+<span class="md-text">				Alpha is a convenience function that returns the alpha value for an image
+				based on its Translucency value. The result is 1.0 - Translucency.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-method-Aspect"><label for="Image-fold-method-Aspect">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-86">Aspect</a>() <a href="../../../builtin.html#name-float32">float32</a></label><span id='Image-fold-method-Aspect-docs' class="fold-docs">
+<span class="md-text">				Aspect will return the original content aspect after it was last refreshed.
+				
+				Since: 2.4</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-method-Hide"><label for="Image-fold-method-Hide">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-94">Hide</a>()</label><span id='Image-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide will set this image to not be visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-method-MinSize"><label for="Image-fold-method-MinSize">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-101">MinSize</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Image-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize returns the specified minimum size, if set, or {1, 1} otherwise.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-method-Move"><label for="Image-fold-method-Move">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-109">Move</a>(pos <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>)</label><span id='Image-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the image object to a new position, relative to its parent top, left corner.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-method-Position"><label for="Image-fold-method-Position">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-51">Position</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></label><span id='Image-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current position of this canvas object, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-method-Refresh"><label for="Image-fold-method-Refresh">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-116">Refresh</a>()</label><span id='Image-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this image to be redrawn with its configured state.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-method-Resize"><label for="Image-fold-method-Resize">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-174">Resize</a>(s <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='Image-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize on an image will scale the content or reposition it according to FillMode.
+				It will normally cause a Refresh to ensure the pixels are recalculated.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-method-SetMinSize"><label for="Image-fold-method-SetMinSize">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-61">SetMinSize</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='Image-fold-method-SetMinSize-docs' class="fold-docs">
+<span class="md-text">				SetMinSize specifies the smallest size this object should be.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-method-Show"><label for="Image-fold-method-Show">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-66">Show</a>()</label><span id='Image-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show will set this object to be visible.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-method-Size"><label for="Image-fold-method-Size">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-74">Size</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Image-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the current size of this canvas object.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Image-fold-method-Visible"><label for="Image-fold-method-Visible">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-79">Visible</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='Image-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns true if this object is visible, false otherwise.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Image-showhide-methods"><i><label for="Image-showhide-methods" class="show-inline">/* 5 unexporteds ... */</label><label for="Image-showhide-methods" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-320">imageDetailsFromReader</a>(source <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>) (reader <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>, width, height <a href="../../../builtin.html#name-int">int</a>, aspect <a href="../../../builtin.html#name-float32">float32</a>, err <a href="../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-260">name</a>() <a href="../../../builtin.html#name-string">string</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-350">renderSVG</a>(width, height <a href="../../../builtin.html#name-float32">float32</a>) (<a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>, <a href="../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-295">updateAspectAndMinSize</a>(reader <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>) (<a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>, <a href="../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Image) <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-269">updateReader</a>() (<a href="../../../io.html">io</a>.<a href="../../../io.html#name-ReadCloser">ReadCloser</a>, <a href="../../../builtin.html#name-error">error</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="Image-fold-impls"><label for="Image-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Image-fold-impls-items' class="fold-items"><span>
+			*Image : fyne.io/fyne/v2.<a href="../v2.html#name-CanvasObject">CanvasObject</a></span></span>
+		<input type='checkbox' class="fold" id="Image-fold-results"><label for="Image-fold-results">As Outputs Of (<i>at least 5, all are exported</i>)</label><span id='Image-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewImageFromFile">NewImageFromFile</a>(file <a href="../../../builtin.html#name-string">string</a>) *<b>Image</b></span><span>
+			func <a href="#name-NewImageFromImage">NewImageFromImage</a>(img <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>) *<b>Image</b></span><span>
+			func <a href="#name-NewImageFromReader">NewImageFromReader</a>(read <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>, name <a href="../../../builtin.html#name-string">string</a>) *<b>Image</b></span><span>
+			func <a href="#name-NewImageFromResource">NewImageFromResource</a>(res <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Resource">Resource</a>) *<b>Image</b></span><span>
+			func <a href="#name-NewImageFromURI">NewImageFromURI</a>(uri <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) *<b>Image</b></span></span>
+		<input type='checkbox' class="fold" id="Image-fold-params"><label for="Image-fold-params">As Inputs Of (<i>at least 3, in which 2 are exported</i>)</label><span id='Image-fold-params-items' class="fold-items"><span>
+			func fyne.io/fyne/v2/internal/painter.<a href="internal/painter.html#name-PaintImage">PaintImage</a>(img *<b>Image</b>, c <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Canvas">Canvas</a>, width, height <a href="../../../builtin.html#name-int">int</a>) <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a></span><span>
+			func fyne.io/fyne/v2/widget.(*<a href="widget.html#name-Card">Card</a>).<a href="../../../../src/fyne.io/fyne/v2/widget/card.go.html#line-71">SetImage</a>(img *<b>Image</b>)</span>
+			<input type='checkbox' class="showhide" id="Image-showhide-outputofs"><i><label for="Image-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Image-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/painter.<a href="internal/painter.html#name-paintImage">paintImage</a>(img *<b>Image</b>, width, height <a href="../../../builtin.html#name-int">int</a>) (dst <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>, err <a href="../../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-ImageFill" data-popularity="50">	<input type='checkbox' class="fold" id="ImageFill-fold-content"><label for="ImageFill-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-22">ImageFill</a> <a href="../../../builtin.html#name-int">int</a> <i>(basic type)</i></label><span id='ImageFill-fold-content-docs' class="fold-docs">
+<span class="md-text">		ImageFill defines the different type of ways an image can stretch to fill its space.</span>
+
+		<input type='checkbox' class="fold" id="ImageFill-fold-params"><label for="ImageFill-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='ImageFill-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="ImageFill-showhide-outputofs"><i><label for="ImageFill-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="ImageFill-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/painter/gl.<a href="internal/painter/gl.html#name-rectInnerCoords">rectInnerCoords</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>, pos <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>, fill <b>ImageFill</b>, aspect <a href="../../../builtin.html#name-float32">float32</a>) (<a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>, <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>)</i></span></span>
+		<input type='checkbox' class="fold" id="ImageFill-fold-values"><label for="ImageFill-fold-values">As Types Of (<i>total 3, all are exported</i>)</label><span id='ImageFill-fold-values-items' class="fold-items"><span>
+			const <a href="#name-ImageFillContain">ImageFillContain</a></span><span>
+			const <a href="#name-ImageFillOriginal">ImageFillOriginal</a></span><span>
+			const <a href="#name-ImageFillStretch">ImageFillStretch</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-ImageScale" data-popularity="50">	<input type='checkbox' class="fold" id="ImageScale-fold-content"><label for="ImageScale-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-40">ImageScale</a> <a href="../../../builtin.html#name-int32">int32</a> <i>(basic type)</i></label><span id='ImageScale-fold-content-docs' class="fold-docs">
+<span class="md-text">		ImageScale defines the different scaling filters used to scaling images</span>
+
+		<input type='checkbox' class="fold" id="ImageScale-fold-params"><label for="ImageScale-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='ImageScale-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="ImageScale-showhide-outputofs"><i><label for="ImageScale-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="ImageScale-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/painter.<a href="internal/painter.html#name-scaleImage">scaleImage</a>(pixels <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>, scaledW, scaledH <a href="../../../builtin.html#name-int">int</a>, scale <b>ImageScale</b>) <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a></i></span></span>
+		<input type='checkbox' class="fold" id="ImageScale-fold-values"><label for="ImageScale-fold-values">As Types Of (<i>total 3, all are exported</i>)</label><span id='ImageScale-fold-values-items' class="fold-items"><span>
+			const <a href="#name-ImageScaleFastest">ImageScaleFastest</a></span><span>
+			const <a href="#name-ImageScalePixels">ImageScalePixels</a></span><span>
+			const <a href="#name-ImageScaleSmooth">ImageScaleSmooth</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Line" data-popularity="610">	<input type='checkbox' class="fold" id="Line-fold-content"><label for="Line-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-16">Line</a> <i>(struct)</i></label><span id='Line-fold-content-docs' class="fold-docs">
+<span class="md-text">		Line describes a colored line primitive in a Fyne canvas.
+		Lines are special as they can have a negative width or height to indicate
+		an inverse slope (i.e. slope up vs down).</span>
+
+		<input type='checkbox' class="fold" id="Line-fold-fields"><label for="Line-fold-fields">Fields (<i>total 5, all are exported</i>)</label><span id='Line-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Line-fold-field-Hidden"><label for="Line-fold-field-Hidden"><a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-19">Hidden</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='Line-fold-field-Hidden-docs' class="fold-docs">
+<span class="md-text">				// Is this Line currently hidden</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-field-Position1"><label for="Line-fold-field-Position1"><a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-17">Position1</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></i></label><span id='Line-fold-field-Position1-docs' class="fold-docs">
+<span class="md-text">				// The current top-left position of the Line</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-field-Position2"><label for="Line-fold-field-Position2"><a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-18">Position2</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></i></label><span id='Line-fold-field-Position2-docs' class="fold-docs">
+<span class="md-text">				// The current bottom-right position of the Line</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-field-StrokeColor"><label for="Line-fold-field-StrokeColor"><a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-21">StrokeColor</a> <i><a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a></i></label><span id='Line-fold-field-StrokeColor-docs' class="fold-docs">
+<span class="md-text">				// The line stroke color</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-field-StrokeWidth"><label for="Line-fold-field-StrokeWidth"><a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-22">StrokeWidth</a> <i><a href="../../../builtin.html#name-float32">float32</a></i></label><span id='Line-fold-field-StrokeWidth-docs' class="fold-docs">
+<span class="md-text">				// The stroke width of the line</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Line-fold-methods"><label for="Line-fold-methods">Methods (<i>total 9, all are exported</i>)</label><span id='Line-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Line-fold-method-Hide"><label for="Line-fold-method-Hide">(*Line) <a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-85">Hide</a>()</label><span id='Line-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide will set this line to not be visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-method-MinSize"><label for="Line-fold-method-MinSize">(*Line) <a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-68">MinSize</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Line-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize for a Line simply returns Size{1, 1} as there is no
+				explicit content</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-method-Move"><label for="Line-fold-method-Move">(*Line) <a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-56">Move</a>(pos <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>)</label><span id='Line-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the line object to a new position, relative to its parent / canvas</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-method-Position"><label for="Line-fold-method-Position">(*Line) <a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-51">Position</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></label><span id='Line-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current top-left position of this line object, relative to its parent / canvas</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-method-Refresh"><label for="Line-fold-method-Refresh">(*Line) <a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-92">Refresh</a>()</label><span id='Line-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this line to be redrawn with its configured state.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-method-Resize"><label for="Line-fold-method-Resize">(*Line) <a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-32">Resize</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='Line-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize sets a new bottom-right position for the line object, then it will then be refreshed.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-method-Show"><label for="Line-fold-method-Show">(*Line) <a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-78">Show</a>()</label><span id='Line-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show will set this line to be visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-method-Size"><label for="Line-fold-method-Size">(*Line) <a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-26">Size</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Line-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the current size of bounding box for this line object</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Line-fold-method-Visible"><label for="Line-fold-method-Visible">(*Line) <a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-73">Visible</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='Line-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns true if this line// Show will set this circle to be visible is visible, false otherwise</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Line-fold-impls"><label for="Line-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Line-fold-impls-items' class="fold-items"><span>
+			*Line : fyne.io/fyne/v2.<a href="../v2.html#name-CanvasObject">CanvasObject</a></span></span>
+		<input type='checkbox' class="fold" id="Line-fold-results"><label for="Line-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Line-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewLine">NewLine</a>(color <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<b>Line</b></span></span>
+		<input type='checkbox' class="fold" id="Line-fold-params"><label for="Line-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='Line-fold-params-items' class="fold-items"><span>
+			func fyne.io/fyne/v2/internal/painter.<a href="internal/painter.html#name-DrawLine">DrawLine</a>(line *<b>Line</b>, vectorPad <a href="../../../builtin.html#name-float32">float32</a>, scale func(<a href="../../../builtin.html#name-float32">float32</a>) <a href="../../../builtin.html#name-float32">float32</a>) *<a href="../../../image.html">image</a>.<a href="../../../image.html#name-RGBA">RGBA</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-LinearGradient" data-popularity="895">	<input type='checkbox' class="fold" id="LinearGradient-fold-content"><label for="LinearGradient-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-13">LinearGradient</a> <i>(struct)</i></label><span id='LinearGradient-fold-content-docs' class="fold-docs">
+<span class="md-text">		LinearGradient defines a Gradient travelling straight at a given angle.
+		The only supported values for the angle are `0.0` (vertical) and `90.0` (horizontal), currently.</span>
+
+		<input type='checkbox' class="fold" id="LinearGradient-fold-fields"><label for="LinearGradient-fold-fields">Fields (<i>total 9, in which 4 are exported</i>)</label><span id='LinearGradient-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-field-Angle"><label for="LinearGradient-fold-field-Angle"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-18">Angle</a> <i><a href="../../../builtin.html#name-float64">float64</a></i></label><span id='LinearGradient-fold-field-Angle-docs' class="fold-docs">
+<span class="md-text">				// The angle of the gradient (0/180 for vertical; 90/270 for horizontal)</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-field-Hidden"><label for="LinearGradient-fold-field-Hidden"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-14">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-20">Hidden</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='LinearGradient-fold-field-Hidden-docs' class="fold-docs">
+<span class="md-text">				// Is this object currently hidden</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-field-EndColor"><label for="LinearGradient-fold-field-EndColor"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-17">EndColor</a> <i><a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a></i></label><span id='LinearGradient-fold-field-EndColor-docs' class="fold-docs">
+<span class="md-text">				// The end color of the gradient</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-field-StartColor"><label for="LinearGradient-fold-field-StartColor"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-16">StartColor</a> <i><a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a></i></label><span id='LinearGradient-fold-field-StartColor-docs' class="fold-docs">
+<span class="md-text">				// The beginning color of the gradient</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="LinearGradient-showhide-fields"><i><label for="LinearGradient-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="LinearGradient-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-14">baseObject</a> <i><a href="#name-baseObject">baseObject</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-field-min"><label for="LinearGradient-fold-field-min"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-14" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-22">min</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='LinearGradient-fold-field-min-docs' class="fold-docs">
+<span class="md-text">				// The minimum size this object can be</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-field-position"><label for="LinearGradient-fold-field-position"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-14" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-19">position</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Position">Position</a></i></label><span id='LinearGradient-fold-field-position-docs' class="fold-docs">
+<span class="md-text">				// The current position of the object</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-14" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-24">propertyLock</a> <i><a href="../../../sync.html">sync</a>.<a href="../../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-field-size"><label for="LinearGradient-fold-field-size"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-14" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-18">size</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='LinearGradient-fold-field-size-docs' class="fold-docs">
+<span class="md-text">				// The current size of the canvas object</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="LinearGradient-fold-methods"><label for="LinearGradient-fold-methods">Methods (<i>total 11, all are exported</i>)</label><span id='LinearGradient-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-method-Generate"><label for="LinearGradient-fold-method-Generate">(*LinearGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-22">Generate</a>(iw, ih <a href="../../../builtin.html#name-int">int</a>) <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a></label><span id='LinearGradient-fold-method-Generate-docs' class="fold-docs">
+<span class="md-text">				Generate calculates an image of the gradient with the specified width and height.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-method-Hide"><label for="LinearGradient-fold-method-Hide">(*LinearGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-63">Hide</a>()</label><span id='LinearGradient-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide will set this gradient to not be visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-method-MinSize"><label for="LinearGradient-fold-method-MinSize">(*LinearGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-36">MinSize</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='LinearGradient-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize returns the specified minimum size, if set, or {1, 1} otherwise.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-method-Move"><label for="LinearGradient-fold-method-Move">(*LinearGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-70">Move</a>(pos <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>)</label><span id='LinearGradient-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the gradient to a new position, relative to its parent / canvas</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-method-Position"><label for="LinearGradient-fold-method-Position">(*LinearGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-51">Position</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></label><span id='LinearGradient-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current position of this canvas object, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-method-Refresh"><label for="LinearGradient-fold-method-Refresh">(*LinearGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-88">Refresh</a>()</label><span id='LinearGradient-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this gradient to be redrawn with its configured state.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-method-Resize"><label for="LinearGradient-fold-method-Resize">(*LinearGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-77">Resize</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='LinearGradient-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize resizes the gradient to a new size.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-method-SetMinSize"><label for="LinearGradient-fold-method-SetMinSize">(*LinearGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-61">SetMinSize</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='LinearGradient-fold-method-SetMinSize-docs' class="fold-docs">
+<span class="md-text">				SetMinSize specifies the smallest size this object should be.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-method-Show"><label for="LinearGradient-fold-method-Show">(*LinearGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-66">Show</a>()</label><span id='LinearGradient-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show will set this object to be visible.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-method-Size"><label for="LinearGradient-fold-method-Size">(*LinearGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-74">Size</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='LinearGradient-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the current size of this canvas object.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="LinearGradient-fold-method-Visible"><label for="LinearGradient-fold-method-Visible">(*LinearGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-79">Visible</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='LinearGradient-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns true if this object is visible, false otherwise.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="LinearGradient-fold-impls"><label for="LinearGradient-fold-impls">Implements (<i>at least one exported</i>)</label><span id='LinearGradient-fold-impls-items' class="fold-items"><span>
+			*LinearGradient : fyne.io/fyne/v2.<a href="../v2.html#name-CanvasObject">CanvasObject</a></span></span>
+		<input type='checkbox' class="fold" id="LinearGradient-fold-results"><label for="LinearGradient-fold-results">As Outputs Of (<i>at least 3, all are exported</i>)</label><span id='LinearGradient-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewHorizontalGradient">NewHorizontalGradient</a>(start, end <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<b>LinearGradient</b></span><span>
+			func <a href="#name-NewLinearGradient">NewLinearGradient</a>(start, end <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>, angle <a href="../../../builtin.html#name-float64">float64</a>) *<b>LinearGradient</b></span><span>
+			func <a href="#name-NewVerticalGradient">NewVerticalGradient</a>(start <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>, end <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<b>LinearGradient</b></span></span>
+		<input type='checkbox' class="fold" id="LinearGradient-fold-params"><label for="LinearGradient-fold-params">As Inputs Of (<i>at least 2, neither is exported</i>)</label><span id='LinearGradient-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="LinearGradient-showhide-outputofs"><i><label for="LinearGradient-showhide-outputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="LinearGradient-showhide-outputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/widget.<a href="internal/widget.html#name-updateShadowEnd">updateShadowEnd</a>(g *<b>LinearGradient</b>, fg <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>)</i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/widget.<a href="internal/widget.html#name-updateShadowStart">updateShadowStart</a>(g *<b>LinearGradient</b>, fg <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-RadialGradient" data-popularity="710">	<input type='checkbox' class="fold" id="RadialGradient-fold-content"><label for="RadialGradient-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-93">RadialGradient</a> <i>(struct)</i></label><span id='RadialGradient-fold-content-docs' class="fold-docs">
+<span class="md-text">		RadialGradient defines a Gradient travelling radially from a center point outward.</span>
+
+		<input type='checkbox' class="fold" id="RadialGradient-fold-fields"><label for="RadialGradient-fold-fields">Fields (<i>total 10, in which 5 are exported</i>)</label><span id='RadialGradient-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-field-Hidden"><label for="RadialGradient-fold-field-Hidden"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-94">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-20">Hidden</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='RadialGradient-fold-field-Hidden-docs' class="fold-docs">
+<span class="md-text">				// Is this object currently hidden</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-field-CenterOffsetX"><label for="RadialGradient-fold-field-CenterOffsetX"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-101">CenterOffsetX</a> <i><a href="../../../builtin.html#name-float64">float64</a></i></label><span id='RadialGradient-fold-field-CenterOffsetX-docs' class="fold-docs">
+<span class="md-text">				The offset of the center for generation of the gradient.
+				This is not a DP measure but relates to the width/height.
+				A value of 0.5 would move the center by the half width/height.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-field-CenterOffsetY"><label for="RadialGradient-fold-field-CenterOffsetY"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-101">CenterOffsetY</a> <i><a href="../../../builtin.html#name-float64">float64</a></i></label><span id='RadialGradient-fold-field-CenterOffsetY-docs' class="fold-docs">
+<span class="md-text">				The offset of the center for generation of the gradient.
+				This is not a DP measure but relates to the width/height.
+				A value of 0.5 would move the center by the half width/height.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-field-EndColor"><label for="RadialGradient-fold-field-EndColor"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-97">EndColor</a> <i><a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a></i></label><span id='RadialGradient-fold-field-EndColor-docs' class="fold-docs">
+<span class="md-text">				// The end color of the gradient</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-field-StartColor"><label for="RadialGradient-fold-field-StartColor"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-96">StartColor</a> <i><a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a></i></label><span id='RadialGradient-fold-field-StartColor-docs' class="fold-docs">
+<span class="md-text">				// The beginning color of the gradient</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="RadialGradient-showhide-fields"><i><label for="RadialGradient-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="RadialGradient-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-94">baseObject</a> <i><a href="#name-baseObject">baseObject</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-field-min"><label for="RadialGradient-fold-field-min"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-94" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-22">min</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='RadialGradient-fold-field-min-docs' class="fold-docs">
+<span class="md-text">				// The minimum size this object can be</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-field-position"><label for="RadialGradient-fold-field-position"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-94" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-19">position</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Position">Position</a></i></label><span id='RadialGradient-fold-field-position-docs' class="fold-docs">
+<span class="md-text">				// The current position of the object</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-94" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-24">propertyLock</a> <i><a href="../../../sync.html">sync</a>.<a href="../../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-field-size"><label for="RadialGradient-fold-field-size"><a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-94" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-18">size</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='RadialGradient-fold-field-size-docs' class="fold-docs">
+<span class="md-text">				// The current size of the canvas object</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="RadialGradient-fold-methods"><label for="RadialGradient-fold-methods">Methods (<i>total 11, all are exported</i>)</label><span id='RadialGradient-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-method-Generate"><label for="RadialGradient-fold-method-Generate">(*RadialGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-105">Generate</a>(iw, ih <a href="../../../builtin.html#name-int">int</a>) <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a></label><span id='RadialGradient-fold-method-Generate-docs' class="fold-docs">
+<span class="md-text">				Generate calculates an image of the gradient with the specified width and height.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-method-Hide"><label for="RadialGradient-fold-method-Hide">(*RadialGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-137">Hide</a>()</label><span id='RadialGradient-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide will set this gradient to not be visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-method-MinSize"><label for="RadialGradient-fold-method-MinSize">(*RadialGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-36">MinSize</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='RadialGradient-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize returns the specified minimum size, if set, or {1, 1} otherwise.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-method-Move"><label for="RadialGradient-fold-method-Move">(*RadialGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-144">Move</a>(pos <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>)</label><span id='RadialGradient-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the gradient to a new position, relative to its parent / canvas</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-method-Position"><label for="RadialGradient-fold-method-Position">(*RadialGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-51">Position</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></label><span id='RadialGradient-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current position of this canvas object, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-method-Refresh"><label for="RadialGradient-fold-method-Refresh">(*RadialGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-162">Refresh</a>()</label><span id='RadialGradient-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this gradient to be redrawn with its configured state.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-method-Resize"><label for="RadialGradient-fold-method-Resize">(*RadialGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-151">Resize</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='RadialGradient-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize resizes the gradient to a new size.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-method-SetMinSize"><label for="RadialGradient-fold-method-SetMinSize">(*RadialGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-61">SetMinSize</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='RadialGradient-fold-method-SetMinSize-docs' class="fold-docs">
+<span class="md-text">				SetMinSize specifies the smallest size this object should be.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-method-Show"><label for="RadialGradient-fold-method-Show">(*RadialGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-66">Show</a>()</label><span id='RadialGradient-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show will set this object to be visible.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-method-Size"><label for="RadialGradient-fold-method-Size">(*RadialGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-74">Size</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='RadialGradient-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the current size of this canvas object.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="RadialGradient-fold-method-Visible"><label for="RadialGradient-fold-method-Visible">(*RadialGradient) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-79">Visible</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='RadialGradient-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns true if this object is visible, false otherwise.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="RadialGradient-fold-impls"><label for="RadialGradient-fold-impls">Implements (<i>at least one exported</i>)</label><span id='RadialGradient-fold-impls-items' class="fold-items"><span>
+			*RadialGradient : fyne.io/fyne/v2.<a href="../v2.html#name-CanvasObject">CanvasObject</a></span></span>
+		<input type='checkbox' class="fold" id="RadialGradient-fold-results"><label for="RadialGradient-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='RadialGradient-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewRadialGradient">NewRadialGradient</a>(start, end <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<b>RadialGradient</b></span></span>
+		<input type='checkbox' class="fold" id="RadialGradient-fold-params"><label for="RadialGradient-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='RadialGradient-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="RadialGradient-showhide-outputofs"><i><label for="RadialGradient-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="RadialGradient-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/internal/widget.<a href="internal/widget.html#name-updateShadowRadial">updateShadowRadial</a>(g *<b>RadialGradient</b>, fg <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Raster" data-popularity="825">	<input type='checkbox' class="fold" id="Raster-fold-content"><label for="Raster-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-15">Raster</a> <i>(struct)</i></label><span id='Raster-fold-content-docs' class="fold-docs">
+<span class="md-text">		Raster describes a raster image area that can render in a Fyne canvas</span>
+
+		<input type='checkbox' class="fold" id="Raster-fold-fields"><label for="Raster-fold-fields">Fields (<i>total 9, in which 4 are exported</i>)</label><span id='Raster-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Raster-fold-field-Hidden"><label for="Raster-fold-field-Hidden"><a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-16">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-20">Hidden</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='Raster-fold-field-Hidden-docs' class="fold-docs">
+<span class="md-text">				// Is this object currently hidden</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Raster-fold-field-Generator"><label for="Raster-fold-field-Generator"><a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-19">Generator</a> <i>func(w, h <a href="../../../builtin.html#name-int">int</a>) <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a></i></label><span id='Raster-fold-field-Generator-docs' class="fold-docs">
+<span class="md-text">				Render the raster image from code</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Raster-fold-field-ScaleMode"><label for="Raster-fold-field-ScaleMode"><a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-25">ScaleMode</a> <i><a href="#name-ImageScale">ImageScale</a></i></label><span id='Raster-fold-field-ScaleMode-docs' class="fold-docs">
+<span class="md-text">				Specify the type of scaling interpolation applied to the raster if it is not full-size
+				Since: 1.4.1</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Raster-fold-field-Translucency"><label for="Raster-fold-field-Translucency"><a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-22">Translucency</a> <i><a href="../../../builtin.html#name-float64">float64</a></i></label><span id='Raster-fold-field-Translucency-docs' class="fold-docs">
+<span class="md-text">				Set a translucency value &gt; 0.0 to fade the raster</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Raster-showhide-fields"><i><label for="Raster-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="Raster-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-16">baseObject</a> <i><a href="#name-baseObject">baseObject</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Raster-fold-field-min"><label for="Raster-fold-field-min"><a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-16" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-22">min</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='Raster-fold-field-min-docs' class="fold-docs">
+<span class="md-text">				// The minimum size this object can be</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Raster-fold-field-position"><label for="Raster-fold-field-position"><a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-16" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-19">position</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Position">Position</a></i></label><span id='Raster-fold-field-position-docs' class="fold-docs">
+<span class="md-text">				// The current position of the object</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-16" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-24">propertyLock</a> <i><a href="../../../sync.html">sync</a>.<a href="../../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Raster-fold-field-size"><label for="Raster-fold-field-size"><a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-16" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-18">size</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='Raster-fold-field-size-docs' class="fold-docs">
+<span class="md-text">				// The current size of the canvas object</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Raster-fold-methods"><label for="Raster-fold-methods">Methods (<i>total 11, all are exported</i>)</label><span id='Raster-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Raster-fold-method-Alpha"><label for="Raster-fold-method-Alpha">(*Raster) <a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-30">Alpha</a>() <a href="../../../builtin.html#name-float64">float64</a></label><span id='Raster-fold-method-Alpha-docs' class="fold-docs">
+<span class="md-text">				Alpha is a convenience function that returns the alpha value for a raster
+				based on its Translucency value. The result is 1.0 - Translucency.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Raster-fold-method-Hide"><label for="Raster-fold-method-Hide">(*Raster) <a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-35">Hide</a>()</label><span id='Raster-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide will set this raster to not be visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Raster-fold-method-MinSize"><label for="Raster-fold-method-MinSize">(*Raster) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-36">MinSize</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Raster-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize returns the specified minimum size, if set, or {1, 1} otherwise.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Raster-fold-method-Move"><label for="Raster-fold-method-Move">(*Raster) <a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-42">Move</a>(pos <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>)</label><span id='Raster-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the raster to a new position, relative to its parent / canvas</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Raster-fold-method-Position"><label for="Raster-fold-method-Position">(*Raster) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-51">Position</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></label><span id='Raster-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current position of this canvas object, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Raster-fold-method-Refresh"><label for="Raster-fold-method-Refresh">(*Raster) <a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-60">Refresh</a>()</label><span id='Raster-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this raster to be redrawn with its configured state.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Raster-fold-method-Resize"><label for="Raster-fold-method-Resize">(*Raster) <a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-50">Resize</a>(s <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='Raster-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize on a raster image causes the new size to be set and then calls Refresh.
+				This causes the underlying data to be recalculated and a new output to be drawn.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Raster-fold-method-SetMinSize"><label for="Raster-fold-method-SetMinSize">(*Raster) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-61">SetMinSize</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='Raster-fold-method-SetMinSize-docs' class="fold-docs">
+<span class="md-text">				SetMinSize specifies the smallest size this object should be.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Raster-fold-method-Show"><label for="Raster-fold-method-Show">(*Raster) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-66">Show</a>()</label><span id='Raster-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show will set this object to be visible.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Raster-fold-method-Size"><label for="Raster-fold-method-Size">(*Raster) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-74">Size</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Raster-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the current size of this canvas object.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Raster-fold-method-Visible"><label for="Raster-fold-method-Visible">(*Raster) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-79">Visible</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='Raster-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns true if this object is visible, false otherwise.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Raster-fold-impls"><label for="Raster-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Raster-fold-impls-items' class="fold-items"><span>
+			*Raster : fyne.io/fyne/v2.<a href="../v2.html#name-CanvasObject">CanvasObject</a></span></span>
+		<input type='checkbox' class="fold" id="Raster-fold-results"><label for="Raster-fold-results">As Outputs Of (<i>at least 3, all are exported</i>)</label><span id='Raster-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewRaster">NewRaster</a>(generate func(w, h <a href="../../../builtin.html#name-int">int</a>) <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>) *<b>Raster</b></span><span>
+			func <a href="#name-NewRasterFromImage">NewRasterFromImage</a>(img <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>) *<b>Raster</b></span><span>
+			func <a href="#name-NewRasterWithPixels">NewRasterWithPixels</a>(pixelColor func(x, y, w, h <a href="../../../builtin.html#name-int">int</a>) <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<b>Raster</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-Rectangle" data-popularity="730">	<input type='checkbox' class="fold" id="Rectangle-fold-content"><label for="Rectangle-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-13">Rectangle</a> <i>(struct)</i></label><span id='Rectangle-fold-content-docs' class="fold-docs">
+<span class="md-text">		Rectangle describes a colored rectangle primitive in a Fyne canvas</span>
+
+		<input type='checkbox' class="fold" id="Rectangle-fold-fields"><label for="Rectangle-fold-fields">Fields (<i>total 10, in which 5 are exported</i>)</label><span id='Rectangle-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-field-Hidden"><label for="Rectangle-fold-field-Hidden"><a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-14">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-20">Hidden</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='Rectangle-fold-field-Hidden-docs' class="fold-docs">
+<span class="md-text">				// Is this object currently hidden</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-field-CornerRadius"><label for="Rectangle-fold-field-CornerRadius"><a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-22">CornerRadius</a> <i><a href="../../../builtin.html#name-float32">float32</a></i></label><span id='Rectangle-fold-field-CornerRadius-docs' class="fold-docs">
+<span class="md-text">				The radius of the rectangle corners
+				
+				Since: 2.4</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-field-FillColor"><label for="Rectangle-fold-field-FillColor"><a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-16">FillColor</a> <i><a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a></i></label><span id='Rectangle-fold-field-FillColor-docs' class="fold-docs">
+<span class="md-text">				// The rectangle fill color</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-field-StrokeColor"><label for="Rectangle-fold-field-StrokeColor"><a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-17">StrokeColor</a> <i><a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a></i></label><span id='Rectangle-fold-field-StrokeColor-docs' class="fold-docs">
+<span class="md-text">				// The rectangle stroke color</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-field-StrokeWidth"><label for="Rectangle-fold-field-StrokeWidth"><a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-18">StrokeWidth</a> <i><a href="../../../builtin.html#name-float32">float32</a></i></label><span id='Rectangle-fold-field-StrokeWidth-docs' class="fold-docs">
+<span class="md-text">				// The stroke width of the rectangle</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Rectangle-showhide-fields"><i><label for="Rectangle-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="Rectangle-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-14">baseObject</a> <i><a href="#name-baseObject">baseObject</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Rectangle-fold-field-min"><label for="Rectangle-fold-field-min"><a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-14" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-22">min</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='Rectangle-fold-field-min-docs' class="fold-docs">
+<span class="md-text">				// The minimum size this object can be</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Rectangle-fold-field-position"><label for="Rectangle-fold-field-position"><a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-14" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-19">position</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Position">Position</a></i></label><span id='Rectangle-fold-field-position-docs' class="fold-docs">
+<span class="md-text">				// The current position of the object</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-14" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-24">propertyLock</a> <i><a href="../../../sync.html">sync</a>.<a href="../../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Rectangle-fold-field-size"><label for="Rectangle-fold-field-size"><a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-14" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-18">size</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='Rectangle-fold-field-size-docs' class="fold-docs">
+<span class="md-text">				// The current size of the canvas object</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Rectangle-fold-methods"><label for="Rectangle-fold-methods">Methods (<i>total 10, all are exported</i>)</label><span id='Rectangle-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-method-Hide"><label for="Rectangle-fold-method-Hide">(*Rectangle) <a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-26">Hide</a>()</label><span id='Rectangle-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide will set this rectangle to not be visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-method-MinSize"><label for="Rectangle-fold-method-MinSize">(*Rectangle) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-36">MinSize</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Rectangle-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize returns the specified minimum size, if set, or {1, 1} otherwise.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-method-Move"><label for="Rectangle-fold-method-Move">(*Rectangle) <a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-33">Move</a>(pos <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>)</label><span id='Rectangle-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the rectangle to a new position, relative to its parent / canvas</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-method-Position"><label for="Rectangle-fold-method-Position">(*Rectangle) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-51">Position</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></label><span id='Rectangle-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current position of this canvas object, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-method-Refresh"><label for="Rectangle-fold-method-Refresh">(*Rectangle) <a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-40">Refresh</a>()</label><span id='Rectangle-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this rectangle to be redrawn with its configured state.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-method-Resize"><label for="Rectangle-fold-method-Resize">(*Rectangle) <a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-46">Resize</a>(s <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='Rectangle-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize on a rectangle updates the new size of this object.
+				If it has a stroke width this will cause it to Refresh.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-method-SetMinSize"><label for="Rectangle-fold-method-SetMinSize">(*Rectangle) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-61">SetMinSize</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='Rectangle-fold-method-SetMinSize-docs' class="fold-docs">
+<span class="md-text">				SetMinSize specifies the smallest size this object should be.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-method-Show"><label for="Rectangle-fold-method-Show">(*Rectangle) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-66">Show</a>()</label><span id='Rectangle-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show will set this object to be visible.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-method-Size"><label for="Rectangle-fold-method-Size">(*Rectangle) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-74">Size</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Rectangle-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the current size of this canvas object.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Rectangle-fold-method-Visible"><label for="Rectangle-fold-method-Visible">(*Rectangle) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-79">Visible</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='Rectangle-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns true if this object is visible, false otherwise.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Rectangle-fold-impls"><label for="Rectangle-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Rectangle-fold-impls-items' class="fold-items"><span>
+			*Rectangle : fyne.io/fyne/v2.<a href="../v2.html#name-CanvasObject">CanvasObject</a></span></span>
+		<input type='checkbox' class="fold" id="Rectangle-fold-results"><label for="Rectangle-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Rectangle-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewRectangle">NewRectangle</a>(color <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<b>Rectangle</b></span></span>
+		<input type='checkbox' class="fold" id="Rectangle-fold-params"><label for="Rectangle-fold-params">As Inputs Of (<i>at least 3, in which 1 is exported</i>)</label><span id='Rectangle-fold-params-items' class="fold-items"><span>
+			func fyne.io/fyne/v2/internal/painter.<a href="internal/painter.html#name-DrawRectangle">DrawRectangle</a>(rect *<b>Rectangle</b>, vectorPad <a href="../../../builtin.html#name-float32">float32</a>, scale func(<a href="../../../builtin.html#name-float32">float32</a>) <a href="../../../builtin.html#name-float32">float32</a>) *<a href="../../../image.html">image</a>.<a href="../../../image.html#name-RGBA">RGBA</a></span>
+			<input type='checkbox' class="showhide" id="Rectangle-showhide-outputofs"><i><label for="Rectangle-showhide-outputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="Rectangle-showhide-outputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/widget.<a href="widget.html#name-newButtonTapAnimation">newButtonTapAnimation</a>(bg *<b>Rectangle</b>, w <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Widget">Widget</a>, th <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Theme">Theme</a>) *<a href="../v2.html">fyne</a>.<a href="../v2.html#name-Animation">Animation</a></i></span><span class="hidden"><i>
+			func fyne.io/fyne/v2/widget.<a href="widget.html#name-newEntryCursorAnimation">newEntryCursorAnimation</a>(cursor *<b>Rectangle</b>) *<a href="widget.html">widget</a>.<a href="widget.html#name-entryCursorAnimation">entryCursorAnimation</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Text" data-popularity="735">	<input type='checkbox' class="fold" id="Text-fold-content"><label for="Text-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-16">Text</a> <i>(struct)</i></label><span id='Text-fold-content-docs' class="fold-docs">
+<span class="md-text">		Text describes a text primitive in a Fyne canvas.
+		A text object can have a style set which will apply to the whole string.
+		No formatting or text parsing will be performed</span>
+
+		<input type='checkbox' class="fold" id="Text-fold-fields"><label for="Text-fold-fields">Fields (<i>total 12, in which 7 are exported</i>)</label><span id='Text-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Text-fold-field-Alignment"><label for="Text-fold-field-Alignment"><a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-18">Alignment</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-TextAlign">TextAlign</a></i></label><span id='Text-fold-field-Alignment-docs' class="fold-docs">
+<span class="md-text">				// The alignment of the text content</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-field-Hidden"><label for="Text-fold-field-Hidden"><a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-17">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-20">Hidden</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='Text-fold-field-Hidden-docs' class="fold-docs">
+<span class="md-text">				// Is this object currently hidden</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-field-Color"><label for="Text-fold-field-Color"><a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-20">Color</a> <i><a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a></i></label><span id='Text-fold-field-Color-docs' class="fold-docs">
+<span class="md-text">				// The main text draw color</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-field-FontSource"><label for="Text-fold-field-FontSource"><a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-30">FontSource</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-Resource">Resource</a></i></label><span id='Text-fold-field-FontSource-docs' class="fold-docs">
+<span class="md-text">				FontSource defines a resource that can be used instead of the theme for looking up the font.
+				When a font source is set the `TextStyle` may not be effective, as it will be limited to the styles
+				present in the data provided.
+				
+				Since: 2.5</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-field-Text"><label for="Text-fold-field-Text"><a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-21">Text</a> <i><a href="../../../builtin.html#name-string">string</a></i></label><span id='Text-fold-field-Text-docs' class="fold-docs">
+<span class="md-text">				// The string content of this Text</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-field-TextSize"><label for="Text-fold-field-TextSize"><a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-22">TextSize</a> <i><a href="../../../builtin.html#name-float32">float32</a></i></label><span id='Text-fold-field-TextSize-docs' class="fold-docs">
+<span class="md-text">				// Size of the text - if the Canvas scale is 1.0 this will be equivalent to point size</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-field-TextStyle"><label for="Text-fold-field-TextStyle"><a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-23">TextStyle</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-TextStyle">TextStyle</a></i></label><span id='Text-fold-field-TextStyle-docs' class="fold-docs">
+<span class="md-text">				// The style of the text content</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Text-showhide-fields"><i><label for="Text-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="Text-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-17">baseObject</a> <i><a href="#name-baseObject">baseObject</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Text-fold-field-min"><label for="Text-fold-field-min"><a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-17" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-22">min</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='Text-fold-field-min-docs' class="fold-docs">
+<span class="md-text">				// The minimum size this object can be</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Text-fold-field-position"><label for="Text-fold-field-position"><a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-17" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-19">position</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Position">Position</a></i></label><span id='Text-fold-field-position-docs' class="fold-docs">
+<span class="md-text">				// The current position of the object</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-17" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-24">propertyLock</a> <i><a href="../../../sync.html">sync</a>.<a href="../../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Text-fold-field-size"><label for="Text-fold-field-size"><a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-17" class="path-duplicate">baseObject</a>.<a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-18">size</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='Text-fold-field-size-docs' class="fold-docs">
+<span class="md-text">				// The current size of the canvas object</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Text-fold-methods"><label for="Text-fold-methods">Methods (<i>total 10, all are exported</i>)</label><span id='Text-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Text-fold-method-Hide"><label for="Text-fold-method-Hide">(*Text) <a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-34">Hide</a>()</label><span id='Text-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide will set this text to not be visible</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-method-MinSize"><label for="Text-fold-method-MinSize">(*Text) <a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-42">MinSize</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Text-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize returns the minimum size of this text object based on its font size and content.
+				This is normally determined by the render implementation.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-method-Move"><label for="Text-fold-method-Move">(*Text) <a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-48">Move</a>(pos <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>)</label><span id='Text-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the text to a new position, relative to its parent / canvas</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-method-Position"><label for="Text-fold-method-Position">(*Text) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-51">Position</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></label><span id='Text-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current position of this canvas object, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-method-Refresh"><label for="Text-fold-method-Refresh">(*Text) <a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-70">Refresh</a>()</label><span id='Text-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh causes this text to be redrawn with its configured state.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-method-Resize"><label for="Text-fold-method-Resize">(*Text) <a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-55">Resize</a>(s <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='Text-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize on a text updates the new size of this object, which may not result in a visual change, depending on alignment.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-method-SetMinSize"><label for="Text-fold-method-SetMinSize">(*Text) <a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-65">SetMinSize</a>(<a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='Text-fold-method-SetMinSize-docs' class="fold-docs">
+<span class="md-text">				SetMinSize has no effect as the smallest size this canvas object can be is based on its font size and content.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-method-Show"><label for="Text-fold-method-Show">(*Text) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-66">Show</a>()</label><span id='Text-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show will set this object to be visible.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-method-Size"><label for="Text-fold-method-Size">(*Text) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-74">Size</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Text-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the current size of this canvas object.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Text-fold-method-Visible"><label for="Text-fold-method-Visible">(*Text) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-79">Visible</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='Text-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns true if this object is visible, false otherwise.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Text-fold-impls"><label for="Text-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Text-fold-impls-items' class="fold-items"><span>
+			*Text : fyne.io/fyne/v2.<a href="../v2.html#name-CanvasObject">CanvasObject</a></span></span>
+		<input type='checkbox' class="fold" id="Text-fold-results"><label for="Text-fold-results">As Outputs Of (<i>at least 2, in which 1 is exported</i>)</label><span id='Text-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewText">NewText</a>(text <a href="../../../builtin.html#name-string">string</a>, color <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<b>Text</b></span>
+			<input type='checkbox' class="showhide" id="Text-showhide-inputofs"><i><label for="Text-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="Text-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/widget.<a href="widget.html#name-textsForShortcut">textsForShortcut</a>(s <a href="../v2.html">fyne</a>.<a href="../v2.html#name-KeyboardShortcut">KeyboardShortcut</a>, th <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Theme">Theme</a>) (texts []*<b>Text</b>)</i></span></span>
+		<input type='checkbox' class="fold" id="Text-fold-params"><label for="Text-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='Text-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Text-showhide-outputofs"><i><label for="Text-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Text-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/fyne/v2/widget.<a href="widget.html#name-truncateLimit">truncateLimit</a>(s <a href="../../../builtin.html#name-string">string</a>, text *<b>Text</b>, limit <a href="../../../builtin.html#name-int">int</a>, ellipsis []<a href="../../../builtin.html#name-rune">rune</a>) (<a href="../../../builtin.html#name-int">int</a>, <a href="../../../builtin.html#name-bool">bool</a>)</i></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-baseObject" data-popularity="450">	<input type='checkbox' class="fold" id="baseObject-fold-content"><label for="baseObject-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-17">baseObject</a> <i>(struct)</i></label><span id='baseObject-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="baseObject-fold-fields"><label for="baseObject-fold-fields">Fields (<i>total 5, in which 1 is exported</i>)</label><span id='baseObject-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="baseObject-fold-field-Hidden"><label for="baseObject-fold-field-Hidden"><a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-20">Hidden</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='baseObject-fold-field-Hidden-docs' class="fold-docs">
+<span class="md-text">				// Is this object currently hidden</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="baseObject-showhide-fields"><i><label for="baseObject-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="baseObject-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="baseObject-fold-field-min"><label for="baseObject-fold-field-min"><a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-22">min</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='baseObject-fold-field-min-docs' class="fold-docs">
+<span class="md-text">				// The minimum size this object can be</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="baseObject-fold-field-position"><label for="baseObject-fold-field-position"><a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-19">position</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Position">Position</a></i></label><span id='baseObject-fold-field-position-docs' class="fold-docs">
+<span class="md-text">				// The current position of the object</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-24">propertyLock</a> <i><a href="../../../sync.html">sync</a>.<a href="../../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="baseObject-fold-field-size"><label for="baseObject-fold-field-size"><a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-18">size</a> <i><a href="internal/async.html">async</a>.<a href="internal/async.html#name-Size">Size</a></i></label><span id='baseObject-fold-field-size-docs' class="fold-docs">
+<span class="md-text">				// The current size of the canvas object</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="baseObject-fold-methods"><label for="baseObject-fold-methods">Methods (<i>total 9, all are exported</i>)</label><span id='baseObject-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="baseObject-fold-method-Hide"><label for="baseObject-fold-method-Hide">(*baseObject) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-28">Hide</a>()</label><span id='baseObject-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide will set this object to not be visible.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="baseObject-fold-method-MinSize"><label for="baseObject-fold-method-MinSize">(*baseObject) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-36">MinSize</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='baseObject-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize returns the specified minimum size, if set, or {1, 1} otherwise.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="baseObject-fold-method-Move"><label for="baseObject-fold-method-Move">(*baseObject) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-46">Move</a>(pos <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>)</label><span id='baseObject-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move the object to a new position, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="baseObject-fold-method-Position"><label for="baseObject-fold-method-Position">(*baseObject) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-51">Position</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></label><span id='baseObject-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position gets the current position of this canvas object, relative to its parent.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="baseObject-fold-method-Resize"><label for="baseObject-fold-method-Resize">(*baseObject) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-56">Resize</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='baseObject-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize sets a new size for the canvas object.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="baseObject-fold-method-SetMinSize"><label for="baseObject-fold-method-SetMinSize">(*baseObject) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-61">SetMinSize</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='baseObject-fold-method-SetMinSize-docs' class="fold-docs">
+<span class="md-text">				SetMinSize specifies the smallest size this object should be.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="baseObject-fold-method-Show"><label for="baseObject-fold-method-Show">(*baseObject) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-66">Show</a>()</label><span id='baseObject-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show will set this object to be visible.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="baseObject-fold-method-Size"><label for="baseObject-fold-method-Size">(*baseObject) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-74">Size</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='baseObject-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the current size of this canvas object.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="baseObject-fold-method-Visible"><label for="baseObject-fold-method-Visible">(*baseObject) <a href="../../../../src/fyne.io/fyne/v2/canvas/base.go.html#line-79">Visible</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='baseObject-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns true if this object is visible, false otherwise.</span>
+</span></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-pixelRaster" data-popularity="0">	<input type='checkbox' class="fold" id="pixelRaster-fold-content"><label for="pixelRaster-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-72">pixelRaster</a> <i>(struct)</i></label><span id='pixelRaster-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="pixelRaster-fold-fields"><label for="pixelRaster-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='pixelRaster-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="pixelRaster-showhide-fields"><i><label for="pixelRaster-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="pixelRaster-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-75">img</a> <i><a href="../../../image/draw.html">draw</a>.<a href="../../../image/draw.html#name-Image">Image</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-73">r</a> <i>*<a href="#name-Raster">Raster</a></i></span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-subImg" data-popularity="1850">	<input type='checkbox' class="fold" id="subImg-fold-content"><label for="subImg-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-127">subImg</a> <b><i>(interface)</i></b></label><span id='subImg-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="subImg-fold-methods"><label for="subImg-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='subImg-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( subImg) <a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-128">SubImage</a>(r <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Rectangle">Rectangle</a>) <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a></span></span></span>
+		<input type='checkbox' class="fold" id="subImg-fold-impledby"><label for="subImg-fold-impledby">Implemented By (<i>at least 12, all are exported</i>)</label><span id='subImg-fold-impledby-items' class="fold-items"><span>
+			*image.<a href="../../../image.html#name-Alpha">Alpha</a></span><span>
+			*image.<a href="../../../image.html#name-Alpha16">Alpha16</a></span><span>
+			*image.<a href="../../../image.html#name-CMYK">CMYK</a></span><span>
+			*image.<a href="../../../image.html#name-Gray">Gray</a></span><span>
+			*image.<a href="../../../image.html#name-Gray16">Gray16</a></span><span>
+			*image.<a href="../../../image.html#name-NRGBA">NRGBA</a></span><span>
+			*image.<a href="../../../image.html#name-NRGBA64">NRGBA64</a></span><span>
+			*image.<a href="../../../image.html#name-NYCbCrA">NYCbCrA</a></span><span>
+			*image.<a href="../../../image.html#name-Paletted">Paletted</a></span><span>
+			*image.<a href="../../../image.html#name-RGBA">RGBA</a></span><span>
+			*image.<a href="../../../image.html#name-RGBA64">RGBA64</a></span><span>
+			*image.<a href="../../../image.html#name-YCbCr">YCbCr</a></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 25, in which 20 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-NewCircle">	<input type='checkbox' class="fold" id="NewCircle-fold-content"><label for="NewCircle-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/circle.go.html#line-25">NewCircle</a>(color <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<a href="#name-Circle">Circle</a></label><span id='NewCircle-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewCircle returns a new Circle instance</span>
+
+</span></div><div class="anchor value-res" id="name-NewColorRGBAAnimation">	<input type='checkbox' class="fold" id="NewColorRGBAAnimation-fold-content"><label for="NewColorRGBAAnimation-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/animation.go.html#line-27">NewColorRGBAAnimation</a>(start, stop <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>, d <a href="../../../time.html">time</a>.<a href="../../../time.html#name-Duration">Duration</a>, fn func(<a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>)) *<a href="../v2.html">fyne</a>.<a href="../v2.html#name-Animation">Animation</a></label><span id='NewColorRGBAAnimation-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewColorRGBAAnimation sets up a new animation that will transition from the start to stop Color over
+		the specified Duration. The colour transition will move linearly through the RGB colour space.
+		The content of fn should apply the color values to an object and refresh it.
+		You should call Start() on the returned animation to start it.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-NewHorizontalGradient">	<input type='checkbox' class="fold" id="NewHorizontalGradient-fold-content"><label for="NewHorizontalGradient-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-210">NewHorizontalGradient</a>(start, end <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<a href="#name-LinearGradient">LinearGradient</a></label><span id='NewHorizontalGradient-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewHorizontalGradient creates a new horizontally travelling linear gradient.
+		The start color will be at the left of the gradient and the end color will be at the right.</span>
+
+</span></div><div class="anchor value-res" id="name-NewImageFromFile">	<input type='checkbox' class="fold" id="NewImageFromFile-fold-content"><label for="NewImageFromFile-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-195">NewImageFromFile</a>(file <a href="../../../builtin.html#name-string">string</a>) *<a href="#name-Image">Image</a></label><span id='NewImageFromFile-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewImageFromFile creates a new image from a local file.
+		Images returned from this method will scale to fit the canvas object.
+		The method for scaling can be set using the Fill field.</span>
+
+</span></div><div class="anchor value-res" id="name-NewImageFromImage">	<input type='checkbox' class="fold" id="NewImageFromImage-fold-content"><label for="NewImageFromImage-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-256">NewImageFromImage</a>(img <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>) *<a href="#name-Image">Image</a></label><span id='NewImageFromImage-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewImageFromImage returns a new Image instance that is rendered from the Go
+		image.Image passed in.
+		Images returned from this method will scale to fit the canvas object.
+		The method for scaling can be set using the Fill field.</span>
+
+</span></div><div class="anchor value-res" id="name-NewImageFromReader">	<input type='checkbox' class="fold" id="NewImageFromReader-fold-content"><label for="NewImageFromReader-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-230">NewImageFromReader</a>(read <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Reader">Reader</a>, name <a href="../../../builtin.html#name-string">string</a>) *<a href="#name-Image">Image</a></label><span id='NewImageFromReader-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewImageFromReader creates a new image from a data stream.
+		The name parameter is required to uniquely identify this image (for caching etc.).
+		If the image in this io.Reader is an SVG, the name should end ".svg".
+		Images returned from this method will scale to fit the canvas object.
+		The method for scaling can be set using the Fill field.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-NewImageFromResource">	<input type='checkbox' class="fold" id="NewImageFromResource-fold-content"><label for="NewImageFromResource-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-248">NewImageFromResource</a>(res <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Resource">Resource</a>) *<a href="#name-Image">Image</a></label><span id='NewImageFromResource-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewImageFromResource creates a new image by loading the specified resource.
+		Images returned from this method will scale to fit the canvas object.
+		The method for scaling can be set using the Fill field.</span>
+
+</span></div><div class="anchor value-res" id="name-NewImageFromURI">	<input type='checkbox' class="fold" id="NewImageFromURI-fold-content"><label for="NewImageFromURI-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-206">NewImageFromURI</a>(uri <a href="../v2.html">fyne</a>.<a href="../v2.html#name-URI">URI</a>) *<a href="#name-Image">Image</a></label><span id='NewImageFromURI-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewImageFromURI creates a new image from named resource.
+		File URIs will read the file path and other schemes will download the data into a resource.
+		HTTP and HTTPs URIs will use the GET method by default to request the resource.
+		Images returned from this method will scale to fit the canvas object.
+		The method for scaling can be set using the Fill field.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-NewLine">	<input type='checkbox' class="fold" id="NewLine-fold-content"><label for="NewLine-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/line.go.html#line-97">NewLine</a>(color <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<a href="#name-Line">Line</a></label><span id='NewLine-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewLine returns a new Line instance</span>
+
+</span></div><div class="anchor value-res" id="name-NewLinearGradient">	<input type='checkbox' class="fold" id="NewLinearGradient-fold-content"><label for="NewLinearGradient-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-219">NewLinearGradient</a>(start, end <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>, angle <a href="../../../builtin.html#name-float64">float64</a>) *<a href="#name-LinearGradient">LinearGradient</a></label><span id='NewLinearGradient-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewLinearGradient creates a linear gradient at the specified angle.
+		The angle parameter is the degree angle along which the gradient is calculated.
+		A NewHorizontalGradient uses 270 degrees and NewVerticalGradient is 0 degrees.</span>
+
+</span></div><div class="anchor value-res" id="name-NewPositionAnimation">	<input type='checkbox' class="fold" id="NewPositionAnimation-fold-content"><label for="NewPositionAnimation-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/animation.go.html#line-53">NewPositionAnimation</a>(start, stop <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>, d <a href="../../../time.html">time</a>.<a href="../../../time.html#name-Duration">Duration</a>, fn func(<a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>)) *<a href="../v2.html">fyne</a>.<a href="../v2.html#name-Animation">Animation</a></label><span id='NewPositionAnimation-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewPositionAnimation sets up a new animation that will transition from the start to stop Position over
+		the specified Duration. The content of fn should apply the position value to an object for the change
+		to be visible. You should call Start() on the returned animation to start it.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-NewRadialGradient">	<input type='checkbox' class="fold" id="NewRadialGradient-fold-content"><label for="NewRadialGradient-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-226">NewRadialGradient</a>(start, end <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<a href="#name-RadialGradient">RadialGradient</a></label><span id='NewRadialGradient-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewRadialGradient creates a new radial gradient.</span>
+
+</span></div><div class="anchor value-res" id="name-NewRaster">	<input type='checkbox' class="fold" id="NewRaster-fold-content"><label for="NewRaster-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-68">NewRaster</a>(generate func(w, h <a href="../../../builtin.html#name-int">int</a>) <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>) *<a href="#name-Raster">Raster</a></label><span id='NewRaster-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewRaster returns a new Image instance that is rendered dynamically using
+		the specified generate function.
+		Images returned from this method should draw dynamically to fill the width
+		and height parameters passed to pixelColor.</span>
+
+</span></div><div class="anchor value-res" id="name-NewRasterFromImage">	<input type='checkbox' class="fold" id="NewRasterFromImage-fold-content"><label for="NewRasterFromImage-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-137">NewRasterFromImage</a>(img <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a>) *<a href="#name-Raster">Raster</a></label><span id='NewRasterFromImage-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewRasterFromImage returns a new Raster instance that is rendered from the Go
+		image.Image passed in.
+		Rasters returned from this method will map pixel for pixel to the screen
+		starting img.Bounds().Min pixels from the top left of the canvas object.
+		Truncates rather than scales the image.
+		If smaller than the target space, the image will be padded with zero-pixels to the target size.</span>
+
+</span></div><div class="anchor value-res" id="name-NewRasterWithPixels">	<input type='checkbox' class="fold" id="NewRasterWithPixels-fold-content"><label for="NewRasterWithPixels-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/raster.go.html#line-82">NewRasterWithPixels</a>(pixelColor func(x, y, w, h <a href="../../../builtin.html#name-int">int</a>) <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<a href="#name-Raster">Raster</a></label><span id='NewRasterWithPixels-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewRasterWithPixels returns a new Image instance that is rendered dynamically
+		by iterating over the specified pixelColor function for each x, y pixel.
+		Images returned from this method should draw dynamically to fill the width
+		and height parameters passed to pixelColor.</span>
+
+</span></div><div class="anchor value-res" id="name-NewRectangle">	<input type='checkbox' class="fold" id="NewRectangle-fold-content"><label for="NewRectangle-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/rectangle.go.html#line-60">NewRectangle</a>(color <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<a href="#name-Rectangle">Rectangle</a></label><span id='NewRectangle-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewRectangle returns a new Rectangle instance</span>
+
+</span></div><div class="anchor value-res" id="name-NewSizeAnimation">	<input type='checkbox' class="fold" id="NewSizeAnimation-fold-content"><label for="NewSizeAnimation-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/animation.go.html#line-69">NewSizeAnimation</a>(start, stop <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>, d <a href="../../../time.html">time</a>.<a href="../../../time.html#name-Duration">Duration</a>, fn func(<a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)) *<a href="../v2.html">fyne</a>.<a href="../v2.html#name-Animation">Animation</a></label><span id='NewSizeAnimation-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewSizeAnimation sets up a new animation that will transition from the start to stop Size over
+		the specified Duration. The content of fn should apply the size value to an object for the change
+		to be visible. You should call Start() on the returned animation to start it.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-NewText">	<input type='checkbox' class="fold" id="NewText-fold-content"><label for="NewText-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/text.go.html#line-75">NewText</a>(text <a href="../../../builtin.html#name-string">string</a>, color <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<a href="#name-Text">Text</a></label><span id='NewText-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewText returns a new Text implementation</span>
+
+</span></div><div class="anchor value-res" id="name-NewVerticalGradient">	<input type='checkbox' class="fold" id="NewVerticalGradient-fold-content"><label for="NewVerticalGradient-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-232">NewVerticalGradient</a>(start <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>, end <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) *<a href="#name-LinearGradient">LinearGradient</a></label><span id='NewVerticalGradient-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewVerticalGradient creates a new vertically travelling linear gradient.
+		The start color will be at the top of the gradient and the end color will be at the bottom.</span>
+
+</span></div><div class="anchor value-res" id="name-Refresh">	<input type='checkbox' class="fold" id="Refresh-fold-content"><label for="Refresh-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/canvas.go.html#line-6">Refresh</a>(obj <a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='Refresh-fold-content-docs' class="fold-docs">
+<span class="md-text">		Refresh instructs the containing canvas to refresh the specified obj.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 5 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 5 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-calculatePixel"><i>	<span class="nodocs"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-166">calculatePixel</a>(d <a href="../../../builtin.html#name-float64">float64</a>, startColor, endColor <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a></span></i></div><div class="anchor value-res hidden" id="name-computeGradient"><i>	<span class="nodocs"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/gradient.go.html#line-188">computeGradient</a>(generator func(x, y <a href="../../../builtin.html#name-float64">float64</a>) <a href="../../../builtin.html#name-float64">float64</a>, w, h <a href="../../../builtin.html#name-int">int</a>, startColor, endColor <a href="../../../image/color.html">color</a>.<a href="../../../image/color.html#name-Color">Color</a>) <a href="../../../image.html">image</a>.<a href="../../../image.html#name-Image">Image</a></span></i></div><div class="anchor value-res hidden" id="name-repaint"><i>	<input type='checkbox' class="fold" id="repaint-fold-content"><label for="repaint-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/canvas.go.html#line-19">repaint</a>(obj <a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>)</label><span id='repaint-fold-content-docs' class="fold-docs">
+<span class="md-text">		repaint instructs the containing canvas to redraw, even if nothing changed.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-scaleChannel"><i>	<span class="nodocs"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/animation.go.html#line-80">scaleChannel</a>(start <a href="../../../builtin.html#name-int">int</a>, diff, done <a href="../../../builtin.html#name-float32">float32</a>) <a href="../../../builtin.html#name-uint8">uint8</a></span></i></div><div class="anchor value-res hidden" id="name-scaleVal"><i>	<span class="nodocs"> func <a href="../../../../src/fyne.io/fyne/v2/canvas/animation.go.html#line-84">scaleVal</a>(start <a href="../../../builtin.html#name-float32">float32</a>, delta, done <a href="../../../builtin.html#name-float32">float32</a>) <a href="../../../builtin.html#name-float32">float32</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 8, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-DurationShort">	<input type='checkbox' class="fold" id="DurationShort-fold-content"><label for="DurationShort-fold-content">const <a href="../../../../src/fyne.io/fyne/v2/canvas/animation.go.html#line-18">DurationShort</a> <a href="../../../time.html">time</a>.<a href="../../../time.html#name-Duration">Duration</a> = 150000000</label><span id='DurationShort-fold-content-docs' class="fold-docs">
+<span class="md-text">		DurationShort is the time a subtle or small transition should use.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-DurationStandard">	<input type='checkbox' class="fold" id="DurationStandard-fold-content"><label for="DurationStandard-fold-content">const <a href="../../../../src/fyne.io/fyne/v2/canvas/animation.go.html#line-14">DurationStandard</a> <a href="../../../time.html">time</a>.<a href="../../../time.html#name-Duration">Duration</a> = 300000000</label><span id='DurationStandard-fold-content-docs' class="fold-docs">
+<span class="md-text">		DurationStandard is the time a standard interface animation will run.
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-ImageFillContain">	<input type='checkbox' class="fold" id="ImageFillContain-fold-content"><label for="ImageFillContain-fold-content">const <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-31">ImageFillContain</a> <a href="#name-ImageFill">ImageFill</a> = 1 // <span class="md-text">(Fit)</span></label><span id='ImageFillContain-fold-content-docs' class="fold-docs">
+<span class="md-text">		ImageFillContain makes the image fit within the object Size(),
+		centrally and maintaining aspect ratio.
+		There may be transparent sections top and bottom or left and right.</span>
+
+</span></div><div class="anchor value-res" id="name-ImageFillOriginal">	<input type='checkbox' class="fold" id="ImageFillOriginal-fold-content"><label for="ImageFillOriginal-fold-content">const <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-36">ImageFillOriginal</a> <a href="#name-ImageFill">ImageFill</a> = 2</label><span id='ImageFillOriginal-fold-content-docs' class="fold-docs">
+<span class="md-text">		ImageFillOriginal ensures that the container grows to the pixel dimensions
+		required to fit the original image. The aspect of the image will be maintained so,
+		as with ImageFillContain there may be transparent areas around the image.
+		Note that the minSize may be smaller than the image dimensions if scale &gt; 1.</span>
+
+</span></div><div class="anchor value-res" id="name-ImageFillStretch">	<input type='checkbox' class="fold" id="ImageFillStretch-fold-content"><label for="ImageFillStretch-fold-content">const <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-27">ImageFillStretch</a> <a href="#name-ImageFill">ImageFill</a> = 0</label><span id='ImageFillStretch-fold-content-docs' class="fold-docs">
+<span class="md-text">		ImageFillStretch will scale the image to match the Size() values.
+		This is the default and does not maintain aspect ratio.</span>
+
+</span></div><div class="anchor value-res" id="name-ImageScaleFastest">	<input type='checkbox' class="fold" id="ImageScaleFastest-fold-content"><label for="ImageScaleFastest-fold-content">const <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-50">ImageScaleFastest</a> <a href="#name-ImageScale">ImageScale</a> = 2</label><span id='ImageScaleFastest-fold-content-docs' class="fold-docs">
+<span class="md-text">		ImageScaleFastest will scale the image using hardware GPU if available
+		
+		Since: 2.0</span>
+
+</span></div><div class="anchor value-res" id="name-ImageScalePixels">	<input type='checkbox' class="fold" id="ImageScalePixels-fold-content"><label for="ImageScalePixels-fold-content">const <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-46">ImageScalePixels</a> <a href="#name-ImageScale">ImageScale</a> = 1</label><span id='ImageScalePixels-fold-content-docs' class="fold-docs">
+<span class="md-text">		ImageScalePixels will scale the image using NearestNeighbor filter (or GL equivalent)</span>
+
+</span></div><div class="anchor value-res" id="name-ImageScaleSmooth">	<input type='checkbox' class="fold" id="ImageScaleSmooth-fold-content"><label for="ImageScaleSmooth-fold-content">const <a href="../../../../src/fyne.io/fyne/v2/canvas/image.go.html#line-44">ImageScaleSmooth</a> <a href="#name-ImageScale">ImageScale</a> = 0</label><span id='ImageScaleSmooth-fold-content-docs' class="fold-docs">
+<span class="md-text">		ImageScaleSmooth will scale the image using ApproxBiLinear filter (or GL equivalent)</span>
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

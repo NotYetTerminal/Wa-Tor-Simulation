@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: glyphs_sbix_src.go in package github.com/go-text/typesetting/font/opentype/tables</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	glyphs_sbix_src.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html">github.com/go-text/typesetting/font/opentype/tables</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> tables</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<label for="i0"><span class="lit-string i0">"fmt"</span></label></code></span>
+<span class="codeline" id="line-7"><code>)</code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// Sbix is the Standard Bitmap Graphics Table</span></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">// See - https://learn.microsoft.com/fr-fr/typography/opentype/spec/sbix</span></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-Sbix" class="ident">Sbix</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-12"><code>	version <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="comment">//	Table version number — set to 1</span></code></span>
+<span class="codeline" id="line-13"><code>	<span class="comment">// Bit 0: Set to 1.</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">	// Bit 1: Draw outlines.</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">	// Bits 2 to 15: reserved (set to 0).</span></code></span>
+<span class="codeline" id="line-16"><code>	Flags   <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-17"><code>	Strikes []<a href="#line-22" class="ident">Strike</a> <span class="lit-string">`arrayCount:"FirstUint32" offsetsArray:"Offset32"`</span> <span class="comment">// [numStrikes]	Offsets from the beginning of the 'sbix' table to data for each individual bitmap strike.</span></code></span>
+<span class="codeline" id="line-18"><code>}</code></span>
+<span class="codeline" id="line-19"><code></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">// Strike stores one size of bitmap glyphs in the 'sbix' table.</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">// binarygen: argument=numGlyphs int</span></code></span>
+<span class="codeline" id="line-22"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-Strike" class="ident">Strike</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-23"><code>	Ppem       <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>            <span class="comment">// The PPEM size for which this strike was designed.</span></code></span>
+<span class="codeline" id="line-24"><code>	Ppi        <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>            <span class="comment">// The device pixel density (in PPI) for which this strike was designed. (E.g., 96 PPI, 192 PPI.)</span></code></span>
+<span class="codeline" id="line-25"><code>	GlyphDatas []<a href="#line-57" class="ident">BitmapGlyphData</a> <span class="lit-string">`isOpaque:""`</span> <span class="comment">//[numGlyphs+1] Offset from the beginning of the strike data header to bitmap data for an individual glyph ID.</span></code></span>
+<span class="codeline" id="line-26"><code>}</code></span>
+<span class="codeline" id="line-27"><code></code></span>
+<span class="codeline" id="line-28"><code><span class="keyword">func</span> (<label for="r0" class="ident">st</label> *<a href="#line-22" class="ident">Strike</a>) <label for="r1" class="ident">parseGlyphDatas</label>(<label for="r2" class="ident">src</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r3" class="ident">numGlyphs</label> <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-29"><code>	<span class="keyword">const</span> <label for="r4" class="ident">headerSize</label> = <span class="lit-number">4</span></code></span>
+<span class="codeline" id="line-30"><code>	<label for="r5" class="ident">offsets</label>, <label for="r6" class="ident">err</label> := <a href="glyphs_glyf_src.go.html#line-13" class="ident">ParseLoca</a>(<label for="r2" class="ident">src</label>[<label for="r4" class="ident">headerSize</label>:], <label for="r3" class="ident">numGlyphs</label>, <a href="../../../../../../../pkg/builtin.html#name-true" class="ident">true</a>)</code></span>
+<span class="codeline" id="line-31"><code>	<span class="keyword">if</span> <label for="r6" class="ident">err</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-32"><code>		<span class="keyword">return</span> <label for="r6" class="ident">err</label></code></span>
+<span class="codeline" id="line-33"><code>	}</code></span>
+<span class="codeline" id="line-34"><code>	<label for="r0" class="ident">st</label>.<a href="#line-25" class="ident">GlyphDatas</a> = <a href="../../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="#line-57" class="ident">BitmapGlyphData</a>, <label for="r3" class="ident">numGlyphs</label>)</code></span>
+<span class="codeline" id="line-35"><code>	<span class="keyword">for</span> <label for="r7" class="ident">i</label> := <span class="keyword">range</span> <label for="r0" class="ident">st</label>.<a href="#line-25" class="ident">GlyphDatas</a> {</code></span>
+<span class="codeline" id="line-36"><code>		<label for="r8" class="ident">start</label>, <label for="r9" class="ident">end</label> := <label for="r5" class="ident">offsets</label>[<label for="r7" class="ident">i</label>], <label for="r5" class="ident">offsets</label>[<label for="r7" class="ident">i</label>+<span class="lit-number">1</span>]</code></span>
+<span class="codeline" id="line-37"><code>		<span class="keyword">if</span> <label for="r8" class="ident">start</label> == <label for="r9" class="ident">end</label> { <span class="comment">// no data</span></code></span>
+<span class="codeline" id="line-38"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-39"><code>		}</code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code>		<span class="keyword">if</span> <label for="r8" class="ident">start</label> &gt; <label for="r9" class="ident">end</label> {</code></span>
+<span class="codeline" id="line-42"><code>			<span class="keyword">return</span> <a href="../../../../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"invalid strike offsets %d &gt; %d"</span>, <label for="r8" class="ident">start</label>, <label for="r9" class="ident">end</label>)</code></span>
+<span class="codeline" id="line-43"><code>		}</code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code>		<span class="keyword">if</span> <label for="r10" class="ident">L</label> := <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r2" class="ident">src</label>); <label for="r10" class="ident">L</label> &lt; <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r9" class="ident">end</label>) {</code></span>
+<span class="codeline" id="line-46"><code>			<span class="keyword">return</span> <a href="../../../../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"EOF: expected length: %d, got %d"</span>, <label for="r9" class="ident">end</label>, <label for="r10" class="ident">L</label>)</code></span>
+<span class="codeline" id="line-47"><code>		}</code></span>
+<span class="codeline" id="line-48"><code></code></span>
+<span class="codeline" id="line-49"><code>		<label for="r0" class="ident">st</label>.<a href="#line-25" class="ident">GlyphDatas</a>[<label for="r7" class="ident">i</label>], _, <label for="r6" class="ident">err</label> = <a href="glyphs_sbix_gen.go.html#line-12" class="ident">ParseBitmapGlyphData</a>(<label for="r2" class="ident">src</label>[<label for="r8" class="ident">start</label>:<label for="r9" class="ident">end</label>])</code></span>
+<span class="codeline" id="line-50"><code>		<span class="keyword">if</span> <label for="r6" class="ident">err</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-51"><code>			<span class="keyword">return</span> <label for="r6" class="ident">err</label></code></span>
+<span class="codeline" id="line-52"><code>		}</code></span>
+<span class="codeline" id="line-53"><code>	}</code></span>
+<span class="codeline" id="line-54"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-55"><code>}</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-BitmapGlyphData" class="ident">BitmapGlyphData</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-58"><code>	OriginOffsetX <a href="../../../../../../../pkg/builtin.html#name-int16" class="ident">int16</a>  <span class="comment">//	The horizontal (x-axis) position of the left edge of the bitmap graphic in relation to the glyph design space origin.</span></code></span>
+<span class="codeline" id="line-59"><code>	OriginOffsetY <a href="../../../../../../../pkg/builtin.html#name-int16" class="ident">int16</a>  <span class="comment">//	The vertical (y-axis) position of the bottom edge of the bitmap graphic in relation to the glyph design space origin.</span></code></span>
+<span class="codeline" id="line-60"><code>	GraphicType   <a href="tables.go.html#line-14" class="ident">Tag</a>    <span class="comment">//	Indicates the format of the embedded graphic data: one of 'jpg ', 'png ' or 'tiff', or the special format 'dupe'.</span></code></span>
+<span class="codeline" id="line-61"><code>	Data          []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="lit-string">`arrayCount:"ToEnd"`</span> <span class="comment">//	The actual embedded graphic data. The total length is inferred from sequential entries in the glyphDataOffsets array and the fixed size (8 bytes) of the preceding fields.</span></code></span>
+<span class="codeline" id="line-62"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

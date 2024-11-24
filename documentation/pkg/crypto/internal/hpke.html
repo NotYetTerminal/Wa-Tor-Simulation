@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: crypto/internal/hpke</title>
+<link href="../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>hpke</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-crypto/internal/hpke">crypto/internal/hpke</a><i> (on <a href="https://pkg.go.dev/crypto/internal/hpke" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../dep/crypto/internal/hpke.html">10 packages</a>, and imported by <a href="../../../dep/crypto/internal/hpke.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../src/crypto/internal/hpke/hpke.go.html">hpke.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 4, in which 1 is exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Sender" data-popularity="175">	<input type='checkbox' class="fold" id="Sender-fold-content"><label for="Sender-fold-content"> type <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-111">Sender</a> <i>(struct)</i></label><span id='Sender-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="Sender-fold-fields"><label for="Sender-fold-fields">Fields (<i>total 8, none are exported</i>)</label><span id='Sender-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Sender-showhide-fields"><i><label for="Sender-showhide-fields" class="show-inline">/* 8 unexporteds ... */</label><label for="Sender-showhide-fields" class="hide-inline">/* 8 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-112">aead</a> <i><a href="../cipher.html">cipher</a>.<a href="../cipher.html#name-AEAD">AEAD</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-120">baseNonce</a> <i>[]<a href="../../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-121">exporterSecret</a> <i>[]<a href="../../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-113">kem</a> <i>*<a href="#name-dhKEM">dhKEM</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-119">key</a> <i>[]<a href="../../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-123">seqNum</a> <i><a href="#name-uint128">uint128</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-115">sharedSecret</a> <i>[]<a href="../../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-117">suiteID</a> <i>[]<a href="../../builtin.html#name-byte">byte</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Sender-fold-methods"><label for="Sender-fold-methods">Methods (<i>total 2, in which 1 is exported</i>)</label><span id='Sender-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*Sender) <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-218">Seal</a>(aad, plaintext []<a href="../../builtin.html#name-byte">byte</a>) ([]<a href="../../builtin.html#name-byte">byte</a>, <a href="../../builtin.html#name-error">error</a>)</span></span>
+			<input type='checkbox' class="showhide" id="Sender-showhide-methods"><i><label for="Sender-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="Sender-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Sender) <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-204">nextNonce</a>() []<a href="../../builtin.html#name-byte">byte</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="Sender-fold-results"><label for="Sender-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Sender-fold-results-items' class="fold-items"><span>
+			func <a href="#name-SetupSender">SetupSender</a>(kemID, kdfID, aeadID <a href="../../builtin.html#name-uint16">uint16</a>, pub <a href="../../crypto.html">crypto</a>.<a href="../../crypto.html#name-PublicKey">PublicKey</a>, info []<a href="../../builtin.html#name-byte">byte</a>) ([]<a href="../../builtin.html#name-byte">byte</a>, *<b>Sender</b>, <a href="../../builtin.html#name-error">error</a>)</span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-dhKEM" data-popularity="175">	<input type='checkbox' class="fold" id="dhKEM-fold-content"><label for="dhKEM-fold-content"> type <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-54">dhKEM</a> <i>(struct)</i></label><span id='dhKEM-fold-content-docs' class="fold-docs">
+<span class="md-text">		dhKEM implements the KEM specified in RFC 9180, Section 4.1.</span>
+
+		<input type='checkbox' class="fold" id="dhKEM-fold-fields"><label for="dhKEM-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='dhKEM-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="dhKEM-showhide-fields"><i><label for="dhKEM-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="dhKEM-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-55">dh</a> <i><a href="../ecdh.html">ecdh</a>.<a href="../ecdh.html#name-Curve">Curve</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-56">kdf</a> <i><a href="#name-hkdfKDF">hkdfKDF</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-59">nSecret</a> <i><a href="../../builtin.html#name-uint16">uint16</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-58">suiteID</a> <i>[]<a href="../../builtin.html#name-byte">byte</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="dhKEM-fold-methods"><label for="dhKEM-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='dhKEM-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*dhKEM) <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-89">Encap</a>(pubRecipient *<a href="../ecdh.html">ecdh</a>.<a href="../ecdh.html#name-PublicKey">PublicKey</a>) (sharedSecret []<a href="../../builtin.html#name-byte">byte</a>, encapPub []<a href="../../builtin.html#name-byte">byte</a>, err <a href="../../builtin.html#name-error">error</a>)</span></span><span>
+			<span class="nodocs">(*dhKEM) <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-84">ExtractAndExpand</a>(dhKey, kemContext []<a href="../../builtin.html#name-byte">byte</a>) []<a href="../../builtin.html#name-byte">byte</a></span></span></span>
+		<input type='checkbox' class="fold" id="dhKEM-fold-results"><label for="dhKEM-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='dhKEM-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="dhKEM-showhide-inputofs"><i><label for="dhKEM-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="dhKEM-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-newDHKem">newDHKem</a>(kemID <a href="../../builtin.html#name-uint16">uint16</a>) (*<b>dhKEM</b>, <a href="../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-hkdfKDF" data-popularity="100">	<input type='checkbox' class="fold" id="hkdfKDF-fold-content"><label for="hkdfKDF-fold-content"> type <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-25">hkdfKDF</a> <i>(struct)</i></label><span id='hkdfKDF-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="hkdfKDF-fold-fields"><label for="hkdfKDF-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='hkdfKDF-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="hkdfKDF-showhide-fields"><i><label for="hkdfKDF-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="hkdfKDF-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-26">hash</a> <i><a href="../../crypto.html">crypto</a>.<a href="../../crypto.html#name-Hash">Hash</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="hkdfKDF-fold-methods"><label for="hkdfKDF-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='hkdfKDF-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*hkdfKDF) <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-38">LabeledExpand</a>(suiteID []<a href="../../builtin.html#name-byte">byte</a>, randomKey []<a href="../../builtin.html#name-byte">byte</a>, label <a href="../../builtin.html#name-string">string</a>, info []<a href="../../builtin.html#name-byte">byte</a>, length <a href="../../builtin.html#name-uint16">uint16</a>) []<a href="../../builtin.html#name-byte">byte</a></span></span><span>
+			<span class="nodocs">(*hkdfKDF) <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-29">LabeledExtract</a>(suiteID []<a href="../../builtin.html#name-byte">byte</a>, salt []<a href="../../builtin.html#name-byte">byte</a>, label <a href="../../builtin.html#name-string">string</a>, inputKey []<a href="../../builtin.html#name-byte">byte</a>) []<a href="../../builtin.html#name-byte">byte</a></span></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-uint128" data-popularity="150">	<input type='checkbox' class="fold" id="uint128-fold-content"><label for="uint128-fold-content"> type <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-241">uint128</a> <i>(struct)</i></label><span id='uint128-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="uint128-fold-fields"><label for="uint128-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='uint128-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="uint128-showhide-fields"><i><label for="uint128-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="uint128-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-242">hi</a> <i><a href="../../builtin.html#name-uint64">uint64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/hpke/hpke.go.html#line-242">lo</a> <i><a href="../../builtin.html#name-uint64">uint64</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="uint128-fold-methods"><label for="uint128-fold-methods">Methods (<i>total 3, none are exported</i>)</label><span id='uint128-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="uint128-showhide-methods"><i><label for="uint128-showhide-methods" class="show-inline">/* 3 unexporteds ... */</label><label for="uint128-showhide-methods" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( uint128) <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-245">addOne</a>() <b>uint128</b></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( uint128) <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-250">bitLen</a>() <a href="../../builtin.html#name-int">int</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( uint128) <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-254">bytes</a>() []<a href="../../builtin.html#name-byte">byte</a></span></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 4, in which 3 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ParseHPKEPublicKey">	<span class="nodocs"> func <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-233">ParseHPKEPublicKey</a>(kemID <a href="../../builtin.html#name-uint16">uint16</a>, bytes []<a href="../../builtin.html#name-byte">byte</a>) (*<a href="../ecdh.html">ecdh</a>.<a href="../ecdh.html#name-PublicKey">PublicKey</a>, <a href="../../builtin.html#name-error">error</a>)</span></div><div class="anchor value-res" id="name-SetupSender">	<span class="nodocs"> func <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-150">SetupSender</a>(kemID, kdfID, aeadID <a href="../../builtin.html#name-uint16">uint16</a>, pub <a href="../../crypto.html">crypto</a>.<a href="../../crypto.html#name-PublicKey">PublicKey</a>, info []<a href="../../builtin.html#name-byte">byte</a>) ([]<a href="../../builtin.html#name-byte">byte</a>, *<a href="#name-Sender">Sender</a>, <a href="../../builtin.html#name-error">error</a>)</span></div><div class="anchor value-res" id="name-SuiteID">	<span class="nodocs"> func <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-224">SuiteID</a>(kemID, kdfID, aeadID <a href="../../builtin.html#name-uint16">uint16</a>) []<a href="../../builtin.html#name-byte">byte</a></span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-newDHKem"><i>	<span class="nodocs"> func <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-71">newDHKem</a>(kemID <a href="../../builtin.html#name-uint16">uint16</a>) (*<a href="#name-dhKEM">dhKEM</a>, <a href="../../builtin.html#name-error">error</a>)</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 5, in which 3 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-SupportedAEADs">	<span class="nodocs">  var <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-134">SupportedAEADs</a> map[<a href="../../builtin.html#name-uint16">uint16</a>]struct{keySize <a href="../../builtin.html#name-int">int</a>; nonceSize <a href="../../builtin.html#name-int">int</a>; aead func([]<a href="../../builtin.html#name-byte">byte</a>) (<a href="../cipher.html">cipher</a>.<a href="../cipher.html#name-AEAD">AEAD</a>, <a href="../../builtin.html#name-error">error</a>)}</span></div><div class="anchor value-res" id="name-SupportedKDFs">	<span class="nodocs">  var <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-145">SupportedKDFs</a> map[<a href="../../builtin.html#name-uint16">uint16</a>]func() *<a href="#name-hkdfKDF">hkdfKDF</a></span></div><div class="anchor value-res" id="name-SupportedKEMs">	<span class="nodocs">  var <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-62">SupportedKEMs</a> map[<a href="../../builtin.html#name-uint16">uint16</a>]struct{curve <a href="../ecdh.html">ecdh</a>.<a href="../ecdh.html#name-Curve">Curve</a>; hash <a href="../../crypto.html">crypto</a>.<a href="../../crypto.html#name-Hash">Hash</a>; nSecret <a href="../../builtin.html#name-uint16">uint16</a>}</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-aesGCMNew"><i>	<span class="nodocs">  var <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-126">aesGCMNew</a> func(key []<a href="../../builtin.html#name-byte">byte</a>) (<a href="../cipher.html">cipher</a>.<a href="../cipher.html#name-AEAD">AEAD</a>, <a href="../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-testingOnlyGenerateKey"><i>	<input type='checkbox' class="fold" id="testingOnlyGenerateKey-fold-content"><label for="testingOnlyGenerateKey-fold-content">  var <a href="../../../src/crypto/internal/hpke/hpke.go.html#line-23">testingOnlyGenerateKey</a> () (*<a href="../ecdh.html">ecdh</a>.<a href="../ecdh.html#name-PrivateKey">PrivateKey</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='testingOnlyGenerateKey-fold-content-docs' class="fold-docs">
+<span class="md-text">		testingOnlyGenerateKey is only used during testing, to provide
+		a fixed test key to use when checking the RFC 9180 vectors.</span>
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

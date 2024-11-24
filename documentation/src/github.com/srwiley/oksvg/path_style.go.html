@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: path_style.go in package github.com/srwiley/oksvg</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	path_style.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/srwiley/oksvg.html">github.com/srwiley/oksvg</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// Copyright 2017 The oksvg Authors. All rights reserved.</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// created: 2/12/2017 by S.R.Wiley</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// utils.go implements translation of an SVG2.0 path into a rasterx Path.</span></code></span>
+<span class="codeline" id="line-5"><code></code></span>
+<span class="codeline" id="line-6"><code><span class="keyword">package</span> oksvg</code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-9"><code>	<label for="i0"><span class="lit-string i0">"image/color"</span></label></code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code>	<label for="i1"><span class="lit-string i1">"github.com/srwiley/rasterx"</span></label></code></span>
+<span class="codeline" id="line-12"><code>)</code></span>
+<span class="codeline" id="line-13"><code></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">// PathStyle holds the state of the SVG style.</span></code></span>
+<span class="codeline" id="line-15"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/srwiley/oksvg.html#name-PathStyle" class="ident">PathStyle</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-16"><code>	FillOpacity, LineOpacity          <a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a></code></span>
+<span class="codeline" id="line-17"><code>	LineWidth, DashOffset, MiterLimit <a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a></code></span>
+<span class="codeline" id="line-18"><code>	Dash                              []<a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a></code></span>
+<span class="codeline" id="line-19"><code>	UseNonZeroWinding                 <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-20"><code>	fillerColor, linerColor           <span class="keyword">interface</span>{} <span class="comment">// either color.Color or rasterx.Gradient</span></code></span>
+<span class="codeline" id="line-21"><code>	LineGap                           <a href="../../../../pkg/github.com/srwiley/rasterx.html" class="ident i1">rasterx</a>.<a href="../rasterx/stroke.go.html#line-28" class="ident">GapFunc</a></code></span>
+<span class="codeline" id="line-22"><code>	LeadLineCap                       <a href="../../../../pkg/github.com/srwiley/rasterx.html" class="ident i1">rasterx</a>.<a href="../rasterx/stroke.go.html#line-25" class="ident">CapFunc</a> <span class="comment">// This is used if different than LineCap</span></code></span>
+<span class="codeline" id="line-23"><code>	LineCap                           <a href="../../../../pkg/github.com/srwiley/rasterx.html" class="ident i1">rasterx</a>.<a href="../rasterx/stroke.go.html#line-25" class="ident">CapFunc</a></code></span>
+<span class="codeline" id="line-24"><code>	LineJoin                          <a href="../../../../pkg/github.com/srwiley/rasterx.html" class="ident i1">rasterx</a>.<a href="../rasterx/stroke.go.html#line-23" class="ident">JoinMode</a></code></span>
+<span class="codeline" id="line-25"><code>	mAdder                            <a href="../../../../pkg/github.com/srwiley/rasterx.html" class="ident i1">rasterx</a>.<a href="../rasterx/matrix.go.html#line-163" class="ident">MatrixAdder</a> <span class="comment">// current transform</span></code></span>
+<span class="codeline" id="line-26"><code>}</code></span>
+<span class="codeline" id="line-27"><code></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">// styleAttribute describes draw options, such as {"fill":"black"; "stroke":"white"}.</span></code></span>
+<span class="codeline" id="line-29"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/srwiley/oksvg.html#name-styleAttribute" class="ident">styleAttribute</a> = <span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">// DefaultStyle sets the default PathStyle to fill black, winding rule,</span></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">// full opacity, no stroke, ButtCap line end and Bevel line connect.</span></code></span>
+<span class="codeline" id="line-33"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/srwiley/oksvg.html#name-DefaultStyle" class="ident">DefaultStyle</a> = <a href="#line-15" class="ident">PathStyle</a>{<span class="lit-number">1.0</span>, <span class="lit-number">1.0</span>, <span class="lit-number">2.0</span>, <span class="lit-number">0.0</span>, <span class="lit-number">4.0</span>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a>,</code></span>
+<span class="codeline" id="line-34"><code>	<a href="../../../../pkg/image/color.html" class="ident i0">color</a>.<a href="../../../image/color/color.go.html#line-56" class="ident">NRGBA</a>{<span class="lit-number">0x00</span>, <span class="lit-number">0x00</span>, <span class="lit-number">0x00</span>, <span class="lit-number">0xff</span>}, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>,</code></span>
+<span class="codeline" id="line-35"><code>	<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/github.com/srwiley/rasterx.html" class="ident i1">rasterx</a>.<a href="../rasterx/stroke.go.html#line-129" class="ident">ButtCap</a>, <a href="../../../../pkg/github.com/srwiley/rasterx.html" class="ident i1">rasterx</a>.<a href="../rasterx/stroke.go.html#line-63" class="ident">Bevel</a>, <a href="../../../../pkg/github.com/srwiley/rasterx.html" class="ident i1">rasterx</a>.<a href="../rasterx/matrix.go.html#line-163" class="ident">MatrixAdder</a>{<a href="../rasterx/matrix.go.html#line-165" class="ident">M</a>: <a href="../../../../pkg/github.com/srwiley/rasterx.html" class="ident i1">rasterx</a>.<a href="../rasterx/matrix.go.html#line-82" class="ident">Identity</a>}}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

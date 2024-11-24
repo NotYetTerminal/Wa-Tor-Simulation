@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: runner.go in package fyne.io/fyne/v2/internal/animation</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	runner.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/fyne.io/fyne/v2/internal/animation.html">fyne.io/fyne/v2/internal/animation</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> animation</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"sync"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"time"</span></label></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i2"><span class="lit-string i2">"fyne.io/fyne/v2"</span></label></code></span>
+<span class="codeline" id="line-8"><code>)</code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">// Runner is the main driver for animations package</span></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">type</span> <a href="../../../../../../pkg/fyne.io/fyne/v2/internal/animation.html#name-Runner" class="ident">Runner</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-12"><code>	<span class="comment">// animationMutex synchronizes access to `animations` and `pendingAnimations`</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">	// between the runner goroutine and calls to Start and Stop</span></code></span>
+<span class="codeline" id="line-14"><code>	animationMutex <a href="../../../../../../pkg/sync.html" class="ident i0">sync</a>.<a href="../../../../../sync/rwmutex.go.html#line-37" class="ident">RWMutex</a></code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code>	<span class="comment">// animations is the list of animations that are being ticked in the current frame</span></code></span>
+<span class="codeline" id="line-17"><code>	animations []*<a href="animation.go.html#line-10" class="ident">anim</a></code></span>
+<span class="codeline" id="line-18"><code></code></span>
+<span class="codeline" id="line-19"><code>	<span class="comment">// pendingAnimations is animations that have been started but not yet picked up</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">	// by the runner goroutine to be ticked each frame</span></code></span>
+<span class="codeline" id="line-21"><code>	pendingAnimations []*<a href="animation.go.html#line-10" class="ident">anim</a></code></span>
+<span class="codeline" id="line-22"><code></code></span>
+<span class="codeline" id="line-23"><code>	<span class="comment">// nextFrameAnimations is the list of animations that will be ticked in the next frame.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">	// It is accessed only by the runner goroutine and accumulates the continuing animations</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">	// during a tick that are not completed, plus the pendingAnimations picked up at the end of the frame.</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">	// At the end of a full frame of animations, the nextFrameAnimations slice is swapped with</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">	// the current `animations` slice which is then cleared out, while holding the mutex.</span></code></span>
+<span class="codeline" id="line-28"><code>	nextFrameAnimations []*<a href="animation.go.html#line-10" class="ident">anim</a></code></span>
+<span class="codeline" id="line-29"><code></code></span>
+<span class="codeline" id="line-30"><code>	runnerStarted <a href="../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-31"><code>}</code></span>
+<span class="codeline" id="line-32"><code></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">// Start will register the passed application and initiate its ticking.</span></code></span>
+<span class="codeline" id="line-34"><code><span class="keyword">func</span> (<label for="r0" class="ident">r</label> *<a href="#line-11" class="ident">Runner</a>) <label for="r1" class="ident">Start</label>(<label for="r2" class="ident">a</label> *<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../animation.go.html#line-39" class="ident">Animation</a>) {</code></span>
+<span class="codeline" id="line-35"><code>	<label for="r0" class="ident">r</label>.<a href="#line-14" class="ident">animationMutex</a>.<a href="../../../../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-36"><code>	<span class="keyword">defer</span> <label for="r0" class="ident">r</label>.<a href="#line-14" class="ident">animationMutex</a>.<a href="../../../../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code>	<span class="keyword">if</span> !<label for="r0" class="ident">r</label>.<a href="#line-30" class="ident">runnerStarted</a> {</code></span>
+<span class="codeline" id="line-39"><code>		<label for="r0" class="ident">r</label>.<a href="#line-30" class="ident">runnerStarted</a> = <a href="../../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-40"><code>		<span class="keyword">if</span> <label for="r0" class="ident">r</label>.<a href="#line-17" class="ident">animations</a> == <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-41"><code>			<span class="comment">// initialize with excess capacity to avoid re-allocations</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">			// on subsequent Starts</span></code></span>
+<span class="codeline" id="line-43"><code>			<label for="r0" class="ident">r</label>.<a href="#line-17" class="ident">animations</a> = <a href="../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]*<a href="animation.go.html#line-10" class="ident">anim</a>, <span class="lit-number">0</span>, <span class="lit-number">16</span>)</code></span>
+<span class="codeline" id="line-44"><code>		}</code></span>
+<span class="codeline" id="line-45"><code>		<label for="r0" class="ident">r</label>.<a href="#line-17" class="ident">animations</a> = <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r0" class="ident">r</label>.<a href="#line-17" class="ident">animations</a>, <a href="animation.go.html#line-20" class="ident">newAnim</a>(<label for="r2" class="ident">a</label>))</code></span>
+<span class="codeline" id="line-46"><code>		<label for="r0" class="ident">r</label>.<a href="#line-88" class="ident">runAnimations</a>()</code></span>
+<span class="codeline" id="line-47"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-48"><code>		<span class="keyword">if</span> <label for="r0" class="ident">r</label>.<a href="#line-21" class="ident">pendingAnimations</a> == <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-49"><code>			<span class="comment">// initialize with excess capacity to avoid re-allocations</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">			// on subsequent Starts</span></code></span>
+<span class="codeline" id="line-51"><code>			<label for="r0" class="ident">r</label>.<a href="#line-21" class="ident">pendingAnimations</a> = <a href="../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]*<a href="animation.go.html#line-10" class="ident">anim</a>, <span class="lit-number">0</span>, <span class="lit-number">16</span>)</code></span>
+<span class="codeline" id="line-52"><code>		}</code></span>
+<span class="codeline" id="line-53"><code>		<label for="r0" class="ident">r</label>.<a href="#line-21" class="ident">pendingAnimations</a> = <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r0" class="ident">r</label>.<a href="#line-21" class="ident">pendingAnimations</a>, <a href="animation.go.html#line-20" class="ident">newAnim</a>(<label for="r2" class="ident">a</label>))</code></span>
+<span class="codeline" id="line-54"><code>	}</code></span>
+<span class="codeline" id="line-55"><code>}</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code><span class="comment">// Stop causes an animation to stop ticking (if it was still running) and removes it from the runner.</span></code></span>
+<span class="codeline" id="line-58"><code><span class="keyword">func</span> (<label for="r3" class="ident">r</label> *<a href="#line-11" class="ident">Runner</a>) <label for="r4" class="ident">Stop</label>(<label for="r5" class="ident">a</label> *<a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../animation.go.html#line-39" class="ident">Animation</a>) {</code></span>
+<span class="codeline" id="line-59"><code>	<label for="r3" class="ident">r</label>.<a href="#line-14" class="ident">animationMutex</a>.<a href="../../../../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-60"><code>	<span class="keyword">defer</span> <label for="r3" class="ident">r</label>.<a href="#line-14" class="ident">animationMutex</a>.<a href="../../../../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-61"><code></code></span>
+<span class="codeline" id="line-62"><code>	<label for="r6" class="ident">newList</label> := <a href="../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]*<a href="animation.go.html#line-10" class="ident">anim</a>, <span class="lit-number">0</span>, <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r3" class="ident">r</label>.<a href="#line-17" class="ident">animations</a>))</code></span>
+<span class="codeline" id="line-63"><code>	<label for="r7" class="ident">stopped</label> := <a href="../../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-64"><code>	<span class="keyword">for</span> <label for="r8" class="ident">_</label>, <label for="r9" class="ident">item</label> := <span class="keyword">range</span> <label for="r3" class="ident">r</label>.<a href="#line-17" class="ident">animations</a> {</code></span>
+<span class="codeline" id="line-65"><code>		<span class="keyword">if</span> <label for="r9" class="ident">item</label>.<a href="animation.go.html#line-11" class="ident">a</a> != <label for="r5" class="ident">a</label> {</code></span>
+<span class="codeline" id="line-66"><code>			<label for="r6" class="ident">newList</label> = <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r6" class="ident">newList</label>, <label for="r9" class="ident">item</label>)</code></span>
+<span class="codeline" id="line-67"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-68"><code>			<label for="r9" class="ident">item</label>.<a href="animation.go.html#line-27" class="ident">setStopped</a>()</code></span>
+<span class="codeline" id="line-69"><code>			<label for="r7" class="ident">stopped</label> = <a href="../../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-70"><code>		}</code></span>
+<span class="codeline" id="line-71"><code>	}</code></span>
+<span class="codeline" id="line-72"><code>	<label for="r3" class="ident">r</label>.<a href="#line-17" class="ident">animations</a> = <label for="r6" class="ident">newList</label></code></span>
+<span class="codeline" id="line-73"><code>	<span class="keyword">if</span> <label for="r7" class="ident">stopped</label> {</code></span>
+<span class="codeline" id="line-74"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-75"><code>	}</code></span>
+<span class="codeline" id="line-76"><code></code></span>
+<span class="codeline" id="line-77"><code>	<label for="r6" class="ident">newList</label> = <a href="../../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]*<a href="animation.go.html#line-10" class="ident">anim</a>, <span class="lit-number">0</span>, <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r3" class="ident">r</label>.<a href="#line-21" class="ident">pendingAnimations</a>))</code></span>
+<span class="codeline" id="line-78"><code>	<span class="keyword">for</span> <label for="r10" class="ident">_</label>, <label for="r11" class="ident">item</label> := <span class="keyword">range</span> <label for="r3" class="ident">r</label>.<a href="#line-21" class="ident">pendingAnimations</a> {</code></span>
+<span class="codeline" id="line-79"><code>		<span class="keyword">if</span> <label for="r11" class="ident">item</label>.<a href="animation.go.html#line-11" class="ident">a</a> != <label for="r5" class="ident">a</label> {</code></span>
+<span class="codeline" id="line-80"><code>			<label for="r6" class="ident">newList</label> = <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r6" class="ident">newList</label>, <label for="r11" class="ident">item</label>)</code></span>
+<span class="codeline" id="line-81"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-82"><code>			<label for="r11" class="ident">item</label>.<a href="animation.go.html#line-27" class="ident">setStopped</a>()</code></span>
+<span class="codeline" id="line-83"><code>		}</code></span>
+<span class="codeline" id="line-84"><code>	}</code></span>
+<span class="codeline" id="line-85"><code>	<label for="r3" class="ident">r</label>.<a href="#line-21" class="ident">pendingAnimations</a> = <label for="r6" class="ident">newList</label></code></span>
+<span class="codeline" id="line-86"><code>}</code></span>
+<span class="codeline" id="line-87"><code></code></span>
+<span class="codeline" id="line-88"><code><span class="keyword">func</span> (<label for="r12" class="ident">r</label> *<a href="#line-11" class="ident">Runner</a>) <label for="r13" class="ident">runAnimations</label>() {</code></span>
+<span class="codeline" id="line-89"><code>	<label for="r14" class="ident">draw</label> := <a href="../../../../../../pkg/time.html" class="ident i1">time</a>.<a href="../../../../../time/tick.go.html#line-36" class="ident">NewTicker</a>(<a href="../../../../../../pkg/time.html" class="ident i1">time</a>.<a href="../../../../../time/time.go.html#line-655" class="ident">Second</a> / <span class="lit-number">60</span>)</code></span>
+<span class="codeline" id="line-90"><code>	<span class="keyword">go</span> <span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-91"><code>		<span class="keyword">for</span> <label for="r15" class="ident">done</label> := <a href="../../../../../../pkg/builtin.html#name-false" class="ident">false</a>; !<label for="r15" class="ident">done</label>; {</code></span>
+<span class="codeline" id="line-92"><code>			&lt;-<label for="r14" class="ident">draw</label>.<a href="../../../../../time/tick.go.html#line-17" class="ident">C</a></code></span>
+<span class="codeline" id="line-93"><code>			<label for="r15" class="ident">done</label> = <label for="r12" class="ident">r</label>.<a href="#line-102" class="ident">runOneFrame</a>()</code></span>
+<span class="codeline" id="line-94"><code>		}</code></span>
+<span class="codeline" id="line-95"><code>		<label for="r12" class="ident">r</label>.<a href="#line-14" class="ident">animationMutex</a>.<a href="../../../../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-96"><code>		<label for="r12" class="ident">r</label>.<a href="#line-30" class="ident">runnerStarted</a> = <a href="../../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-97"><code>		<label for="r12" class="ident">r</label>.<a href="#line-14" class="ident">animationMutex</a>.<a href="../../../../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-98"><code>		<label for="r14" class="ident">draw</label>.<a href="../../../../../time/tick.go.html#line-52" class="ident">Stop</a>()</code></span>
+<span class="codeline" id="line-99"><code>	}()</code></span>
+<span class="codeline" id="line-100"><code>}</code></span>
+<span class="codeline" id="line-101"><code></code></span>
+<span class="codeline" id="line-102"><code><span class="keyword">func</span> (<label for="r16" class="ident">r</label> *<a href="#line-11" class="ident">Runner</a>) <label for="r17" class="ident">runOneFrame</label>() (<label for="r18" class="ident">done</label> <a href="../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-103"><code>	<label for="r16" class="ident">r</label>.<a href="#line-14" class="ident">animationMutex</a>.<a href="../../../../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-104"><code>	<label for="r19" class="ident">oldList</label> := <label for="r16" class="ident">r</label>.<a href="#line-17" class="ident">animations</a></code></span>
+<span class="codeline" id="line-105"><code>	<label for="r16" class="ident">r</label>.<a href="#line-14" class="ident">animationMutex</a>.<a href="../../../../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-106"><code>	<span class="keyword">for</span> <label for="r20" class="ident">_</label>, <label for="r21" class="ident">a</label> := <span class="keyword">range</span> <label for="r19" class="ident">oldList</label> {</code></span>
+<span class="codeline" id="line-107"><code>		<span class="keyword">if</span> !<label for="r21" class="ident">a</label>.<a href="animation.go.html#line-31" class="ident">isStopped</a>() &amp;&amp; <label for="r16" class="ident">r</label>.<a href="#line-131" class="ident">tickAnimation</a>(<label for="r21" class="ident">a</label>) {</code></span>
+<span class="codeline" id="line-108"><code>			<label for="r16" class="ident">r</label>.<a href="#line-28" class="ident">nextFrameAnimations</a> = <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r16" class="ident">r</label>.<a href="#line-28" class="ident">nextFrameAnimations</a>, <label for="r21" class="ident">a</label>)</code></span>
+<span class="codeline" id="line-109"><code>		}</code></span>
+<span class="codeline" id="line-110"><code>	}</code></span>
+<span class="codeline" id="line-111"><code></code></span>
+<span class="codeline" id="line-112"><code>	<label for="r16" class="ident">r</label>.<a href="#line-14" class="ident">animationMutex</a>.<a href="../../../../../sync/rwmutex.go.html#line-142" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-113"><code>	<span class="comment">// nil out old r.animations for re-use as next r.nextFrameAnimations</span></code></span>
+<span class="codeline" id="line-114"><code>	<label for="r22" class="ident">tmp</label> := <label for="r16" class="ident">r</label>.<a href="#line-17" class="ident">animations</a></code></span>
+<span class="codeline" id="line-115"><code>	<span class="keyword">for</span> <label for="r23" class="ident">i</label> := <span class="keyword">range</span> <label for="r22" class="ident">tmp</label> {</code></span>
+<span class="codeline" id="line-116"><code>		<label for="r22" class="ident">tmp</label>[<label for="r23" class="ident">i</label>] = <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-117"><code>	}</code></span>
+<span class="codeline" id="line-118"><code>	<label for="r16" class="ident">r</label>.<a href="#line-17" class="ident">animations</a> = <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r16" class="ident">r</label>.<a href="#line-28" class="ident">nextFrameAnimations</a>, <label for="r16" class="ident">r</label>.<a href="#line-21" class="ident">pendingAnimations</a>...)</code></span>
+<span class="codeline" id="line-119"><code>	<label for="r16" class="ident">r</label>.<a href="#line-28" class="ident">nextFrameAnimations</a> = <label for="r22" class="ident">tmp</label>[:<span class="lit-number">0</span>]</code></span>
+<span class="codeline" id="line-120"><code>	<span class="comment">// nil out r.pendingAnimations</span></code></span>
+<span class="codeline" id="line-121"><code>	<span class="keyword">for</span> <label for="r24" class="ident">i</label> := <span class="keyword">range</span> <label for="r16" class="ident">r</label>.<a href="#line-21" class="ident">pendingAnimations</a> {</code></span>
+<span class="codeline" id="line-122"><code>		<label for="r16" class="ident">r</label>.<a href="#line-21" class="ident">pendingAnimations</a>[<label for="r24" class="ident">i</label>] = <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-123"><code>	}</code></span>
+<span class="codeline" id="line-124"><code>	<label for="r16" class="ident">r</label>.<a href="#line-21" class="ident">pendingAnimations</a> = <label for="r16" class="ident">r</label>.<a href="#line-21" class="ident">pendingAnimations</a>[:<span class="lit-number">0</span>]</code></span>
+<span class="codeline" id="line-125"><code>	<label for="r18" class="ident">done</label> = <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r16" class="ident">r</label>.<a href="#line-17" class="ident">animations</a>) == <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-126"><code>	<label for="r16" class="ident">r</label>.<a href="#line-14" class="ident">animationMutex</a>.<a href="../../../../../sync/rwmutex.go.html#line-199" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-127"><code>	<span class="keyword">return</span> <label for="r18" class="ident">done</label></code></span>
+<span class="codeline" id="line-128"><code>}</code></span>
+<span class="codeline" id="line-129"><code></code></span>
+<span class="codeline" id="line-130"><code><span class="comment">// tickAnimation will process a frame of animation and return true if this should continue animating</span></code></span>
+<span class="codeline" id="line-131"><code><span class="keyword">func</span> (<label for="r25" class="ident">r</label> *<a href="#line-11" class="ident">Runner</a>) <label for="r26" class="ident">tickAnimation</label>(<label for="r27" class="ident">a</label> *<a href="animation.go.html#line-10" class="ident">anim</a>) <a href="../../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-132"><code>	<span class="keyword">if</span> <a href="../../../../../../pkg/time.html" class="ident i1">time</a>.<a href="../../../../../time/time.go.html#line-1159" class="ident">Now</a>().<a href="../../../../../time/time.go.html#line-260" class="ident">After</a>(<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-12" class="ident">end</a>) {</code></span>
+<span class="codeline" id="line-133"><code>		<span class="keyword">if</span> <label for="r27" class="ident">a</label>.<a href="animation.go.html#line-14" class="ident">reverse</a> {</code></span>
+<span class="codeline" id="line-134"><code>			<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-11" class="ident">a</a>.<a href="../../animation.go.html#line-44" class="ident">Tick</a>(<span class="lit-number">0.0</span>)</code></span>
+<span class="codeline" id="line-135"><code>			<span class="keyword">if</span> <label for="r27" class="ident">a</label>.<a href="animation.go.html#line-13" class="ident">repeatsLeft</a> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-136"><code>				<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-137"><code>			}</code></span>
+<span class="codeline" id="line-138"><code>			<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-14" class="ident">reverse</a> = <a href="../../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-139"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-140"><code>			<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-11" class="ident">a</a>.<a href="../../animation.go.html#line-44" class="ident">Tick</a>(<span class="lit-number">1.0</span>)</code></span>
+<span class="codeline" id="line-141"><code>			<span class="keyword">if</span> <label for="r27" class="ident">a</label>.<a href="animation.go.html#line-11" class="ident">a</a>.<a href="../../animation.go.html#line-40" class="ident">AutoReverse</a> {</code></span>
+<span class="codeline" id="line-142"><code>				<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-14" class="ident">reverse</a> = <a href="../../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-143"><code>			}</code></span>
+<span class="codeline" id="line-144"><code>		}</code></span>
+<span class="codeline" id="line-145"><code>		<span class="keyword">if</span> !<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-14" class="ident">reverse</a> {</code></span>
+<span class="codeline" id="line-146"><code>			<span class="keyword">if</span> <label for="r27" class="ident">a</label>.<a href="animation.go.html#line-13" class="ident">repeatsLeft</a> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-147"><code>				<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-148"><code>			}</code></span>
+<span class="codeline" id="line-149"><code>			<span class="keyword">if</span> <label for="r27" class="ident">a</label>.<a href="animation.go.html#line-13" class="ident">repeatsLeft</a> &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-150"><code>				<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-13" class="ident">repeatsLeft</a>--</code></span>
+<span class="codeline" id="line-151"><code>			}</code></span>
+<span class="codeline" id="line-152"><code>		}</code></span>
+<span class="codeline" id="line-153"><code></code></span>
+<span class="codeline" id="line-154"><code>		<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-15" class="ident">start</a> = <a href="../../../../../../pkg/time.html" class="ident i1">time</a>.<a href="../../../../../time/time.go.html#line-1159" class="ident">Now</a>()</code></span>
+<span class="codeline" id="line-155"><code>		<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-12" class="ident">end</a> = <label for="r27" class="ident">a</label>.<a href="animation.go.html#line-15" class="ident">start</a>.<a href="../../../../../time/time.go.html#line-886" class="ident">Add</a>(<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-11" class="ident">a</a>.<a href="../../animation.go.html#line-42" class="ident">Duration</a>)</code></span>
+<span class="codeline" id="line-156"><code>		<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-157"><code>	}</code></span>
+<span class="codeline" id="line-158"><code></code></span>
+<span class="codeline" id="line-159"><code>	<label for="r28" class="ident">delta</label> := <a href="../../../../../../pkg/time.html" class="ident i1">time</a>.<a href="../../../../../time/time.go.html#line-943" class="ident">Since</a>(<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-15" class="ident">start</a>).<a href="../../../../../time/time.go.html#line-795" class="ident">Milliseconds</a>()</code></span>
+<span class="codeline" id="line-160"><code></code></span>
+<span class="codeline" id="line-161"><code>	<label for="r29" class="ident">val</label> := <a href="../../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r28" class="ident">delta</label>) / <a href="../../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-16" class="ident">total</a>)</code></span>
+<span class="codeline" id="line-162"><code>	<label for="r30" class="ident">curve</label> := <label for="r27" class="ident">a</label>.<a href="animation.go.html#line-11" class="ident">a</a>.<a href="../../animation.go.html#line-41" class="ident">Curve</a></code></span>
+<span class="codeline" id="line-163"><code>	<span class="keyword">if</span> <label for="r30" class="ident">curve</label> == <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-164"><code>		<label for="r30" class="ident">curve</label> = <a href="../../../../../../pkg/fyne.io/fyne/v2.html" class="ident i2">fyne</a>.<a href="../../animation.go.html#line-20" class="ident">AnimationEaseInOut</a></code></span>
+<span class="codeline" id="line-165"><code>	}</code></span>
+<span class="codeline" id="line-166"><code>	<span class="keyword">if</span> <label for="r27" class="ident">a</label>.<a href="animation.go.html#line-14" class="ident">reverse</a> {</code></span>
+<span class="codeline" id="line-167"><code>		<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-11" class="ident">a</a>.<a href="../../animation.go.html#line-44" class="ident">Tick</a>(<label for="r30" class="ident">curve</label>(<span class="lit-number">1</span> - <label for="r29" class="ident">val</label>))</code></span>
+<span class="codeline" id="line-168"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-169"><code>		<label for="r27" class="ident">a</label>.<a href="animation.go.html#line-11" class="ident">a</a>.<a href="../../animation.go.html#line-44" class="ident">Tick</a>(<label for="r30" class="ident">curve</label>(<label for="r29" class="ident">val</label>))</code></span>
+<span class="codeline" id="line-170"><code>	}</code></span>
+<span class="codeline" id="line-171"><code></code></span>
+<span class="codeline" id="line-172"><code>	<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-173"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

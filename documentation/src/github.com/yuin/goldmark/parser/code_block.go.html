@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: code_block.go in package github.com/yuin/goldmark/parser</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	code_block.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/yuin/goldmark/parser.html">github.com/yuin/goldmark/parser</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> parser</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"github.com/yuin/goldmark/ast"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"github.com/yuin/goldmark/text"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"github.com/yuin/goldmark/util"</span></label></code></span>
+<span class="codeline" id="line-7"><code>)</code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/yuin/goldmark/parser.html#name-codeBlockParser" class="ident">codeBlockParser</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-10"><code>}</code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// CodeBlockParser is a BlockParser implementation that parses indented code blocks.</span></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/yuin/goldmark/parser.html#name-defaultCodeBlockParser" class="ident">defaultCodeBlockParser</a> = &amp;<a href="#line-9" class="ident">codeBlockParser</a>{}</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// NewCodeBlockParser returns a new BlockParser that</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// parses code blocks.</span></code></span>
+<span class="codeline" id="line-17"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/github.com/yuin/goldmark/parser.html#name-NewCodeBlockParser" class="ident">NewCodeBlockParser</a></label>() <a href="parser.go.html#line-490" class="ident">BlockParser</a> {</code></span>
+<span class="codeline" id="line-18"><code>	<span class="keyword">return</span> <a href="#line-13" class="ident">defaultCodeBlockParser</a></code></span>
+<span class="codeline" id="line-19"><code>}</code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code><span class="keyword">func</span> (<label for="r1" class="ident">b</label> *<a href="#line-9" class="ident">codeBlockParser</a>) <label for="r2" class="ident"><a href="../../../../../imp/github.com/yuin/goldmark/parser.codeBlockParser^09ab9.html#name-.Trigger" class="ident">Trigger</a></label>() []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-22"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-23"><code>}</code></span>
+<span class="codeline" id="line-24"><code></code></span>
+<span class="codeline" id="line-25"><code><span class="keyword">func</span> (<label for="r3" class="ident">b</label> *<a href="#line-9" class="ident">codeBlockParser</a>) <label for="r4" class="ident"><a href="../../../../../imp/github.com/yuin/goldmark/parser.codeBlockParser^09ab9.html#name-.Open" class="ident">Open</a></label>(<label for="r5" class="ident">parent</label> <a href="../../../../../pkg/github.com/yuin/goldmark/ast.html" class="ident i0">ast</a>.<a href="../ast/ast.go.html#line-49" class="ident">Node</a>, <label for="r6" class="ident">reader</label> <a href="../../../../../pkg/github.com/yuin/goldmark/text.html" class="ident i1">text</a>.<a href="../text/reader.go.html#line-18" class="ident">Reader</a>, <label for="r7" class="ident">pc</label> <a href="parser.go.html#line-134" class="ident">Context</a>) (<a href="../../../../../pkg/github.com/yuin/goldmark/ast.html" class="ident i0">ast</a>.<a href="../ast/ast.go.html#line-49" class="ident">Node</a>, <a href="parser.go.html#line-403" class="ident">State</a>) {</code></span>
+<span class="codeline" id="line-26"><code>	<label for="r8" class="ident">line</label>, <label for="r9" class="ident">segment</label> := <label for="r6" class="ident">reader</label>.<a href="../text/reader.go.html#line-31" class="ident">PeekLine</a>()</code></span>
+<span class="codeline" id="line-27"><code>	<label for="r10" class="ident">pos</label>, <label for="r11" class="ident">padding</label> := <a href="../../../../../pkg/github.com/yuin/goldmark/util.html" class="ident i2">util</a>.<a href="../util/util.go.html#line-155" class="ident">IndentPosition</a>(<label for="r8" class="ident">line</label>, <label for="r6" class="ident">reader</label>.<a href="../text/reader.go.html#line-40" class="ident">LineOffset</a>(), <span class="lit-number">4</span>)</code></span>
+<span class="codeline" id="line-28"><code>	<span class="keyword">if</span> <label for="r10" class="ident">pos</label> &lt; <span class="lit-number">0</span> || <a href="../../../../../pkg/github.com/yuin/goldmark/util.html" class="ident i2">util</a>.<a href="../util/util.go.html#line-119" class="ident">IsBlank</a>(<label for="r8" class="ident">line</label>) {</code></span>
+<span class="codeline" id="line-29"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="parser.go.html#line-419" class="ident">NoChildren</a></code></span>
+<span class="codeline" id="line-30"><code>	}</code></span>
+<span class="codeline" id="line-31"><code>	<label for="r12" class="ident">node</label> := <a href="../../../../../pkg/github.com/yuin/goldmark/ast.html" class="ident i0">ast</a>.<a href="../ast/block.go.html#line-253" class="ident">NewCodeBlock</a>()</code></span>
+<span class="codeline" id="line-32"><code>	<label for="r6" class="ident">reader</label>.<a href="../text/reader.go.html#line-56" class="ident">AdvanceAndSetPadding</a>(<label for="r10" class="ident">pos</label>, <label for="r11" class="ident">padding</label>)</code></span>
+<span class="codeline" id="line-33"><code>	_, <label for="r9" class="ident">segment</label> = <label for="r6" class="ident">reader</label>.<a href="../text/reader.go.html#line-31" class="ident">PeekLine</a>()</code></span>
+<span class="codeline" id="line-34"><code>	<span class="comment">// if code block line starts with a tab, keep a tab as it is.</span></code></span>
+<span class="codeline" id="line-35"><code>	<span class="keyword">if</span> <label for="r9" class="ident">segment</label>.<a href="../text/segment.go.html#line-20" class="ident">Padding</a> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-36"><code>		<a href="#line-91" class="ident">preserveLeadingTabInCodeBlock</a>(&amp;<label for="r9" class="ident">segment</label>, <label for="r6" class="ident">reader</label>, <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-37"><code>	}</code></span>
+<span class="codeline" id="line-38"><code>	<label for="r12" class="ident">node</label>.<a href="../ast/block.go.html#line-38" class="ident">Lines</a>().<a href="../text/segment.go.html#line-157" class="ident">Append</a>(<label for="r9" class="ident">segment</label>)</code></span>
+<span class="codeline" id="line-39"><code>	<label for="r6" class="ident">reader</label>.<a href="../text/reader.go.html#line-52" class="ident">Advance</a>(<label for="r9" class="ident">segment</label>.<a href="../text/segment.go.html#line-52" class="ident">Len</a>() - <span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-40"><code>	<span class="keyword">return</span> <label for="r12" class="ident">node</label>, <a href="parser.go.html#line-419" class="ident">NoChildren</a></code></span>
+<span class="codeline" id="line-41"><code></code></span>
+<span class="codeline" id="line-42"><code>}</code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code><span class="keyword">func</span> (<label for="r13" class="ident">b</label> *<a href="#line-9" class="ident">codeBlockParser</a>) <label for="r14" class="ident"><a href="../../../../../imp/github.com/yuin/goldmark/parser.codeBlockParser^09ab9.html#name-.Continue" class="ident">Continue</a></label>(<label for="r15" class="ident">node</label> <a href="../../../../../pkg/github.com/yuin/goldmark/ast.html" class="ident i0">ast</a>.<a href="../ast/ast.go.html#line-49" class="ident">Node</a>, <label for="r16" class="ident">reader</label> <a href="../../../../../pkg/github.com/yuin/goldmark/text.html" class="ident i1">text</a>.<a href="../text/reader.go.html#line-18" class="ident">Reader</a>, <label for="r17" class="ident">pc</label> <a href="parser.go.html#line-134" class="ident">Context</a>) <a href="parser.go.html#line-403" class="ident">State</a> {</code></span>
+<span class="codeline" id="line-45"><code>	<label for="r18" class="ident">line</label>, <label for="r19" class="ident">segment</label> := <label for="r16" class="ident">reader</label>.<a href="../text/reader.go.html#line-31" class="ident">PeekLine</a>()</code></span>
+<span class="codeline" id="line-46"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/github.com/yuin/goldmark/util.html" class="ident i2">util</a>.<a href="../util/util.go.html#line-119" class="ident">IsBlank</a>(<label for="r18" class="ident">line</label>) {</code></span>
+<span class="codeline" id="line-47"><code>		<label for="r15" class="ident">node</label>.<a href="../ast/ast.go.html#line-139" class="ident">Lines</a>().<a href="../text/segment.go.html#line-157" class="ident">Append</a>(<label for="r19" class="ident">segment</label>.<a href="../text/segment.go.html#line-94" class="ident">TrimLeftSpaceWidth</a>(<span class="lit-number">4</span>, <label for="r16" class="ident">reader</label>.<a href="../text/reader.go.html#line-22" class="ident">Source</a>()))</code></span>
+<span class="codeline" id="line-48"><code>		<span class="keyword">return</span> <a href="parser.go.html#line-410" class="ident">Continue</a> | <a href="parser.go.html#line-419" class="ident">NoChildren</a></code></span>
+<span class="codeline" id="line-49"><code>	}</code></span>
+<span class="codeline" id="line-50"><code>	<label for="r20" class="ident">pos</label>, <label for="r21" class="ident">padding</label> := <a href="../../../../../pkg/github.com/yuin/goldmark/util.html" class="ident i2">util</a>.<a href="../util/util.go.html#line-155" class="ident">IndentPosition</a>(<label for="r18" class="ident">line</label>, <label for="r16" class="ident">reader</label>.<a href="../text/reader.go.html#line-40" class="ident">LineOffset</a>(), <span class="lit-number">4</span>)</code></span>
+<span class="codeline" id="line-51"><code>	<span class="keyword">if</span> <label for="r20" class="ident">pos</label> &lt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-52"><code>		<span class="keyword">return</span> <a href="parser.go.html#line-413" class="ident">Close</a></code></span>
+<span class="codeline" id="line-53"><code>	}</code></span>
+<span class="codeline" id="line-54"><code>	<label for="r16" class="ident">reader</label>.<a href="../text/reader.go.html#line-56" class="ident">AdvanceAndSetPadding</a>(<label for="r20" class="ident">pos</label>, <label for="r21" class="ident">padding</label>)</code></span>
+<span class="codeline" id="line-55"><code>	_, <label for="r19" class="ident">segment</label> = <label for="r16" class="ident">reader</label>.<a href="../text/reader.go.html#line-31" class="ident">PeekLine</a>()</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code>	<span class="comment">// if code block line starts with a tab, keep a tab as it is.</span></code></span>
+<span class="codeline" id="line-58"><code>	<span class="keyword">if</span> <label for="r19" class="ident">segment</label>.<a href="../text/segment.go.html#line-20" class="ident">Padding</a> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-59"><code>		<a href="#line-91" class="ident">preserveLeadingTabInCodeBlock</a>(&amp;<label for="r19" class="ident">segment</label>, <label for="r16" class="ident">reader</label>, <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-60"><code>	}</code></span>
+<span class="codeline" id="line-61"><code></code></span>
+<span class="codeline" id="line-62"><code>	<label for="r15" class="ident">node</label>.<a href="../ast/ast.go.html#line-139" class="ident">Lines</a>().<a href="../text/segment.go.html#line-157" class="ident">Append</a>(<label for="r19" class="ident">segment</label>)</code></span>
+<span class="codeline" id="line-63"><code>	<label for="r16" class="ident">reader</label>.<a href="../text/reader.go.html#line-52" class="ident">Advance</a>(<label for="r19" class="ident">segment</label>.<a href="../text/segment.go.html#line-52" class="ident">Len</a>() - <span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-64"><code>	<span class="keyword">return</span> <a href="parser.go.html#line-410" class="ident">Continue</a> | <a href="parser.go.html#line-419" class="ident">NoChildren</a></code></span>
+<span class="codeline" id="line-65"><code>}</code></span>
+<span class="codeline" id="line-66"><code></code></span>
+<span class="codeline" id="line-67"><code><span class="keyword">func</span> (<label for="r22" class="ident">b</label> *<a href="#line-9" class="ident">codeBlockParser</a>) <label for="r23" class="ident"><a href="../../../../../imp/github.com/yuin/goldmark/parser.codeBlockParser^09ab9.html#name-.Close" class="ident">Close</a></label>(<label for="r24" class="ident">node</label> <a href="../../../../../pkg/github.com/yuin/goldmark/ast.html" class="ident i0">ast</a>.<a href="../ast/ast.go.html#line-49" class="ident">Node</a>, <label for="r25" class="ident">reader</label> <a href="../../../../../pkg/github.com/yuin/goldmark/text.html" class="ident i1">text</a>.<a href="../text/reader.go.html#line-18" class="ident">Reader</a>, <label for="r26" class="ident">pc</label> <a href="parser.go.html#line-134" class="ident">Context</a>) {</code></span>
+<span class="codeline" id="line-68"><code>	<span class="comment">// trim trailing blank lines</span></code></span>
+<span class="codeline" id="line-69"><code>	<label for="r27" class="ident">lines</label> := <label for="r24" class="ident">node</label>.<a href="../ast/ast.go.html#line-139" class="ident">Lines</a>()</code></span>
+<span class="codeline" id="line-70"><code>	<label for="r28" class="ident">length</label> := <label for="r27" class="ident">lines</label>.<a href="../text/segment.go.html#line-173" class="ident">Len</a>() - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-71"><code>	<label for="r29" class="ident">source</label> := <label for="r25" class="ident">reader</label>.<a href="../text/reader.go.html#line-22" class="ident">Source</a>()</code></span>
+<span class="codeline" id="line-72"><code>	<span class="keyword">for</span> <label for="r28" class="ident">length</label> &gt;= <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-73"><code>		<label for="r30" class="ident">line</label> := <label for="r27" class="ident">lines</label>.<a href="../text/segment.go.html#line-181" class="ident">At</a>(<label for="r28" class="ident">length</label>)</code></span>
+<span class="codeline" id="line-74"><code>		<span class="keyword">if</span> <a href="../../../../../pkg/github.com/yuin/goldmark/util.html" class="ident i2">util</a>.<a href="../util/util.go.html#line-119" class="ident">IsBlank</a>(<label for="r30" class="ident">line</label>.<a href="../text/segment.go.html#line-42" class="ident">Value</a>(<label for="r29" class="ident">source</label>)) {</code></span>
+<span class="codeline" id="line-75"><code>			<label for="r28" class="ident">length</label>--</code></span>
+<span class="codeline" id="line-76"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-77"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-78"><code>		}</code></span>
+<span class="codeline" id="line-79"><code>	}</code></span>
+<span class="codeline" id="line-80"><code>	<label for="r27" class="ident">lines</label>.<a href="../text/segment.go.html#line-191" class="ident">SetSliced</a>(<span class="lit-number">0</span>, <label for="r28" class="ident">length</label>+<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-81"><code>}</code></span>
+<span class="codeline" id="line-82"><code></code></span>
+<span class="codeline" id="line-83"><code><span class="keyword">func</span> (<label for="r31" class="ident">b</label> *<a href="#line-9" class="ident">codeBlockParser</a>) <label for="r32" class="ident"><a href="../../../../../imp/github.com/yuin/goldmark/parser.codeBlockParser^09ab9.html#name-.CanInterruptParagraph" class="ident">CanInterruptParagraph</a></label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-84"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-85"><code>}</code></span>
+<span class="codeline" id="line-86"><code></code></span>
+<span class="codeline" id="line-87"><code><span class="keyword">func</span> (<label for="r33" class="ident">b</label> *<a href="#line-9" class="ident">codeBlockParser</a>) <label for="r34" class="ident"><a href="../../../../../imp/github.com/yuin/goldmark/parser.codeBlockParser^09ab9.html#name-.CanAcceptIndentedLine" class="ident">CanAcceptIndentedLine</a></label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-88"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-89"><code>}</code></span>
+<span class="codeline" id="line-90"><code></code></span>
+<span class="codeline" id="line-91"><code><span class="keyword">func</span> <label for="r35" class="ident"><a href="../../../../../pkg/github.com/yuin/goldmark/parser.html#name-preserveLeadingTabInCodeBlock" class="ident">preserveLeadingTabInCodeBlock</a></label>(<label for="r36" class="ident">segment</label> *<a href="../../../../../pkg/github.com/yuin/goldmark/text.html" class="ident i1">text</a>.<a href="../text/segment.go.html#line-11" class="ident">Segment</a>, <label for="r37" class="ident">reader</label> <a href="../../../../../pkg/github.com/yuin/goldmark/text.html" class="ident i1">text</a>.<a href="../text/reader.go.html#line-18" class="ident">Reader</a>, <label for="r38" class="ident">indent</label> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-92"><code>	<label for="r39" class="ident">offsetWithPadding</label> := <label for="r37" class="ident">reader</label>.<a href="../text/reader.go.html#line-40" class="ident">LineOffset</a>() + <label for="r38" class="ident">indent</label></code></span>
+<span class="codeline" id="line-93"><code>	<label for="r40" class="ident">sl</label>, <label for="r41" class="ident">ss</label> := <label for="r37" class="ident">reader</label>.<a href="../text/reader.go.html#line-43" class="ident">Position</a>()</code></span>
+<span class="codeline" id="line-94"><code>	<label for="r37" class="ident">reader</label>.<a href="../text/reader.go.html#line-46" class="ident">SetPosition</a>(<label for="r40" class="ident">sl</label>, <a href="../../../../../pkg/github.com/yuin/goldmark/text.html" class="ident i1">text</a>.<a href="../text/segment.go.html#line-24" class="ident">NewSegment</a>(<label for="r41" class="ident">ss</label>.<a href="../text/segment.go.html#line-13" class="ident">Start</a>-<span class="lit-number">1</span>, <label for="r41" class="ident">ss</label>.<a href="../text/segment.go.html#line-17" class="ident">Stop</a>))</code></span>
+<span class="codeline" id="line-95"><code>	<span class="keyword">if</span> <label for="r39" class="ident">offsetWithPadding</label> == <label for="r37" class="ident">reader</label>.<a href="../text/reader.go.html#line-40" class="ident">LineOffset</a>() {</code></span>
+<span class="codeline" id="line-96"><code>		<label for="r36" class="ident">segment</label>.<a href="../text/segment.go.html#line-20" class="ident">Padding</a> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-97"><code>		<label for="r36" class="ident">segment</label>.<a href="../text/segment.go.html#line-13" class="ident">Start</a>--</code></span>
+<span class="codeline" id="line-98"><code>	}</code></span>
+<span class="codeline" id="line-99"><code>	<label for="r37" class="ident">reader</label>.<a href="../text/reader.go.html#line-46" class="ident">SetPosition</a>(<label for="r40" class="ident">sl</label>, <label for="r41" class="ident">ss</label>)</code></span>
+<span class="codeline" id="line-100"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

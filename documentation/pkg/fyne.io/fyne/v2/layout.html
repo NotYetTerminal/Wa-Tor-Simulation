@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: fyne.io/fyne/v2/layout</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>layout</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-fyne.io/fyne/v2/layout">fyne.io/fyne/v2/layout</a><i> (on <a href="https://pkg.go.dev/fyne.io/fyne/v2/layout" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/fyne.io/fyne/v2/layout.html">4 packages</a>, and imported by <a href="../../../../dep/fyne.io/fyne/v2/layout.html#imported-by">2 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/layout/borderlayout.go.html">borderlayout.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html">boxlayout.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/layout/centerlayout.go.html">centerlayout.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/layout/custompaddedlayout.go.html">custompaddedlayout.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/layout/formlayout.go.html">formlayout.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html">gridlayout.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/layout/gridwraplayout.go.html">gridwraplayout.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/layout/paddedlayout.go.html">paddedlayout.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html">spacer.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-9-fold-content"><label for="file-9-fold-content">  <a href="../../../../src/fyne.io/fyne/v2/layout/stacklayout.go.html#doc">d</a> <a href="../../../../src/fyne.io/fyne/v2/layout/stacklayout.go.html">stacklayout.go</a></label><span id='file-9-fold-content-items' class="fold-items">
+<span class="md-text">		Package layout defines the various layouts available to Fyne apps.</span></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 12, in which 3 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-CustomPaddedLayout" data-popularity="150">	<input type='checkbox' class="fold" id="CustomPaddedLayout-fold-content"><label for="CustomPaddedLayout-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/layout/custompaddedlayout.go.html#line-14">CustomPaddedLayout</a> <i>(struct)</i></label><span id='CustomPaddedLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		CustomPaddedLayout is a layout similar to PaddedLayout, but uses
+		custom values for padding on each side, rather than the theme padding value.
+		
+		Since: 2.5</span>
+
+		<input type='checkbox' class="fold" id="CustomPaddedLayout-fold-fields"><label for="CustomPaddedLayout-fold-fields">Fields (<i>total 4, all are exported</i>)</label><span id='CustomPaddedLayout-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/custompaddedlayout.go.html#line-16">BottomPadding</a> <i><a href="../../../builtin.html#name-float32">float32</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/custompaddedlayout.go.html#line-17">LeftPadding</a> <i><a href="../../../builtin.html#name-float32">float32</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/custompaddedlayout.go.html#line-18">RightPadding</a> <i><a href="../../../builtin.html#name-float32">float32</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/custompaddedlayout.go.html#line-15">TopPadding</a> <i><a href="../../../builtin.html#name-float32">float32</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="CustomPaddedLayout-fold-methods"><label for="CustomPaddedLayout-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='CustomPaddedLayout-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="CustomPaddedLayout-fold-method-Layout"><label for="CustomPaddedLayout-fold-method-Layout">( CustomPaddedLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/custompaddedlayout.go.html#line-36">Layout</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>, size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='CustomPaddedLayout-fold-method-Layout-docs' class="fold-docs">
+<span class="md-text">				Layout is called to pack all child objects into a specified size.
+				For CustomPaddedLayout this sets all children to the full size passed minus the given paddings all around.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CustomPaddedLayout-fold-method-MinSize"><label for="CustomPaddedLayout-fold-method-MinSize">( CustomPaddedLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/custompaddedlayout.go.html#line-50">MinSize</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) (min <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='CustomPaddedLayout-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize finds the smallest size that satisfies all the child objects.
+				For CustomPaddedLayout this is determined simply as the MinSize of the largest child plus the given paddings all around.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="CustomPaddedLayout-fold-impls"><label for="CustomPaddedLayout-fold-impls">Implements (<i>at least one exported</i>)</label><span id='CustomPaddedLayout-fold-impls-items' class="fold-items"><span>
+			 CustomPaddedLayout : fyne.io/fyne/v2.<a href="../v2.html#name-Layout">Layout</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Spacer" data-popularity="650">	<input type='checkbox' class="fold" id="Spacer-fold-content"><label for="Spacer-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-13">Spacer</a> <i>(struct)</i></label><span id='Spacer-fold-content-docs' class="fold-docs">
+<span class="md-text">		Spacer is any simple object that can be used in a box layout to space
+		out child objects</span>
+
+		<input type='checkbox' class="fold" id="Spacer-fold-fields"><label for="Spacer-fold-fields">Fields (<i>total 5, in which 2 are exported</i>)</label><span id='Spacer-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-14">FixHorizontal</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-15">FixVertical</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></span></span>
+			<input type='checkbox' class="showhide" id="Spacer-showhide-fields"><i><label for="Spacer-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="Spacer-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-19">hidden</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-18">pos</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-17">size</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Spacer-fold-methods"><label for="Spacer-fold-methods">Methods (<i>total 11, all are exported</i>)</label><span id='Spacer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Spacer-fold-method-ExpandHorizontal"><label for="Spacer-fold-method-ExpandHorizontal">(*Spacer) <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-34">ExpandHorizontal</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='Spacer-fold-method-ExpandHorizontal-docs' class="fold-docs">
+<span class="md-text">				ExpandHorizontal returns whether or not this spacer expands on the horizontal axis</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Spacer-fold-method-ExpandVertical"><label for="Spacer-fold-method-ExpandVertical">(*Spacer) <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-29">ExpandVertical</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='Spacer-fold-method-ExpandVertical-docs' class="fold-docs">
+<span class="md-text">				ExpandVertical returns whether or not this spacer expands on the vertical axis</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Spacer-fold-method-Hide"><label for="Spacer-fold-method-Hide">(*Spacer) <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-74">Hide</a>()</label><span id='Spacer-fold-method-Hide-docs' class="fold-docs">
+<span class="md-text">				Hide removes this Spacer from layout calculations</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Spacer-fold-method-MinSize"><label for="Spacer-fold-method-MinSize">(*Spacer) <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-59">MinSize</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Spacer-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize returns a 0 size as a Spacer can shrink to no actual size</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Spacer-fold-method-Move"><label for="Spacer-fold-method-Move">(*Spacer) <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-54">Move</a>(pos <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a>)</label><span id='Spacer-fold-method-Move-docs' class="fold-docs">
+<span class="md-text">				Move sets a new position for the Spacer - this will be called by the layout</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Spacer-fold-method-Position"><label for="Spacer-fold-method-Position">(*Spacer) <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-49">Position</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Position">Position</a></label><span id='Spacer-fold-method-Position-docs' class="fold-docs">
+<span class="md-text">				Position returns the current position of this Spacer</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Spacer-fold-method-Refresh"><label for="Spacer-fold-method-Refresh">(*Spacer) <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-79">Refresh</a>()</label><span id='Spacer-fold-method-Refresh-docs' class="fold-docs">
+<span class="md-text">				Refresh does nothing for a spacer but is part of the CanvasObject definition</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Spacer-fold-method-Resize"><label for="Spacer-fold-method-Resize">(*Spacer) <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-44">Resize</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='Spacer-fold-method-Resize-docs' class="fold-docs">
+<span class="md-text">				Resize sets a new size for the Spacer - this will be called by the layout</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Spacer-fold-method-Show"><label for="Spacer-fold-method-Show">(*Spacer) <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-69">Show</a>()</label><span id='Spacer-fold-method-Show-docs' class="fold-docs">
+<span class="md-text">				Show sets the Spacer to be part of the layout calculations</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Spacer-fold-method-Size"><label for="Spacer-fold-method-Size">(*Spacer) <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-39">Size</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='Spacer-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the current size of this Spacer</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Spacer-fold-method-Visible"><label for="Spacer-fold-method-Visible">(*Spacer) <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-64">Visible</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='Spacer-fold-method-Visible-docs' class="fold-docs">
+<span class="md-text">				Visible returns true if this spacer should affect the layout</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Spacer-fold-impls"><label for="Spacer-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='Spacer-fold-impls-items' class="fold-items"><span>
+			*Spacer : <a href="#name-SpacerObject">SpacerObject</a></span><span>
+			*Spacer : fyne.io/fyne/v2.<a href="../v2.html#name-CanvasObject">CanvasObject</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-SpacerObject" data-popularity="250">	<input type='checkbox' class="fold" id="SpacerObject-fold-content"><label for="SpacerObject-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-6">SpacerObject</a> <b><i>(interface)</i></b></label><span id='SpacerObject-fold-content-docs' class="fold-docs">
+<span class="md-text">		SpacerObject is any object that can be used to space out child objects</span>
+
+		<input type='checkbox' class="fold" id="SpacerObject-fold-methods"><label for="SpacerObject-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='SpacerObject-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( SpacerObject) <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-8">ExpandHorizontal</a>() <a href="../../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( SpacerObject) <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-7">ExpandVertical</a>() <a href="../../../builtin.html#name-bool">bool</a></span></span></span>
+		<input type='checkbox' class="fold" id="SpacerObject-fold-impledby"><label for="SpacerObject-fold-impledby">Implemented By (<i>at least one exported</i>)</label><span id='SpacerObject-fold-impledby-items' class="fold-items"><span>
+			*<a href="#name-Spacer">Spacer</a></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 9 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 9 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-borderLayout" data-popularity="150">	<input type='checkbox' class="fold" id="borderLayout-fold-content"><label for="borderLayout-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/layout/borderlayout.go.html#line-11">borderLayout</a> <i>(struct)</i></label><span id='borderLayout-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="borderLayout-fold-fields"><label for="borderLayout-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='borderLayout-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="borderLayout-showhide-fields"><i><label for="borderLayout-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="borderLayout-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/borderlayout.go.html#line-12">bottom</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/borderlayout.go.html#line-12">left</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/borderlayout.go.html#line-12">right</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/borderlayout.go.html#line-12">top</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="borderLayout-fold-methods"><label for="borderLayout-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='borderLayout-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="borderLayout-fold-method-Layout"><label for="borderLayout-fold-method-Layout">(*borderLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/borderlayout.go.html#line-25">Layout</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>, size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='borderLayout-fold-method-Layout-docs' class="fold-docs">
+<span class="md-text">				Layout is called to pack all child objects into a specified size.
+				For BorderLayout this arranges the top, bottom, left and right widgets at
+				the sides and any remaining widgets are maximised in the middle space.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="borderLayout-fold-method-MinSize"><label for="borderLayout-fold-method-MinSize">(*borderLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/borderlayout.go.html#line-71">MinSize</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='borderLayout-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize finds the smallest size that satisfies all the child objects.
+				For BorderLayout this is determined by the MinSize height of the top and
+				plus the MinSize width of the left and right, plus any padding needed.
+				This is then added to the union of the MinSize for any remaining content.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="borderLayout-fold-impls"><label for="borderLayout-fold-impls">Implements (<i>at least one exported</i>)</label><span id='borderLayout-fold-impls-items' class="fold-items"><span>
+			*borderLayout : fyne.io/fyne/v2.<a href="../v2.html#name-Layout">Layout</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-centerLayout" data-popularity="150">	<input type='checkbox' class="fold" id="centerLayout-fold-content"><label for="centerLayout-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/layout/centerlayout.go.html#line-8">centerLayout</a> <i>(struct)</i></label><span id='centerLayout-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="centerLayout-fold-methods"><label for="centerLayout-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='centerLayout-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="centerLayout-fold-method-Layout"><label for="centerLayout-fold-method-Layout">(*centerLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/centerlayout.go.html#line-18">Layout</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>, size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='centerLayout-fold-method-Layout-docs' class="fold-docs">
+<span class="md-text">				Layout is called to pack all child objects into a specified size.
+				For CenterLayout this sets all children to their minimum size, centered within the space.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="centerLayout-fold-method-MinSize"><label for="centerLayout-fold-method-MinSize">(*centerLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/centerlayout.go.html#line-28">MinSize</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='centerLayout-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize finds the smallest size that satisfies all the child objects.
+				For CenterLayout this is determined simply as the MinSize of the largest child.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="centerLayout-fold-impls"><label for="centerLayout-fold-impls">Implements (<i>at least one exported</i>)</label><span id='centerLayout-fold-impls-items' class="fold-items"><span>
+			*centerLayout : fyne.io/fyne/v2.<a href="../v2.html#name-Layout">Layout</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-formLayout" data-popularity="200">	<input type='checkbox' class="fold" id="formLayout-fold-content"><label for="formLayout-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/layout/formlayout.go.html#line-15">formLayout</a> <i>(struct)</i></label><span id='formLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		formLayout is two column grid where each row has a label and a widget.</span>
+
+		<input type='checkbox' class="fold" id="formLayout-fold-methods"><label for="formLayout-fold-methods">Methods (<i>total 3, in which 2 are exported</i>)</label><span id='formLayout-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="formLayout-fold-method-Layout"><label for="formLayout-fold-method-Layout">(*formLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/formlayout.go.html#line-56">Layout</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>, size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='formLayout-fold-method-Layout-docs' class="fold-docs">
+<span class="md-text">				Layout is called to pack all child objects into a table format with two columns.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="formLayout-fold-method-MinSize"><label for="formLayout-fold-method-MinSize">(*formLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/formlayout.go.html#line-109">MinSize</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='formLayout-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize finds the smallest size that satisfies all the child objects.
+				For a FormLayout this is the width of the widest label and content items and the height is
+				the sum of all column children combined with padding between each.</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="formLayout-showhide-methods"><i><label for="formLayout-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="formLayout-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="formLayout-fold-method-calculateTableSizes"><label for="formLayout-fold-method-calculateTableSizes">(*formLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/formlayout.go.html#line-21">calculateTableSizes</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>, containerWidth <a href="../../../builtin.html#name-float32">float32</a>) (labelWidth <a href="../../../builtin.html#name-float32">float32</a>, contentWidth <a href="../../../builtin.html#name-float32">float32</a>, height <a href="../../../builtin.html#name-float32">float32</a>)</label><span id='formLayout-fold-method-calculateTableSizes-docs' class="fold-docs">
+<span class="md-text">				calculateTableSizes calculates the izes of the table.
+				This includes the width of the label column (maximum width of all labels),
+				the width of the content column (maximum width of all content cells and remaining space in container)
+				and the total minimum height of the form.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="formLayout-fold-impls"><label for="formLayout-fold-impls">Implements (<i>at least one exported</i>)</label><span id='formLayout-fold-impls-items' class="fold-items"><span>
+			*formLayout : fyne.io/fyne/v2.<a href="../v2.html#name-Layout">Layout</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-gridLayout" data-popularity="250">	<input type='checkbox' class="fold" id="gridLayout-fold-content"><label for="gridLayout-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-13">gridLayout</a> <i>(struct)</i></label><span id='gridLayout-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="gridLayout-fold-fields"><label for="gridLayout-fold-fields">Fields (<i>total 3, in which 1 is exported</i>)</label><span id='gridLayout-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-14">Cols</a> <i><a href="../../../builtin.html#name-int">int</a></i></span></span>
+			<input type='checkbox' checked class="showhide" id="gridLayout-showhide-fields"><i><label for="gridLayout-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="gridLayout-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-15">adapt</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-15">vertical</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="gridLayout-fold-methods"><label for="gridLayout-fold-methods">Methods (<i>total 4, in which 2 are exported</i>)</label><span id='gridLayout-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="gridLayout-fold-method-Layout"><label for="gridLayout-fold-method-Layout">(*gridLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-77">Layout</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>, size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='gridLayout-fold-method-Layout-docs' class="fold-docs">
+<span class="md-text">				Layout is called to pack all child objects into a specified size.
+				For a GridLayout this will pack objects into a table format with the number
+				of columns specified in our constructor.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="gridLayout-fold-method-MinSize"><label for="gridLayout-fold-method-MinSize">(*gridLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-131">MinSize</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='gridLayout-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize finds the smallest size that satisfies all the child objects.
+				For a GridLayout this is the size of the largest child object multiplied by
+				the required number of columns and rows, with appropriate padding between
+				children.</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="gridLayout-showhide-methods"><i><label for="gridLayout-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="gridLayout-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*gridLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-47">countRows</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) <a href="../../../builtin.html#name-int">int</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*gridLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-39">horizontal</a>() <a href="../../../builtin.html#name-bool">bool</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="gridLayout-fold-impls"><label for="gridLayout-fold-impls">Implements (<i>at least one exported</i>)</label><span id='gridLayout-fold-impls-items' class="fold-items"><span>
+			*gridLayout : fyne.io/fyne/v2.<a href="../v2.html#name-Layout">Layout</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-gridWrapLayout" data-popularity="150">	<input type='checkbox' class="fold" id="gridWrapLayout-fold-content"><label for="gridWrapLayout-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/layout/gridwraplayout.go.html#line-13">gridWrapLayout</a> <i>(struct)</i></label><span id='gridWrapLayout-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="gridWrapLayout-fold-fields"><label for="gridWrapLayout-fold-fields">Fields (<i>total 3, in which 1 is exported</i>)</label><span id='gridWrapLayout-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/gridwraplayout.go.html#line-14">CellSize</a> <i><a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></i></span></span>
+			<input type='checkbox' checked class="showhide" id="gridWrapLayout-showhide-fields"><i><label for="gridWrapLayout-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="gridWrapLayout-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/gridwraplayout.go.html#line-15">colCount</a> <i><a href="../../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/gridwraplayout.go.html#line-16">rowCount</a> <i><a href="../../../builtin.html#name-int">int</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="gridWrapLayout-fold-methods"><label for="gridWrapLayout-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='gridWrapLayout-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="gridWrapLayout-fold-method-Layout"><label for="gridWrapLayout-fold-method-Layout">(*gridWrapLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/gridwraplayout.go.html#line-27">Layout</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>, size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='gridWrapLayout-fold-method-Layout-docs' class="fold-docs">
+<span class="md-text">				Layout is called to pack all child objects into a specified size.
+				For a GridWrapLayout this will attempt to lay all the child objects in a row
+				and wrap to a new row if the size is not large enough.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="gridWrapLayout-fold-method-MinSize"><label for="gridWrapLayout-fold-method-MinSize">(*gridWrapLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/gridwraplayout.go.html#line-63">MinSize</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='gridWrapLayout-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize finds the smallest size that satisfies all the child objects.
+				For a GridWrapLayout this is simply the specified cellsize as a single column
+				layout has no padding. The returned size does not take into account the number
+				of columns as this layout re-flows dynamically.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="gridWrapLayout-fold-impls"><label for="gridWrapLayout-fold-impls">Implements (<i>at least one exported</i>)</label><span id='gridWrapLayout-fold-impls-items' class="fold-items"><span>
+			*gridWrapLayout : fyne.io/fyne/v2.<a href="../v2.html#name-Layout">Layout</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-hBoxLayout" data-popularity="150">	<input type='checkbox' class="fold" id="hBoxLayout-fold-content"><label for="hBoxLayout-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-134">hBoxLayout</a> <i>(struct)</i></label><span id='hBoxLayout-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="hBoxLayout-fold-fields"><label for="hBoxLayout-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='hBoxLayout-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="hBoxLayout-showhide-fields"><i><label for="hBoxLayout-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="hBoxLayout-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-52">paddingFunc</a> <i>func() <a href="../../../builtin.html#name-float32">float32</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="hBoxLayout-fold-methods"><label for="hBoxLayout-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='hBoxLayout-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="hBoxLayout-fold-method-Layout"><label for="hBoxLayout-fold-method-Layout">( hBoxLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-142">Layout</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>, size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='hBoxLayout-fold-method-Layout-docs' class="fold-docs">
+<span class="md-text">				Layout is called to pack all child objects into a specified size.
+				For a VBoxLayout this will pack objects into a single column where each item
+				is full width but the height is the minimum required.
+				Any spacers added will pad the view, sharing the space if there are two or more.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="hBoxLayout-fold-method-MinSize"><label for="hBoxLayout-fold-method-MinSize">( hBoxLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-194">MinSize</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='hBoxLayout-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize finds the smallest size that satisfies all the child objects.
+				For a BoxLayout this is the width of the widest item and the height is
+				the sum of all children combined with padding between each.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="hBoxLayout-fold-impls"><label for="hBoxLayout-fold-impls">Implements (<i>at least one exported</i>)</label><span id='hBoxLayout-fold-impls-items' class="fold-items"><span>
+			 hBoxLayout : fyne.io/fyne/v2.<a href="../v2.html#name-Layout">Layout</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-paddedLayout" data-popularity="150">	<input type='checkbox' class="fold" id="paddedLayout-fold-content"><label for="paddedLayout-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/layout/paddedlayout.go.html#line-11">paddedLayout</a> <i>(struct)</i></label><span id='paddedLayout-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="paddedLayout-fold-methods"><label for="paddedLayout-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='paddedLayout-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="paddedLayout-fold-method-Layout"><label for="paddedLayout-fold-method-Layout">( paddedLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/paddedlayout.go.html#line-15">Layout</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>, size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='paddedLayout-fold-method-Layout-docs' class="fold-docs">
+<span class="md-text">				Layout is called to pack all child objects into a specified size.
+				For PaddedLayout this sets all children to the full size passed minus padding all around.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="paddedLayout-fold-method-MinSize"><label for="paddedLayout-fold-method-MinSize">( paddedLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/paddedlayout.go.html#line-27">MinSize</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) (min <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='paddedLayout-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize finds the smallest size that satisfies all the child objects.
+				For PaddedLayout this is determined simply as the MinSize of the largest child plus padding all around.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="paddedLayout-fold-impls"><label for="paddedLayout-fold-impls">Implements (<i>at least one exported</i>)</label><span id='paddedLayout-fold-impls-items' class="fold-items"><span>
+			 paddedLayout : fyne.io/fyne/v2.<a href="../v2.html#name-Layout">Layout</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-stackLayout" data-popularity="150">	<input type='checkbox' class="fold" id="stackLayout-fold-content"><label for="stackLayout-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/layout/stacklayout.go.html#line-9">stackLayout</a> <i>(struct)</i></label><span id='stackLayout-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="stackLayout-fold-methods"><label for="stackLayout-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='stackLayout-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="stackLayout-fold-method-Layout"><label for="stackLayout-fold-method-Layout">( stackLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/stacklayout.go.html#line-30">Layout</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>, size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='stackLayout-fold-method-Layout-docs' class="fold-docs">
+<span class="md-text">				Layout is called to pack all child objects into a specified size.
+				For StackLayout this sets all children to the full size passed.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="stackLayout-fold-method-MinSize"><label for="stackLayout-fold-method-MinSize">( stackLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/stacklayout.go.html#line-40">MinSize</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='stackLayout-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize finds the smallest size that satisfies all the child objects.
+				For StackLayout this is determined simply as the MinSize of the largest child.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="stackLayout-fold-impls"><label for="stackLayout-fold-impls">Implements (<i>at least one exported</i>)</label><span id='stackLayout-fold-impls-items' class="fold-items"><span>
+			 stackLayout : fyne.io/fyne/v2.<a href="../v2.html#name-Layout">Layout</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-vBoxLayout" data-popularity="150">	<input type='checkbox' class="fold" id="vBoxLayout-fold-content"><label for="vBoxLayout-fold-content"> type <a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-51">vBoxLayout</a> <i>(struct)</i></label><span id='vBoxLayout-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="vBoxLayout-fold-fields"><label for="vBoxLayout-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='vBoxLayout-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="vBoxLayout-showhide-fields"><i><label for="vBoxLayout-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="vBoxLayout-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-52">paddingFunc</a> <i>func() <a href="../../../builtin.html#name-float32">float32</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="vBoxLayout-fold-methods"><label for="vBoxLayout-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='vBoxLayout-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="vBoxLayout-fold-method-Layout"><label for="vBoxLayout-fold-method-Layout">( vBoxLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-59">Layout</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>, size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>)</label><span id='vBoxLayout-fold-method-Layout-docs' class="fold-docs">
+<span class="md-text">				Layout is called to pack all child objects into a specified size.
+				This will pack objects into a single column where each item
+				is full width but the height is the minimum required.
+				Any spacers added will pad the view, sharing the space if there are two or more.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="vBoxLayout-fold-method-MinSize"><label for="vBoxLayout-fold-method-MinSize">( vBoxLayout) <a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-111">MinSize</a>(objects []<a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a></label><span id='vBoxLayout-fold-method-MinSize-docs' class="fold-docs">
+<span class="md-text">				MinSize finds the smallest size that satisfies all the child objects.
+				For a BoxLayout this is the width of the widest item and the height is
+				the sum of all children combined with padding between each.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="vBoxLayout-fold-impls"><label for="vBoxLayout-fold-impls">Implements (<i>at least one exported</i>)</label><span id='vBoxLayout-fold-impls-items' class="fold-items"><span>
+			 vBoxLayout : fyne.io/fyne/v2.<a href="../v2.html#name-Layout">Layout</a></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 21, in which 17 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-NewAdaptiveGridLayout">	<input type='checkbox' class="fold" id="NewAdaptiveGridLayout-fold-content"><label for="NewAdaptiveGridLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-19">NewAdaptiveGridLayout</a>(rowcols <a href="../../../builtin.html#name-int">int</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewAdaptiveGridLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewAdaptiveGridLayout returns a new grid layout which uses columns when horizontal but rows when vertical.</span>
+
+</span></div><div class="anchor value-res" id="name-NewBorderLayout">	<input type='checkbox' class="fold" id="NewBorderLayout-fold-content"><label for="NewBorderLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/borderlayout.go.html#line-18">NewBorderLayout</a>(top, bottom, left, right <a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewBorderLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewBorderLayout creates a new BorderLayout instance with top, bottom, left
+		and right objects set. All other items in the container will fill the remaining space in the middle.
+		Multiple extra items will be stacked in the specified order as a Stack container.</span>
+
+</span></div><div class="anchor value-res" id="name-NewCenterLayout">	<input type='checkbox' class="fold" id="NewCenterLayout-fold-content"><label for="NewCenterLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/centerlayout.go.html#line-12">NewCenterLayout</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewCenterLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewCenterLayout creates a new CenterLayout instance</span>
+
+</span></div><div class="anchor value-res" id="name-NewCustomPaddedHBoxLayout">	<input type='checkbox' class="fold" id="NewCustomPaddedHBoxLayout-fold-content"><label for="NewCustomPaddedHBoxLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-32">NewCustomPaddedHBoxLayout</a>(padding <a href="../../../builtin.html#name-float32">float32</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewCustomPaddedHBoxLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewCustomPaddedHBoxLayout returns a layout similar to HBoxLayout that uses a custom
+		amount of padding in between objects instead of the theme.Padding value.
+		
+		Since: 2.5</span>
+
+</span></div><div class="anchor value-res" id="name-NewCustomPaddedLayout">	<input type='checkbox' class="fold" id="NewCustomPaddedLayout-fold-content"><label for="NewCustomPaddedLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/custompaddedlayout.go.html#line-25">NewCustomPaddedLayout</a>(padTop, padBottom, padLeft, padRight <a href="../../../builtin.html#name-float32">float32</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewCustomPaddedLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewCustomPaddedLayout creates a new CustomPaddedLayout instance
+		with the specified paddings.
+		
+		Since: 2.5</span>
+
+</span></div><div class="anchor value-res" id="name-NewCustomPaddedVBoxLayout">	<input type='checkbox' class="fold" id="NewCustomPaddedVBoxLayout-fold-content"><label for="NewCustomPaddedVBoxLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-42">NewCustomPaddedVBoxLayout</a>(padding <a href="../../../builtin.html#name-float32">float32</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewCustomPaddedVBoxLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewCustomPaddedVBoxLayout returns a layout similar to VBoxLayout that uses a custom
+		amount of padding in between objects instead of the theme.Padding value.
+		
+		Since: 2.5</span>
+
+</span></div><div class="anchor value-res" id="name-NewFormLayout">	<input type='checkbox' class="fold" id="NewFormLayout-fold-content"><label for="NewFormLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/formlayout.go.html#line-118">NewFormLayout</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewFormLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewFormLayout returns a new FormLayout instance</span>
+
+</span></div><div class="anchor value-res" id="name-NewGridLayout">	<input type='checkbox' class="fold" id="NewGridLayout-fold-content"><label for="NewGridLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-25">NewGridLayout</a>(cols <a href="../../../builtin.html#name-int">int</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewGridLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewGridLayout returns a grid layout arranged in a specified number of columns.
+		The number of rows will depend on how many children are in the container that uses this layout.</span>
+
+</span></div><div class="anchor value-res" id="name-NewGridLayoutWithColumns">	<input type='checkbox' class="fold" id="NewGridLayoutWithColumns-fold-content"><label for="NewGridLayoutWithColumns-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-30">NewGridLayoutWithColumns</a>(cols <a href="../../../builtin.html#name-int">int</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewGridLayoutWithColumns-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewGridLayoutWithColumns returns a new grid layout that specifies a column count and wrap to new rows when needed.</span>
+
+</span></div><div class="anchor value-res" id="name-NewGridLayoutWithRows">	<input type='checkbox' class="fold" id="NewGridLayoutWithRows-fold-content"><label for="NewGridLayoutWithRows-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-35">NewGridLayoutWithRows</a>(rows <a href="../../../builtin.html#name-int">int</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewGridLayoutWithRows-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewGridLayoutWithRows returns a new grid layout that specifies a row count that creates new rows as required.</span>
+
+</span></div><div class="anchor value-res" id="name-NewGridWrapLayout">	<input type='checkbox' class="fold" id="NewGridWrapLayout-fold-content"><label for="NewGridWrapLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/gridwraplayout.go.html#line-20">NewGridWrapLayout</a>(size <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Size">Size</a>) <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewGridWrapLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewGridWrapLayout returns a new GridWrapLayout instance</span>
+
+</span></div><div class="anchor value-res" id="name-NewHBoxLayout">	<input type='checkbox' class="fold" id="NewHBoxLayout-fold-content"><label for="NewHBoxLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-22">NewHBoxLayout</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewHBoxLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewHBoxLayout returns a horizontal box layout for stacking a number of child
+		canvas objects or widgets left to right. The objects are always displayed
+		at their horizontal MinSize. Use a different layout if the objects are intended
+		to be larger than their horizontal MinSize.</span>
+
+</span></div><div class="anchor value-res" id="name-NewMaxLayout">	<input type='checkbox' class="fold" id="NewMaxLayout-fold-content"><label for="NewMaxLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/stacklayout.go.html#line-24">NewMaxLayout</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewMaxLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewMaxLayout creates a new MaxLayout instance
+		
+		Deprecated: Use layout.NewStackLayout() instead.</span>
+
+</span></div><div class="anchor value-res" id="name-NewPaddedLayout">	<input type='checkbox' class="fold" id="NewPaddedLayout-fold-content"><label for="NewPaddedLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/paddedlayout.go.html#line-42">NewPaddedLayout</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewPaddedLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewPaddedLayout creates a new PaddedLayout instance
+		
+		Since: 1.4</span>
+
+</span></div><div class="anchor value-res" id="name-NewSpacer">	<input type='checkbox' class="fold" id="NewSpacer-fold-content"><label for="NewSpacer-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/spacer.go.html#line-24">NewSpacer</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a></label><span id='NewSpacer-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewSpacer returns a spacer object which can fill vertical and horizontal
+		space. This is primarily used with a box layout.</span>
+
+</span></div><div class="anchor value-res" id="name-NewStackLayout">	<input type='checkbox' class="fold" id="NewStackLayout-fold-content"><label for="NewStackLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/stacklayout.go.html#line-17">NewStackLayout</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewStackLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewStackLayout returns a new StackLayout instance. Objects are stacked
+		on top of each other with later objects on top of those before.
+		Having only a single object has no impact as CanvasObjects will
+		fill the available space even without a Stack.
+		
+		Since: 2.4</span>
+
+</span></div><div class="anchor value-res" id="name-NewVBoxLayout">	<input type='checkbox' class="fold" id="NewVBoxLayout-fold-content"><label for="NewVBoxLayout-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-12">NewVBoxLayout</a>() <a href="../v2.html">fyne</a>.<a href="../v2.html#name-Layout">Layout</a></label><span id='NewVBoxLayout-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewVBoxLayout returns a vertical box layout for stacking a number of child
+		canvas objects or widgets top to bottom. The objects are always displayed
+		at their vertical MinSize. Use a different layout if the objects are intended
+		to be larger than their vertical MinSize.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-getLeading"><i>	<input type='checkbox' class="fold" id="getLeading-fold-content"><label for="getLeading-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-63">getLeading</a>(size <a href="../../../builtin.html#name-float64">float64</a>, offset <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-float32">float32</a></label><span id='getLeading-fold-content-docs' class="fold-docs">
+<span class="md-text">		Get the leading (top or left) edge of a grid cell.
+		size is the ideal cell size and the offset is which col or row its on.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-getTrailing"><i>	<input type='checkbox' class="fold" id="getTrailing-fold-content"><label for="getTrailing-fold-content"> func <a href="../../../../src/fyne.io/fyne/v2/layout/gridlayout.go.html#line-70">getTrailing</a>(size <a href="../../../builtin.html#name-float64">float64</a>, offset <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-float32">float32</a></label><span id='getTrailing-fold-content-docs' class="fold-docs">
+<span class="md-text">		Get the trailing (bottom or right) edge of a grid cell.
+		size is the ideal cell size and the offset is which col or row its on.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-isHorizontalSpacer"><i>	<span class="nodocs"> func <a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-219">isHorizontalSpacer</a>(obj <a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) <a href="../../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-isVerticalSpacer"><i>	<span class="nodocs"> func <a href="../../../../src/fyne.io/fyne/v2/layout/boxlayout.go.html#line-214">isVerticalSpacer</a>(obj <a href="../v2.html">fyne</a>.<a href="../v2.html#name-CanvasObject">CanvasObject</a>) <a href="../../../builtin.html#name-bool">bool</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (only one, which is unexported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-formLayoutCols"><i>	<span class="nodocs">const <a href="../../../../src/fyne.io/fyne/v2/layout/formlayout.go.html#line-9">formLayoutCols</a> = 2</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

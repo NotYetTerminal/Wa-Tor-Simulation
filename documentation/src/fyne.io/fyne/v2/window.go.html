@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: window.go in package fyne.io/fyne/v2</title>
+<link href="../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	window.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/fyne.io/fyne/v2.html">fyne.io/fyne/v2</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> fyne</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// Window describes a user interface window. Depending on the platform an app</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// may have many windows or just the one.</span></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">type</span> <a href="../../../../pkg/fyne.io/fyne/v2.html#name-Window" class="ident">Window</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-6"><code>	<span class="comment">// Title returns the current window title.</span></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">	// This is typically displayed in the window decorations.</span></code></span>
+<span class="codeline" id="line-8"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-Title" class="ident">Title</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-9"><code>	<span class="comment">// SetTitle updates the current title of the window.</span></code></span>
+<span class="codeline" id="line-10"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-SetTitle" class="ident">SetTitle</a>(<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>)</code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code>	<span class="comment">// FullScreen returns whether or not this window is currently full screen.</span></code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-FullScreen" class="ident">FullScreen</a>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-14"><code>	<span class="comment">// SetFullScreen changes the requested fullScreen property</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">	// true for a fullScreen window and false to unset this.</span></code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-SetFullScreen" class="ident">SetFullScreen</a>(<a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>)</code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code>	<span class="comment">// Resize this window to the requested content size.</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">	// The result may not be exactly as desired due to various desktop or</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">	// platform constraints.</span></code></span>
+<span class="codeline" id="line-21"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-Resize" class="ident">Resize</a>(<a href="geometry.go.html#line-91" class="ident">Size</a>)</code></span>
+<span class="codeline" id="line-22"><code></code></span>
+<span class="codeline" id="line-23"><code>	<span class="comment">// RequestFocus attempts to raise and focus this window.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">	// This should only be called when you are sure the user would want this window</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">	// to steal focus from any current focused window.</span></code></span>
+<span class="codeline" id="line-26"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-RequestFocus" class="ident">RequestFocus</a>()</code></span>
+<span class="codeline" id="line-27"><code></code></span>
+<span class="codeline" id="line-28"><code>	<span class="comment">// FixedSize returns whether or not this window should disable resizing.</span></code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-FixedSize" class="ident">FixedSize</a>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-30"><code>	<span class="comment">// SetFixedSize sets a hint that states whether the window should be a fixed</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">	// size or allow resizing.</span></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-SetFixedSize" class="ident">SetFixedSize</a>(<a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>)</code></span>
+<span class="codeline" id="line-33"><code></code></span>
+<span class="codeline" id="line-34"><code>	<span class="comment">// CenterOnScreen places a window at the center of the monitor</span></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">	// the Window object is currently positioned on.</span></code></span>
+<span class="codeline" id="line-36"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-CenterOnScreen" class="ident">CenterOnScreen</a>()</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code>	<span class="comment">// Padded, normally true, states whether the window should have inner</span></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">	// padding so that components do not touch the window edge.</span></code></span>
+<span class="codeline" id="line-40"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-Padded" class="ident">Padded</a>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-41"><code>	<span class="comment">// SetPadded allows applications to specify that a window should have</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">	// no inner padding. Useful for fullscreen or graphic based applications.</span></code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-SetPadded" class="ident">SetPadded</a>(<a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>)</code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code>	<span class="comment">// Icon returns the window icon, this is used in various ways</span></code></span>
+<span class="codeline" id="line-46"><code><span class="comment">	// depending on operating system.</span></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">	// Most commonly this is displayed on the window border or task switcher.</span></code></span>
+<span class="codeline" id="line-48"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-Icon" class="ident">Icon</a>() <a href="resource.go.html#line-14" class="ident">Resource</a></code></span>
+<span class="codeline" id="line-49"><code></code></span>
+<span class="codeline" id="line-50"><code>	<span class="comment">// SetIcon sets the icon resource used for this window.</span></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">	// If none is set should return the application icon.</span></code></span>
+<span class="codeline" id="line-52"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-SetIcon" class="ident">SetIcon</a>(<a href="resource.go.html#line-14" class="ident">Resource</a>)</code></span>
+<span class="codeline" id="line-53"><code></code></span>
+<span class="codeline" id="line-54"><code>	<span class="comment">// SetMaster indicates that closing this window should exit the app</span></code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-SetMaster" class="ident">SetMaster</a>()</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code>	<span class="comment">// MainMenu gets the content of the window's top level menu.</span></code></span>
+<span class="codeline" id="line-58"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-MainMenu" class="ident">MainMenu</a>() *<a href="menu.go.html#line-73" class="ident">MainMenu</a></code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code>	<span class="comment">// SetMainMenu adds a top level menu to this window.</span></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">	// The way this is rendered will depend on the loaded driver.</span></code></span>
+<span class="codeline" id="line-62"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-SetMainMenu" class="ident">SetMainMenu</a>(*<a href="menu.go.html#line-73" class="ident">MainMenu</a>)</code></span>
+<span class="codeline" id="line-63"><code></code></span>
+<span class="codeline" id="line-64"><code>	<span class="comment">// SetOnClosed sets a function that runs when the window is closed.</span></code></span>
+<span class="codeline" id="line-65"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-SetOnClosed" class="ident">SetOnClosed</a>(<span class="keyword">func</span>())</code></span>
+<span class="codeline" id="line-66"><code></code></span>
+<span class="codeline" id="line-67"><code>	<span class="comment">// SetCloseIntercept sets a function that runs instead of closing if defined.</span></code></span>
+<span class="codeline" id="line-68"><code><span class="comment">	// [Window.Close] should be called explicitly in the interceptor to close the window.</span></code></span>
+<span class="codeline" id="line-69"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-70"><code><span class="comment">	// Since: 1.4</span></code></span>
+<span class="codeline" id="line-71"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-SetCloseIntercept" class="ident">SetCloseIntercept</a>(<span class="keyword">func</span>())</code></span>
+<span class="codeline" id="line-72"><code></code></span>
+<span class="codeline" id="line-73"><code>	<span class="comment">// SetOnDropped allows setting a window-wide callback to receive dropped items.</span></code></span>
+<span class="codeline" id="line-74"><code><span class="comment">	// The callback function is called with the absolute position of the drop and a</span></code></span>
+<span class="codeline" id="line-75"><code><span class="comment">	// slice of all of the dropped URIs.</span></code></span>
+<span class="codeline" id="line-76"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-77"><code><span class="comment">	// Since 2.4</span></code></span>
+<span class="codeline" id="line-78"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-SetOnDropped" class="ident">SetOnDropped</a>(<span class="keyword">func</span>(<a href="geometry.go.html#line-37" class="ident">Position</a>, []<a href="uri.go.html#line-32" class="ident">URI</a>))</code></span>
+<span class="codeline" id="line-79"><code></code></span>
+<span class="codeline" id="line-80"><code>	<span class="comment">// Show the window on screen.</span></code></span>
+<span class="codeline" id="line-81"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-Show" class="ident">Show</a>()</code></span>
+<span class="codeline" id="line-82"><code>	<span class="comment">// Hide the window from the user.</span></code></span>
+<span class="codeline" id="line-83"><code><span class="comment">	// This will not destroy the window or cause the app to exit.</span></code></span>
+<span class="codeline" id="line-84"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-Hide" class="ident">Hide</a>()</code></span>
+<span class="codeline" id="line-85"><code>	<span class="comment">// Close the window.</span></code></span>
+<span class="codeline" id="line-86"><code><span class="comment">	// If it is he "master" window the app will Quit.</span></code></span>
+<span class="codeline" id="line-87"><code><span class="comment">	// If it is the only open window and no menu is set via [desktop.App]</span></code></span>
+<span class="codeline" id="line-88"><code><span class="comment">	// SetSystemTrayMenu the app will also Quit.</span></code></span>
+<span class="codeline" id="line-89"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-Close" class="ident">Close</a>()</code></span>
+<span class="codeline" id="line-90"><code></code></span>
+<span class="codeline" id="line-91"><code>	<span class="comment">// ShowAndRun is a shortcut to show the window and then run the application.</span></code></span>
+<span class="codeline" id="line-92"><code><span class="comment">	// This should be called near the end of a main() function as it will block.</span></code></span>
+<span class="codeline" id="line-93"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-ShowAndRun" class="ident">ShowAndRun</a>()</code></span>
+<span class="codeline" id="line-94"><code></code></span>
+<span class="codeline" id="line-95"><code>	<span class="comment">// Content returns the content of this window.</span></code></span>
+<span class="codeline" id="line-96"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-Content" class="ident">Content</a>() <a href="canvasobject.go.html#line-10" class="ident">CanvasObject</a></code></span>
+<span class="codeline" id="line-97"><code>	<span class="comment">// SetContent sets the content of this window.</span></code></span>
+<span class="codeline" id="line-98"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-SetContent" class="ident">SetContent</a>(<a href="canvasobject.go.html#line-10" class="ident">CanvasObject</a>)</code></span>
+<span class="codeline" id="line-99"><code>	<span class="comment">// Canvas returns the canvas context to render in the window.</span></code></span>
+<span class="codeline" id="line-100"><code><span class="comment">	// This can be useful to set a key handler for the window, for example.</span></code></span>
+<span class="codeline" id="line-101"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-Canvas" class="ident">Canvas</a>() <a href="canvas.go.html#line-7" class="ident">Canvas</a></code></span>
+<span class="codeline" id="line-102"><code></code></span>
+<span class="codeline" id="line-103"><code>	<span class="comment">// Clipboard returns the system clipboard</span></code></span>
+<span class="codeline" id="line-104"><code>	<a href="../../../../imp/fyne.io/fyne/v2.Window.html#name-Clipboard" class="ident">Clipboard</a>() <a href="clipboard.go.html#line-4" class="ident">Clipboard</a></code></span>
+<span class="codeline" id="line-105"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

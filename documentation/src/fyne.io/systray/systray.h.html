@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: systray.h in package fyne.io/systray</title>
+<link href="../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	systray.h
+
+<span class="title">Belonging Package</span>
+	<a href="../../../pkg/fyne.io/systray.html">fyne.io/systray</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code>#include "stdbool.h"</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code>extern void systray_ready();</code></span>
+<span class="codeline" id="line-4"><code>extern void systray_on_exit();</code></span>
+<span class="codeline" id="line-5"><code>extern void systray_menu_item_selected(int menu_id);</code></span>
+<span class="codeline" id="line-6"><code>void registerSystray(void);</code></span>
+<span class="codeline" id="line-7"><code>void nativeEnd(void);</code></span>
+<span class="codeline" id="line-8"><code>int nativeLoop(void);</code></span>
+<span class="codeline" id="line-9"><code>void nativeStart(void);</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code>void setIcon(const char* iconBytes, int length, bool template);</code></span>
+<span class="codeline" id="line-12"><code>void setMenuItemIcon(const char* iconBytes, int length, int menuId, bool template);</code></span>
+<span class="codeline" id="line-13"><code>void setTitle(char* title);</code></span>
+<span class="codeline" id="line-14"><code>void setTooltip(char* tooltip);</code></span>
+<span class="codeline" id="line-15"><code>void add_or_update_menu_item(int menuId, int parentMenuId, char* title, char* tooltip, short disabled, short checked, short isCheckable);</code></span>
+<span class="codeline" id="line-16"><code>void add_separator(int menuId, int parentId);</code></span>
+<span class="codeline" id="line-17"><code>void hide_menu_item(int menuId);</code></span>
+<span class="codeline" id="line-18"><code>void remove_menu_item(int menuId);</code></span>
+<span class="codeline" id="line-19"><code>void show_menu_item(int menuId);</code></span>
+<span class="codeline" id="line-20"><code>void reset_menu();</code></span>
+<span class="codeline" id="line-21"><code>void quit();</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

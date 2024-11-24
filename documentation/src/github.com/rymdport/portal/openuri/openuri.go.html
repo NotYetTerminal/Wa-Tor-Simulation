@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: openuri.go in package github.com/rymdport/portal/openuri</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	openuri.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/rymdport/portal/openuri.html">github.com/rymdport/portal/openuri</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Package openuri allows sandboxed applications to open URIs (e.g. a http: link to the applications homepage) under the control of the user.</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// Upstream API documentation can be found at https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.OpenURI.html.</span></code></span></div><span class="codeline" id="line-3"><code><span class="keyword">package</span> openuri</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<label for="i0"><span class="lit-string i0">"github.com/godbus/dbus/v5"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i1"><span class="lit-string i1">"github.com/rymdport/portal/internal/apis"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i2"><span class="lit-string i2">"github.com/rymdport/portal/internal/convert"</span></label></code></span>
+<span class="codeline" id="line-9"><code>)</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-12"><code>	<a href="../../../../../pkg/github.com/rymdport/portal/openuri.html#name-openURIBaseName" class="ident">openURIBaseName</a> = <a href="../../../../../pkg/github.com/rymdport/portal/internal/apis.html" class="ident i1">apis</a>.<a href="../internal/apis/apis.go.html#line-8" class="ident">CallBaseName</a> + <span class="lit-string">".OpenURI"</span></code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../../../../pkg/github.com/rymdport/portal/openuri.html#name-openURICallName" class="ident">openURICallName</a> = <a href="#line-12" class="ident">openURIBaseName</a> + <span class="lit-string">".OpenURI"</span></code></span>
+<span class="codeline" id="line-14"><code>)</code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// OpenURIOptions holds optional settings that can be passed to the OpenURI call.</span></code></span>
+<span class="codeline" id="line-17"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/rymdport/portal/openuri.html#name-OpenURIOptions" class="ident">OpenURIOptions</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-18"><code>	HandleToken <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a> <span class="comment">// A string that will be used as the last element of the handle. Must be a valid object path element.</span></code></span>
+<span class="codeline" id="line-19"><code>	Writeable   <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>   <span class="comment">// Whether to allow the chosen application to write to the file. This key only takes effect the uri points to a local file that is exported in the document portal, and the chosen application is sandboxed itself.</span></code></span>
+<span class="codeline" id="line-20"><code>	Ask         <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a>   <span class="comment">// Whether to ask the user to choose an app. If this is not passed, or false, the portal may use a default or pick the last choice.</span></code></span>
+<span class="codeline" id="line-21"><code>}</code></span>
+<span class="codeline" id="line-22"><code></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">// OpenURI opens the given URI in the corresponding application.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/github.com/rymdport/portal/openuri.html#name-OpenURI" class="ident">OpenURI</a></label>(<label for="r1" class="ident">parentWindow</label>, <label for="r2" class="ident">uri</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r3" class="ident">options</label> *<a href="#line-17" class="ident">OpenURIOptions</a>) <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-25"><code>	<label for="r4" class="ident">conn</label>, <label for="r5" class="ident">err</label> := <a href="../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i0">dbus</a>.<a href="../../../godbus/dbus/v5/conn.go.html#line-60" class="ident">SessionBus</a>() <span class="comment">// Shared connection, don't close.</span></code></span>
+<span class="codeline" id="line-26"><code>	<span class="keyword">if</span> <label for="r5" class="ident">err</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-27"><code>		<span class="keyword">return</span> <label for="r5" class="ident">err</label></code></span>
+<span class="codeline" id="line-28"><code>	}</code></span>
+<span class="codeline" id="line-29"><code></code></span>
+<span class="codeline" id="line-30"><code>	<label for="r6" class="ident">data</label> := <span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i0">dbus</a>.<a href="../../../godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a>{}</code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code>	<span class="keyword">if</span> <label for="r3" class="ident">options</label> != <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-33"><code>		<label for="r6" class="ident">data</label> = <span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../../pkg/github.com/godbus/dbus/v5.html" class="ident i0">dbus</a>.<a href="../../../godbus/dbus/v5/variant.go.html#line-12" class="ident">Variant</a>{</code></span>
+<span class="codeline" id="line-34"><code>			<span class="lit-string">"writable"</span>: <a href="../../../../../pkg/github.com/rymdport/portal/internal/convert.html" class="ident i2">convert</a>.<a href="../internal/convert/basic.go.html#line-15" class="ident">FromBool</a>(<label for="r3" class="ident">options</label>.<a href="#line-19" class="ident">Writeable</a>),</code></span>
+<span class="codeline" id="line-35"><code>			<span class="lit-string">"ask"</span>:      <a href="../../../../../pkg/github.com/rymdport/portal/internal/convert.html" class="ident i2">convert</a>.<a href="../internal/convert/basic.go.html#line-15" class="ident">FromBool</a>(<label for="r3" class="ident">options</label>.<a href="#line-20" class="ident">Ask</a>),</code></span>
+<span class="codeline" id="line-36"><code>		}</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code>		<span class="keyword">if</span> <label for="r3" class="ident">options</label>.<a href="#line-18" class="ident">HandleToken</a> != <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-39"><code>			<label for="r6" class="ident">data</label>[<span class="lit-string">"handle_token"</span>] = <a href="../../../../../pkg/github.com/rymdport/portal/internal/convert.html" class="ident i2">convert</a>.<a href="../internal/convert/basic.go.html#line-20" class="ident">FromString</a>(<label for="r3" class="ident">options</label>.<a href="#line-18" class="ident">HandleToken</a>)</code></span>
+<span class="codeline" id="line-40"><code>		}</code></span>
+<span class="codeline" id="line-41"><code>	}</code></span>
+<span class="codeline" id="line-42"><code></code></span>
+<span class="codeline" id="line-43"><code>	<label for="r7" class="ident">obj</label> := <label for="r4" class="ident">conn</label>.<a href="../../../godbus/dbus/v5/conn.go.html#line-484" class="ident">Object</a>(<a href="../../../../../pkg/github.com/rymdport/portal/internal/apis.html" class="ident i1">apis</a>.<a href="../internal/apis/apis.go.html#line-5" class="ident">ObjectName</a>, <a href="../../../../../pkg/github.com/rymdport/portal/internal/apis.html" class="ident i1">apis</a>.<a href="../internal/apis/apis.go.html#line-6" class="ident">ObjectPath</a>)</code></span>
+<span class="codeline" id="line-44"><code>	<label for="r8" class="ident">call</label> := <label for="r7" class="ident">obj</label>.<a href="../../../godbus/dbus/v5/object.go.html#line-12" class="ident">Call</a>(<a href="#line-13" class="ident">openURICallName</a>, <span class="lit-number">0</span>, <label for="r1" class="ident">parentWindow</label>, <label for="r2" class="ident">uri</label>, <label for="r6" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-45"><code>	<span class="keyword">return</span> <label for="r8" class="ident">call</label>.<a href="../../../godbus/dbus/v5/call.go.html#line-22" class="ident">Err</a></code></span>
+<span class="codeline" id="line-46"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

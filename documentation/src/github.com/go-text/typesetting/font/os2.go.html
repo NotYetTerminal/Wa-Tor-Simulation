@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: os2.go in package github.com/go-text/typesetting/font</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	os2.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/go-text/typesetting/font.html">github.com/go-text/typesetting/font</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> font</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<label for="i0"><span class="lit-string i0">"encoding/binary"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i1"><span class="lit-string i1">"errors"</span></label></code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i2"><span class="lit-string i2">"github.com/go-text/typesetting/font/opentype/tables"</span></label></code></span>
+<span class="codeline" id="line-10"><code>)</code></span>
+<span class="codeline" id="line-11"><code></code></span>
+<span class="codeline" id="line-12"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-os2" class="ident">os2</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-13"><code>	version       <a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-14"><code>	xAvgCharWidth <a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code>	*<a href="metadata.go.html#line-305" class="ident">os2Desc</a></code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code>	useTypoMetrics <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> <span class="comment">// true if the field sTypoAscender, sTypoDescender and sTypoLineGap are valid.</span></code></span>
+<span class="codeline" id="line-19"><code></code></span>
+<span class="codeline" id="line-20"><code>	ySubscriptXSize     <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-21"><code>	ySubscriptYSize     <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-22"><code>	ySubscriptXOffset   <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-23"><code>	ySubscriptYOffset   <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-24"><code>	ySuperscriptXSize   <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-25"><code>	ySuperscriptYSize   <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-26"><code>	ySuperscriptXOffset <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-27"><code>	yStrikeoutSize      <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-28"><code>	yStrikeoutPosition  <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-29"><code>	sTypoAscender       <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-30"><code>	sTypoDescender      <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-31"><code>	sTypoLineGap        <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-32"><code>	sxHeigh             <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-33"><code>	sCapHeight          <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a></code></span>
+<span class="codeline" id="line-34"><code>}</code></span>
+<span class="codeline" id="line-35"><code></code></span>
+<span class="codeline" id="line-36"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newOs2" class="ident">newOs2</a></label>(<label for="r1" class="ident">os</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i2">tables</a>.<a href="opentype/tables/os2_src.go.html#line-7" class="ident">Os2</a>) (<a href="#line-12" class="ident">os2</a>, <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-37"><code>	<label for="r2" class="ident">out</label> := <a href="#line-12" class="ident">os2</a>{</code></span>
+<span class="codeline" id="line-38"><code>		<a href="#line-13" class="ident">version</a>:             <label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-8" class="ident">Version</a>,</code></span>
+<span class="codeline" id="line-39"><code>		<a href="#line-14" class="ident">xAvgCharWidth</a>:       <label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-9" class="ident">XAvgCharWidth</a>,</code></span>
+<span class="codeline" id="line-40"><code>		<a href="#line-16" class="ident">os2Desc</a>:             <a href="metadata.go.html#line-311" class="ident">newOS2Desc</a>(<label for="r1" class="ident">os</label>),</code></span>
+<span class="codeline" id="line-41"><code>		<a href="#line-20" class="ident">ySubscriptXSize</a>:     <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-13" class="ident">YSubscriptXSize</a>),</code></span>
+<span class="codeline" id="line-42"><code>		<a href="#line-21" class="ident">ySubscriptYSize</a>:     <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-14" class="ident">YSubscriptYSize</a>),</code></span>
+<span class="codeline" id="line-43"><code>		<a href="#line-22" class="ident">ySubscriptXOffset</a>:   <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-15" class="ident">YSubscriptXOffset</a>),</code></span>
+<span class="codeline" id="line-44"><code>		<a href="#line-23" class="ident">ySubscriptYOffset</a>:   <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-16" class="ident">YSubscriptYOffset</a>),</code></span>
+<span class="codeline" id="line-45"><code>		<a href="#line-24" class="ident">ySuperscriptXSize</a>:   <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-17" class="ident">YSuperscriptXSize</a>),</code></span>
+<span class="codeline" id="line-46"><code>		<a href="#line-25" class="ident">ySuperscriptYSize</a>:   <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-18" class="ident">YSuperscriptYSize</a>),</code></span>
+<span class="codeline" id="line-47"><code>		<a href="#line-26" class="ident">ySuperscriptXOffset</a>: <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-19" class="ident">YSuperscriptXOffset</a>),</code></span>
+<span class="codeline" id="line-48"><code>		<a href="#line-27" class="ident">yStrikeoutSize</a>:      <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-21" class="ident">YStrikeoutSize</a>),</code></span>
+<span class="codeline" id="line-49"><code>		<a href="#line-28" class="ident">yStrikeoutPosition</a>:  <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-22" class="ident">YStrikeoutPosition</a>),</code></span>
+<span class="codeline" id="line-50"><code>		<a href="#line-29" class="ident">sTypoAscender</a>:       <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-30" class="ident">STypoAscender</a>),</code></span>
+<span class="codeline" id="line-51"><code>		<a href="#line-30" class="ident">sTypoDescender</a>:      <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-31" class="ident">STypoDescender</a>),</code></span>
+<span class="codeline" id="line-52"><code>		<a href="#line-31" class="ident">sTypoLineGap</a>:        <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-32" class="ident">STypoLineGap</a>),</code></span>
+<span class="codeline" id="line-53"><code>	}</code></span>
+<span class="codeline" id="line-54"><code>	<span class="comment">// add addition info for version &gt;= 2</span></code></span>
+<span class="codeline" id="line-55"><code>	<span class="keyword">if</span> <label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-8" class="ident">Version</a> &gt;= <span class="lit-number">2</span> {</code></span>
+<span class="codeline" id="line-56"><code>		<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-35" class="ident">HigherVersionData</a>) &lt; <span class="lit-number">12</span> {</code></span>
+<span class="codeline" id="line-57"><code>			<span class="keyword">return</span> <a href="#line-12" class="ident">os2</a>{}, <a href="../../../../../pkg/errors.html" class="ident i1">errors</a>.<a href="../../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"invalid table os2"</span>)</code></span>
+<span class="codeline" id="line-58"><code>		}</code></span>
+<span class="codeline" id="line-59"><code>		<label for="r2" class="ident">out</label>.<a href="#line-32" class="ident">sxHeigh</a> = <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<a href="../../../../../pkg/encoding/binary.html" class="ident i0">binary</a>.<a href="../../../../encoding/binary/binary.go.html#line-64" class="ident">BigEndian</a>.<a href="../../../../encoding/binary/binary.go.html#line-145" class="ident">Uint16</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-35" class="ident">HigherVersionData</a>[<span class="lit-number">8</span>:]))</code></span>
+<span class="codeline" id="line-60"><code>		<label for="r2" class="ident">out</label>.<a href="#line-33" class="ident">sCapHeight</a> = <a href="../../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<a href="../../../../../pkg/encoding/binary.html" class="ident i0">binary</a>.<a href="../../../../encoding/binary/binary.go.html#line-64" class="ident">BigEndian</a>.<a href="../../../../encoding/binary/binary.go.html#line-145" class="ident">Uint16</a>(<label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-35" class="ident">HigherVersionData</a>[<span class="lit-number">10</span>:]))</code></span>
+<span class="codeline" id="line-61"><code>	}</code></span>
+<span class="codeline" id="line-62"><code></code></span>
+<span class="codeline" id="line-63"><code>	<span class="keyword">const</span> <label for="r3" class="ident">useTypoMetrics</label> = <span class="lit-number">1</span> &lt;&lt; <span class="lit-number">7</span></code></span>
+<span class="codeline" id="line-64"><code>	<label for="r4" class="ident">use</label> := <label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-27" class="ident">FsSelection</a>&amp;<label for="r3" class="ident">useTypoMetrics</label> != <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-65"><code>	<label for="r5" class="ident">hasData</label> := <label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-10" class="ident">USWeightClass</a> != <span class="lit-number">0</span> || <label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-11" class="ident">USWidthClass</a> != <span class="lit-number">0</span> || <label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-28" class="ident">USFirstCharIndex</a> != <span class="lit-number">0</span> || <label for="r1" class="ident">os</label>.<a href="opentype/tables/os2_src.go.html#line-29" class="ident">USLastCharIndex</a> != <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-66"><code>	<label for="r2" class="ident">out</label>.<a href="#line-18" class="ident">useTypoMetrics</a> = <label for="r4" class="ident">use</label> &amp;&amp; <label for="r5" class="ident">hasData</label></code></span>
+<span class="codeline" id="line-67"><code></code></span>
+<span class="codeline" id="line-68"><code>	<span class="keyword">return</span> <label for="r2" class="ident">out</label>, <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-69"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

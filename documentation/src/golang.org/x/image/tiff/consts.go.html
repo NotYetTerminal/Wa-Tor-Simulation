@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: consts.go in package golang.org/x/image/tiff</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	consts.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/golang.org/x/image/tiff.html">golang.org/x/image/tiff</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1]
+{background: #226; color: #ff8;}
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// Copyright 2011 The Go Authors. All rights reserved.</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">package</span> tiff</code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// A tiff image file contains one or more images. The metadata</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// of each image is contained in an Image File Directory (IFD),</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// which contains entries of 12 bytes each and is described</span></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">// on page 14-16 of the specification. An IFD entry consists of</span></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">//  - a tag, which describes the signification of the entry,</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">//  - the data type and length of the entry,</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">//  - the data itself or a pointer to it if it is more than 4 bytes.</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// The presence of a length means that each IFD is effectively an array.</span></code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-leHeader" class="ident">leHeader</a> = <span class="lit-string">"II\x2A\x00"</span> <span class="comment">// Header for little-endian files.</span></code></span>
+<span class="codeline" id="line-20"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-beHeader" class="ident">beHeader</a> = <span class="lit-string">"MM\x00\x2A"</span> <span class="comment">// Header for big-endian files.</span></code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-ifdLen" class="ident">ifdLen</a> = <span class="lit-number">12</span> <span class="comment">// Length of an IFD entry in bytes.</span></code></span>
+<span class="codeline" id="line-23"><code>)</code></span>
+<span class="codeline" id="line-24"><code></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// Data types (p. 14-16 of the spec).</span></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-dtByte" class="ident">dtByte</a>     = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-28"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-dtASCII" class="ident">dtASCII</a>    = <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-dtShort" class="ident">dtShort</a>    = <span class="lit-number">3</span></code></span>
+<span class="codeline" id="line-30"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-dtLong" class="ident">dtLong</a>     = <span class="lit-number">4</span></code></span>
+<span class="codeline" id="line-31"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-dtRational" class="ident">dtRational</a> = <span class="lit-number">5</span></code></span>
+<span class="codeline" id="line-32"><code>)</code></span>
+<span class="codeline" id="line-33"><code></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">// The length of one instance of each data type in bytes.</span></code></span>
+<span class="codeline" id="line-35"><code><span class="keyword">var</span> <a href="../../../../../pkg/golang.org/x/image/tiff.html#name-lengths" class="ident">lengths</a> = [...]<a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>{<span class="lit-number">0</span>, <span class="lit-number">1</span>, <span class="lit-number">1</span>, <span class="lit-number">2</span>, <span class="lit-number">4</span>, <span class="lit-number">8</span>}</code></span>
+<span class="codeline" id="line-36"><code></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">// Tags (see p. 28-41 of the spec).</span></code></span>
+<span class="codeline" id="line-38"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-39"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tImageWidth" class="ident">tImageWidth</a>                = <span class="lit-number">256</span></code></span>
+<span class="codeline" id="line-40"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tImageLength" class="ident">tImageLength</a>               = <span class="lit-number">257</span></code></span>
+<span class="codeline" id="line-41"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tBitsPerSample" class="ident">tBitsPerSample</a>             = <span class="lit-number">258</span></code></span>
+<span class="codeline" id="line-42"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tCompression" class="ident">tCompression</a>               = <span class="lit-number">259</span></code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tPhotometricInterpretation" class="ident">tPhotometricInterpretation</a> = <span class="lit-number">262</span></code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tFillOrder" class="ident">tFillOrder</a> = <span class="lit-number">266</span></code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tStripOffsets" class="ident">tStripOffsets</a>    = <span class="lit-number">273</span></code></span>
+<span class="codeline" id="line-48"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tSamplesPerPixel" class="ident">tSamplesPerPixel</a> = <span class="lit-number">277</span></code></span>
+<span class="codeline" id="line-49"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tRowsPerStrip" class="ident">tRowsPerStrip</a>    = <span class="lit-number">278</span></code></span>
+<span class="codeline" id="line-50"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tStripByteCounts" class="ident">tStripByteCounts</a> = <span class="lit-number">279</span></code></span>
+<span class="codeline" id="line-51"><code></code></span>
+<span class="codeline" id="line-52"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tT4Options" class="ident">tT4Options</a> = <span class="lit-number">292</span> <span class="comment">// CCITT Group 3 options, a set of 32 flag bits.</span></code></span>
+<span class="codeline" id="line-53"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tT6Options" class="ident">tT6Options</a> = <span class="lit-number">293</span> <span class="comment">// CCITT Group 4 options, a set of 32 flag bits.</span></code></span>
+<span class="codeline" id="line-54"><code></code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tTileWidth" class="ident">tTileWidth</a>      = <span class="lit-number">322</span></code></span>
+<span class="codeline" id="line-56"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tTileLength" class="ident">tTileLength</a>     = <span class="lit-number">323</span></code></span>
+<span class="codeline" id="line-57"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tTileOffsets" class="ident">tTileOffsets</a>    = <span class="lit-number">324</span></code></span>
+<span class="codeline" id="line-58"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tTileByteCounts" class="ident">tTileByteCounts</a> = <span class="lit-number">325</span></code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tXResolution" class="ident">tXResolution</a>    = <span class="lit-number">282</span></code></span>
+<span class="codeline" id="line-61"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tYResolution" class="ident">tYResolution</a>    = <span class="lit-number">283</span></code></span>
+<span class="codeline" id="line-62"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tResolutionUnit" class="ident">tResolutionUnit</a> = <span class="lit-number">296</span></code></span>
+<span class="codeline" id="line-63"><code></code></span>
+<span class="codeline" id="line-64"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tPredictor" class="ident">tPredictor</a>    = <span class="lit-number">317</span></code></span>
+<span class="codeline" id="line-65"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tColorMap" class="ident">tColorMap</a>     = <span class="lit-number">320</span></code></span>
+<span class="codeline" id="line-66"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tExtraSamples" class="ident">tExtraSamples</a> = <span class="lit-number">338</span></code></span>
+<span class="codeline" id="line-67"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-tSampleFormat" class="ident">tSampleFormat</a> = <span class="lit-number">339</span></code></span>
+<span class="codeline" id="line-68"><code>)</code></span>
+<span class="codeline" id="line-69"><code></code></span>
+<span class="codeline" id="line-70"><code><span class="comment">// Compression types (defined in various places in the spec and supplements).</span></code></span>
+<span class="codeline" id="line-71"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-72"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-cNone" class="ident">cNone</a>       = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-73"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-cCCITT" class="ident">cCCITT</a>      = <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-74"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-cG3" class="ident">cG3</a>         = <span class="lit-number">3</span> <span class="comment">// Group 3 Fax.</span></code></span>
+<span class="codeline" id="line-75"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-cG4" class="ident">cG4</a>         = <span class="lit-number">4</span> <span class="comment">// Group 4 Fax.</span></code></span>
+<span class="codeline" id="line-76"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-cLZW" class="ident">cLZW</a>        = <span class="lit-number">5</span></code></span>
+<span class="codeline" id="line-77"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-cJPEGOld" class="ident">cJPEGOld</a>    = <span class="lit-number">6</span> <span class="comment">// Superseded by cJPEG.</span></code></span>
+<span class="codeline" id="line-78"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-cJPEG" class="ident">cJPEG</a>       = <span class="lit-number">7</span></code></span>
+<span class="codeline" id="line-79"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-cDeflate" class="ident">cDeflate</a>    = <span class="lit-number">8</span> <span class="comment">// zlib compression.</span></code></span>
+<span class="codeline" id="line-80"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-cPackBits" class="ident">cPackBits</a>   = <span class="lit-number">32773</span></code></span>
+<span class="codeline" id="line-81"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-cDeflateOld" class="ident">cDeflateOld</a> = <span class="lit-number">32946</span> <span class="comment">// Superseded by cDeflate.</span></code></span>
+<span class="codeline" id="line-82"><code>)</code></span>
+<span class="codeline" id="line-83"><code></code></span>
+<span class="codeline" id="line-84"><code><span class="comment">// Photometric interpretation values (see p. 37 of the spec).</span></code></span>
+<span class="codeline" id="line-85"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-86"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-pWhiteIsZero" class="ident">pWhiteIsZero</a> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-87"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-pBlackIsZero" class="ident">pBlackIsZero</a> = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-88"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-pRGB" class="ident">pRGB</a>         = <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-89"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-pPaletted" class="ident">pPaletted</a>    = <span class="lit-number">3</span></code></span>
+<span class="codeline" id="line-90"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-pTransMask" class="ident">pTransMask</a>   = <span class="lit-number">4</span> <span class="comment">// transparency mask</span></code></span>
+<span class="codeline" id="line-91"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-pCMYK" class="ident">pCMYK</a>        = <span class="lit-number">5</span></code></span>
+<span class="codeline" id="line-92"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-pYCbCr" class="ident">pYCbCr</a>       = <span class="lit-number">6</span></code></span>
+<span class="codeline" id="line-93"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-pCIELab" class="ident">pCIELab</a>      = <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-94"><code>)</code></span>
+<span class="codeline" id="line-95"><code></code></span>
+<span class="codeline" id="line-96"><code><span class="comment">// Values for the tPredictor tag (page 64-65 of the spec).</span></code></span>
+<span class="codeline" id="line-97"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-98"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-prNone" class="ident">prNone</a>       = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-99"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-prHorizontal" class="ident">prHorizontal</a> = <span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-100"><code>)</code></span>
+<span class="codeline" id="line-101"><code></code></span>
+<span class="codeline" id="line-102"><code><span class="comment">// Values for the tResolutionUnit tag (page 18).</span></code></span>
+<span class="codeline" id="line-103"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-104"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-resNone" class="ident">resNone</a>    = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-105"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-resPerInch" class="ident">resPerInch</a> = <span class="lit-number">2</span> <span class="comment">// Dots per inch.</span></code></span>
+<span class="codeline" id="line-106"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-resPerCM" class="ident">resPerCM</a>   = <span class="lit-number">3</span> <span class="comment">// Dots per centimeter.</span></code></span>
+<span class="codeline" id="line-107"><code>)</code></span>
+<span class="codeline" id="line-108"><code></code></span>
+<span class="codeline" id="line-109"><code><span class="comment">// imageMode represents the mode of the image.</span></code></span>
+<span class="codeline" id="line-110"><code><span class="keyword">type</span> <a href="../../../../../pkg/golang.org/x/image/tiff.html#name-imageMode" class="ident">imageMode</a> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-111"><code></code></span>
+<span class="codeline" id="line-112"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-113"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-mBilevel" class="ident">mBilevel</a> <a href="#line-110" class="ident">imageMode</a> = <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-114"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-mPaletted" class="ident">mPaletted</a></code></span>
+<span class="codeline" id="line-115"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-mGray" class="ident">mGray</a></code></span>
+<span class="codeline" id="line-116"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-mGrayInvert" class="ident">mGrayInvert</a></code></span>
+<span class="codeline" id="line-117"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-mRGB" class="ident">mRGB</a></code></span>
+<span class="codeline" id="line-118"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-mRGBA" class="ident">mRGBA</a></code></span>
+<span class="codeline" id="line-119"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-mNRGBA" class="ident">mNRGBA</a></code></span>
+<span class="codeline" id="line-120"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-mCMYK" class="ident">mCMYK</a></code></span>
+<span class="codeline" id="line-121"><code>)</code></span>
+<span class="codeline" id="line-122"><code></code></span>
+<span class="codeline" id="line-123"><code><span class="comment">// CompressionType describes the type of compression used in Options.</span></code></span>
+<span class="codeline" id="line-124"><code><span class="keyword">type</span> <a href="../../../../../pkg/golang.org/x/image/tiff.html#name-CompressionType" class="ident">CompressionType</a> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-125"><code></code></span>
+<span class="codeline" id="line-126"><code><span class="comment">// Constants for supported compression types.</span></code></span>
+<span class="codeline" id="line-127"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-128"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-Uncompressed" class="ident">Uncompressed</a> <a href="#line-124" class="ident">CompressionType</a> = <a href="../../../../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-129"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-Deflate" class="ident">Deflate</a></code></span>
+<span class="codeline" id="line-130"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-LZW" class="ident">LZW</a></code></span>
+<span class="codeline" id="line-131"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-CCITTGroup3" class="ident">CCITTGroup3</a></code></span>
+<span class="codeline" id="line-132"><code>	<a href="../../../../../pkg/golang.org/x/image/tiff.html#name-CCITTGroup4" class="ident">CCITTGroup4</a></code></span>
+<span class="codeline" id="line-133"><code>)</code></span>
+<span class="codeline" id="line-134"><code></code></span>
+<span class="codeline" id="line-135"><code><span class="comment">// specValue returns the compression type constant from the TIFF spec that</span></code></span>
+<span class="codeline" id="line-136"><code><span class="comment">// is equivalent to c.</span></code></span>
+<span class="codeline" id="line-137"><code><span class="keyword">func</span> (<label for="r0" class="ident">c</label> <a href="#line-124" class="ident">CompressionType</a>) <label for="r1" class="ident">specValue</label>() <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a> {</code></span>
+<span class="codeline" id="line-138"><code>	<span class="keyword">switch</span> <label for="r0" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-139"><code>	<span class="keyword">case</span> <a href="#line-130" class="ident">LZW</a>:</code></span>
+<span class="codeline" id="line-140"><code>		<span class="keyword">return</span> <a href="#line-76" class="ident">cLZW</a></code></span>
+<span class="codeline" id="line-141"><code>	<span class="keyword">case</span> <a href="#line-129" class="ident">Deflate</a>:</code></span>
+<span class="codeline" id="line-142"><code>		<span class="keyword">return</span> <a href="#line-79" class="ident">cDeflate</a></code></span>
+<span class="codeline" id="line-143"><code>	<span class="keyword">case</span> <a href="#line-131" class="ident">CCITTGroup3</a>:</code></span>
+<span class="codeline" id="line-144"><code>		<span class="keyword">return</span> <a href="#line-74" class="ident">cG3</a></code></span>
+<span class="codeline" id="line-145"><code>	<span class="keyword">case</span> <a href="#line-132" class="ident">CCITTGroup4</a>:</code></span>
+<span class="codeline" id="line-146"><code>		<span class="keyword">return</span> <a href="#line-75" class="ident">cG4</a></code></span>
+<span class="codeline" id="line-147"><code>	}</code></span>
+<span class="codeline" id="line-148"><code>	<span class="keyword">return</span> <a href="#line-72" class="ident">cNone</a></code></span>
+<span class="codeline" id="line-149"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

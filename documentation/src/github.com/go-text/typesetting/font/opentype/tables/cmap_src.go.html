@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: cmap_src.go in package github.com/go-text/typesetting/font/opentype/tables</title>
+<link href="../../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	cmap_src.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html">github.com/go-text/typesetting/font/opentype/tables</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7]
+{background: #226; color: #ff8;}
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> tables</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// Cmap is the Character to Glyph Index Mapping table</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">// See https://learn.microsoft.com/en-us/typography/opentype/spec/cmap</span></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-Cmap" class="ident">Cmap</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-8"><code>	version   <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>           <span class="comment">// Table version number (0).</span></code></span>
+<span class="codeline" id="line-9"><code>	numTables <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>           <span class="comment">// Number of encoding tables that follow.</span></code></span>
+<span class="codeline" id="line-10"><code>	Records   []<a href="#line-13" class="ident">EncodingRecord</a> <span class="lit-string">`arrayCount:"ComputedField-numTables"`</span></code></span>
+<span class="codeline" id="line-11"><code>}</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-EncodingRecord" class="ident">EncodingRecord</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-14"><code>	PlatformID <a href="tables.go.html#line-45" class="ident">PlatformID</a>   <span class="comment">// Platform ID.</span></code></span>
+<span class="codeline" id="line-15"><code>	EncodingID <a href="tables.go.html#line-49" class="ident">EncodingID</a>   <span class="comment">// Platform-specific encoding ID.</span></code></span>
+<span class="codeline" id="line-16"><code>	Subtable   <a href="#line-20" class="ident">CmapSubtable</a> <span class="lit-string">`offsetSize:"Offset32" offsetRelativeTo:"Parent"`</span> <span class="comment">// Byte offset from beginning of table to the subtable for this encoding.</span></code></span>
+<span class="codeline" id="line-17"><code>}</code></span>
+<span class="codeline" id="line-18"><code></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// CmapSubtable is the union type for the various cmap formats</span></code></span>
+<span class="codeline" id="line-20"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CmapSubtable" class="ident">CmapSubtable</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-21"><code>	<a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.CmapSubtable.html#name-github.com/go-text/typesetting/font/opentype/tables.isCmapSubtable" class="ident">isCmapSubtable</a>()</code></span>
+<span class="codeline" id="line-22"><code>}</code></span>
+<span class="codeline" id="line-23"><code></code></span>
+<span class="codeline" id="line-24"><code><span class="keyword">func</span> (<a href="#line-33" class="ident">CmapSubtable0</a>) <label for="r0" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.CmapSubtable0.html#name-isCmapSubtable" class="ident">isCmapSubtable</a></label>()  {}</code></span>
+<span class="codeline" id="line-25"><code><span class="keyword">func</span> (<a href="#line-40" class="ident">CmapSubtable2</a>) <label for="r1" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.CmapSubtable2.html#name-isCmapSubtable" class="ident">isCmapSubtable</a></label>()  {}</code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">func</span> (<a href="#line-45" class="ident">CmapSubtable4</a>) <label for="r2" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.CmapSubtable4.html#name-isCmapSubtable" class="ident">isCmapSubtable</a></label>()  {}</code></span>
+<span class="codeline" id="line-27"><code><span class="keyword">func</span> (<a href="#line-61" class="ident">CmapSubtable6</a>) <label for="r3" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.CmapSubtable6.html#name-isCmapSubtable" class="ident">isCmapSubtable</a></label>()  {}</code></span>
+<span class="codeline" id="line-28"><code><span class="keyword">func</span> (<a href="#line-69" class="ident">CmapSubtable10</a>) <label for="r4" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.CmapSubtable10.html#name-isCmapSubtable" class="ident">isCmapSubtable</a></label>() {}</code></span>
+<span class="codeline" id="line-29"><code><span class="keyword">func</span> (<a href="#line-78" class="ident">CmapSubtable12</a>) <label for="r5" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.CmapSubtable12.html#name-isCmapSubtable" class="ident">isCmapSubtable</a></label>() {}</code></span>
+<span class="codeline" id="line-30"><code><span class="keyword">func</span> (<a href="#line-92" class="ident">CmapSubtable13</a>) <label for="r6" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.CmapSubtable13.html#name-isCmapSubtable" class="ident">isCmapSubtable</a></label>() {}</code></span>
+<span class="codeline" id="line-31"><code><span class="keyword">func</span> (<a href="#line-100" class="ident">CmapSubtable14</a>) <label for="r7" class="ident"><a href="../../../../../../../imp/github.com/go-text/typesetting/font/opentype/tables.CmapSubtable14.html#name-isCmapSubtable" class="ident">isCmapSubtable</a></label>() {}</code></span>
+<span class="codeline" id="line-32"><code></code></span>
+<span class="codeline" id="line-33"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CmapSubtable0" class="ident">CmapSubtable0</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-34"><code>	format       <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="lit-string">`unionTag:"0"`</span> <span class="comment">// Format number is set to 0.</span></code></span>
+<span class="codeline" id="line-35"><code>	length       <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="comment">// This is the length in bytes of the subtable.</span></code></span>
+<span class="codeline" id="line-36"><code>	language     <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-37"><code>	GlyphIdArray [<span class="lit-number">256</span>]<a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a> <span class="comment">//	An array that maps character codes to glyph index values.</span></code></span>
+<span class="codeline" id="line-38"><code>}</code></span>
+<span class="codeline" id="line-39"><code></code></span>
+<span class="codeline" id="line-40"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CmapSubtable2" class="ident">CmapSubtable2</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-41"><code>	format  <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="lit-string">`unionTag:"2"`</span> <span class="comment">// Format number is set to 2.</span></code></span>
+<span class="codeline" id="line-42"><code>	rawData []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="lit-string">`arrayCount:"ToEnd"`</span></code></span>
+<span class="codeline" id="line-43"><code>}</code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CmapSubtable4" class="ident">CmapSubtable4</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-46"><code>	format         <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="lit-string">`unionTag:"4"`</span> <span class="comment">// Format number is set to 4.</span></code></span>
+<span class="codeline" id="line-47"><code>	length         <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="comment">// This is the length in bytes of the subtable.</span></code></span>
+<span class="codeline" id="line-48"><code>	language       <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-49"><code>	segCountX2     <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>   <span class="comment">// 2 × segCount.</span></code></span>
+<span class="codeline" id="line-50"><code>	searchRange    <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>   <span class="comment">// Maximum power of 2 less than or equal to segCount, times 2 ((2**floor(log2(segCount))) * 2, where “**” is an exponentiation operator)</span></code></span>
+<span class="codeline" id="line-51"><code>	entrySelector  <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>   <span class="comment">// Log2 of the maximum power of 2 less than or equal to numTables (log2(searchRange/2), which is equal to floor(log2(segCount)))</span></code></span>
+<span class="codeline" id="line-52"><code>	rangeShift     <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>   <span class="comment">// segCount times 2, minus searchRange ((segCount * 2) - searchRange)</span></code></span>
+<span class="codeline" id="line-53"><code>	EndCode        []<a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="lit-string">`arrayCount:"ComputedField-segCountX2 / 2"`</span> <span class="comment">// [segCount]uint16 End characterCode for each segment, last=0xFFFF.</span></code></span>
+<span class="codeline" id="line-54"><code>	reservedPad    <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>   <span class="comment">// Set to 0.</span></code></span>
+<span class="codeline" id="line-55"><code>	StartCode      []<a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="lit-string">`arrayCount:"ComputedField-segCountX2 / 2"`</span> <span class="comment">// [segCount]uint16 Start character code for each segment.</span></code></span>
+<span class="codeline" id="line-56"><code>	IdDelta        []<a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="lit-string">`arrayCount:"ComputedField-segCountX2 / 2"`</span> <span class="comment">// [segCount]int16 Delta for all character codes in segment.</span></code></span>
+<span class="codeline" id="line-57"><code>	IdRangeOffsets []<a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="lit-string">`arrayCount:"ComputedField-segCountX2 / 2"`</span> <span class="comment">// [segCount]uint16 Offsets into glyphIdArray or 0</span></code></span>
+<span class="codeline" id="line-58"><code>	GlyphIDArray   []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>   <span class="lit-string">`arrayCount:"ToEnd"`</span>                        <span class="comment">// glyphIdArray : uint16[] glyph index array (arbitrary length)</span></code></span>
+<span class="codeline" id="line-59"><code>}</code></span>
+<span class="codeline" id="line-60"><code></code></span>
+<span class="codeline" id="line-61"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CmapSubtable6" class="ident">CmapSubtable6</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-62"><code>	format       <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="lit-string">`unionTag:"6"`</span> <span class="comment">// Format number is set to 6.</span></code></span>
+<span class="codeline" id="line-63"><code>	length       <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="comment">// This is the length in bytes of the subtable.</span></code></span>
+<span class="codeline" id="line-64"><code>	language     <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a></code></span>
+<span class="codeline" id="line-65"><code>	FirstCode    <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>    <span class="comment">// First character code of subrange.</span></code></span>
+<span class="codeline" id="line-66"><code>	GlyphIdArray []<a href="tables.go.html#line-9" class="ident">GlyphID</a> <span class="lit-string">`arrayCount:"FirstUint16"`</span> <span class="comment">// Array of glyph index values for character codes in the range.</span></code></span>
+<span class="codeline" id="line-67"><code>}</code></span>
+<span class="codeline" id="line-68"><code></code></span>
+<span class="codeline" id="line-69"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CmapSubtable10" class="ident">CmapSubtable10</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-70"><code>	format        <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="lit-string">`unionTag:"10"`</span> <span class="comment">//	Subtable format; set to 10.</span></code></span>
+<span class="codeline" id="line-71"><code>	reserved      <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> <span class="comment">//	Reserved; set to 0</span></code></span>
+<span class="codeline" id="line-72"><code>	length        <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a> <span class="comment">//	Byte length of this subtable (including the header)</span></code></span>
+<span class="codeline" id="line-73"><code>	language      <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-74"><code>	StartCharCode <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>    <span class="comment">// First character code covered</span></code></span>
+<span class="codeline" id="line-75"><code>	GlyphIdArray  []<a href="tables.go.html#line-9" class="ident">GlyphID</a> <span class="lit-string">`arrayCount:"FirstUint32"`</span> <span class="comment">// Array of glyph indices for the character codes covered</span></code></span>
+<span class="codeline" id="line-76"><code>}</code></span>
+<span class="codeline" id="line-77"><code></code></span>
+<span class="codeline" id="line-78"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CmapSubtable12" class="ident">CmapSubtable12</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-79"><code>	format   <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>               <span class="lit-string">`unionTag:"12"`</span> <span class="comment">//	Subtable format; set to 12.</span></code></span>
+<span class="codeline" id="line-80"><code>	reserved <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>               <span class="comment">//	Reserved; set to 0</span></code></span>
+<span class="codeline" id="line-81"><code>	length   <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>               <span class="comment">//	Byte length of this subtable (including the header)</span></code></span>
+<span class="codeline" id="line-82"><code>	language <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>               <span class="comment">//	For requirements on use of the language field, see “Use of the language field in 'cmap' subtables” in this document.</span></code></span>
+<span class="codeline" id="line-83"><code>	Groups   []<a href="#line-86" class="ident">SequentialMapGroup</a> <span class="lit-string">`arrayCount:"FirstUint32"`</span> <span class="comment">// Array of SequentialMapGroup records.</span></code></span>
+<span class="codeline" id="line-84"><code>}</code></span>
+<span class="codeline" id="line-85"><code></code></span>
+<span class="codeline" id="line-86"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-SequentialMapGroup" class="ident">SequentialMapGroup</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-87"><code>	StartCharCode <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a> <span class="comment">//	First character code in this group</span></code></span>
+<span class="codeline" id="line-88"><code>	EndCharCode   <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a> <span class="comment">//	Last character code in this group</span></code></span>
+<span class="codeline" id="line-89"><code>	StartGlyphID  <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a> <span class="comment">//	Glyph index corresponding to the starting character code</span></code></span>
+<span class="codeline" id="line-90"><code>}</code></span>
+<span class="codeline" id="line-91"><code></code></span>
+<span class="codeline" id="line-92"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CmapSubtable13" class="ident">CmapSubtable13</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-93"><code>	format   <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>               <span class="lit-string">`unionTag:"13"`</span> <span class="comment">//	Subtable format; set to 13.</span></code></span>
+<span class="codeline" id="line-94"><code>	reserved <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>               <span class="comment">//	Reserved; set to 0</span></code></span>
+<span class="codeline" id="line-95"><code>	length   <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>               <span class="comment">//	Byte length of this subtable (including the header)</span></code></span>
+<span class="codeline" id="line-96"><code>	language <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>               <span class="comment">//	For requirements on use of the language field, see “Use of the language field in 'cmap' subtables” in this document.</span></code></span>
+<span class="codeline" id="line-97"><code>	Groups   []<a href="#line-86" class="ident">SequentialMapGroup</a> <span class="lit-string">`arrayCount:"FirstUint32"`</span> <span class="comment">// Array of SequentialMapGroup records.</span></code></span>
+<span class="codeline" id="line-98"><code>}</code></span>
+<span class="codeline" id="line-99"><code></code></span>
+<span class="codeline" id="line-100"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-CmapSubtable14" class="ident">CmapSubtable14</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-101"><code>	format       <a href="../../../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>              <span class="lit-string">`unionTag:"14"`</span> <span class="comment">// Subtable format. Set to 14.</span></code></span>
+<span class="codeline" id="line-102"><code>	length       <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>              <span class="comment">// Byte length of this subtable (including this header)</span></code></span>
+<span class="codeline" id="line-103"><code>	VarSelectors []<a href="#line-106" class="ident">VariationSelector</a> <span class="lit-string">`arrayCount:"FirstUint32"`</span> <span class="comment">// [numVarSelectorRecords]	Array of VariationSelector records.</span></code></span>
+<span class="codeline" id="line-104"><code>}</code></span>
+<span class="codeline" id="line-105"><code></code></span>
+<span class="codeline" id="line-106"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-VariationSelector" class="ident">VariationSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-107"><code>	VarSelector   [<span class="lit-number">3</span>]<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>         <span class="comment">// uint24 Variation selector</span></code></span>
+<span class="codeline" id="line-108"><code>	DefaultUVS    <a href="#line-114" class="ident">DefaultUVSTable</a> <span class="lit-string">`offsetSize:"Offset32"  offsetRelativeTo:"Parent"`</span> <span class="comment">// Offset from the start of the format 14 subtable to Default UVS Table. May be 0.</span></code></span>
+<span class="codeline" id="line-109"><code>	NonDefaultUVS <a href="#line-125" class="ident">UVSMappingTable</a> <span class="lit-string">`offsetSize:"Offset32"  offsetRelativeTo:"Parent"`</span> <span class="comment">// Offset from the start of the format 14 subtable to Non-Default UVS Table. May be 0.</span></code></span>
+<span class="codeline" id="line-110"><code>}</code></span>
+<span class="codeline" id="line-111"><code></code></span>
+<span class="codeline" id="line-112"><code><span class="comment">// DefaultUVSTable is used in Cmap format 14</span></code></span>
+<span class="codeline" id="line-113"><code><span class="comment">// See https://learn.microsoft.com/en-us/typography/opentype/spec/cmap#default-uvs-table</span></code></span>
+<span class="codeline" id="line-114"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-DefaultUVSTable" class="ident">DefaultUVSTable</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-115"><code>	Ranges []<a href="#line-118" class="ident">UnicodeRange</a> <span class="lit-string">`arrayCount:"FirstUint32"`</span></code></span>
+<span class="codeline" id="line-116"><code>}</code></span>
+<span class="codeline" id="line-117"><code></code></span>
+<span class="codeline" id="line-118"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-UnicodeRange" class="ident">UnicodeRange</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-119"><code>	StartUnicodeValue [<span class="lit-number">3</span>]<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="comment">// uint24 First value in this range</span></code></span>
+<span class="codeline" id="line-120"><code>	AdditionalCount   <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>   <span class="comment">// Number of additional values in this range</span></code></span>
+<span class="codeline" id="line-121"><code>}</code></span>
+<span class="codeline" id="line-122"><code></code></span>
+<span class="codeline" id="line-123"><code><span class="comment">// UVSMappingTable is used in Cmap format 14</span></code></span>
+<span class="codeline" id="line-124"><code><span class="comment">// See https://learn.microsoft.com/en-us/typography/opentype/spec/cmap#non-default-uvs-table</span></code></span>
+<span class="codeline" id="line-125"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-UVSMappingTable" class="ident">UVSMappingTable</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-126"><code>	Ranges []<a href="#line-129" class="ident">UvsMappingRecord</a> <span class="lit-string">`arrayCount:"FirstUint32"`</span></code></span>
+<span class="codeline" id="line-127"><code>}</code></span>
+<span class="codeline" id="line-128"><code></code></span>
+<span class="codeline" id="line-129"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html#name-UvsMappingRecord" class="ident">UvsMappingRecord</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-130"><code>	UnicodeValue [<span class="lit-number">3</span>]<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="comment">// uint24 Base Unicode value of the UVS</span></code></span>
+<span class="codeline" id="line-131"><code>	GlyphID      <a href="tables.go.html#line-9" class="ident">GlyphID</a> <span class="comment">//	Glyph ID of the UVS</span></code></span>
+<span class="codeline" id="line-132"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

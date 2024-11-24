@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/godbus/dbus/v5/prop</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>prop</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-github.com/godbus/dbus/v5/prop">github.com/godbus/dbus/v5/prop</a><i> (on <a href="https://pkg.go.dev/github.com/godbus/dbus/v5/prop" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/github.com/godbus/dbus/v5/prop.html">4 packages</a>, and imported by <a href="../../../../../dep/github.com/godbus/dbus/v5/prop.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#doc">d</a> <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html">prop.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package prop provides the Properties struct which can be used to implement
+		org.freedesktop.DBus.Properties.</span></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 5, all are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Change" data-popularity="0">	<input type='checkbox' class="fold" id="Change-fold-content"><label for="Change-fold-content"> type <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-167">Change</a> <i>(struct)</i></label><span id='Change-fold-content-docs' class="fold-docs">
+<span class="md-text">		Change represents a change of a property by a call to Set.</span>
+
+		<input type='checkbox' class="fold" id="Change-fold-fields"><label for="Change-fold-fields">Fields (<i>total 4, all are exported</i>)</label><span id='Change-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-169">Iface</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-170">Name</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-168">Props</a> <i>*<a href="#name-Properties">Properties</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-171">Value</a> <i>interface{}</i></span></span></span>
+
+</span></div><div class="anchor type-res" id="name-EmitType" data-popularity="265">	<input type='checkbox' class="fold" id="EmitType-fold-content"><label for="EmitType-fold-content"> type <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-19">EmitType</a> <a href="../../../../builtin.html#name-byte">byte</a> <i>(basic type)</i></label><span id='EmitType-fold-content-docs' class="fold-docs">
+<span class="md-text">		EmitType controls how org.freedesktop.DBus.Properties.PropertiesChanged is
+		emitted for a property. If it is EmitTrue, the signal is emitted. If it is
+		EmitInvalidates, the signal is also emitted, but the new value of the property
+		is not disclosed. If it is EmitConst, the property never changes value during
+		the lifetime of the object it belongs to, and hence the signal is never emitted
+		for it.</span>
+
+		<input type='checkbox' class="fold" id="EmitType-fold-methods"><label for="EmitType-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='EmitType-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( EmitType) <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-28">String</a>() (str <a href="../../../../builtin.html#name-string">string</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="EmitType-fold-impls"><label for="EmitType-fold-impls">Implements (<i>at least 4, in which 1 is exported</i>)</label><span id='EmitType-fold-impls-items' class="fold-items"><span>
+			 EmitType : fmt.<a href="../../../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="EmitType-showhide-impls"><i><label for="EmitType-showhide-impls" class="show-inline">/* 3+ unexporteds ... */</label><label for="EmitType-showhide-impls" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			 EmitType : context.<a href="../../../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 EmitType : os/signal.<a href="../../../../os/signal.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 EmitType : runtime.<a href="../../../../runtime.html#name-stringer">stringer</a></i></span></span>
+		<input type='checkbox' class="fold" id="EmitType-fold-values"><label for="EmitType-fold-values">As Types Of (<i>total 4, all are exported</i>)</label><span id='EmitType-fold-values-items' class="fold-items"><span>
+			const <a href="#name-EmitConst">EmitConst</a></span><span>
+			const <a href="#name-EmitFalse">EmitFalse</a></span><span>
+			const <a href="#name-EmitInvalidates">EmitInvalidates</a></span><span>
+			const <a href="#name-EmitTrue">EmitTrue</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Map" data-popularity="0">	<input type='checkbox' class="fold" id="Map-fold-content"><label for="Map-fold-content"> type <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-211">Map</a> = <i>(map)</i></label><span id='Map-fold-content-docs' class="fold-docs">
+<span class="md-text">		Map is a helper type for supplying the configuration of properties to be handled.</span>
+
+</span></div><div class="anchor type-res" id="name-Prop" data-popularity="125">	<input type='checkbox' class="fold" id="Prop-fold-content"><label for="Prop-fold-content"> type <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-128">Prop</a> <i>(struct)</i></label><span id='Prop-fold-content-docs' class="fold-docs">
+<span class="md-text">		Prop represents a single property. It is used for creating a Properties
+		value.</span>
+
+		<input type='checkbox' class="fold" id="Prop-fold-fields"><label for="Prop-fold-fields">Fields (<i>total 4, all are exported</i>)</label><span id='Prop-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Prop-fold-field-Callback"><label for="Prop-fold-field-Callback"><a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-145">Callback</a> <i>func(*<a href="#name-Change">Change</a>) *<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Error">Error</a></i></label><span id='Prop-fold-field-Callback-docs' class="fold-docs">
+<span class="md-text">				If not nil, anytime this property is changed by Set, this function is
+				called with an appropriate Change as its argument. If the returned error
+				is not nil, it is sent back to the caller of Set and the property is not
+				changed.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Prop-fold-field-Emit"><label for="Prop-fold-field-Emit"><a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-139">Emit</a> <i><a href="#name-EmitType">EmitType</a></i></label><span id='Prop-fold-field-Emit-docs' class="fold-docs">
+<span class="md-text">				Controls how org.freedesktop.DBus.Properties.PropertiesChanged is
+				emitted if this property changes.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Prop-fold-field-Value"><label for="Prop-fold-field-Value"><a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-132">Value</a> <i>interface{}</i></label><span id='Prop-fold-field-Value-docs' class="fold-docs">
+<span class="md-text">				Initial value. Must be a DBus-representable type. This is not modified
+				after Properties has been initialized; use Get or GetMust to access the
+				value.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Prop-fold-field-Writable"><label for="Prop-fold-field-Writable"><a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-135">Writable</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></label><span id='Prop-fold-field-Writable-docs' class="fold-docs">
+<span class="md-text">				If true, the value can be modified by calls to Set.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Prop-fold-methods"><label for="Prop-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Prop-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Prop-fold-method-Introspection"><label for="Prop-fold-method-Introspection">(*Prop) <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-150">Introspection</a>(name <a href="../../../../builtin.html#name-string">string</a>) <a href="introspect.html">introspect</a>.<a href="introspect.html#name-Property">Property</a></label><span id='Prop-fold-method-Introspection-docs' class="fold-docs">
+<span class="md-text">				Introspection returns the introspection data for p.
+				The "name" argument is used as the property's name in the resulting data.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Prop-fold-results"><label for="Prop-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='Prop-fold-results-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Prop-showhide-inputofs"><i><label for="Prop-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="Prop-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func fyne.io/systray.<a href="../../../../fyne.io/systray.html#name-createMenuPropSpec">createMenuPropSpec</a>() map[<a href="../../../../builtin.html#name-string">string</a>]map[<a href="../../../../builtin.html#name-string">string</a>]*<b>Prop</b></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Properties" data-popularity="550">	<input type='checkbox' class="fold" id="Properties-fold-content"><label for="Properties-fold-content"> type <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-177">Properties</a> <i>(struct)</i></label><span id='Properties-fold-content-docs' class="fold-docs">
+<span class="md-text">		Properties is a set of values that can be made available to the message bus
+		using the org.freedesktop.DBus.Properties interface. It is safe for
+		concurrent use by multiple goroutines.</span>
+
+		<input type='checkbox' class="fold" id="Properties-fold-fields"><label for="Properties-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='Properties-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Properties-showhide-fields"><i><label for="Properties-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="Properties-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-180">conn</a> <i>*<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Conn">Conn</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-178">m</a> <i><a href="#name-Map">Map</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-179">mut</a> <i><a href="../../../../sync.html">sync</a>.<a href="../../../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-181">path</a> <i><a href="../v5.html">dbus</a>.<a href="../v5.html#name-ObjectPath">ObjectPath</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Properties-fold-methods"><label for="Properties-fold-methods">Methods (<i>total 8, in which 6 are exported</i>)</label><span id='Properties-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Properties-fold-method-Get"><label for="Properties-fold-method-Get">(*Properties) <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-229">Get</a>(iface, property <a href="../../../../builtin.html#name-string">string</a>) (<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Variant">Variant</a>, *<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Error">Error</a>)</label><span id='Properties-fold-method-Get-docs' class="fold-docs">
+<span class="md-text">				Get implements org.freedesktop.DBus.Properties.Get.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Properties-fold-method-GetAll"><label for="Properties-fold-method-GetAll">(*Properties) <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-244">GetAll</a>(iface <a href="../../../../builtin.html#name-string">string</a>) (map[<a href="../../../../builtin.html#name-string">string</a>]<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Variant">Variant</a>, *<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Error">Error</a>)</label><span id='Properties-fold-method-GetAll-docs' class="fold-docs">
+<span class="md-text">				GetAll implements org.freedesktop.DBus.Properties.GetAll.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Properties-fold-method-GetMust"><label for="Properties-fold-method-GetMust">(*Properties) <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-260">GetMust</a>(iface, property <a href="../../../../builtin.html#name-string">string</a>) interface{}</label><span id='Properties-fold-method-GetMust-docs' class="fold-docs">
+<span class="md-text">				GetMust returns the value of the given property and panics if either the
+				interface or the property name are invalid.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Properties-fold-method-Introspection"><label for="Properties-fold-method-Introspection">(*Properties) <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-268">Introspection</a>(iface <a href="../../../../builtin.html#name-string">string</a>) []<a href="introspect.html">introspect</a>.<a href="introspect.html#name-Property">Property</a></label><span id='Properties-fold-method-Introspection-docs' class="fold-docs">
+<span class="md-text">				Introspection returns the introspection data that represents the properties
+				of iface.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Properties-fold-method-Set"><label for="Properties-fold-method-Set">(*Properties) <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-310">Set</a>(iface, property <a href="../../../../builtin.html#name-string">string</a>, newv <a href="../v5.html">dbus</a>.<a href="../v5.html#name-Variant">Variant</a>) *<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Error">Error</a></label><span id='Properties-fold-method-Set-docs' class="fold-docs">
+<span class="md-text">				Set implements org.freedesktop.Properties.Set.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Properties-fold-method-SetMust"><label for="Properties-fold-method-SetMust">(*Properties) <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-341">SetMust</a>(iface, property <a href="../../../../builtin.html#name-string">string</a>, v interface{})</label><span id='Properties-fold-method-SetMust-docs' class="fold-docs">
+<span class="md-text">				SetMust sets the value of the given property and panics if the interface or
+				the property name are invalid.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Properties-showhide-methods"><i><label for="Properties-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="Properties-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Properties) <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-290">emitChange</a>(iface, property <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Properties-fold-method-set"><label for="Properties-fold-method-set">(*Properties) <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-281">set</a>(iface, property <a href="../../../../builtin.html#name-string">string</a>, v interface{}) <a href="../../../../builtin.html#name-error">error</a></label><span id='Properties-fold-method-set-docs' class="fold-docs">
+<span class="md-text">				set sets the given property and emits PropertyChanged if appropriate. p.mut
+				must already be locked.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Properties-fold-results"><label for="Properties-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='Properties-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Export">Export</a>(conn *<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Conn">Conn</a>, path <a href="../v5.html">dbus</a>.<a href="../v5.html#name-ObjectPath">ObjectPath</a>, props <a href="#name-Map">Map</a>) (*<b>Properties</b>, <a href="../../../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-New">New</a>(conn *<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Conn">Conn</a>, path <a href="../v5.html">dbus</a>.<a href="../v5.html#name-ObjectPath">ObjectPath</a>, props <a href="#name-Map">Map</a>) *<b>Properties</b></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 3, in which 2 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Export">	<input type='checkbox' class="fold" id="Export-fold-content"><label for="Export-fold-content"> func <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-200">Export</a>(conn *<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Conn">Conn</a>, path <a href="../v5.html">dbus</a>.<a href="../v5.html#name-ObjectPath">ObjectPath</a>, props <a href="#name-Map">Map</a>) (*<a href="#name-Properties">Properties</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Export-fold-content-docs' class="fold-docs">
+<span class="md-text">		Export returns a new Properties structure that manages the given properties.
+		The key for the first-level map of props is the name of the interface; the
+		second-level key is the name of the property. The returned structure will be
+		exported as org.freedesktop.DBus.Properties on path.</span>
+
+</span></div><div class="anchor value-res" id="name-New">	<input type='checkbox' class="fold" id="New-fold-content"><label for="New-fold-content"> func <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-188">New</a>(conn *<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Conn">Conn</a>, path <a href="../v5.html">dbus</a>.<a href="../v5.html#name-ObjectPath">ObjectPath</a>, props <a href="#name-Map">Map</a>) *<a href="#name-Properties">Properties</a></label><span id='New-fold-content-docs' class="fold-docs">
+<span class="md-text">		New falls back to Export, but it returns nil if properties export fails,
+		swallowing the error, shouldn't be used.
+		
+		Deprecated: use Export instead.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-copyProps"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-213">copyProps</a>(in <a href="#name-Map">Map</a>) <a href="#name-Map">Map</a></span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 5, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ErrIfaceNotFound">	<input type='checkbox' class="fold" id="ErrIfaceNotFound-fold-content"><label for="ErrIfaceNotFound-fold-content">  var <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-46">ErrIfaceNotFound</a> *<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Error">Error</a></label><span id='ErrIfaceNotFound-fold-content-docs' class="fold-docs">
+<span class="md-text">		ErrIfaceNotFound is the error returned to peers who try to access properties
+		on interfaces that aren't found.</span>
+
+</span></div><div class="anchor value-res" id="name-ErrInvalidArg">	<input type='checkbox' class="fold" id="ErrInvalidArg-fold-content"><label for="ErrInvalidArg-fold-content">  var <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-58">ErrInvalidArg</a> *<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Error">Error</a></label><span id='ErrInvalidArg-fold-content-docs' class="fold-docs">
+<span class="md-text">		ErrInvalidArg is returned to peers if the type of the property that is being
+		changed and the argument don't match.</span>
+
+</span></div><div class="anchor value-res" id="name-ErrPropNotFound">	<input type='checkbox' class="fold" id="ErrPropNotFound-fold-content"><label for="ErrPropNotFound-fold-content">  var <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-50">ErrPropNotFound</a> *<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Error">Error</a></label><span id='ErrPropNotFound-fold-content-docs' class="fold-docs">
+<span class="md-text">		ErrPropNotFound is the error returned to peers trying to access properties
+		that aren't found.</span>
+
+</span></div><div class="anchor value-res" id="name-ErrReadOnly">	<input type='checkbox' class="fold" id="ErrReadOnly-fold-content"><label for="ErrReadOnly-fold-content">  var <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-54">ErrReadOnly</a> *<a href="../v5.html">dbus</a>.<a href="../v5.html#name-Error">Error</a></label><span id='ErrReadOnly-fold-content-docs' class="fold-docs">
+<span class="md-text">		ErrReadOnly is the error returned to peers trying to set a read-only
+		property.</span>
+
+</span></div><div class="anchor value-res" id="name-IntrospectData">	<input type='checkbox' class="fold" id="IntrospectData-fold-content"><label for="IntrospectData-fold-content">  var <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-61">IntrospectData</a> <a href="introspect.html">introspect</a>.<a href="introspect.html#name-Interface">Interface</a></label><span id='IntrospectData-fold-content-docs' class="fold-docs">
+<span class="md-text">		The introspection data for the org.freedesktop.DBus.Properties interface.</span>
+
+</span></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 5, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-EmitConst">	<span class="nodocs">const <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-25">EmitConst</a> <a href="#name-EmitType">EmitType</a> = 3</span></div><div class="anchor value-res" id="name-EmitFalse">	<span class="nodocs">const <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-22">EmitFalse</a> <a href="#name-EmitType">EmitType</a> = 0</span></div><div class="anchor value-res" id="name-EmitInvalidates">	<span class="nodocs">const <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-24">EmitInvalidates</a> <a href="#name-EmitType">EmitType</a> = 2</span></div><div class="anchor value-res" id="name-EmitTrue">	<span class="nodocs">const <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-23">EmitTrue</a> <a href="#name-EmitType">EmitType</a> = 1</span></div><div class="anchor value-res" id="name-IntrospectDataString">	<input type='checkbox' class="fold" id="IntrospectDataString-fold-content"><label for="IntrospectDataString-fold-content">const <a href="../../../../../src/github.com/godbus/dbus/v5/prop/prop.go.html#line-102">IntrospectDataString</a> = "\n\t<interface name=\"org.freedesktop.DBus.Properties\">\n\t\t<metho...</label><span id='IntrospectDataString-fold-content-docs' class="fold-docs">
+<span class="md-text">		The introspection data for the org.freedesktop.DBus.Properties interface, as
+		a string.</span>
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

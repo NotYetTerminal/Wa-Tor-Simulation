@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: aat_layout_kern_kerx.go in package github.com/go-text/typesetting/font</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	aat_layout_kern_kerx.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/go-text/typesetting/font.html">github.com/go-text/typesetting/font</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72],
+input[id=r73]:checked ~pre label[for=r73],
+input[id=r74]:checked ~pre label[for=r74],
+input[id=r75]:checked ~pre label[for=r75],
+input[id=r76]:checked ~pre label[for=r76],
+input[id=r77]:checked ~pre label[for=r77],
+input[id=r78]:checked ~pre label[for=r78],
+input[id=r79]:checked ~pre label[for=r79],
+input[id=r80]:checked ~pre label[for=r80],
+input[id=r81]:checked ~pre label[for=r81],
+input[id=r82]:checked ~pre label[for=r82],
+input[id=r83]:checked ~pre label[for=r83],
+input[id=r84]:checked ~pre label[for=r84],
+input[id=r85]:checked ~pre label[for=r85],
+input[id=r86]:checked ~pre label[for=r86],
+input[id=r87]:checked ~pre label[for=r87],
+input[id=r88]:checked ~pre label[for=r88],
+input[id=r89]:checked ~pre label[for=r89],
+input[id=r90]:checked ~pre label[for=r90],
+input[id=r91]:checked ~pre label[for=r91],
+input[id=r92]:checked ~pre label[for=r92],
+input[id=r93]:checked ~pre label[for=r93],
+input[id=r94]:checked ~pre label[for=r94],
+input[id=r95]:checked ~pre label[for=r95],
+input[id=r96]:checked ~pre label[for=r96],
+input[id=r97]:checked ~pre label[for=r97],
+input[id=r98]:checked ~pre label[for=r98],
+input[id=r99]:checked ~pre label[for=r99],
+input[id=r100]:checked ~pre label[for=r100],
+input[id=r101]:checked ~pre label[for=r101],
+input[id=r102]:checked ~pre label[for=r102],
+input[id=r103]:checked ~pre label[for=r103],
+input[id=r104]:checked ~pre label[for=r104],
+input[id=r105]:checked ~pre label[for=r105],
+input[id=r106]:checked ~pre label[for=r106],
+input[id=r107]:checked ~pre label[for=r107],
+input[id=r108]:checked ~pre label[for=r108],
+input[id=r109]:checked ~pre label[for=r109],
+input[id=r110]:checked ~pre label[for=r110],
+input[id=r111]:checked ~pre label[for=r111],
+input[id=r112]:checked ~pre label[for=r112],
+input[id=r113]:checked ~pre label[for=r113],
+input[id=r114]:checked ~pre label[for=r114],
+input[id=r115]:checked ~pre label[for=r115],
+input[id=r116]:checked ~pre label[for=r116],
+input[id=r117]:checked ~pre label[for=r117]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="r73" type="radio" name="g"/>
+<input id="r74" type="radio" name="g"/>
+<input id="r75" type="radio" name="g"/>
+<input id="r76" type="radio" name="g"/>
+<input id="r77" type="radio" name="g"/>
+<input id="r78" type="radio" name="g"/>
+<input id="r79" type="radio" name="g"/>
+<input id="r80" type="radio" name="g"/>
+<input id="r81" type="radio" name="g"/>
+<input id="r82" type="radio" name="g"/>
+<input id="r83" type="radio" name="g"/>
+<input id="r84" type="radio" name="g"/>
+<input id="r85" type="radio" name="g"/>
+<input id="r86" type="radio" name="g"/>
+<input id="r87" type="radio" name="g"/>
+<input id="r88" type="radio" name="g"/>
+<input id="r89" type="radio" name="g"/>
+<input id="r90" type="radio" name="g"/>
+<input id="r91" type="radio" name="g"/>
+<input id="r92" type="radio" name="g"/>
+<input id="r93" type="radio" name="g"/>
+<input id="r94" type="radio" name="g"/>
+<input id="r95" type="radio" name="g"/>
+<input id="r96" type="radio" name="g"/>
+<input id="r97" type="radio" name="g"/>
+<input id="r98" type="radio" name="g"/>
+<input id="r99" type="radio" name="g"/>
+<input id="r100" type="radio" name="g"/>
+<input id="r101" type="radio" name="g"/>
+<input id="r102" type="radio" name="g"/>
+<input id="r103" type="radio" name="g"/>
+<input id="r104" type="radio" name="g"/>
+<input id="r105" type="radio" name="g"/>
+<input id="r106" type="radio" name="g"/>
+<input id="r107" type="radio" name="g"/>
+<input id="r108" type="radio" name="g"/>
+<input id="r109" type="radio" name="g"/>
+<input id="r110" type="radio" name="g"/>
+<input id="r111" type="radio" name="g"/>
+<input id="r112" type="radio" name="g"/>
+<input id="r113" type="radio" name="g"/>
+<input id="r114" type="radio" name="g"/>
+<input id="r115" type="radio" name="g"/>
+<input id="r116" type="radio" name="g"/>
+<input id="r117" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// SPDX-License-Identifier: Unlicense OR BSD-3-Clause</span></code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">package</span> font</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<label for="i0"><span class="lit-string i0">"encoding/binary"</span></label></code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i1"><span class="lit-string i1">"github.com/go-text/typesetting/font/opentype/tables"</span></label></code></span>
+<span class="codeline" id="line-9"><code>)</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// Kernx represents a 'kern' or 'kerx' kerning table.</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// It supports both Microsoft and Apple formats.</span></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-Kernx" class="ident">Kernx</a> []<a href="#line-38" class="ident">KernSubtable</a></code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newKernxFromKerx" class="ident">newKernxFromKerx</a></label>(<label for="r1" class="ident">kerx</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-12" class="ident">Kerx</a>) <a href="#line-13" class="ident">Kernx</a> {</code></span>
+<span class="codeline" id="line-16"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r1" class="ident">kerx</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-16" class="ident">Tables</a>) == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-17"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-18"><code>	}</code></span>
+<span class="codeline" id="line-19"><code>	<label for="r2" class="ident">out</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>(<a href="#line-13" class="ident">Kernx</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r1" class="ident">kerx</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-16" class="ident">Tables</a>))</code></span>
+<span class="codeline" id="line-20"><code>	<span class="keyword">for</span> <label for="r3" class="ident">i</label>, <label for="r4" class="ident">ta</label> := <span class="keyword">range</span> <label for="r1" class="ident">kerx</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-16" class="ident">Tables</a> {</code></span>
+<span class="codeline" id="line-21"><code>		<label for="r2" class="ident">out</label>[<label for="r3" class="ident">i</label>] = <a href="#line-83" class="ident">newKerxSubtable</a>(<label for="r4" class="ident">ta</label>)</code></span>
+<span class="codeline" id="line-22"><code>	}</code></span>
+<span class="codeline" id="line-23"><code>	<span class="keyword">return</span> <label for="r2" class="ident">out</label></code></span>
+<span class="codeline" id="line-24"><code>}</code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">func</span> <label for="r5" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newKernxFromKern" class="ident">newKernxFromKern</a></label>(<label for="r6" class="ident">kern</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/kern.go.html#line-31" class="ident">Kern</a>) <a href="#line-13" class="ident">Kernx</a> {</code></span>
+<span class="codeline" id="line-27"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r6" class="ident">kern</label>.<a href="opentype/tables/kern.go.html#line-33" class="ident">Tables</a>) == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-28"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-29"><code>	}</code></span>
+<span class="codeline" id="line-30"><code>	<label for="r7" class="ident">out</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>(<a href="#line-13" class="ident">Kernx</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r6" class="ident">kern</label>.<a href="opentype/tables/kern.go.html#line-33" class="ident">Tables</a>))</code></span>
+<span class="codeline" id="line-31"><code>	<span class="keyword">for</span> <label for="r8" class="ident">i</label>, <label for="r9" class="ident">ta</label> := <span class="keyword">range</span> <label for="r6" class="ident">kern</label>.<a href="opentype/tables/kern.go.html#line-33" class="ident">Tables</a> {</code></span>
+<span class="codeline" id="line-32"><code>		<label for="r7" class="ident">out</label>[<label for="r8" class="ident">i</label>] = <a href="#line-51" class="ident">newKernSubtable</a>(<label for="r9" class="ident">ta</label>)</code></span>
+<span class="codeline" id="line-33"><code>	}</code></span>
+<span class="codeline" id="line-34"><code>	<span class="keyword">return</span> <label for="r7" class="ident">out</label></code></span>
+<span class="codeline" id="line-35"><code>}</code></span>
+<span class="codeline" id="line-36"><code></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">// KernSubtable represents a 'kern' or 'kerx' subtable.</span></code></span>
+<span class="codeline" id="line-38"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-KernSubtable" class="ident">KernSubtable</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-39"><code>	Data <span class="keyword">interface</span>{ isKernSubtable() }</code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code>	<span class="comment">// high bit of the Coverage field, following 'kerx' conventions</span></code></span>
+<span class="codeline" id="line-42"><code>	coverage <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code>	<span class="comment">// IsExtended [true] for AAT `kerx` subtables, false for 'kern' subtables</span></code></span>
+<span class="codeline" id="line-45"><code>	IsExtended <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-46"><code></code></span>
+<span class="codeline" id="line-47"><code>	<span class="comment">// 0 for scalar values</span></code></span>
+<span class="codeline" id="line-48"><code>	TupleCount <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-49"><code>}</code></span>
+<span class="codeline" id="line-50"><code></code></span>
+<span class="codeline" id="line-51"><code><span class="keyword">func</span> <label for="r10" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newKernSubtable" class="ident">newKernSubtable</a></label>(<label for="r11" class="ident">table</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/kern_src.go.html#line-11" class="ident">KernSubtable</a>) (<label for="r12" class="ident">out</label> <a href="#line-38" class="ident">KernSubtable</a>) {</code></span>
+<span class="codeline" id="line-52"><code>	<label for="r12" class="ident">out</label>.<a href="#line-45" class="ident">IsExtended</a> = <a href="../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-53"><code>	<span class="keyword">switch</span> table := <label for="r11" class="ident">table</label>.(<span class="keyword">type</span>) {</code></span>
+<span class="codeline" id="line-54"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/kern_src.go.html#line-16" class="ident">OTKernSubtableHeader</a>:</code></span>
+<span class="codeline" id="line-55"><code>		<span class="comment">// synthesize a coverage flag following kerx conventions</span></code></span>
+<span class="codeline" id="line-56"><code>		<span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-57"><code>			<label for="r13" class="ident">Horizontal</label>  = <span class="lit-number">0x01</span></code></span>
+<span class="codeline" id="line-58"><code>			<label for="r14" class="ident">CrossStream</label> = <span class="lit-number">0x04</span></code></span>
+<span class="codeline" id="line-59"><code>		)</code></span>
+<span class="codeline" id="line-60"><code>		<span class="keyword">if</span> <label for="r15" class="ident">table</label>.<a href="opentype/tables/kern_src.go.html#line-20" class="ident">Coverage</a>&amp;<label for="r13" class="ident">Horizontal</label> == <span class="lit-number">0</span> { <span class="comment">// vertical</span></code></span>
+<span class="codeline" id="line-61"><code>			<label for="r12" class="ident">out</label>.<a href="#line-42" class="ident">coverage</a> |= <a href="#line-133" class="ident">kerxVertical</a></code></span>
+<span class="codeline" id="line-62"><code>		}</code></span>
+<span class="codeline" id="line-63"><code>		<span class="keyword">if</span> <label for="r15" class="ident">table</label>.<a href="opentype/tables/kern_src.go.html#line-20" class="ident">Coverage</a>&amp;<label for="r14" class="ident">CrossStream</label> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-64"><code>			<label for="r12" class="ident">out</label>.<a href="#line-42" class="ident">coverage</a> |= <a href="#line-132" class="ident">kerxCrossStream</a></code></span>
+<span class="codeline" id="line-65"><code>		}</code></span>
+<span class="codeline" id="line-66"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/kern_src.go.html#line-32" class="ident">AATKernSubtableHeader</a>:</code></span>
+<span class="codeline" id="line-67"><code>		<label for="r12" class="ident">out</label>.<a href="#line-42" class="ident">coverage</a> = <label for="r16" class="ident">table</label>.<a href="opentype/tables/kern_src.go.html#line-34" class="ident">Coverage</a></code></span>
+<span class="codeline" id="line-68"><code>		<label for="r12" class="ident">out</label>.<a href="#line-48" class="ident">TupleCount</a> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r16" class="ident">table</label>.<a href="opentype/tables/kern_src.go.html#line-36" class="ident">TupleCount</a>)</code></span>
+<span class="codeline" id="line-69"><code>	}</code></span>
+<span class="codeline" id="line-70"><code>	<span class="keyword">switch</span> data := <label for="r11" class="ident">table</label>.<a href="opentype/tables/kern_src.go.html#line-13" class="ident">Data</a>().(<span class="keyword">type</span>) {</code></span>
+<span class="codeline" id="line-71"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/kern_src.go.html#line-66" class="ident">KernData0</a>:</code></span>
+<span class="codeline" id="line-72"><code>		<label for="r12" class="ident">out</label>.<a href="#line-39" class="ident">Data</a> = <a href="#line-150" class="ident">newKern0</a>(<label for="r17" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-73"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/kern_src.go.html#line-74" class="ident">KernData1</a>:</code></span>
+<span class="codeline" id="line-74"><code>		<label for="r12" class="ident">out</label>.<a href="#line-39" class="ident">Data</a> = <a href="#line-180" class="ident">newKern1</a>(<label for="r18" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-75"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/kern_src.go.html#line-98" class="ident">KernData2</a>:</code></span>
+<span class="codeline" id="line-76"><code>		<label for="r12" class="ident">out</label>.<a href="#line-39" class="ident">Data</a> = <a href="#line-216" class="ident">newKern2</a>(<label for="r19" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-77"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/kern_src.go.html#line-111" class="ident">KernData3</a>:</code></span>
+<span class="codeline" id="line-78"><code>		<label for="r12" class="ident">out</label>.<a href="#line-39" class="ident">Data</a> = <a href="#line-236" class="ident">Kern3</a>(<label for="r20" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-79"><code>	}</code></span>
+<span class="codeline" id="line-80"><code>	<span class="keyword">return</span> <label for="r12" class="ident">out</label></code></span>
+<span class="codeline" id="line-81"><code>}</code></span>
+<span class="codeline" id="line-82"><code></code></span>
+<span class="codeline" id="line-83"><code><span class="keyword">func</span> <label for="r21" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newKerxSubtable" class="ident">newKerxSubtable</a></label>(<label for="r22" class="ident">table</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-22" class="ident">KerxSubtable</a>) (<label for="r23" class="ident">out</label> <a href="#line-38" class="ident">KernSubtable</a>) {</code></span>
+<span class="codeline" id="line-84"><code>	<label for="r23" class="ident">out</label>.<a href="#line-45" class="ident">IsExtended</a> = <a href="../../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-85"><code>	<label for="r23" class="ident">out</label>.<a href="#line-48" class="ident">TupleCount</a> = <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r22" class="ident">table</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-27" class="ident">TupleCount</a>)</code></span>
+<span class="codeline" id="line-86"><code>	<label for="r23" class="ident">out</label>.<a href="#line-42" class="ident">coverage</a> = <a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r22" class="ident">table</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-24" class="ident">Coverage</a> &gt;&gt; <span class="lit-number">8</span>) <span class="comment">// high bit only</span></code></span>
+<span class="codeline" id="line-87"><code></code></span>
+<span class="codeline" id="line-88"><code>	<span class="keyword">switch</span> data := <label for="r22" class="ident">table</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-28" class="ident">Data</a>.(<span class="keyword">type</span>) {</code></span>
+<span class="codeline" id="line-89"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-62" class="ident">KerxData0</a>:</code></span>
+<span class="codeline" id="line-90"><code>		<label for="r23" class="ident">out</label>.<a href="#line-39" class="ident">Data</a> = <a href="#line-151" class="ident">newKern0x</a>(<label for="r24" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-91"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-98" class="ident">KerxData1</a>:</code></span>
+<span class="codeline" id="line-92"><code>		<label for="r23" class="ident">out</label>.<a href="#line-39" class="ident">Data</a> = <a href="#line-209" class="ident">newKern1x</a>(<label for="r25" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-93"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-143" class="ident">KerxData2</a>:</code></span>
+<span class="codeline" id="line-94"><code>		<label for="r23" class="ident">out</label>.<a href="#line-39" class="ident">Data</a> = <a href="#line-213" class="ident">Kern2</a>(<label for="r26" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-95"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-152" class="ident">KerxData4</a>:</code></span>
+<span class="codeline" id="line-96"><code>		<label for="r23" class="ident">out</label>.<a href="#line-39" class="ident">Data</a> = <a href="#line-254" class="ident">newKern4</a>(<label for="r27" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-97"><code>	<span class="keyword">case</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-231" class="ident">KerxData6</a>:</code></span>
+<span class="codeline" id="line-98"><code>		<label for="r23" class="ident">out</label>.<a href="#line-39" class="ident">Data</a> = <a href="#line-268" class="ident">Kern6</a>(<label for="r28" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-99"><code>	}</code></span>
+<span class="codeline" id="line-100"><code>	<span class="keyword">return</span> <label for="r23" class="ident">out</label></code></span>
+<span class="codeline" id="line-101"><code>}</code></span>
+<span class="codeline" id="line-102"><code></code></span>
+<span class="codeline" id="line-103"><code><span class="keyword">func</span> (<a href="#line-148" class="ident">Kern0</a>) <label for="r29" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.Kern0.html#name-isKernSubtable" class="ident">isKernSubtable</a></label>() {}</code></span>
+<span class="codeline" id="line-104"><code><span class="keyword">func</span> (<a href="#line-174" class="ident">Kern1</a>) <label for="r30" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.Kern1.html#name-isKernSubtable" class="ident">isKernSubtable</a></label>() {}</code></span>
+<span class="codeline" id="line-105"><code><span class="keyword">func</span> (<a href="#line-213" class="ident">Kern2</a>) <label for="r31" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.Kern2.html#name-isKernSubtable" class="ident">isKernSubtable</a></label>() {}</code></span>
+<span class="codeline" id="line-106"><code><span class="keyword">func</span> (<a href="#line-236" class="ident">Kern3</a>) <label for="r32" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.Kern3.html#name-isKernSubtable" class="ident">isKernSubtable</a></label>() {}</code></span>
+<span class="codeline" id="line-107"><code><span class="keyword">func</span> (<a href="#line-248" class="ident">Kern4</a>) <label for="r33" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.Kern4.html#name-isKernSubtable" class="ident">isKernSubtable</a></label>() {}</code></span>
+<span class="codeline" id="line-108"><code><span class="keyword">func</span> (<a href="#line-268" class="ident">Kern6</a>) <label for="r34" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.Kern6.html#name-isKernSubtable" class="ident">isKernSubtable</a></label>() {}</code></span>
+<span class="codeline" id="line-109"><code></code></span>
+<span class="codeline" id="line-110"><code><span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-111"><code>	_ <a href="#line-121" class="ident">SimpleKerns</a> = <a href="#line-148" class="ident">Kern0</a>(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-112"><code>	_ <a href="#line-121" class="ident">SimpleKerns</a> = (*<a href="#line-213" class="ident">Kern2</a>)(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-113"><code>	_ <a href="#line-121" class="ident">SimpleKerns</a> = (*<a href="#line-236" class="ident">Kern3</a>)(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-114"><code>	_ <a href="#line-121" class="ident">SimpleKerns</a> = (*<a href="#line-268" class="ident">Kern6</a>)(<a href="../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-115"><code>)</code></span>
+<span class="codeline" id="line-116"><code></code></span>
+<span class="codeline" id="line-117"><code><span class="comment">// SimpleKerns store a compact form of the kerning values,</span></code></span>
+<span class="codeline" id="line-118"><code><span class="comment">// which is restricted to (one direction) kerning pairs.</span></code></span>
+<span class="codeline" id="line-119"><code><span class="comment">// It is only implemented by [Kern0], [Kern2], [Kern3] and [Kern6],</span></code></span>
+<span class="codeline" id="line-120"><code><span class="comment">// where [Kern1] and [Kern4] requires a state machine to be interpreted.</span></code></span>
+<span class="codeline" id="line-121"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-SimpleKerns" class="ident">SimpleKerns</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-122"><code>	<span class="comment">// KernPair return the kern value for the given pair, or zero.</span></code></span>
+<span class="codeline" id="line-123"><code><span class="comment">	// The value is expressed in glyph units and</span></code></span>
+<span class="codeline" id="line-124"><code><span class="comment">	// is negative when glyphs should be closer.</span></code></span>
+<span class="codeline" id="line-125"><code>	<a href="../../../../../imp/github.com/go-text/typesetting/font.SimpleKerns.html#name-KernPair" class="ident">KernPair</a>(left, right <a href="font.go.html#line-24" class="ident">GID</a>) <a href="../../../../../pkg/builtin.html#name-int16" class="ident">int16</a></code></span>
+<span class="codeline" id="line-126"><code>}</code></span>
+<span class="codeline" id="line-127"><code></code></span>
+<span class="codeline" id="line-128"><code><span class="comment">// kernx coverage flags</span></code></span>
+<span class="codeline" id="line-129"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-130"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-kerxBackwards" class="ident">kerxBackwards</a>   = <span class="lit-number">1</span> &lt;&lt; (<span class="lit-number">12</span> - <span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-131"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-kerxVariation" class="ident">kerxVariation</a>   = <span class="lit-number">1</span> &lt;&lt; (<span class="lit-number">13</span> - <span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-132"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-kerxCrossStream" class="ident">kerxCrossStream</a> = <span class="lit-number">1</span> &lt;&lt; (<span class="lit-number">14</span> - <span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-133"><code>	<a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-kerxVertical" class="ident">kerxVertical</a>    = <span class="lit-number">1</span> &lt;&lt; (<span class="lit-number">15</span> - <span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-134"><code>)</code></span>
+<span class="codeline" id="line-135"><code></code></span>
+<span class="codeline" id="line-136"><code><span class="comment">// IsHorizontal returns true if the subtable has horizontal kerning values.</span></code></span>
+<span class="codeline" id="line-137"><code><span class="keyword">func</span> (<label for="r35" class="ident">k</label> <a href="#line-38" class="ident">KernSubtable</a>) <label for="r36" class="ident">IsHorizontal</label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r35" class="ident">k</label>.<a href="#line-42" class="ident">coverage</a>&amp;<a href="#line-133" class="ident">kerxVertical</a> == <span class="lit-number">0</span> }</code></span>
+<span class="codeline" id="line-138"><code></code></span>
+<span class="codeline" id="line-139"><code><span class="comment">// IsBackwards returns true if state-table based should process the glyphs backwards.</span></code></span>
+<span class="codeline" id="line-140"><code><span class="keyword">func</span> (<label for="r37" class="ident">k</label> <a href="#line-38" class="ident">KernSubtable</a>) <label for="r38" class="ident">IsBackwards</label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r37" class="ident">k</label>.<a href="#line-42" class="ident">coverage</a>&amp;<a href="#line-130" class="ident">kerxBackwards</a> != <span class="lit-number">0</span> }</code></span>
+<span class="codeline" id="line-141"><code></code></span>
+<span class="codeline" id="line-142"><code><span class="comment">// IsCrossStream returns true if the subtable has cross-stream kerning values.</span></code></span>
+<span class="codeline" id="line-143"><code><span class="keyword">func</span> (<label for="r39" class="ident">k</label> <a href="#line-38" class="ident">KernSubtable</a>) <label for="r40" class="ident">IsCrossStream</label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r39" class="ident">k</label>.<a href="#line-42" class="ident">coverage</a>&amp;<a href="#line-132" class="ident">kerxCrossStream</a> != <span class="lit-number">0</span> }</code></span>
+<span class="codeline" id="line-144"><code></code></span>
+<span class="codeline" id="line-145"><code><span class="comment">// IsVariation returns true if the subtable has variation kerning values.</span></code></span>
+<span class="codeline" id="line-146"><code><span class="keyword">func</span> (<label for="r41" class="ident">k</label> <a href="#line-38" class="ident">KernSubtable</a>) <label for="r42" class="ident">IsVariation</label>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r41" class="ident">k</label>.<a href="#line-42" class="ident">coverage</a>&amp;<a href="#line-131" class="ident">kerxVariation</a> != <span class="lit-number">0</span> }</code></span>
+<span class="codeline" id="line-147"><code></code></span>
+<span class="codeline" id="line-148"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-Kern0" class="ident">Kern0</a> []<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-83" class="ident">Kernx0Record</a></code></span>
+<span class="codeline" id="line-149"><code></code></span>
+<span class="codeline" id="line-150"><code><span class="keyword">func</span> <label for="r43" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newKern0" class="ident">newKern0</a></label>(<label for="r44" class="ident">k</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/kern_src.go.html#line-66" class="ident">KernData0</a>) <a href="#line-148" class="ident">Kern0</a>  { <span class="keyword">return</span> <label for="r44" class="ident">k</label>.<a href="opentype/tables/kern_src.go.html#line-71" class="ident">Pairs</a> }</code></span>
+<span class="codeline" id="line-151"><code><span class="keyword">func</span> <label for="r45" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newKern0x" class="ident">newKern0x</a></label>(<label for="r46" class="ident">k</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-62" class="ident">KerxData0</a>) <a href="#line-148" class="ident">Kern0</a> { <span class="keyword">return</span> <label for="r46" class="ident">k</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-67" class="ident">Pairs</a> }</code></span>
+<span class="codeline" id="line-152"><code></code></span>
+<span class="codeline" id="line-153"><code><span class="keyword">func</span> <label for="r47" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-kernPair" class="ident">kernPair</a></label>(<label for="r48" class="ident">records</label> []<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-83" class="ident">Kernx0Record</a>, <label for="r49" class="ident">left</label>, <label for="r50" class="ident">right</label> <a href="font.go.html#line-24" class="ident">GID</a>) <a href="../../../../../pkg/builtin.html#name-int16" class="ident">int16</a> {</code></span>
+<span class="codeline" id="line-154"><code>	<label for="r51" class="ident">key</label> := <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r49" class="ident">left</label>)&lt;&lt;<span class="lit-number">16</span> | <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r50" class="ident">right</label>)</code></span>
+<span class="codeline" id="line-155"><code>	<label for="r52" class="ident">low</label>, <label for="r53" class="ident">high</label> := <span class="lit-number">0</span>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r48" class="ident">records</label>)</code></span>
+<span class="codeline" id="line-156"><code>	<span class="keyword">for</span> <label for="r52" class="ident">low</label> &lt; <label for="r53" class="ident">high</label> {</code></span>
+<span class="codeline" id="line-157"><code>		<label for="r54" class="ident">mid</label> := <label for="r52" class="ident">low</label> + (<label for="r53" class="ident">high</label>-<label for="r52" class="ident">low</label>)/<span class="lit-number">2</span> <span class="comment">// avoid overflow when computing mid</span></code></span>
+<span class="codeline" id="line-158"><code>		<label for="r55" class="ident">p</label> := <a href="#line-170" class="ident">recordKey</a>(<label for="r48" class="ident">records</label>[<label for="r54" class="ident">mid</label>])</code></span>
+<span class="codeline" id="line-159"><code>		<span class="keyword">if</span> <label for="r51" class="ident">key</label> &lt; <label for="r55" class="ident">p</label> {</code></span>
+<span class="codeline" id="line-160"><code>			<label for="r53" class="ident">high</label> = <label for="r54" class="ident">mid</label></code></span>
+<span class="codeline" id="line-161"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r51" class="ident">key</label> &gt; <label for="r55" class="ident">p</label> {</code></span>
+<span class="codeline" id="line-162"><code>			<label for="r52" class="ident">low</label> = <label for="r54" class="ident">mid</label> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-163"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-164"><code>			<span class="keyword">return</span> <label for="r48" class="ident">records</label>[<label for="r54" class="ident">mid</label>].<a href="opentype/tables/aat_kerx_src.go.html#line-85" class="ident">Value</a></code></span>
+<span class="codeline" id="line-165"><code>		}</code></span>
+<span class="codeline" id="line-166"><code>	}</code></span>
+<span class="codeline" id="line-167"><code>	<span class="keyword">return</span> <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-168"><code>}</code></span>
+<span class="codeline" id="line-169"><code></code></span>
+<span class="codeline" id="line-170"><code><span class="keyword">func</span> <label for="r56" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-recordKey" class="ident">recordKey</a></label>(<label for="r57" class="ident">kp</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-83" class="ident">Kernx0Record</a>) <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a> { <span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r57" class="ident">kp</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-84" class="ident">Left</a>)&lt;&lt;<span class="lit-number">16</span> | <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r57" class="ident">kp</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-84" class="ident">Right</a>) }</code></span>
+<span class="codeline" id="line-171"><code></code></span>
+<span class="codeline" id="line-172"><code><span class="keyword">func</span> (<label for="r58" class="ident">kd</label> <a href="#line-148" class="ident">Kern0</a>) <label for="r59" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.Kern0.html#name-.KernPair" class="ident">KernPair</a></label>(<label for="r60" class="ident">left</label>, <label for="r61" class="ident">right</label> <a href="font.go.html#line-24" class="ident">GID</a>) <a href="../../../../../pkg/builtin.html#name-int16" class="ident">int16</a> { <span class="keyword">return</span> <a href="#line-153" class="ident">kernPair</a>(<label for="r58" class="ident">kd</label>, <label for="r60" class="ident">left</label>, <label for="r61" class="ident">right</label>) }</code></span>
+<span class="codeline" id="line-173"><code></code></span>
+<span class="codeline" id="line-174"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-Kern1" class="ident">Kern1</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-175"><code>	Values  []<a href="../../../../../pkg/builtin.html#name-int16" class="ident">int16</a> <span class="comment">// After successful parsing, may be safely indexed by AATStateEntry.AsKernxIndex() from `Machine`</span></code></span>
+<span class="codeline" id="line-176"><code>	Machine <a href="#line-283" class="ident">AATStateTable</a></code></span>
+<span class="codeline" id="line-177"><code>}</code></span>
+<span class="codeline" id="line-178"><code></code></span>
+<span class="codeline" id="line-179"><code><span class="comment">// convert from non extended to extended</span></code></span>
+<span class="codeline" id="line-180"><code><span class="keyword">func</span> <label for="r62" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newKern1" class="ident">newKern1</a></label>(<label for="r63" class="ident">k</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/kern_src.go.html#line-74" class="ident">KernData1</a>) <a href="#line-174" class="ident">Kern1</a> {</code></span>
+<span class="codeline" id="line-181"><code>	<label for="r64" class="ident">class</label> := <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_common.go.html#line-262" class="ident">AATLoopkup8</a>{</code></span>
+<span class="codeline" id="line-182"><code>		<a href="opentype/tables/aat_common.go.html#line-264" class="ident">AATLoopkup8Data</a>: <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_common.go.html#line-267" class="ident">AATLoopkup8Data</a>{</code></span>
+<span class="codeline" id="line-183"><code>			<a href="opentype/tables/aat_common.go.html#line-268" class="ident">FirstGlyph</a>: <label for="r63" class="ident">k</label>.<a href="opentype/tables/aat_common.go.html#line-16" class="ident">ClassTable</a>.<a href="opentype/tables/aat_common.go.html#line-91" class="ident">StartGlyph</a>,</code></span>
+<span class="codeline" id="line-184"><code>			<a href="opentype/tables/aat_common.go.html#line-269" class="ident">Values</a>:     <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r63" class="ident">k</label>.<a href="opentype/tables/aat_common.go.html#line-16" class="ident">ClassTable</a>.<a href="opentype/tables/aat_common.go.html#line-92" class="ident">Values</a>)),</code></span>
+<span class="codeline" id="line-185"><code>		},</code></span>
+<span class="codeline" id="line-186"><code>	}</code></span>
+<span class="codeline" id="line-187"><code>	<span class="keyword">for</span> <label for="r65" class="ident">i</label>, <label for="r66" class="ident">b</label> := <span class="keyword">range</span> <label for="r63" class="ident">k</label>.<a href="opentype/tables/aat_common.go.html#line-16" class="ident">ClassTable</a>.<a href="opentype/tables/aat_common.go.html#line-92" class="ident">Values</a> {</code></span>
+<span class="codeline" id="line-188"><code>		<label for="r64" class="ident">class</label>.<a href="opentype/tables/aat_common.go.html#line-269" class="ident">Values</a>[<label for="r65" class="ident">i</label>] = <a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<label for="r66" class="ident">b</label>)</code></span>
+<span class="codeline" id="line-189"><code>	}</code></span>
+<span class="codeline" id="line-190"><code>	<label for="r67" class="ident">states</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([][]<a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r63" class="ident">k</label>.<a href="opentype/tables/aat_common.go.html#line-19" class="ident">States</a>))</code></span>
+<span class="codeline" id="line-191"><code>	<span class="keyword">for</span> <label for="r68" class="ident">i</label>, <label for="r69" class="ident">row</label> := <span class="keyword">range</span> <label for="r63" class="ident">k</label>.<a href="opentype/tables/aat_common.go.html#line-19" class="ident">States</a> {</code></span>
+<span class="codeline" id="line-192"><code>		<label for="r70" class="ident">v</label> := <a href="../../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>, <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r69" class="ident">row</label>))</code></span>
+<span class="codeline" id="line-193"><code>		<span class="keyword">for</span> <label for="r71" class="ident">j</label>, <label for="r72" class="ident">b</label> := <span class="keyword">range</span> <label for="r69" class="ident">row</label> {</code></span>
+<span class="codeline" id="line-194"><code>			<label for="r70" class="ident">v</label>[<label for="r71" class="ident">j</label>] = <a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<label for="r72" class="ident">b</label>)</code></span>
+<span class="codeline" id="line-195"><code>		}</code></span>
+<span class="codeline" id="line-196"><code>		<label for="r67" class="ident">states</label>[<label for="r68" class="ident">i</label>] = <label for="r70" class="ident">v</label></code></span>
+<span class="codeline" id="line-197"><code>	}</code></span>
+<span class="codeline" id="line-198"><code>	<span class="keyword">return</span> <a href="#line-174" class="ident">Kern1</a>{</code></span>
+<span class="codeline" id="line-199"><code>		<a href="#line-175" class="ident">Values</a>: <label for="r63" class="ident">k</label>.<a href="opentype/tables/kern_src.go.html#line-77" class="ident">Values</a>,</code></span>
+<span class="codeline" id="line-200"><code>		<a href="#line-176" class="ident">Machine</a>: <a href="#line-283" class="ident">AATStateTable</a>{</code></span>
+<span class="codeline" id="line-201"><code>			<a href="#line-284" class="ident">nClass</a>:  <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r63" class="ident">k</label>.<a href="opentype/tables/aat_common.go.html#line-15" class="ident">StateSize</a>),</code></span>
+<span class="codeline" id="line-202"><code>			<a href="#line-285" class="ident">class</a>:   <label for="r64" class="ident">class</label>,</code></span>
+<span class="codeline" id="line-203"><code>			<a href="#line-286" class="ident">states</a>:  <label for="r67" class="ident">states</label>,</code></span>
+<span class="codeline" id="line-204"><code>			<a href="#line-287" class="ident">entries</a>: <label for="r63" class="ident">k</label>.<a href="opentype/tables/aat_common.go.html#line-20" class="ident">Entries</a>,</code></span>
+<span class="codeline" id="line-205"><code>		},</code></span>
+<span class="codeline" id="line-206"><code>	}</code></span>
+<span class="codeline" id="line-207"><code>}</code></span>
+<span class="codeline" id="line-208"><code></code></span>
+<span class="codeline" id="line-209"><code><span class="keyword">func</span> <label for="r73" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newKern1x" class="ident">newKern1x</a></label>(<label for="r74" class="ident">k</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-98" class="ident">KerxData1</a>) <a href="#line-174" class="ident">Kern1</a> {</code></span>
+<span class="codeline" id="line-210"><code>	<span class="keyword">return</span> <a href="#line-174" class="ident">Kern1</a>{<a href="#line-175" class="ident">Values</a>: <label for="r74" class="ident">k</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-101" class="ident">Values</a>, <a href="#line-176" class="ident">Machine</a>: <a href="#line-290" class="ident">newAATStableTable</a>(<label for="r74" class="ident">k</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-99" class="ident">AATStateTableExt</a>)}</code></span>
+<span class="codeline" id="line-211"><code>}</code></span>
+<span class="codeline" id="line-212"><code></code></span>
+<span class="codeline" id="line-213"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-Kern2" class="ident">Kern2</a> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-143" class="ident">KerxData2</a></code></span>
+<span class="codeline" id="line-214"><code></code></span>
+<span class="codeline" id="line-215"><code><span class="comment">// convert from non extended to extended</span></code></span>
+<span class="codeline" id="line-216"><code><span class="keyword">func</span> <label for="r75" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newKern2" class="ident">newKern2</a></label>(<label for="r76" class="ident">k</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/kern_src.go.html#line-98" class="ident">KernData2</a>) <a href="#line-213" class="ident">Kern2</a> {</code></span>
+<span class="codeline" id="line-217"><code>	<span class="keyword">return</span> <a href="#line-213" class="ident">Kern2</a>{</code></span>
+<span class="codeline" id="line-218"><code>		<a href="opentype/tables/aat_kerx_src.go.html#line-145" class="ident">Left</a>:         <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_common.go.html#line-262" class="ident">AATLoopkup8</a>{<a href="opentype/tables/aat_common.go.html#line-264" class="ident">AATLoopkup8Data</a>: <label for="r76" class="ident">k</label>.<a href="opentype/tables/kern_src.go.html#line-100" class="ident">Left</a>},</code></span>
+<span class="codeline" id="line-219"><code>		<a href="opentype/tables/aat_kerx_src.go.html#line-146" class="ident">Right</a>:        <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_common.go.html#line-262" class="ident">AATLoopkup8</a>{<a href="opentype/tables/aat_common.go.html#line-264" class="ident">AATLoopkup8Data</a>: <label for="r76" class="ident">k</label>.<a href="opentype/tables/kern_src.go.html#line-101" class="ident">Right</a>},</code></span>
+<span class="codeline" id="line-220"><code>		<a href="opentype/tables/aat_kerx_src.go.html#line-147" class="ident">KerningStart</a>: <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/tables.go.html#line-58" class="ident">Offset32</a>(<label for="r76" class="ident">k</label>.<a href="opentype/tables/kern_src.go.html#line-102" class="ident">KerningStart</a>),</code></span>
+<span class="codeline" id="line-221"><code>		<a href="opentype/tables/aat_kerx_src.go.html#line-148" class="ident">KerningData</a>:  <label for="r76" class="ident">k</label>.<a href="opentype/tables/kern_src.go.html#line-103" class="ident">KerningData</a>,</code></span>
+<span class="codeline" id="line-222"><code>	}</code></span>
+<span class="codeline" id="line-223"><code>}</code></span>
+<span class="codeline" id="line-224"><code></code></span>
+<span class="codeline" id="line-225"><code><span class="keyword">func</span> (<label for="r77" class="ident">kd</label> <a href="#line-213" class="ident">Kern2</a>) <label for="r78" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.Kern2.html#name-.KernPair" class="ident">KernPair</a></label>(<label for="r79" class="ident">left</label>, <label for="r80" class="ident">right</label> <a href="font.go.html#line-24" class="ident">GID</a>) <a href="../../../../../pkg/builtin.html#name-int16" class="ident">int16</a> {</code></span>
+<span class="codeline" id="line-226"><code>	<label for="r81" class="ident">l</label>, <label for="r82" class="ident">_</label> := <label for="r77" class="ident">kd</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-145" class="ident">Left</a>.<a href="opentype/tables/aat_common.go.html#line-208" class="ident">Class</a>(<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/tables.go.html#line-9" class="ident">GlyphID</a>(<label for="r79" class="ident">left</label>))</code></span>
+<span class="codeline" id="line-227"><code>	<label for="r83" class="ident">r</label>, <label for="r84" class="ident">_</label> := <label for="r77" class="ident">kd</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-146" class="ident">Right</a>.<a href="opentype/tables/aat_common.go.html#line-208" class="ident">Class</a>(<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/tables.go.html#line-9" class="ident">GlyphID</a>(<label for="r80" class="ident">right</label>))</code></span>
+<span class="codeline" id="line-228"><code>	<label for="r85" class="ident">index</label> := <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r81" class="ident">l</label>) + <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r83" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-229"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r77" class="ident">kd</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-148" class="ident">KerningData</a>) &lt; <label for="r85" class="ident">index</label>+<span class="lit-number">2</span> || <label for="r85" class="ident">index</label> &lt; <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r77" class="ident">kd</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-147" class="ident">KerningStart</a>) {</code></span>
+<span class="codeline" id="line-230"><code>		<span class="keyword">return</span> <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-231"><code>	}</code></span>
+<span class="codeline" id="line-232"><code>	<label for="r86" class="ident">kernVal</label> := <a href="../../../../../pkg/encoding/binary.html" class="ident i0">binary</a>.<a href="../../../../encoding/binary/binary.go.html#line-64" class="ident">BigEndian</a>.<a href="../../../../encoding/binary/binary.go.html#line-145" class="ident">Uint16</a>(<label for="r77" class="ident">kd</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-148" class="ident">KerningData</a>[<label for="r85" class="ident">index</label>:])</code></span>
+<span class="codeline" id="line-233"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-int16" class="ident">int16</a>(<label for="r86" class="ident">kernVal</label>)</code></span>
+<span class="codeline" id="line-234"><code>}</code></span>
+<span class="codeline" id="line-235"><code></code></span>
+<span class="codeline" id="line-236"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-Kern3" class="ident">Kern3</a> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/kern_src.go.html#line-111" class="ident">KernData3</a></code></span>
+<span class="codeline" id="line-237"><code></code></span>
+<span class="codeline" id="line-238"><code><span class="keyword">func</span> (<label for="r87" class="ident">kd</label> <a href="#line-236" class="ident">Kern3</a>) <label for="r88" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.Kern3.html#name-.KernPair" class="ident">KernPair</a></label>(<label for="r89" class="ident">left</label>, <label for="r90" class="ident">right</label> <a href="font.go.html#line-24" class="ident">GID</a>) <a href="../../../../../pkg/builtin.html#name-int16" class="ident">int16</a> {</code></span>
+<span class="codeline" id="line-239"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r89" class="ident">left</label>) &gt;= <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r87" class="ident">kd</label>.<a href="opentype/tables/kern_src.go.html#line-118" class="ident">LeftClass</a>) || <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r90" class="ident">right</label>) &gt;= <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r87" class="ident">kd</label>.<a href="opentype/tables/kern_src.go.html#line-119" class="ident">RightClass</a>) { <span class="comment">// should not happend</span></code></span>
+<span class="codeline" id="line-240"><code>		<span class="keyword">return</span> <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-241"><code>	}</code></span>
+<span class="codeline" id="line-242"><code></code></span>
+<span class="codeline" id="line-243"><code>	<label for="r91" class="ident">lc</label>, <label for="r92" class="ident">rc</label> := <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r87" class="ident">kd</label>.<a href="opentype/tables/kern_src.go.html#line-118" class="ident">LeftClass</a>[<label for="r89" class="ident">left</label>]), <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r87" class="ident">kd</label>.<a href="opentype/tables/kern_src.go.html#line-119" class="ident">RightClass</a>[<label for="r90" class="ident">right</label>])</code></span>
+<span class="codeline" id="line-244"><code>	<label for="r93" class="ident">index</label> := <label for="r87" class="ident">kd</label>.<a href="opentype/tables/kern_src.go.html#line-120" class="ident">KernIndex</a>[<label for="r91" class="ident">lc</label>*<a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r87" class="ident">kd</label>.<a href="opentype/tables/kern_src.go.html#line-115" class="ident">RightClassCount</a>)+<label for="r92" class="ident">rc</label>] <span class="comment">// sanitized during parsing</span></code></span>
+<span class="codeline" id="line-245"><code>	<span class="keyword">return</span> <label for="r87" class="ident">kd</label>.<a href="opentype/tables/kern_src.go.html#line-117" class="ident">Kernings</a>[<label for="r93" class="ident">index</label>]                            <span class="comment">// sanitized during parsing</span></code></span>
+<span class="codeline" id="line-246"><code>}</code></span>
+<span class="codeline" id="line-247"><code></code></span>
+<span class="codeline" id="line-248"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-Kern4" class="ident">Kern4</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-249"><code>	Anchors <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-199" class="ident">KerxAnchors</a></code></span>
+<span class="codeline" id="line-250"><code>	Machine <a href="#line-283" class="ident">AATStateTable</a></code></span>
+<span class="codeline" id="line-251"><code>	flags   <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-252"><code>}</code></span>
+<span class="codeline" id="line-253"><code></code></span>
+<span class="codeline" id="line-254"><code><span class="keyword">func</span> <label for="r94" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newKern4" class="ident">newKern4</a></label>(<label for="r95" class="ident">k</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-152" class="ident">KerxData4</a>) <a href="#line-248" class="ident">Kern4</a> {</code></span>
+<span class="codeline" id="line-255"><code>	<span class="keyword">return</span> <a href="#line-248" class="ident">Kern4</a>{</code></span>
+<span class="codeline" id="line-256"><code>		<a href="#line-250" class="ident">Machine</a>: <a href="#line-290" class="ident">newAATStableTable</a>(<label for="r95" class="ident">k</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-153" class="ident">AATStateTableExt</a>),</code></span>
+<span class="codeline" id="line-257"><code>		<a href="#line-249" class="ident">Anchors</a>: <label for="r95" class="ident">k</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-155" class="ident">Anchors</a>,</code></span>
+<span class="codeline" id="line-258"><code>		<a href="#line-251" class="ident">flags</a>:   <label for="r95" class="ident">k</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-154" class="ident">Flags</a>,</code></span>
+<span class="codeline" id="line-259"><code>	}</code></span>
+<span class="codeline" id="line-260"><code>}</code></span>
+<span class="codeline" id="line-261"><code></code></span>
+<span class="codeline" id="line-262"><code><span class="comment">// ActionType returns 0, 1 or 2 .</span></code></span>
+<span class="codeline" id="line-263"><code><span class="keyword">func</span> (<label for="r96" class="ident">k</label> <a href="#line-248" class="ident">Kern4</a>) <label for="r97" class="ident">ActionType</label>() <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a> {</code></span>
+<span class="codeline" id="line-264"><code>	<span class="keyword">const</span> <label for="r98" class="ident">ActionType</label> = <span class="lit-number">0xC0000000</span> <span class="comment">// A two-bit field containing the action type.</span></code></span>
+<span class="codeline" id="line-265"><code>	<span class="keyword">return</span> <a href="../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r96" class="ident">k</label>.<a href="#line-251" class="ident">flags</a> &amp; <label for="r98" class="ident">ActionType</label> &gt;&gt; <span class="lit-number">30</span>)</code></span>
+<span class="codeline" id="line-266"><code>}</code></span>
+<span class="codeline" id="line-267"><code></code></span>
+<span class="codeline" id="line-268"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-Kern6" class="ident">Kern6</a> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_kerx_src.go.html#line-231" class="ident">KerxData6</a></code></span>
+<span class="codeline" id="line-269"><code></code></span>
+<span class="codeline" id="line-270"><code><span class="keyword">func</span> (<label for="r99" class="ident">kd</label> <a href="#line-268" class="ident">Kern6</a>) <label for="r100" class="ident"><a href="../../../../../imp/github.com/go-text/typesetting/font.Kern6.html#name-.KernPair" class="ident">KernPair</a></label>(<label for="r101" class="ident">left</label>, <label for="r102" class="ident">right</label> <a href="font.go.html#line-24" class="ident">GID</a>) <a href="../../../../../pkg/builtin.html#name-int16" class="ident">int16</a> {</code></span>
+<span class="codeline" id="line-271"><code>	<label for="r103" class="ident">l</label> := <label for="r99" class="ident">kd</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-239" class="ident">Row</a>.<a href="opentype/tables/aat_properties.go.html#line-184" class="ident">ClassUint32</a>(<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/tables.go.html#line-9" class="ident">GlyphID</a>(<label for="r101" class="ident">left</label>))</code></span>
+<span class="codeline" id="line-272"><code>	<label for="r104" class="ident">r</label> := <label for="r99" class="ident">kd</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-240" class="ident">Column</a>.<a href="opentype/tables/aat_properties.go.html#line-184" class="ident">ClassUint32</a>(<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/tables.go.html#line-9" class="ident">GlyphID</a>(<label for="r102" class="ident">right</label>))</code></span>
+<span class="codeline" id="line-273"><code>	<label for="r105" class="ident">index</label> := <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r103" class="ident">l</label>) + <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r104" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-274"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r99" class="ident">kd</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-243" class="ident">Kernings</a>) &lt;= <label for="r105" class="ident">index</label> {</code></span>
+<span class="codeline" id="line-275"><code>		<span class="keyword">return</span> <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-276"><code>	}</code></span>
+<span class="codeline" id="line-277"><code>	<span class="keyword">return</span> <label for="r99" class="ident">kd</label>.<a href="opentype/tables/aat_kerx_src.go.html#line-243" class="ident">Kernings</a>[<label for="r105" class="ident">index</label>]</code></span>
+<span class="codeline" id="line-278"><code>}</code></span>
+<span class="codeline" id="line-279"><code></code></span>
+<span class="codeline" id="line-280"><code><span class="comment">// --------------------------------------- state machine ---------------------------------------</span></code></span>
+<span class="codeline" id="line-281"><code></code></span>
+<span class="codeline" id="line-282"><code><span class="comment">// AATStateTable supports both regular and extended AAT state machines</span></code></span>
+<span class="codeline" id="line-283"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-AATStateTable" class="ident">AATStateTable</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-284"><code>	nClass  <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a></code></span>
+<span class="codeline" id="line-285"><code>	class   <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_common.go.html#line-201" class="ident">AATLookup</a></code></span>
+<span class="codeline" id="line-286"><code>	states  [][]<a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>             <span class="comment">// each sub array has length stateSize</span></code></span>
+<span class="codeline" id="line-287"><code>	entries []<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_common.go.html#line-156" class="ident">AATStateEntry</a> <span class="comment">// length is the maximum state + 1</span></code></span>
+<span class="codeline" id="line-288"><code>}</code></span>
+<span class="codeline" id="line-289"><code></code></span>
+<span class="codeline" id="line-290"><code><span class="keyword">func</span> <label for="r106" class="ident"><a href="../../../../../pkg/github.com/go-text/typesetting/font.html#name-newAATStableTable" class="ident">newAATStableTable</a></label>(<label for="r107" class="ident">k</label> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_common.go.html#line-98" class="ident">AATStateTableExt</a>) <a href="#line-283" class="ident">AATStateTable</a> {</code></span>
+<span class="codeline" id="line-291"><code>	<span class="keyword">return</span> <a href="#line-283" class="ident">AATStateTable</a>{</code></span>
+<span class="codeline" id="line-292"><code>		<a href="#line-284" class="ident">nClass</a>:  <label for="r107" class="ident">k</label>.<a href="opentype/tables/aat_common.go.html#line-99" class="ident">StateSize</a>,</code></span>
+<span class="codeline" id="line-293"><code>		<a href="#line-285" class="ident">class</a>:   <label for="r107" class="ident">k</label>.<a href="opentype/tables/aat_common.go.html#line-100" class="ident">Class</a>,</code></span>
+<span class="codeline" id="line-294"><code>		<a href="#line-286" class="ident">states</a>:  <label for="r107" class="ident">k</label>.<a href="opentype/tables/aat_common.go.html#line-103" class="ident">States</a>,</code></span>
+<span class="codeline" id="line-295"><code>		<a href="#line-287" class="ident">entries</a>: <label for="r107" class="ident">k</label>.<a href="opentype/tables/aat_common.go.html#line-104" class="ident">Entries</a>,</code></span>
+<span class="codeline" id="line-296"><code>	}</code></span>
+<span class="codeline" id="line-297"><code>}</code></span>
+<span class="codeline" id="line-298"><code></code></span>
+<span class="codeline" id="line-299"><code><span class="comment">// GetClass return the class for the given glyph, with the correct default value.</span></code></span>
+<span class="codeline" id="line-300"><code><span class="keyword">func</span> (<label for="r108" class="ident">st</label> *<a href="#line-283" class="ident">AATStateTable</a>) <label for="r109" class="ident">GetClass</label>(<label for="r110" class="ident">glyph</label> <a href="font.go.html#line-24" class="ident">GID</a>) <a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> {</code></span>
+<span class="codeline" id="line-301"><code>	<span class="keyword">if</span> <label for="r110" class="ident">glyph</label> == <span class="lit-number">0xFFFF</span> { <span class="comment">// deleted glyph</span></code></span>
+<span class="codeline" id="line-302"><code>		<span class="keyword">return</span> <span class="lit-number">2</span> <span class="comment">// class deleted</span></code></span>
+<span class="codeline" id="line-303"><code>	}</code></span>
+<span class="codeline" id="line-304"><code>	<label for="r111" class="ident">c</label>, <label for="r112" class="ident">ok</label> := <label for="r108" class="ident">st</label>.<a href="#line-285" class="ident">class</a>.<a href="opentype/tables/aat_common.go.html#line-208" class="ident">Class</a>(<a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/tables.go.html#line-9" class="ident">GlyphID</a>(<label for="r110" class="ident">glyph</label>))</code></span>
+<span class="codeline" id="line-305"><code>	<span class="keyword">if</span> !<label for="r112" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-306"><code>		<span class="keyword">return</span> <span class="lit-number">1</span> <span class="comment">// class out of bounds</span></code></span>
+<span class="codeline" id="line-307"><code>	}</code></span>
+<span class="codeline" id="line-308"><code>	<span class="keyword">return</span> <label for="r111" class="ident">c</label> <span class="comment">// class for a state table can't be uint32</span></code></span>
+<span class="codeline" id="line-309"><code>}</code></span>
+<span class="codeline" id="line-310"><code></code></span>
+<span class="codeline" id="line-311"><code><span class="comment">// GetEntry return the entry for the given state and class,</span></code></span>
+<span class="codeline" id="line-312"><code><span class="comment">// and handle invalid values (by returning an empty entry).</span></code></span>
+<span class="codeline" id="line-313"><code><span class="keyword">func</span> (<label for="r113" class="ident">st</label> *<a href="#line-283" class="ident">AATStateTable</a>) <label for="r114" class="ident">GetEntry</label>(<label for="r115" class="ident">state</label>, <label for="r116" class="ident">class</label> <a href="../../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>) <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_common.go.html#line-156" class="ident">AATStateEntry</a> {</code></span>
+<span class="codeline" id="line-314"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r116" class="ident">class</label>) &gt;= <label for="r113" class="ident">st</label>.<a href="#line-284" class="ident">nClass</a> {</code></span>
+<span class="codeline" id="line-315"><code>		<label for="r116" class="ident">class</label> = <span class="lit-number">1</span> <span class="comment">// class out of bounds</span></code></span>
+<span class="codeline" id="line-316"><code>	}</code></span>
+<span class="codeline" id="line-317"><code>	<span class="keyword">if</span> <a href="../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r115" class="ident">state</label>) &gt;= <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r113" class="ident">st</label>.<a href="#line-286" class="ident">states</a>) {</code></span>
+<span class="codeline" id="line-318"><code>		<span class="keyword">return</span> <a href="../../../../../pkg/github.com/go-text/typesetting/font/opentype/tables.html" class="ident i1">tables</a>.<a href="opentype/tables/aat_common.go.html#line-156" class="ident">AATStateEntry</a>{}</code></span>
+<span class="codeline" id="line-319"><code>	}</code></span>
+<span class="codeline" id="line-320"><code>	<label for="r117" class="ident">entry</label> := <label for="r113" class="ident">st</label>.<a href="#line-286" class="ident">states</a>[<label for="r115" class="ident">state</label>][<label for="r116" class="ident">class</label>] <span class="comment">// access check when parsing</span></code></span>
+<span class="codeline" id="line-321"><code>	<span class="keyword">return</span> <label for="r113" class="ident">st</label>.<a href="#line-287" class="ident">entries</a>[<label for="r117" class="ident">entry</label>]         <span class="comment">// access check when parsing</span></code></span>
+<span class="codeline" id="line-322"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

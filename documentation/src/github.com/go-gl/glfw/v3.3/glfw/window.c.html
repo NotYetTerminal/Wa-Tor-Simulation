@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: window.c in package github.com/go-gl/glfw/v3.3/glfw</title>
+<link href="../../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	window.c
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/github.com/go-gl/glfw/v3.3/glfw.html">github.com/go-gl/glfw/v3.3/glfw</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code>#include "_cgo_export.h"</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code>void glfwSetWindowPosCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-4"><code>  glfwSetWindowPosCallback(window, (GLFWwindowposfun)goWindowPosCB);</code></span>
+<span class="codeline" id="line-5"><code>}</code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code>void glfwSetWindowSizeCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-8"><code>  glfwSetWindowSizeCallback(window, (GLFWwindowsizefun)goWindowSizeCB);</code></span>
+<span class="codeline" id="line-9"><code>}</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code>void glfwSetWindowCloseCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-12"><code>  glfwSetWindowCloseCallback(window, (GLFWwindowclosefun)goWindowCloseCB);</code></span>
+<span class="codeline" id="line-13"><code>}</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code>void glfwSetWindowRefreshCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-16"><code>  glfwSetWindowRefreshCallback(window, (GLFWwindowrefreshfun)goWindowRefreshCB);</code></span>
+<span class="codeline" id="line-17"><code>}</code></span>
+<span class="codeline" id="line-18"><code></code></span>
+<span class="codeline" id="line-19"><code>void glfwSetWindowFocusCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-20"><code>  glfwSetWindowFocusCallback(window, (GLFWwindowfocusfun)goWindowFocusCB);</code></span>
+<span class="codeline" id="line-21"><code>}</code></span>
+<span class="codeline" id="line-22"><code></code></span>
+<span class="codeline" id="line-23"><code>void glfwSetWindowIconifyCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-24"><code>  glfwSetWindowIconifyCallback(window, (GLFWwindowiconifyfun)goWindowIconifyCB);</code></span>
+<span class="codeline" id="line-25"><code>}</code></span>
+<span class="codeline" id="line-26"><code></code></span>
+<span class="codeline" id="line-27"><code>void glfwSetFramebufferSizeCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-28"><code>  glfwSetFramebufferSizeCallback(window,</code></span>
+<span class="codeline" id="line-29"><code>                                 (GLFWframebuffersizefun)goFramebufferSizeCB);</code></span>
+<span class="codeline" id="line-30"><code>}</code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code>void glfwSetWindowMaximizeCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-33"><code>  glfwSetWindowMaximizeCallback(window,</code></span>
+<span class="codeline" id="line-34"><code>                                (GLFWwindowmaximizefun)goWindowMaximizeCB);</code></span>
+<span class="codeline" id="line-35"><code>}</code></span>
+<span class="codeline" id="line-36"><code></code></span>
+<span class="codeline" id="line-37"><code>void glfwSetWindowContentScaleCallbackCB(GLFWwindow *window) {</code></span>
+<span class="codeline" id="line-38"><code>  glfwSetWindowContentScaleCallback(</code></span>
+<span class="codeline" id="line-39"><code>      window, (GLFWwindowcontentscalefun)goWindowContentScaleCB);</code></span>
+<span class="codeline" id="line-40"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/go-text/typesetting/font/cff</title>
+<link href="../../../../../css/auto-v0.7.1.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.7.1.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>cff</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-github.com/go-text/typesetting/font/cff">github.com/go-text/typesetting/font/cff</a><i> (on <a href="https://pkg.go.dev/github.com/go-text/typesetting/font/cff" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/github.com/go-text/typesetting/font/cff.html">6 packages</a>, and imported by <a href="../../../../../dep/github.com/go-text/typesetting/font/cff.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html">cff2.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_gen.go.html">cff_gen.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html">cff_src.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charsets.go.html">charsets.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html">charstring.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html">parser.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 22, in which 2 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-CFF" data-popularity="250">	<input type='checkbox' class="fold" id="CFF-fold-content"><label for="CFF-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-19">CFF</a> <i>(struct)</i></label><span id='CFF-fold-content-docs' class="fold-docs">
+<span class="md-text">		CFF represents a parsed CFF font, as found in the 'CFF ' Opentype table.</span>
+
+		<input type='checkbox' class="fold" id="CFF-fold-fields"><label for="CFF-fold-fields">Fields (<i>total 8, in which 1 is exported</i>)</label><span id='CFF-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="CFF-fold-field-Charstrings"><label for="CFF-fold-field-Charstrings"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-29">Charstrings</a> <i>[][]<a href="../../../../builtin.html#name-byte">byte</a></i></label><span id='CFF-fold-field-Charstrings-docs' class="fold-docs">
+<span class="md-text">				Charstrings contains the actual glyph definition.
+				It has a length of numGlyphs and is indexed by glyph ID.
+				See `LoadGlyph` for a way to intepret the glyph data.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="CFF-showhide-fields"><i><label for="CFF-showhide-fields" class="show-inline">/* 7 unexporteds ... */</label><label for="CFF-showhide-fields" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CFF-fold-field-charset"><label for="CFF-fold-field-charset"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-22">charset</a> <i>[]<a href="../../../../builtin.html#name-uint16">uint16</a></i></label><span id='CFF-fold-field-charset-docs' class="fold-docs">
+<span class="md-text">				// indexed by glyph ID</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-24">cidFontName</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CFF-fold-field-fdSelect"><label for="CFF-fold-field-fdSelect"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-21">fdSelect</a> <i><a href="#name-fdSelect">fdSelect</a></i></label><span id='CFF-fold-field-fdSelect-docs' class="fold-docs">
+<span class="md-text">				// only valid for CIDFonts</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CFF-fold-field-fontName"><label for="CFF-fold-field-fontName"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-31">fontName</a> <i>[]<a href="../../../../builtin.html#name-byte">byte</a></i></label><span id='CFF-fold-field-fontName-docs' class="fold-docs">
+<span class="md-text">				// name from the Name INDEX</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-32">globalSubrs</a> <i>[][]<a href="../../../../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CFF-fold-field-localSubrs"><label for="CFF-fold-field-localSubrs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-36">localSubrs</a> <i>[][][]<a href="../../../../builtin.html#name-byte">byte</a></i></label><span id='CFF-fold-field-localSubrs-docs' class="fold-docs">
+<span class="md-text">				array of length 1 for non CIDFonts
+				For CIDFonts, it can be safely indexed by `fdSelect` output</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-20">userStrings</a> <i><a href="#name-userStrings">userStrings</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="CFF-fold-methods"><label for="CFF-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='CFF-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="CFF-fold-method-GlyphName"><label for="CFF-fold-method-GlyphName">(*CFF) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-66">GlyphName</a>(glyph <a href="opentype.html">opentype</a>.<a href="opentype.html#name-GID">GID</a>) <a href="../../../../builtin.html#name-string">string</a></label><span id='CFF-fold-method-GlyphName-docs' class="fold-docs">
+<span class="md-text">				GlyphName returns the name of the glyph or an empty string if not found.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CFF-fold-method-LoadGlyph"><label for="CFF-fold-method-LoadGlyph">(*CFF) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-16">LoadGlyph</a>(glyph <a href="opentype/tables.html">tables</a>.<a href="opentype/tables.html#name-GlyphID">GlyphID</a>) ([]<a href="opentype.html">ot</a>.<a href="opentype.html#name-Segment">Segment</a>, <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-PathBounds">PathBounds</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='CFF-fold-method-LoadGlyph-docs' class="fold-docs">
+<span class="md-text">				LoadGlyph parses the glyph charstring to compute segments and path bounds.
+				It returns an error if the glyph is invalid or if decoding the charstring fails.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="CFF-fold-results"><label for="CFF-fold-results">As Outputs Of (<i>at least 2, in which 1 is exported</i>)</label><span id='CFF-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Parse">Parse</a>(file []<a href="../../../../builtin.html#name-byte">byte</a>) (*<b>CFF</b>, <a href="../../../../builtin.html#name-error">error</a>)</span>
+			<input type='checkbox' class="showhide" id="CFF-showhide-inputofs"><i><label for="CFF-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="CFF-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func github.com/go-text/typesetting/font.<a href="../font.html#name-loadCff">loadCff</a>(ld *<a href="opentype.html">ot</a>.<a href="opentype.html#name-Loader">Loader</a>, numGlyphs <a href="../../../../builtin.html#name-int">int</a>) (*<b>CFF</b>, <a href="../../../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-CFF2" data-popularity="200">	<input type='checkbox' class="fold" id="CFF2-fold-content"><label for="CFF2-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-15">CFF2</a> <i>(struct)</i></label><span id='CFF2-fold-content-docs' class="fold-docs">
+<span class="md-text">		CFF2 represents a parsed 'CFF2' Opentype table.</span>
+
+		<input type='checkbox' class="fold" id="CFF2-fold-fields"><label for="CFF2-fold-fields">Fields (<i>total 5, in which 2 are exported</i>)</label><span id='CFF2-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="CFF2-fold-field-Charstrings"><label for="CFF2-fold-field-Charstrings"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-21">Charstrings</a> <i>[][]<a href="../../../../builtin.html#name-byte">byte</a></i></label><span id='CFF2-fold-field-Charstrings-docs' class="fold-docs">
+<span class="md-text">				Charstrings contains the actual glyph definition.
+				It has a length of numGlyphs and is indexed by glyph ID.
+				See `LoadGlyph` for a way to intepret the glyph data.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CFF2-fold-field-VarStore"><label for="CFF2-fold-field-VarStore"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-29">VarStore</a> <i><a href="opentype/tables.html">tables</a>.<a href="opentype/tables.html#name-ItemVarStore">ItemVarStore</a></i></label><span id='CFF2-fold-field-VarStore-docs' class="fold-docs">
+<span class="md-text">				// optional</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="CFF2-showhide-fields"><i><label for="CFF2-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="CFF2-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CFF2-fold-field-fdSelect"><label for="CFF2-fold-field-fdSelect"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-16">fdSelect</a> <i><a href="#name-fdSelect">fdSelect</a></i></label><span id='CFF2-fold-field-fdSelect-docs' class="fold-docs">
+<span class="md-text">				// maybe nil if there is only one font dict</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CFF2-fold-field-fonts"><label for="CFF2-fold-field-fonts"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-27">fonts</a> <i>[]<a href="#name-privateFonts">privateFonts</a></i></label><span id='CFF2-fold-field-fonts-docs' class="fold-docs">
+<span class="md-text">				array of length 1 if fdSelect is nil
+				otherwise, it can be safely indexed by `fdSelect` output</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-23">globalSubrs</a> <i>[][]<a href="../../../../builtin.html#name-byte">byte</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="CFF2-fold-methods"><label for="CFF2-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='CFF2-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="CFF2-fold-method-LoadGlyph"><label for="CFF2-fold-method-LoadGlyph">(*CFF2) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-147">LoadGlyph</a>(glyph <a href="opentype/tables.html">tables</a>.<a href="opentype/tables.html#name-GlyphID">GlyphID</a>, coords []<a href="opentype/tables.html">tables</a>.<a href="opentype/tables.html#name-Coord">Coord</a>) ([]<a href="opentype.html">ot</a>.<a href="opentype.html#name-Segment">Segment</a>, <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-PathBounds">PathBounds</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='CFF2-fold-method-LoadGlyph-docs' class="fold-docs">
+<span class="md-text">				LoadGlyph parses the glyph charstring to compute segments and path bounds.
+				It returns an error if the glyph is invalid or if decoding the charstring fails.
+				
+				[coords] must either have the same length as the variations axis, or be empty,
+				and be normalized</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="CFF2-fold-results"><label for="CFF2-fold-results">As Outputs Of (<i>at least 2, in which 1 is exported</i>)</label><span id='CFF2-fold-results-items' class="fold-items"><span>
+			func <a href="#name-ParseCFF2">ParseCFF2</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>) (*<b>CFF2</b>, <a href="../../../../builtin.html#name-error">error</a>)</span>
+			<input type='checkbox' class="showhide" id="CFF2-showhide-inputofs"><i><label for="CFF2-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="CFF2-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func github.com/go-text/typesetting/font.<a href="../font.html#name-loadCff2">loadCff2</a>(ld *<a href="opentype.html">ot</a>.<a href="opentype.html#name-Loader">Loader</a>, numGlyphs, axisCount <a href="../../../../builtin.html#name-int">int</a>) (*<b>CFF2</b>, <a href="../../../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 20 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 20 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-cff2CharstringHandler" data-popularity="250">	<input type='checkbox' class="fold" id="cff2CharstringHandler-fold-content"><label for="cff2CharstringHandler-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-177">cff2CharstringHandler</a> <i>(struct)</i></label><span id='cff2CharstringHandler-fold-content-docs' class="fold-docs">
+<span class="md-text">		cff2CharstringHandler implements operators needed to fetch CFF2 charstring metrics</span>
+
+		<input type='checkbox' class="fold" id="cff2CharstringHandler-fold-fields"><label for="cff2CharstringHandler-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='cff2CharstringHandler-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="cff2CharstringHandler-showhide-fields"><i><label for="cff2CharstringHandler-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="cff2CharstringHandler-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cff2CharstringHandler-fold-field-coords"><label for="cff2CharstringHandler-fold-field-coords"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-180">coords</a> <i>[]<a href="opentype/tables.html">tables</a>.<a href="opentype/tables.html#name-Coord">Coord</a></i></label><span id='cff2CharstringHandler-fold-field-coords-docs' class="fold-docs">
+<span class="md-text">				// normalized variation coordinates</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-178">cs</a> <i><a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-CharstringReader">CharstringReader</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cff2CharstringHandler-fold-field-scalars"><label for="cff2CharstringHandler-fold-field-scalars"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-184">scalars</a> <i>[]<a href="../../../../builtin.html#name-float32">float32</a></i></label><span id='cff2CharstringHandler-fold-field-scalars-docs' class="fold-docs">
+<span class="md-text">				the currently active ItemVariationData subtable (default to 0)</span>
+<span class="md-text">				// computed from the currently active ItemVariationData subtable</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-181">vars</a> <i><a href="opentype/tables.html">tables</a>.<a href="opentype/tables.html#name-ItemVarStore">ItemVarStore</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="cff2CharstringHandler-fold-methods"><label for="cff2CharstringHandler-fold-methods">Methods (<i>total 4, in which 2 are exported</i>)</label><span id='cff2CharstringHandler-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*cff2CharstringHandler) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-243">Apply</a>(state *<a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Machine">Machine</a>, op <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Operator">Operator</a>) <a href="../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">( cff2CharstringHandler) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-187">Context</a>() <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Context">Context</a></span></span>
+			<input type='checkbox' checked class="showhide" id="cff2CharstringHandler-showhide-methods"><i><label for="cff2CharstringHandler-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="cff2CharstringHandler-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*cff2CharstringHandler) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-211">blend</a>(state *<a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Machine">Machine</a>) <a href="../../../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*cff2CharstringHandler) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-189">setVSIndex</a>(index <a href="../../../../builtin.html#name-int">int</a>) <a href="../../../../builtin.html#name-error">error</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="cff2CharstringHandler-fold-impls"><label for="cff2CharstringHandler-fold-impls">Implements (<i>at least one exported</i>)</label><span id='cff2CharstringHandler-fold-impls-items' class="fold-items"><span>
+			*cff2CharstringHandler : github.com/go-text/typesetting/font/cff/interpreter.<a href="cff/interpreter.html#name-OperatorHandler">OperatorHandler</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-cffParser" data-popularity="550">	<input type='checkbox' class="fold" id="cffParser-fold-content"><label for="cffParser-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-132">cffParser</a> <i>(struct)</i></label><span id='cffParser-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compact Font Format (CFF) fonts are written in PostScript, a stack-based
+		programming language.
+		
+		A fundamental concept is a DICT, or a key-value map, expressed in reverse
+		Polish notation. For example, this sequence of operations:
+		  - push the number 379
+		  - version operator
+		  - push the number 392
+		  - Notice operator
+		  - etc
+		  - push the number 100
+		  - push the number 0
+		  - push the number 500
+		  - push the number 800
+		  - FontBBox operator
+		  - etc
+		
+		defines a DICT that maps "version" to the String ID (SID) 379, "Notice" to
+		the SID 392, "FontBBox" to the four numbers [100, 0, 500, 800], etc.
+		
+		The first 391 String IDs (starting at 0) are predefined as per the CFF spec
+		Appendix A, in 5176.CFF.pdf referenced below. For example, 379 means
+		"001.000". String ID 392 is not predefined, and is mapped by a separate
+		structure, the "String INDEX", inside the CFF data. (String ID 391 is also
+		not predefined. Specifically for go-opentype-testdata/data/toys/CFFTest.otf, 391 means
+		"uni4E2D", as this font contains a glyph for U+4E2D).
+		
+		The actual glyph vectors are similarly encoded (in PostScript), in a format
+		called Type 2 Charstrings. The wire encoding is similar to but not exactly
+		the same as CFF's. For example, the byte 0x05 means FontBBox for CFF DICTs,
+		but means rlineto (relative line-to) for Type 2 Charstrings. See
+		5176.CFF.pdf Appendix H and 5177.Type2.pdf Appendix A in the PDF files
+		referenced below.
+		
+		The relevant specifications are:
+		  - http://wwwimages.adobe.com/content/dam/Adobe/en/devnet/font/pdfs/5176.CFF.pdf
+		  - http://wwwimages.adobe.com/content/dam/Adobe/en/devnet/font/pdfs/5177.Type2.pdf</span>
+
+		<input type='checkbox' class="fold" id="cffParser-fold-fields"><label for="cffParser-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='cffParser-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="cffParser-showhide-fields"><i><label for="cffParser-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="cffParser-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cffParser-fold-field-offset"><label for="cffParser-fold-field-offset"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-134">offset</a> <i><a href="../../../../builtin.html#name-int">int</a></i></label><span id='cffParser-fold-field-offset-docs' class="fold-docs">
+<span class="md-text">				// current position</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cffParser-fold-field-src"><label for="cffParser-fold-field-src"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-133">src</a> <i>[]<a href="../../../../builtin.html#name-byte">byte</a></i></label><span id='cffParser-fold-field-src-docs' class="fold-docs">
+<span class="md-text">				// whole input</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="cffParser-fold-methods"><label for="cffParser-fold-methods">Methods (<i>total 11, none are exported</i>)</label><span id='cffParser-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="cffParser-showhide-methods"><i><label for="cffParser-showhide-methods" class="show-inline">/* 11 unexporteds ... */</label><label for="cffParser-showhide-methods" class="hide-inline">/* 11 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*cffParser) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-137">parse</a>() ([]<a href="#name-CFF">CFF</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cffParser-fold-method-parseCharset"><label for="cffParser-fold-method-parseCharset">(*cffParser) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-346">parseCharset</a>(charsetOffset <a href="../../../../builtin.html#name-int32">int32</a>, numGlyphs <a href="../../../../builtin.html#name-uint16">uint16</a>) ([]<a href="../../../../builtin.html#name-uint16">uint16</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='cffParser-fold-method-parseCharset-docs' class="fold-docs">
+<span class="md-text">				Parse the charset data, whose location was found in the Top DICT.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cffParser-fold-method-parseFDSelect"><label for="cffParser-fold-method-parseFDSelect">(*cffParser) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-407">parseFDSelect</a>(offset <a href="../../../../builtin.html#name-int32">int32</a>, numGlyphs <a href="../../../../builtin.html#name-uint16">uint16</a>) (<a href="#name-fdSelect">fdSelect</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='cffParser-fold-method-parseFDSelect-docs' class="fold-docs">
+<span class="md-text">				parseFDSelect parses the Font Dict Select data as per 5176.CFF.pdf section
+				19 "FDSelect".</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cffParser-fold-method-parseIndex"><label for="cffParser-fold-method-parseIndex">(*cffParser) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-322">parseIndex</a>() ([][]<a href="../../../../builtin.html#name-byte">byte</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='cffParser-fold-method-parseIndex-docs' class="fold-docs">
+<span class="md-text">				parse the general form of an index</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*cffParser) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-485">parseIndexHeader</a>() (count <a href="../../../../builtin.html#name-uint16">uint16</a>, offSize <a href="../../../../builtin.html#name-uint8">uint8</a>, err <a href="../../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cffParser-fold-method-parseNames"><label for="cffParser-fold-method-parseNames">(*cffParser) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-335">parseNames</a>() ([][]<a href="../../../../builtin.html#name-byte">byte</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='cffParser-fold-method-parseNames-docs' class="fold-docs">
+<span class="md-text">				parse the Name INDEX</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cffParser-fold-method-parsePrivateDICT"><label for="cffParser-fold-method-parsePrivateDICT">(*cffParser) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-419">parsePrivateDICT</a>(offset, length <a href="../../../../builtin.html#name-int32">int32</a>) ([][]<a href="../../../../builtin.html#name-byte">byte</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='cffParser-fold-method-parsePrivateDICT-docs' class="fold-docs">
+<span class="md-text">				Parse Private DICT and the Local Subrs [Subroutines] INDEX</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*cffParser) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-248">parseTopDicts</a>() ([]<a href="#name-topDict">topDict</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cffParser-fold-method-parseUserStrings"><label for="cffParser-fold-method-parseUserStrings">(*cffParser) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-340">parseUserStrings</a>() (<a href="#name-userStrings">userStrings</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='cffParser-fold-method-parseUserStrings-docs' class="fold-docs">
+<span class="md-text">				parse the String INDEX</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="cffParser-fold-method-read"><label for="cffParser-fold-method-read">(*cffParser) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-454">read</a>(n <a href="../../../../builtin.html#name-int">int</a>) ([]<a href="../../../../builtin.html#name-byte">byte</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='cffParser-fold-method-read-docs' class="fold-docs">
+<span class="md-text">				read returns the n bytes from p.offset and advances p.offset by n.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*cffParser) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-463">seek</a>(offset <a href="../../../../builtin.html#name-int32">int32</a>) <a href="../../../../builtin.html#name-error">error</a></span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-dummy" data-popularity="0">	<input type='checkbox' class="fold" id="dummy-fold-content"><label for="dummy-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-27">dummy</a> <i>(struct)</i></label><span id='dummy-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="dummy-fold-fields"><label for="dummy-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='dummy-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="dummy-showhide-fields"><i><label for="dummy-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="dummy-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-28">fd</a> <i><a href="#name-fdSelect">fdSelect</a></i></span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-fdSelect" data-popularity="675">	<input type='checkbox' class="fold" id="fdSelect-fold-content"><label for="fdSelect-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-32">fdSelect</a> <b><i>(interface)</i></b></label><span id='fdSelect-fold-content-docs' class="fold-docs">
+<span class="md-text">		fdSelect holds a CFF font's Font Dict Select data.</span>
+
+		<input type='checkbox' class="fold" id="fdSelect-fold-methods"><label for="fdSelect-fold-methods">Methods (<i>total 3, none are exported</i>)</label><span id='fdSelect-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect-showhide-methods"><i><label for="fdSelect-showhide-methods" class="show-inline">/* 3 unexporteds ... */</label><label for="fdSelect-showhide-methods" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fdSelect-fold-method-extent"><label for="fdSelect-fold-method-extent">( fdSelect) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-38">extent</a>() <a href="../../../../builtin.html#name-int">int</a></label><span id='fdSelect-fold-method-extent-docs' class="fold-docs">
+<span class="md-text">				return the maximum index + 1 (it's the length of an array
+				which can be safely indexed by the indexes)</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( fdSelect) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-35">fontDictIndex</a>(glyph <a href="opentype/tables.html">tables</a>.<a href="opentype/tables.html#name-GlyphID">GlyphID</a>) (<a href="../../../../builtin.html#name-byte">byte</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( fdSelect) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-33">isFdSelect</a>()</span></i></span></span>
+		<input type='checkbox' class="fold" id="fdSelect-fold-impledby"><label for="fdSelect-fold-impledby">Implemented By (<i>at least 3, none are exported</i>)</label><span id='fdSelect-fold-impledby-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect-showhide-impedBys"><i><label for="fdSelect-showhide-impedBys" class="show-inline">/* 3+ unexporteds ... */</label><label for="fdSelect-showhide-impedBys" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			 <a href="#name-fdSelect0">fdSelect0</a></i></span><span class="hidden"><i>
+			 <a href="#name-fdSelect3">fdSelect3</a></i></span><span class="hidden"><i>
+			 <a href="#name-fdSelect4">fdSelect4</a></i></span></span>
+		<input type='checkbox' class="fold" id="fdSelect-fold-results"><label for="fdSelect-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='fdSelect-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect-showhide-inputofs"><i><label for="fdSelect-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="fdSelect-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-parseFdSelect">parseFdSelect</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>, fdsCount <a href="../../../../builtin.html#name-int">int</a>) (<b>fdSelect</b>, <a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-fdSelect0" data-popularity="275">	<input type='checkbox' class="fold" id="fdSelect0-fold-content"><label for="fdSelect0-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-45">fdSelect0</a> <i>(struct)</i></label><span id='fdSelect0-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="fdSelect0-fold-fields"><label for="fdSelect0-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='fdSelect0-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect0-showhide-fields"><i><label for="fdSelect0-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="fdSelect0-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fdSelect0-fold-field-fds"><label for="fdSelect0-fold-field-fds"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-47">fds</a> <i>[]<a href="../../../../builtin.html#name-uint8">uint8</a></i></label><span id='fdSelect0-fold-field-fds-docs' class="fold-docs">
+<span class="md-text">				// [nGlyphs]	FD selector array</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fdSelect0-fold-field-format"><label for="fdSelect0-fold-field-format"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-46">format</a> <i><a href="../../../../builtin.html#name-uint8">uint8</a></i></label><span id='fdSelect0-fold-field-format-docs' class="fold-docs">
+<span class="md-text">				// Set to 0</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="fdSelect0-fold-methods"><label for="fdSelect0-fold-methods">Methods (<i>total 3, none are exported</i>)</label><span id='fdSelect0-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect0-showhide-methods"><i><label for="fdSelect0-showhide-methods" class="show-inline">/* 3 unexporteds ... */</label><label for="fdSelect0-showhide-methods" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( fdSelect0) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-59">extent</a>() <a href="../../../../builtin.html#name-int">int</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( fdSelect0) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-52">fontDictIndex</a>(glyph <a href="opentype/tables.html">tables</a>.<a href="opentype/tables.html#name-GlyphID">GlyphID</a>) (<a href="../../../../builtin.html#name-byte">byte</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( fdSelect0) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-41">isFdSelect</a>()</span></i></span></span>
+		<input type='checkbox' class="fold" id="fdSelect0-fold-impls"><label for="fdSelect0-fold-impls">Implements (<i>at least one unexported</i>)</label><span id='fdSelect0-fold-impls-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect0-showhide-impls"><i><label for="fdSelect0-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="fdSelect0-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			 fdSelect0 : <a href="#name-fdSelect">fdSelect</a></i></span></span>
+		<input type='checkbox' class="fold" id="fdSelect0-fold-results"><label for="fdSelect0-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='fdSelect0-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect0-showhide-inputofs"><i><label for="fdSelect0-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="fdSelect0-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-parseFdSelect0">parseFdSelect0</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>, fdsCount <a href="../../../../builtin.html#name-int">int</a>) (<b>fdSelect0</b>, <a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-fdSelect3" data-popularity="275">	<input type='checkbox' class="fold" id="fdSelect3-fold-content"><label for="fdSelect3-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-69">fdSelect3</a> <i>(struct)</i></label><span id='fdSelect3-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="fdSelect3-fold-fields"><label for="fdSelect3-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='fdSelect3-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect3-showhide-fields"><i><label for="fdSelect3-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="fdSelect3-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fdSelect3-fold-field-format"><label for="fdSelect3-fold-field-format"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-70">format</a> <i><a href="../../../../builtin.html#name-uint8">uint8</a></i></label><span id='fdSelect3-fold-field-format-docs' class="fold-docs">
+<span class="md-text">				// Set to 3</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fdSelect3-fold-field-nRanges"><label for="fdSelect3-fold-field-nRanges"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-71">nRanges</a> <i><a href="../../../../builtin.html#name-uint16">uint16</a></i></label><span id='fdSelect3-fold-field-nRanges-docs' class="fold-docs">
+<span class="md-text">				// Number of ranges</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fdSelect3-fold-field-ranges"><label for="fdSelect3-fold-field-ranges"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-72">ranges</a> <i>[]<a href="#name-range3">range3</a></i></label><span id='fdSelect3-fold-field-ranges-docs' class="fold-docs">
+<span class="md-text">				// [nRanges]	Array of Range3 records (see below)</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fdSelect3-fold-field-sentinel"><label for="fdSelect3-fold-field-sentinel"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-73">sentinel</a> <i><a href="../../../../builtin.html#name-uint16">uint16</a></i></label><span id='fdSelect3-fold-field-sentinel-docs' class="fold-docs">
+<span class="md-text">				// Sentinel GID</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="fdSelect3-fold-methods"><label for="fdSelect3-fold-methods">Methods (<i>total 3, none are exported</i>)</label><span id='fdSelect3-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect3-showhide-methods"><i><label for="fdSelect3-showhide-methods" class="show-inline">/* 3 unexporteds ... */</label><label for="fdSelect3-showhide-methods" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( fdSelect3) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-104">extent</a>() <a href="../../../../builtin.html#name-int">int</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( fdSelect3) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-81">fontDictIndex</a>(x <a href="opentype/tables.html">tables</a>.<a href="opentype/tables.html#name-GlyphID">GlyphID</a>) (<a href="../../../../builtin.html#name-byte">byte</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( fdSelect3) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-42">isFdSelect</a>()</span></i></span></span>
+		<input type='checkbox' class="fold" id="fdSelect3-fold-impls"><label for="fdSelect3-fold-impls">Implements (<i>at least one unexported</i>)</label><span id='fdSelect3-fold-impls-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect3-showhide-impls"><i><label for="fdSelect3-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="fdSelect3-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			 fdSelect3 : <a href="#name-fdSelect">fdSelect</a></i></span></span>
+		<input type='checkbox' class="fold" id="fdSelect3-fold-results"><label for="fdSelect3-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='fdSelect3-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect3-showhide-inputofs"><i><label for="fdSelect3-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="fdSelect3-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-parseFdSelect3">parseFdSelect3</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>) (<b>fdSelect3</b>, <a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-fdSelect4" data-popularity="325">	<input type='checkbox' class="fold" id="fdSelect4-fold-content"><label for="fdSelect4-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-114">fdSelect4</a> <i>(struct)</i></label><span id='fdSelect4-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="fdSelect4-fold-fields"><label for="fdSelect4-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='fdSelect4-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect4-showhide-fields"><i><label for="fdSelect4-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="fdSelect4-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fdSelect4-fold-field-format"><label for="fdSelect4-fold-field-format"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-115">format</a> <i><a href="../../../../builtin.html#name-uint8">uint8</a></i></label><span id='fdSelect4-fold-field-format-docs' class="fold-docs">
+<span class="md-text">				// Set to 4</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fdSelect4-fold-field-nRanges"><label for="fdSelect4-fold-field-nRanges"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-116">nRanges</a> <i><a href="../../../../builtin.html#name-uint32">uint32</a></i></label><span id='fdSelect4-fold-field-nRanges-docs' class="fold-docs">
+<span class="md-text">				// Number of ranges</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fdSelect4-fold-field-ranges"><label for="fdSelect4-fold-field-ranges"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-117">ranges</a> <i>[]<a href="#name-range4">range4</a></i></label><span id='fdSelect4-fold-field-ranges-docs' class="fold-docs">
+<span class="md-text">				// [nRanges]	Array of Range4 records (see below)</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fdSelect4-fold-field-sentinel"><label for="fdSelect4-fold-field-sentinel"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-118">sentinel</a> <i><a href="../../../../builtin.html#name-uint32">uint32</a></i></label><span id='fdSelect4-fold-field-sentinel-docs' class="fold-docs">
+<span class="md-text">				// Sentinel GID</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="fdSelect4-fold-methods"><label for="fdSelect4-fold-methods">Methods (<i>total 4, none are exported</i>)</label><span id='fdSelect4-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect4-showhide-methods"><i><label for="fdSelect4-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="fdSelect4-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( fdSelect4) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-154">extent</a>() <a href="../../../../builtin.html#name-int">int</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( fdSelect4) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-126">fontDictIndex</a>(x <a href="opentype/tables.html">tables</a>.<a href="opentype/tables.html#name-GlyphID">GlyphID</a>) (<a href="../../../../builtin.html#name-byte">byte</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( fdSelect4) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-131">fontDictIndex32</a>(x <a href="../../../../builtin.html#name-uint32">uint32</a>) (<a href="../../../../builtin.html#name-uint16">uint16</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( fdSelect4) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-43">isFdSelect</a>()</span></i></span></span>
+		<input type='checkbox' class="fold" id="fdSelect4-fold-impls"><label for="fdSelect4-fold-impls">Implements (<i>at least one unexported</i>)</label><span id='fdSelect4-fold-impls-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect4-showhide-impls"><i><label for="fdSelect4-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="fdSelect4-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			 fdSelect4 : <a href="#name-fdSelect">fdSelect</a></i></span></span>
+		<input type='checkbox' class="fold" id="fdSelect4-fold-results"><label for="fdSelect4-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='fdSelect4-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fdSelect4-showhide-inputofs"><i><label for="fdSelect4-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="fdSelect4-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-parseFdSelect4">parseFdSelect4</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>) (<b>fdSelect4</b>, <a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-fontDict2" data-popularity="150">	<input type='checkbox' class="fold" id="fontDict2-fold-content"><label for="fontDict2-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-198">fontDict2</a> <i>(struct)</i></label><span id='fontDict2-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="fontDict2-fold-fields"><label for="fontDict2-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='fontDict2-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="fontDict2-showhide-fields"><i><label for="fontDict2-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="fontDict2-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-200">privateDictOffset</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-199">privateDictSize</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="fontDict2-fold-methods"><label for="fontDict2-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='fontDict2-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*fontDict2) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-205">Apply</a>(state *<a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Machine">Machine</a>, op <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Operator">Operator</a>) <a href="../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*fontDict2) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-203">Context</a>() <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Context">Context</a></span></span></span>
+		<input type='checkbox' class="fold" id="fontDict2-fold-impls"><label for="fontDict2-fold-impls">Implements (<i>at least one exported</i>)</label><span id='fontDict2-fold-impls-items' class="fold-items"><span>
+			*fontDict2 : github.com/go-text/typesetting/font/cff/interpreter.<a href="cff/interpreter.html#name-OperatorHandler">OperatorHandler</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-header2" data-popularity="50">	<input type='checkbox' class="fold" id="header2-fold-content"><label for="header2-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-11">header2</a> <i>(struct)</i></label><span id='header2-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="header2-fold-fields"><label for="header2-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='header2-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="header2-showhide-fields"><i><label for="header2-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="header2-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="header2-fold-field-headerSize"><label for="header2-fold-field-headerSize"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-14">headerSize</a> <i><a href="../../../../builtin.html#name-uint8">uint8</a></i></label><span id='header2-fold-field-headerSize-docs' class="fold-docs">
+<span class="md-text">				// Header size (bytes).</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="header2-fold-field-majorVersion"><label for="header2-fold-field-majorVersion"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-12">majorVersion</a> <i><a href="../../../../builtin.html#name-uint8">uint8</a></i></label><span id='header2-fold-field-majorVersion-docs' class="fold-docs">
+<span class="md-text">				// Format major version. Set to 2.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="header2-fold-field-minorVersion"><label for="header2-fold-field-minorVersion"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-13">minorVersion</a> <i><a href="../../../../builtin.html#name-uint8">uint8</a></i></label><span id='header2-fold-field-minorVersion-docs' class="fold-docs">
+<span class="md-text">				// Format minor version. Set to zero.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="header2-fold-field-topDictLength"><label for="header2-fold-field-topDictLength"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-15">topDictLength</a> <i><a href="../../../../builtin.html#name-uint16">uint16</a></i></label><span id='header2-fold-field-topDictLength-docs' class="fold-docs">
+<span class="md-text">				// Length of Top DICT structure in bytes.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="header2-fold-methods"><label for="header2-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='header2-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="header2-showhide-methods"><i><label for="header2-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="header2-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*header2) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_gen.go.html#line-12">mustParse</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>)</span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-indexStart" data-popularity="85">	<input type='checkbox' class="fold" id="indexStart-fold-content"><label for="indexStart-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-18">indexStart</a> <i>(struct)</i></label><span id='indexStart-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="indexStart-fold-fields"><label for="indexStart-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='indexStart-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="indexStart-showhide-fields"><i><label for="indexStart-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="indexStart-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="indexStart-fold-field-count"><label for="indexStart-fold-field-count"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-19">count</a> <i><a href="../../../../builtin.html#name-uint32">uint32</a></i></label><span id='indexStart-fold-field-count-docs' class="fold-docs">
+<span class="md-text">				// Number of objects stored in INDEX</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="indexStart-fold-field-offSize"><label for="indexStart-fold-field-offSize"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-20">offSize</a> <i><a href="../../../../builtin.html#name-uint8">uint8</a></i></label><span id='indexStart-fold-field-offSize-docs' class="fold-docs">
+<span class="md-text">				// Offset array element size</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="indexStart-fold-methods"><label for="indexStart-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='indexStart-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="indexStart-showhide-methods"><i><label for="indexStart-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="indexStart-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*indexStart) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_gen.go.html#line-20">mustParse</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="indexStart-fold-params"><label for="indexStart-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='indexStart-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="indexStart-showhide-outputofs"><i><label for="indexStart-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="indexStart-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-parseIndexContent">parseIndexContent</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>, header <b>indexStart</b>) ([][]<a href="../../../../builtin.html#name-byte">byte</a>, <a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-privateDict" data-popularity="150">	<input type='checkbox' class="fold" id="privateDict-fold-content"><label for="privateDict-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-665">privateDict</a> <i>(struct)</i></label><span id='privateDict-fold-content-docs' class="fold-docs">
+<span class="md-text">		privateDict contains fields specific to the Private DICT context.</span>
+
+		<input type='checkbox' class="fold" id="privateDict-fold-fields"><label for="privateDict-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='privateDict-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="privateDict-showhide-fields"><i><label for="privateDict-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="privateDict-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-667">defaultWidthX</a> <i><a href="../../../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-667">nominalWidthX</a> <i><a href="../../../../builtin.html#name-float64">float64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-666">subrsOffset</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="privateDict-fold-methods"><label for="privateDict-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='privateDict-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="privateDict-fold-method-Apply"><label for="privateDict-fold-method-Apply">(*privateDict) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-674">Apply</a>(state *<a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Machine">Machine</a>, op <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Operator">Operator</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='privateDict-fold-method-Apply-docs' class="fold-docs">
+<span class="md-text">				The Private DICT operators are defined by 5176.CFF.pdf Table 23 "Private
+				DICT Operators".</span>
+</span></span><span>
+			<span class="nodocs">( privateDict) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-670">Context</a>() <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Context">Context</a></span></span></span>
+		<input type='checkbox' class="fold" id="privateDict-fold-impls"><label for="privateDict-fold-impls">Implements (<i>at least one exported</i>)</label><span id='privateDict-fold-impls-items' class="fold-items"><span>
+			*privateDict : github.com/go-text/typesetting/font/cff/interpreter.<a href="cff/interpreter.html#name-OperatorHandler">OperatorHandler</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-privateDict2" data-popularity="150">	<input type='checkbox' class="fold" id="privateDict2-fold-content"><label for="privateDict2-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-220">privateDict2</a> <i>(struct)</i></label><span id='privateDict2-fold-content-docs' class="fold-docs">
+<span class="md-text">		privateDict2 contains fields specific to the Private DICT context.</span>
+
+		<input type='checkbox' class="fold" id="privateDict2-fold-fields"><label for="privateDict2-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='privateDict2-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="privateDict2-showhide-fields"><i><label for="privateDict2-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="privateDict2-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-221">subrsOffset</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="privateDict2-fold-field-vsindex"><label for="privateDict2-fold-field-vsindex"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-222">vsindex</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></label><span id='privateDict2-fold-field-vsindex-docs' class="fold-docs">
+<span class="md-text">				// itemVariationData index in the VariationStore structure table.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="privateDict2-fold-methods"><label for="privateDict2-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='privateDict2-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="privateDict2-fold-method-Apply"><label for="privateDict2-fold-method-Apply">(*privateDict2) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-229">Apply</a>(state *<a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Machine">Machine</a>, op <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Operator">Operator</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='privateDict2-fold-method-Apply-docs' class="fold-docs">
+<span class="md-text">				The Private DICT operators are defined by 5176.CFF.pdf Table 23 "Private
+				DICT Operators".</span>
+</span></span><span>
+			<span class="nodocs">( privateDict2) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-225">Context</a>() <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Context">Context</a></span></span></span>
+		<input type='checkbox' class="fold" id="privateDict2-fold-impls"><label for="privateDict2-fold-impls">Implements (<i>at least one exported</i>)</label><span id='privateDict2-fold-impls-items' class="fold-items"><span>
+			*privateDict2 : github.com/go-text/typesetting/font/cff/interpreter.<a href="cff/interpreter.html#name-OperatorHandler">OperatorHandler</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-privateFonts" data-popularity="0">	<input type='checkbox' class="fold" id="privateFonts-fold-content"><label for="privateFonts-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-32">privateFonts</a> <i>(struct)</i></label><span id='privateFonts-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="privateFonts-fold-fields"><label for="privateFonts-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='privateFonts-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="privateFonts-showhide-fields"><i><label for="privateFonts-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="privateFonts-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-34">defaultVSIndex</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-33">localSubrs</a> <i>[][]<a href="../../../../builtin.html#name-byte">byte</a></i></span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-range3" data-popularity="50">	<input type='checkbox' class="fold" id="range3-fold-content"><label for="range3-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-76">range3</a> <i>(struct)</i></label><span id='range3-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="range3-fold-fields"><label for="range3-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='range3-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="range3-showhide-fields"><i><label for="range3-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="range3-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="range3-fold-field-fd"><label for="range3-fold-field-fd"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-78">fd</a> <i><a href="../../../../builtin.html#name-uint8">uint8</a></i></label><span id='range3-fold-field-fd-docs' class="fold-docs">
+<span class="md-text">				// FD index for all glyphs in range</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="range3-fold-field-first"><label for="range3-fold-field-first"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-77">first</a> <i><a href="opentype/tables.html">tables</a>.<a href="opentype/tables.html#name-GlyphID">GlyphID</a></i></label><span id='range3-fold-field-first-docs' class="fold-docs">
+<span class="md-text">				// First glyph index in range</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="range3-fold-methods"><label for="range3-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='range3-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="range3-showhide-methods"><i><label for="range3-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="range3-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*range3) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_gen.go.html#line-141">mustParse</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>)</span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-range4" data-popularity="50">	<input type='checkbox' class="fold" id="range4-fold-content"><label for="range4-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-121">range4</a> <i>(struct)</i></label><span id='range4-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="range4-fold-fields"><label for="range4-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='range4-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="range4-showhide-fields"><i><label for="range4-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="range4-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="range4-fold-field-fd"><label for="range4-fold-field-fd"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-123">fd</a> <i><a href="../../../../builtin.html#name-uint16">uint16</a></i></label><span id='range4-fold-field-fd-docs' class="fold-docs">
+<span class="md-text">				// FD index for all glyphs in range</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="range4-fold-field-first"><label for="range4-fold-field-first"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-122">first</a> <i><a href="../../../../builtin.html#name-uint32">uint32</a></i></label><span id='range4-fold-field-first-docs' class="fold-docs">
+<span class="md-text">				// First glyph index in range</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="range4-fold-methods"><label for="range4-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='range4-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="range4-showhide-methods"><i><label for="range4-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="range4-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*range4) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_gen.go.html#line-147">mustParse</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>)</span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-topDict" data-popularity="185">	<input type='checkbox' class="fold" id="topDict-fold-content"><label for="topDict-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-509">topDict</a> <i>(struct)</i></label><span id='topDict-fold-content-docs' class="fold-docs">
+<span class="md-text">		topDict contains fields specific to the Top DICT context.</span>
+
+		<input type='checkbox' class="fold" id="topDict-fold-fields"><label for="topDict-fold-fields">Fields (<i>total 18, none are exported</i>)</label><span id='topDict-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="topDict-showhide-fields"><i><label for="topDict-showhide-fields" class="show-inline">/* 18 unexporteds ... */</label><label for="topDict-showhide-fields" class="hide-inline">/* 18 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-516">charStringsOffset</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-514">charsetOffset</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-520">cidFontName</a> <i><a href="../../../../builtin.html#name-uint16">uint16</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-515">encodingOffset</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="topDict-fold-field-familyName"><label for="topDict-fold-field-familyName"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-511">familyName</a> <i><a href="../../../../builtin.html#name-uint16">uint16</a></i></label><span id='topDict-fold-field-familyName-docs' class="fold-docs">
+<span class="md-text">				SIDs, to be decoded using the string index</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-517">fdArray</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-518">fdSelect</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="topDict-fold-field-fullName"><label for="topDict-fold-field-fullName"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-511">fullName</a> <i><a href="../../../../builtin.html#name-uint16">uint16</a></i></label><span id='topDict-fold-field-fullName-docs' class="fold-docs">
+<span class="md-text">				SIDs, to be decoded using the string index</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-519">isCIDFont</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-512">isFixedPitch</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-513">italicAngle</a> <i><a href="../../../../builtin.html#name-float32">float32</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="topDict-fold-field-notice"><label for="topDict-fold-field-notice"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-511">notice</a> <i><a href="../../../../builtin.html#name-uint16">uint16</a></i></label><span id='topDict-fold-field-notice-docs' class="fold-docs">
+<span class="md-text">				SIDs, to be decoded using the string index</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-522">privateDictLength</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-521">privateDictOffset</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-513">underlinePosition</a> <i><a href="../../../../builtin.html#name-float32">float32</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-513">underlineThickness</a> <i><a href="../../../../builtin.html#name-float32">float32</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="topDict-fold-field-version"><label for="topDict-fold-field-version"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-511">version</a> <i><a href="../../../../builtin.html#name-uint16">uint16</a></i></label><span id='topDict-fold-field-version-docs' class="fold-docs">
+<span class="md-text">				SIDs, to be decoded using the string index</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="topDict-fold-field-weight"><label for="topDict-fold-field-weight"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-511">weight</a> <i><a href="../../../../builtin.html#name-uint16">uint16</a></i></label><span id='topDict-fold-field-weight-docs' class="fold-docs">
+<span class="md-text">				SIDs, to be decoded using the string index</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="topDict-fold-methods"><label for="topDict-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='topDict-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*topDict) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-527">Apply</a>(state *<a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Machine">Machine</a>, op <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Operator">Operator</a>) <a href="../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*topDict) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-525">Context</a>() <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Context">Context</a></span></span></span>
+		<input type='checkbox' class="fold" id="topDict-fold-impls"><label for="topDict-fold-impls">Implements (<i>at least one exported</i>)</label><span id='topDict-fold-impls-items' class="fold-items"><span>
+			*topDict : github.com/go-text/typesetting/font/cff/interpreter.<a href="cff/interpreter.html#name-OperatorHandler">OperatorHandler</a></span></span>
+		<input type='checkbox' class="fold" id="topDict-fold-params"><label for="topDict-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='topDict-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="topDict-showhide-outputofs"><i><label for="topDict-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="topDict-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-topDictNoOp">topDictNoOp</a>(*<b>topDict</b>, *<a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Machine">Machine</a>) <a href="../../../../builtin.html#name-error">error</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-topDict2" data-popularity="150">	<input type='checkbox' class="fold" id="topDict2-fold-content"><label for="topDict2-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-157">topDict2</a> <i>(struct)</i></label><span id='topDict2-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="topDict2-fold-fields"><label for="topDict2-fold-fields">Fields (<i>total 4, none are exported</i>)</label><span id='topDict2-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="topDict2-showhide-fields"><i><label for="topDict2-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="topDict2-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="topDict2-fold-field-charStrings"><label for="topDict2-fold-field-charStrings"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-158">charStrings</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></label><span id='topDict2-fold-field-charStrings-docs' class="fold-docs">
+<span class="md-text">				// offset</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="topDict2-fold-field-fdArray"><label for="topDict2-fold-field-fdArray"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-159">fdArray</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></label><span id='topDict2-fold-field-fdArray-docs' class="fold-docs">
+<span class="md-text">				// offset</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="topDict2-fold-field-fdSelect"><label for="topDict2-fold-field-fdSelect"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-160">fdSelect</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></label><span id='topDict2-fold-field-fdSelect-docs' class="fold-docs">
+<span class="md-text">				// offset</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="topDict2-fold-field-vstore"><label for="topDict2-fold-field-vstore"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-161">vstore</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></label><span id='topDict2-fold-field-vstore-docs' class="fold-docs">
+<span class="md-text">				// offset</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="topDict2-fold-methods"><label for="topDict2-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='topDict2-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*topDict2) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-166">Apply</a>(state *<a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Machine">Machine</a>, op <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Operator">Operator</a>) <a href="../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*topDict2) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-164">Context</a>() <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Context">Context</a></span></span></span>
+		<input type='checkbox' class="fold" id="topDict2-fold-impls"><label for="topDict2-fold-impls">Implements (<i>at least one exported</i>)</label><span id='topDict2-fold-impls-items' class="fold-items"><span>
+			*topDict2 : github.com/go-text/typesetting/font/cff/interpreter.<a href="cff/interpreter.html#name-OperatorHandler">OperatorHandler</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-topDictOperator" data-popularity="0">	<input type='checkbox' class="fold" id="topDictOperator-fold-content"><label for="topDictOperator-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-552">topDictOperator</a> <i>(struct)</i></label><span id='topDictOperator-fold-content-docs' class="fold-docs">
+<span class="md-text">		The Top DICT operators are defined by 5176.CFF.pdf Table 9 "Top DICT
+		Operator Entries" and Table 10 "CIDFont Operator Extensions".</span>
+
+		<input type='checkbox' class="fold" id="topDictOperator-fold-fields"><label for="topDictOperator-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='topDictOperator-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="topDictOperator-showhide-fields"><i><label for="topDictOperator-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="topDictOperator-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="topDictOperator-fold-field-numPop"><label for="topDictOperator-fold-field-numPop"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-559">numPop</a> <i><a href="../../../../builtin.html#name-int32">int32</a></i></label><span id='topDictOperator-fold-field-numPop-docs' class="fold-docs">
+<span class="md-text">				numPop is the number of stack values to pop. -1 means "array" and -2
+				means "delta" as per 5176.CFF.pdf Table 6 "Operand Types".</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="topDictOperator-fold-field-run"><label for="topDictOperator-fold-field-run"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-555">run</a> <i>func(*<a href="#name-topDict">topDict</a>, *<a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Machine">Machine</a>) <a href="../../../../builtin.html#name-error">error</a></i></label><span id='topDictOperator-fold-field-run-docs' class="fold-docs">
+<span class="md-text">				run is the function that implements the operator. Nil means that we
+				ignore the operator, other than popping its arguments off the stack.</span>
+</span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-type2CharstringHandler" data-popularity="150">	<input type='checkbox' class="fold" id="type2CharstringHandler-fold-content"><label for="type2CharstringHandler-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-40">type2CharstringHandler</a> <i>(struct)</i></label><span id='type2CharstringHandler-fold-content-docs' class="fold-docs">
+<span class="md-text">		type2CharstringHandler implements operators needed to fetch Type2 charstring metrics</span>
+
+		<input type='checkbox' class="fold" id="type2CharstringHandler-fold-fields"><label for="type2CharstringHandler-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='type2CharstringHandler-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="type2CharstringHandler-showhide-fields"><i><label for="type2CharstringHandler-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="type2CharstringHandler-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-41">cs</a> <i><a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-CharstringReader">CharstringReader</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="type2CharstringHandler-fold-field-nominalWidthX"><label for="type2CharstringHandler-fold-field-nominalWidthX"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-46">nominalWidthX</a> <i><a href="../../../../builtin.html#name-float64">float64</a></i></label><span id='type2CharstringHandler-fold-field-nominalWidthX-docs' class="fold-docs">
+<span class="md-text">				found in private DICT, needed since we can't differenciate
+				no width set from 0 width
+				`width` must be initialized to default width</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-47">width</a> <i><a href="../../../../builtin.html#name-float64">float64</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="type2CharstringHandler-fold-methods"><label for="type2CharstringHandler-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='type2CharstringHandler-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*type2CharstringHandler) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-52">Apply</a>(state *<a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Machine">Machine</a>, op <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Operator">Operator</a>) <a href="../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">( type2CharstringHandler) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charstring.go.html#line-50">Context</a>() <a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Context">Context</a></span></span></span>
+		<input type='checkbox' class="fold" id="type2CharstringHandler-fold-impls"><label for="type2CharstringHandler-fold-impls">Implements (<i>at least one exported</i>)</label><span id='type2CharstringHandler-fold-impls-items' class="fold-items"><span>
+			*type2CharstringHandler : github.com/go-text/typesetting/font/cff/interpreter.<a href="cff/interpreter.html#name-OperatorHandler">OperatorHandler</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-userStrings" data-popularity="50">	<input type='checkbox' class="fold" id="userStrings-fold-content"><label for="userStrings-fold-content"> type <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-78">userStrings</a> <i>([])</i></label><span id='userStrings-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="userStrings-fold-methods"><label for="userStrings-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='userStrings-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="userStrings-showhide-methods"><i><label for="userStrings-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="userStrings-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="userStrings-fold-method-getString"><label for="userStrings-fold-method-getString">( userStrings) <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-81">getString</a>(sid <a href="../../../../builtin.html#name-uint16">uint16</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='userStrings-fold-method-getString-docs' class="fold-docs">
+<span class="md-text">				return either the predefined string or the user defined one</span>
+</span></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 10, in which 2 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Parse">	<input type='checkbox' class="fold" id="Parse-fold-content"><label for="Parse-fold-content"> func <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-44">Parse</a>(file []<a href="../../../../builtin.html#name-byte">byte</a>) (*<a href="#name-CFF">CFF</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Parse-fold-content-docs' class="fold-docs">
+<span class="md-text">		Parse parses a .cff font file.
+		Although CFF enables multiple font or CIDFont programs to be bundled together in a
+		single file, embedded CFF font file in PDF or in TrueType/OpenType fonts
+		shall consist of exactly one font or CIDFont. Thus, this function
+		returns an error if the file contains more than one font.</span>
+
+</span></div><div class="anchor value-res" id="name-ParseCFF2">	<input type='checkbox' class="fold" id="ParseCFF2-fold-content"><label for="ParseCFF2-fold-content"> func <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-40">ParseCFF2</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>) (*<a href="#name-CFF2">CFF2</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='ParseCFF2-fold-content-docs' class="fold-docs">
+<span class="md-text">		ParseCFF2 parses 'src', which must be the content of a 'CFF2' Opentype table.
+		
+		See also https://learn.microsoft.com/en-us/typography/opentype/spec/cff2</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 8 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 8 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-bigEndian"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-471">bigEndian</a>(b []<a href="../../../../builtin.html#name-byte">byte</a>) <a href="../../../../builtin.html#name-uint32">uint32</a></span></i></div><div class="anchor value-res hidden" id="name-parseFdSelect"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_gen.go.html#line-26">parseFdSelect</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>, fdsCount <a href="../../../../builtin.html#name-int">int</a>) (<a href="#name-fdSelect">fdSelect</a>, <a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-parseFdSelect0"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_gen.go.html#line-54">parseFdSelect0</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>, fdsCount <a href="../../../../builtin.html#name-int">int</a>) (<a href="#name-fdSelect0">fdSelect0</a>, <a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-parseFdSelect3"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_gen.go.html#line-75">parseFdSelect3</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>) (<a href="#name-fdSelect3">fdSelect3</a>, <a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-parseFdSelect4"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_gen.go.html#line-108">parseFdSelect4</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>) (<a href="#name-fdSelect4">fdSelect4</a>, <a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-parseIndex2"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff2.go.html#line-147">parseIndex2</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>, offset <a href="../../../../builtin.html#name-int">int</a>) ([][]<a href="../../../../builtin.html#name-byte">byte</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-parseIndexContent"><i>	<input type='checkbox' class="fold" id="parseIndexContent-fold-content"><label for="parseIndexContent-fold-content"> func <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-279">parseIndexContent</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>, header <a href="#name-indexStart">indexStart</a>) ([][]<a href="../../../../builtin.html#name-byte">byte</a>, <a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='parseIndexContent-fold-content-docs' class="fold-docs">
+<span class="md-text">		src does NOT includes header, but starts at the array offset
+		also returns the length read from 'src'</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-topDictNoOp"><i>	<span class="nodocs"> func <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-562">topDictNoOp</a>(*<a href="#name-topDict">topDict</a>, *<a href="cff/interpreter.html">ps</a>.<a href="cff/interpreter.html#name-Machine">Machine</a>) <a href="../../../../builtin.html#name-error">error</a></span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 7, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 7 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 7 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-charsetExpert"><i>	<span class="nodocs">  var <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charsets.go.html#line-16">charsetExpert</a> [166]<a href="../../../../builtin.html#name-uint16">uint16</a></span></i></div><div class="anchor value-res hidden" id="name-charsetExpertSubset"><i>	<span class="nodocs">  var <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charsets.go.html#line-24">charsetExpertSubset</a> [87]<a href="../../../../builtin.html#name-uint16">uint16</a></span></i></div><div class="anchor value-res hidden" id="name-charsetISOAdobe"><i>	<span class="nodocs">  var <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charsets.go.html#line-6">charsetISOAdobe</a> [229]<a href="../../../../builtin.html#name-uint16">uint16</a></span></i></div><div class="anchor value-res hidden" id="name-errGlyph"><i>	<span class="nodocs">  var <a href="../../../../../src/github.com/go-text/typesetting/font/cff/cff_src.go.html#line-50">errGlyph</a> <a href="../../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errUnsupportedCFFVersion"><i>	<span class="nodocs">  var <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-16">errUnsupportedCFFVersion</a> <a href="../../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-stdStrings"><i>	<span class="nodocs">  var <a href="../../../../../src/github.com/go-text/typesetting/font/cff/charsets.go.html#line-31">stdStrings</a> [391]<a href="../../../../builtin.html#name-string">string</a></span></i></div><div class="anchor value-res hidden" id="name-topDictOperators"><i>	<span class="nodocs">  var <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-564">topDictOperators</a> [2][]<a href="#name-topDictOperator">topDictOperator</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (only one, which is unexported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-unsetSID"><i>	<input type='checkbox' class="fold" id="unsetSID-fold-content"><label for="unsetSID-fold-content">const <a href="../../../../../src/github.com/go-text/typesetting/font/cff/parser.go.html#line-76">unsetSID</a> <a href="../../../../builtin.html#name-uint16">uint16</a> = 65535</label><span id='unsetSID-fold-content-docs' class="fold-docs">
+<span class="md-text">		since SID = 0 means .notdef, we use a reserved value
+		to mean unset</span>
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/zigo101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.7.1</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/zigo_101">@zigo_101</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>
